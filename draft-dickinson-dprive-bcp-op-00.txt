@@ -1,0 +1,392 @@
+
+
+
+
+dprive                                                      S. Dickinson
+Internet-Draft                                              J. Dickinson
+Intended status: Standards Track                              Sinodun IT
+Expires: August 31, 2018                               February 27, 2018
+
+
+        Best Current Practices for DNS Privacy Service Operators
+                       draft-dickinson-bcp-op-00
+
+Abstract
+
+   This document presents operational and security considerations for
+   DNS operators who choose to offer DNS Privacy services, including but
+   not limited to DNS-over-TLS [RFC7858].
+
+   It is also intended to allow operators to develop DNS Privacy Policy
+   Statements analogous to DNSSEC Practice Statements described in
+   [RFC6841].
+
+Status of This Memo
+
+   This Internet-Draft is submitted in full conformance with the
+   provisions of BCP 78 and BCP 79.
+
+   Internet-Drafts are working documents of the Internet Engineering
+   Task Force (IETF).  Note that other groups may also distribute
+   working documents as Internet-Drafts.  The list of current Internet-
+   Drafts is at http://datatracker.ietf.org/drafts/current/.
+
+   Internet-Drafts are draft documents valid for a maximum of six months
+   and may be updated, replaced, or obsoleted by other documents at any
+   time.  It is inappropriate to use Internet-Drafts as reference
+   material or to cite them other than as "work in progress."
+
+   This Internet-Draft will expire on August 31, 2018.
+
+Copyright Notice
+
+   Copyright (c) 2018 IETF Trust and the persons identified as the
+   document authors.  All rights reserved.
+
+   This document is subject to BCP 78 and the IETF Trust's Legal
+   Provisions Relating to IETF Documents
+   (http://trustee.ietf.org/license-info) in effect on the date of
+   publication of this document.  Please review these documents
+   carefully, as they describe your rights and restrictions with respect
+   to this document.  Code Components extracted from this document must
+   include Simplified BSD License text as described in Section 4.e of
+
+
+
+Dickinson & Dickinson    Expires August 31, 2018                [Page 1]
+
+Internet-Draft    BCP for DNS Privacy Service Operators    February 2018
+
+
+   the Trust Legal Provisions and are provided without warranty as
+   described in the Simplified BSD License.
+
+Table of Contents
+
+   1.  Introduction  . . . . . . . . . . . . . . . . . . . . . . . .   2
+   2.  Terminology . . . . . . . . . . . . . . . . . . . . . . . . .   4
+   3.  Server capabilities to maximise DNS privacy . . . . . . . . .   4
+     3.1.  Availability - denial of service to users . . . . . . . .   4
+     3.2.  Authentication of DNS privacy services  . . . . . . . . .   5
+       3.2.1.  Generation, maintenance and publication of
+               certificates  . . . . . . . . . . . . . . . . . . . .   5
+       3.2.2.  Management of SPKI pins . . . . . . . . . . . . . . .   5
+       3.2.3.  TLSA records  . . . . . . . . . . . . . . . . . . . .   5
+   4.  Configuration management  . . . . . . . . . . . . . . . . . .   5
+     4.1.  Limitations of using a pure (DNS ignorant) TLS proxy  . .   5
+     4.2.  Anycast deployments . . . . . . . . . . . . . . . . . . .   5
+   5.  Server data handling  . . . . . . . . . . . . . . . . . . . .   5
+     5.1.  Logging and monitoring  . . . . . . . . . . . . . . . . .   5
+     5.2.  Data retention  . . . . . . . . . . . . . . . . . . . . .   5
+     5.3.  User tracking . . . . . . . . . . . . . . . . . . . . . .   5
+     5.4.  Providing data to third-parties . . . . . . . . . . . . .   5
+     5.5.  Psuedo-anonymisation and de-identification methods  . . .   5
+   6.  DNS privacy policy statement  . . . . . . . . . . . . . . . .   5
+     6.1.  Current privacy statements  . . . . . . . . . . . . . . .   5
+     6.2.  Recommended contents of a DPPS  . . . . . . . . . . . . .   5
+     6.3.  Enforcement/accountability  . . . . . . . . . . . . . . .   5
+   7.  IANA considerations . . . . . . . . . . . . . . . . . . . . .   6
+   8.  Security considerations . . . . . . . . . . . . . . . . . . .   6
+   9.  Acknowledgements  . . . . . . . . . . . . . . . . . . . . . .   6
+   10. Changelog . . . . . . . . . . . . . . . . . . . . . . . . . .   6
+   11. References  . . . . . . . . . . . . . . . . . . . . . . . . .   6
+     11.1.  Normative References . . . . . . . . . . . . . . . . . .   6
+     11.2.  Informative References . . . . . . . . . . . . . . . . .   6
+   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .   7
+
+1.  Introduction
+
+   The Domain Name System (DNS) was not originally designed with strong
+   security or privacy mechanisms.  [RFC7626] describes the privacy
+   issues associated with the use of the DNS by Internet users including
+   those related to un-encrypted DNS messages on the wire and DNS 'query
+   log' data maintained on DNS servers.
+
+   Two documents that provide ways to increase DNS privacy between DNS
+   clients and DNS servers are:
+
+
+
+
+
+Dickinson & Dickinson    Expires August 31, 2018                [Page 2]
+
+Internet-Draft    BCP for DNS Privacy Service Operators    February 2018
+
+
+   o  Specification for DNS over Transport Layer Security (TLS)
+      [RFC7858], referred to here as simply 'DNS-over-TLS'
+
+   o  DNS over Datagram Transport Layer Security (DTLS) [RFC8094],
+      referred to here simply as 'DNS-over-DTLS'.  Note that this
+      document has the Category of Experimental.
+
+   Both documents are limited in scope to communications between stub
+   clients and recursive resolvers and the same scope is applied to this
+   document.  [I-D.ietf-dprive-dtls-and-tls-profiles], [RFC7830] and
+   [I-D.ietf-dprive-padding-policy] provide further specifications
+   related to DNS Privacy
+
+   Note that [I-D.ietf-dnsop-dns-tcp-requirements] discusses Operational
+   Requirements for DNS-over-TCP but does not provide specific guidance
+   on DNS Privacy protocols.
+
+   This document includes operational guidance related to the
+   specifications listed above.
+
+   TODO: Discuss alternative (non-standard) schemes not covered by this
+   document e.g.  DNSCrypt, IPsec, VPNs.
+
+   In recent years there has been an increase in the availability of
+   "open" resolvers.  Operators of open resolvers that choose to enable
+   transports which encrypt DNS on the wire generally do so to cater to
+   users who are privacy conscious.  Their ability to provide clear,
+   well documented, and secure privacy service is very important and
+   will likely serve as a major differentiating factor for privacy
+   conscious users.
+
+   TODO: Discuss trust models
+
+   More recently the global legislative landscape with regard to
+   personal data collection, retention, and psuedo-anonymisation has
+   seen significant activity with differing requirements active in
+   different juristrictions.  The impact of these changes on data
+   pertaining to the users of Internet Service Providers and
+   specifically DNS open resolvers is not fully understood at the time
+   of writing.  It may be in certain cases that these requirement may
+   well conflict with the IETF's end-2-end principles.
+
+   This document also attempts to outline recommendations for data
+   handling for operators of DNS Privacy services.
+
+   In addition, to provide a means for clients to evaluate the privacy
+   properties of DNS Privacy services this document lays out how
+
+
+
+
+Dickinson & Dickinson    Expires August 31, 2018                [Page 3]
+
+Internet-Draft    BCP for DNS Privacy Service Operators    February 2018
+
+
+   entities may publish a DNS Privacy Practice Statement (DPPS)
+   document.
+
+2.  Terminology
+
+   The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
+   "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this
+   document are to be interpreted as described in [RFC8174].
+
+   From [I-D.ietf-dprive-dtls-and-tls-profiles]:
+
+   o  Privacy-enabling DNS server: A DNS server that implements DNS-
+      over-TLS [RFC7858] and may optionally implement DNS-over-DTLS
+      [RFC8094].  The server should also offer at least one of the
+      credentials described in Section 8 and implement the (D)TLS
+      profile described in Section 9.
+
+   o  DNS Privacy Service: TODO
+
+3.  Server capabilities to maximise DNS privacy
+
+   In addition to Section 9 of [I-D.ietf-dprive-dtls-and-tls-profiles]
+   privacy-enabling DNS servers SHOULD offer the following capabilities
+
+   o  QNAME minimisation [RFC7816]
+
+   o  EDNS padding as per [RFC7830] and [I-D.ietf-dprive-padding-policy]
+
+   o  A port selection of both 853 and 443 (to aid with blocking of port
+      853?)
+
+   o  EDNS Keepalive/DSO to manage TCP/TLS connections
+
+   o  As a minimum honour EDNS Client Subnet requests with a SOURCE
+      PREFIX-LENGTH value of 0 (possibly never send this)
+
+   o  Do not require TLS session re-use (or EDNS0 cookies)
+
+   DNSSEC validation?
+
+   Offer a .onion service endpoint?
+
+3.1.  Availability - denial of service to users
+
+
+
+
+
+
+
+
+Dickinson & Dickinson    Expires August 31, 2018                [Page 4]
+
+Internet-Draft    BCP for DNS Privacy Service Operators    February 2018
+
+
+3.2.  Authentication of DNS privacy services
+
+   Commit to a public identity
+
+3.2.1.  Generation, maintenance and publication of certificates
+
+3.2.2.  Management of SPKI pins
+
+3.2.3.  TLSA records
+
+4.  Configuration management
+
+4.1.  Limitations of using a pure (DNS ignorant) TLS proxy
+
+4.2.  Anycast deployments
+
+5.  Server data handling
+
+5.1.  Logging and monitoring
+
+5.2.  Data retention
+
+5.3.  User tracking
+
+5.4.  Providing data to third-parties
+
+5.5.  Psuedo-anonymisation and de-identification methods
+
+6.  DNS privacy policy statement
+
+6.1.  Current privacy statements
+
+   TODO: Compare main elements of Google vs Quad9 vs OpenDNS
+
+6.2.  Recommended contents of a DPPS
+
+6.3.  Enforcement/accountability
+
+   Transparency reports
+
+   Independent monitoring where possible
+
+   o  ECS, etc.
+
+   o  Filtering
+
+   o  Uptime
+
+
+
+
+Dickinson & Dickinson    Expires August 31, 2018                [Page 5]
+
+Internet-Draft    BCP for DNS Privacy Service Operators    February 2018
+
+
+7.  IANA considerations
+
+   None
+
+8.  Security considerations
+
+   TODO: e.g. new issues for DoS defence, server admin policies
+
+9.  Acknowledgements
+
+10.  Changelog
+
+   draft-dickinson-dprive-bcp-op-00
+
+   o  Initial commit
+
+11.  References
+
+11.1.  Normative References
+
+   [RFC7626]  Bortzmeyer, S., "DNS Privacy Considerations", RFC 7626,
+              DOI 10.17487/RFC7626, August 2015, <https://www.rfc-
+              editor.org/info/rfc7626>.
+
+   [RFC7830]  Mayrhofer, A., "The EDNS(0) Padding Option", RFC 7830,
+              DOI 10.17487/RFC7830, May 2016, <https://www.rfc-
+              editor.org/info/rfc7830>.
+
+   [RFC7858]  Hu, Z., Zhu, L., Heidemann, J., Mankin, A., Wessels, D.,
+              and P. Hoffman, "Specification for DNS over Transport
+              Layer Security (TLS)", RFC 7858, DOI 10.17487/RFC7858, May
+              2016, <https://www.rfc-editor.org/info/rfc7858>.
+
+   [RFC8094]  Reddy, T., Wing, D., and P. Patil, "DNS over Datagram
+              Transport Layer Security (DTLS)", RFC 8094,
+              DOI 10.17487/RFC8094, February 2017, <https://www.rfc-
+              editor.org/info/rfc8094>.
+
+   [RFC8174]  Leiba, B., "Ambiguity of Uppercase vs Lowercase in RFC
+              2119 Key Words", BCP 14, RFC 8174, DOI 10.17487/RFC8174,
+              May 2017, <https://www.rfc-editor.org/info/rfc8174>.
+
+11.2.  Informative References
+
+   [I-D.ietf-dnsop-dns-tcp-requirements]
+              Kristoff, J. and D. Wessels, "DNS Transport over TCP -
+              Operational Requirements", draft-ietf-dnsop-dns-tcp-
+              requirements-01 (work in progress), November 2017.
+
+
+
+Dickinson & Dickinson    Expires August 31, 2018                [Page 6]
+
+Internet-Draft    BCP for DNS Privacy Service Operators    February 2018
+
+
+   [I-D.ietf-dprive-dtls-and-tls-profiles]
+              Dickinson, S., Gillmor, D., and T. Reddy, "Usage and
+              (D)TLS Profiles for DNS-over-(D)TLS", draft-ietf-dprive-
+              dtls-and-tls-profiles-11 (work in progress), September
+              2017.
+
+   [I-D.ietf-dprive-padding-policy]
+              Mayrhofer, A., "Padding Policy for EDNS(0)", draft-ietf-
+              dprive-padding-policy-04 (work in progress), February
+              2018.
+
+   [RFC6841]  Ljunggren, F., Eklund Lowinder, AM., and T. Okubo, "A
+              Framework for DNSSEC Policies and DNSSEC Practice
+              Statements", RFC 6841, DOI 10.17487/RFC6841, January 2013,
+              <https://www.rfc-editor.org/info/rfc6841>.
+
+Authors' Addresses
+
+   Sara Dickinson
+   Sinodun IT
+   Magdalen Centre
+   Oxford Science Park
+   Oxford  OX4 4GA
+   United Kingdom
+
+   Email: sara@sinodun.com
+
+
+   John Dickinson
+   Sinodun IT
+   Magdalen Centre
+   Oxford Science Park
+   Oxford  OX4 4GA
+   United Kingdom
+
+   Email: jad@sinodun.com
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Dickinson & Dickinson    Expires August 31, 2018                [Page 7]
