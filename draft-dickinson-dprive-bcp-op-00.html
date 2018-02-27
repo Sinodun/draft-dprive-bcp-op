@@ -388,14 +388,12 @@
 <link href="#rfc.section.4.1" rel="Chapter" title="4.1 Limitations of using a pure TLS proxy"/>
 <link href="#rfc.section.4.2" rel="Chapter" title="4.2 Anycast deployments"/>
 <link href="#rfc.section.5" rel="Chapter" title="5 Server data handling"/>
-<link href="#rfc.section.5.1" rel="Chapter" title="5.1 Logging and monitoring"/>
-<link href="#rfc.section.5.2" rel="Chapter" title="5.2 Data retention"/>
-<link href="#rfc.section.5.3" rel="Chapter" title="5.3 User tracking"/>
-<link href="#rfc.section.5.4" rel="Chapter" title="5.4 Providing data to third-parties"/>
-<link href="#rfc.section.5.5" rel="Chapter" title="5.5 Psuedo-anonymisation and de-identification methods"/>
+<link href="#rfc.section.5.1" rel="Chapter" title="5.1 Psuedo-anonymisation and de-identification methods"/>
+<link href="#rfc.section.5.1.1" rel="Chapter" title="5.1.1 ipcipher"/>
+<link href="#rfc.section.5.1.2" rel="Chapter" title="5.1.2 Bloom filters"/>
 <link href="#rfc.section.6" rel="Chapter" title="6 DNS privacy policy and practice statement"/>
 <link href="#rfc.section.6.1" rel="Chapter" title="6.1 Current privacy statements"/>
-<link href="#rfc.section.6.2" rel="Chapter" title="6.2 Recommended contents of a DPPS"/>
+<link href="#rfc.section.6.2" rel="Chapter" title="6.2 Recommended contents of a DPPPS"/>
 <link href="#rfc.section.6.3" rel="Chapter" title="6.3 Enforcement/accountability"/>
 <link href="#rfc.section.7" rel="Chapter" title="7 IANA considerations"/>
 <link href="#rfc.section.8" rel="Chapter" title="8 Security considerations"/>
@@ -410,7 +408,7 @@
   <meta name="generator" content="xml2rfc version 2.5.1 - http://tools.ietf.org/tools/xml2rfc" />
   <link rel="schema.dct" href="http://purl.org/dc/terms/" />
 
-  <meta name="dct.creator" content="Dickinson, S." />
+  <meta name="dct.creator" content="Dickinson, S., Overeinder, B., van Rijswijk-Deij, R., and J. Todd" />
   <meta name="dct.identifier" content="urn:ietf:id:draft-dickinson-bcp-op-00" />
   <meta name="dct.issued" scheme="ISO8601" content="2018-2-27" />
   <meta name="dct.abstract" content="This document presents operational, policy and security considerations for DNS operators who choose to offer DNS Privacy services including, but not limited to, DNS-over-TLS " />
@@ -433,11 +431,31 @@
 </tr>
 <tr>
   <td class="left">Intended status: Best Current Practice</td>
-  <td class="right">February 27, 2018</td>
+  <td class="right">B. Overeinder</td>
 </tr>
 <tr>
   <td class="left">Expires: August 31, 2018</td>
-  <td class="right"></td>
+  <td class="right">NLnet Labs</td>
+</tr>
+<tr>
+  <td class="left"></td>
+  <td class="right">R. van Rijswijk-Deij</td>
+</tr>
+<tr>
+  <td class="left"></td>
+  <td class="right">SURFnet bv</td>
+</tr>
+<tr>
+  <td class="left"></td>
+  <td class="right">J. Todd</td>
+</tr>
+<tr>
+  <td class="left"></td>
+  <td class="right">Quad9</td>
+</tr>
+<tr>
+  <td class="left"></td>
+  <td class="right">February 27, 2018</td>
 </tr>
 
     	
@@ -484,14 +502,12 @@
 <ul><li>4.1.   <a href="#rfc.section.4.1">Limitations of using a pure TLS proxy</a></li>
 <li>4.2.   <a href="#rfc.section.4.2">Anycast deployments</a></li>
 </ul><li>5.   <a href="#rfc.section.5">Server data handling</a></li>
-<ul><li>5.1.   <a href="#rfc.section.5.1">Logging and monitoring</a></li>
-<li>5.2.   <a href="#rfc.section.5.2">Data retention</a></li>
-<li>5.3.   <a href="#rfc.section.5.3">User tracking</a></li>
-<li>5.4.   <a href="#rfc.section.5.4">Providing data to third-parties</a></li>
-<li>5.5.   <a href="#rfc.section.5.5">Psuedo-anonymisation and de-identification methods</a></li>
-</ul><li>6.   <a href="#rfc.section.6">DNS privacy policy and practice statement</a></li>
+<ul><li>5.1.   <a href="#rfc.section.5.1">Psuedo-anonymisation and de-identification methods</a></li>
+<ul><li>5.1.1.   <a href="#rfc.section.5.1.1">ipcipher</a></li>
+<li>5.1.2.   <a href="#rfc.section.5.1.2">Bloom filters</a></li>
+</ul></ul><li>6.   <a href="#rfc.section.6">DNS privacy policy and practice statement</a></li>
 <ul><li>6.1.   <a href="#rfc.section.6.1">Current privacy statements</a></li>
-<li>6.2.   <a href="#rfc.section.6.2">Recommended contents of a DPPS</a></li>
+<li>6.2.   <a href="#rfc.section.6.2">Recommended contents of a DPPPS</a></li>
 <li>6.3.   <a href="#rfc.section.6.3">Enforcement/accountability</a></li>
 </ul><li>7.   <a href="#rfc.section.7">IANA considerations</a></li>
 <li>8.   <a href="#rfc.section.8">Security considerations</a></li>
@@ -500,7 +516,7 @@
 <li>11.   <a href="#rfc.references">References</a></li>
 <ul><li>11.1.   <a href="#rfc.references.1">Normative References</a></li>
 <li>11.2.   <a href="#rfc.references.2">Informative References</a></li>
-</ul><li><a href="#rfc.authors">Author's Address</a></li>
+</ul><li><a href="#rfc.authors">Authors' Addresses</a></li>
 
 
   </ul>
@@ -524,16 +540,16 @@
 <p id="rfc.section.1.p.9">More recently the global legislative landscape with regard to personal data collection, retention, and psuedo-anonymisation has seen significant activity with differing requirements active in different jurisdictions. The impact of these changes on data pertaining to the users of Internet Service Providers and specifically DNS open resolvers is not fully understood at the time of writing.  It may be in certain cases that these requirement may well conflict with the IETF's end-to-end encryption principles.  </p>
 <p id="rfc.section.1.p.10">This document also attempts to outline options for data handling for operators of DNS privacy services.  </p>
 <p id="rfc.section.1.p.11">TODO/QUESTION: Discuss alternative (non-standard) schemes not covered by this document e.g. DNSCrypt, IPsec, VPNs. For example, should the data handling practices be recommended for any service that encrypts DNS/makes claims about DNS data privacy or is that outside the scope of this document? </p>
-<p id="rfc.section.1.p.12">This document also presents a framework to assist writers of DNS Privacy Policy and Practice Statements (DPPPS). These are documents an operator can publish outlining their operational practices and commitments with regard to privacy providing a means for clients to evaluate the privacy properties of DNS a given privacy services. In particular, the framework identifies the elements that should be considered in formulating a DPPPS. It does not, however, define a particular Policy or Practice Statement, nor does it seek to provide legal advice or recommendations as to the contents.  </p>
+<p id="rfc.section.1.p.12">This document also presents a framework to assist writers of DNS Privacy Policy and Practice Statements (DPPPS). These are documents an operator can publish outlining their operational practices and commitments with regard to privacy providing a means for clients to evaluate the privacy properties of a given DNS privacy service. In particular, the framework identifies the elements that should be considered in formulating a DPPPS. It does not, however, define a particular Policy or Practice Statement, nor does it seek to provide legal advice or recommendations as to the contents.  </p>
 <p id="rfc.section.1.p.13">Community knowledge about operational practices can change quickly, and experience shows that a Best Current Practice (BCP) document about privacy and security is a point-in-time statement. Readers are advised to seek out any errata or updates that apply to this document.  </p>
 <h1 id="rfc.section.2"><a href="#rfc.section.2">2.</a> <a href="#terminology" id="terminology">Terminology</a></h1>
 <p id="rfc.section.2.p.1">The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in <a href="#RFC8174">[RFC8174]</a>.  </p>
 <p/>
 
 <ul>
-  <li>Privacy-enabling DNS server: A DNS server that implements DNS- over-TLS [RFC7858] and may optionally implement DNS-over-DTLS [RFC8094]. The server should also offer at least one of the credentials described in Section 8 and implement the (D)TLS profile described in Section 9 of <a href="#I-D.ietf-dprive-dtls-and-tls-profiles">[I-D.ietf-dprive-dtls-and-tls-profiles]</a>.</li>
+  <li>Privacy-enabling DNS server: A DNS server that implements DNS-over-TLS [RFC7858] and may optionally implement DNS-over-DTLS [RFC8094]. The server should also offer at least one of the credentials described in Section 8 of <a href="#I-D.ietf-dprive-dtls-and-tls-profiles">[I-D.ietf-dprive-dtls-and-tls-profiles]</a> and implement the (D)TLS profile described in Section 9 of <a href="#I-D.ietf-dprive-dtls-and-tls-profiles">[I-D.ietf-dprive-dtls-and-tls-profiles]</a>.</li>
   <li>DPPPS: DNS Privacy Policy and Practice Statement, see <a href="#dns-privacy-policy-and-practice-statement">Section 6</a>.</li>
-  <li>DNS privacy service: A resolver that offers service via a privacy-enabling DNS server and provides either an informal statement of policy and practice with regard to users privacy or a formal DPPPS.</li>
+  <li>DNS privacy service: The service that is offered via a privacy-enabling DNS server and is documented either in an informal statement of policy and practice with regard to users privacy or a formal DPPPS.</li>
 </ul>
 
 <p> </p>
@@ -545,7 +561,7 @@
 <ul>
   <li>QNAME minimisation <a href="#RFC7816">[RFC7816]</a></li>
   <li>Management of TLS connections to optimise performance for clients using either <ul><li><a href="#RFC7766">[RFC7766]</a> and EDNS(0) Keepalive <a href="#RFC7828">[RFC7828]</a> and/or</li><li>DNS Stateful Operations <a href="#I-D.ietf-dnsop-session-signal">[I-D.ietf-dnsop-session-signal]</a></li></ul></li>
-  <li>No requirement that clients use TLS session resumption <a href="#RFC5077">[RFC5077]</a> (or Domain Name System (DNS) Cookies <a href="#RFC7873">[RFC7873]</a>)</li>
+  <li>No requirement that clients must use TLS session resumption <a href="#RFC5077">[RFC5077]</a> (or Domain Name System (DNS) Cookies <a href="#RFC7873">[RFC7873]</a>)</li>
 </ul>
 
 <p> </p>
@@ -560,14 +576,14 @@
 </ul>
 
 <p> </p>
-<p id="rfc.section.3.1.p.5">QUESTION: Should we say anything here about filtering responses or DNSSEC validation e.g. operators SHOULD provide an unfiltered service on an alternative IP address if the 'main' address filters responses? </p>
+<p id="rfc.section.3.1.p.5">QUESTION: Should we say anything here about filtering responses or DNSSEC validation e.g. operators SHOULD provide an unfiltered service on an alternative IP address if the 'main' DNS privacy address filters responses? Or simply just to say that the DNS privacy service should not differ from the 'normal' DNS service in terms of such options.  </p>
 <h1 id="rfc.section.3.2"><a href="#rfc.section.3.2">3.2.</a> <a href="#client-query-obfuscation" id="client-query-obfuscation">Client query obfuscation</a></h1>
-<p id="rfc.section.3.2.p.1">Since queries from recursive resolvers to authoritative servers are performed using cleartext (at the time of writing), resolver services need to consider if they may be leaking information about their client community via these upstream queries (even when relevant techniques described above are employed). For example, a resolver with a very small community of users risks exposing data in this way and MAY want to obfuscate this traffic by mixing it with 'generated' traffic to make client characterisation harder.  </p>
+<p id="rfc.section.3.2.p.1">Since queries from recursive resolvers to authoritative servers are performed using cleartext (at the time of writing), resolver services need to consider the extent to which they may be directly leaking information about their client community via these upstream queries and what they can do to mitigate this further. Note, that even when all the relevant techniques described above are employed there may still be attacks possible, e.g.  <a href="#Pitfalls-of-DNS-Encryption">[Pitfalls-of-DNS-Encryption]</a>. For example, a resolver with a very small community of users risks exposing data in this way and MAY want to obfuscate this traffic by mixing it with 'generated' traffic to make client characterisation harder.  </p>
 <h1 id="rfc.section.3.3"><a href="#rfc.section.3.3">3.3.</a> <a href="#availability" id="availability">Availability</a></h1>
 <p id="rfc.section.3.3.p.1">As a general model of trust between users and service providers DNS privacy services should have high availability. Denying access to an encrypted protocol for DNS queries forces the user to switch providers, fallback to cleartext or accept no DNS service for the outage.  </p>
 <h1 id="rfc.section.3.4"><a href="#rfc.section.3.4">3.4.</a> <a href="#authentication-of-dns-privacy-services" id="authentication-of-dns-privacy-services">Authentication of DNS privacy services</a></h1>
 <p id="rfc.section.3.4.p.1">To enable users to select a 'Strict Privacy' usage profile <a href="#I-D.ietf-dprive-dtls-and-tls-profiles">[I-D.ietf-dprive-dtls-and-tls-profiles]</a> DNS privacy services should provide credentials in the form of either X.509 certificates, SPKI pinsets or TLSA records. This in effect commits the DNS privacy service to a public identity users will trust.  </p>
-<p id="rfc.section.3.4.p.2">Anecdotal evidence to date highlights this requirement as one of the more challenging aspects of running a DNS privacy service as management of such credentials is new to DNS operators and system administrators.  </p>
+<p id="rfc.section.3.4.p.2">Anecdotal evidence to date highlights this requirement as one of the more challenging aspects of running a DNS privacy service as management of such credentials is new to DNS operators.  </p>
 <h1 id="rfc.section.3.4.1"><a href="#rfc.section.3.4.1">3.4.1.</a> <a href="#generation-and-publication-of-certificates" id="generation-and-publication-of-certificates">Generation and publication of certificates</a></h1>
 <p id="rfc.section.3.4.1.p.1">It is RECOMMENDED that operators: </p>
 <p/>
@@ -585,28 +601,48 @@
 <p id="rfc.section.3.4.3.p.1">TODO </p>
 <h1 id="rfc.section.4"><a href="#rfc.section.4">4.</a> <a href="#operational-management" id="operational-management">Operational management</a></h1>
 <h1 id="rfc.section.4.1"><a href="#rfc.section.4.1">4.1.</a> <a href="#limitations-of-using-a-pure-tls-proxy" id="limitations-of-using-a-pure-tls-proxy">Limitations of using a pure TLS proxy</a></h1>
-<p id="rfc.section.4.1.p.1">Some operators may choose to implement DNS-over-TLS using a combination of a TLS proxy (e.g. <a href="https://nginx.org/">nginx</a> or <a href="https://www.haproxy.org/">haproxy</a>) because of proven robustness and capacity when handling large numbers of client connections and good tooling. Currently, however, because such proxies typically have no specific handling of DNS as a protocol over TLS or DTLS using them can restrict traffic management at the proxy layer and at the DNS server. For example, all traffic received by a nameserver behind such a proxy will appear to originate from the proxy and DNS techniques such as ACLs or RRL will be hard or impossible to implement in the nameserver.  </p>
+<p id="rfc.section.4.1.p.1">Some operators may choose to implement DNS-over-TLS using a TLS proxy (e.g.  <a href="https://nginx.org/">nginx</a> or <a href="https://www.haproxy.org/">haproxy</a>) in front of a DNS nameserver because of proven robustness and capacity when handling large numbers of client connections, load balancing capabilities and good tooling.  Currently, however, because such proxies typically have no specific handling of DNS as a protocol over TLS or DTLS using them can restrict traffic management at the proxy layer and at the DNS server. For example, all traffic received by a nameserver behind such a proxy will appear to originate from the proxy and DNS techniques such as ACLs or RRL will be hard or impossible to implement in the nameserver.  </p>
 <h1 id="rfc.section.4.2"><a href="#rfc.section.4.2">4.2.</a> <a href="#anycast-deployments" id="anycast-deployments">Anycast deployments</a></h1>
 <p id="rfc.section.4.2.p.1">TODO: </p>
 <h1 id="rfc.section.5"><a href="#rfc.section.5">5.</a> <a href="#server-data-handling" id="server-data-handling">Server data handling</a></h1>
-<h1 id="rfc.section.5.1"><a href="#rfc.section.5.1">5.1.</a> <a href="#logging-and-monitoring" id="logging-and-monitoring">Logging and monitoring</a></h1>
-<h1 id="rfc.section.5.2"><a href="#rfc.section.5.2">5.2.</a> <a href="#data-retention" id="data-retention">Data retention</a></h1>
-<h1 id="rfc.section.5.3"><a href="#rfc.section.5.3">5.3.</a> <a href="#user-tracking" id="user-tracking">User tracking</a></h1>
-<h1 id="rfc.section.5.4"><a href="#rfc.section.5.4">5.4.</a> <a href="#providing-data-to-thirdparties" id="providing-data-to-thirdparties">Providing data to third-parties</a></h1>
-<h1 id="rfc.section.5.5"><a href="#rfc.section.5.5">5.5.</a> <a href="#psuedoanonymisation-and-deidentification-methods" id="psuedoanonymisation-and-deidentification-methods">Psuedo-anonymisation and de-identification methods</a></h1>
-<p id="rfc.section.5.5.p.1">Bloom filters </p>
-<p id="rfc.section.5.5.p.2">ipcipher </p>
-<h1 id="rfc.section.6"><a href="#rfc.section.6">6.</a> <a href="#dns-privacy-policy-and-practice-statement" id="dns-privacy-policy-and-practice-statement">DNS privacy policy and practice statement</a></h1>
-<h1 id="rfc.section.6.1"><a href="#rfc.section.6.1">6.1.</a> <a href="#current-privacy-statements" id="current-privacy-statements">Current privacy statements</a></h1>
-<p id="rfc.section.6.1.p.1">TODO: Compare main elements of Google vs Quad9 vs OpenDNS </p>
-<h1 id="rfc.section.6.2"><a href="#rfc.section.6.2">6.2.</a> <a href="#recommended-contents-of-a-dpps" id="recommended-contents-of-a-dpps">Recommended contents of a DPPS</a></h1>
-<h1 id="rfc.section.6.3"><a href="#rfc.section.6.3">6.3.</a> <a href="#enforcementaccountability" id="enforcementaccountability">Enforcement/accountability</a></h1>
-<p id="rfc.section.6.3.p.1">Transparency reports </p>
-<p id="rfc.section.6.3.p.2">Independent monitoring where possible </p>
+<p id="rfc.section.5.p.1">The following are common activities for DNS service operators and in all cases should be minimised or completely avoided if possible for DNS privacy services.  If data is retained it should be encrypted and either aggregated, psuedo-anonymised or de-identified whenever possible.  </p>
 <p/>
 
 <ul>
-  <li>ECS, etc.</li>
+  <li>Logging and Monitoring: Only that required to sustain operation of the service and meet regulatory requirements.</li>
+  <li>Data retention: Data SHOULD be retained for the shortest period deemed operationally feasible.</li>
+  <li>User tracking: DNS privacy services SHOULD not track users. An exception may be malicious or anomalous use of the service.</li>
+  <li>Providing data to third-parties (sharing, selling or renting): Operators SHOULD not provide data to third-parties without explicit consent from users (simply using the resolution service itself does not constitute consent).</li>
+  <li>Access to stored personal data: Access SHOULD be minimised to only those personal who require access to perform operational duties.</li>
+</ul>
+
+<p> </p>
+<h1 id="rfc.section.5.1"><a href="#rfc.section.5.1">5.1.</a> <a href="#psuedoanonymisation-and-deidentification-methods" id="psuedoanonymisation-and-deidentification-methods">Psuedo-anonymisation and de-identification methods</a></h1>
+<p id="rfc.section.5.1.p.1">There is active discussion in the space of effective psuedo-anonymisation of personal data in DNS query logs. To-date this has focussed on psuedo-anonymisation of client IP addresses, however there are as yet no standards for this that are unencumbered by patents. This section briefly references some know methods in this space at the time of writing.  </p>
+<h1 id="rfc.section.5.1.1"><a href="#rfc.section.5.1.1">5.1.1.</a> <a href="#ipcipher" id="ipcipher">ipcipher</a></h1>
+<p><a href="#ipcipher-spec">[ipcipher-spec]</a> is a psuedo-anonymisation technique which encrypts IPv4 and IPv6 addresses such that any address encrypts to a valid address. At the time of writing the specification is under review and may be the subject of a future IETF draft.  </p>
+<h1 id="rfc.section.5.1.2"><a href="#rfc.section.5.1.2">5.1.2.</a> <a href="#bloom-filters" id="bloom-filters">Bloom filters</a></h1>
+<p id="rfc.section.5.1.2.p.1">There is also on going work in the area of using Bloom filters <a href="#bloom-filter">[bloom-filter]</a> as a privacy-enhancing technology for DNS monitoring. The goal of this work is to allow operators to identify so-called Indicators of Compromise (IOCs) originating from specific subnets without storing information about, or be able to monitor the DNS queries of an individual user.  </p>
+<p id="rfc.section.5.1.2.p.2">TODO: Add a reference to this work </p>
+<h1 id="rfc.section.6"><a href="#rfc.section.6">6.</a> <a href="#dns-privacy-policy-and-practice-statement" id="dns-privacy-policy-and-practice-statement">DNS privacy policy and practice statement</a></h1>
+<h1 id="rfc.section.6.1"><a href="#rfc.section.6.1">6.1.</a> <a href="#current-privacy-statements" id="current-privacy-statements">Current privacy statements</a></h1>
+<p id="rfc.section.6.1.p.1">TODO: Compare main elements of Google vs Quad9 vs OpenDNS </p>
+<h1 id="rfc.section.6.2"><a href="#rfc.section.6.2">6.2.</a> <a href="#recommended-contents-of-a-dppps" id="recommended-contents-of-a-dppps">Recommended contents of a DPPPS</a></h1>
+<p/>
+
+<ul>
+  <li>Policy: This section should explain the policy for gathering and disseminating information collected by the DNS privacy service.  <ul><li>Specify clearly what data (including whether it is aggregated, psuedo-anonymised or de-identified) is</li><li>Collected and retained by the operator (and for how long)</li><li>Shared with, sold or rented to third-parties</li><li>Specify any exceptions to the above, for example malicious or anomalous behaviour</li><li>Declare any third-party affiliations or funding</li><li>Whether user DNS data is correlated or combined with any other personal information held by the operator</li></ul></li>
+  <li>Practice: This section should explain the current operational practices of the service.  <ul><li>Specify any temporary or permanent deviations from the policy for operational reasons</li><li>Provide specific details of which capabilities are provided on which address and ports</li><li>Specify the authentication name to be used (if any)</li><li>Specify the SPKI pinsets to be used (if any) and policy for rolling keys</li><li>Provide a contact email address for the service</li></ul></li>
+</ul>
+
+<p> </p>
+<h1 id="rfc.section.6.3"><a href="#rfc.section.6.3">6.3.</a> <a href="#enforcementaccountability" id="enforcementaccountability">Enforcement/accountability</a></h1>
+<p id="rfc.section.6.3.p.1">Transparency reports may help with building user trust that operators adhere to their policies and practices.  </p>
+<p id="rfc.section.6.3.p.2">Independent monitoring should be performed where possible of: </p>
+<p/>
+
+<ul>
+  <li>ECS, QNAME minimisation, EDNS(0) padding, etc.</li>
   <li>Filtering</li>
   <li>Uptime</li>
 </ul>
@@ -615,7 +651,7 @@
 <h1 id="rfc.section.7"><a href="#rfc.section.7">7.</a> <a href="#iana-considerations" id="iana-considerations">IANA considerations</a></h1>
 <p id="rfc.section.7.p.1">None </p>
 <h1 id="rfc.section.8"><a href="#rfc.section.8">8.</a> <a href="#security-considerations" id="security-considerations">Security considerations</a></h1>
-<p id="rfc.section.8.p.1">TODO: e.g. new issues for DoS defence, server admin policies </p>
+<p id="rfc.section.8.p.1">TODO: e.g. New issues for DoS defence, server admin policies </p>
 <h1 id="rfc.section.9"><a href="#rfc.section.9">9.</a> <a href="#acknowledgements" id="acknowledgements">Acknowledgements</a></h1>
 <p id="rfc.section.9.p.1">Many thanks to John Dickinson for review of and input to the first draft of this document.  </p>
 <h1 id="rfc.section.10"><a href="#rfc.section.10">10.</a> <a href="#changelog" id="changelog">Changelog</a></h1>
@@ -716,9 +752,27 @@
   <tbody>
     <tr>
       <td class="reference">
+        <b id="bloom-filter">[bloom-filter]</b>
+      </td>
+      <td class="top"><a>Bloom, B.</a>, "<a href="Communications of The ACM, 13(7):422&#x2013;426, July 1970">Space/Time Trade-offs in Hash Coding with Allowable Errors</a>", 1970.</td>
+    </tr>
+    <tr>
+      <td class="reference">
         <b id="I-D.ietf-dnsop-dns-tcp-requirements">[I-D.ietf-dnsop-dns-tcp-requirements]</b>
       </td>
       <td class="top"><a>Kristoff, J.</a> and <a>D. Wessels</a>, "<a href="http://tools.ietf.org/html/draft-ietf-dnsop-dns-tcp-requirements-01">DNS Transport over TCP - Operational Requirements</a>", Internet-Draft draft-ietf-dnsop-dns-tcp-requirements-01, November 2017.</td>
+    </tr>
+    <tr>
+      <td class="reference">
+        <b id="ipcipher-spec">[ipcipher-spec]</b>
+      </td>
+      <td class="top"><a title="PowerDNS">Hubert, B.</a>, "<a href="https://powerdns.org/ipcipher/">ipcipher: encrypting IP addresses</a>", 2018.</td>
+    </tr>
+    <tr>
+      <td class="reference">
+        <b id="Pitfalls-of-DNS-Encryption">[Pitfalls-of-DNS-Encryption]</b>
+      </td>
+      <td class="top"><a title="Fachbereich Informatik, Technische Universit&#xE4;t Darmstadt">Shulman, H.</a>, "<a href="https://www.ietf.org/mail-archive/web/dns-privacy/current/pdfWqAIUmEl47.pdf">Pretty Bad Privacy: Pitfalls of DNS Encryption</a>", 2014.</td>
     </tr>
     <tr>
       <td class="reference">
@@ -747,7 +801,7 @@
   </tbody>
 </table>
 <h1 id="rfc.authors">
-  <a href="#rfc.authors">Author's Address</a>
+  <a href="#rfc.authors">Authors' Addresses</a>
 </h1>
 <div class="avoidbreak">
   <address class="vcard">
@@ -770,6 +824,73 @@
 	  <span class="country-name vcardline">United Kingdom</span>
 	</span>
 	<span class="vcardline">EMail: <a href="mailto:sara@sinodun.com">sara@sinodun.com</a></span>
+
+  </address>
+</div><div class="avoidbreak">
+  <address class="vcard">
+	<span class="vcardline">
+	  <span class="fn">Benno J. Overeinder</span> 
+	  <span class="n hidden">
+		<span class="family-name">Overeinder</span>
+	  </span>
+	</span>
+	<span class="org vcardline">NLnet Labs</span>
+	<span class="adr">
+	  <span class="vcardline">Science Park 140</span>
+
+	  <span class="vcardline">
+		<span class="locality">Amsterdam</span>,  
+		<span class="region"></span>
+		<span class="code">1098 XH</span>
+	  </span>
+	  <span class="country-name vcardline">The Netherlands</span>
+	</span>
+	<span class="vcardline">EMail: <a href="mailto:benno@nlnetLabs.nl">benno@nlnetLabs.nl</a></span>
+
+  </address>
+</div><div class="avoidbreak">
+  <address class="vcard">
+	<span class="vcardline">
+	  <span class="fn">Roland M. van Rijswijk-Deij</span> 
+	  <span class="n hidden">
+		<span class="family-name">van Rijswijk-Deij</span>
+	  </span>
+	</span>
+	<span class="org vcardline">SURFnet bv</span>
+	<span class="adr">
+	  <span class="vcardline">PO Box 19035 </span>
+
+	  <span class="vcardline">
+		<span class="locality">Utrecht</span>,  
+		<span class="region"></span>
+		<span class="code">3501 DA Utrecht</span>
+	  </span>
+	  <span class="country-name vcardline">The Netherlands</span>
+	</span>
+	<span class="vcardline">EMail: <a href="mailto:roland.vanrijswijk@surfnet.nl">roland.vanrijswijk@surfnet.nl</a></span>
+
+  </address>
+</div><div class="avoidbreak">
+  <address class="vcard">
+	<span class="vcardline">
+	  <span class="fn">John Todd</span> 
+	  <span class="n hidden">
+		<span class="family-name">Todd</span>
+	  </span>
+	</span>
+	<span class="org vcardline">Quad9</span>
+	<span class="adr">
+	  <span class="vcardline">1442 A Walnut Street</span>
+<span class="vcardline">Suite 501</span>
+
+	  <span class="vcardline">
+		<span class="locality">Berkeley</span>,  
+		<span class="region"></span>
+		<span class="code">CA 94709</span>
+	  </span>
+	  <span class="country-name vcardline">United States</span>
+	</span>
+	<span class="vcardline">EMail: <a href="mailto:jtodd@quad9.net">jtodd@quad9.net</a></span>
 
   </address>
 </div>

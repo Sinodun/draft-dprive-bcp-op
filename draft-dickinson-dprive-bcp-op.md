@@ -25,7 +25,43 @@
       streets = ["Magdalen Centre", "Oxford Science Park"]
       city = "Oxford"
       code = "OX4 4GA"
-      country = 'United Kingdom'
+      country = "United Kingdom"
+    [[author]]
+     initials="B."
+     surname="Overeinder"
+     fullname="Benno J. Overeinder"
+     organization = "NLnet Labs"
+       [author.address]
+       email = "benno@nlnetLabs.nl"
+       [author.address.postal]
+       streets = ["Science Park 140"]
+       city = "Amsterdam"
+       code = "1098 XH"
+       country = "The Netherlands"
+    [[author]]
+     initials="R."
+     surname="van Rijswijk-Deij"
+     fullname="Roland M. van Rijswijk-Deij"
+     organization = "SURFnet bv"
+       [author.address]
+       email = "roland.vanrijswijk@surfnet.nl"
+       [author.address.postal]
+       streets = ["PO Box 19035 "]
+       city = "Utrecht"
+       code = "3501 DA Utrecht"
+       country = "The Netherlands"
+    [[author]]
+     initials="J."
+     surname="Todd"
+     fullname="John Todd"
+     organization = "Quad9"
+       [author.address]
+       email = "jtodd@quad9.net"
+       [author.address.postal]
+       streets = ["1442 A Walnut Street", "Suite 501"]
+       city = "Berkeley"
+       code = "CA 94709"
+       country = "United States"
 %%%
 
 .# Abstract
@@ -100,8 +136,8 @@ DNS data privacy or is that outside the scope of this document?
 This document also presents a framework to assist writers of DNS Privacy Policy
 and Practice Statements (DPPPS). These are documents an operator can publish
 outlining their operational practices and commitments with regard to privacy
-providing a means for clients to evaluate the privacy properties of DNS a given
-privacy services. In particular, the framework identifies the elements that
+providing a means for clients to evaluate the privacy properties of a given DNS
+privacy service. In particular, the framework identifies the elements that
 should be considered in formulating a DPPPS. It does not, however, define a
 particular Policy or Practice Statement, nor does it seek to provide legal
 advice or recommendations as to the contents.
@@ -111,7 +147,6 @@ experience shows that a Best Current Practice (BCP) document about privacy and
 security is a point-in-time statement. Readers are advised to seek out any
 errata or updates that apply to this document.
 
-
 # Terminology
 
 The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
@@ -119,17 +154,18 @@ The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
 document are to be interpreted as described in [@!RFC8174].
 
 
-* Privacy-enabling DNS server: A DNS server that implements DNS- over-TLS
+* Privacy-enabling DNS server: A DNS server that implements DNS-over-TLS
   [RFC7858] and may optionally implement DNS-over-DTLS [RFC8094]. The server
-  should also offer at least one of the credentials described in Section 8 and
-  implement the (D)TLS profile described in Section 9 of
-  [@?I-D.ietf-dprive-dtls-and-tls-profiles].
+  should also offer at least one of the credentials described in Section 8 of
+  [@?I-D.ietf-dprive-dtls-and-tls-profiles] and implement the (D)TLS profile
+  described in Section 9 of [@?I-D.ietf-dprive-dtls-and-tls-profiles].
 
-* DPPPS: DNS Privacy Policy and Practice Statement, see (#dns-privacy-policy-and-practice-statement).
+* DPPPS: DNS Privacy Policy and Practice Statement, see
+  (#dns-privacy-policy-and-practice-statement).
 
-* DNS privacy service: A resolver that offers service via a privacy-enabling DNS
-  server and provides either an informal statement of policy and practice with
-  regard to users privacy or a formal DPPPS.
+* DNS privacy service: The service that is offered via a privacy-enabling DNS
+  server and is documented either in an informal statement of policy and
+  practice with regard to users privacy or a formal DPPPS.
 
 # Server capabilities to maximise DNS privacy
 
@@ -141,8 +177,8 @@ In addition to Sections 9 and 11.1 of [@!I-D.ietf-dprive-dtls-and-tls-profiles] 
 * Management of TLS connections to optimise performance for clients using either
   * [@!RFC7766] and EDNS(0) Keepalive [@!RFC7828] and/or 
   * DNS Stateful Operations [@!I-D.ietf-dnsop-session-signal] 
-* No requirement that clients use TLS session resumption [@!RFC5077] (or Domain
-  Name System (DNS) Cookies [@!RFC7873])
+* No requirement that clients must use TLS session resumption [@!RFC5077] (or
+  Domain Name System (DNS) Cookies [@!RFC7873])
 
 DNS privacy services MAY offer the following capabilities:
 
@@ -154,20 +190,24 @@ DNS privacy services MAY offer the following capabilities:
 * Run a copy of the root zone on loopback [@RFC7706] to avoid making queries to
   the root servers that might leak information.
 
-
 QUESTION: Should we say anything here about filtering responses or DNSSEC
 validation e.g. operators SHOULD provide an unfiltered service on an alternative
-IP address if the 'main' address filters responses?
+IP address if the 'main' DNS privacy address filters responses? Or simply just
+to say that the DNS privacy service should not differ from the 'normal' DNS
+service in terms of such options.
 
 ## Client query obfuscation
 
 Since queries from recursive resolvers to authoritative servers are performed
-using cleartext (at the time of writing), resolver services need to consider if
-they may be leaking information about their client community via these upstream
-queries (even when relevant techniques described above are employed). For
-example, a resolver with a very small community of users risks exposing data in
-this way and MAY want to obfuscate this traffic by mixing it with 'generated'
-traffic to make client characterisation harder.
+using cleartext (at the time of writing), resolver services need to consider the
+extent to which they may be directly leaking information about their client
+community via these upstream queries and what they can do to mitigate this
+further. Note, that even when all the relevant techniques described above are
+employed there may still be attacks possible, e.g.
+[@Pitfalls-of-DNS-Encryption]. For example, a resolver with a very small
+community of users risks exposing data in this way and MAY want to obfuscate
+this traffic by mixing it with 'generated' traffic to make client
+characterisation harder.
 
 ## Availability
 
@@ -186,7 +226,7 @@ users will trust.
 
 Anecdotal evidence to date highlights this requirement as one of the more
 challenging aspects of running a DNS privacy service as management of such
-credentials is new to DNS operators and system administrators.
+credentials is new to DNS operators.
 
 ### Generation and publication of certificates
 
@@ -208,15 +248,16 @@ TODO
 
 ## Limitations of using a pure TLS proxy
 
-Some operators may choose to implement DNS-over-TLS using a combination of a TLS
-proxy (e.g. [nginx](https://nginx.org/) or [haproxy](https://www.haproxy.org/))
-because of proven robustness and capacity when handling large numbers of client
-connections and good tooling. Currently, however, because such proxies typically
-have no specific handling of DNS as a protocol over TLS or DTLS using them can
-restrict traffic management at the proxy layer and at the DNS server. For
-example, all traffic received by a nameserver behind such a proxy will appear to
-originate from the proxy and DNS techniques such as ACLs or RRL will be hard or
-impossible to implement in the nameserver.
+Some operators may choose to implement DNS-over-TLS using a TLS proxy (e.g.
+[nginx](https://nginx.org/) or [haproxy](https://www.haproxy.org/)) in front of
+a DNS nameserver because of proven robustness and capacity when handling large
+numbers of client connections, load balancing capabilities and good tooling.
+Currently, however, because such proxies typically have no specific handling of
+DNS as a protocol over TLS or DTLS using them can restrict traffic management at
+the proxy layer and at the DNS server. For example, all traffic received by a
+nameserver behind such a proxy will appear to originate from the proxy and DNS
+techniques such as ACLs or RRL will be hard or impossible to implement in the
+nameserver.
 
 ## Anycast deployments
 
@@ -224,20 +265,47 @@ TODO:
 
 # Server data handling
 
-## Logging and monitoring
+The following are common activities for DNS service operators and in all cases
+should be minimised or completely avoided if possible for DNS privacy services.
+If data is retained it should be encrypted and either aggregated,
+psuedo-anonymised or de-identified whenever possible.
 
-## Data retention 
-
-## User tracking
-
-## Providing data to third-parties
+* Logging and Monitoring: Only that required to sustain operation of the service
+  and meet regulatory requirements.
+* Data retention: Data SHOULD be retained for the shortest period deemed
+  operationally feasible.
+* User tracking: DNS privacy services SHOULD not track users. An exception may
+  be malicious or anomalous use of the service.
+* Providing data to third-parties (sharing, selling or renting): Operators
+  SHOULD not provide data to third-parties without explicit consent from users
+  (simply using the resolution service itself does not constitute consent).
+* Access to stored personal data: Access SHOULD be minimised to only those
+  personal who require access to perform operational duties.
 
 ## Psuedo-anonymisation and de-identification methods
 
-Bloom filters
+There is active discussion in the space of effective psuedo-anonymisation of
+personal data in DNS query logs. To-date this has focussed on
+psuedo-anonymisation of client IP addresses, however there are as yet no
+standards for this that are unencumbered by patents. This section briefly
+references some know methods in this space at the time of writing.
 
-ipcipher
+### ipcipher
 
+[@ipcipher-spec] is a psuedo-anonymisation technique which encrypts IPv4 and IPv6
+addresses such that any address encrypts to a valid address. At the time of
+writing the specification is under review and may be the subject of a future
+IETF draft.
+
+### Bloom filters
+
+There is also on going work in the area of using Bloom filters [@bloom-filter]
+as a privacy-enhancing technology for DNS monitoring. The goal of this work is
+to allow operators to identify so-called Indicators of Compromise (IOCs)
+originating from specific subnets without storing information about,
+or be able to monitor the DNS queries of an individual user.
+
+TODO: Add a reference to this work
 
 # DNS privacy policy and practice statement
 
@@ -245,15 +313,36 @@ ipcipher
 
 TODO: Compare main elements of Google vs Quad9 vs OpenDNS
 
-## Recommended contents of a DPPS
+## Recommended contents of a DPPPS
+
+* Policy: This section should explain the policy for gathering and disseminating
+  information collected by the DNS privacy service.
+  * Specify clearly what data (including whether it is aggregated,
+    psuedo-anonymised or de-identified) is
+    * Collected and retained by the operator (and for how long)
+    * Shared with, sold or rented to third-parties
+  * Specify any exceptions to the above, for example malicious or anomalous
+    behaviour
+  * Declare any third-party affiliations or funding
+  * Whether user DNS data is correlated or combined with any other personal
+    information held by the operator
+* Practice: This section should explain the current operational practices of the
+  service.
+  * Specify any temporary or permanent deviations from the policy for
+    operational reasons
+  * Provide specific details of which capabilities are provided on which address
+    and ports
+  * Specify the authentication name to be used (if any)
+  * Specify the SPKI pinsets to be used (if any) and policy for rolling keys
+  * Provide a contact email address for the service
 
 ## Enforcement/accountability
 
-Transparency reports
+Transparency reports may help with building user trust that operators adhere to their policies and practices.
 
-Independent monitoring where possible
+Independent monitoring should be performed where possible of:
 
-* ECS, etc.
+* ECS, QNAME minimisation, EDNS(0) padding, etc.
 * Filtering
 * Uptime
 
@@ -263,20 +352,52 @@ None
 
 # Security considerations
 
-TODO: e.g. new issues for DoS defence, server admin policies
+TODO: e.g. New issues for DoS defence, server admin policies
 
 # Acknowledgements
 
-Many thanks to John Dickinson for review of and input to the first draft of this document.
+Many thanks to John Dickinson for review of and input to the first draft of this
+document.
 
 
 # Changelog
-
 
 draft-dickinson-dprive-bcp-op-00
 
 * Initial commit
 
+
+<reference anchor='ipcipher-spec'
+ target='https://powerdns.org/ipcipher/'>
+    <front>
+        <title>ipcipher: encrypting IP addresses</title>
+        <author initials='B.' surname='Hubert' fullname='Bert Hubert'>
+            <organization>PowerDNS</organization>
+        </author>
+        <date year='2018'/>
+    </front>
+</reference>
+
+<reference anchor='Pitfalls-of-DNS-Encryption'
+ target='https://www.ietf.org/mail-archive/web/dns-privacy/current/pdfWqAIUmEl47.pdf'>
+    <front>
+        <title>Pretty Bad Privacy: Pitfalls of DNS Encryption</title>
+        <author initials='H.' surname='Shulman' fullname='Haya Shulman'>
+            <organization>Fachbereich Informatik, Technische Universität Darmstadt</organization>
+        </author>
+        <date year='2014'/>
+    </front>
+</reference>
+
+<reference anchor='bloom-filter'
+ target='Communications of The ACM, 13(7):422–426, July 1970'>
+    <front>
+        <title>Space/Time Trade-offs in Hash Coding with Allowable Errors</title>
+        <author initials='B.' surname='Bloom' fullname='Burton H. Bloom'>
+        </author>
+        <date year='1970'/>
+    </front>
+</reference>
 
 {backmatter}
 
