@@ -306,19 +306,18 @@ IETF draft.
 
 ### Bloom filters
 
-There is also on going work in the area of using Bloom filters [@bloom-filter]
-as a privacy-enhancing technology for DNS monitoring. The goal of this work is
-to allow operators to identify so-called Indicators of Compromise (IOCs)
-originating from specific subnets without storing information about,
-or be able to monitor the DNS queries of an individual user.
+There is also on-going work in the area of using Bloom filters as a
+privacy-enhancing technology for DNS monitoring [@DNS-bloom-filter]. The goal of
+this work is to allow operators to identify so-called Indicators of Compromise
+(IOCs) originating from specific subnets without storing information about, or
+be able to monitor the DNS queries of an individual user.
 
-TODO: Add a reference to this work
 
 # DNS privacy policy and practice statement
 
 ## Current privacy statements
 
-TODO: Compare main elements of Google vs Quad9 vs OpenDNS
+TODO: Compare main elements of Google vs Quad9 vs OpenDNS policies
 
 ## Recommended contents of a DPPPS
 
@@ -398,13 +397,20 @@ draft-dickinson-dprive-bcp-op-00
     </front>
 </reference>
 
-<reference anchor='bloom-filter'
- target='Communications of The ACM, 13(7):422–426, July 1970'>
+<reference anchor='DNS-bloom-filter'
+ target=' https://tnc18.geant.org/getfile/3823'>
     <front>
-        <title>Space/Time Trade-offs in Hash Coding with Allowable Errors</title>
-        <author initials='B.' surname='Bloom' fullname='Burton H. Bloom'>
+        <title>Let a Thousand Filters Bloom. DNS-Based Threat Monitoring That Respects User Privacy</title>
+        <author initials='R.' surname='van Rijswijk-Deij' fullname='Roland van Rijswijk-Deij'>
+         <organization>SURFnet bv</organization>
         </author>
-        <date year='1970'/>
+        <author initials='M.' surname='Bomhoff' fullname='Matthijs Bomhoff'>
+         <organization>Quarantainenet B.V.</organization>
+        </author>
+        <author initials='R.' surname='Dolmans' fullname='Ralph Dolmans'>
+         <organization>NLnet Labs Foundation</organization>
+        </author>
+        <date year='2018'/>
     </front>
 </reference>
 

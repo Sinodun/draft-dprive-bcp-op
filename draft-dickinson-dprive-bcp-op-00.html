@@ -614,11 +614,10 @@
 <h1 id="rfc.section.5.1.1"><a href="#rfc.section.5.1.1">5.1.1.</a> <a href="#ipcipher" id="ipcipher">ipcipher</a></h1>
 <p><a href="#ipcipher-spec">[ipcipher-spec]</a> is a psuedo-anonymisation technique which encrypts IPv4 and IPv6 addresses such that any address encrypts to a valid address. At the time of writing the specification is under review and may be the subject of a future IETF draft.  </p>
 <h1 id="rfc.section.5.1.2"><a href="#rfc.section.5.1.2">5.1.2.</a> <a href="#bloom-filters" id="bloom-filters">Bloom filters</a></h1>
-<p id="rfc.section.5.1.2.p.1">There is also on going work in the area of using Bloom filters <a href="#bloom-filter">[bloom-filter]</a> as a privacy-enhancing technology for DNS monitoring. The goal of this work is to allow operators to identify so-called Indicators of Compromise (IOCs) originating from specific subnets without storing information about, or be able to monitor the DNS queries of an individual user.  </p>
-<p id="rfc.section.5.1.2.p.2">TODO: Add a reference to this work </p>
+<p id="rfc.section.5.1.2.p.1">There is also on-going work in the area of using Bloom filters as a privacy-enhancing technology for DNS monitoring <a href="#DNS-bloom-filter">[DNS-bloom-filter]</a>. The goal of this work is to allow operators to identify so-called Indicators of Compromise (IOCs) originating from specific subnets without storing information about, or be able to monitor the DNS queries of an individual user.  </p>
 <h1 id="rfc.section.6"><a href="#rfc.section.6">6.</a> <a href="#dns-privacy-policy-and-practice-statement" id="dns-privacy-policy-and-practice-statement">DNS privacy policy and practice statement</a></h1>
 <h1 id="rfc.section.6.1"><a href="#rfc.section.6.1">6.1.</a> <a href="#current-privacy-statements" id="current-privacy-statements">Current privacy statements</a></h1>
-<p id="rfc.section.6.1.p.1">TODO: Compare main elements of Google vs Quad9 vs OpenDNS </p>
+<p id="rfc.section.6.1.p.1">TODO: Compare main elements of Google vs Quad9 vs OpenDNS policies </p>
 <h1 id="rfc.section.6.2"><a href="#rfc.section.6.2">6.2.</a> <a href="#recommended-contents-of-a-dppps" id="recommended-contents-of-a-dppps">Recommended contents of a DPPPS</a></h1>
 <p/>
 
@@ -745,9 +744,9 @@
   <tbody>
     <tr>
       <td class="reference">
-        <b id="bloom-filter">[bloom-filter]</b>
+        <b id="DNS-bloom-filter">[DNS-bloom-filter]</b>
       </td>
-      <td class="top"><a>Bloom, B.</a>, "<a href="Communications of The ACM, 13(7):422&#x2013;426, July 1970">Space/Time Trade-offs in Hash Coding with Allowable Errors</a>", 1970.</td>
+      <td class="top"><a title="SURFnet bv">van Rijswijk-Deij, R.</a>, <a title="Quarantainenet B.V.">Bomhoff, M.</a> and <a title="NLnet Labs Foundation">R. Dolmans</a>, "<a href=" https://tnc18.geant.org/getfile/3823">Let a Thousand Filters Bloom. DNS-Based Threat Monitoring That Respects User Privacy</a>", 2018.</td>
     </tr>
     <tr>
       <td class="reference">

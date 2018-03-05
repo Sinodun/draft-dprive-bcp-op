@@ -412,20 +412,18 @@ Internet-Draft     DNS Privacy Service Recommendations        March 2018
 
 5.1.2.  Bloom filters
 
-   There is also on going work in the area of using Bloom filters
-   [bloom-filter] as a privacy-enhancing technology for DNS monitoring.
+   There is also on-going work in the area of using Bloom filters as a
+   privacy-enhancing technology for DNS monitoring [DNS-bloom-filter].
    The goal of this work is to allow operators to identify so-called
    Indicators of Compromise (IOCs) originating from specific subnets
    without storing information about, or be able to monitor the DNS
    queries of an individual user.
 
-   TODO: Add a reference to this work
-
 6.  DNS privacy policy and practice statement
 
 6.1.  Current privacy statements
 
-   TODO: Compare main elements of Google vs Quad9 vs OpenDNS
+   TODO: Compare main elements of Google vs Quad9 vs OpenDNS policies
 
 6.2.  Recommended contents of a DPPPS
 
@@ -442,6 +440,8 @@ Internet-Draft     DNS Privacy Service Recommendations        March 2018
       *  Specify any exceptions to the above, for example malicious or
          anomalous behaviour
 
+      *  Declare any third-party affiliations or funding
+
 
 
 
@@ -449,8 +449,6 @@ Dickinson, et al.       Expires September 6, 2018               [Page 8]
 
 Internet-Draft     DNS Privacy Service Recommendations        March 2018
 
-
-      *  Declare any third-party affiliations or funding
 
       *  Whether user DNS data is correlated or combined with any other
          personal information held by the operator
@@ -497,6 +495,8 @@ Internet-Draft     DNS Privacy Service Recommendations        March 2018
    Many thanks to John Dickinson for review of and input to the first
    draft of this document.
 
+   Thanks to Benno Overeinder and John Todd for discussions on this
+   topic.
 
 
 
@@ -505,9 +505,6 @@ Dickinson, et al.       Expires September 6, 2018               [Page 9]
 
 Internet-Draft     DNS Privacy Service Recommendations        March 2018
 
-
-   Thanks to Benno Overeinder and John Todd for discussions on this
-   topic.
 
 10.  Changelog
 
@@ -557,6 +554,9 @@ Internet-Draft     DNS Privacy Service Recommendations        March 2018
 
 
 
+
+
+
 Dickinson, et al.       Expires September 6, 2018              [Page 10]
 
 Internet-Draft     DNS Privacy Service Recommendations        March 2018
@@ -591,10 +591,11 @@ Internet-Draft     DNS Privacy Service Recommendations        March 2018
 
 11.2.  Informative References
 
-   [bloom-filter]
-              Bloom, B., "Space/Time Trade-offs in Hash Coding with
-              Allowable Errors", 1970, <Communications of The ACM,
-              13(7):422-426, July 1970>.
+   [DNS-bloom-filter]
+              van Rijswijk-Deij, R., Bomhoff, M., and R. Dolmans, "Let a
+              Thousand Filters Bloom. DNS-Based Threat Monitoring That
+              Respects User Privacy", 2018, < https://tnc18.geant.org/
+              getfile/3823>.
 
    [I-D.ietf-dnsop-dns-tcp-requirements]
               Kristoff, J. and D. Wessels, "DNS Transport over TCP -
@@ -609,7 +610,6 @@ Internet-Draft     DNS Privacy Service Recommendations        March 2018
               Shulman, H., "Pretty Bad Privacy: Pitfalls of DNS
               Encryption", 2014, <https://www.ietf.org/mail-archive/web/
               dns-privacy/current/pdfWqAIUmEl47.pdf>.
-
 
 
 
