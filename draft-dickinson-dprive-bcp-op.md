@@ -26,18 +26,18 @@
       city = "Oxford"
       code = "OX4 4GA"
       country = "United Kingdom"
-    [[author]]
-     initials="B."
-     surname="Overeinder"
-     fullname="Benno J. Overeinder"
-     organization = "NLnet Labs"
-       [author.address]
-       email = "benno@nlnetLabs.nl"
-       [author.address.postal]
-       streets = ["Science Park 140"]
-       city = "Amsterdam"
-       code = "1098 XH"
-       country = "The Netherlands"
+#   [[author]]
+#    initials="B."
+#    surname="Overeinder"
+#    fullname="Benno J. Overeinder"
+#    organization = "NLnet Labs"
+#      [author.address]
+#      email = "benno@nlnetLabs.nl"
+#      [author.address.postal]
+#      streets = ["Science Park 140"]
+#      city = "Amsterdam"
+#      code = "1098 XH"
+#      country = "The Netherlands"
     [[author]]
      initials="R."
      surname="van Rijswijk-Deij"
@@ -50,18 +50,25 @@
        city = "Utrecht"
        code = "3501 DA Utrecht"
        country = "The Netherlands"
+#    [[author]]
+#     initials="J."
+#     surname="Todd"
+#     fullname="John Todd"
+#     organization = "Quad9"
+#       [author.address]
+#       email = "jtodd@quad9.net"
+#       [author.address.postal]
+#       streets = ["1442 A Walnut Street", "Suite 501"]
+#       city = "Berkeley"
+#       code = "CA 94709"
+#       country = "United States"
     [[author]]
-     initials="J."
-     surname="Todd"
-     fullname="John Todd"
-     organization = "Quad9"
+     initials="A."
+     surname="Mankin"
+     fullname="Allison Mankin"
+     organization = "Salesforce"
        [author.address]
-       email = "jtodd@quad9.net"
-       [author.address.postal]
-       streets = ["1442 A Walnut Street", "Suite 501"]
-       city = "Berkeley"
-       code = "CA 94709"
-       country = "United States"
+       email = "allison.mankin@gmail.com"
 %%%
 
 .# Abstract
@@ -358,6 +365,8 @@ TODO: e.g. New issues for DoS defence, server admin policies
 
 Many thanks to John Dickinson for review of and input to the first draft of this
 document.
+
+Thanks to Benno Overeinder and John Todd for discussions on this topic. 
 
 
 # Changelog

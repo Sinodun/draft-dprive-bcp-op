@@ -29,22 +29,6 @@
 <uri></uri>
 </address>
 </author>
-<author initials="B." surname="Overeinder" fullname="Benno J. Overeinder">
-<organization>NLnet Labs</organization>
-<address>
-<postal>
-<street></street>
-<street>Science Park 140</street>
-<city>Amsterdam</city>
-<code>1098 XH</code>
-<country>The Netherlands</country>
-<region></region>
-</postal>
-<phone></phone>
-<email>benno@nlnetLabs.nl</email>
-<uri></uri>
-</address>
-</author>
 <author initials="R." surname="van Rijswijk-Deij" fullname="Roland M. van Rijswijk-Deij">
 <organization>SURFnet bv</organization>
 <address>
@@ -61,20 +45,18 @@
 <uri></uri>
 </address>
 </author>
-<author initials="J." surname="Todd" fullname="John Todd">
-<organization>Quad9</organization>
+<author initials="A." surname="Mankin" fullname="Allison Mankin">
+<organization>Salesforce</organization>
 <address>
 <postal>
 <street></street>
-<street>1442 A Walnut Street</street>
-<street>Suite 501</street>
-<city>Berkeley</city>
-<code>CA 94709</code>
-<country>United States</country>
+<city></city>
+<code></code>
+<country></country>
 <region></region>
 </postal>
 <phone></phone>
-<email>jtodd@quad9.net</email>
+<email>allison.mankin@gmail.com</email>
 <uri></uri>
 </address>
 </author>
@@ -433,6 +415,8 @@ and ports</t>
 <section anchor="acknowledgements" title="Acknowledgements">
 <t>Many thanks to John Dickinson for review of and input to the first draft of this
 document.
+</t>
+<t>Thanks to Benno Overeinder and John Todd for discussions on this topic.
 </t>
 </section>
 

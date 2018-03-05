@@ -4,12 +4,10 @@
 
 dprive                                                      S. Dickinson
 Internet-Draft                                                Sinodun IT
-Intended status: Best Current Practice                     B. Overeinder
-Expires: August 31, 2018                                      NLnet Labs
-                                                    R. van Rijswijk-Deij
-                                                              SURFnet bv
-                                                                 J. Todd
-                                                                   Quad9
+Intended status: Best Current Practice              R. van Rijswijk-Deij
+Expires: August 31, 2018                                      SURFnet bv
+                                                               A. Mankin
+                                                              Salesforce
                                                        February 27, 2018
 
 
@@ -49,7 +47,9 @@ Copyright Notice
    Copyright (c) 2018 IETF Trust and the persons identified as the
    document authors.  All rights reserved.
 
-
+   This document is subject to BCP 78 and the IETF Trust's Legal
+   Provisions Relating to IETF Documents
+   (http://trustee.ietf.org/license-info) in effect on the date of
 
 
 
@@ -58,9 +58,6 @@ Dickinson, et al.        Expires August 31, 2018                [Page 1]
 Internet-Draft     DNS Privacy Service Recommendations     February 2018
 
 
-   This document is subject to BCP 78 and the IETF Trust's Legal
-   Provisions Relating to IETF Documents
-   (http://trustee.ietf.org/license-info) in effect on the date of
    publication of this document.  Please review these documents
    carefully, as they describe your rights and restrictions with respect
    to this document.  Code Components extracted from this document must
@@ -106,6 +103,9 @@ Table of Contents
    [NOTE: This document is submitted to the IETF for initial review and
    for feedback on the best forum for future versions of this document.]
 
+   The Domain Name System (DNS) was not originally designed with strong
+   security or privacy mechanisms.  [RFC7626] describes the privacy
+   issues associated with the use of the DNS by Internet users including
 
 
 
@@ -114,9 +114,6 @@ Dickinson, et al.        Expires August 31, 2018                [Page 2]
 Internet-Draft     DNS Privacy Service Recommendations     February 2018
 
 
-   The Domain Name System (DNS) was not originally designed with strong
-   security or privacy mechanisms.  [RFC7626] describes the privacy
-   issues associated with the use of the DNS by Internet users including
    those related to un-encrypted DNS messages on the wire and DNS 'query
    log' data maintained on DNS servers.
 
@@ -161,6 +158,9 @@ Internet-Draft     DNS Privacy Service Recommendations     February 2018
    different jurisdictions.  The impact of these changes on data
    pertaining to the users of Internet Service Providers and
    specifically DNS open resolvers is not fully understood at the time
+   of writing.  It may be in certain cases that these requirement may
+   well conflict with the IETF's end-to-end encryption principles.
+
 
 
 
@@ -169,9 +169,6 @@ Dickinson, et al.        Expires August 31, 2018                [Page 3]
 
 Internet-Draft     DNS Privacy Service Recommendations     February 2018
 
-
-   of writing.  It may be in certain cases that these requirement may
-   well conflict with the IETF's end-to-end encryption principles.
 
    This document also attempts to outline options for data handling for
    operators of DNS privacy services.
@@ -218,6 +215,9 @@ Internet-Draft     DNS Privacy Service Recommendations     February 2018
       enabling DNS server and is documented either in an informal
       statement of policy and practice with regard to users privacy or a
       formal DPPPS.
+
+
+
 
 
 
@@ -506,6 +506,9 @@ Dickinson, et al.        Expires August 31, 2018                [Page 9]
 Internet-Draft     DNS Privacy Service Recommendations     February 2018
 
 
+   Thanks to Benno Overeinder and John Todd for discussions on this
+   topic.
+
 10.  Changelog
 
    draft-dickinson-dprive-bcp-op-00
@@ -550,9 +553,6 @@ Internet-Draft     DNS Privacy Service Recommendations     February 2018
    [RFC7816]  Bortzmeyer, S., "DNS Query Name Minimisation to Improve
               Privacy", RFC 7816, DOI 10.17487/RFC7816, March 2016,
               <https://www.rfc-editor.org/info/rfc7816>.
-
-
-
 
 
 
@@ -654,13 +654,13 @@ Authors' Addresses
    Email: sara@sinodun.com
 
 
-   Benno J. Overeinder
-   NLnet Labs
-   Science Park 140
-   Amsterdam  1098 XH
+   Roland M. van Rijswijk-Deij
+   SURFnet bv
+   PO Box 19035
+   Utrecht  3501 DA Utrecht
    The Netherlands
 
-   Email: benno@nlnetLabs.nl
+   Email: roland.vanrijswijk@surfnet.nl
 
 
 
@@ -674,23 +674,23 @@ Dickinson, et al.        Expires August 31, 2018               [Page 12]
 Internet-Draft     DNS Privacy Service Recommendations     February 2018
 
 
-   Roland M. van Rijswijk-Deij
-   SURFnet bv
-   PO Box 19035
-   Utrecht  3501 DA Utrecht
-   The Netherlands
+   Allison Mankin
+   Salesforce
 
-   Email: roland.vanrijswijk@surfnet.nl
+   Email: allison.mankin@gmail.com
 
 
-   John Todd
-   Quad9
-   1442 A Walnut Street
-   Suite 501
-   Berkeley  CA 94709
-   United States
 
-   Email: jtodd@quad9.net
+
+
+
+
+
+
+
+
+
+
 
 
 
