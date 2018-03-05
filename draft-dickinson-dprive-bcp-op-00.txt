@@ -5,10 +5,10 @@
 dprive                                                      S. Dickinson
 Internet-Draft                                                Sinodun IT
 Intended status: Best Current Practice              R. van Rijswijk-Deij
-Expires: August 31, 2018                                      SURFnet bv
+Expires: September 6, 2018                                    SURFnet bv
                                                                A. Mankin
                                                               Salesforce
-                                                       February 27, 2018
+                                                           March 5, 2018
 
 
            Recommendations for DNS Privacy Service Operators
@@ -40,7 +40,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on August 31, 2018.
+   This Internet-Draft will expire on September 6, 2018.
 
 Copyright Notice
 
@@ -53,9 +53,9 @@ Copyright Notice
 
 
 
-Dickinson, et al.        Expires August 31, 2018                [Page 1]
+Dickinson, et al.       Expires September 6, 2018               [Page 1]
 
-Internet-Draft     DNS Privacy Service Recommendations     February 2018
+Internet-Draft     DNS Privacy Service Recommendations        March 2018
 
 
    publication of this document.  Please review these documents
@@ -109,9 +109,9 @@ Table of Contents
 
 
 
-Dickinson, et al.        Expires August 31, 2018                [Page 2]
+Dickinson, et al.       Expires September 6, 2018               [Page 2]
 
-Internet-Draft     DNS Privacy Service Recommendations     February 2018
+Internet-Draft     DNS Privacy Service Recommendations        March 2018
 
 
    those related to un-encrypted DNS messages on the wire and DNS 'query
@@ -165,9 +165,9 @@ Internet-Draft     DNS Privacy Service Recommendations     February 2018
 
 
 
-Dickinson, et al.        Expires August 31, 2018                [Page 3]
+Dickinson, et al.       Expires September 6, 2018               [Page 3]
 
-Internet-Draft     DNS Privacy Service Recommendations     February 2018
+Internet-Draft     DNS Privacy Service Recommendations        March 2018
 
 
    This document also attempts to outline options for data handling for
@@ -221,9 +221,9 @@ Internet-Draft     DNS Privacy Service Recommendations     February 2018
 
 
 
-Dickinson, et al.        Expires August 31, 2018                [Page 4]
+Dickinson, et al.       Expires September 6, 2018               [Page 4]
 
-Internet-Draft     DNS Privacy Service Recommendations     February 2018
+Internet-Draft     DNS Privacy Service Recommendations        March 2018
 
 
 3.  Server capabilities to maximise DNS privacy
@@ -277,9 +277,9 @@ Internet-Draft     DNS Privacy Service Recommendations     February 2018
 
 
 
-Dickinson, et al.        Expires August 31, 2018                [Page 5]
+Dickinson, et al.       Expires September 6, 2018               [Page 5]
 
-Internet-Draft     DNS Privacy Service Recommendations     February 2018
+Internet-Draft     DNS Privacy Service Recommendations        March 2018
 
 
    still be attacks possible, e.g.  [Pitfalls-of-DNS-Encryption].  For
@@ -333,9 +333,9 @@ Internet-Draft     DNS Privacy Service Recommendations     February 2018
 
 
 
-Dickinson, et al.        Expires August 31, 2018                [Page 6]
+Dickinson, et al.       Expires September 6, 2018               [Page 6]
 
-Internet-Draft     DNS Privacy Service Recommendations     February 2018
+Internet-Draft     DNS Privacy Service Recommendations        March 2018
 
 
 4.  Operational management
@@ -389,9 +389,9 @@ Internet-Draft     DNS Privacy Service Recommendations     February 2018
 
 
 
-Dickinson, et al.        Expires August 31, 2018                [Page 7]
+Dickinson, et al.       Expires September 6, 2018               [Page 7]
 
-Internet-Draft     DNS Privacy Service Recommendations     February 2018
+Internet-Draft     DNS Privacy Service Recommendations        March 2018
 
 
 5.1.  Psuedo-anonymisation and de-identification methods
@@ -445,9 +445,9 @@ Internet-Draft     DNS Privacy Service Recommendations     February 2018
 
 
 
-Dickinson, et al.        Expires August 31, 2018                [Page 8]
+Dickinson, et al.       Expires September 6, 2018               [Page 8]
 
-Internet-Draft     DNS Privacy Service Recommendations     February 2018
+Internet-Draft     DNS Privacy Service Recommendations        March 2018
 
 
       *  Declare any third-party affiliations or funding
@@ -501,9 +501,9 @@ Internet-Draft     DNS Privacy Service Recommendations     February 2018
 
 
 
-Dickinson, et al.        Expires August 31, 2018                [Page 9]
+Dickinson, et al.       Expires September 6, 2018               [Page 9]
 
-Internet-Draft     DNS Privacy Service Recommendations     February 2018
+Internet-Draft     DNS Privacy Service Recommendations        March 2018
 
 
    Thanks to Benno Overeinder and John Todd for discussions on this
@@ -557,9 +557,9 @@ Internet-Draft     DNS Privacy Service Recommendations     February 2018
 
 
 
-Dickinson, et al.        Expires August 31, 2018               [Page 10]
+Dickinson, et al.       Expires September 6, 2018              [Page 10]
 
-Internet-Draft     DNS Privacy Service Recommendations     February 2018
+Internet-Draft     DNS Privacy Service Recommendations        March 2018
 
 
    [RFC7828]  Wouters, P., Abley, J., Dickinson, S., and R. Bellis, "The
@@ -613,9 +613,9 @@ Internet-Draft     DNS Privacy Service Recommendations     February 2018
 
 
 
-Dickinson, et al.        Expires August 31, 2018               [Page 11]
+Dickinson, et al.       Expires September 6, 2018              [Page 11]
 
-Internet-Draft     DNS Privacy Service Recommendations     February 2018
+Internet-Draft     DNS Privacy Service Recommendations        March 2018
 
 
    [RFC6841]  Ljunggren, F., Eklund Lowinder, AM., and T. Okubo, "A
@@ -669,9 +669,9 @@ Authors' Addresses
 
 
 
-Dickinson, et al.        Expires August 31, 2018               [Page 12]
+Dickinson, et al.       Expires September 6, 2018              [Page 12]
 
-Internet-Draft     DNS Privacy Service Recommendations     February 2018
+Internet-Draft     DNS Privacy Service Recommendations        March 2018
 
 
    Allison Mankin
@@ -725,4 +725,4 @@ Internet-Draft     DNS Privacy Service Recommendations     February 2018
 
 
 
-Dickinson, et al.        Expires August 31, 2018               [Page 13]
+Dickinson, et al.       Expires September 6, 2018              [Page 13]
