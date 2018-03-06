@@ -29,6 +29,22 @@
 <uri></uri>
 </address>
 </author>
+<author initials="B." surname="Overeinder" fullname="Benno J. Overeinder">
+<organization>NLnet Labs</organization>
+<address>
+<postal>
+<street></street>
+<street>Science Park 140</street>
+<city>Amsterdam</city>
+<code>1098 XH</code>
+<country>The Netherlands</country>
+<region></region>
+</postal>
+<phone></phone>
+<email>benno@nlnetLabs.nl</email>
+<uri></uri>
+</address>
+</author>
 <author initials="R." surname="van Rijswijk-Deij" fullname="Roland M. van Rijswijk-Deij">
 <organization>SURFnet bv</organization>
 <address>
@@ -117,6 +133,10 @@ privacy protocols.
 <t>This document includes operational guidance related to <xref target="RFC7858"/> and
 <xref target="RFC8094"/>.
 </t>
+<t>[Benno: We might mention qname minimisation, even to indicate we don't talk
+about it? But that depends on the scope: client-resolver, or the complete DNS
+ecosystem including authoritative?]
+</t>
 <t>In recent years there has been an increase in the availability of &quot;open&quot;
 resolvers. Operators of some open resolvers choose to enable protocols which
 encrypt DNS on the wire to cater for users who are privacy conscious. Whilst
@@ -135,6 +155,9 @@ specifically DNS open resolvers is not fully understood at the time of writing.
 It may be in certain cases that these requirement may well conflict with the
 IETF's end-to-end encryption principles.
 </t>
+<t>[Benno: We are sketching the context, playing field, but I am not sure if this
+is relevant to the draft.]
+</t>
 <t>This document also attempts to outline options for data handling for
 operators of DNS privacy services.
 </t>
@@ -142,6 +165,10 @@ operators of DNS privacy services.
 document e.g. DNSCrypt, IPsec, VPNs. For example, should the data handling
 practices be recommended for any service that encrypts DNS/makes claims about
 DNS data privacy or is that outside the scope of this document?
+</t>
+<t>[Benno: At least mention, maybe earlier. Approach encrypt queries, methods:
+DNSCrypt, IPsec, VPNs, DNS-over-TLS, etc. Then scoping, and remainder of
+introduction?]
 </t>
 <t>This document also presents a framework to assist writers of DNS Privacy Policy
 and Practice Statements (DPPPS). These are documents an operator can publish
@@ -215,6 +242,11 @@ validation e.g. operators SHOULD provide an unfiltered service on an alternative
 IP address if the 'main' DNS privacy address filters responses? Or simply just
 to say that the DNS privacy service should not differ from the 'normal' DNS
 service in terms of such options.
+</t>
+<t>[Benno: I understand you want to be explicit, but the first assumption that you
+should provide an unfiltered service on alternative if main does filter
+responses seems contra-dictionary if service provider pretends to be have such a
+service. I prefer the second that they should have an unfiltered DNS service.]
 </t>
 </section>
 

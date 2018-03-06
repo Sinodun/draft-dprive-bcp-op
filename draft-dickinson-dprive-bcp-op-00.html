@@ -408,7 +408,7 @@
   <meta name="generator" content="xml2rfc version 2.5.1 - http://tools.ietf.org/tools/xml2rfc" />
   <link rel="schema.dct" href="http://purl.org/dc/terms/" />
 
-  <meta name="dct.creator" content="Dickinson, S., van Rijswijk-Deij, R., and A. Mankin" />
+  <meta name="dct.creator" content="Dickinson, S., Overeinder, B., van Rijswijk-Deij, R., and A. Mankin" />
   <meta name="dct.identifier" content="urn:ietf:id:draft-dickinson-bcp-op-00" />
   <meta name="dct.issued" scheme="ISO8601" content="2018-3-5" />
   <meta name="dct.abstract" content="This document presents operational, policy and security considerations for DNS operators who choose to offer DNS Privacy services including, but not limited to, DNS-over-TLS " />
@@ -431,10 +431,18 @@
 </tr>
 <tr>
   <td class="left">Intended status: Best Current Practice</td>
-  <td class="right">R. van Rijswijk-Deij</td>
+  <td class="right">B. Overeinder</td>
 </tr>
 <tr>
   <td class="left">Expires: September 6, 2018</td>
+  <td class="right">NLnet Labs</td>
+</tr>
+<tr>
+  <td class="left"></td>
+  <td class="right">R. van Rijswijk-Deij</td>
+</tr>
+<tr>
+  <td class="left"></td>
   <td class="right">SURFnet bv</td>
 </tr>
 <tr>
@@ -528,12 +536,15 @@
 <p id="rfc.section.1.p.5">Both documents are limited in scope to communications between stub clients and recursive resolvers and the same scope is applied to this document.  Other documents that provide further specifications related to DNS privacy include  <a href="#I-D.ietf-dprive-dtls-and-tls-profiles">[I-D.ietf-dprive-dtls-and-tls-profiles]</a>, <a href="#RFC7830">[RFC7830]</a> and <a href="#I-D.ietf-dprive-padding-policy">[I-D.ietf-dprive-padding-policy]</a>.  </p>
 <p id="rfc.section.1.p.6">Note that <a href="#I-D.ietf-dnsop-dns-tcp-requirements">[I-D.ietf-dnsop-dns-tcp-requirements]</a> discusses operational requirements for DNS-over-TCP but does not provide specific guidance on DNS privacy protocols.  </p>
 <p id="rfc.section.1.p.7">This document includes operational guidance related to <a href="#RFC7858">[RFC7858]</a> and <a href="#RFC8094">[RFC8094]</a>.  </p>
-<p id="rfc.section.1.p.8">In recent years there has been an increase in the availability of "open" resolvers. Operators of some open resolvers choose to enable protocols which encrypt DNS on the wire to cater for users who are privacy conscious. Whilst protocols that encrypt DNS messages on the wire provide protection against certain attacks, the resolver operator still has (in principle) full visibility of the query data for each user and therefore a trust relationship exists. The ability of the operator to provide a transparent, well documented, and secure privacy service will likely serve as a major differentiating factor for privacy conscious users.  </p>
-<p id="rfc.section.1.p.9">More recently the global legislative landscape with regard to personal data collection, retention, and psuedo-anonymisation has seen significant activity with differing requirements active in different jurisdictions. The impact of these changes on data pertaining to the users of Internet Service Providers and specifically DNS open resolvers is not fully understood at the time of writing.  It may be in certain cases that these requirement may well conflict with the IETF's end-to-end encryption principles.  </p>
-<p id="rfc.section.1.p.10">This document also attempts to outline options for data handling for operators of DNS privacy services.  </p>
-<p id="rfc.section.1.p.11">TODO/QUESTION: Discuss alternative (non-standard) schemes not covered by this document e.g. DNSCrypt, IPsec, VPNs. For example, should the data handling practices be recommended for any service that encrypts DNS/makes claims about DNS data privacy or is that outside the scope of this document? </p>
-<p id="rfc.section.1.p.12">This document also presents a framework to assist writers of DNS Privacy Policy and Practice Statements (DPPPS). These are documents an operator can publish outlining their operational practices and commitments with regard to privacy providing a means for clients to evaluate the privacy properties of a given DNS privacy service. In particular, the framework identifies the elements that should be considered in formulating a DPPPS. It does not, however, define a particular Policy or Practice Statement, nor does it seek to provide legal advice or recommendations as to the contents.  </p>
-<p id="rfc.section.1.p.13">Community knowledge about operational practices can change quickly, and experience shows that a Best Current Practice (BCP) document about privacy and security is a point-in-time statement. Readers are advised to seek out any errata or updates that apply to this document.  </p>
+<p id="rfc.section.1.p.8">[Benno: We might mention qname minimisation, even to indicate we don't talk about it? But that depends on the scope: client-resolver, or the complete DNS ecosystem including authoritative?] </p>
+<p id="rfc.section.1.p.9">In recent years there has been an increase in the availability of "open" resolvers. Operators of some open resolvers choose to enable protocols which encrypt DNS on the wire to cater for users who are privacy conscious. Whilst protocols that encrypt DNS messages on the wire provide protection against certain attacks, the resolver operator still has (in principle) full visibility of the query data for each user and therefore a trust relationship exists. The ability of the operator to provide a transparent, well documented, and secure privacy service will likely serve as a major differentiating factor for privacy conscious users.  </p>
+<p id="rfc.section.1.p.10">More recently the global legislative landscape with regard to personal data collection, retention, and psuedo-anonymisation has seen significant activity with differing requirements active in different jurisdictions. The impact of these changes on data pertaining to the users of Internet Service Providers and specifically DNS open resolvers is not fully understood at the time of writing.  It may be in certain cases that these requirement may well conflict with the IETF's end-to-end encryption principles.  </p>
+<p id="rfc.section.1.p.11">[Benno: We are sketching the context, playing field, but I am not sure if this is relevant to the draft.] </p>
+<p id="rfc.section.1.p.12">This document also attempts to outline options for data handling for operators of DNS privacy services.  </p>
+<p id="rfc.section.1.p.13">TODO/QUESTION: Discuss alternative (non-standard) schemes not covered by this document e.g. DNSCrypt, IPsec, VPNs. For example, should the data handling practices be recommended for any service that encrypts DNS/makes claims about DNS data privacy or is that outside the scope of this document? </p>
+<p id="rfc.section.1.p.14">[Benno: At least mention, maybe earlier. Approach encrypt queries, methods: DNSCrypt, IPsec, VPNs, DNS-over-TLS, etc. Then scoping, and remainder of introduction?] </p>
+<p id="rfc.section.1.p.15">This document also presents a framework to assist writers of DNS Privacy Policy and Practice Statements (DPPPS). These are documents an operator can publish outlining their operational practices and commitments with regard to privacy providing a means for clients to evaluate the privacy properties of a given DNS privacy service. In particular, the framework identifies the elements that should be considered in formulating a DPPPS. It does not, however, define a particular Policy or Practice Statement, nor does it seek to provide legal advice or recommendations as to the contents.  </p>
+<p id="rfc.section.1.p.16">Community knowledge about operational practices can change quickly, and experience shows that a Best Current Practice (BCP) document about privacy and security is a point-in-time statement. Readers are advised to seek out any errata or updates that apply to this document.  </p>
 <h1 id="rfc.section.2"><a href="#rfc.section.2">2.</a> <a href="#terminology" id="terminology">Terminology</a></h1>
 <p id="rfc.section.2.p.1">The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in <a href="#RFC8174">[RFC8174]</a>.  </p>
 <p/>
@@ -569,6 +580,7 @@
 
 <p> </p>
 <p id="rfc.section.3.1.p.5">QUESTION: Should we say anything here about filtering responses or DNSSEC validation e.g. operators SHOULD provide an unfiltered service on an alternative IP address if the 'main' DNS privacy address filters responses? Or simply just to say that the DNS privacy service should not differ from the 'normal' DNS service in terms of such options.  </p>
+<p id="rfc.section.3.1.p.6">[Benno: I understand you want to be explicit, but the first assumption that you should provide an unfiltered service on alternative if main does filter responses seems contra-dictionary if service provider pretends to be have such a service. I prefer the second that they should have an unfiltered DNS service.] </p>
 <h1 id="rfc.section.3.2"><a href="#rfc.section.3.2">3.2.</a> <a href="#client-query-obfuscation" id="client-query-obfuscation">Client query obfuscation</a></h1>
 <p id="rfc.section.3.2.p.1">Since queries from recursive resolvers to authoritative servers are performed using cleartext (at the time of writing), resolver services need to consider the extent to which they may be directly leaking information about their client community via these upstream queries and what they can do to mitigate this further. Note, that even when all the relevant techniques described above are employed there may still be attacks possible, e.g.  <a href="#Pitfalls-of-DNS-Encryption">[Pitfalls-of-DNS-Encryption]</a>. For example, a resolver with a very small community of users risks exposing data in this way and MAY want to obfuscate this traffic by mixing it with 'generated' traffic to make client characterisation harder.  </p>
 <h1 id="rfc.section.3.3"><a href="#rfc.section.3.3">3.3.</a> <a href="#availability" id="availability">Availability</a></h1>
@@ -816,6 +828,28 @@
 	  <span class="country-name vcardline">United Kingdom</span>
 	</span>
 	<span class="vcardline">EMail: <a href="mailto:sara@sinodun.com">sara@sinodun.com</a></span>
+
+  </address>
+</div><div class="avoidbreak">
+  <address class="vcard">
+	<span class="vcardline">
+	  <span class="fn">Benno J. Overeinder</span> 
+	  <span class="n hidden">
+		<span class="family-name">Overeinder</span>
+	  </span>
+	</span>
+	<span class="org vcardline">NLnet Labs</span>
+	<span class="adr">
+	  <span class="vcardline">Science Park 140</span>
+
+	  <span class="vcardline">
+		<span class="locality">Amsterdam</span>,  
+		<span class="region"></span>
+		<span class="code">1098 XH</span>
+	  </span>
+	  <span class="country-name vcardline">The Netherlands</span>
+	</span>
+	<span class="vcardline">EMail: <a href="mailto:benno@nlnetLabs.nl">benno@nlnetLabs.nl</a></span>
 
   </address>
 </div><div class="avoidbreak">

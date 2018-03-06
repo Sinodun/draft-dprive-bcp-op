@@ -26,18 +26,18 @@
       city = "Oxford"
       code = "OX4 4GA"
       country = "United Kingdom"
-#   [[author]]
-#    initials="B."
-#    surname="Overeinder"
-#    fullname="Benno J. Overeinder"
-#    organization = "NLnet Labs"
-#      [author.address]
-#      email = "benno@nlnetLabs.nl"
-#      [author.address.postal]
-#      streets = ["Science Park 140"]
-#      city = "Amsterdam"
-#      code = "1098 XH"
-#      country = "The Netherlands"
+   [[author]]
+    initials="B."
+    surname="Overeinder"
+    fullname="Benno J. Overeinder"
+    organization = "NLnet Labs"
+      [author.address]
+      email = "benno@nlnetLabs.nl"
+      [author.address.postal]
+      streets = ["Science Park 140"]
+      city = "Amsterdam"
+      code = "1098 XH"
+      country = "The Netherlands"
     [[author]]
      initials="R."
      surname="van Rijswijk-Deij"
@@ -114,6 +114,10 @@ privacy protocols.
 This document includes operational guidance related to [@!RFC7858] and
 [@!RFC8094].
 
+[Benno: We might mention qname minimisation, even to indicate we don't talk
+about it? But that depends on the scope: client-resolver, or the complete DNS
+ecosystem including authoritative?]
+
 In recent years there has been an increase in the availability of "open"
 resolvers. Operators of some open resolvers choose to enable protocols which
 encrypt DNS on the wire to cater for users who are privacy conscious. Whilst
@@ -132,6 +136,9 @@ specifically DNS open resolvers is not fully understood at the time of writing.
 It may be in certain cases that these requirement may well conflict with the
 IETF's end-to-end encryption principles.
 
+[Benno: We are sketching the context, playing field, but I am not sure if this
+is relevant to the draft.]
+
 This document also attempts to outline options for data handling for
 operators of DNS privacy services.
 
@@ -139,6 +146,10 @@ TODO/QUESTION: Discuss alternative (non-standard) schemes not covered by this
 document e.g. DNSCrypt, IPsec, VPNs. For example, should the data handling
 practices be recommended for any service that encrypts DNS/makes claims about
 DNS data privacy or is that outside the scope of this document?
+
+[Benno: At least mention, maybe earlier. Approach encrypt queries, methods:
+DNSCrypt, IPsec, VPNs, DNS-over-TLS, etc. Then scoping, and remainder of
+introduction?]
 
 This document also presents a framework to assist writers of DNS Privacy Policy
 and Practice Statements (DPPPS). These are documents an operator can publish
@@ -202,6 +213,11 @@ validation e.g. operators SHOULD provide an unfiltered service on an alternative
 IP address if the 'main' DNS privacy address filters responses? Or simply just
 to say that the DNS privacy service should not differ from the 'normal' DNS
 service in terms of such options.
+
+[Benno: I understand you want to be explicit, but the first assumption that you
+should provide an unfiltered service on alternative if main does filter
+responses seems contra-dictionary if service provider pretends to be have such a
+service. I prefer the second that they should have an unfiltered DNS service.]
 
 ## Client query obfuscation
 

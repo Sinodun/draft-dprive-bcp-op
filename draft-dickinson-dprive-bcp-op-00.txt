@@ -4,8 +4,10 @@
 
 dprive                                                      S. Dickinson
 Internet-Draft                                                Sinodun IT
-Intended status: Best Current Practice              R. van Rijswijk-Deij
-Expires: September 6, 2018                                    SURFnet bv
+Intended status: Best Current Practice                     B. Overeinder
+Expires: September 6, 2018                                    NLnet Labs
+                                                    R. van Rijswijk-Deij
+                                                              SURFnet bv
                                                                A. Mankin
                                                               Salesforce
                                                            March 5, 2018
@@ -47,9 +49,7 @@ Copyright Notice
    Copyright (c) 2018 IETF Trust and the persons identified as the
    document authors.  All rights reserved.
 
-   This document is subject to BCP 78 and the IETF Trust's Legal
-   Provisions Relating to IETF Documents
-   (http://trustee.ietf.org/license-info) in effect on the date of
+
 
 
 
@@ -58,6 +58,9 @@ Dickinson, et al.       Expires September 6, 2018               [Page 1]
 Internet-Draft     DNS Privacy Service Recommendations        March 2018
 
 
+   This document is subject to BCP 78 and the IETF Trust's Legal
+   Provisions Relating to IETF Documents
+   (http://trustee.ietf.org/license-info) in effect on the date of
    publication of this document.  Please review these documents
    carefully, as they describe your rights and restrictions with respect
    to this document.  Code Components extracted from this document must
@@ -71,12 +74,12 @@ Table of Contents
    2.  Terminology . . . . . . . . . . . . . . . . . . . . . . . . .   4
    3.  Server capabilities to maximise DNS privacy . . . . . . . . .   5
      3.1.  General capabilities  . . . . . . . . . . . . . . . . . .   5
-     3.2.  Client query obfuscation  . . . . . . . . . . . . . . . .   5
+     3.2.  Client query obfuscation  . . . . . . . . . . . . . . . .   6
      3.3.  Availability  . . . . . . . . . . . . . . . . . . . . . .   6
      3.4.  Authentication of DNS privacy services  . . . . . . . . .   6
        3.4.1.  Generation and publication of certificates  . . . . .   6
-       3.4.2.  Management of SPKI pins . . . . . . . . . . . . . . .   6
-       3.4.3.  TLSA records  . . . . . . . . . . . . . . . . . . . .   6
+       3.4.2.  Management of SPKI pins . . . . . . . . . . . . . . .   7
+       3.4.3.  TLSA records  . . . . . . . . . . . . . . . . . . . .   7
    4.  Operational management  . . . . . . . . . . . . . . . . . . .   7
      4.1.  Limitations of using a pure TLS proxy . . . . . . . . . .   7
      4.2.  Anycast deployments . . . . . . . . . . . . . . . . . . .   7
@@ -88,9 +91,9 @@ Table of Contents
      6.1.  Current privacy statements  . . . . . . . . . . . . . . .   8
      6.2.  Recommended contents of a DPPPS . . . . . . . . . . . . .   8
      6.3.  Enforcement/accountability  . . . . . . . . . . . . . . .   9
-   7.  IANA considerations . . . . . . . . . . . . . . . . . . . . .   9
-   8.  Security considerations . . . . . . . . . . . . . . . . . . .   9
-   9.  Acknowledgements  . . . . . . . . . . . . . . . . . . . . . .   9
+   7.  IANA considerations . . . . . . . . . . . . . . . . . . . . .  10
+   8.  Security considerations . . . . . . . . . . . . . . . . . . .  10
+   9.  Acknowledgements  . . . . . . . . . . . . . . . . . . . . . .  10
    10. Changelog . . . . . . . . . . . . . . . . . . . . . . . . . .  10
    11. References  . . . . . . . . . . . . . . . . . . . . . . . . .  10
      11.1.  Normative References . . . . . . . . . . . . . . . . . .  10
@@ -103,9 +106,6 @@ Table of Contents
    [NOTE: This document is submitted to the IETF for initial review and
    for feedback on the best forum for future versions of this document.]
 
-   The Domain Name System (DNS) was not originally designed with strong
-   security or privacy mechanisms.  [RFC7626] describes the privacy
-   issues associated with the use of the DNS by Internet users including
 
 
 
@@ -114,6 +114,9 @@ Dickinson, et al.       Expires September 6, 2018               [Page 2]
 Internet-Draft     DNS Privacy Service Recommendations        March 2018
 
 
+   The Domain Name System (DNS) was not originally designed with strong
+   security or privacy mechanisms.  [RFC7626] describes the privacy
+   issues associated with the use of the DNS by Internet users including
    those related to un-encrypted DNS messages on the wire and DNS 'query
    log' data maintained on DNS servers.
 
@@ -141,6 +144,10 @@ Internet-Draft     DNS Privacy Service Recommendations        March 2018
    This document includes operational guidance related to [RFC7858] and
    [RFC8094].
 
+   [Benno: We might mention qname minimisation, even to indicate we
+   don't talk about it?  But that depends on the scope: client-resolver,
+   or the complete DNS ecosystem including authoritative?]
+
    In recent years there has been an increase in the availability of
    "open" resolvers.  Operators of some open resolvers choose to enable
    protocols which encrypt DNS on the wire to cater for users who are
@@ -155,13 +162,6 @@ Internet-Draft     DNS Privacy Service Recommendations        March 2018
    More recently the global legislative landscape with regard to
    personal data collection, retention, and psuedo-anonymisation has
    seen significant activity with differing requirements active in
-   different jurisdictions.  The impact of these changes on data
-   pertaining to the users of Internet Service Providers and
-   specifically DNS open resolvers is not fully understood at the time
-   of writing.  It may be in certain cases that these requirement may
-   well conflict with the IETF's end-to-end encryption principles.
-
-
 
 
 
@@ -169,6 +169,15 @@ Dickinson, et al.       Expires September 6, 2018               [Page 3]
 
 Internet-Draft     DNS Privacy Service Recommendations        March 2018
 
+
+   different jurisdictions.  The impact of these changes on data
+   pertaining to the users of Internet Service Providers and
+   specifically DNS open resolvers is not fully understood at the time
+   of writing.  It may be in certain cases that these requirement may
+   well conflict with the IETF's end-to-end encryption principles.
+
+   [Benno: We are sketching the context, playing field, but I am not
+   sure if this is relevant to the draft.]
 
    This document also attempts to outline options for data handling for
    operators of DNS privacy services.
@@ -178,6 +187,10 @@ Internet-Draft     DNS Privacy Service Recommendations        March 2018
    the data handling practices be recommended for any service that
    encrypts DNS/makes claims about DNS data privacy or is that outside
    the scope of this document?
+
+   [Benno: At least mention, maybe earlier.  Approach encrypt queries,
+   methods: DNSCrypt, IPsec, VPNs, DNS-over-TLS, etc.  Then scoping, and
+   remainder of introduction?]
 
    This document also presents a framework to assist writers of DNS
    Privacy Policy and Practice Statements (DPPPS).  These are documents
@@ -205,6 +218,14 @@ Internet-Draft     DNS Privacy Service Recommendations        March 2018
       over-TLS [RFC7858] and may optionally implement DNS-over-DTLS
       [RFC8094].  The server should also offer at least one of the
       credentials described in Section 8 of
+
+
+
+Dickinson, et al.       Expires September 6, 2018               [Page 4]
+
+Internet-Draft     DNS Privacy Service Recommendations        March 2018
+
+
       [I-D.ietf-dprive-dtls-and-tls-profiles] and implement the (D)TLS
       profile described in Section 9 of
       [I-D.ietf-dprive-dtls-and-tls-profiles].
@@ -215,16 +236,6 @@ Internet-Draft     DNS Privacy Service Recommendations        March 2018
       enabling DNS server and is documented either in an informal
       statement of policy and practice with regard to users privacy or a
       formal DPPPS.
-
-
-
-
-
-
-Dickinson, et al.       Expires September 6, 2018               [Page 4]
-
-Internet-Draft     DNS Privacy Service Recommendations        March 2018
-
 
 3.  Server capabilities to maximise DNS privacy
 
@@ -263,8 +274,22 @@ Internet-Draft     DNS Privacy Service Recommendations        March 2018
    DNSSEC validation e.g. operators SHOULD provide an unfiltered service
    on an alternative IP address if the 'main' DNS privacy address
    filters responses?  Or simply just to say that the DNS privacy
+
+
+
+Dickinson, et al.       Expires September 6, 2018               [Page 5]
+
+Internet-Draft     DNS Privacy Service Recommendations        March 2018
+
+
    service should not differ from the 'normal' DNS service in terms of
    such options.
+
+   [Benno: I understand you want to be explicit, but the first
+   assumption that you should provide an unfiltered service on
+   alternative if main does filter responses seems contra-dictionary if
+   service provider pretends to be have such a service.  I prefer the
+   second that they should have an unfiltered DNS service.]
 
 3.2.  Client query obfuscation
 
@@ -274,14 +299,6 @@ Internet-Draft     DNS Privacy Service Recommendations        March 2018
    information about their client community via these upstream queries
    and what they can do to mitigate this further.  Note, that even when
    all the relevant techniques described above are employed there may
-
-
-
-Dickinson, et al.       Expires September 6, 2018               [Page 5]
-
-Internet-Draft     DNS Privacy Service Recommendations        March 2018
-
-
    still be attacks possible, e.g.  [Pitfalls-of-DNS-Encryption].  For
    example, a resolver with a very small community of users risks
    exposing data in this way and MAY want to obfuscate this traffic by
@@ -314,6 +331,13 @@ Internet-Draft     DNS Privacy Service Recommendations        March 2018
 
    o  Choose a short, memorable authentication name for their service
 
+
+
+Dickinson, et al.       Expires September 6, 2018               [Page 6]
+
+Internet-Draft     DNS Privacy Service Recommendations        March 2018
+
+
    o  Automate the generation and publication of certificates
 
    o  Monitor certificates to prevent accidental expiration of
@@ -326,17 +350,6 @@ Internet-Draft     DNS Privacy Service Recommendations        March 2018
 3.4.3.  TLSA records
 
    TODO
-
-
-
-
-
-
-
-Dickinson, et al.       Expires September 6, 2018               [Page 6]
-
-Internet-Draft     DNS Privacy Service Recommendations        March 2018
-
 
 4.  Operational management
 
@@ -372,6 +385,15 @@ Internet-Draft     DNS Privacy Service Recommendations        March 2018
    o  Data retention: Data SHOULD be retained for the shortest period
       deemed operationally feasible.
 
+
+
+
+
+Dickinson, et al.       Expires September 6, 2018               [Page 7]
+
+Internet-Draft     DNS Privacy Service Recommendations        March 2018
+
+
    o  User tracking: DNS privacy services SHOULD not track users.  An
       exception may be malicious or anomalous use of the service.
 
@@ -382,17 +404,6 @@ Internet-Draft     DNS Privacy Service Recommendations        March 2018
 
    o  Access to stored personal data: Access SHOULD be minimised to only
       those personal who require access to perform operational duties.
-
-
-
-
-
-
-
-Dickinson, et al.       Expires September 6, 2018               [Page 7]
-
-Internet-Draft     DNS Privacy Service Recommendations        March 2018
-
 
 5.1.  Psuedo-anonymisation and de-identification methods
 
@@ -430,6 +441,15 @@ Internet-Draft     DNS Privacy Service Recommendations        March 2018
    o  Policy: This section should explain the policy for gathering and
       disseminating information collected by the DNS privacy service.
 
+
+
+
+
+Dickinson, et al.       Expires September 6, 2018               [Page 8]
+
+Internet-Draft     DNS Privacy Service Recommendations        March 2018
+
+
       *  Specify clearly what data (including whether it is aggregated,
          psuedo-anonymised or de-identified) is
 
@@ -441,14 +461,6 @@ Internet-Draft     DNS Privacy Service Recommendations        March 2018
          anomalous behaviour
 
       *  Declare any third-party affiliations or funding
-
-
-
-
-Dickinson, et al.       Expires September 6, 2018               [Page 8]
-
-Internet-Draft     DNS Privacy Service Recommendations        March 2018
-
 
       *  Whether user DNS data is correlated or combined with any other
          personal information held by the operator
@@ -482,6 +494,18 @@ Internet-Draft     DNS Privacy Service Recommendations        March 2018
 
    o  Uptime
 
+
+
+
+
+
+
+
+Dickinson, et al.       Expires September 6, 2018               [Page 9]
+
+Internet-Draft     DNS Privacy Service Recommendations        March 2018
+
+
 7.  IANA considerations
 
    None
@@ -497,14 +521,6 @@ Internet-Draft     DNS Privacy Service Recommendations        March 2018
 
    Thanks to Benno Overeinder and John Todd for discussions on this
    topic.
-
-
-
-
-Dickinson, et al.       Expires September 6, 2018               [Page 9]
-
-Internet-Draft     DNS Privacy Service Recommendations        March 2018
-
 
 10.  Changelog
 
@@ -538,6 +554,14 @@ Internet-Draft     DNS Privacy Service Recommendations        March 2018
               Server-Side State", RFC 5077, DOI 10.17487/RFC5077,
               January 2008, <https://www.rfc-editor.org/info/rfc5077>.
 
+
+
+
+Dickinson, et al.       Expires September 6, 2018              [Page 10]
+
+Internet-Draft     DNS Privacy Service Recommendations        March 2018
+
+
    [RFC7626]  Bortzmeyer, S., "DNS Privacy Considerations", RFC 7626,
               DOI 10.17487/RFC7626, August 2015, <https://www.rfc-
               editor.org/info/rfc7626>.
@@ -550,17 +574,6 @@ Internet-Draft     DNS Privacy Service Recommendations        March 2018
    [RFC7816]  Bortzmeyer, S., "DNS Query Name Minimisation to Improve
               Privacy", RFC 7816, DOI 10.17487/RFC7816, March 2016,
               <https://www.rfc-editor.org/info/rfc7816>.
-
-
-
-
-
-
-
-Dickinson, et al.       Expires September 6, 2018              [Page 10]
-
-Internet-Draft     DNS Privacy Service Recommendations        March 2018
-
 
    [RFC7828]  Wouters, P., Abley, J., Dickinson, S., and R. Bellis, "The
               edns-tcp-keepalive EDNS0 Option", RFC 7828,
@@ -597,6 +610,14 @@ Internet-Draft     DNS Privacy Service Recommendations        March 2018
               Respects User Privacy", 2018, < https://tnc18.geant.org/
               getfile/3823>.
 
+
+
+
+Dickinson, et al.       Expires September 6, 2018              [Page 11]
+
+Internet-Draft     DNS Privacy Service Recommendations        March 2018
+
+
    [I-D.ietf-dnsop-dns-tcp-requirements]
               Kristoff, J. and D. Wessels, "DNS Transport over TCP -
               Operational Requirements", draft-ietf-dnsop-dns-tcp-
@@ -610,13 +631,6 @@ Internet-Draft     DNS Privacy Service Recommendations        March 2018
               Shulman, H., "Pretty Bad Privacy: Pitfalls of DNS
               Encryption", 2014, <https://www.ietf.org/mail-archive/web/
               dns-privacy/current/pdfWqAIUmEl47.pdf>.
-
-
-
-Dickinson, et al.       Expires September 6, 2018              [Page 11]
-
-Internet-Draft     DNS Privacy Service Recommendations        March 2018
-
 
    [RFC6841]  Ljunggren, F., Eklund Lowinder, AM., and T. Okubo, "A
               Framework for DNSSEC Policies and DNSSEC Practice
@@ -654,6 +668,21 @@ Authors' Addresses
    Email: sara@sinodun.com
 
 
+
+Dickinson, et al.       Expires September 6, 2018              [Page 12]
+
+Internet-Draft     DNS Privacy Service Recommendations        March 2018
+
+
+   Benno J. Overeinder
+   NLnet Labs
+   Science Park 140
+   Amsterdam  1098 XH
+   The Netherlands
+
+   Email: benno@nlnetLabs.nl
+
+
    Roland M. van Rijswijk-Deij
    SURFnet bv
    PO Box 19035
@@ -663,39 +692,10 @@ Authors' Addresses
    Email: roland.vanrijswijk@surfnet.nl
 
 
-
-
-
-
-
-
-Dickinson, et al.       Expires September 6, 2018              [Page 12]
-
-Internet-Draft     DNS Privacy Service Recommendations        March 2018
-
-
    Allison Mankin
    Salesforce
 
    Email: allison.mankin@gmail.com
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
