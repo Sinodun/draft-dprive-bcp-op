@@ -2,7 +2,7 @@
     Title = "Recommendations for DNS Privacy Service Operators"
     abbrev = "DNS Privacy Service Recommendations"
     category = "bcp"
-    docName= "draft-dickinson-bcp-op-00"
+    docName= "draft-dickinson-bcp-op-01"
     ipr = "trust200902"
     area = "Internet"
     workgroup = "dprive"
