@@ -7,7 +7,7 @@
     area = "Internet"
     workgroup = "dprive"
     keyword = ["DNS"]
-    date = 2018-03-05T00:00:00Z
+    date = 2018-06-26T00:00:00Z
     [pi]
     toc = "yes"
     compact = "yes"
@@ -110,14 +110,16 @@ against certain attacks, the resolver operator still has (in principle) full
 visibility of the query data for each user. Therefore, a trust relationship
 exists. The ability of the operator to provide a transparent, well documented,
 and secure privacy service will likely serve as a major differentiating factor
-for privacy conscious users.
+for privacy conscious users when they make an active selection of which resolver
+to use.
 
 It should also be noted that the choice of a user to configure a single resolver
 (or a fixed set of resolvers) and an encrypted transport to use in all network
 environments has both advantages and disadvantages. For example the user has a
 clear expectation of which resolvers have visibility of their query data however
 this resolver/transport selection may provide an added mechanism to track them
-as they move across network environments.
+as they move across network environments. Commitments from operators to minimise
+such tracking are also likely to play a role in users selection of resolver.
 
 More recently the global legislative landscape with regard to personal data
 collection, retention, and psuedonymization has seen significant activity with
@@ -182,6 +184,8 @@ the following three sections for reference, however, this is neither an
 exhaustive list nor a definitive statement on the characteristic of the
 document.
 
+QUESTION: Should this section be an appendix?
+
 ### Documents with the potential to increase DNS privacy
 
 These documents are limited in scope to communications between stub
@@ -212,6 +216,9 @@ user activity as a side effect:
 * A DNS Packet Capture Format [@?I-D.ietf-dnsop-dns-capture-format]
 * Passive DNS TODO: need ref
 
+Note that depending on the specifics of the implementation
+[@!I-D.ietf-doh-dns-over-https] may also provide increased tracking.
+
 ### Related operational documents
 
 * DNS Transport over TCP - Implementation Requirements [@!RFC7766]
@@ -236,7 +243,7 @@ Privacy terminology is as described in Section 3 of [@!RFC6973].
 DNS terminology is as described in [@?I-D.ietf-dnsop-terminology-bis] 
 with the following additions:
 
-* Privacy-enabling DNS server: A DNS server (most likely a Full-service
+* Privacy-enabling DNS server: A DNS server (most likely a full-service
   resolver) that implements DNS-over-TLS [RFC7858] and/or DOH
   [@!I-D.ietf-doh-dns-over-https], and may optionally implement DNS-over-DTLS
   [RFC8094]. A DNS-over-(D)TLS server should also offer at least one of the
