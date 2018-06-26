@@ -152,7 +152,7 @@ experience shows that a Best Current Practice (BCP) document about privacy and
 security is a point-in-time statement. Readers are advised to seek out any
 errata or updates that apply to this document.
 
-## Scope
+# Scope
 
 Whilst [@!RFC7626] describes the privacy issues and risks associated
 with the use of the DNS by Internet users. This document is concerned with
@@ -172,7 +172,7 @@ like to align with privacy best practice.
 Privacy considerations specifically from the perspective of an end user, or
 those for operators of authoritative nameservers are out of scope.
 
-## Documents
+# Documents
 
 There are various documents that describe protocol changes that have the
 potential to either increase or decrease the privacy of the DNS. Note this does
@@ -186,7 +186,7 @@ document.
 
 QUESTION: Should this section be an appendix?
 
-### Documents with the potential to increase DNS privacy
+## Potential Increases in DNS privacy
 
 These documents are limited in scope to communications between stub
 clients and recursive resolvers:
@@ -205,7 +205,7 @@ considering the operation of a recursive server:
 
 * 'DNS Query Name Minimisation to Improve Privacy' [@!RFC7816] referred to here as simply 'QNAME minimization'
 
-### Documents with the potential to decrease DNS privacy
+## Potential decreases in DNS privacy
 
 These documents relate to functionality that could provide increased tracking of
 user activity as a side effect:
@@ -219,7 +219,7 @@ user activity as a side effect:
 Note that depending on the specifics of the implementation
 [@!I-D.ietf-doh-dns-over-https] may also provide increased tracking.
 
-### Related operational documents
+## Related operational documents
 
 * DNS Transport over TCP - Implementation Requirements [@!RFC7766]
 * Operational requirements for DNS-over-TCP [@?I-D.ietf-dnsop-dns-tcp-requirements]
@@ -232,11 +232,12 @@ The key words described in [@!RFC8174] are not used in this document because the
 intention here is not to prescribe policy but to provide indicators of best
 practice. Therefore, in order to give some guidance on the importance of the 
 various recommendations in this document the following terms are
-used in descending order of importance
+used in descending order of usefulness to describe how certain options mitigate
+privacy risks
 
-* EXPECTED (similar to [@!RFC8174] MUST)
-* OUGHT (similar to [@!RFC8174] OUGHT)
-* MIGHT (similar to [@!RFC8174] MAY)
+* STRONG
+* MODERATE
+* WEAK
 
 Privacy terminology is as described in Section 3 of [@!RFC6973].
 
@@ -261,105 +262,113 @@ with the following additions:
 
 # Recommendations for DNS Privacy Services
 
-## Transport recommendations
+## On the wire between stub to resolver
 
-A DNS privacy service is EXPECTED to be made available over one or more of the following transports
+In this section we consider both data on the wire and the service provided to
+the client.
+
+### Transport recommendations
+
+Risks: Passive surveillance of traffic on the wire
+
+A STRONG DNS privacy service provide service over one or more of the following transports
 
 * DNS-over-TLS
 * DNS-over-HTTPS
 
-A DNS privacy service OUGHT also be provided over DNS-over-DTLS, IPSec, DNSCrypt
+A DNS privacy service can also be provided over DNS-over-DTLS.
+
+It is noted that DNS privacy service might be provided over IPSec, DNSCrypt
 or VPNs. However, use of these transports for DNS are not standardized and any
 discussion of best practice for providing such service is out of scope for this
 document.
 
-## Protocol recommendations
+### Authentication of DNS privacy services
 
-In the case of DNS-over-TLS, TLS profiles from Section 9 and the Countermeasures 
-to DNS Traffic Analysis from section 11.1 of [@!RFC8310] are EXPECTED to be used. This includes but is not limited to:
+Risks: Re-direction of traffic to rogue servers
 
-* Implementing only (D)TLS 1.2 or later
-* Adhering to [@RFC7525]
-* Implementing EDNS(0) Padding [RFC7830]
-* Honoring a SOURCE PREFIX-LENGTH set to 0 in a query containing the EDNS(0)
-  Client subnet option
+DoH [**] requires authentication of the server as part of the protocol.
 
-DNS privacy services OUGHT also consider the following capabilities/options:
+To enable users to select a 'Strict Privacy' usage profile when using
+DNS-over-TLS [@!RFC8310] and therefore authentication the server a STRONG DNS
+privacy service provide credentials in the form of either X.509 certificates,
+SPKI pinsets or TLSA records. 
 
-* QNAME minimisation [@!RFC7816]
-* No use of the EDNS(0) Client subnet option in upstream queries
-* Implementing [@I-D.ietf-tls-dnssec-chain-extension]
-* Providing TLSA DANE records for the nameserver
-* Management of TLS connections to optimise performance for clients using either
-  * [@!RFC7766] and EDNS(0) Keepalive [@!RFC7828] and/or 
-  * DNS Stateful Operations [@!I-D.ietf-dnsop-session-signal] 
-* Clients should not be required to use TLS session resumption [@!RFC5077] or Domain Name System (DNS) Cookies [@!RFC7873]
-
-DNS privacy services MIGHT offer the following capabilities:
-
-* A DNS privacy service on both port 853 and 443 (to circumvent blocking of
-  port 853)
-* A .onion [@RFC7686] service endpoint
-* Aggressive Use of DNSSEC-Validated Cache [@RFC8198] to reduce the number of
-  queries to authoritative servers to increase privacy.
-* Run a copy of the root zone on loopback [@RFC7706] to avoid making queries to
-  the root servers that might leak information.
-
-## Service recommendations
-
-### Availability
-
-DNS privacy services are EXPECTED be engineered for high availability. A failed
-DNS privacy service could force the user to switch providers, fallback to
-cleartext or accept no DNS service for the outage.
-
-### Service options
-
-A DNS privacy service should not differ from the service offered on un-encrypted
-channels in terms of such options as filtering (or lack of), DNSSEC validation,
-etc. To do so would unfairly disadvantage users of the privacy service.
-
-## Client query obfuscation
-
-Since queries from recursive resolvers to authoritative servers are performed
-using cleartext (at the time of writing), resolver services need to consider the
-extent to which they may be directly leaking information about their client
-community via these upstream queries and what they can do to mitigate this
-further. Note, that even when all the relevant techniques described above are
-employed there may still be attacks possible, e.g.
-[@Pitfalls-of-DNS-Encryption]. For example, a resolver with a very small
-community of users risks exposing data in this way and OUGHT obfuscate this
-traffic by mixing it with 'generated' traffic to make client characterisation
-harder. The resolver OUGHT also employ aggressive pre-fetch techniques as a
-further measure to counter traffic analysis.
-
-At the time of writing there are no standardized or widely recognized techniques
-to preform such obfuscation or bulk pre-fetches.
-
-## Authentication of DNS privacy services
-
-To enable users to select a 'Strict Privacy' usage profile
-[@!RFC8310] DNS privacy services should provide
-credentials in the form of either X.509 certificates, SPKI pinsets or TLSA
-records. This in effect commits the DNS privacy service to a public identity
+Note that this, in effect, commits the DNS privacy service to a public identity
 users will trust.
 
-Anecdotal evidence to date highlights this requirement as one of the more
-challenging aspects for operators of traditional DNS resolvers that choose to
-additionally provide a DNS privacy service as management of such credentials is
-new to those DNS operators.
+Optimisations: Authentication can optionally not depend on a CA. Decrease latency of connection setup to the server
 
-### Generation and publication of certificates
+DNS privacy services can also consider the following capabilities/options:
 
-It is recommended that operators: 
+* Implementing [@I-D.ietf-tls-dnssec-chain-extension]
+* Providing TLSA DANE records for the nameserver
+
+#### Generation and publication of certificates
+
+Risks: Certificate invalidity
+
+Anecdotal evidence to date highlights the management of certificates as one of
+the more challenging aspects for operators of traditional DNS resolvers that
+choose to additionally provide a DNS privacy service as management of such
+credentials is new to those DNS operators.
+
+It is recommended that operators:
 
 * Choose a short, memorable authentication name for their service
 * Automate the generation and publication of certificates
 * Monitor certificates to prevent accidental expiration of certificates
 
-# Operational management
 
-## Limitations of using a pure TLS proxy
+### Protocol recommendations
+
+Risks:
+
+* Attacks on TLS
+* Traffic analysis
+* Client tracking
+* Blocking of port 853
+
+In the case of DNS-over-TLS, TLS profiles from Section 9 and the Countermeasures 
+to DNS Traffic Analysis from section 11.1 of [@!RFC8310] provide STRONG mitigations. This includes but is not limited to:
+
+* Implementing only (D)TLS 1.2 or later
+* Adhering to [@RFC7525]
+* Implementing EDNS(0) Padding [RFC7830]
+* Clients should not be required to use TLS session resumption [@!RFC5077], Domain Name System (DNS) Cookies [@!RFC7873] or HTTP Cookies [***].
+* A DNS privacy service on both port 853 and 443
+
+Optimisations
+
+* Management of TLS connections to optimise performance for clients using either
+  * [@!RFC7766] and EDNS(0) Keepalive [@!RFC7828] and/or 
+  * DNS Stateful Operations [@!I-D.ietf-dnsop-session-signal] 
+* A .onion [@RFC7686] service endpoint
+
+
+
+### Availability
+
+Risk: A failed DNS privacy service could force the user to switch providers,
+fallback to cleartext or accept no DNS service for the outage.
+
+A STRONG DNS privacy services is engineered for high availability.
+
+### Service options
+
+Risk: Unfairly disadvantaging users of the privacy service with respect to the
+services available. This could force the user to switch providers, fallback to
+cleartext or accept no DNS service for the outage.
+
+A DNS privacy service should not differ from the service offered on un-encrypted
+channels in terms of such options as filtering (or lack of), DNSSEC validation,
+etc. 
+
+
+### Limitations of using a pure TLS proxy
+
+Risk: Sub-optimal management of network.
+
 
 Some operators may choose to implement DNS-over-TLS using a TLS proxy (e.g.
 [nginx](https://nginx.org/), [haproxy](https://www.haproxy.org/) or 
@@ -373,8 +382,12 @@ nameserver behind such a proxy will appear to originate from the proxy and DNS
 techniques such as ACLs or RRL will be hard or impossible to implement in the
 nameserver.
 
+Operators may choose to use a DNS aware proxy such as dnsdist. 
 
-# Server data handling
+
+# Data at rest on the server 
+
+## Data Handling
 
 The following are common activities for DNS service operators and in all cases
 should be minimised or completely avoided if possible for DNS privacy services.
@@ -382,23 +395,18 @@ If data is retained it should be encrypted and either aggregated,
 psuedonymised or anonymised whenever possible.
 
 * Transient data (e.g. that used for real time monitoring and threat analysis
-  which might be held only memory) is OUGHT be retained for the shorted period
+  which might be held only memory) OUGHT be retained for the shorted period
   deemed operationally feasible.
-* Retention of DNS traffic logs OUGHT be only that required to sustain
+* Retention of DNS traffic logs OUGHT to be only that required to sustain
   operation of the service and, to the extent that such exists, meet regulatory
   requirements.
 * DNS privacy services OUGHT not track users except for the particular purpose
   of detecting and remedying technically malicious (e.g. DoS) or anomalous use
-  of the service
-* Operators OUGHT not provide data to third-parties without explicit consent
-  from users (we take the stance here that simply using the resolution service
-  itself does not constitute consent).
+  of the service.
 * Data access OUGHT be minimised to only those
   personal who require access to perform operational duties.
 
-TODO: Data for research vs operations... how to still motivate operators to share anonymised data?
-
-## Psuedonymisation and anonymisation methods
+## IP Address Psuedonymisation and anonymisation methods
 
 There is active discussion in the space of effective psuedonymisation of
 personal data in DNS query logs. To-date this has focussed on
@@ -425,6 +433,64 @@ this work is to allow operators to identify so-called Indicators of Compromise
 (IOCs) originating from specific subnets without storing information about, or
 be able to monitor the DNS queries of an individual user.
 
+## Other correlation data
+
+Discuss tracking mechanisms other than IP address (DNS and HTTP cookies, Session
+resumption, etc.)
+
+## Cache Snooping
+
+TODO: Describe techniques to defend against cache snooping
+
+# Data sent onwards from the resolver
+
+In this section we consider both data sent on the wire in upstream queries and
+data shared with third parties.
+
+## Protocol recommendations
+
+In the case of DNS-over-TLS, as specified in [@!RFC8310] DNS Privacy services are EXPECTED to
+
+* Honoring a SOURCE PREFIX-LENGTH set to 0 in a query containing the EDNS(0)
+  Client subnet option and not send an ECS option in upstream queries.
+
+
+DNS privacy services OUGHT also consider the following capabilities/options:
+
+* QNAME minimisation [@!RFC7816]
+* No use of the EDNS(0) Client subnet option in upstream queries
+
+DNS privacy services MIGHT offer the following capabilities:
+
+* Aggressive Use of DNSSEC-Validated Cache [@RFC8198] to reduce the number of
+  queries to authoritative servers to increase privacy.
+* Run a copy of the root zone on loopback [@RFC7706] to avoid making queries to
+  the root servers that might leak information.
+
+## Client query obfuscation
+
+Since queries from recursive resolvers to authoritative servers are performed
+using cleartext (at the time of writing), resolver services need to consider the
+extent to which they may be directly leaking information about their client
+community via these upstream queries and what they can do to mitigate this
+further. Note, that even when all the relevant techniques described above are
+employed there may still be attacks possible, e.g.
+[@Pitfalls-of-DNS-Encryption]. For example, a resolver with a very small
+community of users risks exposing data in this way and OUGHT obfuscate this
+traffic by mixing it with 'generated' traffic to make client characterisation
+harder. The resolver OUGHT also employ aggressive pre-fetch techniques as a
+further measure to counter traffic analysis.
+
+At the time of writing there are no standardized or widely recognized techniques
+to preform such obfuscation or bulk pre-fetches.
+
+## Data sharing
+
+* Operators OUGHT not provide data to third-parties without explicit consent
+  from users (we take the stance here that simply using the resolution service
+  itself does not constitute consent).
+
+TODO: Data for research vs operations... how to still motivate operators to share anonymised data?
 
 # DNS privacy policy and practice statement
 
@@ -439,7 +505,7 @@ be able to monitor the DNS queries of an individual user.
       recommendations the DNS privacy service employs.
 
 1.2. Data handling. This section should explain, with reference to section 
-       (#server-data-handling) 
+       (#data-at-rest-on-the-server) 
        of this document the policy for gathering and disseminating information 
        collected by the DNS privacy service. 
 
