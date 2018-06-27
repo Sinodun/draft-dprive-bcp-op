@@ -230,14 +230,13 @@ Note that depending on the specifics of the implementation
 
 The key words described in [@!RFC8174] are not used in this document because the
 intention here is not to prescribe policy but to provide indicators of best
-practice. Therefore, in order to give some guidance on the importance of the 
-various recommendations in this document the following terms are
-used in descending order of usefulness to describe how certain options mitigate
-privacy risks
+practice. We describe three classes of actions that operators of DNS privacy services
+can take:
 
-* STRONG
-* MODERATE
-* WEAK
+* Risk mitigation for well described and documented privacy risks
+* Optimisation of services from and operational or management perspective
+* Implementation of additional options that could further enhance the privacy
+  and usability of the service
 
 Privacy terminology is as described in Section 3 of [@!RFC6973].
 
@@ -271,14 +270,16 @@ the client.
 
 Risks: Passive surveillance of traffic on the wire
 
-A STRONG DNS privacy service provide service over one or more of the following transports
+A DNS privacy service can mitigate this risk by providing service over one or more of the following transports
 
 * DNS-over-TLS
 * DNS-over-HTTPS
 
-A DNS privacy service can also be provided over DNS-over-DTLS.
+Additional options:
 
-It is noted that DNS privacy service might be provided over IPSec, DNSCrypt
+* A DNS privacy service can also be provided over DNS-over-DTLS.
+
+* It is noted that DNS privacy service might be provided over IPSec, DNSCrypt
 or VPNs. However, use of these transports for DNS are not standardized and any
 discussion of best practice for providing such service is out of scope for this
 document.
@@ -290,30 +291,34 @@ Risks: Re-direction of traffic to rogue servers
 DoH [**] requires authentication of the server as part of the protocol.
 
 To enable users to select a 'Strict Privacy' usage profile when using
-DNS-over-TLS [@!RFC8310] and therefore authentication the server a STRONG DNS
-privacy service provide credentials in the form of either X.509 certificates,
-SPKI pinsets or TLSA records. 
+DNS-over-TLS [@!RFC8310] and therefore authentication the server a DNS privacy
+service can mitigate this risk by providing credentials in the form of either
+X.509 certificates, SPKI pinsets or TLSA records.
 
 Note that this, in effect, commits the DNS privacy service to a public identity
 users will trust.
 
-Optimisations: Authentication can optionally not depend on a CA. Decrease latency of connection setup to the server
+Optimisations:
 
 DNS privacy services can also consider the following capabilities/options:
 
 * Implementing [@I-D.ietf-tls-dnssec-chain-extension]
-* Providing TLSA DANE records for the nameserver
+  * This can decrease the latency of connection setup to the server and 
+     remove the need for the client to perform meta-queries
+* As recommended in [RFC8310] providing TLSA DANE records for the nameserver 
+  particularly using ** settings
+  * This enables authentication without depending on a CA.
 
 #### Generation and publication of certificates
 
-Risks: Certificate invalidity
+Risks: Certificate invalidity. Mis-identification of server by clients
 
 Anecdotal evidence to date highlights the management of certificates as one of
 the more challenging aspects for operators of traditional DNS resolvers that
 choose to additionally provide a DNS privacy service as management of such
 credentials is new to those DNS operators.
 
-It is recommended that operators:
+It is recommended that to mitigate this operators:
 
 * Choose a short, memorable authentication name for their service
 * Automate the generation and publication of certificates
@@ -324,9 +329,9 @@ It is recommended that operators:
 
 Risks:
 
-* Attacks on TLS
+* Known attacks on TLS (need ref***)
 * Traffic analysis
-* Client tracking
+* Potential for client tracking 
 * Blocking of port 853
 
 In the case of DNS-over-TLS, TLS profiles from Section 9 and the Countermeasures 
@@ -338,11 +343,14 @@ to DNS Traffic Analysis from section 11.1 of [@!RFC8310] provide STRONG mitigati
 * Clients should not be required to use TLS session resumption [@!RFC5077], Domain Name System (DNS) Cookies [@!RFC7873] or HTTP Cookies [***].
 * A DNS privacy service on both port 853 and 443
 
-Optimisations
+Optimisations:
 
 * Management of TLS connections to optimise performance for clients using either
   * [@!RFC7766] and EDNS(0) Keepalive [@!RFC7828] and/or 
-  * DNS Stateful Operations [@!I-D.ietf-dnsop-session-signal] 
+  * DNS Stateful Operations [@!I-D.ietf-dnsop-session-signal]
+
+Additional options:
+
 * A .onion [@RFC7686] service endpoint
 
 
@@ -367,8 +375,7 @@ etc.
 
 ### Limitations of using a pure TLS proxy
 
-Risk: Sub-optimal management of network.
-
+Optimisation:
 
 Some operators may choose to implement DNS-over-TLS using a TLS proxy (e.g.
 [nginx](https://nginx.org/), [haproxy](https://www.haproxy.org/) or 
@@ -388,6 +395,13 @@ Operators may choose to use a DNS aware proxy such as dnsdist.
 # Data at rest on the server 
 
 ## Data Handling
+
+Risks:
+
+* List the RFC6873 data minimisation risks...
+* Exposure during data breaches
+* Contravention of legal requirements not to process user data
+* Data exfiltration by unauthorised personnel.
 
 The following are common activities for DNS service operators and in all cases
 should be minimised or completely avoided if possible for DNS privacy services.
@@ -440,6 +454,8 @@ resumption, etc.)
 
 ## Cache Snooping
 
+Risks: Profiling of client queries
+
 TODO: Describe techniques to defend against cache snooping
 
 # Data sent onwards from the resolver
@@ -449,18 +465,19 @@ data shared with third parties.
 
 ## Protocol recommendations
 
+Risks: Contravening explicit request from a user not to transmit identifying data upstream.
+
 In the case of DNS-over-TLS, as specified in [@!RFC8310] DNS Privacy services are EXPECTED to
 
 * Honoring a SOURCE PREFIX-LENGTH set to 0 in a query containing the EDNS(0)
   Client subnet option and not send an ECS option in upstream queries.
 
-
-DNS privacy services OUGHT also consider the following capabilities/options:
+Optimisations:
 
 * QNAME minimisation [@!RFC7816]
 * No use of the EDNS(0) Client subnet option in upstream queries
 
-DNS privacy services MIGHT offer the following capabilities:
+Additional options:
 
 * Aggressive Use of DNSSEC-Validated Cache [@RFC8198] to reduce the number of
   queries to authoritative servers to increase privacy.
@@ -468,6 +485,8 @@ DNS privacy services MIGHT offer the following capabilities:
   the root servers that might leak information.
 
 ## Client query obfuscation
+
+Additional options:
 
 Since queries from recursive resolvers to authoritative servers are performed
 using cleartext (at the time of writing), resolver services need to consider the
