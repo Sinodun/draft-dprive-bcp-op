@@ -326,8 +326,8 @@ service</t>
 <t>For DNS Privacy services to be considered minimally compliant with best
 practices they should implement all the threat mitigations described here.
 </t>
-<t>TODO: Some of the Threats listed in the following sections are taken directly
-from Section 5 of RFC6973 some are just standalone descriptions, we need to go
+<t>TODO: Some of the threats listed in the following sections are taken directly
+from Section 5 of RFC6973, some are just standalone descriptions, we need to go
 through all of them and see if we can use the RFC6973 threats where possible
 and make them consistent.
 </t>
@@ -558,7 +558,6 @@ the nameserver.
 </t>
 </section>
 </section>
-</section>
 
 <section anchor="data-at-rest-on-the-server" title="Data at rest on the server">
 
@@ -750,6 +749,7 @@ services one that implies consent for data processing, one that doesn't?
 </t>
 </section>
 </section>
+</section>
 
 <section anchor="dns-privacy-policy-and-practice-statement" title="DNS privacy policy and practice statement">
 
@@ -865,10 +865,15 @@ on this document.
 <t>The below individuals contributed significantly to the document:
 </t>
 <t>John Dickinson
+<vspace/>
 Sinodun Internet Technologies
+<vspace/>
 Magdalen Centre
+<vspace/>
 Oxford Science Park
+<vspace/>
 Oxford  OX4 4GA
+<vspace/>
 United Kingdom
 </t>
 </section>
@@ -880,8 +885,9 @@ United Kingdom
 <list style="symbols">
 <t>Reworked the Terminology, Introduction and Scope</t>
 <t>Added Document section</t>
-<t>Reworked the Rcommendations section to not use RFC8174 keywords but to
-describe threat mitigations, optimisations and other options</t>
+<t>Reworked the Recommendations section to not use RFC8174 keywords but to
+describe threat mitigations, optimisations and other options. Split the
+recommendations up into 3 subsections: on the wire, at rest and upstream</t>
 <t>Applied virtually all of Amelia Andersdotter's suggested changes.</t>
 </list>
 </t>
