@@ -14,7 +14,7 @@ Expires: December 28, 2018                                    NLnet Labs
 
 
            Recommendations for DNS Privacy Service Operators
-                       draft-dickinson-bcp-op-01
+                    draft-dickinson-dprive-bcp-op-01
 
 Abstract
 
@@ -73,39 +73,39 @@ Table of Contents
    1.  Introduction  . . . . . . . . . . . . . . . . . . . . . . . .   3
    2.  Scope . . . . . . . . . . . . . . . . . . . . . . . . . . . .   4
    3.  Documents . . . . . . . . . . . . . . . . . . . . . . . . . .   5
-     3.1.  Potential Increases in DNS privacy  . . . . . . . . . . .   5
+     3.1.  Potential increases in DNS privacy  . . . . . . . . . . .   5
      3.2.  Potential decreases in DNS privacy  . . . . . . . . . . .   6
      3.3.  Related operational documents . . . . . . . . . . . . . .   6
-   4.  Terminology . . . . . . . . . . . . . . . . . . . . . . . . .   6
-   5.  Recommendations for DNS Privacy Services  . . . . . . . . . .   7
-     5.1.  On the wire between stub to resolver  . . . . . . . . . .   7
-       5.1.1.  Transport recommendations . . . . . . . . . . . . . .   7
+   4.  Terminology . . . . . . . . . . . . . . . . . . . . . . . . .   7
+   5.  Recommendations for DNS privacy services  . . . . . . . . . .   7
+     5.1.  On the wire between client and server . . . . . . . . . .   8
+       5.1.1.  Transport recommendations . . . . . . . . . . . . . .   8
        5.1.2.  Authentication of DNS privacy services  . . . . . . .   8
-       5.1.3.  Protocol recommendations  . . . . . . . . . . . . . .   9
-       5.1.4.  Availability  . . . . . . . . . . . . . . . . . . . .   9
-       5.1.5.  Service options . . . . . . . . . . . . . . . . . . .  10
-       5.1.6.  Limitations of using a pure TLS proxy . . . . . . . .  10
-   6.  Data at rest on the server  . . . . . . . . . . . . . . . . .  10
-     6.1.  Data Handling . . . . . . . . . . . . . . . . . . . . . .  10
-     6.2.  IP Address Psuedonymisation and anonymisation methods . .  11
-       6.2.1.  ipcipher  . . . . . . . . . . . . . . . . . . . . . .  11
-       6.2.2.  Bloom filters . . . . . . . . . . . . . . . . . . . .  11
-     6.3.  Other correlation data  . . . . . . . . . . . . . . . . .  11
-     6.4.  Cache Snooping  . . . . . . . . . . . . . . . . . . . . .  11
-   7.  Data sent onwards from the resolver . . . . . . . . . . . . .  12
-     7.1.  Protocol recommendations  . . . . . . . . . . . . . . . .  12
-     7.2.  Client query obfuscation  . . . . . . . . . . . . . . . .  12
-     7.3.  Data sharing  . . . . . . . . . . . . . . . . . . . . . .  13
-   8.  DNS privacy policy and practice statement . . . . . . . . . .  13
-     8.1.  Recommended contents of a DPPPS . . . . . . . . . . . . .  13
-     8.2.  Current privacy statements  . . . . . . . . . . . . . . .  14
-       8.2.1.  Google  . . . . . . . . . . . . . . . . . . . . . . .  14
-       8.2.2.  Quad9 . . . . . . . . . . . . . . . . . . . . . . . .  14
-       8.2.3.  OpenDNS . . . . . . . . . . . . . . . . . . . . . . .  14
-       8.2.4.  Cloudflare  . . . . . . . . . . . . . . . . . . . . .  14
-     8.3.  Enforcement/accountability  . . . . . . . . . . . . . . .  14
-   9.  IANA considerations . . . . . . . . . . . . . . . . . . . . .  15
-   10. Security considerations . . . . . . . . . . . . . . . . . . .  15
+       5.1.3.  Protocol recommendations  . . . . . . . . . . . . . .  10
+       5.1.4.  Availability  . . . . . . . . . . . . . . . . . . . .  11
+       5.1.5.  Service options . . . . . . . . . . . . . . . . . . .  11
+       5.1.6.  Limitations of using a pure TLS proxy . . . . . . . .  11
+   6.  Data at rest on the server  . . . . . . . . . . . . . . . . .  12
+     6.1.  Data handling . . . . . . . . . . . . . . . . . . . . . .  12
+     6.2.  IP address psuedonymisation and anonymisation methods . .  13
+       6.2.1.  ipcipher  . . . . . . . . . . . . . . . . . . . . . .  13
+       6.2.2.  Bloom filters . . . . . . . . . . . . . . . . . . . .  13
+     6.3.  Psuedonymisation and anonymisation of other correlation
+           data  . . . . . . . . . . . . . . . . . . . . . . . . . .  13
+     6.4.  Cache snooping  . . . . . . . . . . . . . . . . . . . . .  14
+   7.  Data sent onwards from the server . . . . . . . . . . . . . .  14
+     7.1.  Protocol recommendations  . . . . . . . . . . . . . . . .  14
+     7.2.  Client query obfuscation  . . . . . . . . . . . . . . . .  15
+     7.3.  Data sharing  . . . . . . . . . . . . . . . . . . . . . .  15
+   8.  DNS privacy policy and practice statement . . . . . . . . . .  16
+     8.1.  Recommended contents of a DPPPS . . . . . . . . . . . . .  16
+     8.2.  Current privacy statements  . . . . . . . . . . . . . . .  17
+       8.2.1.  Google  . . . . . . . . . . . . . . . . . . . . . . .  17
+       8.2.2.  Quad9 . . . . . . . . . . . . . . . . . . . . . . . .  17
+       8.2.3.  OpenDNS . . . . . . . . . . . . . . . . . . . . . . .  17
+       8.2.4.  Cloudflare  . . . . . . . . . . . . . . . . . . . . .  17
+     8.3.  Enforcement/accountability  . . . . . . . . . . . . . . .  17
+   9.  IANA considerations . . . . . . . . . . . . . . . . . . . . .  18
 
 
 
@@ -114,20 +114,23 @@ Dickinson, et al.       Expires December 28, 2018               [Page 2]
 Internet-Draft     DNS Privacy Service Recommendations         June 2018
 
 
-   11. Acknowledgements  . . . . . . . . . . . . . . . . . . . . . .  15
-   12. Changelog . . . . . . . . . . . . . . . . . . . . . . . . . .  15
-   13. References  . . . . . . . . . . . . . . . . . . . . . . . . .  15
-     13.1.  Normative References . . . . . . . . . . . . . . . . . .  15
-     13.2.  Informative References . . . . . . . . . . . . . . . . .  17
-     13.3.  URIs . . . . . . . . . . . . . . . . . . . . . . . . . .  18
-   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  18
+   10. Security considerations . . . . . . . . . . . . . . . . . . .  18
+   11. Acknowledgements  . . . . . . . . . . . . . . . . . . . . . .  18
+   12. Contributors  . . . . . . . . . . . . . . . . . . . . . . . .  18
+   13. Changelog . . . . . . . . . . . . . . . . . . . . . . . . . .  18
+   14. References  . . . . . . . . . . . . . . . . . . . . . . . . .  19
+     14.1.  Normative References . . . . . . . . . . . . . . . . . .  19
+     14.2.  Informative References . . . . . . . . . . . . . . . . .  20
+     14.3.  URIs . . . . . . . . . . . . . . . . . . . . . . . . . .  22
+   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  22
 
 1.  Introduction
 
    [NOTE: This document is submitted to the IETF for initial review and
    for feedback on the best forum for future versions of this document.
-   Discussion of DoH [I-D.ietf-doh-dns-over-https] is included here in
-   anticipation of that draft progressing to be an RFC.]
+   Initial considerations for DoH [I-D.ietf-doh-dns-over-https] are
+   included here in anticipation of that draft progressing to be an RFC
+   but further analysis is required.]
 
    The Domain Name System (DNS) is at the core of the Internet; almost
    every activity on the Internet starts with a DNS query (and often
@@ -150,18 +153,15 @@ Internet-Draft     DNS Privacy Service Recommendations         June 2018
 
    Whilst protocols that encrypt DNS messages on the wire provide
    protection against certain attacks, the resolver operator still has
-   (in principle) full visibility of the query data for each user.
-   Therefore, a trust relationship exists.  The ability of the operator
-   to provide a transparent, well documented, and secure privacy service
-   will likely serve as a major differentiating factor for privacy
-   conscious users when they make an active selection of which resolver
-   to use.
+   (in principle) full visibility of the query data and transport
+   identifiers for each user.  Therefore, a trust relationship exists.
+   The ability of the operator to provide a transparent, well
+   documented, and secure privacy service will likely serve as a major
+   differentiating factor for privacy conscious users if they make an
+   active selection of which resolver to use.
 
    It should also be noted that the choice of a user to configure a
    single resolver (or a fixed set of resolvers) and an encrypted
-   transport to use in all network environments has both advantages and
-   disadvantages.  For example the user has a clear expectation of which
-   resolvers have visibility of their query data however this resolver/
 
 
 
@@ -170,6 +170,9 @@ Dickinson, et al.       Expires December 28, 2018               [Page 3]
 Internet-Draft     DNS Privacy Service Recommendations         June 2018
 
 
+   transport to use in all network environments has both advantages and
+   disadvantages.  For example the user has a clear expectation of which
+   resolvers have visibility of their query data however this resolver/
    transport selection may provide an added mechanism to track them as
    they move across network environments.  Commitments from operators to
    minimise such tracking are also likely to play a role in users
@@ -188,20 +191,20 @@ Internet-Draft     DNS Privacy Service Recommendations         June 2018
 
    This document has two main goals:
 
-   o  To provide operational guidance related to DNS over encrypted
-      transports and to outline recommendations for data handling for
-      operators of DNS privacy services.
+   o  To provide operational and policy guidance related to DNS over
+      encrypted transports and to outline recommendations for data
+      handling for operators of DNS privacy services.
 
    o  To introduce the DNS Privacy Policy and Practice Statement (DPPPS)
       and present a framework to assist writers of this document.  A
-      DPPPS is a document an operator can publish outlining their
+      DPPPS is a document that an operator can publish outlining their
       operational practices and commitments with regard to privacy
-      providing a means for clients to evaluate the privacy properties
-      of a given DNS privacy service.  In particular, the framework
-      identifies the elements that should be considered in formulating a
-      DPPPS.  It does not, however, define a particular Policy or
-      Practice Statement, nor does it seek to provide legal advice or
-      recommendations as to the contents.
+      thereby providing a means for clients to evaluate the privacy
+      properties of a given DNS privacy service.  In particular, the
+      framework identifies the elements that should be considered in
+      formulating a DPPPS.  This document does not, however, define a
+      particular Policy or Practice Statement, nor does it seek to
+      provide legal advice or recommendations as to the contents.
 
    Community knowledge about operational practices can change quickly,
    and experience shows that a Best Current Practice (BCP) document
@@ -211,13 +214,10 @@ Internet-Draft     DNS Privacy Service Recommendations         June 2018
 
 2.  Scope
 
-   Whilst [RFC7626] describes the privacy issues and risks associated
-   with the use of the DNS by Internet users.  This document is
-   concerned with best practice considerations for operators providing
-   DNS privacy services.  It includes (but is not limited to)
-   considerations in the following areas (taken from [RFC7626]):
-
-   1.  Data on the wire between a stub and a resolver
+   Whilst [RFC7626] describes the general privacy issues and risks
+   associated with the use of the DNS by Internet users, this document
+   is limited in scope to best practice considerations for the provision
+   of DNS privacy services by servers (recursive resolvers) to clients
 
 
 
@@ -226,20 +226,25 @@ Dickinson, et al.       Expires December 28, 2018               [Page 4]
 Internet-Draft     DNS Privacy Service Recommendations         June 2018
 
 
-   2.  Data "at rest" on a recursive server (e.g. in logs)
+   (stub resolvers or forwarders).  Privacy considerations specifically
+   from the perspective of an end user, or those for operators of
+   authoritative nameservers are out of scope.
 
-   3.  Data sent onwards from the resolver either on the wire or shared
-       with a third party
+   This document includes (but is not limited to) considerations in the
+   following areas (taken from [RFC7626]):
+
+   1.  Data on the wire between a client and a server
+
+   2.  Data "at rest" on a server (e.g. in logs)
+
+   3.  Data sent onwards from the server (either on the wire or shared
+       with a third party)
 
    Whilst the issues raised here are targeted at those operators who
-   choose to offer a DNS Privacy service, considerations for areas 2 and
-   3 could equally apply to operators who offer DNS only over
+   choose to offer a DNS privacy service, considerations for areas 2 and
+   3 could equally apply to operators who only offer DNS over
    unencrypted transports but who would like to align with privacy best
    practice.
-
-   Privacy considerations specifically from the perspective of an end
-   user, or those for operators of authoritative nameservers are out of
-   scope.
 
 3.  Documents
 
@@ -256,24 +261,19 @@ Internet-Draft     DNS Privacy Service Recommendations         June 2018
 
    QUESTION: Should this section be an appendix?
 
-3.1.  Potential Increases in DNS privacy
+3.1.  Potential increases in DNS privacy
 
    These documents are limited in scope to communications between stub
    clients and recursive resolvers:
 
    o  'Specification for DNS over Transport Layer Security (TLS)'
-      [RFC7858], referred to here as simply 'DNS-over-TLS'.
+      [RFC7858], referred to here as 'DNS-over-TLS'.
 
    o  'DNS over Datagram Transport Layer Security (DTLS)' [RFC8094],
-      referred to here simply as 'DNS-over-DTLS'.  Note that this
-      document has the Category of Experimental.
+      referred to here as 'DNS-over-DTLS'.  Note that this document has
+      the Category of Experimental.
 
-   o  'DNS Queries over HTTPS (DoH)' [I-D.ietf-doh-dns-over-https]
 
-   o  'Usage Profiles for DNS over TLS and DNS over DTLS' [RFC8310]
-
-   o  'The EDNS(0) Padding Option' [RFC7830] and 'Padding Policy for
-      EDNS(0)' [I-D.ietf-dprive-padding-policy]
 
 
 
@@ -282,53 +282,53 @@ Dickinson, et al.       Expires December 28, 2018               [Page 5]
 Internet-Draft     DNS Privacy Service Recommendations         June 2018
 
 
+   o  'DNS Queries over HTTPS (DoH)' [I-D.ietf-doh-dns-over-https]
+      referred to here as DoH.
+
+   o  'Usage Profiles for DNS over TLS and DNS over DTLS' [RFC8310]
+
+   o  'The EDNS(0) Padding Option' [RFC7830] and 'Padding Policy for
+      EDNS(0)' [I-D.ietf-dprive-padding-policy]
+
    These documents apply to recursive to authoritative DNS but are
    relevant when considering the operation of a recursive server:
 
    o  'DNS Query Name Minimisation to Improve Privacy' [RFC7816]
-      referred to here as simply 'QNAME minimization'
+      referred to here as 'QNAME minimization'
 
 3.2.  Potential decreases in DNS privacy
 
    These documents relate to functionality that could provide increased
    tracking of user activity as a side effect:
 
-   o  Client Subnet in DNS Queries [RFC7871]
+   o  'Client Subnet in DNS Queries' [RFC7871]
 
-   o  DNS Cookies [RFC7873])
+   o  'Domain Name System (DNS) Cookies' [RFC7873])
 
-   o  TLS session resumption [RFC5077]
+   o  'Transport Layer Security (TLS) Session Resumption without Server-
+      Side State' [RFC5077] referred to here as simply TLS session
+      resumption.
 
-   o  A DNS Packet Capture Format [I-D.ietf-dnsop-dns-capture-format]
+   o  'A DNS Packet Capture Format' [I-D.ietf-dnsop-dns-capture-format]
 
-   o  Passive DNS TODO: need ref
+   o  Passive DNS [I-D.ietf-dnsop-terminology-bis]
 
    Note that depending on the specifics of the implementation
    [I-D.ietf-doh-dns-over-https] may also provide increased tracking.
 
 3.3.  Related operational documents
 
-   o  DNS Transport over TCP - Implementation Requirements [RFC7766]
+   o  'DNS Transport over TCP - Implementation Requirements' [RFC7766]
 
-   o  Operational requirements for DNS-over-TCP
+   o  'Operational requirements for DNS-over-TCP'
       [I-D.ietf-dnsop-dns-tcp-requirements]
 
-   o  The edns-tcp-keepalive EDNS0 Option [RFC7828]
+   o  'The edns-tcp-keepalive EDNS0 Option' [RFC7828]
 
-   o  DNS Stateful Operations [I-D.ietf-dnsop-session-signal]
+   o  'DNS Stateful Operations' [I-D.ietf-dnsop-session-signal]
 
-4.  Terminology
 
-   The key words described in [RFC8174] are not used in this document
-   because the intention here is not to prescribe policy but to provide
-   indicators of best practice.  Therefore, in order to give some
-   guidance on the importance of the various recommendations in this
-   document the following terms are used in descending order of
-   usefulness to describe how certain options mitigate privacy risks
 
-   o  STRONG
-
-   o  MODERATE
 
 
 
@@ -338,22 +338,27 @@ Dickinson, et al.       Expires December 28, 2018               [Page 6]
 Internet-Draft     DNS Privacy Service Recommendations         June 2018
 
 
-   o  WEAK
+4.  Terminology
+
+   The key words described in [RFC8174] are not used in this document
+   because the intention here is not to prescribe policy but to provide
+   indicators of best practice.
 
    Privacy terminology is as described in Section 3 of [RFC6973].
 
    DNS terminology is as described in [I-D.ietf-dnsop-terminology-bis]
-   with the following additions:
+   with one modification: we use the definition of Privacy-enabling DNS
+   server taken from [RFC8310]:
 
    o  Privacy-enabling DNS server: A DNS server (most likely a full-
-      service resolver) that implements DNS-over-TLS [RFC7858] and/or
-      DOH [I-D.ietf-doh-dns-over-https], and may optionally implement
-      DNS-over-DTLS [RFC8094].  A DNS-over-(D)TLS server should also
-      offer at least one of the credentials described in Section 8 of
-      [RFC8310] and implement the (D)TLS profile described in Section 9
-      of [RFC8310].
+      service resolver) that implements DNS-over-TLS [RFC7858], and may
+      optionally implement DNS-over-DTLS [RFC8094].  The server should
+      also offer at least one of the credentials described in Section 8
+      and implement the (D)TLS profile described in Section 9.
 
-   [TODO: This updates [RFC8310]]
+   TODO: Update the definition of Privacy-enabling DNS server in
+   [I-D.ietf-dnsop-terminology-bis] to be complete and also include DoH,
+   then reference that here.
 
    o  DPPPS: DNS Privacy Policy and Practice Statement, see Section 8.
 
@@ -362,30 +367,25 @@ Internet-Draft     DNS Privacy Service Recommendations         June 2018
       statement of policy and practice with regard to users privacy or a
       formal DPPPS.
 
-5.  Recommendations for DNS Privacy Services
+5.  Recommendations for DNS privacy services
 
-5.1.  On the wire between stub to resolver
+   We describe three classes of actions that operators of DNS privacy
+   services can take:
 
-   In this section we consider both data on the wire and the service
-   provided to the client.
+   o  Threat mitigation for well understood and documented privacy
+      threats to the users of the service and in some cases to the
+      operators of the service.
 
-5.1.1.  Transport recommendations
+   o  Optimisation of privacy services from an operational or management
+      perspective
 
-   Risks: Passive surveillance of traffic on the wire
+   o  Additional options that could further enhance the privacy and
+      usability of the service
 
-   A STRONG DNS privacy service provide service over one or more of the
-   following transports
+   For DNS Privacy services to be considered minimally compliant with
+   best practices they should implement all the threat mitigations
+   described here.
 
-   o  DNS-over-TLS
-
-   o  DNS-over-HTTPS
-
-   A DNS privacy service can also be provided over DNS-over-DTLS.
-
-   It is noted that DNS privacy service might be provided over IPSec,
-   DNSCrypt or VPNs.  However, use of these transports for DNS are not
-   standardized and any discussion of best practice for providing such
-   service is out of scope for this document.
 
 
 
@@ -394,52 +394,52 @@ Dickinson, et al.       Expires December 28, 2018               [Page 7]
 Internet-Draft     DNS Privacy Service Recommendations         June 2018
 
 
+   TODO: Some of the Threats listed in the following sections are taken
+   directly from Section 5 of RFC6973 some are just standalone
+   descriptions, we need to go through all of them and see if we can use
+   the RFC6973 threats where possible and make them consistent.
+
+5.1.  On the wire between client and server
+
+   In this section we consider both data on the wire and the service
+   provided to the client.
+
+5.1.1.  Transport recommendations
+
+   Threats:
+
+   o  Surveillance: Passive surveillance of traffic on the wire
+
+   o  Intrusion: Active injection of spurious data or traffic
+
+   Mitigations:
+
+   A DNS privacy service can mitigate these threats by providing service
+   over one or more of the following transports
+
+   o  DNS-over-TLS [RFC7858]
+
+   o  DoH [I-D.ietf-doh-dns-over-https]
+
+   Additional options:
+
+   o  A DNS privacy service can also be provided over DNS-over-DTLS
+      [RFC8094], however note that this is an Experimental
+      specification.
+
+   It is noted that DNS privacy service might be provided over IPSec,
+   DNSCrypt or VPNs.  However, use of these transports for DNS are not
+   standardized and any discussion of best practice for providing such
+   service is out of scope for this document.
+
 5.1.2.  Authentication of DNS privacy services
 
-   Risks: Re-direction of traffic to rogue servers
+   Threats:
 
-   DoH [**] requires authentication of the server as part of the
-   protocol.
+   o  Surveillance and Intrusion: Active attacks that can re-direction
+      traffic to rogue servers
 
-   To enable users to select a 'Strict Privacy' usage profile when using
-   DNS-over-TLS [RFC8310] and therefore authentication the server a
-   STRONG DNS privacy service provide credentials in the form of either
-   X.509 certificates, SPKI pinsets or TLSA records.
-
-   Note that this, in effect, commits the DNS privacy service to a
-   public identity users will trust.
-
-   Optimisations: Authentication can optionally not depend on a CA.
-   Decrease latency of connection setup to the server
-
-   DNS privacy services can also consider the following capabilities/
-   options:
-
-   o  Implementing [I-D.ietf-tls-dnssec-chain-extension]
-
-   o  Providing TLSA DANE records for the nameserver
-
-5.1.2.1.  Generation and publication of certificates
-
-   Risks: Certificate invalidity
-
-   Anecdotal evidence to date highlights the management of certificates
-   as one of the more challenging aspects for operators of traditional
-   DNS resolvers that choose to additionally provide a DNS privacy
-   service as management of such credentials is new to those DNS
-   operators.
-
-   It is recommended that operators:
-
-   o  Choose a short, memorable authentication name for their service
-
-   o  Automate the generation and publication of certificates
-
-   o  Monitor certificates to prevent accidental expiration of
-      certificates
-
-
-
+   Mitigations:
 
 
 
@@ -450,54 +450,54 @@ Dickinson, et al.       Expires December 28, 2018               [Page 8]
 Internet-Draft     DNS Privacy Service Recommendations         June 2018
 
 
-5.1.3.  Protocol recommendations
+   DNS privacy services should ensure clients can authenticate the
+   server.  Note that this, in effect, commits the DNS privacy service
+   to a public identity users will trust.
 
-   Risks:
+   When using DNS-over-TLS [RFC8310] clients that select a 'Strict
+   Privacy' usage profile (to mitigate the threat of active attack on
+   the client) require the ability to authenticate the DNS server.  To
+   enable this, DNS privacy services that offer DNS-over-TLS should
+   provide credentials in the form of either X.509 certificates, SPKI
+   pinsets or TLSA records.
 
-   o  Attacks on TLS
+   When offering DoH [I-D.ietf-doh-dns-over-https], HTTPS requires
+   authentication of the server as part of the protocol.
 
-   o  Traffic analysis
+   Optimisations:
 
-   o  Client tracking
+   DNS privacy services can also consider the following capabilities/
+   options:
 
-   o  Blocking of port 853
+   o  As recommended in [RFC8310] providing DANE TLSA records for the
+      nameserver
 
-   In the case of DNS-over-TLS, TLS profiles from Section 9 and the
-   Countermeasures to DNS Traffic Analysis from section 11.1 of
-   [RFC8310] provide STRONG mitigations.  This includes but is not
-   limited to:
+      *  In particular, the service could provide TLSA records such that
+         authenticating solely via the PKIX infrastructure can be
+         avoided.
 
-   o  Implementing only (D)TLS 1.2 or later
+   o  Implementing [I-D.ietf-tls-dnssec-chain-extension]
 
-   o  Adhering to [RFC7525]
+      *  This can decrease the latency of connection setup to the server
+         and remove the need for the client to perform meta-queries to
+         obtain and validate the DANE records.
 
-   o  Implementing EDNS(0) Padding [RFC7830]
+5.1.2.1.  Certificate management
 
-   o  Clients should not be required to use TLS session resumption
-      [RFC5077], Domain Name System (DNS) Cookies [RFC7873] or HTTP
-      Cookies [***].
+   Anecdotal evidence to date highlights the management of certificates
+   as one of the more challenging aspects for operators of traditional
+   DNS resolvers that choose to additionally provide a DNS privacy
+   service as management of such credentials is new to those DNS
+   operators.
 
-   o  A DNS privacy service on both port 853 and 443
+   Threats:
 
-   Optimisations
+   o  Invalid certificates, resulting in an unavailable service.
 
-   o  Management of TLS connections to optimise performance for clients
-      using either
+   o  Mis-identification of a server by a client e.g. typos in urls or
+      authentication domain names
 
-      *  [RFC7766] and EDNS(0) Keepalive [RFC7828] and/or
-
-      *  DNS Stateful Operations [I-D.ietf-dnsop-session-signal]
-
-   o  A .onion [RFC7686] service endpoint
-
-5.1.4.  Availability
-
-   Risk: A failed DNS privacy service could force the user to switch
-   providers, fallback to cleartext or accept no DNS service for the
-   outage.
-
-   A STRONG DNS privacy services is engineered for high availability.
-
+   Mitigations:
 
 
 
@@ -506,12 +506,100 @@ Dickinson, et al.       Expires December 28, 2018               [Page 9]
 Internet-Draft     DNS Privacy Service Recommendations         June 2018
 
 
+   It is recommended that operators:
+
+   o  Choose a short, memorable authentication name for their service
+
+   o  Automate the generation and publication of certificates
+
+   o  Monitor certificates to prevent accidental expiration of
+      certificates
+
+   TODO: Can we provide references for certificate management best
+   practice, for example Section 6.5 of RFC7525?
+
+5.1.3.  Protocol recommendations
+
+5.1.3.1.  DNS-over-TLS
+
+   Threats:
+
+   o  Known attacks on TLS (TODO: add a reference)
+
+   o  Traffic analysis (TODO: add a reference)
+
+   o  Potential for client tracking via transport identifiers
+
+   o  Blocking of well known ports (e.g. 853 for DNS-over-TLS)
+
+   Mitigations:
+
+   In the case of DNS-over-TLS, TLS profiles from Section 9 and the
+   Countermeasures to DNS Traffic Analysis from section 11.1 of
+   [RFC8310] provide strong mitigations.  This includes but is not
+   limited to:
+
+   o  Adhering to [RFC7525]
+
+   o  Implementing only (D)TLS 1.2 or later as specified in [RFC8310]
+
+   o  Implementing EDNS(0) Padding [RFC7830]
+
+   o  Clients should not be required to use TLS session resumption
+      [RFC5077], Domain Name System (DNS) Cookies [RFC7873] or HTTP
+      Cookies [RFC6265].
+
+   o  A DNS-over-TLS privacy service on both port 853 and 443 (note this
+      may not be possible if DoH is also offered on the same IP
+      address).
+
+   Optimisations:
+
+
+
+Dickinson, et al.       Expires December 28, 2018              [Page 10]
+
+Internet-Draft     DNS Privacy Service Recommendations         June 2018
+
+
+   o  Management of TLS connections to optimise performance for clients
+      using either
+
+      *  [RFC7766] and EDNS(0) Keepalive [RFC7828] and/or
+
+      *  DNS Stateful Operations [I-D.ietf-dnsop-session-signal]
+
+   Additional options that providers may consider:
+
+   o  Offer a .onion [RFC7686] service endpoint
+
+5.1.3.2.  DoH
+
+   TODO: fill this in, some overlap with DNS-over-TLS but we need to
+   address DoH specific ones if possible
+
+5.1.4.  Availability
+
+   Threats:
+
+   o  A failed DNS privacy service could force the user to switch
+      providers, fallback to cleartext or accept no DNS service for the
+      outage.
+
+   Mitigations:
+
+   A DNS privacy service must be engineered for high availability.
+
 5.1.5.  Service options
 
-   Risk: Unfairly disadvantaging users of the privacy service with
-   respect to the services available.  This could force the user to
-   switch providers, fallback to cleartext or accept no DNS service for
-   the outage.
+   Threats:
+
+   o  Unfairly disadvantaging users of the privacy service with respect
+      to the services available.  This could force the user to switch
+      providers, fallback to cleartext or accept no DNS service for the
+      outage.
+
+   Mitigations:
 
    A DNS privacy service should not differ from the service offered on
    un-encrypted channels in terms of such options as filtering (or lack
@@ -519,7 +607,16 @@ Internet-Draft     DNS Privacy Service Recommendations         June 2018
 
 5.1.6.  Limitations of using a pure TLS proxy
 
-   Risk: Sub-optimal management of network.
+   Optimisation:
+
+
+
+
+
+Dickinson, et al.       Expires December 28, 2018              [Page 11]
+
+Internet-Draft     DNS Privacy Service Recommendations         June 2018
+
 
    Some operators may choose to implement DNS-over-TLS using a TLS proxy
    (e.g.  nginx [1], haproxy [2] or stunnel [3]) in front of a DNS
@@ -530,46 +627,65 @@ Internet-Draft     DNS Privacy Service Recommendations         June 2018
    them can restrict traffic management at the proxy layer and at the
    DNS server.  For example, all traffic received by a nameserver behind
    such a proxy will appear to originate from the proxy and DNS
-   techniques such as ACLs or RRL will be hard or impossible to
+   techniques such as ACLs, RRL or DNS64 will be hard or impossible to
    implement in the nameserver.
 
    Operators may choose to use a DNS aware proxy such as dnsdist.
 
 6.  Data at rest on the server
 
-6.1.  Data Handling
+6.1.  Data handling
+
+   Threats:
+
+   o  Surveillance
+
+   o  Stored data compromise
+
+   o  Correlation
+
+   o  Identification
+
+   o  Secondary use
+
+   o  Disclosure
+
+   o  Contravention of legal requirements not to process user data?
+
+   Mitigations:
 
    The following are common activities for DNS service operators and in
    all cases should be minimised or completely avoided if possible for
    DNS privacy services.  If data is retained it should be encrypted and
-   either aggregated, psuedonymised or anonymised whenever possible.
+   either aggregated, psuedonymised or anonymised whenever possible.  In
+   general the principle of data minimization described in [RFC6973]
+   should be applied.
 
    o  Transient data (e.g. that used for real time monitoring and threat
-      analysis which might be held only memory) OUGHT be retained for
+      analysis which might be held only memory) should be retained for
       the shorted period deemed operationally feasible.
 
-   o  Retention of DNS traffic logs OUGHT to be only that required to
-      sustain operation of the service and, to the extent that such
-      exists, meet regulatory requirements.
 
 
 
 
-
-
-Dickinson, et al.       Expires December 28, 2018              [Page 10]
+Dickinson, et al.       Expires December 28, 2018              [Page 12]
 
 Internet-Draft     DNS Privacy Service Recommendations         June 2018
 
 
-   o  DNS privacy services OUGHT not track users except for the
+   o  The retention period of DNS traffic logs should be only that
+      required to sustain operation of the service and, to the extent
+      that such exists, meet regulatory requirements.
+
+   o  DNS privacy services should not track users except for the
       particular purpose of detecting and remedying technically
       malicious (e.g.  DoS) or anomalous use of the service.
 
-   o  Data access OUGHT be minimised to only those personal who require
+   o  Data access should be minimised to only those personal who require
       access to perform operational duties.
 
-6.2.  IP Address Psuedonymisation and anonymisation methods
+6.2.  IP address psuedonymisation and anonymisation methods
 
    There is active discussion in the space of effective psuedonymisation
    of personal data in DNS query logs.  To-date this has focussed on
@@ -598,48 +714,77 @@ Internet-Draft     DNS Privacy Service Recommendations         June 2018
    without storing information about, or be able to monitor the DNS
    queries of an individual user.
 
-6.3.  Other correlation data
+6.3.  Psuedonymisation and anonymisation of other correlation data
 
-   Discuss tracking mechanisms other than IP address (DNS and HTTP
+   TODO: Discuss tracking mechanisms other than IP address (DNS and HTTP
    cookies, Session resumption, etc.)
 
-6.4.  Cache Snooping
-
-   TODO: Describe techniques to defend against cache snooping
 
 
 
 
 
 
-
-Dickinson, et al.       Expires December 28, 2018              [Page 11]
+Dickinson, et al.       Expires December 28, 2018              [Page 13]
 
 Internet-Draft     DNS Privacy Service Recommendations         June 2018
 
 
-7.  Data sent onwards from the resolver
+6.4.  Cache snooping
+
+   Threats:
+
+   o  Profiling of client queries by malicious third parties
+
+   Mitigations:
+
+   TODO: Describe techniques to defend against cache snooping
+
+7.  Data sent onwards from the server
 
    In this section we consider both data sent on the wire in upstream
    queries and data shared with third parties.
 
 7.1.  Protocol recommendations
 
-   In the case of DNS-over-TLS, as specified in [RFC8310] DNS Privacy
-   services are EXPECTED to
+   Threats:
 
-   o  Honoring a SOURCE PREFIX-LENGTH set to 0 in a query containing the
-      EDNS(0) Client subnet option and not send an ECS option in
+   o  Transmission of identifying data upstream.
+
+   Mitigations:
+
+   As specified in [RFC8310] for DNS-over-TLS but applicable to any DNS
+   Privacy services the server should:
+
+   o  Implement QNAME minimisation [RFC7816]
+
+   o  Honour a SOURCE PREFIX-LENGTH set to 0 in a query containing the
+      EDNS(0) Client Subnet (ECS) option and not send an ECS option in
       upstream queries.
 
-   DNS privacy services OUGHT also consider the following capabilities/
-   options:
+   If operators do offer a service that sends the ECS options upstream
+   they should make clear in any policy statement what prefix length
+   they send and any policy for which upstream servers they send the
+   option to (e.g. all, whitelist).
 
-   o  QNAME minimisation [RFC7816]
+   Optimisations:
 
-   o  No use of the EDNS(0) Client subnet option in upstream queries
+   o  The server should either
 
-   DNS privacy services MIGHT offer the following capabilities:
+      *  not use the ECS option in upstream queries at all, or
+
+      *  offer alternative services, one that sends ECS and one that
+         does not.
+
+   Additional options:
+
+
+
+
+Dickinson, et al.       Expires December 28, 2018              [Page 14]
+
+Internet-Draft     DNS Privacy Service Recommendations         June 2018
+
 
    o  Aggressive Use of DNSSEC-Validated Cache [RFC8198] to reduce the
       number of queries to authoritative servers to increase privacy.
@@ -648,6 +793,8 @@ Internet-Draft     DNS Privacy Service Recommendations         June 2018
       queries to the root servers that might leak information.
 
 7.2.  Client query obfuscation
+
+   Additional options:
 
    Since queries from recursive resolvers to authoritative servers are
    performed using cleartext (at the time of writing), resolver services
@@ -659,29 +806,53 @@ Internet-Draft     DNS Privacy Service Recommendations         June 2018
    example, a resolver with a very small community of users risks
    exposing data in this way and OUGHT obfuscate this traffic by mixing
    it with 'generated' traffic to make client characterisation harder.
-   The resolver OUGHT also employ aggressive pre-fetch techniques as a
+   The resolver could also employ aggressive pre-fetch techniques as a
    further measure to counter traffic analysis.
 
    At the time of writing there are no standardized or widely recognized
    techniques to preform such obfuscation or bulk pre-fetches.
 
+7.3.  Data sharing
+
+   Threats:
+
+   o  Surveillance
+
+   o  Stored data compromise
+
+   o  Correlation
+
+   o  Identification
+
+   o  Secondary use
+
+   o  Disclosure
+
+   o  Contravention of legal requirements not to process user data?
+
+   Mitigations:
+
+   Operators should not provide identifiable data to third-parties
+   without explicit consent from clients (we take the stance here that
 
 
 
-
-Dickinson, et al.       Expires December 28, 2018              [Page 12]
+Dickinson, et al.       Expires December 28, 2018              [Page 15]
 
 Internet-Draft     DNS Privacy Service Recommendations         June 2018
 
 
-7.3.  Data sharing
-
-   o  Operators OUGHT not provide data to third-parties without explicit
-      consent from users (we take the stance here that simply using the
-      resolution service itself does not constitute consent).
+   simply using the resolution service itself does not constitute
+   consent).
 
    TODO: Data for research vs operations... how to still motivate
    operators to share anonymised data?
+
+   TODO: Guidelines for when consent is granted?
+
+   TODO: Applies to server data handling too.. could operators offer
+   alternatives services one that implies consent for data processing,
+   one that doesn't?
 
 8.  DNS privacy policy and practice statement
 
@@ -718,17 +889,19 @@ Internet-Draft     DNS Privacy Service Recommendations         June 2018
    2.1 Specify any temporary or permanent deviations from the policy for
    operational reasons
 
+
+
+
+
+Dickinson, et al.       Expires December 28, 2018              [Page 16]
+
+Internet-Draft     DNS Privacy Service Recommendations         June 2018
+
+
    2.2 Provide specific details of which capabilities are provided on
    which address and ports
 
    2.3 Specify the authentication name to be used (if any)
-
-
-
-Dickinson, et al.       Expires December 28, 2018              [Page 13]
-
-Internet-Draft     DNS Privacy Service Recommendations         June 2018
-
 
    2.4 Specify the SPKI pinsets to be used (if any) and policy for
    rolling keys
@@ -774,17 +947,14 @@ Internet-Draft     DNS Privacy Service Recommendations         June 2018
 
    o  Filtering
 
-   o  Uptime
 
 
-
-
-
-
-Dickinson, et al.       Expires December 28, 2018              [Page 14]
+Dickinson, et al.       Expires December 28, 2018              [Page 17]
 
 Internet-Draft     DNS Privacy Service Recommendations         June 2018
 
+
+   o  Uptime
 
 9.  IANA considerations
 
@@ -796,32 +966,53 @@ Internet-Draft     DNS Privacy Service Recommendations         June 2018
 
 11.  Acknowledgements
 
-   Many thanks to Amelia Andersdotter for a very thorough review of this
-   document and to John Dickinson for review of and input to the early
-   drafts of this document.
-
-   Thanks to John Todd for discussions on this topic.
+   Many thanks to Amelia Andersdotter for a very thorough review of the
+   first draft of this document.  Thanks also to John Todd for
+   discussions on this topic, and to Stephane Bortzmeyer for review.
 
    Sara Dickinson thanks the Open Technology Fund for a grant to support
    the work on this document.
 
-12.  Changelog
+12.  Contributors
 
-   draft-dickinson-dprive-bcp-op-001
+   The below individuals contributed significantly to the document:
 
-   o  reworked the Terminology, Introduction and Scope
+   John Dickinson Sinodun Internet Technologies Magdalen Centre Oxford
+   Science Park Oxford OX4 4GA United Kingdom
+
+13.  Changelog
+
+   draft-dickinson-dprive-bcp-op-01
+
+   o  Reworked the Terminology, Introduction and Scope
 
    o  Added Document section
 
-   o  Applied most of Amelia Andersdotter's suggested changes.
+   o  Reworked the Rcommendations section to not use RFC8174 keywords
+      but to describe threat mitigations, optimisations and other
+      options
+
+   o  Applied virtually all of Amelia Andersdotter's suggested changes.
 
    draft-dickinson-dprive-bcp-op-00
 
    o  Initial commit
 
-13.  References
 
-13.1.  Normative References
+
+
+
+
+
+
+Dickinson, et al.       Expires December 28, 2018              [Page 18]
+
+Internet-Draft     DNS Privacy Service Recommendations         June 2018
+
+
+14.  References
+
+14.1.  Normative References
 
    [I-D.ietf-dnsop-session-signal]
               Bellis, R., Cheshire, S., Dickinson, J., Dickinson, S.,
@@ -833,14 +1024,6 @@ Internet-Draft     DNS Privacy Service Recommendations         June 2018
               Hoffman, P. and P. McManus, "DNS Queries over HTTPS
               (DOH)", draft-ietf-doh-dns-over-https-10 (work in
               progress), June 2018.
-
-
-
-
-Dickinson, et al.       Expires December 28, 2018              [Page 15]
-
-Internet-Draft     DNS Privacy Service Recommendations         June 2018
-
 
    [I-D.ietf-dprive-padding-policy]
               Mayrhofer, A., "Padding Policy for EDNS(0)", draft-ietf-
@@ -875,6 +1058,14 @@ Internet-Draft     DNS Privacy Service Recommendations         June 2018
               DOI 10.17487/RFC7828, April 2016, <https://www.rfc-
               editor.org/info/rfc7828>.
 
+
+
+
+Dickinson, et al.       Expires December 28, 2018              [Page 19]
+
+Internet-Draft     DNS Privacy Service Recommendations         June 2018
+
+
    [RFC7830]  Mayrhofer, A., "The EDNS(0) Padding Option", RFC 7830,
               DOI 10.17487/RFC7830, May 2016, <https://www.rfc-
               editor.org/info/rfc7830>.
@@ -888,15 +1079,6 @@ Internet-Draft     DNS Privacy Service Recommendations         June 2018
               Kumari, "Client Subnet in DNS Queries", RFC 7871,
               DOI 10.17487/RFC7871, May 2016, <https://www.rfc-
               editor.org/info/rfc7871>.
-
-
-
-
-
-Dickinson, et al.       Expires December 28, 2018              [Page 16]
-
-Internet-Draft     DNS Privacy Service Recommendations         June 2018
-
 
    [RFC7873]  Eastlake 3rd, D. and M. Andrews, "Domain Name System (DNS)
               Cookies", RFC 7873, DOI 10.17487/RFC7873, May 2016,
@@ -916,7 +1098,7 @@ Internet-Draft     DNS Privacy Service Recommendations         June 2018
               DOI 10.17487/RFC8310, March 2018, <https://www.rfc-
               editor.org/info/rfc8310>.
 
-13.2.  Informative References
+14.2.  Informative References
 
    [DNS-bloom-filter]
               van Rijswijk-Deij, R., Bomhoff, M., and R. Dolmans, "Let a
@@ -929,6 +1111,16 @@ Internet-Draft     DNS Privacy Service Recommendations         June 2018
               and J. Bond, "C-DNS: A DNS Packet Capture Format", draft-
               ietf-dnsop-dns-capture-format-07 (work in progress), May
               2018.
+
+
+
+
+
+
+Dickinson, et al.       Expires December 28, 2018              [Page 20]
+
+Internet-Draft     DNS Privacy Service Recommendations         June 2018
+
 
    [I-D.ietf-dnsop-dns-tcp-requirements]
               Kristoff, J. and D. Wessels, "DNS Transport over TCP -
@@ -946,14 +1138,6 @@ Internet-Draft     DNS Privacy Service Recommendations         June 2018
               draft-ietf-tls-dnssec-chain-extension-07 (work in
               progress), March 2018.
 
-
-
-
-Dickinson, et al.       Expires December 28, 2018              [Page 17]
-
-Internet-Draft     DNS Privacy Service Recommendations         June 2018
-
-
    [ipcipher-spec]
               Hubert, B., "ipcipher: encrypting IP addresses", 2018,
               <https://powerdns.org/ipcipher/>.
@@ -962,6 +1146,10 @@ Internet-Draft     DNS Privacy Service Recommendations         June 2018
               Shulman, H., "Pretty Bad Privacy: Pitfalls of DNS
               Encryption", 2014, <https://www.ietf.org/mail-archive/web/
               dns-privacy/current/pdfWqAIUmEl47.pdf>.
+
+   [RFC6265]  Barth, A., "HTTP State Management Mechanism", RFC 6265,
+              DOI 10.17487/RFC6265, April 2011, <https://www.rfc-
+              editor.org/info/rfc6265>.
 
    [RFC6841]  Ljunggren, F., Eklund Lowinder, AM., and T. Okubo, "A
               Framework for DNSSEC Policies and DNSSEC Practice
@@ -983,11 +1171,18 @@ Internet-Draft     DNS Privacy Service Recommendations         June 2018
               DOI 10.17487/RFC7706, November 2015, <https://www.rfc-
               editor.org/info/rfc7706>.
 
+
+
+Dickinson, et al.       Expires December 28, 2018              [Page 21]
+
+Internet-Draft     DNS Privacy Service Recommendations         June 2018
+
+
    [RFC8198]  Fujiwara, K., Kato, A., and W. Kumari, "Aggressive Use of
               DNSSEC-Validated Cache", RFC 8198, DOI 10.17487/RFC8198,
               July 2017, <https://www.rfc-editor.org/info/rfc8198>.
 
-13.3.  URIs
+14.3.  URIs
 
    [1] https://nginx.org/
 
@@ -996,19 +1191,6 @@ Internet-Draft     DNS Privacy Service Recommendations         June 2018
    [3] https://kb.isc.org/article/AA-01386/0/DNS-over-TLS.html
 
 Authors' Addresses
-
-
-
-
-
-
-
-
-
-Dickinson, et al.       Expires December 28, 2018              [Page 18]
-
-Internet-Draft     DNS Privacy Service Recommendations         June 2018
-
 
    Sara Dickinson
    Sinodun IT
@@ -1047,18 +1229,4 @@ Internet-Draft     DNS Privacy Service Recommendations         June 2018
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Dickinson, et al.       Expires December 28, 2018              [Page 19]
+Dickinson, et al.       Expires December 28, 2018              [Page 22]
