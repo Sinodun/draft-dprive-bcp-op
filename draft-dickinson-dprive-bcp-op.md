@@ -123,7 +123,7 @@ as they move across network environments. Commitments from operators to minimise
 such tracking are also likely to play a role in users selection of resolver.
 
 More recently the global legislative landscape with regard to personal data
-collection, retention, and psuedonymization has seen significant activity with
+collection, retention, and pseudonymization has seen significant activity with
 differing requirements active in different jurisdictions. For example the user
 of a service and the service itself may be in jurisdictions with conflicting
 legislation. It is an untested area that simply using a DNS resolution service
@@ -366,6 +366,12 @@ It is recommended that operators:
 * Choose a short, memorable authentication name for their service
 * Automate the generation and publication of certificates
 * Monitor certificates to prevent accidental expiration of certificates
+* Consider re-use of the public/private keypair in the case of a service
+  provided through DNS-over-TLS, as trust pin management by users is undefined,
+  and may be hard to troubleshoot for both users and operators of a DNS privcy
+  service (*RvRD: do we think it makes sense to add this?*) (Sara->RVRD: SPKI
+  pinset use is defined, but increasingly shunned by operators so I haven
+  mentioned it here...)
 
 TODO: Can we provide references for certificate management best practice, for
 example Section 6.5 of RFC7525?
@@ -392,8 +398,9 @@ to DNS Traffic Analysis from section 11.1 of [@!RFC8310] provide strong mitigati
 * Implementing EDNS(0) Padding [@RFC7830]
 * Clients should not be required to use TLS session resumption [@!RFC5077],
   Domain Name System (DNS) Cookies [@!RFC7873] or HTTP Cookies [@RFC6265].
-* A DNS-over-TLS privacy service on both port 853 and 443 (note this may not be
-  possible if DoH is also offered on the same IP address).
+* A DNS-over-TLS privacy service on both port 853 and 443. We note that this
+  practice may require revision when DoH becomes more widely deployed, because
+  of the potential use of the same ports for two incompatible types of service.
 
 Optimisations:
 
@@ -420,7 +427,12 @@ fallback to cleartext or accept no DNS service for the outage.
 
 Mitigations:
 
-A DNS privacy service must be engineered for high availability.
+A DNS privacy service must be engineered for high availability. Particular care
+should to be taken to protect DNS privacy services against denial-of-service
+attacks, as experience has shown that unavailability of DNS resolving because of
+attacks is a significant motivation for users to switch services.
+
+TODO: Add reference for work by Roland's student.
 
 ### Service options
 
@@ -432,9 +444,9 @@ Threats:
 
 Mitigations:
 
-A DNS privacy service should not differ from the service offered on un-encrypted
-channels in terms of such options as filtering (or lack of), DNSSEC validation,
-etc. 
+A DNS privacy service should deliver the same level of service offered on
+un-encrypted channels in terms of such options as filtering (or lack of), DNSSEC
+validation, etc. 
 
 
 ### Limitations of using a pure TLS proxy
@@ -476,12 +488,12 @@ Mitigations:
 The following are common activities for DNS service operators and in all cases
 should be minimised or completely avoided if possible for DNS privacy services.
 If data is retained it should be encrypted and either aggregated,
-psuedonymised or anonymised whenever possible. In general the principle of data minimization described in [@!RFC6973] should be applied.
+pseudonymized or anonymized whenever possible. In general the principle of data minimization described in [@!RFC6973] should be applied.
 
-* Transient data (e.g. that used for real time monitoring and threat analysis
-  which might be held only memory) should be retained for the shorted period
-  deemed operationally feasible.
-* The retention period of DNS traffic logs should be only that required to
+* Transient data (e.g. that is used for real time monitoring and threat analysis
+  which might be held only memory) should be retained for the shortest possible
+  period deemed operationally feasible.
+* The retention period of DNS traffic logs should be only those required to
   sustain operation of the service and, to the extent that such exists, meet
   regulatory requirements.
 * DNS privacy services should not track users except for the particular purpose
@@ -490,17 +502,18 @@ psuedonymised or anonymised whenever possible. In general the principle of data 
 * Data access should be minimised to only those personal who require access to
   perform operational duties.
 
-## IP address psuedonymisation and anonymisation methods
 
-There is active discussion in the space of effective psuedonymisation of
+## IP address pseudonymization and anonymization methods
+
+There is active discussion in the space of effective pseudonymization of
 personal data in DNS query logs. To-date this has focussed on
-psuedonymisation of client IP addresses, however there are as yet no
+pseudonymization of client IP addresses, however there are as yet no
 standards for this that are unencumbered by patents. This section briefly
 references some known methods in this space at the time of writing.
 
 ### ipcipher
 
-[@ipcipher-spec] is a psuedonymisation technique which encrypts IPv4 and IPv6
+[@ipcipher-spec] is a pseudonymization technique which encrypts IPv4 and IPv6
 addresses such that any address encrypts to a valid address. At the time of
 writing the specification is under review and may be the subject of a future
 IETF draft. 
@@ -517,7 +530,7 @@ this work is to allow operators to identify so-called Indicators of Compromise
 (IOCs) originating from specific subnets without storing information about, or
 be able to monitor the DNS queries of an individual user.
 
-## Psuedonymisation and anonymisation of other correlation data
+## Psuedonymization and anonymization of other correlation data
 
 TODO: Discuss tracking mechanisms other than IP address (DNS and HTTP cookies,
 Session resumption, etc.)
@@ -586,6 +599,10 @@ further measure to counter traffic analysis.
 At the time of writing there are no standardized or widely recognized techniques
 to preform such obfuscation or bulk pre-fetches.
 
+*RvRD: this is sort of a slippery slope; personally, I would advocate hiding in the masses (large DNS privacy services) over obfuscation techniques. The risk of a false sense of security is real I think. It sparked a thought though, perhaps multiple smaller DNS privacy services can somehow collaborate and randomly share upstream queries with each other, this might homogenize what their traffic looks like to the outside world. (I hope you get what I mean)*
+
+*Sara->RVRD: I take your point about smaller services increasing the risk, but since this is advice for operators, not clients should we bring that up here?*
+
 ## Data sharing
 
 Threats:
@@ -605,8 +622,12 @@ Operators should not provide identifiable data to third-parties without explicit
 consent from clients (we take the stance here that simply using the resolution
 service itself does not constitute consent).
 
-TODO: Data for research vs operations... how to still motivate operators to
-share anonymised data?
+Operators should consider including specific guidelines for the collection of
+aggregated and/or anonymised data for research purposes, within or outside of
+their own organisation
+
+TODO: More on data for research vs operations... how to still motivate operators
+to share anonymized data?
 
 TODO: Guidelines for when consent is granted?
 
@@ -632,7 +653,7 @@ services one that implies consent for data processing, one that doesn't?
        collected by the DNS privacy service. 
 
 1.2.1. Specify clearly what data (including whether it is aggregated, 
-        psuedonymised or anonymized) is:
+        pseudonymized or anonymized) is:
 
 1.2.1.1. Collected and retained by the operator (and for how long)
 
