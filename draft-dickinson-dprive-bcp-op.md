@@ -120,7 +120,7 @@ this resolver/transport selection may provide an added mechanism to track them
 as they move across network environments.
 
 More recently the global legislative landscape with regard to personal data
-collection, retention, and psuedonymization has seen significant activity with
+collection, retention, and pseudonymization has seen significant activity with
 differing requirements active in different jurisdictions. For example the user
 of a service and the service itself may be in jurisdictions with conflicting
 legislation. It is an untested area that simply using a DNS resolution service
@@ -291,7 +291,7 @@ DNS privacy services OUGHT also consider the following capabilities/options:
 DNS privacy services MIGHT offer the following capabilities:
 
 * A DNS privacy service on both port 853 and 443 (to circumvent blocking of
-  port 853)
+  port 853). *RvRD: I think we should probably add a note about the ambiguity between DNS-over-TLS and DoH this can cause, how about: "We note that this practice may require revision when DoH becomes more widely deployed, because of the potential use of the same ports for two incompatible types of service."*
 * A .onion [@RFC7686] service endpoint
 * Aggressive Use of DNSSEC-Validated Cache [@RFC8198] to reduce the number of
   queries to authoritative servers to increase privacy.
@@ -304,11 +304,11 @@ DNS privacy services MIGHT offer the following capabilities:
 
 DNS privacy services are EXPECTED be engineered for high availability. A failed
 DNS privacy service could force the user to switch providers, fallback to
-cleartext or accept no DNS service for the outage.
+cleartext or accept no DNS service for the outage. *RvRD: maybe add: "Particular care OUGHT to be taken to protect DNS privacy services against denial-of-service attacks, as experience has shown that unavailability of DNS resolving because of attacks is a significant motivation for users to switch services." -- we could also cite my student's paper as it contains an example of such an event.*
 
 ### Service options
 
-A DNS privacy service should not differ from the service offered on un-encrypted
+A DNS privacy service is EXPECTED to deliver the same level of service offered on un-encrypted
 channels in terms of such options as filtering (or lack of), DNSSEC validation,
 etc. To do so would unfairly disadvantage users of the privacy service.
 
@@ -327,12 +327,14 @@ harder. The resolver OUGHT also employ aggressive pre-fetch techniques as a
 further measure to counter traffic analysis.
 
 At the time of writing there are no standardized or widely recognized techniques
-to preform such obfuscation or bulk pre-fetches.
+to perform such obfuscation or bulk pre-fetches.
+
+*RvRD: this is sort of a slippery slope; personally, I would advocate hiding in the masses (large DNS privacy services) over obfuscation techniques. The risk of a false sense of security is real I think. It sparked a thought though, perhaps multiple smaller DNS privacy services can somehow collaborate and randomly share upstream queries with eachother, this might homogenize what their traffic looks like to the outside world. (I hope you get what I mean)*
 
 ## Authentication of DNS privacy services
 
 To enable users to select a 'Strict Privacy' usage profile
-[@!RFC8310] DNS privacy services should provide
+[@!RFC8310] DNS privacy services OUGHT to provide
 credentials in the form of either X.509 certificates, SPKI pinsets or TLSA
 records. This in effect commits the DNS privacy service to a public identity
 users will trust.
@@ -349,6 +351,7 @@ It is recommended that operators:
 * Choose a short, memorable authentication name for their service
 * Automate the generation and publication of certificates
 * Monitor certificates to prevent accidental expiration of certificates
+* Consider re-use of the public/private keypair in the case of a service provided through DNS-over-TLS, as trust pin management by users is undefined, and may be hard to troubleshoot for both users and operators of a DNS privcy service (*RvRD: do we think it makes sense to add this?*)
 
 # Operational management
 
@@ -372,12 +375,12 @@ nameserver.
 The following are common activities for DNS service operators and in all cases
 should be minimised or completely avoided if possible for DNS privacy services.
 If data is retained it should be encrypted and either aggregated,
-psuedonymised or anonymised whenever possible.
+pseudonymised or anonymised whenever possible.
 
-* Transient data (e.g. that used for real time monitoring and threat analysis
-  which might be held only memory) is OUGHT be retained for the shorted period
+* Transient data (e.g. that is used for real time monitoring and threat analysis
+  which might be held only memory) OUGHT to be retained for the shortest possible period
   deemed operationally feasible.
-* Retention of DNS traffic logs OUGHT be only that required to sustain
+* Retention of DNS traffic logs OUGHT be only those required to sustain
   operation of the service and, to the extent that such exists, meet regulatory
   requirements.
 * DNS privacy services OUGHT not track users except for the particular purpose
@@ -387,21 +390,22 @@ psuedonymised or anonymised whenever possible.
   from users (we take the stance here that simply using the resolution service
   itself does not constitute consent).
 * Data access OUGHT be minimised to only those
-  personal who require access to perform operational duties.
+  personnel who require access to perform operational duties.
+* Operators OUGHT to consider including specific guidelines for the collection of aggregated and/or anonymised data for research purposes, within or outside of their own organisation
 
-TODO: Data for research vs operations... how to still motivate operators to share anonymised data?
+TODO: Data for research vs operations... how to still motivate operators to share anonymised data? (*RvRD: how about the last bullet I added, could that be a starting point?*)
 
-## Psuedonymisation and anonymisation methods
+## Pseudonymisation and anonymisation methods
 
-There is active discussion in the space of effective psuedonymisation of
+There is active discussion in the space of effective pseudonymisation of
 personal data in DNS query logs. To-date this has focussed on
-psuedonymisation of client IP addresses, however there are as yet no
+pseudonymisation of client IP addresses, however there are as yet no
 standards for this that are unencumbered by patents. This section briefly
 references some known methods in this space at the time of writing.
 
 ### ipcipher
 
-[@ipcipher-spec] is a psuedonymisation technique which encrypts IPv4 and IPv6
+[@ipcipher-spec] is a pseudonymisation technique which encrypts IPv4 and IPv6
 addresses such that any address encrypts to a valid address. At the time of
 writing the specification is under review and may be the subject of a future
 IETF draft. 
@@ -417,6 +421,8 @@ privacy-enhancing technology for DNS monitoring [@DNS-bloom-filter]. The goal of
 this work is to allow operators to identify so-called Indicators of Compromise
 (IOCs) originating from specific subnets without storing information about, or
 be able to monitor the DNS queries of an individual user.
+
+(*RvRD: if this stays in the document, I can expand on it, the thesis of my student is shaping up nicely so may be a good reference, he expects to finish end of August.*)
 
 
 # DNS privacy policy and practice statement
@@ -437,7 +443,7 @@ be able to monitor the DNS queries of an individual user.
        collected by the DNS privacy service. 
 
 1.2.1. Specify clearly what data (including whether it is aggregated, 
-        psuedonymised or anonymized) is:
+        pseudonymised or anonymized) is:
 
 1.2.1.1. Collected and retained by the operator (and for how long)
 

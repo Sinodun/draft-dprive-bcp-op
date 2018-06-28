@@ -35,7 +35,7 @@ Status of This Memo
    Internet-Drafts are working documents of the Internet Engineering
    Task Force (IETF).  Note that other groups may also distribute
    working documents as Internet-Drafts.  The list of current Internet-
-   Drafts is at http://datatracker.ietf.org/drafts/current/.
+   Drafts is at https://datatracker.ietf.org/drafts/current/.
 
    Internet-Drafts are draft documents valid for a maximum of six months
    and may be updated, replaced, or obsoleted by other documents at any
@@ -60,7 +60,7 @@ Internet-Draft     DNS Privacy Service Recommendations        March 2018
 
    This document is subject to BCP 78 and the IETF Trust's Legal
    Provisions Relating to IETF Documents
-   (http://trustee.ietf.org/license-info) in effect on the date of
+   (https://trustee.ietf.org/license-info) in effect on the date of
    publication of this document.  Please review these documents
    carefully, as they describe your rights and restrictions with respect
    to this document.  Code Components extracted from this document must
@@ -748,7 +748,7 @@ Internet-Draft     DNS Privacy Service Recommendations        March 2018
 
    [I-D.ietf-doh-dns-over-https]
               Hoffman, P. and P. McManus, "DNS Queries over HTTPS
-              (DOH)", draft-ietf-doh-dns-over-https-10 (work in
+              (DoH)", draft-ietf-doh-dns-over-https-12 (work in
               progress), June 2018.
 
    [I-D.ietf-dprive-padding-policy]
@@ -763,12 +763,12 @@ Internet-Draft     DNS Privacy Service Recommendations        March 2018
    [RFC6973]  Cooper, A., Tschofenig, H., Aboba, B., Peterson, J.,
               Morris, J., Hansen, M., and R. Smith, "Privacy
               Considerations for Internet Protocols", RFC 6973,
-              DOI 10.17487/RFC6973, July 2013, <https://www.rfc-
-              editor.org/info/rfc6973>.
+              DOI 10.17487/RFC6973, July 2013,
+              <https://www.rfc-editor.org/info/rfc6973>.
 
    [RFC7626]  Bortzmeyer, S., "DNS Privacy Considerations", RFC 7626,
-              DOI 10.17487/RFC7626, August 2015, <https://www.rfc-
-              editor.org/info/rfc7626>.
+              DOI 10.17487/RFC7626, August 2015,
+              <https://www.rfc-editor.org/info/rfc7626>.
 
    [RFC7766]  Dickinson, J., Dickinson, S., Bellis, R., Mankin, A., and
               D. Wessels, "DNS Transport over TCP - Implementation
@@ -788,12 +788,12 @@ Internet-Draft     DNS Privacy Service Recommendations        March 2018
 
    [RFC7828]  Wouters, P., Abley, J., Dickinson, S., and R. Bellis, "The
               edns-tcp-keepalive EDNS0 Option", RFC 7828,
-              DOI 10.17487/RFC7828, April 2016, <https://www.rfc-
-              editor.org/info/rfc7828>.
+              DOI 10.17487/RFC7828, April 2016,
+              <https://www.rfc-editor.org/info/rfc7828>.
 
    [RFC7830]  Mayrhofer, A., "The EDNS(0) Padding Option", RFC 7830,
-              DOI 10.17487/RFC7830, May 2016, <https://www.rfc-
-              editor.org/info/rfc7830>.
+              DOI 10.17487/RFC7830, May 2016,
+              <https://www.rfc-editor.org/info/rfc7830>.
 
    [RFC7858]  Hu, Z., Zhu, L., Heidemann, J., Mankin, A., Wessels, D.,
               and P. Hoffman, "Specification for DNS over Transport
@@ -802,8 +802,8 @@ Internet-Draft     DNS Privacy Service Recommendations        March 2018
 
    [RFC7871]  Contavalli, C., van der Gaast, W., Lawrence, D., and W.
               Kumari, "Client Subnet in DNS Queries", RFC 7871,
-              DOI 10.17487/RFC7871, May 2016, <https://www.rfc-
-              editor.org/info/rfc7871>.
+              DOI 10.17487/RFC7871, May 2016,
+              <https://www.rfc-editor.org/info/rfc7871>.
 
    [RFC7873]  Eastlake 3rd, D. and M. Andrews, "Domain Name System (DNS)
               Cookies", RFC 7873, DOI 10.17487/RFC7873, May 2016,
@@ -811,8 +811,8 @@ Internet-Draft     DNS Privacy Service Recommendations        March 2018
 
    [RFC8094]  Reddy, T., Wing, D., and P. Patil, "DNS over Datagram
               Transport Layer Security (DTLS)", RFC 8094,
-              DOI 10.17487/RFC8094, February 2017, <https://www.rfc-
-              editor.org/info/rfc8094>.
+              DOI 10.17487/RFC8094, February 2017,
+              <https://www.rfc-editor.org/info/rfc8094>.
 
    [RFC8174]  Leiba, B., "Ambiguity of Uppercase vs Lowercase in RFC
               2119 Key Words", BCP 14, RFC 8174, DOI 10.17487/RFC8174,
@@ -820,16 +820,16 @@ Internet-Draft     DNS Privacy Service Recommendations        March 2018
 
    [RFC8310]  Dickinson, S., Gillmor, D., and T. Reddy, "Usage Profiles
               for DNS over TLS and DNS over DTLS", RFC 8310,
-              DOI 10.17487/RFC8310, March 2018, <https://www.rfc-
-              editor.org/info/rfc8310>.
+              DOI 10.17487/RFC8310, March 2018,
+              <https://www.rfc-editor.org/info/rfc8310>.
 
 11.2.  Informative References
 
    [DNS-bloom-filter]
               van Rijswijk-Deij, R., Bomhoff, M., and R. Dolmans, "Let a
               Thousand Filters Bloom. DNS-Based Threat Monitoring That
-              Respects User Privacy", 2018, < https://tnc18.geant.org/
-              getfile/3823>.
+              Respects User Privacy", 2018, <
+              https://tnc18.geant.org/getfile/3823>.
 
 
 
@@ -900,8 +900,8 @@ Internet-Draft     DNS Privacy Service Recommendations        March 2018
 
    [RFC7706]  Kumari, W. and P. Hoffman, "Decreasing Access Time to Root
               Servers by Running One on Loopback", RFC 7706,
-              DOI 10.17487/RFC7706, November 2015, <https://www.rfc-
-              editor.org/info/rfc7706>.
+              DOI 10.17487/RFC7706, November 2015,
+              <https://www.rfc-editor.org/info/rfc7706>.
 
    [RFC8198]  Fujiwara, K., Kato, A., and W. Kumari, "Aggressive Use of
               DNSSEC-Validated Cache", RFC 8198, DOI 10.17487/RFC8198,
