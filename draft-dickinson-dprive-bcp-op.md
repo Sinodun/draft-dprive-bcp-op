@@ -276,8 +276,8 @@ services can take:
 For DNS Privacy services to be considered minimally compliant with best
 practices they should implement all the threat mitigations described here.
 
-TODO: Some of the Threats listed in the following sections are taken directly
-from Section 5 of RFC6973 some are just standalone descriptions, we need to go
+TODO: Some of the threats listed in the following sections are taken directly
+from Section 5 of RFC6973, some are just standalone descriptions, we need to go
 through all of them and see if we can use the RFC6973 threats where possible
 and make them consistent.
 
@@ -468,9 +468,9 @@ the nameserver.
 Operators may choose to use a DNS aware proxy such as dnsdist. 
 
 
-# Data at rest on the server
+## Data at rest on the server
 
-## Data handling
+### Data handling
 
 Threats:
 
@@ -502,8 +502,7 @@ pseudonymized or anonymized whenever possible. In general the principle of data 
 * Data access should be minimised to only those personal who require access to
   perform operational duties.
 
-
-## IP address pseudonymization and anonymization methods
+### IP address pseudonymization and anonymization methods
 
 There is active discussion in the space of effective pseudonymization of
 personal data in DNS query logs. To-date this has focussed on
@@ -511,7 +510,7 @@ pseudonymization of client IP addresses, however there are as yet no
 standards for this that are unencumbered by patents. This section briefly
 references some known methods in this space at the time of writing.
 
-### ipcipher
+#### ipcipher
 
 [@ipcipher-spec] is a pseudonymization technique which encrypts IPv4 and IPv6
 addresses such that any address encrypts to a valid address. At the time of
@@ -522,7 +521,7 @@ NOTE: There are some significant security concerns about the use of ipcipher
 that have been voiced by the ipcipher authors and its inclusion here should be
 reviewed.
 
-### Bloom filters
+#### Bloom filters
 
 There is also on-going work in the area of using Bloom filters as a
 privacy-enhancing technology for DNS monitoring [@DNS-bloom-filter]. The goal of
@@ -530,12 +529,13 @@ this work is to allow operators to identify so-called Indicators of Compromise
 (IOCs) originating from specific subnets without storing information about, or
 be able to monitor the DNS queries of an individual user.
 
-## Psuedonymization and anonymization of other correlation data
+
+### Psuedonymization and anonymization of other correlation data
 
 TODO: Discuss tracking mechanisms other than IP address (DNS and HTTP cookies,
 Session resumption, etc.)
 
-## Cache snooping
+### Cache snooping
 
 Threats: 
 
@@ -546,12 +546,12 @@ Mitigations:
 TODO: Describe techniques to defend against cache snooping
 
 
-# Data sent onwards from the server
+## Data sent onwards from the server
 
 In this section we consider both data sent on the wire in upstream queries and
 data shared with third parties.
 
-## Protocol recommendations
+### Protocol recommendations
 
 Threats: 
 
@@ -580,7 +580,7 @@ Additional options:
 * Run a copy of the root zone on loopback [@RFC7706] to avoid making queries to
   the root servers that might leak information.
 
-## Client query obfuscation
+### Client query obfuscation
 
 Additional options:
 
@@ -603,7 +603,9 @@ to preform such obfuscation or bulk pre-fetches.
 
 *Sara->RVRD: I take your point about smaller services increasing the risk, but since this is advice for operators, not clients should we bring that up here?*
 
-## Data sharing
+
+### Data sharing
+
 
 Threats:
 
@@ -734,11 +736,11 @@ on this document.
 
 The below individuals contributed significantly to the document:
 
-John Dickinson
-Sinodun Internet Technologies
-Magdalen Centre
-Oxford Science Park
-Oxford  OX4 4GA
+John Dickinson\\
+Sinodun Internet Technologies\\
+Magdalen Centre\\
+Oxford Science Park\\
+Oxford  OX4 4GA\\
 United Kingdom
 
 # Changelog
@@ -746,8 +748,9 @@ draft-dickinson-dprive-bcp-op-01
 
 * Reworked the Terminology, Introduction and Scope
 * Added Document section
-* Reworked the Rcommendations section to not use RFC8174 keywords but to
-  describe threat mitigations, optimisations and other options
+* Reworked the Recommendations section to not use RFC8174 keywords but to
+  describe threat mitigations, optimisations and other options. Split the
+  recommendations up into 3 subsections: on the wire, at rest and upstream
 * Applied virtually all of Amelia Andersdotter's suggested changes.
 
 draft-dickinson-dprive-bcp-op-00
