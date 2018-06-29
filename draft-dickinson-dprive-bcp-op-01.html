@@ -388,9 +388,10 @@
 <link href="#rfc.section.5.1.6" rel="Chapter" title="5.1.6 Limitations of using a pure TLS proxy"/>
 <link href="#rfc.section.5.2" rel="Chapter" title="5.2 Data at rest on the server"/>
 <link href="#rfc.section.5.2.1" rel="Chapter" title="5.2.1 Data handling"/>
-<link href="#rfc.section.5.2.2" rel="Chapter" title="5.2.2 IP address pseudonymization and anonymization methods"/>
-<link href="#rfc.section.5.2.3" rel="Chapter" title="5.2.3 Pseudonymization and anonymization of other correlation data"/>
-<link href="#rfc.section.5.2.4" rel="Chapter" title="5.2.4 Cache snooping"/>
+<link href="#rfc.section.5.2.2" rel="Chapter" title="5.2.2 Data minimization of network traffic"/>
+<link href="#rfc.section.5.2.3" rel="Chapter" title="5.2.3 IP address pseudonymization and anonymization methods"/>
+<link href="#rfc.section.5.2.4" rel="Chapter" title="5.2.4 Pseudonymization, anonymization or discarding of other correlation data"/>
+<link href="#rfc.section.5.2.5" rel="Chapter" title="5.2.5 Cache snooping"/>
 <link href="#rfc.section.5.3" rel="Chapter" title="5.3 Data sent onwards from the server"/>
 <link href="#rfc.section.5.3.1" rel="Chapter" title="5.3.1 Protocol recommendations"/>
 <link href="#rfc.section.5.3.2" rel="Chapter" title="5.3.2 Client query obfuscation"/>
@@ -415,6 +416,14 @@
 <link href="#rfc.appendix.A.1" rel="Chapter" title="A.1 Potential increases in DNS privacy"/>
 <link href="#rfc.appendix.A.2" rel="Chapter" title="A.2 Potential decreases in DNS privacy"/>
 <link href="#rfc.appendix.A.3" rel="Chapter" title="A.3 Related operational documents"/>
+<link href="#rfc.appendix.B" rel="Chapter" title="B IP address techniques"/>
+<link href="#rfc.appendix.B.1" rel="Chapter" title="B.1 Google Analytics non-prefix filtering"/>
+<link href="#rfc.appendix.B.2" rel="Chapter" title="B.2 dnswasher"/>
+<link href="#rfc.appendix.B.3" rel="Chapter" title="B.3 Prefix-preserving map"/>
+<link href="#rfc.appendix.B.4" rel="Chapter" title="B.4 Cryptographic Prefix-Preserving Pseudonymisation"/>
+<link href="#rfc.appendix.B.5" rel="Chapter" title="B.5 Top-hash Subtree-replicated Anonymisation"/>
+<link href="#rfc.appendix.B.6" rel="Chapter" title="B.6 ipcipher"/>
+<link href="#rfc.appendix.B.7" rel="Chapter" title="B.7 Bloom filters"/>
 <link href="#rfc.authors" rel="Chapter"/>
 
 
@@ -515,9 +524,10 @@
 <li>5.1.6.   <a href="#rfc.section.5.1.6">Limitations of using a pure TLS proxy</a></li>
 </ul><li>5.2.   <a href="#rfc.section.5.2">Data at rest on the server</a></li>
 <ul><li>5.2.1.   <a href="#rfc.section.5.2.1">Data handling</a></li>
-<li>5.2.2.   <a href="#rfc.section.5.2.2">IP address pseudonymization and anonymization methods</a></li>
-<li>5.2.3.   <a href="#rfc.section.5.2.3">Pseudonymization and anonymization of other correlation data</a></li>
-<li>5.2.4.   <a href="#rfc.section.5.2.4">Cache snooping</a></li>
+<li>5.2.2.   <a href="#rfc.section.5.2.2">Data minimization of network traffic</a></li>
+<li>5.2.3.   <a href="#rfc.section.5.2.3">IP address pseudonymization and anonymization methods</a></li>
+<li>5.2.4.   <a href="#rfc.section.5.2.4">Pseudonymization, anonymization or discarding of other correlation data</a></li>
+<li>5.2.5.   <a href="#rfc.section.5.2.5">Cache snooping</a></li>
 </ul><li>5.3.   <a href="#rfc.section.5.3">Data sent onwards from the server</a></li>
 <ul><li>5.3.1.   <a href="#rfc.section.5.3.1">Protocol recommendations</a></li>
 <li>5.3.2.   <a href="#rfc.section.5.3.2">Client query obfuscation</a></li>
@@ -542,6 +552,14 @@
 <ul><li>A.1.   <a href="#rfc.appendix.A.1">Potential increases in DNS privacy</a></li>
 <li>A.2.   <a href="#rfc.appendix.A.2">Potential decreases in DNS privacy</a></li>
 <li>A.3.   <a href="#rfc.appendix.A.3">Related operational documents</a></li>
+</ul><li>Appendix B.   <a href="#rfc.appendix.B">IP address techniques</a></li>
+<ul><li>B.1.   <a href="#rfc.appendix.B.1">Google Analytics non-prefix filtering</a></li>
+<li>B.2.   <a href="#rfc.appendix.B.2">dnswasher</a></li>
+<li>B.3.   <a href="#rfc.appendix.B.3">Prefix-preserving map</a></li>
+<li>B.4.   <a href="#rfc.appendix.B.4">Cryptographic Prefix-Preserving Pseudonymisation</a></li>
+<li>B.5.   <a href="#rfc.appendix.B.5">Top-hash Subtree-replicated Anonymisation</a></li>
+<li>B.6.   <a href="#rfc.appendix.B.6">ipcipher</a></li>
+<li>B.7.   <a href="#rfc.appendix.B.7">Bloom filters</a></li>
 </ul><li><a href="#rfc.authors">Authors' Addresses</a></li>
 
 
@@ -605,7 +623,7 @@
 
 <ul>
   <li>Threat mitigation for well understood and documented privacy threats to the users of the service and in some cases to the operators of the service.</li>
-  <li>Optimisation of privacy services from an operational or management perspective</li>
+  <li>Optimization of privacy services from an operational or management perspective</li>
   <li>Additional options that could further enhance the privacy and usability of the service</li>
 </ul>
 
@@ -615,7 +633,7 @@
 
 <ul>
   <li>Threat mitigations to be minimally compliant</li>
-  <li>Optimisations to be moderately compliant</li>
+  <li>Optimizations to be moderately compliant</li>
   <li>Additional options to be maximally compliant</li>
 </ul>
 
@@ -665,7 +683,7 @@
 <p id="rfc.section.5.1.2.p.4">DNS privacy services should ensure clients can authenticate the server. Note that this, in effect, commits the DNS privacy service to a public identity users will trust.  </p>
 <p id="rfc.section.5.1.2.p.5">When using DNS-over-TLS clients that select a 'Strict Privacy' usage profile <a href="#RFC8310">[RFC8310]</a> (to mitigate the threat of active attack on the client) require the ability to authenticate the DNS server. To enable this, DNS privacy services that offer DNS-over-TLS should provide credentials in the form of either X.509 certificates, SPKI pinsets or TLSA records.  </p>
 <p id="rfc.section.5.1.2.p.6">When offering DoH <a href="#I-D.ietf-doh-dns-over-https">[I-D.ietf-doh-dns-over-https]</a>, HTTPS requires authentication of the server as part of the protocol.  </p>
-<p id="rfc.section.5.1.2.p.7">Optimisations: </p>
+<p id="rfc.section.5.1.2.p.7">Optimizations: </p>
 <p id="rfc.section.5.1.2.p.8">DNS privacy services can also consider the following capabilities/options: </p>
 <p/>
 
@@ -725,7 +743,7 @@
 </ul>
 
 <p> </p>
-<p id="rfc.section.5.1.3.1.p.6">Optimisations: </p>
+<p id="rfc.section.5.1.3.1.p.6">Optimizations: </p>
 <p/>
 
 <ul>
@@ -775,7 +793,7 @@
 <p id="rfc.section.5.1.5.p.3">Mitigations: </p>
 <p id="rfc.section.5.1.5.p.4">A DNS privacy service should deliver the same level of service offered on un-encrypted channels in terms of such options as filtering (or lack of), DNSSEC validation, etc.  </p>
 <h1 id="rfc.section.5.1.6"><a href="#rfc.section.5.1.6">5.1.6.</a> <a href="#limitations-of-using-a-pure-tls-proxy" id="limitations-of-using-a-pure-tls-proxy">Limitations of using a pure TLS proxy</a></h1>
-<p id="rfc.section.5.1.6.p.1">Optimisation: </p>
+<p id="rfc.section.5.1.6.p.1">Optimization: </p>
 <p id="rfc.section.5.1.6.p.2">Some operators may choose to implement DNS-over-TLS using a TLS proxy (e.g.  <a href="https://nginx.org/">nginx</a>, <a href="https://www.haproxy.org/">haproxy</a> or <a href="https://kb.isc.org/article/AA-01386/0/DNS-over-TLS.html">stunnel</a>) in front of a DNS nameserver because of proven robustness and capacity when handling large numbers of client connections, load balancing capabilities and good tooling.  Currently, however, because such proxies typically have no specific handling of DNS as a protocol over TLS or DTLS using them can restrict traffic management at the proxy layer and at the DNS server. For example, all traffic received by a nameserver behind such a proxy will appear to originate from the proxy and DNS techniques such as ACLs, RRL or DNS64 will be hard or impossible to implement in the nameserver.  </p>
 <p id="rfc.section.5.1.6.p.3">Operators may choose to use a DNS aware proxy such as dnsdist.  </p>
 <h1 id="rfc.section.5.2"><a href="#rfc.section.5.2">5.2.</a> <a href="#data-at-rest-on-the-server" id="data-at-rest-on-the-server">Data at rest on the server</a></h1>
@@ -806,17 +824,42 @@
 </ul>
 
 <p> </p>
-<h1 id="rfc.section.5.2.2"><a href="#rfc.section.5.2.2">5.2.2.</a> <a href="#ip-address-pseudonymization-and-anonymization-methods" id="ip-address-pseudonymization-and-anonymization-methods">IP address pseudonymization and anonymization methods</a></h1>
-<p id="rfc.section.5.2.2.p.1">There is active discussion in the space of effective pseudonymization of personal data in DNS query logs. To-date this has focussed on pseudonymization of client IP addresses, however there are as yet no standards for this that are unencumbered by patents. This section briefly references some known methods in this space at the time of writing.  </p>
-<h1 id="rfc.section.5.2.2.1"><a href="#rfc.section.5.2.2.1">5.2.2.1.</a> <a href="#ipcipher" id="ipcipher">ipcipher</a></h1>
-<p><a href="#ipcipher-spec">[ipcipher-spec]</a> is a pseudonymization technique which encrypts IPv4 and IPv6 addresses such that any address encrypts to a valid address. At the time of writing the specification is under review and may be the subject of a future IETF draft.  </p>
-<p id="rfc.section.5.2.2.1.p.2">NOTE: There are some significant security concerns about the use of ipcipher that have been voiced by the ipcipher authors and its inclusion here should be reviewed.  </p>
-<h1 id="rfc.section.5.2.2.2"><a href="#rfc.section.5.2.2.2">5.2.2.2.</a> <a href="#bloom-filters" id="bloom-filters">Bloom filters</a></h1>
-<p id="rfc.section.5.2.2.2.p.1">There is also on-going work in the area of using Bloom filters as a privacy-enhancing technology for DNS monitoring <a href="#DNS-bloom-filter">[DNS-bloom-filter]</a>. The goal of this work is to allow operators to identify so-called Indicators of Compromise (IOCs) originating from specific subnets without storing information about, or be able to monitor the DNS queries of an individual user.  </p>
-<h1 id="rfc.section.5.2.3"><a href="#rfc.section.5.2.3">5.2.3.</a> <a href="#pseudonymization-and-anonymization-of-other-correlation-data" id="pseudonymization-and-anonymization-of-other-correlation-data">Pseudonymization and anonymization of other correlation data</a></h1>
-<p id="rfc.section.5.2.3.p.1">TODO: Discuss tracking mechanisms other than IP address (DNS and HTTP cookies, Session resumption, etc.) </p>
-<h1 id="rfc.section.5.2.4"><a href="#rfc.section.5.2.4">5.2.4.</a> <a href="#cache-snooping" id="cache-snooping">Cache snooping</a></h1>
-<p id="rfc.section.5.2.4.p.1">Threats: </p>
+<h1 id="rfc.section.5.2.2"><a href="#rfc.section.5.2.2">5.2.2.</a> <a href="#data-minimization-of-network-traffic" id="data-minimization-of-network-traffic">Data minimization of network traffic</a></h1>
+<p id="rfc.section.5.2.2.p.1">Data minimization refers to collecting, using, disclosing, and storing the minimal data necessary to perform a task, and this can be achieved by removing or obfuscating privacy-sensitive information in network traffic logs.  This is typically personal data, or data that can be used to link a record to an individual, but may also include revealing other confidential information, for example on the structure of an internal corporate network.  </p>
+<p id="rfc.section.5.2.2.p.2">The problem of effectively ensuring that DNS traffic logs contain no or minimal privacy-sensitive information is not one that currently has a generally agreed solution.  </p>
+<p id="rfc.section.5.2.2.p.3">Research into data minimization techniques (and particularly IP address pseudonymization/anonymization) was sparked in the late 1990s/early 2000s, partly driven by the desire to share significant corpuses of traffic captures for research purposes. Several techniques reflecting different requirements in this area and different performance/resource tradeoffs emerged over the course of the decade. Developments over the last decade have been both a blessing and a curse; the large increase in size between an IPv4 and an IPv6 address, for example, renders some techniques impractical, but also makes available a much larger amount of input entropy, the better to resist brute force re-identification attacks that have grown in practicality over the period.  </p>
+<p id="rfc.section.5.2.2.p.4">Techniques employed may be broadly categorised as either anonymization or pseudonymization. The following discussion uses the definitions from <a href="#RFC6973">[RFC6973]</a> Section 3, with additional observations from <a href="https://doi.org/10.1145/3182660">van Dijkhuizen et al.</a> </p>
+<p/>
+
+<ul>
+  <li>Anonymization. To enable anonymity of an individual, there must exist a set of individuals that appear to have the same attribute(s) as the individual. To the attacker or the observer, these individuals must appear indistinguishable from each other.</li>
+  <li>Pseudonymization. The true identity is deterministically replaced with an alternate identity (a pseudonym). When the pseudonymization schema is known, the process can be reversed, so the original identity becomes known again.</li>
+</ul>
+
+<p> </p>
+<p id="rfc.section.5.2.2.p.6">In practice there is a fine line between the two; for example, how to categorise a deterministic algorithm for data minimisation of IP addresses that produces a group of pseudonyms for a single given address.  </p>
+<h1 id="rfc.section.5.2.3"><a href="#rfc.section.5.2.3">5.2.3.</a> <a href="#ip-address-pseudonymization-and-anonymization-methods" id="ip-address-pseudonymization-and-anonymization-methods">IP address pseudonymization and anonymization methods</a></h1>
+<p id="rfc.section.5.2.3.p.1">As RFC7626 makes clear, the big privacy risk in DNS is connecting DNS queries to an individual and the major vector for this in DNS traffic is the client IP address.  </p>
+<p id="rfc.section.5.2.3.p.2">There is active discussion in the space of effective pseudonymization of IP addresses in DNS traffic logs, however there seems to be no single solution that is widely recognised as suitable for all or most use cases. There are also as yet no standards for this that are unencumbered by patents. This following table presents a high level comparison of various techniques employed or under development today and classifies then according to categorisation of technique and other properties. The list of techniques includes the main techniques in current use, but does not claim to be comprehensive. <a href="#ip-address-techniques">Appendix B</a> provides a more detailed survey of these techniques and definitions for the categories and properties listed below.  </p>
+<p><a href="https://github.com/Sinodun/draft-dprive-bcp-op/blob/master/draft-01/ip_techniques_table.png">Figure showing comparison of IP address techniques (PNG)</a> </p>
+<p><a href="https://github.com/Sinodun/draft-dprive-bcp-op/blob/master/draft-01/ip_techniques_table.svg">Figure showing comparison of IP address techniques (SVG)</a> </p>
+<p id="rfc.section.5.2.3.p.5">The choice of which method to use for a particular application will depend on the requirements of that application and consideration of the threat analysis of the particular situation.  </p>
+<p id="rfc.section.5.2.3.p.6">For example, a common goal is that distributed packet captures must be in an existing data format such as PCAP <a href="#pcap">[pcap]</a> or C-DNS <a href="#I-D.ietf-dnsop-dns-capture-format">[I-D.ietf-dnsop-dns-capture-format]</a> that can be used as input to existing analysis tools. In that case, use of a Format-preserving technique is essential. This, though, is not cost-free - several authors (e.g. <a href="https://pdfs.semanticscholar.org/7b34/12c951cebe71cd2cddac5fda164fb2138a44.pdf">Brenker &amp; Arnes</a>) have observed that, as the entropy in a IPv4 address is limited, given a de-identified log from a target, if an attacker is capable of ensuring packets are captured by the target and the attacker can send forged traffic with arbitrary source and destination addresses to that target, any format-preserving pseudonymization is vulnerable to an attack along the lines of a cryptographic chosen plaintext attack.  </p>
+<h1 id="rfc.section.5.2.4"><a href="#rfc.section.5.2.4">5.2.4.</a> <a href="#pseudonymization-anonymization-or-discarding-of-other-correlation-data" id="pseudonymization-anonymization-or-discarding-of-other-correlation-data">Pseudonymization, anonymization or discarding of other correlation data</a></h1>
+<p id="rfc.section.5.2.4.p.1">TODO: Discuss correlation data and tracking mechanisms other than IP address </p>
+<p/>
+
+<ul>
+  <li>IP TTL/Hoplimit can be used to fingerprint client OS</li>
+  <li>Tracking of TCP sessions</li>
+  <li>Tracking of TLS sessions and session resumption mechanisms</li>
+  <li>Resolvers <em>might</em> receive client identifiers e.g. MAC addresses in EDNS(0) options - some CPE devices are known to add them.</li>
+  <li>HTTP headers</li>
+</ul>
+
+<p> </p>
+<h1 id="rfc.section.5.2.5"><a href="#rfc.section.5.2.5">5.2.5.</a> <a href="#cache-snooping" id="cache-snooping">Cache snooping</a></h1>
+<p id="rfc.section.5.2.5.p.1">Threats: </p>
 <p/>
 
 <ul>
@@ -824,8 +867,8 @@
 </ul>
 
 <p> </p>
-<p id="rfc.section.5.2.4.p.3">Mitigations: </p>
-<p id="rfc.section.5.2.4.p.4">TODO: Describe techniques to defend against cache snooping </p>
+<p id="rfc.section.5.2.5.p.3">Mitigations: </p>
+<p id="rfc.section.5.2.5.p.4">TODO: Describe techniques to defend against cache snooping </p>
 <h1 id="rfc.section.5.3"><a href="#rfc.section.5.3">5.3.</a> <a href="#data-sent-onwards-from-the-server" id="data-sent-onwards-from-the-server">Data sent onwards from the server</a></h1>
 <p id="rfc.section.5.3.p.1">In this section we consider both data sent on the wire in upstream queries and data shared with third parties.  </p>
 <h1 id="rfc.section.5.3.1"><a href="#rfc.section.5.3.1">5.3.1.</a> <a href="#protocol-recommendations-1" id="protocol-recommendations-1">Protocol recommendations</a></h1>
@@ -842,12 +885,12 @@
 <p/>
 
 <ul>
-  <li>Implement QNAME minimisation <a href="#RFC7816">[RFC7816]</a></li>
+  <li>Implement QNAME minimization <a href="#RFC7816">[RFC7816]</a></li>
   <li>Honour a SOURCE PREFIX-LENGTH set to 0 in a query containing the EDNS(0) Client Subnet (ECS) option and not send an ECS option in upstream queries.</li>
 </ul>
 
 <p> </p>
-<p id="rfc.section.5.3.1.p.6">Optimisations: </p>
+<p id="rfc.section.5.3.1.p.6">Optimizations: </p>
 <p/>
 
 <ul>
@@ -887,10 +930,11 @@
 <p> </p>
 <p id="rfc.section.5.3.3.p.3">Mitigations: </p>
 <p id="rfc.section.5.3.3.p.4">Operators should not provide identifiable data to third-parties without explicit consent from clients (we take the stance here that simply using the resolution service itself does not constitute consent).  </p>
-<p id="rfc.section.5.3.3.p.5">Operators should consider including specific guidelines for the collection of aggregated and/or anonymised data for research purposes, within or outside of their own organisation.  </p>
-<p id="rfc.section.5.3.3.p.6">TODO: More on data for research vs operations... how to still motivate operators to share anonymized data? </p>
-<p id="rfc.section.5.3.3.p.7">TODO: Guidelines for when consent is granted? </p>
-<p id="rfc.section.5.3.3.p.8">TODO: Applies to server data handling too.. could operators offer alternatives services one that implies consent for data processing, one that doesn't? </p>
+<p id="rfc.section.5.3.3.p.5">Even when consent is granted operators should employ data minimisation techniques such as those described in <a href="#data-handling">Section 5.2.1</a> if data is shared with third-parties.  </p>
+<p id="rfc.section.5.3.3.p.6">Operators should consider including specific guidelines for the collection of aggregated and/or anonymised data for research purposes, within or outside of their own organisation.  </p>
+<p id="rfc.section.5.3.3.p.7">TODO: More on data for research vs operations... how to still motivate operators to share anonymized data? </p>
+<p id="rfc.section.5.3.3.p.8">TODO: Guidelines for when consent is granted? </p>
+<p id="rfc.section.5.3.3.p.9">TODO: Applies to server data handling too.. could operators offer alternatives services one that implies consent for data processing, one that doesn't? </p>
 <h1 id="rfc.section.6"><a href="#rfc.section.6">6.</a> <a href="#dns-privacy-policy-and-practice-statement" id="dns-privacy-policy-and-practice-statement">DNS privacy policy and practice statement</a></h1>
 <h1 id="rfc.section.6.1"><a href="#rfc.section.6.1">6.1.</a> <a href="#recommended-contents-of-a-dppps" id="recommended-contents-of-a-dppps">Recommended contents of a DPPPS</a></h1>
 <p id="rfc.section.6.1.p.1">1 Policy.  </p>
@@ -924,7 +968,7 @@
 <p/>
 
 <ul>
-  <li>ECS, QNAME minimisation, EDNS(0) padding, etc.</li>
+  <li>ECS, QNAME minimization, EDNS(0) padding, etc.</li>
   <li>Filtering</li>
   <li>Uptime</li>
 </ul>
@@ -947,7 +991,7 @@
 <ul>
   <li>Reworked the Terminology, Introduction and Scope</li>
   <li>Added Document section</li>
-  <li>Reworked the Recommendations section to describe threat mitigations, optimisations and other options. Split the recommendations up into 3 subsections: on the wire, at rest and upstream</li>
+  <li>Reworked the Recommendations section to describe threat mitigations, optimizations and other options. Split the recommendations up into 3 subsections: on the wire, at rest and upstream</li>
   <li>Applied virtually all of Amelia Andersdotter's suggested changes.</li>
 </ul>
 
@@ -975,7 +1019,7 @@
       <td class="reference">
         <b id="I-D.ietf-doh-dns-over-https">[I-D.ietf-doh-dns-over-https]</b>
       </td>
-      <td class="top"><a>Hoffman, P.</a> and <a>P. McManus</a>, "<a href="http://tools.ietf.org/html/draft-ietf-doh-dns-over-https-10">DNS Queries over HTTPS (DOH)</a>", Internet-Draft draft-ietf-doh-dns-over-https-10, June 2018.</td>
+      <td class="top"><a>Hoffman, P.</a> and <a>P. McManus</a>, "<a href="http://tools.ietf.org/html/draft-ietf-doh-dns-over-https-12">DNS Queries over HTTPS (DoH)</a>", Internet-Draft draft-ietf-doh-dns-over-https-12, June 2018.</td>
     </tr>
     <tr>
       <td class="reference">
@@ -1062,12 +1106,6 @@
   <tbody>
     <tr>
       <td class="reference">
-        <b id="DNS-bloom-filter">[DNS-bloom-filter]</b>
-      </td>
-      <td class="top"><a title="SURFnet bv">van Rijswijk-Deij, R.</a>, <a title="Quarantainenet B.V.">Bomhoff, M.</a> and <a title="NLnet Labs Foundation">R. Dolmans</a>, "<a href=" https://tnc18.geant.org/getfile/3823">Let a Thousand Filters Bloom. DNS-Based Threat Monitoring That Respects User Privacy</a>", 2018.</td>
-    </tr>
-    <tr>
-      <td class="reference">
         <b id="I-D.ietf-dnsop-dns-capture-format">[I-D.ietf-dnsop-dns-capture-format]</b>
       </td>
       <td class="top"><a>Dickinson, J.</a>, <a>Hague, J.</a>, <a>Dickinson, S.</a>, <a>Manderson, T.</a> and <a>J. Bond</a>, "<a href="http://tools.ietf.org/html/draft-ietf-dnsop-dns-capture-format-07">C-DNS: A DNS Packet Capture Format</a>", Internet-Draft draft-ietf-dnsop-dns-capture-format-07, May 2018.</td>
@@ -1092,15 +1130,21 @@
     </tr>
     <tr>
       <td class="reference">
-        <b id="ipcipher-spec">[ipcipher-spec]</b>
+        <b id="pcap">[pcap]</b>
       </td>
-      <td class="top"><a title="PowerDNS">Hubert, B.</a>, "<a href="https://powerdns.org/ipcipher/">ipcipher: encrypting IP addresses</a>", 2018.</td>
+      <td class="top"><a>tcpdump.org</a>, "<a href="http://www.tcpdump.org/">PCAP</a>", 2016.</td>
     </tr>
     <tr>
       <td class="reference">
         <b id="Pitfalls-of-DNS-Encryption">[Pitfalls-of-DNS-Encryption]</b>
       </td>
       <td class="top"><a title="Fachbereich Informatik, Technische Universit&#xE4;t Darmstadt">Shulman, H.</a>, "<a href="https://www.ietf.org/mail-archive/web/dns-privacy/current/pdfWqAIUmEl47.pdf">Pretty Bad Privacy: Pitfalls of DNS Encryption</a>", 2014.</td>
+    </tr>
+    <tr>
+      <td class="reference">
+        <b id="RFC6235">[RFC6235]</b>
+      </td>
+      <td class="top"><a>Boschi, E.</a> and <a>B. Trammell</a>, "<a href="http://tools.ietf.org/html/rfc6235">IP Flow Anonymization Support</a>", RFC 6235, DOI 10.17487/RFC6235, May 2011.</td>
     </tr>
     <tr>
       <td class="reference">
@@ -1171,7 +1215,7 @@
 <p/>
 
 <ul>
-  <li>'DNS Query Name Minimisation to Improve Privacy' <a href="#RFC7816">[RFC7816]</a> referred to here as 'QNAME minimization'</li>
+  <li>'DNS Query Name minimization to Improve Privacy' <a href="#RFC7816">[RFC7816]</a> referred to here as 'QNAME minimization'</li>
 </ul>
 
 <p> </p>
@@ -1200,6 +1244,43 @@
 </ul>
 
 <p> </p>
+<h1 id="rfc.appendix.B"><a href="#rfc.appendix.B">Appendix B.</a> <a href="#ip-address-techniques" id="ip-address-techniques">IP address techniques</a></h1>
+<p id="rfc.section.B.p.1">Data minimisation methods may be categorised by the processing used and the properties of their outputs. The following builds on the categorisation employed in <a href="#RFC6235">[RFC6235]</a>: </p>
+<p/>
+
+<ul>
+  <li>Format-preserving. Normally when encrypting, the original data length and patterns in the data should be hidden from an attacker. Some applications of de-identification, such as network capture de-identification, require that the de-identified data is of the same form as the original data, to allow the data to be parsed in the same way as the original.</li>
+  <li>Prefix preservation. Values such as IP addresses and MAC addresses contain prefix information that can be valuable in analysis, e.g. manufacturer ID in MAC addresses, subnet in IP addresses. Prefix preservation ensures that prefixes are de-identified consistently; e.g. if two IP addresses are from the same subnet, a prefix preserving de-identification will ensure that their de-identified counterparts will also share a subnet. Prefix preservation may be fixed - the extent of the prefix to be preserved must be identified in advance - or general.</li>
+  <li>Replacement. A one-to-one replacement of a field to a new value of the same type, for example using a regular expression. Filtering. Removing (and thus truncating) or replacing data in a field. Field data can be overwritten, often with zeros, either partially (grey marking) or completely (black marking).</li>
+  <li>Generalisation. Data is replaced by more general data with reduced specificity. One example would be to replace all TCP/UDP port numbers with one of two fixed values indicating whether the original port was ephemeral (&gt;=1024) or non-ephemeral (&gt;1024). Another example, precision degradation, reduces the accuracy of e.g. a numeric value or a timestamp.</li>
+  <li>Enumeration. With data from a well-ordered set, replace the first data item data using a random initial value and then allocate ordered values for subsequent data items. When used with timestamp data, this preserves ordering but loses precision and distance.</li>
+  <li>Reordering/shuffling. Preserving the original data, but rearranging its order, often in a random manner.</li>
+  <li>Random substitution. As replacement, but using randomly generated replacement values.</li>
+  <li>Cryptographic permutation. Using a permutation function, such as a hash function or cryptographic block cipher, to generate a replacement de-identified value.  <br/></li>
+</ul>
+
+<p> </p>
+<h1 id="rfc.appendix.B.1"><a href="#rfc.appendix.B.1">B.1.</a> <a href="#google-analytics-nonprefix-filtering" id="google-analytics-nonprefix-filtering">Google Analytics non-prefix filtering</a></h1>
+<p id="rfc.section.B.1.p.1">Since May 2010, <a href="https://support.google.com/analytics/answer/2763052?hl=en">Google Analytics has provided a facility</a> that allows website owners to request that all their users IP addresses are anonymised within Google Analytics processing. This very basic anonymization simply sets to zero the least significant 8 bits of IPv4 addresses, and the least significant 80 bits of IPv6 addresses. The level of anonymization this produces is perhaps questionable. There are <a href="https://www.conversionworks.co.uk/blog/2017/05/19/anonymize-ip-geo-impact-test/">some analysis results</a> which suggest that the impact of this on reducing the accuracy of determining the user's location from their IP address is less than might be hoped; the average discrepancy in identification of the user city for UK users is no more than 17%.  </p>
+<p id="rfc.section.B.1.p.2">Anonymization: Format-preserving, Filtering (grey marking).  </p>
+<h1 id="rfc.appendix.B.2"><a href="#rfc.appendix.B.2">B.2.</a> <a href="#dnswasher" id="dnswasher">dnswasher</a></h1>
+<p id="rfc.section.B.2.p.1">Since 2006, PowerDNS have included a de-identification tool <a href="https://github.com/edmonds/pdns/blob/master/pdns/dnswasher.cc">dnswasher</a> with their PowerDNS product. This is a PCAP filter that performs a one-to-one mapping of end user IP addresses with an anonymised address. A table of user IP addresses and their de-identified counterparts is kept; the first IPv4 user addresses is translated to 0.0.0.1, the second to 0.0.0.2 and so on. The de-identified address therefore depends on the order that addresses arrive in the input, and running over a large amount of data the address translation tables can grow to a significant size.  </p>
+<p id="rfc.section.B.2.p.2">Anonymization: Format-preserving, Enumeration.  </p>
+<h1 id="rfc.appendix.B.3"><a href="#rfc.appendix.B.3">B.3.</a> <a href="#prefixpreserving-map" id="prefixpreserving-map">Prefix-preserving map</a></h1>
+<p id="rfc.section.B.3.p.1">Used in <a href="http://ita.ee.lbl.gov/html/contrib/tcpdpriv.html">TCPdpriv</a>, this algorithm stores a set of original and anonymised IP address pairs. When a new IP address arrives, it is compared with previous addresses to determine the longest prefix match. The new address is anonymised by using the same prefix, with the remainder of the address anonymised with a random value. The use of a random value means that the TCPdrpiv is not deterministic; different anonymised values will be generated on each run. The need to store previous addresses means that TCPdpriv has significant and unbounded memory requirements, and because of the need to allocated anonymised addresses sequentially cannot be used in parallel processing.  </p>
+<p id="rfc.section.B.3.p.2">Anonymization: Format-preserving, prefix preservation (general).  </p>
+<h1 id="rfc.appendix.B.4"><a href="#rfc.appendix.B.4">B.4.</a> <a href="#cryptographic-prefixpreserving-pseudonymisation" id="cryptographic-prefixpreserving-pseudonymisation">Cryptographic Prefix-Preserving Pseudonymisation</a></h1>
+<p id="rfc.section.B.4.p.1">Cryptographic prefix-preserving pseudonymisation was originally proposed as an improvement to the prefix-preserving map implemented in TCPdpriv, described in <a href="http://an.kaist.ac.kr/~sbmoon/paper/intl-journal/2004-cn-anon.pdf">Xu et al.</a> and implemented in the <a href="https://www.cc.gatech.edu/computing/Telecomm/projects/cryptopan/">Crypto-PAn tool</a>. Crypto-PAn is now frequently used as an acronym for the algorithm. Initially it was described for IPv4 addresses only; extension for IPv6 addresses was proposed in <a href="http://mharvan.net/talks/noms-ip_anon.pdf">Harvan &amp; Sch&#246;nw&#228;lder</a> and implemented in snmpdump. This uses a cryptographic algorithm rather than a random value, and thus pseudonymity is determined uniquely by the encryption key, and is deterministic. It requires a separate AES encryption for each output bit, so has a non-trivial calculation overhead. This can be mitigated to some extent (for IPv4, at least) by pre-calculating results for some number of prefix bits.  </p>
+<p id="rfc.section.B.4.p.2">Pseudonymization: Format-preserving, prefix preservation (general).  </p>
+<h1 id="rfc.appendix.B.5"><a href="#rfc.appendix.B.5">B.5.</a> <a href="#tophash-subtreereplicated-anonymisation" id="tophash-subtreereplicated-anonymisation">Top-hash Subtree-replicated Anonymisation</a></h1>
+<p id="rfc.section.B.5.p.1">Proposed in Ramaswamy &amp; Wolf, Top-hash Subtree-replicated Anonymisation (TSA) originated in response to the requirement for faster processing than Crypto-PAn.  It used hashing for the most significant byte of an IPv4 address, and a pre-calculated binary tree structure for the remainder of the address. To save memory space, replication is used within the tree structure, reducing the size of the pre-calculated structures to a few Mb for IPv4 addresses. Address pseudonymization is done via hash and table lookup, and so requires minimal computation. However, due to the much increased address space for IPv6, TSA is not memory efficient for IPv6.  </p>
+<p id="rfc.section.B.5.p.2">Pseudonymization: Format-preserving, prefix preservation (general).  </p>
+<h1 id="rfc.appendix.B.6"><a href="#rfc.appendix.B.6">B.6.</a> <a href="#ipcipher" id="ipcipher">ipcipher</a></h1>
+<p id="rfc.section.B.6.p.1">A <a href="https://medium.com/@bert.hubert/on-ip-address-encryption-security-analysis-with-respect-for-privacy-dabe1201b476">recently-released proposal from PowerDNS</a>, <a href="https://github.com/PowerDNS/ipcipher">ipcipher</a> is a simple pseudonymization technique for IPv4 and IPv6 addresses. IPv6 addresses are encrypted directly with AES-128 using a key (which may be derived from a passphrase). IPv4 addresses are similarly encrypted, but using a recently proposed encryption <a href="https://github.com/veorq/ipcrypt">ipcrypt</a> suitable for 32bit block lengths. However, the author of ipcrypt has <a href="https://www.ietf.org/mail-archive/web/cfrg/current/msg09494.html">since indicated</a> that it has low security, and further analysis has revealed it is vulnerable to attack.  </p>
+<p id="rfc.section.B.6.p.2">Pseudonymization: Format-preserving, cryptographic permutation.  </p>
+<h1 id="rfc.appendix.B.7"><a href="#rfc.appendix.B.7">B.7.</a> <a href="#bloom-filters" id="bloom-filters">Bloom filters</a></h1>
+<p><a href="https://tnc18.geant.org/core/presentation/127">van Rijswijk-Deij et al.</a> have recently described work using Bloom filters to categorise query traffic and record the traffic as the state of multiple filters. The goal of this work is to allow operators to identify so-called Indicators of Compromise (IOCs) originating from specific subnets without storing information about, or be able to monitor the DNS queries of an individual user. By using a Bloom filter, it is possible to determine with a high probability if, for example, a particular query was made, but the set of queries made cannot be recovered from the filter. Similarly, by mixing queries from a sufficient number of users in a single filter, it becomes practically impossible to determine if a particular user performed a particular query. Large numbers of queries can be tracked in a memory-efficient way. As filter status is stored, this approach cannot be used to regenerate traffic, and so cannot be used with tools used to process live traffic.  </p>
+<p id="rfc.section.B.7.p.2">Anonymized: Generalisation.  </p>
 <h1 id="rfc.authors">
   <a href="#rfc.authors">Authors' Addresses</a>
 </h1>
