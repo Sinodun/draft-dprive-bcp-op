@@ -7,7 +7,7 @@
     area = "Internet"
     workgroup = "dprive"
     keyword = ["DNS"]
-    date = 2018-06-26T00:00:00Z
+    date = 2018-06-29T00:00:00Z
     [pi]
     toc = "yes"
     compact = "yes"
@@ -114,6 +114,14 @@ transparent, well documented, and secure privacy service will likely serve as a
 major differentiating factor for privacy conscious users if they make an
 active selection of which resolver to use.
 
+<!--*RvRD: I'm wondering whether we should differentiate between "indifferent
+users" for whom this trust relationship is implicit, and "privacy-conscious
+users", that make an explicit trust choice; this may prove relevant in the
+context of e.g. the GDPR as it relates to consent.* 
+SARA->RvRD: I think this is a helpful distinction, I'm just not sure where it
+fits in to this draft since we don't tackle the idea of consent very
+directly...maybe we should in a later version? -->
+
 It should also be noted that the choice of a user to configure a single resolver
 (or a fixed set of resolvers) and an encrypted transport to use in all network
 environments has both advantages and disadvantages. For example the user has a
@@ -175,7 +183,7 @@ offer a DNS privacy service, considerations for areas 2 and 3 could equally
 apply to operators who only offer DNS over unencrypted transports but who would
 like to align with privacy best practice.
 
-# Documents
+# Privacy related documents
 
 There are various documents that describe protocol changes that have the
 potential to either increase or decrease the privacy of the DNS. Note this does
@@ -183,61 +191,15 @@ not imply that some documents are good or bad, better or worse, just that (for
 example) some features may bring functional benefits at the price of a reduction
 in privacy and conversely some features increase privacy with an accompanying
 increase in complexity. A selection of the most relevant documents are listed in
-the following three sections for reference, however, this is neither an
-exhaustive list nor a definitive statement on the characteristic of the
-document.
+(#documents) for reference.
 
-QUESTION: Should this section be an appendix?
-
-## Potential increases in DNS privacy
-
-These documents are limited in scope to communications between stub
-clients and recursive resolvers:
-
-* 'Specification for DNS over Transport Layer Security (TLS)' [@!RFC7858],
-  referred to here as 'DNS-over-TLS'.
-* 'DNS over Datagram Transport Layer Security (DTLS)' [@!RFC8094], referred to
-  here as 'DNS-over-DTLS'. Note that this document has the Category of
-  Experimental.
-* 'DNS Queries over HTTPS (DoH)' [@!I-D.ietf-doh-dns-over-https] referred to here as DoH.
-* 'Usage Profiles for DNS over TLS and DNS over DTLS' [@!RFC8310]
-* 'The EDNS(0) Padding Option' [@!RFC7830] and 'Padding Policy for EDNS(0)'
-  [@!I-D.ietf-dprive-padding-policy]
-
-These documents apply to recursive to authoritative DNS but are relevant when
-considering the operation of a recursive server:
-
-* 'DNS Query Name Minimisation to Improve Privacy' [@!RFC7816] referred to here
-  as 'QNAME minimization'
-
-## Potential decreases in DNS privacy
-
-These documents relate to functionality that could provide increased tracking of
-user activity as a side effect:
-
-* 'Client Subnet in DNS Queries' [@!RFC7871]
-* 'Domain Name System (DNS) Cookies' [@!RFC7873])
-* 'Transport Layer Security (TLS) Session Resumption without Server-Side State'
-  [@!RFC5077] referred to here as simply TLS session resumption.
-* 'A DNS Packet Capture Format' [@?I-D.ietf-dnsop-dns-capture-format]
-* Passive DNS [@?I-D.ietf-dnsop-terminology-bis]
-
-Note that depending on the specifics of the implementation
-[@!I-D.ietf-doh-dns-over-https] may also provide increased tracking.
-
-## Related operational documents
-
-* 'DNS Transport over TCP - Implementation Requirements' [@!RFC7766]
-* 'Operational requirements for DNS-over-TCP'
-  [@?I-D.ietf-dnsop-dns-tcp-requirements]
-* 'The edns-tcp-keepalive EDNS0 Option' [@!RFC7828]
-* 'DNS Stateful Operations' [@!I-D.ietf-dnsop-session-signal]
 
 # Terminology
 
-The key words described in [@!RFC8174] are not used in this document because the
-intention here is not to prescribe policy but to provide indicators of best
-practice.
+The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD",
+"SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and "OPTIONAL" in this
+document are to be interpreted as described in BCP 14 [@!RFC2119] [@!RFC8174]
+when, and only when, they appear in all capitals, as shown here.
 
 Privacy terminology is as described in Section 3 of [@!RFC6973].
 
@@ -252,7 +214,7 @@ server taken from [@RFC8310]:
   described in Section 9.
   
   TODO: Update the definition of Privacy-enabling DNS server in
-  [@?I-D.ietf-dnsop-terminology-bis] to be complete and also include DoH, then
+  [@!I-D.ietf-dnsop-terminology-bis] to be complete and also include DoH, then
   reference that here.
 
 * DPPPS: DNS Privacy Policy and Practice Statement, see
@@ -273,8 +235,13 @@ services can take:
 * Additional options that could further enhance the privacy and usability of the
   service
 
-For DNS Privacy services to be considered minimally compliant with best
-practices they should implement all the threat mitigations described here.
+This document does not specify policy only best practice, however for DNS
+Privacy services to be considered compliant with these best practice guidelines
+they SHOULD implement (where appropriate) all:
+
+* Threat mitigations to be minimally compliant
+* Optimisations to be moderately compliant
+* Additional options to be maximally compliant
 
 TODO: Some of the threats listed in the following sections are taken directly
 from Section 5 of RFC6973, some are just standalone descriptions, we need to go
@@ -299,7 +266,7 @@ Mitigations:
 A DNS privacy service can mitigate these threats by providing service over one
 or more of the following transports
 
-* DNS-over-TLS [@RFC7858]
+* DNS-over-TLS [@!RFC7858]
 * DoH [@I-D.ietf-doh-dns-over-https]
 
 Additional options:
@@ -316,7 +283,7 @@ document.
 
 Threats: 
 
-* Surveillance and Intrusion: Active attacks that can re-direction traffic to
+* Surveillance and Intrusion: Active attacks that can redirect traffic to
   rogue servers
 
 Mitigations:
@@ -325,8 +292,8 @@ DNS privacy services should ensure clients can authenticate the server. Note
 that this, in effect, commits the DNS privacy service to a public identity users
 will trust.
 
-When using DNS-over-TLS [@!RFC8310] clients that select a 'Strict Privacy' usage
-profile (to mitigate the threat of active attack on the client) require the
+When using DNS-over-TLS clients that select a 'Strict Privacy' usage profile
+[@!RFC8310] (to mitigate the threat of active attack on the client) require the
 ability to authenticate the DNS server. To enable this, DNS privacy services
 that offer DNS-over-TLS should provide credentials in the form of either X.509
 certificates, SPKI pinsets or TLSA records.
@@ -353,10 +320,14 @@ the more challenging aspects for operators of traditional DNS resolvers that
 choose to additionally provide a DNS privacy service as management of such
 credentials is new to those DNS operators.
 
+It is noted that SPKI pinset management is described in [@RFC7858] but that key
+pinning mechanisms in general have fallen out of favour operationally for
+various reasons.
+
 Threats: 
 
 * Invalid certificates, resulting in an unavailable service.
-* Mis-identification of a server by a client e.g. typos in urls or
+* Mis-identification of a server by a client e.g. typos in URLs or
   authentication domain names
 
 Mitigations:
@@ -366,14 +337,8 @@ It is recommended that operators:
 * Choose a short, memorable authentication name for their service
 * Automate the generation and publication of certificates
 * Monitor certificates to prevent accidental expiration of certificates
-* Consider re-use of the public/private keypair in the case of a service
-  provided through DNS-over-TLS, as trust pin management by users is undefined,
-  and may be hard to troubleshoot for both users and operators of a DNS privcy
-  service (*RvRD: do we think it makes sense to add this?*) (Sara->RVRD: SPKI
-  pinset use is defined, but increasingly shunned by operators so I haven
-  mentioned it here...)
 
-TODO: Can we provide references for certificate management best practice, for
+TODO: Could we provide references for certificate management best practice, for
 example Section 6.5 of RFC7525?
 
 
@@ -393,11 +358,12 @@ Mitigations:
 In the case of DNS-over-TLS, TLS profiles from Section 9 and the Countermeasures 
 to DNS Traffic Analysis from section 11.1 of [@!RFC8310] provide strong mitigations. This includes but is not limited to:
 
-* Adhering to [@RFC7525]
+* Adhering to [@!RFC7525]
 * Implementing only (D)TLS 1.2 or later as specified in [@RFC8310]
-* Implementing EDNS(0) Padding [@RFC7830]
+* Implementing EDNS(0) Padding [@!RFC7830] using the guidelines in
+  [@!I-D.ietf-dprive-padding-policy]
 * Clients should not be required to use TLS session resumption [@!RFC5077],
-  Domain Name System (DNS) Cookies [@!RFC7873] or HTTP Cookies [@RFC6265].
+  Domain Name System (DNS) Cookies [@!RFC7873].
 * A DNS-over-TLS privacy service on both port 853 and 443. We note that this
   practice may require revision when DoH becomes more widely deployed, because
   of the potential use of the same ports for two incompatible types of service.
@@ -405,8 +371,8 @@ to DNS Traffic Analysis from section 11.1 of [@!RFC8310] provide strong mitigati
 Optimisations:
 
 * Management of TLS connections to optimise performance for clients using either
-  * [@!RFC7766] and EDNS(0) Keepalive [@!RFC7828] and/or 
-  * DNS Stateful Operations [@!I-D.ietf-dnsop-session-signal]
+  * [@RFC7766] and EDNS(0) Keepalive [@RFC7828] and/or 
+  * DNS Stateful Operations [@I-D.ietf-dnsop-session-signal]
   
 Additional options that providers may consider:
 
@@ -416,6 +382,10 @@ Additional options that providers may consider:
 
 TODO: fill this in, some overlap with DNS-over-TLS but we need to address DoH
 specific ones if possible
+
+Mitigations:
+
+* Clients should not be required to HTTP Cookies [@!RFC6265].
 
 
 ### Availability
@@ -530,7 +500,7 @@ this work is to allow operators to identify so-called Indicators of Compromise
 be able to monitor the DNS queries of an individual user.
 
 
-### Psuedonymization and anonymization of other correlation data
+### Pseudonymization and anonymization of other correlation data
 
 TODO: Discuss tracking mechanisms other than IP address (DNS and HTTP cookies,
 Session resumption, etc.)
@@ -565,13 +535,20 @@ As specified in [@!RFC8310] for DNS-over-TLS but applicable to any DNS Privacy s
 * Honour a SOURCE PREFIX-LENGTH set to 0 in a query containing the EDNS(0)
   Client Subnet (ECS) option and not send an ECS option in upstream queries.
 
-If operators do offer a service that sends the ECS options upstream they should make clear in any policy statement what prefix length they send and any policy for which upstream servers they send the option to (e.g. all, whitelist).
-
 Optimisations:
 
 * The server should either 
   * not use the ECS option in upstream queries at all, or
   * offer alternative services, one that sends ECS and one that does not.
+
+If operators do offer a service that sends the ECS options upstream they should
+use the shortest prefix that is operationally feasible (NOTE: the authors
+believe they will be able to add a reference for advice here soon) and ideally
+use a policy of whitelisting upstream servers to send ECS to in order to
+minimise data leakage. Operators should make clear in any policy statement what
+prefix length they actually send and the specific policy used.
+
+<!-- *RvRD: note: I have a bachelor student working on this, who has been looking at what are good prefix sizes to e.g. geo-locate a client to a country or continent; will share results when available. I'm considering following up on his work with a paper at some point to help the discussion about ECS along.*-->
 
 Additional options:
 
@@ -599,9 +576,10 @@ further measure to counter traffic analysis.
 At the time of writing there are no standardized or widely recognized techniques
 to preform such obfuscation or bulk pre-fetches.
 
-*RvRD: this is sort of a slippery slope; personally, I would advocate hiding in the masses (large DNS privacy services) over obfuscation techniques. The risk of a false sense of security is real I think. It sparked a thought though, perhaps multiple smaller DNS privacy services can somehow collaborate and randomly share upstream queries with each other, this might homogenize what their traffic looks like to the outside world. (I hope you get what I mean)*
-
-*Sara->RVRD: I take your point about smaller services increasing the risk, but since this is advice for operators, not clients should we bring that up here?*
+Another technique that particularly small operators may consider is forwarding
+local traffic to a larger resolver (with a privacy policy that aligns with their
+own practices) over an encrypted protocol so that the upstream queries are
+obfuscated among those of the large resolver.
 
 
 ### Data sharing
@@ -626,7 +604,7 @@ service itself does not constitute consent).
 
 Operators should consider including specific guidelines for the collection of
 aggregated and/or anonymised data for research purposes, within or outside of
-their own organisation
+their own organisation.
 
 TODO: More on data for research vs operations... how to still motivate operators
 to share anonymized data?
@@ -732,6 +710,7 @@ Stephane Bortzmeyer for review.
 Sara Dickinson thanks the Open Technology Fund for a grant to support the work
 on this document.
 
+
 # Contributors
 
 The below individuals contributed significantly to the document:
@@ -748,9 +727,9 @@ draft-dickinson-dprive-bcp-op-01
 
 * Reworked the Terminology, Introduction and Scope
 * Added Document section
-* Reworked the Recommendations section to not use RFC8174 keywords but to
-  describe threat mitigations, optimisations and other options. Split the
-  recommendations up into 3 subsections: on the wire, at rest and upstream
+* Reworked the Recommendations section to describe threat mitigations,
+  optimisations and other options. Split the recommendations up into 3
+  subsections: on the wire, at rest and upstream
 * Applied virtually all of Amelia Andersdotter's suggested changes.
 
 draft-dickinson-dprive-bcp-op-00
@@ -797,7 +776,62 @@ draft-dickinson-dprive-bcp-op-00
     </front>
 </reference>
 
+<!--These lines are needed to generate references for citations that appear only
+in the appendix-->
+[-@RFC7871]
+[-@?I-D.ietf-dnsop-dns-capture-format]
+[-@?I-D.ietf-dnsop-dns-tcp-requirements]
+
 {backmatter}
 
+# Documents
+
+This section provides an overview of some DNS privacy related documents,
+however, this is neither an exhaustive list nor a definitive statement on the
+characteristic of the document.
 
 
+## Potential increases in DNS privacy
+
+These documents are limited in scope to communications between stub
+clients and recursive resolvers:
+
+* 'Specification for DNS over Transport Layer Security (TLS)' [@!RFC7858],
+  referred to here as 'DNS-over-TLS'.
+* 'DNS over Datagram Transport Layer Security (DTLS)' [@!RFC8094], referred to
+  here as 'DNS-over-DTLS'. Note that this document has the Category of
+  Experimental.
+* 'DNS Queries over HTTPS (DoH)' [@!I-D.ietf-doh-dns-over-https] referred to
+  here as DoH.
+* 'Usage Profiles for DNS over TLS and DNS over DTLS' [@!RFC8310]
+* 'The EDNS(0) Padding Option' [@!RFC7830] and 'Padding Policy for EDNS(0)'
+  [@!I-D.ietf-dprive-padding-policy]
+
+These documents apply to recursive to authoritative DNS but are relevant when
+considering the operation of a recursive server:
+
+* 'DNS Query Name Minimisation to Improve Privacy' [@!RFC7816] referred to here
+  as 'QNAME minimization'
+
+## Potential decreases in DNS privacy
+
+These documents relate to functionality that could provide increased tracking of
+user activity as a side effect:
+
+* 'Client Subnet in DNS Queries' [@!RFC7871]
+* 'Domain Name System (DNS) Cookies' [@!RFC7873])
+* 'Transport Layer Security (TLS) Session Resumption without Server-Side State'
+  [@!RFC5077] referred to here as simply TLS session resumption.
+* 'A DNS Packet Capture Format' [@?I-D.ietf-dnsop-dns-capture-format]
+* Passive DNS [@?I-D.ietf-dnsop-terminology-bis]
+
+Note that depending on the specifics of the implementation
+[@!I-D.ietf-doh-dns-over-https] may also provide increased tracking.
+
+## Related operational documents
+
+* 'DNS Transport over TCP - Implementation Requirements' [@!RFC7766]
+* 'Operational requirements for DNS-over-TCP'
+  [@?I-D.ietf-dnsop-dns-tcp-requirements]
+* 'The edns-tcp-keepalive EDNS0 Option' [@!RFC7828]
+* 'DNS Stateful Operations' [@!I-D.ietf-dnsop-session-signal]

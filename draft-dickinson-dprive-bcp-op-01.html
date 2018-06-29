@@ -376,10 +376,7 @@
   <link href="#rfc.toc" rel="Contents"/>
 <link href="#rfc.section.1" rel="Chapter" title="1 Introduction"/>
 <link href="#rfc.section.2" rel="Chapter" title="2 Scope"/>
-<link href="#rfc.section.3" rel="Chapter" title="3 Documents"/>
-<link href="#rfc.section.3.1" rel="Chapter" title="3.1 Potential increases in DNS privacy"/>
-<link href="#rfc.section.3.2" rel="Chapter" title="3.2 Potential decreases in DNS privacy"/>
-<link href="#rfc.section.3.3" rel="Chapter" title="3.3 Related operational documents"/>
+<link href="#rfc.section.3" rel="Chapter" title="3 Privacy related documents"/>
 <link href="#rfc.section.4" rel="Chapter" title="4 Terminology"/>
 <link href="#rfc.section.5" rel="Chapter" title="5 Recommendations for DNS privacy services"/>
 <link href="#rfc.section.5.1" rel="Chapter" title="5.1 On the wire between client and server"/>
@@ -392,7 +389,7 @@
 <link href="#rfc.section.5.2" rel="Chapter" title="5.2 Data at rest on the server"/>
 <link href="#rfc.section.5.2.1" rel="Chapter" title="5.2.1 Data handling"/>
 <link href="#rfc.section.5.2.2" rel="Chapter" title="5.2.2 IP address pseudonymization and anonymization methods"/>
-<link href="#rfc.section.5.2.3" rel="Chapter" title="5.2.3 Psuedonymization and anonymization of other correlation data"/>
+<link href="#rfc.section.5.2.3" rel="Chapter" title="5.2.3 Pseudonymization and anonymization of other correlation data"/>
 <link href="#rfc.section.5.2.4" rel="Chapter" title="5.2.4 Cache snooping"/>
 <link href="#rfc.section.5.3" rel="Chapter" title="5.3 Data sent onwards from the server"/>
 <link href="#rfc.section.5.3.1" rel="Chapter" title="5.3.1 Protocol recommendations"/>
@@ -414,6 +411,10 @@
 <link href="#rfc.references" rel="Chapter" title="12 References"/>
 <link href="#rfc.references.1" rel="Chapter" title="12.1 Normative References"/>
 <link href="#rfc.references.2" rel="Chapter" title="12.2 Informative References"/>
+<link href="#rfc.appendix.A" rel="Chapter" title="A Documents"/>
+<link href="#rfc.appendix.A.1" rel="Chapter" title="A.1 Potential increases in DNS privacy"/>
+<link href="#rfc.appendix.A.2" rel="Chapter" title="A.2 Potential decreases in DNS privacy"/>
+<link href="#rfc.appendix.A.3" rel="Chapter" title="A.3 Related operational documents"/>
 <link href="#rfc.authors" rel="Chapter"/>
 
 
@@ -422,7 +423,7 @@
 
   <meta name="dct.creator" content="Dickinson, S., Overeinder, B., van Rijswijk-Deij, R., and A. Mankin" />
   <meta name="dct.identifier" content="urn:ietf:id:draft-dickinson-dprive-bcp-op-01" />
-  <meta name="dct.issued" scheme="ISO8601" content="2018-6-26" />
+  <meta name="dct.issued" scheme="ISO8601" content="2018-6-29" />
   <meta name="dct.abstract" content="This document presents operational, policy and security considerations for DNS operators who choose to offer DNS Privacy services.  " />
   <meta name="description" content="This document presents operational, policy and security considerations for DNS operators who choose to offer DNS Privacy services.  " />
 
@@ -446,7 +447,7 @@
   <td class="right">B. Overeinder</td>
 </tr>
 <tr>
-  <td class="left">Expires: December 28, 2018</td>
+  <td class="left">Expires: December 31, 2018</td>
   <td class="right">NLnet Labs</td>
 </tr>
 <tr>
@@ -467,7 +468,7 @@
 </tr>
 <tr>
   <td class="left"></td>
-  <td class="right">June 26, 2018</td>
+  <td class="right">June 29, 2018</td>
 </tr>
 
     	
@@ -488,7 +489,7 @@
 <p>This Internet-Draft is submitted in full conformance with the provisions of BCP 78 and BCP 79.</p>
 <p>Internet-Drafts are working documents of the Internet Engineering Task Force (IETF).  Note that other groups may also distribute working documents as Internet-Drafts.  The list of current Internet-Drafts is at http://datatracker.ietf.org/drafts/current/.</p>
 <p>Internet-Drafts are draft documents valid for a maximum of six months and may be updated, replaced, or obsoleted by other documents at any time.  It is inappropriate to use Internet-Drafts as reference material or to cite them other than as "work in progress."</p>
-<p>This Internet-Draft will expire on December 28, 2018.</p>
+<p>This Internet-Draft will expire on December 31, 2018.</p>
 <h1 id="rfc.copyrightnotice">
   <a href="#rfc.copyrightnotice">Copyright Notice</a>
 </h1>
@@ -502,11 +503,8 @@
 
   	<li>1.   <a href="#rfc.section.1">Introduction</a></li>
 <li>2.   <a href="#rfc.section.2">Scope</a></li>
-<li>3.   <a href="#rfc.section.3">Documents</a></li>
-<ul><li>3.1.   <a href="#rfc.section.3.1">Potential increases in DNS privacy</a></li>
-<li>3.2.   <a href="#rfc.section.3.2">Potential decreases in DNS privacy</a></li>
-<li>3.3.   <a href="#rfc.section.3.3">Related operational documents</a></li>
-</ul><li>4.   <a href="#rfc.section.4">Terminology</a></li>
+<li>3.   <a href="#rfc.section.3">Privacy related documents</a></li>
+<li>4.   <a href="#rfc.section.4">Terminology</a></li>
 <li>5.   <a href="#rfc.section.5">Recommendations for DNS privacy services</a></li>
 <ul><li>5.1.   <a href="#rfc.section.5.1">On the wire between client and server</a></li>
 <ul><li>5.1.1.   <a href="#rfc.section.5.1.1">Transport recommendations</a></li>
@@ -518,7 +516,7 @@
 </ul><li>5.2.   <a href="#rfc.section.5.2">Data at rest on the server</a></li>
 <ul><li>5.2.1.   <a href="#rfc.section.5.2.1">Data handling</a></li>
 <li>5.2.2.   <a href="#rfc.section.5.2.2">IP address pseudonymization and anonymization methods</a></li>
-<li>5.2.3.   <a href="#rfc.section.5.2.3">Psuedonymization and anonymization of other correlation data</a></li>
+<li>5.2.3.   <a href="#rfc.section.5.2.3">Pseudonymization and anonymization of other correlation data</a></li>
 <li>5.2.4.   <a href="#rfc.section.5.2.4">Cache snooping</a></li>
 </ul><li>5.3.   <a href="#rfc.section.5.3">Data sent onwards from the server</a></li>
 <ul><li>5.3.1.   <a href="#rfc.section.5.3.1">Protocol recommendations</a></li>
@@ -540,6 +538,10 @@
 <li>12.   <a href="#rfc.references">References</a></li>
 <ul><li>12.1.   <a href="#rfc.references.1">Normative References</a></li>
 <li>12.2.   <a href="#rfc.references.2">Informative References</a></li>
+</ul><li>Appendix A.   <a href="#rfc.appendix.A">Documents</a></li>
+<ul><li>A.1.   <a href="#rfc.appendix.A.1">Potential increases in DNS privacy</a></li>
+<li>A.2.   <a href="#rfc.appendix.A.2">Potential decreases in DNS privacy</a></li>
+<li>A.3.   <a href="#rfc.appendix.A.3">Related operational documents</a></li>
 </ul><li><a href="#rfc.authors">Authors' Addresses</a></li>
 
 
@@ -575,57 +577,10 @@
 
 <p> </p>
 <p id="rfc.section.2.p.4">Whilst the issues raised here are targeted at those operators who choose to offer a DNS privacy service, considerations for areas 2 and 3 could equally apply to operators who only offer DNS over unencrypted transports but who would like to align with privacy best practice.  </p>
-<h1 id="rfc.section.3"><a href="#rfc.section.3">3.</a> <a href="#documents" id="documents">Documents</a></h1>
-<p id="rfc.section.3.p.1">There are various documents that describe protocol changes that have the potential to either increase or decrease the privacy of the DNS. Note this does not imply that some documents are good or bad, better or worse, just that (for example) some features may bring functional benefits at the price of a reduction in privacy and conversely some features increase privacy with an accompanying increase in complexity. A selection of the most relevant documents are listed in the following three sections for reference, however, this is neither an exhaustive list nor a definitive statement on the characteristic of the document.  </p>
-<p id="rfc.section.3.p.2">QUESTION: Should this section be an appendix? </p>
-<h1 id="rfc.section.3.1"><a href="#rfc.section.3.1">3.1.</a> <a href="#potential-increases-in-dns-privacy" id="potential-increases-in-dns-privacy">Potential increases in DNS privacy</a></h1>
-<p id="rfc.section.3.1.p.1">These documents are limited in scope to communications between stub clients and recursive resolvers: </p>
-<p/>
-
-<ul>
-  <li>'Specification for DNS over Transport Layer Security (TLS)' <a href="#RFC7858">[RFC7858]</a>, referred to here as 'DNS-over-TLS'.</li>
-  <li>'DNS over Datagram Transport Layer Security (DTLS)' <a href="#RFC8094">[RFC8094]</a>, referred to here as 'DNS-over-DTLS'. Note that this document has the Category of Experimental.</li>
-  <li>'DNS Queries over HTTPS (DoH)' <a href="#I-D.ietf-doh-dns-over-https">[I-D.ietf-doh-dns-over-https]</a> referred to here as DoH.</li>
-  <li>'Usage Profiles for DNS over TLS and DNS over DTLS' <a href="#RFC8310">[RFC8310]</a></li>
-  <li>'The EDNS(0) Padding Option' <a href="#RFC7830">[RFC7830]</a> and 'Padding Policy for EDNS(0)' <a href="#I-D.ietf-dprive-padding-policy">[I-D.ietf-dprive-padding-policy]</a></li>
-</ul>
-
-<p> </p>
-<p id="rfc.section.3.1.p.3">These documents apply to recursive to authoritative DNS but are relevant when considering the operation of a recursive server: </p>
-<p/>
-
-<ul>
-  <li>'DNS Query Name Minimisation to Improve Privacy' <a href="#RFC7816">[RFC7816]</a> referred to here as 'QNAME minimization'</li>
-</ul>
-
-<p> </p>
-<h1 id="rfc.section.3.2"><a href="#rfc.section.3.2">3.2.</a> <a href="#potential-decreases-in-dns-privacy" id="potential-decreases-in-dns-privacy">Potential decreases in DNS privacy</a></h1>
-<p id="rfc.section.3.2.p.1">These documents relate to functionality that could provide increased tracking of user activity as a side effect: </p>
-<p/>
-
-<ul>
-  <li>'Client Subnet in DNS Queries' <a href="#RFC7871">[RFC7871]</a></li>
-  <li>'Domain Name System (DNS) Cookies' <a href="#RFC7873">[RFC7873]</a>)</li>
-  <li>'Transport Layer Security (TLS) Session Resumption without Server-Side State' <a href="#RFC5077">[RFC5077]</a> referred to here as simply TLS session resumption.</li>
-  <li>'A DNS Packet Capture Format' <a href="#I-D.ietf-dnsop-dns-capture-format">[I-D.ietf-dnsop-dns-capture-format]</a></li>
-  <li>Passive DNS <a href="#I-D.ietf-dnsop-terminology-bis">[I-D.ietf-dnsop-terminology-bis]</a></li>
-</ul>
-
-<p> </p>
-<p id="rfc.section.3.2.p.3">Note that depending on the specifics of the implementation <a href="#I-D.ietf-doh-dns-over-https">[I-D.ietf-doh-dns-over-https]</a> may also provide increased tracking.  </p>
-<h1 id="rfc.section.3.3"><a href="#rfc.section.3.3">3.3.</a> <a href="#related-operational-documents" id="related-operational-documents">Related operational documents</a></h1>
-<p/>
-
-<ul>
-  <li>'DNS Transport over TCP - Implementation Requirements' <a href="#RFC7766">[RFC7766]</a></li>
-  <li>'Operational requirements for DNS-over-TCP' <a href="#I-D.ietf-dnsop-dns-tcp-requirements">[I-D.ietf-dnsop-dns-tcp-requirements]</a></li>
-  <li>'The edns-tcp-keepalive EDNS0 Option' <a href="#RFC7828">[RFC7828]</a></li>
-  <li>'DNS Stateful Operations' <a href="#I-D.ietf-dnsop-session-signal">[I-D.ietf-dnsop-session-signal]</a></li>
-</ul>
-
-<p> </p>
+<h1 id="rfc.section.3"><a href="#rfc.section.3">3.</a> <a href="#privacy-related-documents" id="privacy-related-documents">Privacy related documents</a></h1>
+<p id="rfc.section.3.p.1">There are various documents that describe protocol changes that have the potential to either increase or decrease the privacy of the DNS. Note this does not imply that some documents are good or bad, better or worse, just that (for example) some features may bring functional benefits at the price of a reduction in privacy and conversely some features increase privacy with an accompanying increase in complexity. A selection of the most relevant documents are listed in <a href="#documents">Appendix A</a> for reference.  </p>
 <h1 id="rfc.section.4"><a href="#rfc.section.4">4.</a> <a href="#terminology" id="terminology">Terminology</a></h1>
-<p id="rfc.section.4.p.1">The key words described in <a href="#RFC8174">[RFC8174]</a> are not used in this document because the intention here is not to prescribe policy but to provide indicators of best practice.  </p>
+<p id="rfc.section.4.p.1">The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in BCP 14 <a href="#RFC2119">[RFC2119]</a> <a href="#RFC8174">[RFC8174]</a> when, and only when, they appear in all capitals, as shown here.  </p>
 <p id="rfc.section.4.p.2">Privacy terminology is as described in Section 3 of <a href="#RFC6973">[RFC6973]</a>.  </p>
 <p id="rfc.section.4.p.3">DNS terminology is as described in <a href="#I-D.ietf-dnsop-terminology-bis">[I-D.ietf-dnsop-terminology-bis]</a> with one modification: we use the definition of Privacy-enabling DNS server taken from <a href="#RFC8310">[RFC8310]</a>: </p>
 <p/>
@@ -655,8 +610,17 @@
 </ul>
 
 <p> </p>
-<p id="rfc.section.5.p.3">For DNS Privacy services to be considered minimally compliant with best practices they should implement all the threat mitigations described here.  </p>
-<p id="rfc.section.5.p.4">TODO: Some of the threats listed in the following sections are taken directly from Section 5 of RFC6973, some are just standalone descriptions, we need to go through all of them and see if we can use the RFC6973 threats where possible and make them consistent.  </p>
+<p id="rfc.section.5.p.3">This document does not specify policy only best practice, however for DNS Privacy services to be considered compliant with these best practice guidelines they SHOULD implement (where appropriate) all: </p>
+<p/>
+
+<ul>
+  <li>Threat mitigations to be minimally compliant</li>
+  <li>Optimisations to be moderately compliant</li>
+  <li>Additional options to be maximally compliant</li>
+</ul>
+
+<p> </p>
+<p id="rfc.section.5.p.5">TODO: Some of the threats listed in the following sections are taken directly from Section 5 of RFC6973, some are just standalone descriptions, we need to go through all of them and see if we can use the RFC6973 threats where possible and make them consistent.  </p>
 <h1 id="rfc.section.5.1"><a href="#rfc.section.5.1">5.1.</a> <a href="#on-the-wire-between-client-and-server" id="on-the-wire-between-client-and-server">On the wire between client and server</a></h1>
 <p id="rfc.section.5.1.p.1">In this section we consider both data on the wire and the service provided to the client.  </p>
 <h1 id="rfc.section.5.1.1"><a href="#rfc.section.5.1.1">5.1.1.</a> <a href="#transport-recommendations" id="transport-recommendations">Transport recommendations</a></h1>
@@ -693,13 +657,13 @@
 <p/>
 
 <ul>
-  <li>Surveillance and Intrusion: Active attacks that can re-direction traffic to rogue servers</li>
+  <li>Surveillance and Intrusion: Active attacks that can redirect traffic to rogue servers</li>
 </ul>
 
 <p> </p>
 <p id="rfc.section.5.1.2.p.3">Mitigations: </p>
 <p id="rfc.section.5.1.2.p.4">DNS privacy services should ensure clients can authenticate the server. Note that this, in effect, commits the DNS privacy service to a public identity users will trust.  </p>
-<p id="rfc.section.5.1.2.p.5">When using DNS-over-TLS <a href="#RFC8310">[RFC8310]</a> clients that select a 'Strict Privacy' usage profile (to mitigate the threat of active attack on the client) require the ability to authenticate the DNS server. To enable this, DNS privacy services that offer DNS-over-TLS should provide credentials in the form of either X.509 certificates, SPKI pinsets or TLSA records.  </p>
+<p id="rfc.section.5.1.2.p.5">When using DNS-over-TLS clients that select a 'Strict Privacy' usage profile <a href="#RFC8310">[RFC8310]</a> (to mitigate the threat of active attack on the client) require the ability to authenticate the DNS server. To enable this, DNS privacy services that offer DNS-over-TLS should provide credentials in the form of either X.509 certificates, SPKI pinsets or TLSA records.  </p>
 <p id="rfc.section.5.1.2.p.6">When offering DoH <a href="#I-D.ietf-doh-dns-over-https">[I-D.ietf-doh-dns-over-https]</a>, HTTPS requires authentication of the server as part of the protocol.  </p>
 <p id="rfc.section.5.1.2.p.7">Optimisations: </p>
 <p id="rfc.section.5.1.2.p.8">DNS privacy services can also consider the following capabilities/options: </p>
@@ -713,28 +677,28 @@
 <p> </p>
 <h1 id="rfc.section.5.1.2.1"><a href="#rfc.section.5.1.2.1">5.1.2.1.</a> <a href="#certificate-management" id="certificate-management">Certificate management</a></h1>
 <p id="rfc.section.5.1.2.1.p.1">Anecdotal evidence to date highlights the management of certificates as one of the more challenging aspects for operators of traditional DNS resolvers that choose to additionally provide a DNS privacy service as management of such credentials is new to those DNS operators.  </p>
-<p id="rfc.section.5.1.2.1.p.2">Threats: </p>
+<p id="rfc.section.5.1.2.1.p.2">It is noted that SPKI pinset management is described in <a href="#RFC7858">[RFC7858]</a> but that key pinning mechanisms in general have fallen out of favour operationally for various reasons.  </p>
+<p id="rfc.section.5.1.2.1.p.3">Threats: </p>
 <p/>
 
 <ul>
   <li>Invalid certificates, resulting in an unavailable service.</li>
-  <li>Mis-identification of a server by a client e.g. typos in urls or authentication domain names</li>
+  <li>Mis-identification of a server by a client e.g. typos in URLs or authentication domain names</li>
 </ul>
 
 <p> </p>
-<p id="rfc.section.5.1.2.1.p.4">Mitigations: </p>
-<p id="rfc.section.5.1.2.1.p.5">It is recommended that operators: </p>
+<p id="rfc.section.5.1.2.1.p.5">Mitigations: </p>
+<p id="rfc.section.5.1.2.1.p.6">It is recommended that operators: </p>
 <p/>
 
 <ul>
   <li>Choose a short, memorable authentication name for their service</li>
   <li>Automate the generation and publication of certificates</li>
   <li>Monitor certificates to prevent accidental expiration of certificates</li>
-  <li>Consider re-use of the public/private keypair in the case of a service provided through DNS-over-TLS, as trust pin management by users is undefined, and may be hard to troubleshoot for both users and operators of a DNS privcy service (<em>RvRD: do we think it makes sense to add this?</em>) (Sara-&gt;RVRD: SPKI pinset use is defined, but increasingly shunned by operators so I haven mentioned it here...)</li>
 </ul>
 
 <p> </p>
-<p id="rfc.section.5.1.2.1.p.7">TODO: Can we provide references for certificate management best practice, for example Section 6.5 of RFC7525? </p>
+<p id="rfc.section.5.1.2.1.p.8">TODO: Could we provide references for certificate management best practice, for example Section 6.5 of RFC7525? </p>
 <h1 id="rfc.section.5.1.3"><a href="#rfc.section.5.1.3">5.1.3.</a> <a href="#protocol-recommendations" id="protocol-recommendations">Protocol recommendations</a></h1>
 <h1 id="rfc.section.5.1.3.1"><a href="#rfc.section.5.1.3.1">5.1.3.1.</a> <a href="#dnsovertls" id="dnsovertls">DNS-over-TLS</a></h1>
 <p id="rfc.section.5.1.3.1.p.1">Threats: </p>
@@ -755,8 +719,8 @@
 <ul>
   <li>Adhering to <a href="#RFC7525">[RFC7525]</a></li>
   <li>Implementing only (D)TLS 1.2 or later as specified in <a href="#RFC8310">[RFC8310]</a></li>
-  <li>Implementing EDNS(0) Padding <a href="#RFC7830">[RFC7830]</a></li>
-  <li>Clients should not be required to use TLS session resumption <a href="#RFC5077">[RFC5077]</a>, Domain Name System (DNS) Cookies <a href="#RFC7873">[RFC7873]</a> or HTTP Cookies <a href="#RFC6265">[RFC6265]</a>.</li>
+  <li>Implementing EDNS(0) Padding <a href="#RFC7830">[RFC7830]</a> using the guidelines in <a href="#I-D.ietf-dprive-padding-policy">[I-D.ietf-dprive-padding-policy]</a></li>
+  <li>Clients should not be required to use TLS session resumption <a href="#RFC5077">[RFC5077]</a>, Domain Name System (DNS) Cookies <a href="#RFC7873">[RFC7873]</a>.</li>
   <li>A DNS-over-TLS privacy service on both port 853 and 443. We note that this practice may require revision when DoH becomes more widely deployed, because of the potential use of the same ports for two incompatible types of service.</li>
 </ul>
 
@@ -779,6 +743,14 @@
 <p> </p>
 <h1 id="rfc.section.5.1.3.2"><a href="#rfc.section.5.1.3.2">5.1.3.2.</a> <a href="#doh" id="doh">DoH</a></h1>
 <p id="rfc.section.5.1.3.2.p.1">TODO: fill this in, some overlap with DNS-over-TLS but we need to address DoH specific ones if possible </p>
+<p id="rfc.section.5.1.3.2.p.2">Mitigations: </p>
+<p/>
+
+<ul>
+  <li>Clients should not be required to HTTP Cookies <a href="#RFC6265">[RFC6265]</a>.</li>
+</ul>
+
+<p> </p>
 <h1 id="rfc.section.5.1.4"><a href="#rfc.section.5.1.4">5.1.4.</a> <a href="#availability" id="availability">Availability</a></h1>
 <p id="rfc.section.5.1.4.p.1">Threats: </p>
 <p/>
@@ -841,7 +813,7 @@
 <p id="rfc.section.5.2.2.1.p.2">NOTE: There are some significant security concerns about the use of ipcipher that have been voiced by the ipcipher authors and its inclusion here should be reviewed.  </p>
 <h1 id="rfc.section.5.2.2.2"><a href="#rfc.section.5.2.2.2">5.2.2.2.</a> <a href="#bloom-filters" id="bloom-filters">Bloom filters</a></h1>
 <p id="rfc.section.5.2.2.2.p.1">There is also on-going work in the area of using Bloom filters as a privacy-enhancing technology for DNS monitoring <a href="#DNS-bloom-filter">[DNS-bloom-filter]</a>. The goal of this work is to allow operators to identify so-called Indicators of Compromise (IOCs) originating from specific subnets without storing information about, or be able to monitor the DNS queries of an individual user.  </p>
-<h1 id="rfc.section.5.2.3"><a href="#rfc.section.5.2.3">5.2.3.</a> <a href="#psuedonymization-and-anonymization-of-other-correlation-data" id="psuedonymization-and-anonymization-of-other-correlation-data">Psuedonymization and anonymization of other correlation data</a></h1>
+<h1 id="rfc.section.5.2.3"><a href="#rfc.section.5.2.3">5.2.3.</a> <a href="#pseudonymization-and-anonymization-of-other-correlation-data" id="pseudonymization-and-anonymization-of-other-correlation-data">Pseudonymization and anonymization of other correlation data</a></h1>
 <p id="rfc.section.5.2.3.p.1">TODO: Discuss tracking mechanisms other than IP address (DNS and HTTP cookies, Session resumption, etc.) </p>
 <h1 id="rfc.section.5.2.4"><a href="#rfc.section.5.2.4">5.2.4.</a> <a href="#cache-snooping" id="cache-snooping">Cache snooping</a></h1>
 <p id="rfc.section.5.2.4.p.1">Threats: </p>
@@ -875,8 +847,7 @@
 </ul>
 
 <p> </p>
-<p id="rfc.section.5.3.1.p.6">If operators do offer a service that sends the ECS options upstream they should make clear in any policy statement what prefix length they send and any policy for which upstream servers they send the option to (e.g. all, whitelist).  </p>
-<p id="rfc.section.5.3.1.p.7">Optimisations: </p>
+<p id="rfc.section.5.3.1.p.6">Optimisations: </p>
 <p/>
 
 <ul>
@@ -884,6 +855,7 @@
 </ul>
 
 <p> </p>
+<p id="rfc.section.5.3.1.p.8">If operators do offer a service that sends the ECS options upstream they should use the shortest prefix that is operationally feasible (NOTE: the authors believe they will be able to add a reference for advice here soon) and ideally use a policy of whitelisting upstream servers to send ECS to in order to minimise data leakage. Operators should make clear in any policy statement what prefix length they actually send and the specific policy used.  </p>
 <p id="rfc.section.5.3.1.p.9">Additional options: </p>
 <p/>
 
@@ -897,8 +869,7 @@
 <p id="rfc.section.5.3.2.p.1">Additional options: </p>
 <p id="rfc.section.5.3.2.p.2">Since queries from recursive resolvers to authoritative servers are performed using cleartext (at the time of writing), resolver services need to consider the extent to which they may be directly leaking information about their client community via these upstream queries and what they can do to mitigate this further. Note, that even when all the relevant techniques described above are employed there may still be attacks possible, e.g.  <a href="#Pitfalls-of-DNS-Encryption">[Pitfalls-of-DNS-Encryption]</a>. For example, a resolver with a very small community of users risks exposing data in this way and OUGHT obfuscate this traffic by mixing it with 'generated' traffic to make client characterisation harder. The resolver could also employ aggressive pre-fetch techniques as a further measure to counter traffic analysis.  </p>
 <p id="rfc.section.5.3.2.p.3">At the time of writing there are no standardized or widely recognized techniques to preform such obfuscation or bulk pre-fetches.  </p>
-<p><em>RvRD: this is sort of a slippery slope; personally, I would advocate hiding in the masses (large DNS privacy services) over obfuscation techniques. The risk of a false sense of security is real I think. It sparked a thought though, perhaps multiple smaller DNS privacy services can somehow collaborate and randomly share upstream queries with each other, this might homogenize what their traffic looks like to the outside world. (I hope you get what I mean)</em> </p>
-<p><em>Sara-&gt;RVRD: I take your point about smaller services increasing the risk, but since this is advice for operators, not clients should we bring that up here?</em> </p>
+<p id="rfc.section.5.3.2.p.4">Another technique that particularly small operators may consider is forwarding local traffic to a larger resolver (with a privacy policy that aligns with their own practices) over an encrypted protocol so that the upstream queries are obfuscated among those of the large resolver.  </p>
 <h1 id="rfc.section.5.3.3"><a href="#rfc.section.5.3.3">5.3.3.</a> <a href="#data-sharing" id="data-sharing">Data sharing</a></h1>
 <p id="rfc.section.5.3.3.p.1">Threats: </p>
 <p/>
@@ -916,7 +887,7 @@
 <p> </p>
 <p id="rfc.section.5.3.3.p.3">Mitigations: </p>
 <p id="rfc.section.5.3.3.p.4">Operators should not provide identifiable data to third-parties without explicit consent from clients (we take the stance here that simply using the resolution service itself does not constitute consent).  </p>
-<p id="rfc.section.5.3.3.p.5">Operators should consider including specific guidelines for the collection of aggregated and/or anonymised data for research purposes, within or outside of their own organisation </p>
+<p id="rfc.section.5.3.3.p.5">Operators should consider including specific guidelines for the collection of aggregated and/or anonymised data for research purposes, within or outside of their own organisation.  </p>
 <p id="rfc.section.5.3.3.p.6">TODO: More on data for research vs operations... how to still motivate operators to share anonymized data? </p>
 <p id="rfc.section.5.3.3.p.7">TODO: Guidelines for when consent is granted? </p>
 <p id="rfc.section.5.3.3.p.8">TODO: Applies to server data handling too.. could operators offer alternatives services one that implies consent for data processing, one that doesn't? </p>
@@ -976,7 +947,7 @@
 <ul>
   <li>Reworked the Terminology, Introduction and Scope</li>
   <li>Added Document section</li>
-  <li>Reworked the Recommendations section to not use RFC8174 keywords but to describe threat mitigations, optimisations and other options. Split the recommendations up into 3 subsections: on the wire, at rest and upstream</li>
+  <li>Reworked the Recommendations section to describe threat mitigations, optimisations and other options. Split the recommendations up into 3 subsections: on the wire, at rest and upstream</li>
   <li>Applied virtually all of Amelia Andersdotter's suggested changes.</li>
 </ul>
 
@@ -989,15 +960,16 @@
 </ul>
 
 <p> </p>
+<p/>
 <h1 id="rfc.references"><a href="#rfc.references">12.</a> References</h1>
 <h1 id="rfc.references.1"><a href="#rfc.references.1">12.1.</a> Normative References</h1>
 <table>
   <tbody>
     <tr>
       <td class="reference">
-        <b id="I-D.ietf-dnsop-session-signal">[I-D.ietf-dnsop-session-signal]</b>
+        <b id="I-D.ietf-dnsop-terminology-bis">[I-D.ietf-dnsop-terminology-bis]</b>
       </td>
-      <td class="top"><a>Bellis, R.</a>, <a>Cheshire, S.</a>, <a>Dickinson, J.</a>, <a>Dickinson, S.</a>, <a>Lemon, T.</a> and <a>T. Pusateri</a>, "<a href="http://tools.ietf.org/html/draft-ietf-dnsop-session-signal-10">DNS Stateful Operations</a>", Internet-Draft draft-ietf-dnsop-session-signal-10, June 2018.</td>
+      <td class="top"><a>Hoffman, P.</a>, <a>Sullivan, A.</a> and <a>K. Fujiwara</a>, "<a href="http://tools.ietf.org/html/draft-ietf-dnsop-terminology-bis-10">DNS Terminology</a>", Internet-Draft draft-ietf-dnsop-terminology-bis-10, April 2018.</td>
     </tr>
     <tr>
       <td class="reference">
@@ -1013,9 +985,21 @@
     </tr>
     <tr>
       <td class="reference">
+        <b id="RFC2119">[RFC2119]</b>
+      </td>
+      <td class="top"><a>Bradner, S.</a>, "<a href="http://tools.ietf.org/html/rfc2119">Key words for use in RFCs to Indicate Requirement Levels</a>", BCP 14, RFC 2119, DOI 10.17487/RFC2119, March 1997.</td>
+    </tr>
+    <tr>
+      <td class="reference">
         <b id="RFC5077">[RFC5077]</b>
       </td>
       <td class="top"><a>Salowey, J.</a>, <a>Zhou, H.</a>, <a>Eronen, P.</a> and <a>H. Tschofenig</a>, "<a href="http://tools.ietf.org/html/rfc5077">Transport Layer Security (TLS) Session Resumption without Server-Side State</a>", RFC 5077, DOI 10.17487/RFC5077, January 2008.</td>
+    </tr>
+    <tr>
+      <td class="reference">
+        <b id="RFC6265">[RFC6265]</b>
+      </td>
+      <td class="top"><a>Barth, A.</a>, "<a href="http://tools.ietf.org/html/rfc6265">HTTP State Management Mechanism</a>", RFC 6265, DOI 10.17487/RFC6265, April 2011.</td>
     </tr>
     <tr>
       <td class="reference">
@@ -1025,27 +1009,21 @@
     </tr>
     <tr>
       <td class="reference">
+        <b id="RFC7525">[RFC7525]</b>
+      </td>
+      <td class="top"><a>Sheffer, Y.</a>, <a>Holz, R.</a> and <a>P. Saint-Andre</a>, "<a href="http://tools.ietf.org/html/rfc7525">Recommendations for Secure Use of Transport Layer Security (TLS) and Datagram Transport Layer Security (DTLS)</a>", BCP 195, RFC 7525, DOI 10.17487/RFC7525, May 2015.</td>
+    </tr>
+    <tr>
+      <td class="reference">
         <b id="RFC7626">[RFC7626]</b>
       </td>
       <td class="top"><a>Bortzmeyer, S.</a>, "<a href="http://tools.ietf.org/html/rfc7626">DNS Privacy Considerations</a>", RFC 7626, DOI 10.17487/RFC7626, August 2015.</td>
     </tr>
     <tr>
       <td class="reference">
-        <b id="RFC7766">[RFC7766]</b>
-      </td>
-      <td class="top"><a>Dickinson, J.</a>, <a>Dickinson, S.</a>, <a>Bellis, R.</a>, <a>Mankin, A.</a> and <a>D. Wessels</a>, "<a href="http://tools.ietf.org/html/rfc7766">DNS Transport over TCP - Implementation Requirements</a>", RFC 7766, DOI 10.17487/RFC7766, March 2016.</td>
-    </tr>
-    <tr>
-      <td class="reference">
         <b id="RFC7816">[RFC7816]</b>
       </td>
       <td class="top"><a>Bortzmeyer, S.</a>, "<a href="http://tools.ietf.org/html/rfc7816">DNS Query Name Minimisation to Improve Privacy</a>", RFC 7816, DOI 10.17487/RFC7816, March 2016.</td>
-    </tr>
-    <tr>
-      <td class="reference">
-        <b id="RFC7828">[RFC7828]</b>
-      </td>
-      <td class="top"><a>Wouters, P.</a>, <a>Abley, J.</a>, <a>Dickinson, S.</a> and <a>R. Bellis</a>, "<a href="http://tools.ietf.org/html/rfc7828">The edns-tcp-keepalive EDNS0 Option</a>", RFC 7828, DOI 10.17487/RFC7828, April 2016.</td>
     </tr>
     <tr>
       <td class="reference">
@@ -1061,21 +1039,9 @@
     </tr>
     <tr>
       <td class="reference">
-        <b id="RFC7871">[RFC7871]</b>
-      </td>
-      <td class="top"><a>Contavalli, C.</a>, <a>van der Gaast, W.</a>, <a>Lawrence, D.</a> and <a>W. Kumari</a>, "<a href="http://tools.ietf.org/html/rfc7871">Client Subnet in DNS Queries</a>", RFC 7871, DOI 10.17487/RFC7871, May 2016.</td>
-    </tr>
-    <tr>
-      <td class="reference">
         <b id="RFC7873">[RFC7873]</b>
       </td>
       <td class="top"><a>Eastlake 3rd, D.</a> and <a>M. Andrews</a>, "<a href="http://tools.ietf.org/html/rfc7873">Domain Name System (DNS) Cookies</a>", RFC 7873, DOI 10.17487/RFC7873, May 2016.</td>
-    </tr>
-    <tr>
-      <td class="reference">
-        <b id="RFC8094">[RFC8094]</b>
-      </td>
-      <td class="top"><a>Reddy, T.</a>, <a>Wing, D.</a> and <a>P. Patil</a>, "<a href="http://tools.ietf.org/html/rfc8094">DNS over Datagram Transport Layer Security (DTLS)</a>", RFC 8094, DOI 10.17487/RFC8094, February 2017.</td>
     </tr>
     <tr>
       <td class="reference">
@@ -1114,9 +1080,9 @@
     </tr>
     <tr>
       <td class="reference">
-        <b id="I-D.ietf-dnsop-terminology-bis">[I-D.ietf-dnsop-terminology-bis]</b>
+        <b id="I-D.ietf-dnsop-session-signal">[I-D.ietf-dnsop-session-signal]</b>
       </td>
-      <td class="top"><a>Hoffman, P.</a>, <a>Sullivan, A.</a> and <a>K. Fujiwara</a>, "<a href="http://tools.ietf.org/html/draft-ietf-dnsop-terminology-bis-10">DNS Terminology</a>", Internet-Draft draft-ietf-dnsop-terminology-bis-10, April 2018.</td>
+      <td class="top"><a>Bellis, R.</a>, <a>Cheshire, S.</a>, <a>Dickinson, J.</a>, <a>Dickinson, S.</a>, <a>Lemon, T.</a> and <a>T. Pusateri</a>, "<a href="http://tools.ietf.org/html/draft-ietf-dnsop-session-signal-10">DNS Stateful Operations</a>", Internet-Draft draft-ietf-dnsop-session-signal-10, June 2018.</td>
     </tr>
     <tr>
       <td class="reference">
@@ -1138,21 +1104,9 @@
     </tr>
     <tr>
       <td class="reference">
-        <b id="RFC6265">[RFC6265]</b>
-      </td>
-      <td class="top"><a>Barth, A.</a>, "<a href="http://tools.ietf.org/html/rfc6265">HTTP State Management Mechanism</a>", RFC 6265, DOI 10.17487/RFC6265, April 2011.</td>
-    </tr>
-    <tr>
-      <td class="reference">
         <b id="RFC6841">[RFC6841]</b>
       </td>
       <td class="top"><a>Ljunggren, F.</a>, <a>Eklund Lowinder, AM.</a> and <a>T. Okubo</a>, "<a href="http://tools.ietf.org/html/rfc6841">A Framework for DNSSEC Policies and DNSSEC Practice Statements</a>", RFC 6841, DOI 10.17487/RFC6841, January 2013.</td>
-    </tr>
-    <tr>
-      <td class="reference">
-        <b id="RFC7525">[RFC7525]</b>
-      </td>
-      <td class="top"><a>Sheffer, Y.</a>, <a>Holz, R.</a> and <a>P. Saint-Andre</a>, "<a href="http://tools.ietf.org/html/rfc7525">Recommendations for Secure Use of Transport Layer Security (TLS) and Datagram Transport Layer Security (DTLS)</a>", BCP 195, RFC 7525, DOI 10.17487/RFC7525, May 2015.</td>
     </tr>
     <tr>
       <td class="reference">
@@ -1168,12 +1122,84 @@
     </tr>
     <tr>
       <td class="reference">
+        <b id="RFC7766">[RFC7766]</b>
+      </td>
+      <td class="top"><a>Dickinson, J.</a>, <a>Dickinson, S.</a>, <a>Bellis, R.</a>, <a>Mankin, A.</a> and <a>D. Wessels</a>, "<a href="http://tools.ietf.org/html/rfc7766">DNS Transport over TCP - Implementation Requirements</a>", RFC 7766, DOI 10.17487/RFC7766, March 2016.</td>
+    </tr>
+    <tr>
+      <td class="reference">
+        <b id="RFC7828">[RFC7828]</b>
+      </td>
+      <td class="top"><a>Wouters, P.</a>, <a>Abley, J.</a>, <a>Dickinson, S.</a> and <a>R. Bellis</a>, "<a href="http://tools.ietf.org/html/rfc7828">The edns-tcp-keepalive EDNS0 Option</a>", RFC 7828, DOI 10.17487/RFC7828, April 2016.</td>
+    </tr>
+    <tr>
+      <td class="reference">
+        <b id="RFC7871">[RFC7871]</b>
+      </td>
+      <td class="top"><a>Contavalli, C.</a>, <a>van der Gaast, W.</a>, <a>Lawrence, D.</a> and <a>W. Kumari</a>, "<a href="http://tools.ietf.org/html/rfc7871">Client Subnet in DNS Queries</a>", RFC 7871, DOI 10.17487/RFC7871, May 2016.</td>
+    </tr>
+    <tr>
+      <td class="reference">
+        <b id="RFC8094">[RFC8094]</b>
+      </td>
+      <td class="top"><a>Reddy, T.</a>, <a>Wing, D.</a> and <a>P. Patil</a>, "<a href="http://tools.ietf.org/html/rfc8094">DNS over Datagram Transport Layer Security (DTLS)</a>", RFC 8094, DOI 10.17487/RFC8094, February 2017.</td>
+    </tr>
+    <tr>
+      <td class="reference">
         <b id="RFC8198">[RFC8198]</b>
       </td>
       <td class="top"><a>Fujiwara, K.</a>, <a>Kato, A.</a> and <a>W. Kumari</a>, "<a href="http://tools.ietf.org/html/rfc8198">Aggressive Use of DNSSEC-Validated Cache</a>", RFC 8198, DOI 10.17487/RFC8198, July 2017.</td>
     </tr>
   </tbody>
 </table>
+<h1 id="rfc.appendix.A"><a href="#rfc.appendix.A">Appendix A.</a> <a href="#documents" id="documents">Documents</a></h1>
+<p id="rfc.section.A.p.1">This section provides an overview of some DNS privacy related documents, however, this is neither an exhaustive list nor a definitive statement on the characteristic of the document.  </p>
+<h1 id="rfc.appendix.A.1"><a href="#rfc.appendix.A.1">A.1.</a> <a href="#potential-increases-in-dns-privacy" id="potential-increases-in-dns-privacy">Potential increases in DNS privacy</a></h1>
+<p id="rfc.section.A.1.p.1">These documents are limited in scope to communications between stub clients and recursive resolvers: </p>
+<p/>
+
+<ul>
+  <li>'Specification for DNS over Transport Layer Security (TLS)' <a href="#RFC7858">[RFC7858]</a>, referred to here as 'DNS-over-TLS'.</li>
+  <li>'DNS over Datagram Transport Layer Security (DTLS)' <a href="#RFC8094">[RFC8094]</a>, referred to here as 'DNS-over-DTLS'. Note that this document has the Category of Experimental.</li>
+  <li>'DNS Queries over HTTPS (DoH)' <a href="#I-D.ietf-doh-dns-over-https">[I-D.ietf-doh-dns-over-https]</a> referred to here as DoH.</li>
+  <li>'Usage Profiles for DNS over TLS and DNS over DTLS' <a href="#RFC8310">[RFC8310]</a></li>
+  <li>'The EDNS(0) Padding Option' <a href="#RFC7830">[RFC7830]</a> and 'Padding Policy for EDNS(0)' <a href="#I-D.ietf-dprive-padding-policy">[I-D.ietf-dprive-padding-policy]</a></li>
+</ul>
+
+<p> </p>
+<p id="rfc.section.A.1.p.3">These documents apply to recursive to authoritative DNS but are relevant when considering the operation of a recursive server: </p>
+<p/>
+
+<ul>
+  <li>'DNS Query Name Minimisation to Improve Privacy' <a href="#RFC7816">[RFC7816]</a> referred to here as 'QNAME minimization'</li>
+</ul>
+
+<p> </p>
+<h1 id="rfc.appendix.A.2"><a href="#rfc.appendix.A.2">A.2.</a> <a href="#potential-decreases-in-dns-privacy" id="potential-decreases-in-dns-privacy">Potential decreases in DNS privacy</a></h1>
+<p id="rfc.section.A.2.p.1">These documents relate to functionality that could provide increased tracking of user activity as a side effect: </p>
+<p/>
+
+<ul>
+  <li>'Client Subnet in DNS Queries' <a href="#RFC7871">[RFC7871]</a></li>
+  <li>'Domain Name System (DNS) Cookies' <a href="#RFC7873">[RFC7873]</a>)</li>
+  <li>'Transport Layer Security (TLS) Session Resumption without Server-Side State' <a href="#RFC5077">[RFC5077]</a> referred to here as simply TLS session resumption.</li>
+  <li>'A DNS Packet Capture Format' <a href="#I-D.ietf-dnsop-dns-capture-format">[I-D.ietf-dnsop-dns-capture-format]</a></li>
+  <li>Passive DNS <a href="#I-D.ietf-dnsop-terminology-bis">[I-D.ietf-dnsop-terminology-bis]</a></li>
+</ul>
+
+<p> </p>
+<p id="rfc.section.A.2.p.3">Note that depending on the specifics of the implementation <a href="#I-D.ietf-doh-dns-over-https">[I-D.ietf-doh-dns-over-https]</a> may also provide increased tracking.  </p>
+<h1 id="rfc.appendix.A.3"><a href="#rfc.appendix.A.3">A.3.</a> <a href="#related-operational-documents" id="related-operational-documents">Related operational documents</a></h1>
+<p/>
+
+<ul>
+  <li>'DNS Transport over TCP - Implementation Requirements' <a href="#RFC7766">[RFC7766]</a></li>
+  <li>'Operational requirements for DNS-over-TCP' <a href="#I-D.ietf-dnsop-dns-tcp-requirements">[I-D.ietf-dnsop-dns-tcp-requirements]</a></li>
+  <li>'The edns-tcp-keepalive EDNS0 Option' <a href="#RFC7828">[RFC7828]</a></li>
+  <li>'DNS Stateful Operations' <a href="#I-D.ietf-dnsop-session-signal">[I-D.ietf-dnsop-session-signal]</a></li>
+</ul>
+
+<p> </p>
 <h1 id="rfc.authors">
   <a href="#rfc.authors">Authors' Addresses</a>
 </h1>
