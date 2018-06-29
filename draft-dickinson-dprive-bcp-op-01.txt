@@ -105,7 +105,7 @@ Table of Contents
    8.  Security considerations . . . . . . . . . . . . . . . . . . .  19
    9.  Acknowledgements  . . . . . . . . . . . . . . . . . . . . . .  19
    10. Contributors  . . . . . . . . . . . . . . . . . . . . . . . .  19
-   11. Changelog . . . . . . . . . . . . . . . . . . . . . . . . . .  19
+   11. Changelog . . . . . . . . . . . . . . . . . . . . . . . . . .  20
 
 
 
@@ -116,20 +116,20 @@ Internet-Draft     DNS Privacy Service Recommendations         June 2018
 
    12. References  . . . . . . . . . . . . . . . . . . . . . . . . .  20
      12.1.  Normative References . . . . . . . . . . . . . . . . . .  20
-     12.2.  Informative References . . . . . . . . . . . . . . . . .  21
+     12.2.  Informative References . . . . . . . . . . . . . . . . .  22
      12.3.  URIs . . . . . . . . . . . . . . . . . . . . . . . . . .  23
    Appendix A.  Documents  . . . . . . . . . . . . . . . . . . . . .  24
      A.1.  Potential increases in DNS privacy  . . . . . . . . . . .  24
-     A.2.  Potential decreases in DNS privacy  . . . . . . . . . . .  24
+     A.2.  Potential decreases in DNS privacy  . . . . . . . . . . .  25
      A.3.  Related operational documents . . . . . . . . . . . . . .  25
    Appendix B.  IP address techniques  . . . . . . . . . . . . . . .  25
-     B.1.  Google Analytics non-prefix filtering . . . . . . . . . .  26
+     B.1.  Google Analytics non-prefix filtering . . . . . . . . . .  27
      B.2.  dnswasher . . . . . . . . . . . . . . . . . . . . . . . .  27
      B.3.  Prefix-preserving map . . . . . . . . . . . . . . . . . .  27
-     B.4.  Cryptographic Prefix-Preserving Pseudonymisation  . . . .  27
+     B.4.  Cryptographic Prefix-Preserving Pseudonymisation  . . . .  28
      B.5.  Top-hash Subtree-replicated Anonymisation . . . . . . . .  28
      B.6.  ipcipher  . . . . . . . . . . . . . . . . . . . . . . . .  28
-     B.7.  Bloom filters . . . . . . . . . . . . . . . . . . . . . .  28
+     B.7.  Bloom filters . . . . . . . . . . . . . . . . . . . . . .  29
    Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  29
 
 1.  Introduction
@@ -1051,13 +1051,13 @@ Internet-Draft     DNS Privacy Service Recommendations         June 2018
    Oxford OX4 4GA
    United Kingdom
 
-11.  Changelog
+   Jim Hague
+   Sinodun Internet Technologies
+   Magdalen Centre
+   Oxford Science Park
+   Oxford OX4 4GA
+   United Kingdom
 
-   draft-dickinson-dprive-bcp-op-01
-
-   o  Reworked the Terminology, Introduction and Scope
-
-   o  Added Document section
 
 
 
@@ -1065,6 +1065,14 @@ Dickinson, et al.       Expires December 31, 2018              [Page 19]
 
 Internet-Draft     DNS Privacy Service Recommendations         June 2018
 
+
+11.  Changelog
+
+   draft-dickinson-dprive-bcp-op-01
+
+   o  Reworked the Terminology, Introduction and Scope
+
+   o  Added Document section
 
    o  Reworked the Recommendations section to describe threat
       mitigations, optimizations and other options.  Split the
@@ -1105,6 +1113,15 @@ Internet-Draft     DNS Privacy Service Recommendations         June 2018
               Server-Side State", RFC 5077, DOI 10.17487/RFC5077,
               January 2008, <https://www.rfc-editor.org/info/rfc5077>.
 
+
+
+
+
+Dickinson, et al.       Expires December 31, 2018              [Page 20]
+
+Internet-Draft     DNS Privacy Service Recommendations         June 2018
+
+
    [RFC6265]  Barth, A., "HTTP State Management Mechanism", RFC 6265,
               DOI 10.17487/RFC6265, April 2011, <https://www.rfc-
               editor.org/info/rfc6265>.
@@ -1114,13 +1131,6 @@ Internet-Draft     DNS Privacy Service Recommendations         June 2018
               Considerations for Internet Protocols", RFC 6973,
               DOI 10.17487/RFC6973, July 2013, <https://www.rfc-
               editor.org/info/rfc6973>.
-
-
-
-Dickinson, et al.       Expires December 31, 2018              [Page 20]
-
-Internet-Draft     DNS Privacy Service Recommendations         June 2018
-
 
    [RFC7525]  Sheffer, Y., Holz, R., and P. Saint-Andre,
               "Recommendations for Secure Use of Transport Layer
@@ -1158,6 +1168,16 @@ Internet-Draft     DNS Privacy Service Recommendations         June 2018
               DOI 10.17487/RFC8310, March 2018, <https://www.rfc-
               editor.org/info/rfc8310>.
 
+
+
+
+
+
+Dickinson, et al.       Expires December 31, 2018              [Page 21]
+
+Internet-Draft     DNS Privacy Service Recommendations         June 2018
+
+
 12.2.  Informative References
 
    [I-D.ietf-dnsop-dns-capture-format]
@@ -1170,13 +1190,6 @@ Internet-Draft     DNS Privacy Service Recommendations         June 2018
               Kristoff, J. and D. Wessels, "DNS Transport over TCP -
               Operational Requirements", draft-ietf-dnsop-dns-tcp-
               requirements-02 (work in progress), May 2018.
-
-
-
-Dickinson, et al.       Expires December 31, 2018              [Page 21]
-
-Internet-Draft     DNS Privacy Service Recommendations         June 2018
-
 
    [I-D.ietf-dnsop-session-signal]
               Bellis, R., Cheshire, S., Dickinson, J., Dickinson, S.,
@@ -1210,6 +1223,17 @@ Internet-Draft     DNS Privacy Service Recommendations         June 2018
               Domain Name", RFC 7686, DOI 10.17487/RFC7686, October
               2015, <https://www.rfc-editor.org/info/rfc7686>.
 
+
+
+
+
+
+
+Dickinson, et al.       Expires December 31, 2018              [Page 22]
+
+Internet-Draft     DNS Privacy Service Recommendations         June 2018
+
+
    [RFC7706]  Kumari, W. and P. Hoffman, "Decreasing Access Time to Root
               Servers by Running One on Loopback", RFC 7706,
               DOI 10.17487/RFC7706, November 2015, <https://www.rfc-
@@ -1224,15 +1248,6 @@ Internet-Draft     DNS Privacy Service Recommendations         June 2018
               edns-tcp-keepalive EDNS0 Option", RFC 7828,
               DOI 10.17487/RFC7828, April 2016, <https://www.rfc-
               editor.org/info/rfc7828>.
-
-
-
-
-
-Dickinson, et al.       Expires December 31, 2018              [Page 22]
-
-Internet-Draft     DNS Privacy Service Recommendations         June 2018
-
 
    [RFC7871]  Contavalli, C., van der Gaast, W., Lawrence, D., and W.
               Kumari, "Client Subnet in DNS Queries", RFC 7871,
@@ -1267,6 +1282,14 @@ Internet-Draft     DNS Privacy Service Recommendations         June 2018
    [7] https://pdfs.semanticscholar.org/7b34/12c951cebe71cd2cddac5fda164
        fb2138a44.pdf
 
+
+
+
+Dickinson, et al.       Expires December 31, 2018              [Page 23]
+
+Internet-Draft     DNS Privacy Service Recommendations         June 2018
+
+
    [8] https://support.google.com/analytics/answer/2763052?hl=en
 
    [9] https://www.conversionworks.co.uk/blog/2017/05/19/anonymize-ip-
@@ -1282,13 +1305,6 @@ Internet-Draft     DNS Privacy Service Recommendations         June 2018
    [13] https://www.cc.gatech.edu/computing/Telecomm/projects/cryptopan/
 
    [14] http://mharvan.net/talks/noms-ip_anon.pdf
-
-
-
-Dickinson, et al.       Expires December 31, 2018              [Page 23]
-
-Internet-Draft     DNS Privacy Service Recommendations         June 2018
-
 
    [15] https://medium.com/@bert.hubert/on-ip-address-encryption-
         security-analysis-with-respect-for-privacy-dabe1201b476
@@ -1322,6 +1338,14 @@ A.1.  Potential increases in DNS privacy
    o  'DNS Queries over HTTPS (DoH)' [I-D.ietf-doh-dns-over-https]
       referred to here as DoH.
 
+
+
+
+Dickinson, et al.       Expires December 31, 2018              [Page 24]
+
+Internet-Draft     DNS Privacy Service Recommendations         June 2018
+
+
    o  'Usage Profiles for DNS over TLS and DNS over DTLS' [RFC8310]
 
    o  'The EDNS(0) Padding Option' [RFC7830] and 'Padding Policy for
@@ -1337,14 +1361,6 @@ A.2.  Potential decreases in DNS privacy
 
    These documents relate to functionality that could provide increased
    tracking of user activity as a side effect:
-
-
-
-
-Dickinson, et al.       Expires December 31, 2018              [Page 24]
-
-Internet-Draft     DNS Privacy Service Recommendations         June 2018
-
 
    o  'Client Subnet in DNS Queries' [RFC7871]
 
@@ -1378,6 +1394,14 @@ Appendix B.  IP address techniques
    and the properties of their outputs.  The following builds on the
    categorisation employed in [RFC6235]:
 
+
+
+
+Dickinson, et al.       Expires December 31, 2018              [Page 25]
+
+Internet-Draft     DNS Privacy Service Recommendations         June 2018
+
+
    o  Format-preserving.  Normally when encrypting, the original data
       length and patterns in the data should be hidden from an attacker.
       Some applications of de-identification, such as network capture
@@ -1394,13 +1418,6 @@ Appendix B.  IP address techniques
       that their de-identified counterparts will also share a subnet.
       Prefix preservation may be fixed - the extent of the prefix to be
       preserved must be identified in advance - or general.
-
-
-
-Dickinson, et al.       Expires December 31, 2018              [Page 25]
-
-Internet-Draft     DNS Privacy Service Recommendations         June 2018
-
 
    o  Replacement.  A one-to-one replacement of a field to a new value
       of the same type, for example using a regular expression.
@@ -1431,6 +1448,16 @@ Internet-Draft     DNS Privacy Service Recommendations         June 2018
       a hash function or cryptographic block cipher, to generate a
       replacement de-identified value.
 
+
+
+
+
+
+Dickinson, et al.       Expires December 31, 2018              [Page 26]
+
+Internet-Draft     DNS Privacy Service Recommendations         June 2018
+
+
 B.1.  Google Analytics non-prefix filtering
 
    Since May 2010, Google Analytics has provided a facility [8] that
@@ -1445,18 +1472,6 @@ B.1.  Google Analytics non-prefix filtering
    in identification of the user city for UK users is no more than 17%.
 
    Anonymization: Format-preserving, Filtering (grey marking).
-
-
-
-
-
-
-
-
-Dickinson, et al.       Expires December 31, 2018              [Page 26]
-
-Internet-Draft     DNS Privacy Service Recommendations         June 2018
-
 
 B.2.  dnswasher
 
@@ -1488,6 +1503,17 @@ B.3.  Prefix-preserving map
 
    Anonymization: Format-preserving, prefix preservation (general).
 
+
+
+
+
+
+
+Dickinson, et al.       Expires December 31, 2018              [Page 27]
+
+Internet-Draft     DNS Privacy Service Recommendations         June 2018
+
+
 B.4.  Cryptographic Prefix-Preserving Pseudonymisation
 
    Cryptographic prefix-preserving pseudonymisation was originally
@@ -1505,14 +1531,6 @@ B.4.  Cryptographic Prefix-Preserving Pseudonymisation
    results for some number of prefix bits.
 
    Pseudonymization: Format-preserving, prefix preservation (general).
-
-
-
-
-Dickinson, et al.       Expires December 31, 2018              [Page 27]
-
-Internet-Draft     DNS Privacy Service Recommendations         June 2018
-
 
 B.5.  Top-hash Subtree-replicated Anonymisation
 
@@ -1542,6 +1560,16 @@ B.6.  ipcipher
 
    Pseudonymization: Format-preserving, cryptographic permutation.
 
+
+
+
+
+
+Dickinson, et al.       Expires December 31, 2018              [Page 28]
+
+Internet-Draft     DNS Privacy Service Recommendations         June 2018
+
+
 B.7.  Bloom filters
 
    van Rijswijk-Deij et al. [19] have recently described work using
@@ -1561,14 +1589,6 @@ B.7.  Bloom filters
    with tools used to process live traffic.
 
    Anonymized: Generalisation.
-
-
-
-
-Dickinson, et al.       Expires December 31, 2018              [Page 28]
-
-Internet-Draft     DNS Privacy Service Recommendations         June 2018
-
 
 Authors' Addresses
 
@@ -1600,6 +1620,12 @@ Authors' Addresses
    Email: roland.vanrijswijk@surfnet.nl
 
 
+
+Dickinson, et al.       Expires December 31, 2018              [Page 29]
+
+Internet-Draft     DNS Privacy Service Recommendations         June 2018
+
+
    Allison Mankin
    Salesforce
 
@@ -1621,4 +1647,34 @@ Authors' Addresses
 
 
 
-Dickinson, et al.       Expires December 31, 2018              [Page 29]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Dickinson, et al.       Expires December 31, 2018              [Page 30]

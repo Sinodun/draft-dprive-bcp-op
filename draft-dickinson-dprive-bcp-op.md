@@ -782,6 +782,13 @@ Oxford Science Park\\
 Oxford  OX4 4GA\\
 United Kingdom
 
+Jim Hague\\
+Sinodun Internet Technologies\\
+Magdalen Centre\\
+Oxford Science Park\\
+Oxford  OX4 4GA\\
+United Kingdom
+
 # Changelog
 draft-dickinson-dprive-bcp-op-01
 
