@@ -113,6 +113,10 @@ a trust relationship exists. The ability of the operator to provide a
 transparent, well documented, and secure privacy service will likely serve as a
 major differentiating factor for privacy conscious users if they make an
 active selection of which resolver to use.
+<mark>(*RvRD: I'm wondering whether we should differentiate between "indifferent users"
+for whom this trust relationship is implicit, and "privacy-conscious users", that
+make an explicit trust choice; this may prove relevant in the context of e.g.
+the GDPR as it relates to consent.*)</mark>
 
 It should also be noted that the choice of a user to configure a single resolver
 (or a fixed set of resolvers) and an encrypted transport to use in all network
@@ -131,6 +135,7 @@ constitutes consent from the user for the operator to process their query data.
 The impact of recent legislative changes on data pertaining to the users of both
 Internet Service Providers and DNS open resolvers is not fully understood at the
 time of writing.
+<mark>(*RvRD: I can share the short privacy statement SURFnet will use for its resolvers*)</mark>
 
 This document has two main goals:
 
@@ -188,6 +193,7 @@ exhaustive list nor a definitive statement on the characteristic of the
 document.
 
 QUESTION: Should this section be an appendix?
+<mark>(*RvRD: I think it makes sense to move this to an appendix*)</mark>
 
 ## Potential increases in DNS privacy
 
@@ -316,7 +322,7 @@ document.
 
 Threats: 
 
-* Surveillance and Intrusion: Active attacks that can re-direction traffic to
+* Surveillance and Intrusion: Active attacks that can redirect traffic to
   rogue servers
 
 Mitigations:
@@ -356,7 +362,7 @@ credentials is new to those DNS operators.
 Threats: 
 
 * Invalid certificates, resulting in an unavailable service.
-* Mis-identification of a server by a client e.g. typos in urls or
+* Mis-identification of a server by a client e.g. typos in URLs or
   authentication domain names
 
 Mitigations:
@@ -371,7 +377,8 @@ It is recommended that operators:
   and may be hard to troubleshoot for both users and operators of a DNS privcy
   service (*RvRD: do we think it makes sense to add this?*) (Sara->RVRD: SPKI
   pinset use is defined, but increasingly shunned by operators so I haven
-  mentioned it here...)
+  mentioned it here...) <mark>(*RvRD: should we then more explicitly 
+  recommend steering clear of SPKI pinsets?*)</mark>
 
 TODO: Can we provide references for certificate management best practice, for
 example Section 6.5 of RFC7525?
@@ -530,7 +537,7 @@ this work is to allow operators to identify so-called Indicators of Compromise
 be able to monitor the DNS queries of an individual user.
 
 
-### Psuedonymization and anonymization of other correlation data
+### Pseudonymization and anonymization of other correlation data
 
 TODO: Discuss tracking mechanisms other than IP address (DNS and HTTP cookies,
 Session resumption, etc.)
@@ -566,6 +573,8 @@ As specified in [@!RFC8310] for DNS-over-TLS but applicable to any DNS Privacy s
   Client Subnet (ECS) option and not send an ECS option in upstream queries.
 
 If operators do offer a service that sends the ECS options upstream they should make clear in any policy statement what prefix length they send and any policy for which upstream servers they send the option to (e.g. all, whitelist).
+
+<mark>(*RvRD: note: I have a bachelor student working on this, who has been looking at what are good prefix sizes to e.g. geo-locate a client to a country or continent; will share results when available. I'm considering following up on his work with a paper at some point to help the discussion about ECS along.*)</mark>
 
 Optimisations:
 
@@ -603,6 +612,8 @@ to preform such obfuscation or bulk pre-fetches.
 
 *Sara->RVRD: I take your point about smaller services increasing the risk, but since this is advice for operators, not clients should we bring that up here?*
 
+<mark>*RvRD->Sara: I think we should, because I can easily think of smaller organisations (say a university college) running a DNS privacy service, where they are an operator, just a small one; they could consider hiding in the masses by sending local traffic upstream to a larger resolver with a privacy policy that aligns with their own practices.*</mark>
+
 
 ### Data sharing
 
@@ -626,7 +637,7 @@ service itself does not constitute consent).
 
 Operators should consider including specific guidelines for the collection of
 aggregated and/or anonymised data for research purposes, within or outside of
-their own organisation
+their own organisation.
 
 TODO: More on data for research vs operations... how to still motivate operators
 to share anonymized data?
