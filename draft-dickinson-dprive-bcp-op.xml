@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE rfc SYSTEM 'rfc2629.dtd' []>
-<rfc ipr="trust200902" category="bcp" docName="draft-dickinson-dprive-bcp-op-01">
+<rfc ipr="trust200902" category="bcp" docName="draft-dickinson-dprive-bcp-op-00">
 <?rfc toc="yes"?>
 <?rfc symrefs="yes"?>
 <?rfc sortrefs="yes"?>
@@ -186,10 +186,10 @@ areas (taken from <xref target="RFC7626"/>):
 </t>
 <t>
 <list style="numbers">
-<t>Data on the wire between a client and a server</t>
+<t>Data &quot;on the wire&quot; between a client and a server</t>
 <t>Data &quot;at rest&quot; on a server (e.g. in logs)</t>
-<t>Data sent onwards from the server (either on the wire or shared with a third
-party)</t>
+<t>Data &quot;sent onwards&quot; from the server (either on the wire or shared with a
+third party)</t>
 </list>
 </t>
 <t>Whilst the issues raised here are targeted at those operators who choose to
@@ -433,6 +433,10 @@ of the potential use of the same ports for two incompatible types of service.</t
 </t>
 <t>
 <list style="symbols">
+<t>Concurrent processing of pipelined queries, returning responses as soon as
+available, potentially out of order as specified in <xref target="RFC7766"/>. This is often
+called 'OOOR' - out-of-order responses. (Providing processing performance
+similar to HTTP multiplexing)</t>
 <t>Management of TLS connections to optimise performance for clients using either
 <list style="symbols">
 <t><xref target="RFC7766"/> and EDNS(0) Keepalive <xref target="RFC7828"/> and/or</t>
@@ -459,7 +463,7 @@ specific ones if possible
 </t>
 <t>
 <list style="symbols">
-<t>Clients should not be required to HTTP Cookies <xref target="RFC6265"/>.</t>
+<t>Clients should not be required to use HTTP Cookies <xref target="RFC6265"/>.</t>
 </list>
 </t>
 </section>
@@ -623,8 +627,6 @@ and other properties. The list of techniques includes the main techniques in
 current use, but does not claim to be comprehensive. <xref target="ip-address-techniques"/>
 provides a more detailed survey of these techniques and definitions for the
 categories and properties listed below.
-</t>
-<t><eref target="https://github.com/Sinodun/draft-dprive-bcp-op/blob/master/draft-01/ip_techniques_table.png">Figure showing comparison of IP address techniques (PNG)</eref>
 </t>
 <t><eref target="https://github.com/Sinodun/draft-dprive-bcp-op/blob/master/draft-01/ip_techniques_table.svg">Figure showing comparison of IP address techniques (SVG)</eref>
 </t>
@@ -796,74 +798,137 @@ services one that implies consent for data processing, one that doesn't?
 <section anchor="dns-privacy-policy-and-practice-statement" title="DNS privacy policy and practice statement">
 
 <section anchor="recommended-contents-of-a-dppps" title="Recommended contents of a DPPPS">
-<t>1 Policy.
+<t>1 Policy
 </t>
 <t>1.1 Recommendations. This section should explain, with reference to section
       <xref target="recommendations-for-dns-privacy-services"/> of this document which
       recommendations the DNS privacy service employs.
 </t>
-<t>1.2. Data handling. This section should explain, with reference to section
+<t>1.2 Data handling. This section should explain, with reference to section
        <xref target="data-at-rest-on-the-server"/>
        of this document the policy for gathering and disseminating information
        collected by the DNS privacy service.
 </t>
-<t>1.2.1. Specify clearly what data (including whether it is aggregated,
+<t>1.2.1 Specify clearly what data (including whether it is aggregated,
         pseudonymized or anonymized) is:
 </t>
-<t>1.2.1.1. Collected and retained by the operator (and for how long)
+<t>1.2.1.1 Collected and retained by the operator (and for how long)
 </t>
-<t>1.2.1.2. Shared with, sold or rented to third-parties
+<t>1.2.1.2 Shared with partners
 </t>
-<t>1.2.2 Specify any exceptions to the above, for example technically malicious or
+<t>1.2.1.3  Shared, sold or rented to third-parties
+</t>
+<t>1.2.2  Specify any exceptions to the above, for example technically malicious or
 anomalous behaviour
 </t>
-<t>1.2.3 Declare any third-party affiliations or funding
+<t>1.2.3  Declare any partners, third-party affiliations or sources of funding
 </t>
 <t>1.2.4 Whether user DNS data is correlated or combined with any other personal
-    information held by the operator
+      information held by the operator
 </t>
 <t>2 Practice. This section should explain the current operational practices of the service.
 </t>
 <t>2.1 Specify any temporary or permanent deviations from the policy for
     operational reasons
 </t>
-<t>2.2 Provide specific details of which capabilities are provided on which
-      address and ports
+<t>2.2 With reference to section <xref target="on-the-wire-between-client-and-server"/> provide
+    specific details of which capabilities are provided on which address and
+    ports
 </t>
-<t>2.3 Specify the authentication name to be used (if any)
+<t>2.3 With reference to section <xref target="data-sent-onwards-from-the-server"/>
+    provide specific details of which capabilities are employed for upstream
+    traffic from the server for
 </t>
-<t>2.4 Specify the SPKI pinsets to be used (if any) and policy for rolling keys
+<t>2.4 Specify the authentication name to be used (if any) and if TLSA records are
+    published (including options used in the TLSA records)
 </t>
-<t>2.5 Provide a contact email address for the service
+<t>2.5 Specify the SPKI pinsets to be used (if any) and policy for rolling keys
+</t>
+<t>2.6 Provide a contact email address for the service
 </t>
 </section>
 
-<section anchor="current-privacy-statements" title="Current privacy statements">
+<section anchor="current-policy-and-privacy-statements" title="Current policy and privacy statements">
 <t>NOTE: An analysis of these statements will clearly only provide a snapshot at
 the time of writing. It is included in this version of the draft to provide a
 basis for the assessment of the contents of the DPPPS and is expected to be
 removed or substantially re-worked in a future version.
 </t>
 
-<section anchor="google" title="Google">
-<t><eref target="https://developers.google.com/speed/public-dns/privacy"/>
-</t>
-</section>
-
 <section anchor="quad9" title="Quad9">
-<t><eref target="https://www.quad9.net/policy/"/>
+<t>UDP/TCP and TLS (port 853) service provided on two addresses:
 </t>
-</section>
-
-<section anchor="opendns" title="OpenDNS">
-<t><eref target="https://www.cisco.com/c/en/us/about/legal/privacy-full.html"/>
+<t>
+<list style="symbols">
+<t>'Secure': 9.9.9.9, 149.112.112.112, 2620:fe::fe, 2620:fe::9</t>
+<t>'Unsecured': 9.9.9.10, 149.112.112.10, 2620:fe::10</t>
+</list>
+</t>
+<t>Policy:
+</t>
+<t>
+<list style="symbols">
+<t><eref target="https://www.quad9.net/policy/"/></t>
+<t><eref target="https://www.quad9.net/privacy/"/></t>
+<t><eref target="https://www.quad9.net/faq/"/></t>
+</list>
 </t>
 </section>
 
 <section anchor="cloudflare" title="Cloudflare">
-<t><eref target="https://developers.cloudflare.com/1.1.1.1/commitment-to-privacy/"/>
-<eref target="https://developers.cloudflare.com/1.1.1.1/commitment-to-privacy/privacy-policy/privacy-policy/"/>
-<eref target="https://developers.cloudflare.com/1.1.1.1/commitment-to-privacy/privacy-policy/firefox/"/>
+<t>UDP/TCP and TLS (port 853)  service provided on 1.1.1.1, 1.0.0.1, 2606:4700:4700::1111 and 2606:4700:4700::1001.
+</t>
+<t>Policy:
+</t>
+<t>
+<list style="symbols">
+<t><eref target="https://developers.cloudflare.com/1.1.1.1/commitment-to-privacy/privacy-policy/privacy-policy/"/></t>
+</list>
+</t>
+<t>DoH provided on: <eref target="https://cloudflare-dns.com/dns-query"/>
+</t>
+<t>Policy:
+</t>
+<t>
+<list style="symbols">
+<t><eref target="https://developers.cloudflare.com/1.1.1.1/commitment-to-privacy/privacy-policy/firefox/"/></t>
+</list>
+</t>
+<t>Tor endpoint: <eref target="https://dns4torpnlfs2ifuz2s2yf3fc7rdmsbhm6rw75euj35pac6ap25zgqad.onion"/>.
+</t>
+</section>
+
+<section anchor="google" title="Google">
+<t>UDP/TCP service provided on 8.8.8.8, 8.8.4.4, 2001:4860:4860::8888 and  2001:4860:4860::8844.
+</t>
+<t>Policy: <eref target="https://developers.google.com/speed/public-dns/privacy"/>
+</t>
+</section>
+
+<section anchor="opendns" title="OpenDNS">
+<t>UDP/TCP service provided on 208.67.222.222 and 208.67.220.220 (no IPv6).
+</t>
+<t>We could find no specific privacy policy for the DNS resolution, only a general
+one from Cisco that seems focussed on websites.
+</t>
+<t>Policy: <eref target="https://www.cisco.com/c/en/us/about/legal/privacy-full.html"/>
+</t>
+</section>
+
+<section anchor="comparison" title="Comparison">
+<t>The following tables provides a high-level comparison of the policy and practice
+statements above and also some observations of practice measured at
+<eref target="https://dnsprivacy.org/jenkins/job/dnsprivacy-monitoring/">dnsprivacy.org</eref>. The
+data is not exhaustive and has not been reviewed or confirmed by the operators.
+</t>
+<t>A question mark indicates no clear statement or data could be located on the issue. A dash indicates the category is not applicable to the service.
+</t>
+<t><eref target="https://github.com/Sinodun/draft-dprive-bcp-op/blob/master/draft-01/policy_table.svg">Table showing comparison of operators policies</eref>
+</t>
+<t><eref target="https://github.com/Sinodun/draft-dprive-bcp-op/blob/master/draft-01/practice_table.svg">Table showing comparison of operators practices</eref>
+</t>
+<t>NOTE: Review and correction of any inaccuracies in the table would be much
+appreciated.
 </t>
 </section>
 </section>
@@ -933,7 +998,9 @@ United Kingdom
 </section>
 
 <section anchor="changelog" title="Changelog">
-<t>draft-dickinson-dprive-bcp-op-01
+<t>draft-dickinson-dprive-bcp-op-00
+</t>
+<t>Name change to add dprive. Differences to draft-dickinson-bcp-op-00:
 </t>
 <t>
 <list style="symbols">
@@ -942,10 +1009,13 @@ United Kingdom
 <t>Reworked the Recommendations section to describe threat mitigations,
 optimizations and other options. Split the recommendations up into 3
 subsections: on the wire, at rest and upstream</t>
+<t>Added much more information on data handling and IP address pseudonymization
+and anonymization</t>
+<t>Added more details and comparison of some existing policy/privacy policies</t>
 <t>Applied virtually all of Amelia Andersdotter's suggested changes.</t>
 </list>
 </t>
-<t>draft-dickinson-dprive-bcp-op-00
+<t>draft-dickinson-bcp-op-00
 </t>
 <t>
 <list style="symbols">

@@ -398,11 +398,12 @@
 <link href="#rfc.section.5.3.3" rel="Chapter" title="5.3.3 Data sharing"/>
 <link href="#rfc.section.6" rel="Chapter" title="6 DNS privacy policy and practice statement"/>
 <link href="#rfc.section.6.1" rel="Chapter" title="6.1 Recommended contents of a DPPPS"/>
-<link href="#rfc.section.6.2" rel="Chapter" title="6.2 Current privacy statements"/>
-<link href="#rfc.section.6.2.1" rel="Chapter" title="6.2.1 Google"/>
-<link href="#rfc.section.6.2.2" rel="Chapter" title="6.2.2 Quad9"/>
-<link href="#rfc.section.6.2.3" rel="Chapter" title="6.2.3 OpenDNS"/>
-<link href="#rfc.section.6.2.4" rel="Chapter" title="6.2.4 Cloudflare"/>
+<link href="#rfc.section.6.2" rel="Chapter" title="6.2 Current policy and privacy statements"/>
+<link href="#rfc.section.6.2.1" rel="Chapter" title="6.2.1 Quad9"/>
+<link href="#rfc.section.6.2.2" rel="Chapter" title="6.2.2 Cloudflare"/>
+<link href="#rfc.section.6.2.3" rel="Chapter" title="6.2.3 Google"/>
+<link href="#rfc.section.6.2.4" rel="Chapter" title="6.2.4 OpenDNS"/>
+<link href="#rfc.section.6.2.5" rel="Chapter" title="6.2.5 Comparison"/>
 <link href="#rfc.section.6.3" rel="Chapter" title="6.3 Enforcement/accountability"/>
 <link href="#rfc.section.7" rel="Chapter" title="7 IANA considerations"/>
 <link href="#rfc.section.8" rel="Chapter" title="8 Security considerations"/>
@@ -431,7 +432,7 @@
   <link rel="schema.dct" href="http://purl.org/dc/terms/" />
 
   <meta name="dct.creator" content="Dickinson, S., Overeinder, B., van Rijswijk-Deij, R., and A. Mankin" />
-  <meta name="dct.identifier" content="urn:ietf:id:draft-dickinson-dprive-bcp-op-01" />
+  <meta name="dct.identifier" content="urn:ietf:id:draft-dickinson-dprive-bcp-op-00" />
   <meta name="dct.issued" scheme="ISO8601" content="2018-6-29" />
   <meta name="dct.abstract" content="This document presents operational, policy and security considerations for DNS operators who choose to offer DNS Privacy services.  " />
   <meta name="description" content="This document presents operational, policy and security considerations for DNS operators who choose to offer DNS Privacy services.  " />
@@ -485,7 +486,7 @@
   </table>
 
   <p class="title">Recommendations for DNS Privacy Service Operators<br />
-  <span class="filename">draft-dickinson-dprive-bcp-op-01</span></p>
+  <span class="filename">draft-dickinson-dprive-bcp-op-00</span></p>
   
   <h1 id="rfc.abstract">
   <a href="#rfc.abstract">Abstract</a>
@@ -534,11 +535,12 @@
 <li>5.3.3.   <a href="#rfc.section.5.3.3">Data sharing</a></li>
 </ul></ul><li>6.   <a href="#rfc.section.6">DNS privacy policy and practice statement</a></li>
 <ul><li>6.1.   <a href="#rfc.section.6.1">Recommended contents of a DPPPS</a></li>
-<li>6.2.   <a href="#rfc.section.6.2">Current privacy statements</a></li>
-<ul><li>6.2.1.   <a href="#rfc.section.6.2.1">Google</a></li>
-<li>6.2.2.   <a href="#rfc.section.6.2.2">Quad9</a></li>
-<li>6.2.3.   <a href="#rfc.section.6.2.3">OpenDNS</a></li>
-<li>6.2.4.   <a href="#rfc.section.6.2.4">Cloudflare</a></li>
+<li>6.2.   <a href="#rfc.section.6.2">Current policy and privacy statements</a></li>
+<ul><li>6.2.1.   <a href="#rfc.section.6.2.1">Quad9</a></li>
+<li>6.2.2.   <a href="#rfc.section.6.2.2">Cloudflare</a></li>
+<li>6.2.3.   <a href="#rfc.section.6.2.3">Google</a></li>
+<li>6.2.4.   <a href="#rfc.section.6.2.4">OpenDNS</a></li>
+<li>6.2.5.   <a href="#rfc.section.6.2.5">Comparison</a></li>
 </ul><li>6.3.   <a href="#rfc.section.6.3">Enforcement/accountability</a></li>
 </ul><li>7.   <a href="#rfc.section.7">IANA considerations</a></li>
 <li>8.   <a href="#rfc.section.8">Security considerations</a></li>
@@ -588,9 +590,9 @@
 <p/>
 
 <ol>
-  <li>Data on the wire between a client and a server</li>
+  <li>Data "on the wire" between a client and a server</li>
   <li>Data "at rest" on a server (e.g. in logs)</li>
-  <li>Data sent onwards from the server (either on the wire or shared with a third party)</li>
+  <li>Data "sent onwards" from the server (either on the wire or shared with a third party)</li>
 </ol>
 
 <p> </p>
@@ -747,6 +749,7 @@
 <p/>
 
 <ul>
+  <li>Concurrent processing of pipelined queries, returning responses as soon as available, potentially out of order as specified in <a href="#RFC7766">[RFC7766]</a>. This is often called 'OOOR' - out-of-order responses. (Providing processing performance similar to HTTP multiplexing)</li>
   <li>Management of TLS connections to optimise performance for clients using either <ul><li><a href="#RFC7766">[RFC7766]</a> and EDNS(0) Keepalive <a href="#RFC7828">[RFC7828]</a> and/or</li><li>DNS Stateful Operations <a href="#I-D.ietf-dnsop-session-signal">[I-D.ietf-dnsop-session-signal]</a> <br/></li></ul></li>
 </ul>
 
@@ -765,7 +768,7 @@
 <p/>
 
 <ul>
-  <li>Clients should not be required to HTTP Cookies <a href="#RFC6265">[RFC6265]</a>.</li>
+  <li>Clients should not be required to use HTTP Cookies <a href="#RFC6265">[RFC6265]</a>.</li>
 </ul>
 
 <p> </p>
@@ -841,10 +844,9 @@
 <h1 id="rfc.section.5.2.3"><a href="#rfc.section.5.2.3">5.2.3.</a> <a href="#ip-address-pseudonymization-and-anonymization-methods" id="ip-address-pseudonymization-and-anonymization-methods">IP address pseudonymization and anonymization methods</a></h1>
 <p id="rfc.section.5.2.3.p.1">As RFC7626 makes clear, the big privacy risk in DNS is connecting DNS queries to an individual and the major vector for this in DNS traffic is the client IP address.  </p>
 <p id="rfc.section.5.2.3.p.2">There is active discussion in the space of effective pseudonymization of IP addresses in DNS traffic logs, however there seems to be no single solution that is widely recognised as suitable for all or most use cases. There are also as yet no standards for this that are unencumbered by patents. This following table presents a high level comparison of various techniques employed or under development today and classifies then according to categorisation of technique and other properties. The list of techniques includes the main techniques in current use, but does not claim to be comprehensive. <a href="#ip-address-techniques">Appendix B</a> provides a more detailed survey of these techniques and definitions for the categories and properties listed below.  </p>
-<p><a href="https://github.com/Sinodun/draft-dprive-bcp-op/blob/master/draft-01/ip_techniques_table.png">Figure showing comparison of IP address techniques (PNG)</a> </p>
 <p><a href="https://github.com/Sinodun/draft-dprive-bcp-op/blob/master/draft-01/ip_techniques_table.svg">Figure showing comparison of IP address techniques (SVG)</a> </p>
-<p id="rfc.section.5.2.3.p.5">The choice of which method to use for a particular application will depend on the requirements of that application and consideration of the threat analysis of the particular situation.  </p>
-<p id="rfc.section.5.2.3.p.6">For example, a common goal is that distributed packet captures must be in an existing data format such as PCAP <a href="#pcap">[pcap]</a> or C-DNS <a href="#I-D.ietf-dnsop-dns-capture-format">[I-D.ietf-dnsop-dns-capture-format]</a> that can be used as input to existing analysis tools. In that case, use of a Format-preserving technique is essential. This, though, is not cost-free - several authors (e.g. <a href="https://pdfs.semanticscholar.org/7b34/12c951cebe71cd2cddac5fda164fb2138a44.pdf">Brenker &amp; Arnes</a>) have observed that, as the entropy in a IPv4 address is limited, given a de-identified log from a target, if an attacker is capable of ensuring packets are captured by the target and the attacker can send forged traffic with arbitrary source and destination addresses to that target, any format-preserving pseudonymization is vulnerable to an attack along the lines of a cryptographic chosen plaintext attack.  </p>
+<p id="rfc.section.5.2.3.p.4">The choice of which method to use for a particular application will depend on the requirements of that application and consideration of the threat analysis of the particular situation.  </p>
+<p id="rfc.section.5.2.3.p.5">For example, a common goal is that distributed packet captures must be in an existing data format such as PCAP <a href="#pcap">[pcap]</a> or C-DNS <a href="#I-D.ietf-dnsop-dns-capture-format">[I-D.ietf-dnsop-dns-capture-format]</a> that can be used as input to existing analysis tools. In that case, use of a Format-preserving technique is essential. This, though, is not cost-free - several authors (e.g. <a href="https://pdfs.semanticscholar.org/7b34/12c951cebe71cd2cddac5fda164fb2138a44.pdf">Brenker &amp; Arnes</a>) have observed that, as the entropy in a IPv4 address is limited, given a de-identified log from a target, if an attacker is capable of ensuring packets are captured by the target and the attacker can send forged traffic with arbitrary source and destination addresses to that target, any format-preserving pseudonymization is vulnerable to an attack along the lines of a cryptographic chosen plaintext attack.  </p>
 <h1 id="rfc.section.5.2.4"><a href="#rfc.section.5.2.4">5.2.4.</a> <a href="#pseudonymization-anonymization-or-discarding-of-other-correlation-data" id="pseudonymization-anonymization-or-discarding-of-other-correlation-data">Pseudonymization, anonymization or discarding of other correlation data</a></h1>
 <p id="rfc.section.5.2.4.p.1">TODO: Discuss correlation data and tracking mechanisms other than IP address </p>
 <p/>
@@ -937,31 +939,98 @@
 <p id="rfc.section.5.3.3.p.9">TODO: Applies to server data handling too.. could operators offer alternatives services one that implies consent for data processing, one that doesn't? </p>
 <h1 id="rfc.section.6"><a href="#rfc.section.6">6.</a> <a href="#dns-privacy-policy-and-practice-statement" id="dns-privacy-policy-and-practice-statement">DNS privacy policy and practice statement</a></h1>
 <h1 id="rfc.section.6.1"><a href="#rfc.section.6.1">6.1.</a> <a href="#recommended-contents-of-a-dppps" id="recommended-contents-of-a-dppps">Recommended contents of a DPPPS</a></h1>
-<p id="rfc.section.6.1.p.1">1 Policy.  </p>
+<p id="rfc.section.6.1.p.1">1 Policy </p>
 <p id="rfc.section.6.1.p.2">1.1 Recommendations. This section should explain, with reference to section <a href="#recommendations-for-dns-privacy-services">Section 5</a> of this document which recommendations the DNS privacy service employs.  </p>
-<p id="rfc.section.6.1.p.3">1.2. Data handling. This section should explain, with reference to section <a href="#data-at-rest-on-the-server">Section 5.2</a> of this document the policy for gathering and disseminating information collected by the DNS privacy service.  </p>
-<p id="rfc.section.6.1.p.4">1.2.1. Specify clearly what data (including whether it is aggregated, pseudonymized or anonymized) is: </p>
-<p id="rfc.section.6.1.p.5">1.2.1.1. Collected and retained by the operator (and for how long) </p>
-<p id="rfc.section.6.1.p.6">1.2.1.2. Shared with, sold or rented to third-parties </p>
-<p id="rfc.section.6.1.p.7">1.2.2 Specify any exceptions to the above, for example technically malicious or anomalous behaviour </p>
-<p id="rfc.section.6.1.p.8">1.2.3 Declare any third-party affiliations or funding </p>
-<p id="rfc.section.6.1.p.9">1.2.4 Whether user DNS data is correlated or combined with any other personal information held by the operator </p>
-<p id="rfc.section.6.1.p.10">2 Practice. This section should explain the current operational practices of the service.  </p>
-<p id="rfc.section.6.1.p.11">2.1 Specify any temporary or permanent deviations from the policy for operational reasons </p>
-<p id="rfc.section.6.1.p.12">2.2 Provide specific details of which capabilities are provided on which address and ports </p>
-<p id="rfc.section.6.1.p.13">2.3 Specify the authentication name to be used (if any) </p>
-<p id="rfc.section.6.1.p.14">2.4 Specify the SPKI pinsets to be used (if any) and policy for rolling keys </p>
-<p id="rfc.section.6.1.p.15">2.5 Provide a contact email address for the service </p>
-<h1 id="rfc.section.6.2"><a href="#rfc.section.6.2">6.2.</a> <a href="#current-privacy-statements" id="current-privacy-statements">Current privacy statements</a></h1>
+<p id="rfc.section.6.1.p.3">1.2 Data handling. This section should explain, with reference to section <a href="#data-at-rest-on-the-server">Section 5.2</a> of this document the policy for gathering and disseminating information collected by the DNS privacy service.  </p>
+<p id="rfc.section.6.1.p.4">1.2.1 Specify clearly what data (including whether it is aggregated, pseudonymized or anonymized) is: </p>
+<p id="rfc.section.6.1.p.5">1.2.1.1 Collected and retained by the operator (and for how long) </p>
+<p id="rfc.section.6.1.p.6">1.2.1.2 Shared with partners </p>
+<p id="rfc.section.6.1.p.7">1.2.1.3  Shared, sold or rented to third-parties </p>
+<p id="rfc.section.6.1.p.8">1.2.2  Specify any exceptions to the above, for example technically malicious or anomalous behaviour </p>
+<p id="rfc.section.6.1.p.9">1.2.3  Declare any partners, third-party affiliations or sources of funding </p>
+<p id="rfc.section.6.1.p.10">1.2.4 Whether user DNS data is correlated or combined with any other personal information held by the operator </p>
+<p id="rfc.section.6.1.p.11">2 Practice. This section should explain the current operational practices of the service.  </p>
+<p id="rfc.section.6.1.p.12">2.1 Specify any temporary or permanent deviations from the policy for operational reasons </p>
+<p id="rfc.section.6.1.p.13">2.2 With reference to section <a href="#on-the-wire-between-client-and-server">Section 5.1</a> provide specific details of which capabilities are provided on which address and ports </p>
+<p id="rfc.section.6.1.p.14">2.3 With reference to section <a href="#data-sent-onwards-from-the-server">Section 5.3</a> provide specific details of which capabilities are employed for upstream traffic from the server for </p>
+<p id="rfc.section.6.1.p.15">2.4 Specify the authentication name to be used (if any) and if TLSA records are published (including options used in the TLSA records) </p>
+<p id="rfc.section.6.1.p.16">2.5 Specify the SPKI pinsets to be used (if any) and policy for rolling keys </p>
+<p id="rfc.section.6.1.p.17">2.6 Provide a contact email address for the service </p>
+<h1 id="rfc.section.6.2"><a href="#rfc.section.6.2">6.2.</a> <a href="#current-policy-and-privacy-statements" id="current-policy-and-privacy-statements">Current policy and privacy statements</a></h1>
 <p id="rfc.section.6.2.p.1">NOTE: An analysis of these statements will clearly only provide a snapshot at the time of writing. It is included in this version of the draft to provide a basis for the assessment of the contents of the DPPPS and is expected to be removed or substantially re-worked in a future version.  </p>
-<h1 id="rfc.section.6.2.1"><a href="#rfc.section.6.2.1">6.2.1.</a> <a href="#google" id="google">Google</a></h1>
-<p><span>&lt;</span><a href="https://developers.google.com/speed/public-dns/privacy">https://developers.google.com/speed/public-dns/privacy</a><span>&gt;</span> </p>
-<h1 id="rfc.section.6.2.2"><a href="#rfc.section.6.2.2">6.2.2.</a> <a href="#quad9" id="quad9">Quad9</a></h1>
-<p><span>&lt;</span><a href="https://www.quad9.net/policy/">https://www.quad9.net/policy/</a><span>&gt;</span> </p>
-<h1 id="rfc.section.6.2.3"><a href="#rfc.section.6.2.3">6.2.3.</a> <a href="#opendns" id="opendns">OpenDNS</a></h1>
-<p><span>&lt;</span><a href="https://www.cisco.com/c/en/us/about/legal/privacy-full.html">https://www.cisco.com/c/en/us/about/legal/privacy-full.html</a><span>&gt;</span> </p>
-<h1 id="rfc.section.6.2.4"><a href="#rfc.section.6.2.4">6.2.4.</a> <a href="#cloudflare" id="cloudflare">Cloudflare</a></h1>
-<p><span>&lt;</span><a href="https://developers.cloudflare.com/1.1.1.1/commitment-to-privacy/">https://developers.cloudflare.com/1.1.1.1/commitment-to-privacy/</a><span>&gt;</span> <span>&lt;</span><a href="https://developers.cloudflare.com/1.1.1.1/commitment-to-privacy/privacy-policy/privacy-policy/">https://developers.cloudflare.com/1.1.1.1/commitment-to-privacy/privacy-policy/privacy-policy/</a><span>&gt;</span> <span>&lt;</span><a href="https://developers.cloudflare.com/1.1.1.1/commitment-to-privacy/privacy-policy/firefox/">https://developers.cloudflare.com/1.1.1.1/commitment-to-privacy/privacy-policy/firefox/</a><span>&gt;</span> </p>
+<h1 id="rfc.section.6.2.1"><a href="#rfc.section.6.2.1">6.2.1.</a> <a href="#quad9" id="quad9">Quad9</a></h1>
+<p id="rfc.section.6.2.1.p.1">UDP/TCP and TLS (port 853) service provided on two addresses: </p>
+<p/>
+
+<ul>
+  <li>'Secure': 9.9.9.9, 149.112.112.112, 2620:fe::fe, 2620:fe::9</li>
+  <li>'Unsecured': 9.9.9.10, 149.112.112.10, 2620:fe::10</li>
+</ul>
+
+<p> </p>
+<p id="rfc.section.6.2.1.p.3">Policy: </p>
+<p/>
+
+<ul>
+  <li>
+    <span>&lt;</span>
+    <a href="https://www.quad9.net/policy/">https://www.quad9.net/policy/</a>
+    <span>&gt;</span>
+  </li>
+  <li>
+    <span>&lt;</span>
+    <a href="https://www.quad9.net/privacy/">https://www.quad9.net/privacy/</a>
+    <span>&gt;</span>
+  </li>
+  <li>
+    <span>&lt;</span>
+    <a href="https://www.quad9.net/faq/">https://www.quad9.net/faq/</a>
+    <span>&gt;</span>
+  </li>
+</ul>
+
+<p> </p>
+<h1 id="rfc.section.6.2.2"><a href="#rfc.section.6.2.2">6.2.2.</a> <a href="#cloudflare" id="cloudflare">Cloudflare</a></h1>
+<p id="rfc.section.6.2.2.p.1">UDP/TCP and TLS (port 853)  service provided on 1.1.1.1, 1.0.0.1, 2606:4700:4700::1111 and 2606:4700:4700::1001.  </p>
+<p id="rfc.section.6.2.2.p.2">Policy: </p>
+<p/>
+
+<ul>
+  <li>
+    <span>&lt;</span>
+    <a href="https://developers.cloudflare.com/1.1.1.1/commitment-to-privacy/privacy-policy/privacy-policy/">https://developers.cloudflare.com/1.1.1.1/commitment-to-privacy/privacy-policy/privacy-policy/</a>
+    <span>&gt;</span>
+  </li>
+</ul>
+
+<p> </p>
+<p id="rfc.section.6.2.2.p.4">DoH provided on: <span>&lt;</span><a href="https://cloudflare-dns.com/dns-query">https://cloudflare-dns.com/dns-query</a><span>&gt;</span> </p>
+<p id="rfc.section.6.2.2.p.5">Policy: </p>
+<p/>
+
+<ul>
+  <li>
+    <span>&lt;</span>
+    <a href="https://developers.cloudflare.com/1.1.1.1/commitment-to-privacy/privacy-policy/firefox/">https://developers.cloudflare.com/1.1.1.1/commitment-to-privacy/privacy-policy/firefox/</a>
+    <span>&gt;</span>
+  </li>
+</ul>
+
+<p> </p>
+<p id="rfc.section.6.2.2.p.7">Tor endpoint: <span>&lt;</span><a href="https://dns4torpnlfs2ifuz2s2yf3fc7rdmsbhm6rw75euj35pac6ap25zgqad.onion">https://dns4torpnlfs2ifuz2s2yf3fc7rdmsbhm6rw75euj35pac6ap25zgqad.onion</a><span>&gt;</span>.  </p>
+<h1 id="rfc.section.6.2.3"><a href="#rfc.section.6.2.3">6.2.3.</a> <a href="#google" id="google">Google</a></h1>
+<p id="rfc.section.6.2.3.p.1">UDP/TCP service provided on 8.8.8.8, 8.8.4.4, 2001:4860:4860::8888 and  2001:4860:4860::8844.  </p>
+<p id="rfc.section.6.2.3.p.2">Policy: <span>&lt;</span><a href="https://developers.google.com/speed/public-dns/privacy">https://developers.google.com/speed/public-dns/privacy</a><span>&gt;</span> </p>
+<h1 id="rfc.section.6.2.4"><a href="#rfc.section.6.2.4">6.2.4.</a> <a href="#opendns" id="opendns">OpenDNS</a></h1>
+<p id="rfc.section.6.2.4.p.1">UDP/TCP service provided on 208.67.222.222 and 208.67.220.220 (no IPv6).  </p>
+<p id="rfc.section.6.2.4.p.2">We could find no specific privacy policy for the DNS resolution, only a general one from Cisco that seems focussed on websites.  </p>
+<p id="rfc.section.6.2.4.p.3">Policy: <span>&lt;</span><a href="https://www.cisco.com/c/en/us/about/legal/privacy-full.html">https://www.cisco.com/c/en/us/about/legal/privacy-full.html</a><span>&gt;</span> </p>
+<h1 id="rfc.section.6.2.5"><a href="#rfc.section.6.2.5">6.2.5.</a> <a href="#comparison" id="comparison">Comparison</a></h1>
+<p id="rfc.section.6.2.5.p.1">The following tables provides a high-level comparison of the policy and practice statements above and also some observations of practice measured at <a href="https://dnsprivacy.org/jenkins/job/dnsprivacy-monitoring/">dnsprivacy.org</a>. The data is not exhaustive and has not been reviewed or confirmed by the operators.  </p>
+<p id="rfc.section.6.2.5.p.2">A question mark indicates no clear statement or data could be located on the issue. A dash indicates the category is not applicable to the service.  </p>
+<p><a href="https://github.com/Sinodun/draft-dprive-bcp-op/blob/master/draft-01/policy_table.svg">Table showing comparison of operators policies</a> </p>
+<p><a href="https://github.com/Sinodun/draft-dprive-bcp-op/blob/master/draft-01/practice_table.svg">Table showing comparison of operators practices</a> </p>
+<p id="rfc.section.6.2.5.p.5">NOTE: Review and correction of any inaccuracies in the table would be much appreciated.  </p>
 <h1 id="rfc.section.6.3"><a href="#rfc.section.6.3">6.3.</a> <a href="#enforcementaccountability" id="enforcementaccountability">Enforcement/accountability</a></h1>
 <p id="rfc.section.6.3.p.1">Transparency reports may help with building user trust that operators adhere to their policies and practices.  </p>
 <p id="rfc.section.6.3.p.2">Independent monitoring should be performed where possible of: </p>
@@ -986,18 +1055,21 @@
 <p id="rfc.section.10.p.2">John Dickinson <br/> Sinodun Internet Technologies <br/> Magdalen Centre <br/> Oxford Science Park <br/> Oxford  OX4 4GA <br/> United Kingdom </p>
 <p id="rfc.section.10.p.3">Jim Hague <br/> Sinodun Internet Technologies <br/> Magdalen Centre <br/> Oxford Science Park <br/> Oxford  OX4 4GA <br/> United Kingdom </p>
 <h1 id="rfc.section.11"><a href="#rfc.section.11">11.</a> <a href="#changelog" id="changelog">Changelog</a></h1>
-<p id="rfc.section.11.p.1">draft-dickinson-dprive-bcp-op-01 </p>
+<p id="rfc.section.11.p.1">draft-dickinson-dprive-bcp-op-00 </p>
+<p id="rfc.section.11.p.2">Name change to add dprive. Differences to draft-dickinson-bcp-op-00: </p>
 <p/>
 
 <ul>
   <li>Reworked the Terminology, Introduction and Scope</li>
   <li>Added Document section</li>
   <li>Reworked the Recommendations section to describe threat mitigations, optimizations and other options. Split the recommendations up into 3 subsections: on the wire, at rest and upstream</li>
+  <li>Added much more information on data handling and IP address pseudonymization and anonymization</li>
+  <li>Added more details and comparison of some existing policy/privacy policies</li>
   <li>Applied virtually all of Amelia Andersdotter's suggested changes.</li>
 </ul>
 
 <p> </p>
-<p id="rfc.section.11.p.3">draft-dickinson-dprive-bcp-op-00 </p>
+<p id="rfc.section.11.p.4">draft-dickinson-bcp-op-00 </p>
 <p/>
 
 <ul>

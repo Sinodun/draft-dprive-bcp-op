@@ -2,7 +2,7 @@
     Title = "Recommendations for DNS Privacy Service Operators"
     abbrev = "DNS Privacy Service Recommendations"
     category = "bcp"
-    docName= "draft-dickinson-dprive-bcp-op-01"
+    docName= "draft-dickinson-dprive-bcp-op-00"
     ipr = "trust200902"
     area = "Internet"
     workgroup = "dprive"
@@ -173,10 +173,10 @@ operators of authoritative nameservers are out of scope.
 This document includes (but is not limited to) considerations in the following
 areas (taken from [@!RFC7626]):
 
-1. Data on the wire between a client and a server
+1. Data "on the wire" between a client and a server
 2. Data "at rest" on a server (e.g. in logs)
-3. Data sent onwards from the server (either on the wire or shared with a third
-party)
+3. Data "sent onwards" from the server (either on the wire or shared with a
+third party)
 
 Whilst the issues raised here are targeted at those operators who choose to
 offer a DNS privacy service, considerations for areas 2 and 3 could equally
@@ -370,6 +370,10 @@ to DNS Traffic Analysis from section 11.1 of [@!RFC8310] provide strong mitigati
 
 Optimizations:
 
+* Concurrent processing of pipelined queries, returning responses as soon as
+  available, potentially out of order as specified in [@RFC7766]. This is often
+  called 'OOOR' - out-of-order responses. (Providing processing performance
+  similar to HTTP multiplexing)
 * Management of TLS connections to optimise performance for clients using either
   * [@RFC7766] and EDNS(0) Keepalive [@RFC7828] and/or 
   * DNS Stateful Operations [@I-D.ietf-dnsop-session-signal]
@@ -385,7 +389,7 @@ specific ones if possible
 
 Mitigations:
 
-* Clients should not be required to HTTP Cookies [@!RFC6265].
+* Clients should not be required to use HTTP Cookies [@!RFC6265].
 
 
 ### Availability
@@ -531,8 +535,6 @@ and other properties. The list of techniques includes the main techniques in
 current use, but does not claim to be comprehensive. (#ip-address-techniques)
 provides a more detailed survey of these techniques and definitions for the
 categories and properties listed below.
-
-![Figure showing comparison of IP address techniques (PNG)](https://github.com/Sinodun/draft-dprive-bcp-op/blob/master/draft-01/ip_techniques_table.png)
 
 ![Figure showing comparison of IP address techniques (SVG)](https://github.com/Sinodun/draft-dprive-bcp-op/blob/master/draft-01/ip_techniques_table.svg)
 
@@ -681,66 +683,122 @@ services one that implies consent for data processing, one that doesn't?
 
 <!-- Work out how to do a numbered, nested list in markdown! -->
 
-1 Policy.
+1 Policy
 
 1.1 Recommendations. This section should explain, with reference to section 
       (#recommendations-for-dns-privacy-services) of this document which 
       recommendations the DNS privacy service employs.
 
-1.2. Data handling. This section should explain, with reference to section 
+1.2 Data handling. This section should explain, with reference to section 
        (#data-at-rest-on-the-server) 
        of this document the policy for gathering and disseminating information 
        collected by the DNS privacy service. 
 
-1.2.1. Specify clearly what data (including whether it is aggregated, 
+1.2.1 Specify clearly what data (including whether it is aggregated, 
         pseudonymized or anonymized) is:
 
-1.2.1.1. Collected and retained by the operator (and for how long)
+1.2.1.1 Collected and retained by the operator (and for how long)
 
-1.2.1.2. Shared with, sold or rented to third-parties
+1.2.1.2 Shared with partners
 
-1.2.2 Specify any exceptions to the above, for example technically malicious or
+1.2.1.3  Shared, sold or rented to third-parties
+
+1.2.2  Specify any exceptions to the above, for example technically malicious or
 anomalous behaviour
 
-1.2.3 Declare any third-party affiliations or funding
+1.2.3  Declare any partners, third-party affiliations or sources of funding
 
 1.2.4 Whether user DNS data is correlated or combined with any other personal
-    information held by the operator
+      information held by the operator
 
 2 Practice. This section should explain the current operational practices of the service.
 
 2.1 Specify any temporary or permanent deviations from the policy for
     operational reasons
 
-2.2 Provide specific details of which capabilities are provided on which 
-      address and ports
+2.2 With reference to section (#on-the-wire-between-client-and-server) provide 
+    specific details of which capabilities are provided on which address and 
+    ports
 
-2.3 Specify the authentication name to be used (if any)
+2.3 With reference to section (#data-sent-onwards-from-the-server) 
+    provide specific details of which capabilities are employed for upstream 
+    traffic from the server for
 
-2.4 Specify the SPKI pinsets to be used (if any) and policy for rolling keys
+2.4 Specify the authentication name to be used (if any) and if TLSA records are 
+    published (including options used in the TLSA records)
 
-2.5 Provide a contact email address for the service
+2.5 Specify the SPKI pinsets to be used (if any) and policy for rolling keys
 
-## Current privacy statements
+2.6 Provide a contact email address for the service
+
+## Current policy and privacy statements
 
 NOTE: An analysis of these statements will clearly only provide a snapshot at
 the time of writing. It is included in this version of the draft to provide a
 basis for the assessment of the contents of the DPPPS and is expected to be
 removed or substantially re-worked in a future version.
 
-### Google
-https://developers.google.com/speed/public-dns/privacy
-
 ### Quad9
-https://www.quad9.net/policy/
 
-### OpenDNS
-https://www.cisco.com/c/en/us/about/legal/privacy-full.html
+UDP/TCP and TLS (port 853) service provided on two addresses:
+
+ *  'Secure': 9.9.9.9, 149.112.112.112, 2620:fe::fe, 2620:fe::9
+ *  'Unsecured': 9.9.9.10, 149.112.112.10, 2620:fe::10
+
+Policy: 
+
+* https://www.quad9.net/policy/
+* https://www.quad9.net/privacy/
+* https://www.quad9.net/faq/
 
 ### Cloudflare
-https://developers.cloudflare.com/1.1.1.1/commitment-to-privacy/
-https://developers.cloudflare.com/1.1.1.1/commitment-to-privacy/privacy-policy/privacy-policy/
-https://developers.cloudflare.com/1.1.1.1/commitment-to-privacy/privacy-policy/firefox/
+
+UDP/TCP and TLS (port 853)  service provided on 1.1.1.1, 1.0.0.1, 2606:4700:4700::1111 and 2606:4700:4700::1001.
+
+Policy:
+
+ * https://developers.cloudflare.com/1.1.1.1/commitment-to-privacy/privacy-policy/privacy-policy/
+
+DoH provided on: https://cloudflare-dns.com/dns-query
+
+Policy:
+
+* https://developers.cloudflare.com/1.1.1.1/commitment-to-privacy/privacy-policy/firefox/
+
+Tor endpoint: https://dns4torpnlfs2ifuz2s2yf3fc7rdmsbhm6rw75euj35pac6ap25zgqad.onion.
+
+
+### Google
+
+UDP/TCP service provided on 8.8.8.8, 8.8.4.4, 2001:4860:4860::8888 and  2001:4860:4860::8844.
+
+Policy: https://developers.google.com/speed/public-dns/privacy
+
+### OpenDNS
+
+UDP/TCP service provided on 208.67.222.222 and 208.67.220.220 (no IPv6).
+
+We could find no specific privacy policy for the DNS resolution, only a general
+one from Cisco that seems focussed on websites.
+
+Policy: https://www.cisco.com/c/en/us/about/legal/privacy-full.html
+
+
+### Comparison
+
+The following tables provides a high-level comparison of the policy and practice
+statements above and also some observations of practice measured at
+[dnsprivacy.org](https://dnsprivacy.org/jenkins/job/dnsprivacy-monitoring/). The
+data is not exhaustive and has not been reviewed or confirmed by the operators.
+
+A question mark indicates no clear statement or data could be located on the issue. A dash indicates the category is not applicable to the service.
+
+![Table showing comparison of operators policies](https://github.com/Sinodun/draft-dprive-bcp-op/blob/master/draft-01/policy_table.svg)
+
+![Table showing comparison of operators practices](https://github.com/Sinodun/draft-dprive-bcp-op/blob/master/draft-01/practice_table.svg)
+
+NOTE: Review and correction of any inaccuracies in the table would be much
+appreciated.
 
 
 ## Enforcement/accountability
@@ -790,16 +848,21 @@ Oxford  OX4 4GA\\
 United Kingdom
 
 # Changelog
-draft-dickinson-dprive-bcp-op-01
+draft-dickinson-dprive-bcp-op-00
+
+Name change to add dprive. Differences to draft-dickinson-bcp-op-00:
 
 * Reworked the Terminology, Introduction and Scope
 * Added Document section
 * Reworked the Recommendations section to describe threat mitigations,
   optimizations and other options. Split the recommendations up into 3
   subsections: on the wire, at rest and upstream
+* Added much more information on data handling and IP address pseudonymization 
+  and anonymization
+* Added more details and comparison of some existing policy/privacy policies
 * Applied virtually all of Amelia Andersdotter's suggested changes.
 
-draft-dickinson-dprive-bcp-op-00
+draft-dickinson-bcp-op-00
 
 * Initial commit
 
