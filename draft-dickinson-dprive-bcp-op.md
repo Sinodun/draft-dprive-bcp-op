@@ -73,7 +73,7 @@
 
 .# Abstract
 This document presents operational, policy and security considerations for DNS
-operators who choose to offer DNS Privacy services.
+operators who choose to offer DNS Privacy services.  With the recommendations, the operator can make deliberate decisions which services to provide, and how the decisions and alternatives impact the privacy of users.
 
 This document also presents a framework to assist writers of DNS Privacy Policy
 and Practices Statements (analogous to DNS Security Extensions (DNSSEC) Policies
