@@ -7,7 +7,7 @@
     area = "Internet"
     workgroup = "dprive"
     keyword = ["DNS"]
-    date = 2018-06-29T00:00:00Z
+    date = 2018-07-02T00:00:00Z
     [pi]
     toc = "yes"
     compact = "yes"
@@ -73,7 +73,9 @@
 
 .# Abstract
 This document presents operational, policy and security considerations for DNS
-operators who choose to offer DNS Privacy services. With the recommendations, the operator can make deliberate decisions which services to provide, and how the decisions and alternatives impact the privacy of users.
+operators who choose to offer DNS Privacy services. With the recommendations,
+the operator can make deliberate decisions which services to provide, and how
+the decisions and alternatives impact the privacy of users.
 
 This document also presents a framework to assist writers of DNS Privacy Policy
 and Practices Statements (analogous to DNS Security Extensions (DNSSEC) Policies
@@ -127,7 +129,7 @@ It should also be noted that the choice of a user to configure a single resolver
 environments has both advantages and disadvantages. For example the user has a
 clear expectation of which resolvers have visibility of their query data however
 this resolver/transport selection may provide an added mechanism to track them
-as they move across network environments. Commitments from operators to minimise
+as they move across network environments. Commitments from operators to minimize
 such tracking are also likely to play a role in users selection of resolver.
 
 More recently the global legislative landscape with regard to personal data
@@ -156,19 +158,22 @@ This document has two main goals:
   Statement, nor does it seek to provide legal advice or recommendations as to
   the contents.
 
-Community insight [or judgment?] about operational practices can change quickly, and
-experience shows that a Best Current Practice (BCP) document about privacy and
-security is a point-in-time statement. Readers are advised to seek out any
-errata or updates that apply to this document.
+Community insight [or judgment?] about operational practices can change
+quickly, and experience shows that a Best Current Practice (BCP) document about
+privacy and security is a point-in-time statement. Readers are advised to seek
+out any errata or updates that apply to this document.
+
 
 # Scope
 
-The RFC "DNS Privacy Consideratios" [@!RFC7627] describes the general privacy issues and risks associated
-with the use of the DNS by Internet users. The scope of the RFC document is limited to
-best practice considerations for the provision of DNS privacy services by
-servers (recursive resolvers) to clients (stub resolvers or forwarders). Privacy
-considerations specifically from the perspective of an end user, or those for
-operators of authoritative nameservers are out of scope.
+"DNS Privacy Considerations" [@!RFC7626] describes the general privacy
+issues and threats associated with the use of the DNS by Internet users and
+much of the threat analysis here is lifted from that document and from
+[@RFC6873]. However this document is limited in scope to best practice
+considerations for the provision of DNS privacy services by servers (recursive
+resolvers) to clients (stub resolvers or forwarders). Privacy considerations
+specifically from the perspective of an end user, or those for operators of
+authoritative nameservers are out of scope.
 
 This document includes (but is not limited to) considerations in the following
 areas (taken from [@!RFC7626]):
@@ -355,8 +360,9 @@ Threats:
 
 Mitigations:
 
-In the case of DNS-over-TLS, TLS profiles from Section 9 and the Countermeasures 
-to DNS Traffic Analysis from section 11.1 of [@!RFC8310] provide strong mitigations. This includes but is not limited to:
+In the case of DNS-over-TLS, TLS profiles from Section 9 and the
+Countermeasures to DNS Traffic Analysis from section 11.1 of [@!RFC8310]
+provide strong mitigations. This includes but is not limited to:
 
 * Adhering to [@!RFC7525]
 * Implementing only (D)TLS 1.2 or later as specified in [@RFC8310]
@@ -374,7 +380,7 @@ Optimizations:
   available, potentially out of order as specified in [@RFC7766]. This is often
   called 'OOOR' - out-of-order responses. (Providing processing performance
   similar to HTTP multiplexing)
-* Management of TLS connections to optimise performance for clients using either
+* Management of TLS connections to optimize performance for clients using either
   * [@RFC7766] and EDNS(0) Keepalive [@RFC7828] and/or 
   * DNS Stateful Operations [@I-D.ietf-dnsop-session-signal]
   
@@ -384,12 +390,15 @@ Additional options that providers may consider:
 
 #### DoH
 
-TODO: fill this in, some overlap with DNS-over-TLS but we need to address DoH
-specific ones if possible
+TODO: Fill this in, a lot of overlap with DNS-over-TLS but we need to address
+DoH specific ones if possible.
+
 
 Mitigations:
 
 * Clients should not be required to use HTTP Cookies [@!RFC6265].
+* Clients should not be required to include any headers beyond the absolute
+  minimum to obtain service from a DoH server.
 
 
 ### Availability
@@ -406,7 +415,7 @@ should to be taken to protect DNS privacy services against denial-of-service
 attacks, as experience has shown that unavailability of DNS resolving because of
 attacks is a significant motivation for users to switch services.
 
-TODO: Add reference for work by Roland's student.
+TODO: Add reference to ongoing research on this topic.
 
 ### Service options
 
@@ -460,9 +469,10 @@ Threats:
 Mitigations:
 
 The following are common activities for DNS service operators and in all cases
-should be minimised or completely avoided if possible for DNS privacy services.
-If data is retained it should be encrypted and either aggregated,
-pseudonymized or anonymized whenever possible. In general the principle of data minimization described in [@!RFC6973] should be applied.
+should be minimized or completely avoided if possible for DNS privacy services.
+If data is retained it should be encrypted and either aggregated, pseudonymized
+or anonymized whenever possible. In general the principle of data minimization
+described in [@!RFC6973] should be applied.
 
 * Transient data (e.g. that is used for real time monitoring and threat analysis
   which might be held only memory) should be retained for the shortest possible
@@ -473,7 +483,7 @@ pseudonymized or anonymized whenever possible. In general the principle of data 
 * DNS privacy services should not track users except for the particular purpose
   of detecting and remedying technically malicious (e.g. DoS) or anomalous use
   of the service.
-* Data access should be minimised to only those personal who require access to
+* Data access should be minimized to only those personal who require access to
   perform operational duties.
 
 ### Data minimization of network traffic
@@ -487,7 +497,9 @@ example on the structure of an internal corporate network.
 
 The problem of effectively ensuring that DNS traffic logs contain no or minimal
 privacy-sensitive information is not one that currently has a generally agreed
-solution.
+solution or any Standards to inform this discussion. This section presents and
+overview of current techniques to simply provide reference on the current
+status of this work.
 
 Research into data minimization techniques (and particularly IP address
 pseudonymization/anonymization) was sparked in the late 1990s/early 2000s,
@@ -500,7 +512,7 @@ example, renders some techniques impractical, but also makes available a much
 larger amount of input entropy, the better to resist brute force
 re-identification attacks that have grown in practicality over the period.
 
-Techniques employed may be broadly categorised as either anonymization or
+Techniques employed may be broadly categorized as either anonymization or
 pseudonymization. The following discussion uses the definitions from [@RFC6973]
 Section 3, with additional observations from [van Dijkhuizen et
 al.](https://doi.org/10.1145/3182660)
@@ -514,23 +526,23 @@ al.](https://doi.org/10.1145/3182660)
   alternate identity (a pseudonym). When the pseudonymization schema is known,
   the process can be reversed, so the original identity becomes known again.
 
-In practice there is a fine line between the two; for example, how to categorise
-a deterministic algorithm for data minimisation of IP addresses that produces a
+In practice there is a fine line between the two; for example, how to categorize
+a deterministic algorithm for data minimization of IP addresses that produces a
 group of pseudonyms for a single given address.
 
 
 ### IP address pseudonymization and anonymization methods
 
-As RFC7626 makes clear, the big privacy risk in DNS is connecting DNS queries to
+As [@RFC7626] makes clear, the big privacy risk in DNS is connecting DNS queries to
 an individual and the major vector for this in DNS traffic is the client IP
 address.
 
 There is active discussion in the space of effective pseudonymization of IP
 addresses in DNS traffic logs, however there seems to be no single solution that
-is widely recognised as suitable for all or most use cases. There are also as
+is widely recognized as suitable for all or most use cases. There are also as
 yet no standards for this that are unencumbered by patents. This following table
 presents a high level comparison of various techniques employed or under
-development today and classifies then according to categorisation of technique
+development today and classifies then according to categorization of technique
 and other properties. The list of techniques includes the main techniques in
 current use, but does not claim to be comprehensive. (#ip-address-techniques)
 provides a more detailed survey of these techniques and definitions for the
@@ -545,24 +557,35 @@ the particular situation.
 For example, a common goal is that distributed packet captures must be in an
 existing data format such as PCAP [@pcap] or C-DNS
 [@I-D.ietf-dnsop-dns-capture-format] that can be used as input to existing
-analysis tools. In that case, use of a Format-preserving technique is essential. This, though, is not cost-free - several authors (e.g. [Brenker &
-Arnes](https://pdfs.semanticscholar.org/7b34/12c951cebe71cd2cddac5fda164fb2138a44.pdf)) have observed that, as the entropy in a IPv4 address is limited, given a
-de-identified log from a target, if an attacker is capable of ensuring packets
-are captured by the target and the attacker can send forged traffic with
-arbitrary source and destination addresses to that target, any format-preserving
-pseudonymization is vulnerable to an attack along the lines of a cryptographic
-chosen plaintext attack.
+analysis tools. In that case, use of a Format-preserving technique is
+essential. This, though, is not cost-free - several authors (e.g. [Brenker &
+Arnes]
+(https://pdfs.semanticscholar.org/7b34/12c951cebe71cd2cddac5fda164fb2138a44.pdf))
+have observed that, as the entropy in a IPv4 address is limited, given
+a de-identified log from a target, if an attacker is capable of ensuring
+packets are captured by the target and the attacker can send forged traffic
+with arbitrary source and destination addresses to that target, any
+format-preserving pseudonymization is vulnerable to an attack along the lines
+of a cryptographic chosen plaintext attack.
+
 
 
 ### Pseudonymization, anonymization or discarding of other correlation data
 
-TODO: Discuss correlation data and tracking mechanisms other than IP address
+Threats:
 
 * IP TTL/Hoplimit can be used to fingerprint client OS
 * Tracking of TCP sessions
 * Tracking of TLS sessions and session resumption mechanisms
-* Resolvers _might_ receive client identifiers e.g. MAC addresses in EDNS(0) options - some CPE devices are known to add them.
+* Resolvers _might_ receive client identifiers e.g. MAC addresses in EDNS(0)
+  options - some CPE devices are known to add them.
 * HTTP headers
+
+Mitigations:
+
+* Data minimization or discarding of such correlation data
+
+TODO: More analysis here. 
 
 ### Cache snooping
 
@@ -588,7 +611,8 @@ Threats:
 
 Mitigations:
 
-As specified in [@!RFC8310] for DNS-over-TLS but applicable to any DNS Privacy services the server should:
+As specified in [@!RFC8310] for DNS-over-TLS but applicable to any DNS Privacy
+services the server should:
 
 * Implement QNAME minimization [@!RFC7816]
 * Honour a SOURCE PREFIX-LENGTH set to 0 in a query containing the EDNS(0)
@@ -604,10 +628,14 @@ If operators do offer a service that sends the ECS options upstream they should
 use the shortest prefix that is operationally feasible (NOTE: the authors
 believe they will be able to add a reference for advice here soon) and ideally
 use a policy of whitelisting upstream servers to send ECS to in order to
-minimise data leakage. Operators should make clear in any policy statement what
+minimize data leakage. Operators should make clear in any policy statement what
 prefix length they actually send and the specific policy used.
 
-<!-- *RvRD: note: I have a bachelor student working on this, who has been looking at what are good prefix sizes to e.g. geo-locate a client to a country or continent; will share results when available. I'm considering following up on his work with a paper at some point to help the discussion about ECS along.*-->
+<!-- *RvRD: note: I have a bachelor student working on this, who has been
+looking at what are good prefix sizes to e.g. geo-locate a client to a country
+or continent; will share results when available. I'm considering following up
+on his work with a paper at some point to help the discussion about ECS
+along.*-->
 
 Additional options:
 
@@ -628,7 +656,7 @@ further. Note, that even when all the relevant techniques described above are
 employed there may still be attacks possible, e.g.
 [@Pitfalls-of-DNS-Encryption]. For example, a resolver with a very small
 community of users risks exposing data in this way and OUGHT obfuscate this
-traffic by mixing it with 'generated' traffic to make client characterisation
+traffic by mixing it with 'generated' traffic to make client characterization
 harder. The resolver could also employ aggressive pre-fetch techniques as a
 further measure to counter traffic analysis.
 
@@ -660,13 +688,13 @@ Operators should not provide identifiable data to third-parties without explicit
 consent from clients (we take the stance here that simply using the resolution
 service itself does not constitute consent).
 
-Even when consent is granted operators should employ data minimisation
+Even when consent is granted operators should employ data minimization
 techniques such as those described in (#data-handling) if data is shared with
 third-parties.
 
 Operators should consider including specific guidelines for the collection of
-aggregated and/or anonymised data for research purposes, within or outside of
-their own organisation.
+aggregated and/or anonymized data for research purposes, within or outside of
+their own organization.
 
 TODO: More on data for research vs operations... how to still motivate operators
 to share anonymized data?
@@ -753,7 +781,8 @@ Policy:
 
 ### Cloudflare
 
-UDP/TCP and TLS (port 853)  service provided on 1.1.1.1, 1.0.0.1, 2606:4700:4700::1111 and 2606:4700:4700::1001.
+UDP/TCP and TLS (port 853) service provided on 1.1.1.1, 1.0.0.1,
+2606:4700:4700::1111 and 2606:4700:4700::1001.
 
 Policy:
 
@@ -770,7 +799,8 @@ Tor endpoint: https://dns4torpnlfs2ifuz2s2yf3fc7rdmsbhm6rw75euj35pac6ap25zgqad.o
 
 ### Google
 
-UDP/TCP service provided on 8.8.8.8, 8.8.4.4, 2001:4860:4860::8888 and  2001:4860:4860::8844.
+UDP/TCP service provided on 8.8.8.8, 8.8.4.4, 2001:4860:4860::8888 and
+2001:4860:4860::8844.
 
 Policy: https://developers.google.com/speed/public-dns/privacy
 
@@ -791,7 +821,8 @@ statements above and also some observations of practice measured at
 [dnsprivacy.org](https://dnsprivacy.org/jenkins/job/dnsprivacy-monitoring/). The
 data is not exhaustive and has not been reviewed or confirmed by the operators.
 
-A question mark indicates no clear statement or data could be located on the issue. A dash indicates the category is not applicable to the service.
+A question mark indicates no clear statement or data could be located on the
+issue. A dash indicates the category is not applicable to the service.
 
 ![Table showing comparison of operators policies](https://github.com/Sinodun/draft-dprive-bcp-op/blob/master/draft-01/policy_table.svg)
 
@@ -803,7 +834,8 @@ appreciated.
 
 ## Enforcement/accountability
 
-Transparency reports may help with building user trust that operators adhere to their policies and practices.
+Transparency reports may help with building user trust that operators adhere to
+their policies and practices.
 
 Independent monitoring should be performed where possible of:
 
@@ -980,7 +1012,9 @@ Note that depending on the specifics of the implementation
 
 # IP address techniques
 
-Data minimisation methods may be categorised by the processing used and the properties of their outputs. The following builds on the categorisation employed in [@RFC6235]:
+Data minimization methods may be categorized by the processing used and the
+properties of their outputs. The following builds on the categorization
+employed in [@RFC6235]:
 
 * Format-preserving. Normally when encrypting, the original data length and
   patterns in the data should be hidden from an attacker. Some applications of
@@ -999,7 +1033,7 @@ Data minimisation methods may be categorised by the processing used and the prop
   type, for example using a regular expression. Filtering. Removing (and thus
   truncating) or replacing data in a field. Field data can be overwritten, often
   with zeros, either partially (grey marking) or completely (black marking).
-* Generalisation. Data is replaced by more general data with reduced
+* Generalization. Data is replaced by more general data with reduced
   specificity. One example would be to replace all TCP/UDP port numbers with one
   of two fixed values indicating whether the original port was ephemeral
   (>=1024) or non-ephemeral (>1024). Another example, precision degradation,
@@ -1018,12 +1052,15 @@ Data minimisation methods may be categorised by the processing used and the prop
   
 ## Google Analytics non-prefix filtering
 
-Since May 2010, [Google Analytics has provided a facility](https://support.google.com/analytics/answer/2763052?hl=en) that allows website
-owners to request that all their users IP addresses are anonymised within
+Since May 2010, [Google Analytics has provided a facility]
+(https://support.google.com/analytics/answer/2763052?hl=en) that allows website
+owners to request that all their users IP addresses are anonymized within
 Google Analytics processing. This very basic anonymization simply sets to zero
 the least significant 8 bits of IPv4 addresses, and the least significant 80
 bits of IPv6 addresses. The level of anonymization this produces is perhaps
-questionable. There are [some analysis results](https://www.conversionworks.co.uk/blog/2017/05/19/anonymize-ip-geo-impact-test/) which suggest that the impact of
+questionable. There are [some analysis results]
+(https://www.conversionworks.co.uk/blog/2017/05/19/anonymize-ip-geo-impact-test/) 
+which suggest that the impact of
 this on reducing the accuracy of determining the user's location from their IP
 address is less than might be hoped; the average discrepancy in identification
 of the user city for UK users is no more than 17%. 
@@ -1032,9 +1069,10 @@ Anonymization: Format-preserving, Filtering (grey marking).
 
 ## dnswasher
 
-Since 2006, PowerDNS have included a de-identification tool [dnswasher](https://github.com/edmonds/pdns/blob/master/pdns/dnswasher.cc) with
+Since 2006, PowerDNS have included a de-identification tool [dnswasher]
+(https://github.com/edmonds/pdns/blob/master/pdns/dnswasher.cc) with
 their PowerDNS product. This is a PCAP filter that performs a one-to-one mapping
-of end user IP addresses with an anonymised address. A table of user IP
+of end user IP addresses with an anonymized address. A table of user IP
 addresses and their de-identified counterparts is kept; the first IPv4 user
 addresses is translated to 0.0.0.1, the second to 0.0.0.2 and so on. The
 de-identified address therefore depends on the order that addresses arrive in
@@ -1045,14 +1083,15 @@ Anonymization: Format-preserving, Enumeration.
 
 ## Prefix-preserving map
 
-Used in [TCPdpriv]( http://ita.ee.lbl.gov/html/contrib/tcpdpriv.html), this algorithm stores a set of original and anonymised IP
+Used in [TCPdpriv]( http://ita.ee.lbl.gov/html/contrib/tcpdpriv.html), 
+this algorithm stores a set of original and anonymised IP
 address pairs. When a new IP address arrives, it is compared with previous
-addresses to determine the longest prefix match. The new address is anonymised
-by using the same prefix, with the remainder of the address anonymised with a
+addresses to determine the longest prefix match. The new address is anonymized
+by using the same prefix, with the remainder of the address anonymized with a
 random value. The use of a random value means that the TCPdrpiv is not
-deterministic; different anonymised values will be generated on each run. The
+deterministic; different anonymized values will be generated on each run. The
 need to store previous addresses means that TCPdpriv has significant and
-unbounded memory requirements, and because of the need to allocated anonymised
+unbounded memory requirements, and because of the need to allocated anonymized
 addresses sequentially cannot be used in parallel processing. 
 
 Anonymization: Format-preserving, prefix preservation (general).
@@ -1061,10 +1100,14 @@ Anonymization: Format-preserving, prefix preservation (general).
 
 Cryptographic prefix-preserving pseudonymisation was originally proposed as an
 improvement to the prefix-preserving map implemented in TCPdpriv, described in
-[Xu et al.](http://an.kaist.ac.kr/~sbmoon/paper/intl-journal/2004-cn-anon.pdf) and implemented in the [Crypto-PAn tool](https://www.cc.gatech.edu/computing/Telecomm/projects/cryptopan/). Crypto-PAn is now frequently
+[Xu et al.](http://an.kaist.ac.kr/~sbmoon/paper/intl-journal/2004-cn-anon.pdf) 
+and implemented in the [Crypto-PAn tool]
+(https://www.cc.gatech.edu/computing/Telecomm/projects/cryptopan/). 
+Crypto-PAn is now frequently
 used as an acronym for the algorithm. Initially it was described for IPv4
 addresses only; extension for IPv6 addresses was proposed in [Harvan &
-Schönwälder](http://mharvan.net/talks/noms-ip_anon.pdf) and implemented in snmpdump. This uses a cryptographic algorithm
+Schönwälder](http://mharvan.net/talks/noms-ip_anon.pdf) and implemented in 
+snmpdump. This uses a cryptographic algorithm
 rather than a random value, and thus pseudonymity is determined uniquely by the
 encryption key, and is deterministic. It requires a separate AES encryption for
 each output bit, so has a non-trivial calculation overhead. This can be
@@ -1085,26 +1128,32 @@ pseudonymization is done via hash and table lookup, and so requires minimal
 computation. However, due to the much increased address space for IPv6, TSA is
 not memory efficient for IPv6.
 
-<!-- Reference causes an error in the XML - need to fix (http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.84.7417&rep=rep1&type=pdf)-->
+<!-- Reference causes an error in the XML - need to fix
+(http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.84.7417&rep=rep1&type=
+pdf)-->
 
 Pseudonymization: Format-preserving, prefix preservation (general).
 
 ## ipcipher
 
-A [recently-released proposal from PowerDNS](https://medium.com/@bert.hubert/on-ip-address-encryption-security-analysis-with-respect-for-privacy-dabe1201b476), [ipcipher](https://github.com/PowerDNS/ipcipher) is a simple
+A [recently-released proposal from PowerDNS](
+https://medium.com/@bert.hubert/on-ip-address-encryption-security-analysis-with-respect-for-privacy-dabe1201b476), 
+[ipcipher](https://github.com/PowerDNS/ipcipher) is a simple
 pseudonymization technique for IPv4 and IPv6 addresses. IPv6 addresses are
 encrypted directly with AES-128 using a key (which may be derived from a
 passphrase). IPv4 addresses are similarly encrypted, but using a recently
 proposed encryption [ipcrypt](https://github.com/veorq/ipcrypt) suitable for 32bit
-block lengths. However, the author of ipcrypt has [since indicated](https://www.ietf.org/mail-archive/web/cfrg/current/msg09494.html) that it has
+block lengths. However, the author of ipcrypt has [since indicated]
+(https://www.ietf.org/mail-archive/web/cfrg/current/msg09494.html) that it has
 low security, and further analysis has revealed it is vulnerable to attack.
 
 Pseudonymization: Format-preserving, cryptographic permutation.
 
 ## Bloom filters
 
-[van Rijswijk-Deij et al.](https://tnc18.geant.org/core/presentation/127) have recently described work using Bloom filters to
-categorise query traffic and record the traffic as the state of multiple
+[van Rijswijk-Deij et al.](https://tnc18.geant.org/core/presentation/127) 
+have recently described work using Bloom filters to
+categorize query traffic and record the traffic as the state of multiple
 filters. The goal of this work is to allow operators to identify so-called
 Indicators of Compromise (IOCs) originating from specific subnets without
 storing information about, or be able to monitor the DNS queries of an
@@ -1117,4 +1166,4 @@ numbers of queries can be tracked in a memory-efficient way. As filter status is
 stored, this approach cannot be used to regenerate traffic, and so cannot be
 used with tools used to process live traffic.
 
-Anonymized: Generalisation.
+Anonymized: Generalization.
