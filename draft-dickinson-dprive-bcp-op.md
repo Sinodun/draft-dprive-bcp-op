@@ -73,7 +73,7 @@
 
 .# Abstract
 This document presents operational, policy and security considerations for DNS
-operators who choose to offer DNS Privacy services.  With the recommendations, the operator can make deliberate decisions which services to provide, and how the decisions and alternatives impact the privacy of users.
+operators who choose to offer DNS Privacy services. With the recommendations, the operator can make deliberate decisions which services to provide, and how the decisions and alternatives impact the privacy of users.
 
 This document also presents a framework to assist writers of DNS Privacy Policy
 and Practices Statements (analogous to DNS Security Extensions (DNSSEC) Policies
@@ -156,15 +156,15 @@ This document has two main goals:
   Statement, nor does it seek to provide legal advice or recommendations as to
   the contents.
 
-Community knowledge about operational practices can change quickly, and
+Community insight [or judgment?] about operational practices can change quickly, and
 experience shows that a Best Current Practice (BCP) document about privacy and
 security is a point-in-time statement. Readers are advised to seek out any
 errata or updates that apply to this document.
 
 # Scope
 
-Whilst [@!RFC7626] describes the general privacy issues and risks associated
-with the use of the DNS by Internet users, this document is limited in scope to
+The RFC "DNS Privacy Consideratios" [@!RFC7627] describes the general privacy issues and risks associated
+with the use of the DNS by Internet users. The scope of the RFC document is limited to
 best practice considerations for the provision of DNS privacy services by
 servers (recursive resolvers) to clients (stub resolvers or forwarders). Privacy
 considerations specifically from the perspective of an end user, or those for
