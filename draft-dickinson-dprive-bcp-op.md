@@ -166,17 +166,18 @@ out any errata or updates that apply to this document.
 
 # Scope
 
-"DNS Privacy Considerations" [@!RFC7626] describes the general privacy
-issues and threats associated with the use of the DNS by Internet users and
-much of the threat analysis here is lifted from that document and from
-[@RFC6873]. However this document is limited in scope to best practice
-considerations for the provision of DNS privacy services by servers (recursive
-resolvers) to clients (stub resolvers or forwarders). Privacy considerations
-specifically from the perspective of an end user, or those for operators of
-authoritative nameservers are out of scope.
+"DNS Privacy Considerations" [@I-D.bortzmeyer-dprive-RFC7626-bis] describes the
+general privacy issues and threats associated with the use of the DNS by
+Internet users and much of the threat analysis here is lifted from that
+document and from [@RFC6873]. However this document is limited in scope to best
+practice considerations for the provision of DNS privacy services by servers
+(recursive resolvers) to clients (stub resolvers or forwarders). Privacy
+considerations specifically from the perspective of an end user, or those for
+operators of authoritative nameservers are out of scope.
+
 
 This document includes (but is not limited to) considerations in the following
-areas (taken from [@!RFC7626]):
+areas (taken from [@I-D.bortzmeyer-dprive-RFC7626-bis]):
 
 1. Data "on the wire" between a client and a server
 2. Data "at rest" on a server (e.g. in logs)
@@ -533,9 +534,10 @@ group of pseudonyms for a single given address.
 
 ### IP address pseudonymization and anonymization methods
 
-As [@RFC7626] makes clear, the big privacy risk in DNS is connecting DNS queries to
-an individual and the major vector for this in DNS traffic is the client IP
-address.
+As [@I-D.bortzmeyer-dprive-RFC7626-bis] makes clear, the big privacy risk in
+DNS is connecting DNS queries to an individual and the major vector for this in
+DNS traffic is the client IP address.
+
 
 There is active discussion in the space of effective pseudonymization of IP
 addresses in DNS traffic logs, however there seems to be no single solution that
