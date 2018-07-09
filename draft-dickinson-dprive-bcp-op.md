@@ -752,7 +752,7 @@ anomalous behaviour
 
 2.3 With reference to section (#data-sent-onwards-from-the-server) 
     provide specific details of which capabilities are employed for upstream 
-    traffic from the server for
+    traffic from the server
 
 2.4 Specify the authentication name to be used (if any) and if TLSA records are 
     published (including options used in the TLSA records)
