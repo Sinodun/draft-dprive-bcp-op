@@ -2,12 +2,12 @@
     Title = "Recommendations for DNS Privacy Service Operators"
     abbrev = "DNS Privacy Service Recommendations"
     category = "bcp"
-    docName= "draft-dickinson-dprive-bcp-op-00"
+    docName= "draft-dickinson-dprive-bcp-op-01"
     ipr = "trust200902"
     area = "Internet"
     workgroup = "dprive"
     keyword = ["DNS"]
-    date = 2018-07-02T00:00:00Z
+    date = 2018-07-16T00:00:00Z
     [pi]
     toc = "yes"
     compact = "yes"
@@ -166,7 +166,7 @@ out any errata or updates that apply to this document.
 
 # Scope
 
-"DNS Privacy Considerations" [@I-D.bortzmeyer-dprive-RFC7626-bis] describes the
+"DNS Privacy Considerations" [@I-D.bortzmeyer-dprive-rfc7626-bis] describes the
 general privacy issues and threats associated with the use of the DNS by
 Internet users and much of the threat analysis here is lifted from that
 document and from [@RFC6873]. However this document is limited in scope to best
@@ -177,7 +177,7 @@ operators of authoritative nameservers are out of scope.
 
 
 This document includes (but is not limited to) considerations in the following
-areas (taken from [@I-D.bortzmeyer-dprive-RFC7626-bis]):
+areas (taken from [@I-D.bortzmeyer-dprive-rfc7626-bis]):
 
 1. Data "on the wire" between a client and a server
 2. Data "at rest" on a server (e.g. in logs)
@@ -534,7 +534,7 @@ group of pseudonyms for a single given address.
 
 ### IP address pseudonymization and anonymization methods
 
-As [@I-D.bortzmeyer-dprive-RFC7626-bis] makes clear, the big privacy risk in
+As [@I-D.bortzmeyer-dprive-rfc7626-bis] makes clear, the big privacy risk in
 DNS is connecting DNS queries to an individual and the major vector for this in
 DNS traffic is the client IP address.
 
@@ -544,7 +544,7 @@ addresses in DNS traffic logs, however there seems to be no single solution that
 is widely recognized as suitable for all or most use cases. There are also as
 yet no standards for this that are unencumbered by patents. This following table
 presents a high level comparison of various techniques employed or under
-development today and classifies then according to categorization of technique
+development today and classifies them according to categorization of technique
 and other properties. The list of techniques includes the main techniques in
 current use, but does not claim to be comprehensive. (#ip-address-techniques)
 provides a more detailed survey of these techniques and definitions for the
@@ -752,7 +752,7 @@ anomalous behaviour
 
 2.3 With reference to section (#data-sent-onwards-from-the-server) 
     provide specific details of which capabilities are employed for upstream 
-    traffic from the server for
+    traffic from the server
 
 2.4 Specify the authentication name to be used (if any) and if TLSA records are 
     published (including options used in the TLSA records)
@@ -882,6 +882,12 @@ Oxford  OX4 4GA\\
 United Kingdom
 
 # Changelog
+
+draft-dickinson-dprive-bcp-op-01
+
+* Update reference to RFC7626 to draft-bortzmeyer-rfc7626-bis
+* Fix a few typos
+
 draft-dickinson-dprive-bcp-op-00
 
 Name change to add dprive. Differences to draft-dickinson-bcp-op-00:
@@ -1029,12 +1035,13 @@ employed in [@RFC6235]:
   prefixes are de-identified consistently; e.g. if two IP addresses are from the
   same subnet, a prefix preserving de-identification will ensure that their
   de-identified counterparts will also share a subnet. Prefix preservation may
-  be fixed - the extent of the prefix to be preserved must be identified in
-  advance - or general.
+  be fixed (i.e. based on a user selected prefix length identified in advance to
+  be preserved ) or general.
 * Replacement. A one-to-one replacement of a field to a new value of the same
-  type, for example using a regular expression. Filtering. Removing (and thus
-  truncating) or replacing data in a field. Field data can be overwritten, often
-  with zeros, either partially (grey marking) or completely (black marking).
+  type, for example using a regular expression. 
+* Filtering. Removing (and thus truncating) or replacing data in a field. Field
+  data can be overwritten, often with zeros, either partially (grey marking) or
+  completely (black marking).
 * Generalization. Data is replaced by more general data with reduced
   specificity. One example would be to replace all TCP/UDP port numbers with one
   of two fixed values indicating whether the original port was ephemeral
@@ -1090,7 +1097,7 @@ this algorithm stores a set of original and anonymised IP
 address pairs. When a new IP address arrives, it is compared with previous
 addresses to determine the longest prefix match. The new address is anonymized
 by using the same prefix, with the remainder of the address anonymized with a
-random value. The use of a random value means that the TCPdrpiv is not
+random value. The use of a random value means that TCPdrpiv is not
 deterministic; different anonymized values will be generated on each run. The
 need to store previous addresses means that TCPdpriv has significant and
 unbounded memory requirements, and because of the need to allocated anonymized
