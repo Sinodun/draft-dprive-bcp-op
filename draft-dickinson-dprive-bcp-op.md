@@ -7,7 +7,7 @@
     area = "Internet"
     workgroup = "dprive"
     keyword = ["DNS"]
-    date = 2018-07-02T00:00:00Z
+    date = 2018-07-16T00:00:00Z
     [pi]
     toc = "yes"
     compact = "yes"
@@ -882,6 +882,12 @@ Oxford  OX4 4GA\\
 United Kingdom
 
 # Changelog
+
+draft-dickinson-dprive-bcp-op-01
+
+* Update reference to RFC7626 to draft-bortzmeyer-rfc7626-bis
+* Fix a few typos
+
 draft-dickinson-dprive-bcp-op-00
 
 Name change to add dprive. Differences to draft-dickinson-bcp-op-00:

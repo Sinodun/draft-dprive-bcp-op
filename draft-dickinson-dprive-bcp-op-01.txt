@@ -5,12 +5,12 @@
 dprive                                                      S. Dickinson
 Internet-Draft                                                Sinodun IT
 Intended status: Best Current Practice                     B. Overeinder
-Expires: January 3, 2019                                      NLnet Labs
+Expires: January 17, 2019                                     NLnet Labs
                                                     R. van Rijswijk-Deij
                                                               SURFnet bv
                                                                A. Mankin
                                                               Salesforce
-                                                            July 2, 2018
+                                                           July 16, 2018
 
 
            Recommendations for DNS Privacy Service Operators
@@ -44,7 +44,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on January 3, 2019.
+   This Internet-Draft will expire on January 17, 2019.
 
 
 
@@ -53,7 +53,7 @@ Status of This Memo
 
 
 
-Dickinson, et al.        Expires January 3, 2019                [Page 1]
+Dickinson, et al.       Expires January 17, 2019                [Page 1]
 
 Internet-Draft     DNS Privacy Service Recommendations         July 2018
 
@@ -109,7 +109,7 @@ Table of Contents
 
 
 
-Dickinson, et al.        Expires January 3, 2019                [Page 2]
+Dickinson, et al.       Expires January 17, 2019                [Page 2]
 
 Internet-Draft     DNS Privacy Service Recommendations         July 2018
 
@@ -165,7 +165,7 @@ Internet-Draft     DNS Privacy Service Recommendations         July 2018
 
 
 
-Dickinson, et al.        Expires January 3, 2019                [Page 3]
+Dickinson, et al.       Expires January 17, 2019                [Page 3]
 
 Internet-Draft     DNS Privacy Service Recommendations         July 2018
 
@@ -221,7 +221,7 @@ Internet-Draft     DNS Privacy Service Recommendations         July 2018
 
 
 
-Dickinson, et al.        Expires January 3, 2019                [Page 4]
+Dickinson, et al.       Expires January 17, 2019                [Page 4]
 
 Internet-Draft     DNS Privacy Service Recommendations         July 2018
 
@@ -277,7 +277,7 @@ Internet-Draft     DNS Privacy Service Recommendations         July 2018
 
 
 
-Dickinson, et al.        Expires January 3, 2019                [Page 5]
+Dickinson, et al.       Expires January 17, 2019                [Page 5]
 
 Internet-Draft     DNS Privacy Service Recommendations         July 2018
 
@@ -333,7 +333,7 @@ Internet-Draft     DNS Privacy Service Recommendations         July 2018
 
 
 
-Dickinson, et al.        Expires January 3, 2019                [Page 6]
+Dickinson, et al.       Expires January 17, 2019                [Page 6]
 
 Internet-Draft     DNS Privacy Service Recommendations         July 2018
 
@@ -389,7 +389,7 @@ Internet-Draft     DNS Privacy Service Recommendations         July 2018
 
 
 
-Dickinson, et al.        Expires January 3, 2019                [Page 7]
+Dickinson, et al.       Expires January 17, 2019                [Page 7]
 
 Internet-Draft     DNS Privacy Service Recommendations         July 2018
 
@@ -445,7 +445,7 @@ Internet-Draft     DNS Privacy Service Recommendations         July 2018
 
 
 
-Dickinson, et al.        Expires January 3, 2019                [Page 8]
+Dickinson, et al.       Expires January 17, 2019                [Page 8]
 
 Internet-Draft     DNS Privacy Service Recommendations         July 2018
 
@@ -501,7 +501,7 @@ Internet-Draft     DNS Privacy Service Recommendations         July 2018
 
 
 
-Dickinson, et al.        Expires January 3, 2019                [Page 9]
+Dickinson, et al.       Expires January 17, 2019                [Page 9]
 
 Internet-Draft     DNS Privacy Service Recommendations         July 2018
 
@@ -557,7 +557,7 @@ Internet-Draft     DNS Privacy Service Recommendations         July 2018
 
 
 
-Dickinson, et al.        Expires January 3, 2019               [Page 10]
+Dickinson, et al.       Expires January 17, 2019               [Page 10]
 
 Internet-Draft     DNS Privacy Service Recommendations         July 2018
 
@@ -613,7 +613,7 @@ Internet-Draft     DNS Privacy Service Recommendations         July 2018
 
 
 
-Dickinson, et al.        Expires January 3, 2019               [Page 11]
+Dickinson, et al.       Expires January 17, 2019               [Page 11]
 
 Internet-Draft     DNS Privacy Service Recommendations         July 2018
 
@@ -669,7 +669,7 @@ Internet-Draft     DNS Privacy Service Recommendations         July 2018
 
 
 
-Dickinson, et al.        Expires January 3, 2019               [Page 12]
+Dickinson, et al.       Expires January 17, 2019               [Page 12]
 
 Internet-Draft     DNS Privacy Service Recommendations         July 2018
 
@@ -725,7 +725,7 @@ Internet-Draft     DNS Privacy Service Recommendations         July 2018
 
 
 
-Dickinson, et al.        Expires January 3, 2019               [Page 13]
+Dickinson, et al.       Expires January 17, 2019               [Page 13]
 
 Internet-Draft     DNS Privacy Service Recommendations         July 2018
 
@@ -781,7 +781,7 @@ Internet-Draft     DNS Privacy Service Recommendations         July 2018
 
 
 
-Dickinson, et al.        Expires January 3, 2019               [Page 14]
+Dickinson, et al.       Expires January 17, 2019               [Page 14]
 
 Internet-Draft     DNS Privacy Service Recommendations         July 2018
 
@@ -837,7 +837,7 @@ Internet-Draft     DNS Privacy Service Recommendations         July 2018
 
 
 
-Dickinson, et al.        Expires January 3, 2019               [Page 15]
+Dickinson, et al.       Expires January 17, 2019               [Page 15]
 
 Internet-Draft     DNS Privacy Service Recommendations         July 2018
 
@@ -893,7 +893,7 @@ Internet-Draft     DNS Privacy Service Recommendations         July 2018
 
 
 
-Dickinson, et al.        Expires January 3, 2019               [Page 16]
+Dickinson, et al.       Expires January 17, 2019               [Page 16]
 
 Internet-Draft     DNS Privacy Service Recommendations         July 2018
 
@@ -949,7 +949,7 @@ Internet-Draft     DNS Privacy Service Recommendations         July 2018
 
 
 
-Dickinson, et al.        Expires January 3, 2019               [Page 17]
+Dickinson, et al.       Expires January 17, 2019               [Page 17]
 
 Internet-Draft     DNS Privacy Service Recommendations         July 2018
 
@@ -995,7 +995,6 @@ Internet-Draft     DNS Privacy Service Recommendations         July 2018
 
    2.3 With reference to section Section 5.3 provide specific details of
    which capabilities are employed for upstream traffic from the server
-   for
 
    2.4 Specify the authentication name to be used (if any) and if TLSA
    records are published (including options used in the TLSA records)
@@ -1005,7 +1004,8 @@ Internet-Draft     DNS Privacy Service Recommendations         July 2018
 
 
 
-Dickinson, et al.        Expires January 3, 2019               [Page 18]
+
+Dickinson, et al.       Expires January 17, 2019               [Page 18]
 
 Internet-Draft     DNS Privacy Service Recommendations         July 2018
 
@@ -1061,7 +1061,7 @@ Internet-Draft     DNS Privacy Service Recommendations         July 2018
 
 
 
-Dickinson, et al.        Expires January 3, 2019               [Page 19]
+Dickinson, et al.       Expires January 17, 2019               [Page 19]
 
 Internet-Draft     DNS Privacy Service Recommendations         July 2018
 
@@ -1117,7 +1117,7 @@ Internet-Draft     DNS Privacy Service Recommendations         July 2018
 
 
 
-Dickinson, et al.        Expires January 3, 2019               [Page 20]
+Dickinson, et al.       Expires January 17, 2019               [Page 20]
 
 Internet-Draft     DNS Privacy Service Recommendations         July 2018
 
@@ -1159,25 +1159,29 @@ Internet-Draft     DNS Privacy Service Recommendations         July 2018
 
 11.  Changelog
 
+   draft-dickinson-dprive-bcp-op-01
+
+   o  Update reference to RFC7626 to draft-bortzmeyer-rfc7626-bis
+
+   o  Fix a few typos
+
    draft-dickinson-dprive-bcp-op-00
 
    Name change to add dprive.  Differences to draft-dickinson-bcp-op-00:
 
    o  Reworked the Terminology, Introduction and Scope
 
-   o  Added Document section
-
-   o  Reworked the Recommendations section to describe threat
-      mitigations, optimizations and other options.  Split the
 
 
-
-
-Dickinson, et al.        Expires January 3, 2019               [Page 21]
+Dickinson, et al.       Expires January 17, 2019               [Page 21]
 
 Internet-Draft     DNS Privacy Service Recommendations         July 2018
 
 
+   o  Added Document section
+
+   o  Reworked the Recommendations section to describe threat
+      mitigations, optimizations and other options.  Split the
       recommendations up into 3 subsections: on the wire, at rest and
       upstream
 
@@ -1199,8 +1203,8 @@ Internet-Draft     DNS Privacy Service Recommendations         July 2018
 
    [I-D.ietf-dnsop-terminology-bis]
               Hoffman, P., Sullivan, A., and K. Fujiwara, "DNS
-              Terminology", draft-ietf-dnsop-terminology-bis-10 (work in
-              progress), April 2018.
+              Terminology", draft-ietf-dnsop-terminology-bis-11 (work in
+              progress), July 2018.
 
    [I-D.ietf-doh-dns-over-https]
               Hoffman, P. and P. McManus, "DNS Queries over HTTPS
@@ -1221,18 +1225,18 @@ Internet-Draft     DNS Privacy Service Recommendations         July 2018
               Server-Side State", RFC 5077, DOI 10.17487/RFC5077,
               January 2008, <https://www.rfc-editor.org/info/rfc5077>.
 
-   [RFC6265]  Barth, A., "HTTP State Management Mechanism", RFC 6265,
-              DOI 10.17487/RFC6265, April 2011, <https://www.rfc-
-              editor.org/info/rfc6265>.
 
 
 
 
-
-Dickinson, et al.        Expires January 3, 2019               [Page 22]
+Dickinson, et al.       Expires January 17, 2019               [Page 22]
 
 Internet-Draft     DNS Privacy Service Recommendations         July 2018
 
+
+   [RFC6265]  Barth, A., "HTTP State Management Mechanism", RFC 6265,
+              DOI 10.17487/RFC6265, April 2011, <https://www.rfc-
+              editor.org/info/rfc6265>.
 
    [RFC6973]  Cooper, A., Tschofenig, H., Aboba, B., Peterson, J.,
               Morris, J., Hansen, M., and R. Smith, "Privacy
@@ -1281,11 +1285,7 @@ Internet-Draft     DNS Privacy Service Recommendations         July 2018
 
 
 
-
-
-
-
-Dickinson, et al.        Expires January 3, 2019               [Page 23]
+Dickinson, et al.       Expires January 17, 2019               [Page 23]
 
 Internet-Draft     DNS Privacy Service Recommendations         July 2018
 
@@ -1304,8 +1304,8 @@ Internet-Draft     DNS Privacy Service Recommendations         July 2018
    [I-D.ietf-dnsop-session-signal]
               Bellis, R., Cheshire, S., Dickinson, J., Dickinson, S.,
               Lemon, T., and T. Pusateri, "DNS Stateful Operations",
-              draft-ietf-dnsop-session-signal-10 (work in progress),
-              June 2018.
+              draft-ietf-dnsop-session-signal-11 (work in progress),
+              July 2018.
 
    [I-D.ietf-tls-dnssec-chain-extension]
               Shore, M., Barnes, R., Huque, S., and W. Toorop, "A DANE
@@ -1341,7 +1341,7 @@ Internet-Draft     DNS Privacy Service Recommendations         July 2018
 
 
 
-Dickinson, et al.        Expires January 3, 2019               [Page 24]
+Dickinson, et al.       Expires January 17, 2019               [Page 24]
 
 Internet-Draft     DNS Privacy Service Recommendations         July 2018
 
@@ -1397,7 +1397,7 @@ Internet-Draft     DNS Privacy Service Recommendations         July 2018
 
 
 
-Dickinson, et al.        Expires January 3, 2019               [Page 25]
+Dickinson, et al.       Expires January 17, 2019               [Page 25]
 
 Internet-Draft     DNS Privacy Service Recommendations         July 2018
 
@@ -1453,7 +1453,7 @@ A.1.  Potential increases in DNS privacy
 
 
 
-Dickinson, et al.        Expires January 3, 2019               [Page 26]
+Dickinson, et al.       Expires January 17, 2019               [Page 26]
 
 Internet-Draft     DNS Privacy Service Recommendations         July 2018
 
@@ -1509,7 +1509,7 @@ A.3.  Related operational documents
 
 
 
-Dickinson, et al.        Expires January 3, 2019               [Page 27]
+Dickinson, et al.       Expires January 17, 2019               [Page 27]
 
 Internet-Draft     DNS Privacy Service Recommendations         July 2018
 
@@ -1565,7 +1565,7 @@ Appendix B.  IP address techniques
 
 
 
-Dickinson, et al.        Expires January 3, 2019               [Page 28]
+Dickinson, et al.       Expires January 17, 2019               [Page 28]
 
 Internet-Draft     DNS Privacy Service Recommendations         July 2018
 
@@ -1621,7 +1621,7 @@ B.3.  Prefix-preserving map
 
 
 
-Dickinson, et al.        Expires January 3, 2019               [Page 29]
+Dickinson, et al.       Expires January 17, 2019               [Page 29]
 
 Internet-Draft     DNS Privacy Service Recommendations         July 2018
 
@@ -1677,7 +1677,7 @@ B.6.  ipcipher
 
 
 
-Dickinson, et al.        Expires January 3, 2019               [Page 30]
+Dickinson, et al.       Expires January 17, 2019               [Page 30]
 
 Internet-Draft     DNS Privacy Service Recommendations         July 2018
 
@@ -1733,7 +1733,7 @@ Authors' Addresses
 
 
 
-Dickinson, et al.        Expires January 3, 2019               [Page 31]
+Dickinson, et al.       Expires January 17, 2019               [Page 31]
 
 Internet-Draft     DNS Privacy Service Recommendations         July 2018
 
@@ -1789,4 +1789,4 @@ Internet-Draft     DNS Privacy Service Recommendations         July 2018
 
 
 
-Dickinson, et al.        Expires January 3, 2019               [Page 32]
+Dickinson, et al.       Expires January 17, 2019               [Page 32]

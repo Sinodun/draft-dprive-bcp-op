@@ -76,7 +76,7 @@
 <uri></uri>
 </address>
 </author>
-<date year="2018" month="July" day="2"/>
+<date year="2018" month="July" day="16"/>
 
 <area>Internet</area>
 <workgroup>dprive</workgroup>
@@ -860,7 +860,7 @@ anomalous behaviour
 </t>
 <t>2.3 With reference to section <xref target="data-sent-onwards-from-the-server"/>
     provide specific details of which capabilities are employed for upstream
-    traffic from the server for
+    traffic from the server
 </t>
 <t>2.4 Specify the authentication name to be used (if any) and if TLSA records are
     published (including options used in the TLSA records)
@@ -1025,6 +1025,14 @@ United Kingdom
 </section>
 
 <section anchor="changelog" title="Changelog">
+<t>draft-dickinson-dprive-bcp-op-01
+</t>
+<t>
+<list style="symbols">
+<t>Update reference to RFC7626 to draft-bortzmeyer-rfc7626-bis</t>
+<t>Fix a few typos</t>
+</list>
+</t>
 <t>draft-dickinson-dprive-bcp-op-00
 </t>
 <t>Name change to add dprive. Differences to draft-dickinson-bcp-op-00:
