@@ -2,12 +2,12 @@
     Title = "Recommendations for DNS Privacy Service Operators"
     abbrev = "DNS Privacy Service Recommendations"
     category = "bcp"
-    docName= "draft-dickinson-dprive-bcp-op-01"
+    docName= "draft-ietf-dprive-bcp-op-00"
     ipr = "trust200902"
     area = "Internet"
     workgroup = "dprive"
     keyword = ["DNS"]
-    date = 2018-07-16T00:00:00Z
+    date = 2018-08-08T00:00:00Z
     [pi]
     toc = "yes"
     compact = "yes"
@@ -50,18 +50,6 @@
        city = "Utrecht"
        code = "3501 DA Utrecht"
        country = "The Netherlands"
-#    [[author]]
-#     initials="J."
-#     surname="Todd"
-#     fullname="John Todd"
-#     organization = "Quad9"
-#       [author.address]
-#       email = "jtodd@quad9.net"
-#       [author.address.postal]
-#       streets = ["1442 A Walnut Street", "Suite 501"]
-#       city = "Berkeley"
-#       code = "CA 94709"
-#       country = "United States"
     [[author]]
      initials="A."
      surname="Mankin"
@@ -550,7 +538,7 @@ current use, but does not claim to be comprehensive. (#ip-address-techniques)
 provides a more detailed survey of these techniques and definitions for the
 categories and properties listed below.
 
-![Figure showing comparison of IP address techniques (SVG)](https://github.com/Sinodun/draft-dprive-bcp-op/blob/master/draft-01/ip_techniques_table.svg)
+![Figure showing comparison of IP address techniques (SVG)](https://github.com/Sinodun/draft-dprive-bcp-op/blob/master/draft-00/ip_techniques_table.svg)
 
 The choice of which method to use for a particular application will depend on
 the requirements of that application and consideration of the threat analysis of
@@ -826,9 +814,9 @@ data is not exhaustive and has not been reviewed or confirmed by the operators.
 A question mark indicates no clear statement or data could be located on the
 issue. A dash indicates the category is not applicable to the service.
 
-![Table showing comparison of operators policies](https://github.com/Sinodun/draft-dprive-bcp-op/blob/master/draft-01/policy_table.svg)
+![Table showing comparison of operators policies](https://github.com/Sinodun/draft-dprive-bcp-op/blob/master/draft-00/policy_table.svg)
 
-![Table showing comparison of operators practices](https://github.com/Sinodun/draft-dprive-bcp-op/blob/master/draft-01/practice_table.svg)
+![Table showing comparison of operators practices](https://github.com/Sinodun/draft-dprive-bcp-op/blob/master/draft-00/practice_table.svg)
 
 NOTE: Review and correction of any inaccuracies in the table would be much
 appreciated.
@@ -883,28 +871,10 @@ United Kingdom
 
 # Changelog
 
-draft-dickinson-dprive-bcp-op-01
+draft-ietf-dprive-bcp-op-00
 
-* Update reference to RFC7626 to draft-bortzmeyer-rfc7626-bis
-* Fix a few typos
-
-draft-dickinson-dprive-bcp-op-00
-
-Name change to add dprive. Differences to draft-dickinson-bcp-op-00:
-
-* Reworked the Terminology, Introduction and Scope
-* Added Document section
-* Reworked the Recommendations section to describe threat mitigations,
-  optimizations and other options. Split the recommendations up into 3
-  subsections: on the wire, at rest and upstream
-* Added much more information on data handling and IP address pseudonymization 
-  and anonymization
-* Added more details and comparison of some existing policy/privacy policies
-* Applied virtually all of Amelia Andersdotter's suggested changes.
-
-draft-dickinson-bcp-op-00
-
-* Initial commit
+* Initial commit of re-named document after adoption to replace
+  draft-dickinson-dprive-bcp-op-01
 
 
 <reference anchor='ipcipher-spec'

@@ -2,8 +2,8 @@
 # - mmark (https://github.com/miekg/mmark)
 # - xml2rfc (https://xml2rfc.tools.ietf.org/)
 
-DRAFT=draft-dickinson-dprive-bcp-op
-VERSION=01
+DRAFT=draft-ietf-dprive-bcp-op
+VERSION=00
 
 XML=$(DRAFT).xml
 HTML=$(DRAFT)-$(VERSION).html
