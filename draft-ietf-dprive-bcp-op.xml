@@ -410,7 +410,7 @@ example Section 6.5 of RFC7525?
 </t>
 <t>
 <list style="symbols">
-<t>Known attacks on TLS (TODO: add a reference)</t>
+<t>Known attacks on TLS such as <xref target="RFC7457"/></t>
 <t>Traffic analysis (TODO: add a reference)</t>
 <t>Potential for client tracking via transport identifiers</t>
 <t>Blocking of well known ports (e.g. 853 for DNS-over-TLS)</t>
@@ -1052,6 +1052,7 @@ draft-dickinson-dprive-bcp-op-01</t>
 <?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.5077.xml"?>
 <?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.6265.xml"?>
 <?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.6973.xml"?>
+<?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.7457.xml"?>
 <?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.7525.xml"?>
 <?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.7816.xml"?>
 <?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.7830.xml"?>
