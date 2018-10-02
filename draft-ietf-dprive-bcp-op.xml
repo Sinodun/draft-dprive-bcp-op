@@ -313,6 +313,7 @@ or more of the following transports
 <list style="symbols">
 <t>A DNS privacy service can also be provided over DNS-over-DTLS <xref target="RFC8094"/>,
 however note that this is an Experimental specification.</t>
+<t>A DNS privacy service can also be provided over DNS-over-QUIC <xref target="I-D.huitema-quic-dnsoquic"/></t>
 </list>
 </t>
 <t>It is noted that DNS privacy service might be provided over IPSec, DNSCrypt
@@ -1046,6 +1047,7 @@ draft-dickinson-dprive-bcp-op-01</t>
 <?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml3/reference.I-D.ietf-dnsop-terminology-bis.xml"?>
 <?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml3/reference.I-D.ietf-doh-dns-over-https.xml"?>
 <?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml3/reference.I-D.ietf-dprive-padding-policy.xml"?>
+<?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml3/reference.I-D.draft-huitema-quic-dnsoquic-05.xml"?>
 <?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.2119.xml"?>
 <?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.5077.xml"?>
 <?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.6265.xml"?>
