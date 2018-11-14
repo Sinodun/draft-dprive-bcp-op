@@ -660,8 +660,8 @@ Internet-Draft     DNS Privacy Service Recommendations       August 2018
       particular purpose of detecting and remedying technically
       malicious (e.g.  DoS) or anomalous use of the service.
 
-   o  Data access should be minimized to only those personal who require
-      access to perform operational duties.
+   o  Data access should be minimized to only those personnel who
+      require access to perform operational duties.
 
 
 
@@ -882,7 +882,7 @@ Internet-Draft     DNS Privacy Service Recommendations       August 2018
    further measure to counter traffic analysis.
 
    At the time of writing there are no standardized or widely recognized
-   techniques to preform such obfuscation or bulk pre-fetches.
+   techniques to perform such obfuscation or bulk pre-fetches.
 
    Another technique that particularly small operators may consider is
    forwarding local traffic to a larger resolver (with a privacy policy

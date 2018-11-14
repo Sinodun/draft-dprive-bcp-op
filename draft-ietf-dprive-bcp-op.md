@@ -472,7 +472,7 @@ described in [@!RFC6973] should be applied.
 * DNS privacy services should not track users except for the particular purpose
   of detecting and remedying technically malicious (e.g. DoS) or anomalous use
   of the service.
-* Data access should be minimized to only those personal who require access to
+* Data access should be minimized to only those personnel who require access to
   perform operational duties.
 
 ### Data minimization of network traffic
@@ -654,7 +654,7 @@ harder. The resolver could also employ aggressive pre-fetch techniques as a
 further measure to counter traffic analysis.
 
 At the time of writing there are no standardized or widely recognized techniques
-to preform such obfuscation or bulk pre-fetches.
+to perform such obfuscation or bulk pre-fetches.
 
 Another technique that particularly small operators may consider is forwarding
 local traffic to a larger resolver (with a privacy policy that aligns with their

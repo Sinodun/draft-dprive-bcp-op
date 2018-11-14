@@ -907,7 +907,7 @@
 <li>Transient data (e.g. that is used for real time monitoring and threat analysis which might be held only memory) should be retained for the shortest possible period deemed operationally feasible.</li>
 <li>The retention period of DNS traffic logs should be only those required to sustain operation of the service and, to the extent that such exists, meet regulatory requirements.</li>
 <li>DNS privacy services should not track users except for the particular purpose of detecting and remedying technically malicious (e.g. DoS) or anomalous use of the service.</li>
-<li>Data access should be minimized to only those personal who require access to perform operational duties.</li>
+<li>Data access should be minimized to only those personnel who require access to perform operational duties.</li>
 </ul>
 
 <p> </p>
@@ -1017,7 +1017,7 @@
 </h1>
 <p id="rfc.section.5.3.2.p.1">Additional options: </p>
 <p id="rfc.section.5.3.2.p.2">Since queries from recursive resolvers to authoritative servers are performed using cleartext (at the time of writing), resolver services need to consider the extent to which they may be directly leaking information about their client community via these upstream queries and what they can do to mitigate this further. Note, that even when all the relevant techniques described above are employed there may still be attacks possible, e.g.  <a href="#Pitfalls-of-DNS-Encryption" class="xref">[Pitfalls-of-DNS-Encryption]</a>. For example, a resolver with a very small community of users risks exposing data in this way and OUGHT obfuscate this traffic by mixing it with 'generated' traffic to make client characterization harder. The resolver could also employ aggressive pre-fetch techniques as a further measure to counter traffic analysis.  </p>
-<p id="rfc.section.5.3.2.p.3">At the time of writing there are no standardized or widely recognized techniques to preform such obfuscation or bulk pre-fetches.  </p>
+<p id="rfc.section.5.3.2.p.3">At the time of writing there are no standardized or widely recognized techniques to perform such obfuscation or bulk pre-fetches.  </p>
 <p id="rfc.section.5.3.2.p.4">Another technique that particularly small operators may consider is forwarding local traffic to a larger resolver (with a privacy policy that aligns with their own practices) over an encrypted protocol so that the upstream queries are obfuscated among those of the large resolver.  </p>
 <h1 id="rfc.section.5.3.3">
 <a href="#rfc.section.5.3.3">5.3.3.</a> <a href="#data-sharing" id="data-sharing">Data sharing</a>
