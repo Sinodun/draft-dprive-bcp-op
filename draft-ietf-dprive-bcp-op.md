@@ -618,8 +618,11 @@ If operators do offer a service that sends the ECS options upstream they should
 use the shortest prefix that is operationally feasible (NOTE: the authors
 believe they will be able to add a reference for advice here soon) and ideally
 use a policy of whitelisting upstream servers to send ECS to in order to
-minimize data leakage. Operators should make clear in any policy statement what
-prefix length they actually send and the specific policy used.
+minimize data leakage. Whitelisting has the benefit that not only do you know
+which upstream servers can use ECS but also allows the operator to decide which
+upstream servers apply privacy policies that the operator is happy with.
+Operators should make clear in any policy statement what prefix length they
+actually send and the specific policy used.
 
 <!-- *RvRD: note: I have a bachelor student working on this, who has been
 looking at what are good prefix sizes to e.g. geo-locate a client to a country
