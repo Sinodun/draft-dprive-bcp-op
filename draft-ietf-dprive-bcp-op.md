@@ -121,10 +121,8 @@ as they move across network environments. Commitments from operators to minimize
 such tracking are also likely to play a role in users selection of resolver.
 
 More recently the global legislative landscape with regard to personal data
-collection, retention, and pseudonymization has seen significant activity with
-differing requirements active in different jurisdictions. For example the user
-of a service and the service itself may be in jurisdictions with conflicting
-legislation. It is an untested area that simply using a DNS resolution service
+collection, retention, and pseudonymization has seen significant activity.
+It is an untested area that simply using a DNS resolution service
 constitutes consent from the user for the operator to process their query data.
 The impact of recent legislative changes on data pertaining to the users of both
 Internet Service Providers and DNS open resolvers is not fully understood at the
