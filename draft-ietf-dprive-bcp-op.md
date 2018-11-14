@@ -250,7 +250,8 @@ Mitigations:
 
 * DNSSEC provides data origin authentication and data integrity to the Domain 
 Name System. This is a separate from DNS privacy. All DNS privacy services
-MUST perform DNSSEC validation.
+MUST perform DNSSEC validation. In addition they MUST be able to provide the
+DNSSEC RRs to the client so that it can perform its own validation.
 
 ## On the wire between client and server
 
