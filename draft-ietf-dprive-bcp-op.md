@@ -240,6 +240,17 @@ from Section 5 of RFC6973, some are just standalone descriptions, we need to go
 through all of them and see if we can use the RFC6973 threats where possible
 and make them consistent.
 
+## General DNS protocol features
+
+Threats:
+
+* Incorrect or altered DNS data
+
+Mitigations:
+
+* DNSSEC provides data origin authentication and data integrity to the Domain 
+Name System. This is a separate from DNS privacy. All DNS privacy services
+MUST perform DNSSEC validation.
 
 ## On the wire between client and server
 
@@ -603,7 +614,7 @@ As specified in [@!RFC8310] for DNS-over-TLS but applicable to any DNS Privacy
 services the server should:
 
 * Implement QNAME minimization [@!RFC7816]
-* Honour a SOURCE PREFIX-LENGTH set to 0 in a query containing the EDNS(0)
+* Honor a SOURCE PREFIX-LENGTH set to 0 in a query containing the EDNS(0)
   Client Subnet (ECS) option and not send an ECS option in upstream queries.
 
 Optimizations:
@@ -700,55 +711,75 @@ services one that implies consent for data processing, one that doesn't?
 
 ## Recommended contents of a DPPPS
 
-<!-- Work out how to do a numbered, nested list in markdown! -->
+### Policy
 
-1 Policy
-
-1.1 Recommendations. This section should explain, with reference to section 
+1. Recommendations. This section should explain, with reference to section 
       (#recommendations-for-dns-privacy-services) of this document which 
       recommendations the DNS privacy service employs.
 
-1.2 Data handling. This section should explain, with reference to section 
+1. Data handling. This section should explain, with reference to section 
        (#data-at-rest-on-the-server) 
        of this document the policy for gathering and disseminating information 
        collected by the DNS privacy service. 
 
-1.2.1 Specify clearly what data (including whether it is aggregated, 
+1. Specify clearly what data (including whether it is aggregated, 
         pseudonymized or anonymized) is:
 
-1.2.1.1 Collected and retained by the operator (and for how long)
+    - Collected and retained by the operator (and for how long)
 
-1.2.1.2 Shared with partners
+    - Shared with partners
 
-1.2.1.3  Shared, sold or rented to third-parties
+    - Shared, sold or rented to third-parties
 
-1.2.2  Specify any exceptions to the above, for example technically malicious or
-anomalous behaviour
+1. Specify any exceptions to the above, for example technically malicious or
+anomalous behavior
 
-1.2.3  Declare any partners, third-party affiliations or sources of funding
+1. Declare any partners, third-party affiliations or sources of funding
 
-1.2.4 Whether user DNS data is correlated or combined with any other personal
+1. Whether user DNS data is correlated or combined with any other personal
       information held by the operator
 
-2 Practice. This section should explain the current operational practices of the service.
+1. Result filtering. This section should explain whether the operator filters, edits or alters in any way the replies that it receives from the authoritative servers for each DNS zone, before forwarding them to the clients. For each category listed below, the operator should also specify how the filtering lists are created and managed, whether it employs any third-party sources for such lists, and which ones.
 
-2.1 Specify any temporary or permanent deviations from the policy for
+    - Specify if any replies are being filtered out or altered for network and computer security reasons (e.g. preventing connections to malware-spreading websites or botnet control servers)
+
+    - Specify if any replies are being filtered out or altered for mandatory legal reasons, due to applicable legislation or binding orders by courts and other public authorities
+
+    - Specify if any replies are being filtered out or altered for voluntary legal reasons, due to an internal policy by the operator aiming at reducing potential legal risks
+
+    - Specify if any replies are being filtered out or altered for any other reason, including commercial ones
+
+### Practice.
+
+This section should explain the current operational practices of the service.
+
+1. Specify any temporary or permanent deviations from the policy for
     operational reasons
 
-2.2 With reference to section (#on-the-wire-between-client-and-server) provide 
+1. With reference to section (#on-the-wire-between-client-and-server) provide 
     specific details of which capabilities are provided on which address and 
     ports
 
-2.3 With reference to section (#data-sent-onwards-from-the-server) 
+1. With reference to section (#data-sent-onwards-from-the-server) 
     provide specific details of which capabilities are employed for upstream 
     traffic from the server
 
-2.4 Specify the authentication name to be used (if any) and if TLSA records are 
+1. Specify the authentication name to be used (if any) and if TLSA records are 
     published (including options used in the TLSA records)
 
-2.5 Specify the SPKI pinsets to be used (if any) and policy for rolling keys
+1. Specify the SPKI pinsets to be used (if any) and policy for rolling keys
 
-2.6 Provide a contact email address for the service
+1. Provide contact/support information for the service
+
+1. Jurisdiction. This section should communicate the applicable jurisdictions and law enforcement regimes under which the service is being provided.
+
+    - Specify the entity or entities that will control the data and be responsible for their treatment, and their legal place of business
+
+    - Specify, either directly or by pointing to the applicable privacy policy, the relevant privacy laws that apply to the treatment of the data, the rights that users enjoy in regard to their own personal information that is treated by the service, and how they can contact the operator to enforce them
+
+    - Specify the countries in which the servers handling the DNS requests and the data are located (if the operator applies a geolocation policy so that requests from certain countries are only served by certain servers, this should be specified as well)
+
+    - Specify whether the operator has any agreement in place with law enforcement agencies, or other public and private parties dealing with security and intelligence, to give them access to the servers and/or to the data
 
 ## Current policy and privacy statements
 
