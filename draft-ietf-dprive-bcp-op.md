@@ -342,7 +342,7 @@ example Section 6.5 of RFC7525?
 
 Threats:
 
-* Known attacks on TLS (TODO: add a reference)
+* Known attacks on TLS such as those described in [@RFC7457]
 * Traffic analysis (TODO: add a reference)
 * Potential for client tracking via transport identifiers
 * Blocking of well known ports (e.g. 853 for DNS-over-TLS)
