@@ -188,18 +188,12 @@ when, and only when, they appear in all capitals, as shown here.
 Privacy terminology is as described in Section 3 of [@!RFC6973].
 
 DNS terminology is as described in [@?I-D.ietf-dnsop-terminology-bis] with one
-modification: we use the definition of Privacy-enabling DNS
-server taken from [@RFC8310]:
+modification: we restate the clause in the original definition of Privacy-enabling DNS
+server in [@RFC8310] to include the requirement that a DNS over (D)TLS server 
+should also offer at least one of the credentials described in Section 8 and
+implement the (D)TLS profile described in Section 9 of [@RFC8310].
 
-* Privacy-enabling DNS server: A DNS server (most likely a full-service
-  resolver) that implements DNS-over-TLS [@RFC7858], and may optionally
-  implement DNS-over-DTLS [@RFC8094]. The server should also offer at least one
-  of the credentials described in Section 8 and implement the (D)TLS profile
-  described in Section 9.
-  
-  TODO: Update the definition of Privacy-enabling DNS server in
-  [@!I-D.ietf-dnsop-terminology-bis] to be complete and also include DoH, then
-  reference that here.
+Other Terms:
 
 * DPPPS: DNS Privacy Policy and Practice Statement, see
   (#dns-privacy-policy-and-practice-statement).

@@ -221,23 +221,12 @@ when, and only when, they appear in all capitals, as shown here.
 <t>Privacy terminology is as described in Section 3 of <xref target="RFC6973"/>.
 </t>
 <t>DNS terminology is as described in <xref target="I-D.ietf-dnsop-terminology-bis"/> with one
-modification: we use the definition of Privacy-enabling DNS
-server taken from <xref target="RFC8310"/>:
+modification: we restate the clause in the original definition of Privacy-enabling DNS
+server in <xref target="RFC8310"/> to include the requirement that a DNS over (D)TLS server
+should also offer at least one of the credentials described in Section 8 and
+implement the (D)TLS profile described in Section 9 of <xref target="RFC8310"/>.
 </t>
-<t>
-<list style="symbols">
-<t>Privacy-enabling DNS server: A DNS server (most likely a full-service
-resolver) that implements DNS-over-TLS <xref target="RFC7858"/>, and may optionally
-implement DNS-over-DTLS <xref target="RFC8094"/>. The server should also offer at least one
-of the credentials described in Section 8 and implement the (D)TLS profile
-described in Section 9.
-
-<vspace/></t>
-</list>
-</t>
-<t>TODO: Update the definition of Privacy-enabling DNS server in
-  <xref target="I-D.ietf-dnsop-terminology-bis"/> to be complete and also include DoH, then
-  reference that here.
+<t>Other Terms:
 </t>
 <t>
 <list style="symbols">
@@ -1083,7 +1072,6 @@ draft-dickinson-dprive-bcp-op-01</t>
 </middle>
 <back>
 <references title="Normative References">
-<?rfc include="http://xml2rfc.ietf.org/public/rfc/bibxml3/reference.I-D.ietf-dnsop-terminology-bis.xml"?>
 <?rfc include="http://xml2rfc.ietf.org/public/rfc/bibxml3/reference.I-D.ietf-doh-dns-over-https.xml"?>
 <?rfc include="http://xml2rfc.ietf.org/public/rfc/bibxml3/reference.I-D.ietf-dprive-padding-policy.xml"?>
 <?rfc include="http://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.2119.xml"?>
@@ -1103,6 +1091,7 @@ draft-dickinson-dprive-bcp-op-01</t>
 <?rfc include="http://xml2rfc.ietf.org/public/rfc/bibxml3/reference.I-D.ietf-dnsop-dns-capture-format.xml"?>
 <?rfc include="http://xml2rfc.ietf.org/public/rfc/bibxml3/reference.I-D.ietf-dnsop-dns-tcp-requirements.xml"?>
 <?rfc include="http://xml2rfc.ietf.org/public/rfc/bibxml3/reference.I-D.ietf-dnsop-session-signal.xml"?>
+<?rfc include="http://xml2rfc.ietf.org/public/rfc/bibxml3/reference.I-D.ietf-dnsop-terminology-bis.xml"?>
 <?rfc include="http://xml2rfc.ietf.org/public/rfc/bibxml3/reference.I-D.ietf-tls-dnssec-chain-extension.xml"?>
 <reference anchor='Pitfalls-of-DNS-Encryption'
  target='https://www.ietf.org/mail-archive/web/dns-privacy/current/pdfWqAIUmEl47.pdf'>

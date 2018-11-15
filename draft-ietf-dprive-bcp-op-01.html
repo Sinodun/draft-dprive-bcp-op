@@ -665,14 +665,8 @@
 </h1>
 <p id="rfc.section.4.p.1">The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in BCP 14 <a href="#RFC2119" class="xref">[RFC2119]</a> <a href="#RFC8174" class="xref">[RFC8174]</a> when, and only when, they appear in all capitals, as shown here.  </p>
 <p id="rfc.section.4.p.2">Privacy terminology is as described in Section 3 of <a href="#RFC6973" class="xref">[RFC6973]</a>.  </p>
-<p id="rfc.section.4.p.3">DNS terminology is as described in <a href="#I-D.ietf-dnsop-terminology-bis" class="xref">[I-D.ietf-dnsop-terminology-bis]</a> with one modification: we use the definition of Privacy-enabling DNS server taken from <a href="#RFC8310" class="xref">[RFC8310]</a>: </p>
-<p></p>
-
-<ul><li>Privacy-enabling DNS server: A DNS server (most likely a full-service resolver) that implements DNS-over-TLS <a href="#RFC7858" class="xref">[RFC7858]</a>, and may optionally implement DNS-over-DTLS <a href="#RFC8094" class="xref">[RFC8094]</a>. The server should also offer at least one of the credentials described in Section 8 and implement the (D)TLS profile described in Section 9.  <br>
-</li></ul>
-
-<p> </p>
-<p id="rfc.section.4.p.5">TODO: Update the definition of Privacy-enabling DNS server in <a href="#I-D.ietf-dnsop-terminology-bis" class="xref">[I-D.ietf-dnsop-terminology-bis]</a> to be complete and also include DoH, then reference that here.  </p>
+<p id="rfc.section.4.p.3">DNS terminology is as described in <a href="#I-D.ietf-dnsop-terminology-bis" class="xref">[I-D.ietf-dnsop-terminology-bis]</a> with one modification: we restate the clause in the original definition of Privacy-enabling DNS server in <a href="#RFC8310" class="xref">[RFC8310]</a> to include the requirement that a DNS over (D)TLS server should also offer at least one of the credentials described in Section 8 and implement the (D)TLS profile described in Section 9 of <a href="#RFC8310" class="xref">[RFC8310]</a>.  </p>
+<p id="rfc.section.4.p.4">Other Terms: </p>
 <p></p>
 
 <ul>
@@ -1251,11 +1245,6 @@
 <a href="#rfc.references.1">12.1.</a> Normative References</h1>
 <table><tbody>
 <tr>
-<td class="reference"><b id="I-D.ietf-dnsop-terminology-bis">[I-D.ietf-dnsop-terminology-bis]</b></td>
-<td class="top">
-<a>Hoffman, P.</a>, <a>Sullivan, A.</a> and <a>K. Fujiwara</a>, "<a href="https://tools.ietf.org/html/draft-ietf-dnsop-terminology-bis-14">DNS Terminology</a>", Internet-Draft draft-ietf-dnsop-terminology-bis-14, September 2018.</td>
-</tr>
-<tr>
 <td class="reference"><b id="I-D.ietf-doh-dns-over-https">[I-D.ietf-doh-dns-over-https]</b></td>
 <td class="top">
 <a>Hoffman, P.</a> and <a>P. McManus</a>, "<a href="https://tools.ietf.org/html/draft-ietf-doh-dns-over-https-14">DNS Queries over HTTPS (DoH)</a>", Internet-Draft draft-ietf-doh-dns-over-https-14, August 2018.</td>
@@ -1343,6 +1332,11 @@
 <td class="reference"><b id="I-D.ietf-dnsop-session-signal">[I-D.ietf-dnsop-session-signal]</b></td>
 <td class="top">
 <a>Bellis, R.</a>, <a>Cheshire, S.</a>, <a>Dickinson, J.</a>, <a>Dickinson, S.</a>, <a>Lemon, T.</a> and <a>T. Pusateri</a>, "<a href="https://tools.ietf.org/html/draft-ietf-dnsop-session-signal-18">DNS Stateful Operations</a>", Internet-Draft draft-ietf-dnsop-session-signal-18, October 2018.</td>
+</tr>
+<tr>
+<td class="reference"><b id="I-D.ietf-dnsop-terminology-bis">[I-D.ietf-dnsop-terminology-bis]</b></td>
+<td class="top">
+<a>Hoffman, P.</a>, <a>Sullivan, A.</a> and <a>K. Fujiwara</a>, "<a href="https://tools.ietf.org/html/draft-ietf-dnsop-terminology-bis-14">DNS Terminology</a>", Internet-Draft draft-ietf-dnsop-terminology-bis-14, September 2018.</td>
 </tr>
 <tr>
 <td class="reference"><b id="I-D.ietf-tls-dnssec-chain-extension">[I-D.ietf-tls-dnssec-chain-extension]</b></td>
