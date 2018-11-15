@@ -147,7 +147,7 @@ out any errata or updates that apply to this document.
 "DNS Privacy Considerations" [@I-D.bortzmeyer-dprive-rfc7626-bis] describes the
 general privacy issues and threats associated with the use of the DNS by
 Internet users and much of the threat analysis here is lifted from that
-document and from [@RFC6873]. However this document is limited in scope to best
+document and from [@!RFC6973]. However this document is limited in scope to best
 practice considerations for the provision of DNS privacy services by servers
 (recursive resolvers) to clients (stub resolvers or forwarders). Privacy
 considerations specifically from the perspective of an end user, or those for
@@ -182,16 +182,16 @@ increase in complexity. A selection of the most relevant documents are listed in
 
 The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD",
 "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and "OPTIONAL" in this
-document are to be interpreted as described in BCP 14 [@!RFC2119] [@!RFC8174]
+document are to be interpreted as described in BCP 14 [@!RFC2119] and [@!RFC8174]
 when, and only when, they appear in all capitals, as shown here.
 
 Privacy terminology is as described in Section 3 of [@!RFC6973].
 
 DNS terminology is as described in [@?I-D.ietf-dnsop-terminology-bis] with one
 modification: we restate the clause in the original definition of Privacy-enabling DNS
-server in [@RFC8310] to include the requirement that a DNS over (D)TLS server 
+server in [@!RFC8310] to include the requirement that a DNS over (D)TLS server 
 should also offer at least one of the credentials described in Section 8 and
-implement the (D)TLS profile described in Section 9 of [@RFC8310].
+implement the (D)TLS profile described in Section 9 of [@!RFC8310].
 
 Other Terms:
 
@@ -222,8 +222,8 @@ they SHOULD implement (where appropriate) all:
 * Additional options to be maximally compliant
 
 TODO: Some of the threats listed in the following sections are taken directly
-from Section 5 of RFC6973, some are just standalone descriptions, we need to go
-through all of them and see if we can use the RFC6973 threats where possible
+from Section 5 of [@!RFC6973], some are just standalone descriptions, we need to go
+through all of them and see if we can use the [@!RFC6973] threats where possible
 and make them consistent.
 
 ## General DNS protocol features
@@ -257,7 +257,7 @@ A DNS privacy service can mitigate these threats by providing service over one
 or more of the following transports
 
 * DNS-over-TLS [@!RFC7858]
-* DoH [@I-D.ietf-doh-dns-over-https]
+* DoH [@!RFC8484]
 
 Additional options:
 
@@ -295,7 +295,7 @@ Optimizations:
 
 DNS privacy services can also consider the following capabilities/options:
 
-* As recommended in [@RFC8310] providing DANE TLSA records for the nameserver
+* As recommended in [@!RFC8310] providing DANE TLSA records for the nameserver
   * In particular, the service could provide TLSA records such that
     authenticating solely via the PKIX infrastructure can be avoided.
 * Implementing [@I-D.ietf-tls-dnssec-chain-extension]
@@ -329,7 +329,7 @@ It is recommended that operators:
 * Monitor certificates to prevent accidental expiration of certificates
 
 TODO: Could we provide references for certificate management best practice, for
-example Section 6.5 of RFC7525?
+example Section 6.5 of [@!RFC7525]?
 
 
 ### Protocol recommendations
@@ -350,7 +350,7 @@ Countermeasures to DNS Traffic Analysis from section 11.1 of [@!RFC8310]
 provide strong mitigations. This includes but is not limited to:
 
 * Adhering to [@!RFC7525]
-* Implementing only (D)TLS 1.2 or later as specified in [@RFC8310]
+* Implementing only (D)TLS 1.2 or later as specified in [@!RFC8310]
 * Implementing EDNS(0) Padding [@!RFC7830] using the guidelines in
   [@!I-D.ietf-dprive-padding-policy]
 * Clients should not be required to use TLS session resumption [@!RFC5077],
@@ -362,12 +362,12 @@ provide strong mitigations. This includes but is not limited to:
 Optimizations:
 
 * Concurrent processing of pipelined queries, returning responses as soon as
-  available, potentially out of order as specified in [@RFC7766]. This is often
+  available, potentially out of order as specified in [@!RFC7766]. This is often
   called 'OOOR' - out-of-order responses. (Providing processing performance
   similar to HTTP multiplexing)
 * Management of TLS connections to optimize performance for clients using either
-  * [@RFC7766] and EDNS(0) Keepalive [@RFC7828] and/or 
-  * DNS Stateful Operations [@I-D.ietf-dnsop-session-signal]
+  * [@!RFC7766] and EDNS(0) Keepalive [@!RFC7828] and/or 
+  * DNS Stateful Operations [@!I-D.ietf-dnsop-session-signal]
   
 Additional options that providers may consider:
 
@@ -498,7 +498,7 @@ larger amount of input entropy, the better to resist brute force
 re-identification attacks that have grown in practicality over the period.
 
 Techniques employed may be broadly categorized as either anonymization or
-pseudonymization. The following discussion uses the definitions from [@RFC6973]
+pseudonymization. The following discussion uses the definitions from [@!RFC6973]
 Section 3, with additional observations from [van Dijkhuizen et
 al.](https://doi.org/10.1145/3182660)
 
@@ -957,7 +957,7 @@ draft-ietf-dprive-bcp-op-00
 <!--These lines are needed to generate references for citations that appear only
 in the appendix-->
 [-@RFC6235]
-[-@RFC7871]
+[-@!RFC7871]
 [-@?I-D.ietf-dnsop-dns-capture-format]
 [-@?I-D.ietf-dnsop-dns-tcp-requirements]
 
@@ -977,7 +977,7 @@ clients and recursive resolvers:
 
 * 'Specification for DNS over Transport Layer Security (TLS)' [@!RFC7858],
   referred to here as 'DNS-over-TLS'.
-* 'DNS over Datagram Transport Layer Security (DTLS)' [@!RFC8094], referred to
+* 'DNS over Datagram Transport Layer Security (DTLS)' [@RFC8094], referred to
   here as 'DNS-over-DTLS'. Note that this document has the Category of
   Experimental.
 * 'DNS Queries over HTTPS (DoH)' [@!I-D.ietf-doh-dns-over-https] referred to

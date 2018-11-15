@@ -177,7 +177,7 @@ out any errata or updates that apply to this document.
 <t>&quot;DNS Privacy Considerations&quot; <xref target="I-D.bortzmeyer-dprive-rfc7626-bis"/> describes the
 general privacy issues and threats associated with the use of the DNS by
 Internet users and much of the threat analysis here is lifted from that
-document and from <xref target="RFC6873"/>. However this document is limited in scope to best
+document and from <xref target="RFC6973"/>. However this document is limited in scope to best
 practice considerations for the provision of DNS privacy services by servers
 (recursive resolvers) to clients (stub resolvers or forwarders). Privacy
 considerations specifically from the perspective of an end user, or those for
@@ -215,7 +215,7 @@ increase in complexity. A selection of the most relevant documents are listed in
 <section anchor="terminology" title="Terminology">
 <t>The key words &quot;MUST&quot;, &quot;MUST NOT&quot;, &quot;REQUIRED&quot;, &quot;SHALL&quot;, &quot;SHALL NOT&quot;, &quot;SHOULD&quot;,
 &quot;SHOULD NOT&quot;, &quot;RECOMMENDED&quot;, &quot;NOT RECOMMENDED&quot;, &quot;MAY&quot;, and &quot;OPTIONAL&quot; in this
-document are to be interpreted as described in BCP 14 <xref target="RFC2119"/> <xref target="RFC8174"/>
+document are to be interpreted as described in BCP 14 <xref target="RFC2119"/> and <xref target="RFC8174"/>
 when, and only when, they appear in all capitals, as shown here.
 </t>
 <t>Privacy terminology is as described in Section 3 of <xref target="RFC6973"/>.
@@ -264,8 +264,8 @@ they SHOULD implement (where appropriate) all:
 </list>
 </t>
 <t>TODO: Some of the threats listed in the following sections are taken directly
-from Section 5 of RFC6973, some are just standalone descriptions, we need to go
-through all of them and see if we can use the RFC6973 threats where possible
+from Section 5 of <xref target="RFC6973"/>, some are just standalone descriptions, we need to go
+through all of them and see if we can use the <xref target="RFC6973"/> threats where possible
 and make them consistent.
 </t>
 
@@ -311,7 +311,7 @@ or more of the following transports
 <t>
 <list style="symbols">
 <t>DNS-over-TLS <xref target="RFC7858"/></t>
-<t>DoH <xref target="I-D.ietf-doh-dns-over-https"/></t>
+<t>DoH <xref target="RFC8484"/></t>
 </list>
 </t>
 <t>Additional options:
@@ -404,7 +404,7 @@ authentication domain names</t>
 </list>
 </t>
 <t>TODO: Could we provide references for certificate management best practice, for
-example Section 6.5 of RFC7525?
+example Section 6.5 of <xref target="RFC7525"/>?
 </t>
 </section>
 </section>
@@ -1072,6 +1072,7 @@ draft-dickinson-dprive-bcp-op-01</t>
 </middle>
 <back>
 <references title="Normative References">
+<?rfc include="http://xml2rfc.ietf.org/public/rfc/bibxml3/reference.I-D.ietf-dnsop-session-signal.xml"?>
 <?rfc include="http://xml2rfc.ietf.org/public/rfc/bibxml3/reference.I-D.ietf-doh-dns-over-https.xml"?>
 <?rfc include="http://xml2rfc.ietf.org/public/rfc/bibxml3/reference.I-D.ietf-dprive-padding-policy.xml"?>
 <?rfc include="http://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.2119.xml"?>
@@ -1079,18 +1080,21 @@ draft-dickinson-dprive-bcp-op-01</t>
 <?rfc include="http://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.6265.xml"?>
 <?rfc include="http://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.6973.xml"?>
 <?rfc include="http://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.7525.xml"?>
+<?rfc include="http://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.7766.xml"?>
 <?rfc include="http://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.7816.xml"?>
+<?rfc include="http://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.7828.xml"?>
 <?rfc include="http://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.7830.xml"?>
 <?rfc include="http://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.7858.xml"?>
+<?rfc include="http://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.7871.xml"?>
 <?rfc include="http://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.7873.xml"?>
 <?rfc include="http://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.8174.xml"?>
 <?rfc include="http://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.8310.xml"?>
+<?rfc include="http://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.8484.xml"?>
 </references>
 <references title="Informative References">
 <?rfc include="http://xml2rfc.ietf.org/public/rfc/bibxml3/reference.I-D.bortzmeyer-dprive-rfc7626-bis.xml"?>
 <?rfc include="http://xml2rfc.ietf.org/public/rfc/bibxml3/reference.I-D.ietf-dnsop-dns-capture-format.xml"?>
 <?rfc include="http://xml2rfc.ietf.org/public/rfc/bibxml3/reference.I-D.ietf-dnsop-dns-tcp-requirements.xml"?>
-<?rfc include="http://xml2rfc.ietf.org/public/rfc/bibxml3/reference.I-D.ietf-dnsop-session-signal.xml"?>
 <?rfc include="http://xml2rfc.ietf.org/public/rfc/bibxml3/reference.I-D.ietf-dnsop-terminology-bis.xml"?>
 <?rfc include="http://xml2rfc.ietf.org/public/rfc/bibxml3/reference.I-D.ietf-tls-dnssec-chain-extension.xml"?>
 <reference anchor='Pitfalls-of-DNS-Encryption'
@@ -1105,13 +1109,9 @@ draft-dickinson-dprive-bcp-op-01</t>
 </reference>
 <?rfc include="http://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.6235.xml"?>
 <?rfc include="http://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.6841.xml"?>
-<?rfc include="http://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.6873.xml"?>
 <?rfc include="http://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.7457.xml"?>
 <?rfc include="http://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.7686.xml"?>
 <?rfc include="http://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.7706.xml"?>
-<?rfc include="http://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.7766.xml"?>
-<?rfc include="http://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.7828.xml"?>
-<?rfc include="http://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.7871.xml"?>
 <?rfc include="http://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.8094.xml"?>
 <?rfc include="http://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.8198.xml"?>
 <reference anchor='pcap' target='http://www.tcpdump.org/'>

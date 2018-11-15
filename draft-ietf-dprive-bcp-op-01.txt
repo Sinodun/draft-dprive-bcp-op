@@ -125,13 +125,13 @@ Internet-Draft     DNS Privacy Service Recommendations       August 2018
    11. Changelog . . . . . . . . . . . . . . . . . . . . . . . . . .  23
    12. References  . . . . . . . . . . . . . . . . . . . . . . . . .  23
      12.1.  Normative References . . . . . . . . . . . . . . . . . .  23
-     12.2.  Informative References . . . . . . . . . . . . . . . . .  24
+     12.2.  Informative References . . . . . . . . . . . . . . . . .  25
      12.3.  URIs . . . . . . . . . . . . . . . . . . . . . . . . . .  26
    Appendix A.  Documents  . . . . . . . . . . . . . . . . . . . . .  27
      A.1.  Potential increases in DNS privacy  . . . . . . . . . . .  27
      A.2.  Potential decreases in DNS privacy  . . . . . . . . . . .  28
      A.3.  Related operational documents . . . . . . . . . . . . . .  28
-   Appendix B.  IP address techniques  . . . . . . . . . . . . . . .  29
+   Appendix B.  IP address techniques  . . . . . . . . . . . . . . .  28
      B.1.  Google Analytics non-prefix filtering . . . . . . . . . .  30
      B.2.  dnswasher . . . . . . . . . . . . . . . . . . . . . . . .  30
      B.3.  Prefix-preserving map . . . . . . . . . . . . . . . . . .  30
@@ -240,7 +240,7 @@ Internet-Draft     DNS Privacy Service Recommendations       August 2018
    "DNS Privacy Considerations" [I-D.bortzmeyer-dprive-rfc7626-bis]
    describes the general privacy issues and threats associated with the
    use of the DNS by Internet users and much of the threat analysis here
-   is lifted from that document and from [RFC6873].  However this
+   is lifted from that document and from [RFC6973].  However this
    document is limited in scope to best practice considerations for the
    provision of DNS privacy services by servers (recursive resolvers) to
    clients (stub resolvers or forwarders).  Privacy considerations
@@ -287,7 +287,7 @@ Internet-Draft     DNS Privacy Service Recommendations       August 2018
    The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
    "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and
    "OPTIONAL" in this document are to be interpreted as described in BCP
-   14 [RFC2119] [RFC8174] when, and only when, they appear in all
+   14 [RFC2119] and [RFC8174] when, and only when, they appear in all
    capitals, as shown here.
 
    Privacy terminology is as described in Section 3 of [RFC6973].
@@ -341,9 +341,9 @@ Internet-Draft     DNS Privacy Service Recommendations       August 2018
    o  Additional options to be maximally compliant
 
    TODO: Some of the threats listed in the following sections are taken
-   directly from Section 5 of RFC6973, some are just standalone
+   directly from Section 5 of [RFC6973], some are just standalone
    descriptions, we need to go through all of them and see if we can use
-   the RFC6973 threats where possible and make them consistent.
+   the [RFC6973] threats where possible and make them consistent.
 
 5.1.  General DNS protocol features
 
@@ -379,7 +379,7 @@ Internet-Draft     DNS Privacy Service Recommendations       August 2018
 
    o  DNS-over-TLS [RFC7858]
 
-   o  DoH [I-D.ietf-doh-dns-over-https]
+   o  DoH [RFC8484]
 
    Additional options:
 
@@ -481,7 +481,7 @@ Internet-Draft     DNS Privacy Service Recommendations       August 2018
       certificates
 
    TODO: Could we provide references for certificate management best
-   practice, for example Section 6.5 of RFC7525?
+   practice, for example Section 6.5 of [RFC7525]?
 
 5.2.3.  Protocol recommendations
 
@@ -1245,6 +1245,12 @@ Internet-Draft     DNS Privacy Service Recommendations       August 2018
 
 12.1.  Normative References
 
+   [I-D.ietf-dnsop-session-signal]
+              Bellis, R., Cheshire, S., Dickinson, J., Dickinson, S.,
+              Lemon, T., and T. Pusateri, "DNS Stateful Operations",
+              draft-ietf-dnsop-session-signal-18 (work in progress),
+              October 2018.
+
    [I-D.ietf-doh-dns-over-https]
               Hoffman, P. and P. McManus, "DNS Queries over HTTPS
               (DoH)", draft-ietf-doh-dns-over-https-14 (work in
@@ -1274,12 +1280,6 @@ Internet-Draft     DNS Privacy Service Recommendations       August 2018
               DOI 10.17487/RFC6973, July 2013,
               <https://www.rfc-editor.org/info/rfc6973>.
 
-   [RFC7525]  Sheffer, Y., Holz, R., and P. Saint-Andre,
-              "Recommendations for Secure Use of Transport Layer
-              Security (TLS) and Datagram Transport Layer Security
-              (DTLS)", BCP 195, RFC 7525, DOI 10.17487/RFC7525, May
-              2015, <https://www.rfc-editor.org/info/rfc7525>.
-
 
 
 
@@ -1290,9 +1290,25 @@ Dickinson, et al.       Expires February 9, 2019               [Page 23]
 Internet-Draft     DNS Privacy Service Recommendations       August 2018
 
 
+   [RFC7525]  Sheffer, Y., Holz, R., and P. Saint-Andre,
+              "Recommendations for Secure Use of Transport Layer
+              Security (TLS) and Datagram Transport Layer Security
+              (DTLS)", BCP 195, RFC 7525, DOI 10.17487/RFC7525, May
+              2015, <https://www.rfc-editor.org/info/rfc7525>.
+
+   [RFC7766]  Dickinson, J., Dickinson, S., Bellis, R., Mankin, A., and
+              D. Wessels, "DNS Transport over TCP - Implementation
+              Requirements", RFC 7766, DOI 10.17487/RFC7766, March 2016,
+              <https://www.rfc-editor.org/info/rfc7766>.
+
    [RFC7816]  Bortzmeyer, S., "DNS Query Name Minimisation to Improve
               Privacy", RFC 7816, DOI 10.17487/RFC7816, March 2016,
               <https://www.rfc-editor.org/info/rfc7816>.
+
+   [RFC7828]  Wouters, P., Abley, J., Dickinson, S., and R. Bellis, "The
+              edns-tcp-keepalive EDNS0 Option", RFC 7828,
+              DOI 10.17487/RFC7828, April 2016,
+              <https://www.rfc-editor.org/info/rfc7828>.
 
    [RFC7830]  Mayrhofer, A., "The EDNS(0) Padding Option", RFC 7830,
               DOI 10.17487/RFC7830, May 2016,
@@ -1302,6 +1318,11 @@ Internet-Draft     DNS Privacy Service Recommendations       August 2018
               and P. Hoffman, "Specification for DNS over Transport
               Layer Security (TLS)", RFC 7858, DOI 10.17487/RFC7858, May
               2016, <https://www.rfc-editor.org/info/rfc7858>.
+
+   [RFC7871]  Contavalli, C., van der Gaast, W., Lawrence, D., and W.
+              Kumari, "Client Subnet in DNS Queries", RFC 7871,
+              DOI 10.17487/RFC7871, May 2016,
+              <https://www.rfc-editor.org/info/rfc7871>.
 
    [RFC7873]  Eastlake 3rd, D. and M. Andrews, "Domain Name System (DNS)
               Cookies", RFC 7873, DOI 10.17487/RFC7873, May 2016,
@@ -1315,6 +1336,19 @@ Internet-Draft     DNS Privacy Service Recommendations       August 2018
               for DNS over TLS and DNS over DTLS", RFC 8310,
               DOI 10.17487/RFC8310, March 2018,
               <https://www.rfc-editor.org/info/rfc8310>.
+
+
+
+
+
+Dickinson, et al.       Expires February 9, 2019               [Page 24]
+
+Internet-Draft     DNS Privacy Service Recommendations       August 2018
+
+
+   [RFC8484]  Hoffman, P. and P. McManus, "DNS Queries over HTTPS
+              (DoH)", RFC 8484, DOI 10.17487/RFC8484, October 2018,
+              <https://www.rfc-editor.org/info/rfc8484>.
 
 12.2.  Informative References
 
@@ -1333,24 +1367,6 @@ Internet-Draft     DNS Privacy Service Recommendations       August 2018
               Kristoff, J. and D. Wessels, "DNS Transport over TCP -
               Operational Requirements", draft-ietf-dnsop-dns-tcp-
               requirements-02 (work in progress), May 2018.
-
-
-
-
-
-
-
-
-Dickinson, et al.       Expires February 9, 2019               [Page 24]
-
-Internet-Draft     DNS Privacy Service Recommendations       August 2018
-
-
-   [I-D.ietf-dnsop-session-signal]
-              Bellis, R., Cheshire, S., Dickinson, J., Dickinson, S.,
-              Lemon, T., and T. Pusateri, "DNS Stateful Operations",
-              draft-ietf-dnsop-session-signal-18 (work in progress),
-              October 2018.
 
    [I-D.ietf-dnsop-terminology-bis]
               Hoffman, P., Sullivan, A., and K. Fujiwara, "DNS
@@ -1379,10 +1395,12 @@ Internet-Draft     DNS Privacy Service Recommendations       August 2018
               Statements", RFC 6841, DOI 10.17487/RFC6841, January 2013,
               <https://www.rfc-editor.org/info/rfc6841>.
 
-   [RFC6873]  Salgueiro, G., Gurbani, V., and A. Roach, "Format for the
-              Session Initiation Protocol (SIP) Common Log Format
-              (CLF)", RFC 6873, DOI 10.17487/RFC6873, February 2013,
-              <https://www.rfc-editor.org/info/rfc6873>.
+
+
+Dickinson, et al.       Expires February 9, 2019               [Page 25]
+
+Internet-Draft     DNS Privacy Service Recommendations       August 2018
+
 
    [RFC7457]  Sheffer, Y., Holz, R., and P. Saint-Andre, "Summarizing
               Known Attacks on Transport Layer Security (TLS) and
@@ -1393,34 +1411,10 @@ Internet-Draft     DNS Privacy Service Recommendations       August 2018
               Domain Name", RFC 7686, DOI 10.17487/RFC7686, October
               2015, <https://www.rfc-editor.org/info/rfc7686>.
 
-
-
-
-
-Dickinson, et al.       Expires February 9, 2019               [Page 25]
-
-Internet-Draft     DNS Privacy Service Recommendations       August 2018
-
-
    [RFC7706]  Kumari, W. and P. Hoffman, "Decreasing Access Time to Root
               Servers by Running One on Loopback", RFC 7706,
               DOI 10.17487/RFC7706, November 2015,
               <https://www.rfc-editor.org/info/rfc7706>.
-
-   [RFC7766]  Dickinson, J., Dickinson, S., Bellis, R., Mankin, A., and
-              D. Wessels, "DNS Transport over TCP - Implementation
-              Requirements", RFC 7766, DOI 10.17487/RFC7766, March 2016,
-              <https://www.rfc-editor.org/info/rfc7766>.
-
-   [RFC7828]  Wouters, P., Abley, J., Dickinson, S., and R. Bellis, "The
-              edns-tcp-keepalive EDNS0 Option", RFC 7828,
-              DOI 10.17487/RFC7828, April 2016,
-              <https://www.rfc-editor.org/info/rfc7828>.
-
-   [RFC7871]  Contavalli, C., van der Gaast, W., Lawrence, D., and W.
-              Kumari, "Client Subnet in DNS Queries", RFC 7871,
-              DOI 10.17487/RFC7871, May 2016,
-              <https://www.rfc-editor.org/info/rfc7871>.
 
    [RFC8094]  Reddy, T., Wing, D., and P. Patil, "DNS over Datagram
               Transport Layer Security (DTLS)", RFC 8094,
@@ -1449,15 +1443,6 @@ Internet-Draft     DNS Privacy Service Recommendations       August 2018
 
    [7] https://dnsprivacy.org/jenkins/job/dnsprivacy-monitoring/
 
-
-
-
-
-Dickinson, et al.       Expires February 9, 2019               [Page 26]
-
-Internet-Draft     DNS Privacy Service Recommendations       August 2018
-
-
    [8] https://github.com/Sinodun/draft-dprive-bcp-op/blob/master/draft-
        00/policy_table.svg
 
@@ -1465,6 +1450,13 @@ Internet-Draft     DNS Privacy Service Recommendations       August 2018
        00/practice_table.svg
 
    [10] https://support.google.com/analytics/answer/2763052?hl=en
+
+
+
+Dickinson, et al.       Expires February 9, 2019               [Page 26]
+
+Internet-Draft     DNS Privacy Service Recommendations       August 2018
+
 
    [11] https://www.conversionworks.co.uk/blog/2017/05/19/anonymize-ip-
         geo-impact-test/
@@ -1505,15 +1497,6 @@ A.1.  Potential increases in DNS privacy
    o  'Specification for DNS over Transport Layer Security (TLS)'
       [RFC7858], referred to here as 'DNS-over-TLS'.
 
-
-
-
-
-Dickinson, et al.       Expires February 9, 2019               [Page 27]
-
-Internet-Draft     DNS Privacy Service Recommendations       August 2018
-
-
    o  'DNS over Datagram Transport Layer Security (DTLS)' [RFC8094],
       referred to here as 'DNS-over-DTLS'.  Note that this document has
       the Category of Experimental.
@@ -1522,6 +1505,14 @@ Internet-Draft     DNS Privacy Service Recommendations       August 2018
       referred to here as DoH.
 
    o  'Usage Profiles for DNS over TLS and DNS over DTLS' [RFC8310]
+
+
+
+
+Dickinson, et al.       Expires February 9, 2019               [Page 27]
+
+Internet-Draft     DNS Privacy Service Recommendations       August 2018
+
 
    o  'The EDNS(0) Padding Option' [RFC7830] and 'Padding Policy for
       EDNS(0)' [I-D.ietf-dprive-padding-policy]
@@ -1563,13 +1554,6 @@ A.3.  Related operational documents
 
    o  'DNS Stateful Operations' [I-D.ietf-dnsop-session-signal]
 
-
-
-Dickinson, et al.       Expires February 9, 2019               [Page 28]
-
-Internet-Draft     DNS Privacy Service Recommendations       August 2018
-
-
 Appendix B.  IP address techniques
 
    Data minimization methods may be categorized by the processing used
@@ -1578,6 +1562,14 @@ Appendix B.  IP address techniques
 
    o  Format-preserving.  Normally when encrypting, the original data
       length and patterns in the data should be hidden from an attacker.
+
+
+
+Dickinson, et al.       Expires February 9, 2019               [Page 28]
+
+Internet-Draft     DNS Privacy Service Recommendations       August 2018
+
+
       Some applications of de-identification, such as network capture
       de-identification, require that the de-identified data is of the
       same form as the original data, to allow the data to be parsed in
@@ -1619,16 +1611,20 @@ Appendix B.  IP address techniques
    o  Random substitution.  As replacement, but using randomly generated
       replacement values.
 
+   o  Cryptographic permutation.  Using a permutation function, such as
+      a hash function or cryptographic block cipher, to generate a
+      replacement de-identified value.
+
+
+
+
+
 
 
 Dickinson, et al.       Expires February 9, 2019               [Page 29]
 
 Internet-Draft     DNS Privacy Service Recommendations       August 2018
 
-
-   o  Cryptographic permutation.  Using a permutation function, such as
-      a hash function or cryptographic block cipher, to generate a
-      replacement de-identified value.
 
 B.1.  Google Analytics non-prefix filtering
 
@@ -1673,6 +1669,10 @@ B.3.  Prefix-preserving map
    addresses sequentially cannot be used in parallel processing.
 
    Anonymization: Format-preserving, prefix preservation (general).
+
+
+
+
 
 
 

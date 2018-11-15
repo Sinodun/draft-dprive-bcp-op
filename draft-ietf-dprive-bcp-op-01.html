@@ -644,7 +644,7 @@
 <h1 id="rfc.section.2">
 <a href="#rfc.section.2">2.</a> <a href="#scope" id="scope">Scope</a>
 </h1>
-<p id="rfc.section.2.p.1">"DNS Privacy Considerations" <a href="#I-D.bortzmeyer-dprive-rfc7626-bis" class="xref">[I-D.bortzmeyer-dprive-rfc7626-bis]</a> describes the general privacy issues and threats associated with the use of the DNS by Internet users and much of the threat analysis here is lifted from that document and from <a href="#RFC6873" class="xref">[RFC6873]</a>. However this document is limited in scope to best practice considerations for the provision of DNS privacy services by servers (recursive resolvers) to clients (stub resolvers or forwarders). Privacy considerations specifically from the perspective of an end user, or those for operators of authoritative nameservers are out of scope.  </p>
+<p id="rfc.section.2.p.1">"DNS Privacy Considerations" <a href="#I-D.bortzmeyer-dprive-rfc7626-bis" class="xref">[I-D.bortzmeyer-dprive-rfc7626-bis]</a> describes the general privacy issues and threats associated with the use of the DNS by Internet users and much of the threat analysis here is lifted from that document and from <a href="#RFC6973" class="xref">[RFC6973]</a>. However this document is limited in scope to best practice considerations for the provision of DNS privacy services by servers (recursive resolvers) to clients (stub resolvers or forwarders). Privacy considerations specifically from the perspective of an end user, or those for operators of authoritative nameservers are out of scope.  </p>
 <p id="rfc.section.2.p.2">This document includes (but is not limited to) considerations in the following areas (taken from <a href="#I-D.bortzmeyer-dprive-rfc7626-bis" class="xref">[I-D.bortzmeyer-dprive-rfc7626-bis]</a>): </p>
 <p></p>
 
@@ -663,7 +663,7 @@
 <h1 id="rfc.section.4">
 <a href="#rfc.section.4">4.</a> <a href="#terminology" id="terminology">Terminology</a>
 </h1>
-<p id="rfc.section.4.p.1">The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in BCP 14 <a href="#RFC2119" class="xref">[RFC2119]</a> <a href="#RFC8174" class="xref">[RFC8174]</a> when, and only when, they appear in all capitals, as shown here.  </p>
+<p id="rfc.section.4.p.1">The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in BCP 14 <a href="#RFC2119" class="xref">[RFC2119]</a> and <a href="#RFC8174" class="xref">[RFC8174]</a> when, and only when, they appear in all capitals, as shown here.  </p>
 <p id="rfc.section.4.p.2">Privacy terminology is as described in Section 3 of <a href="#RFC6973" class="xref">[RFC6973]</a>.  </p>
 <p id="rfc.section.4.p.3">DNS terminology is as described in <a href="#I-D.ietf-dnsop-terminology-bis" class="xref">[I-D.ietf-dnsop-terminology-bis]</a> with one modification: we restate the clause in the original definition of Privacy-enabling DNS server in <a href="#RFC8310" class="xref">[RFC8310]</a> to include the requirement that a DNS over (D)TLS server should also offer at least one of the credentials described in Section 8 and implement the (D)TLS profile described in Section 9 of <a href="#RFC8310" class="xref">[RFC8310]</a>.  </p>
 <p id="rfc.section.4.p.4">Other Terms: </p>
@@ -698,7 +698,7 @@
 </ul>
 
 <p> </p>
-<p id="rfc.section.5.p.5">TODO: Some of the threats listed in the following sections are taken directly from Section 5 of RFC6973, some are just standalone descriptions, we need to go through all of them and see if we can use the RFC6973 threats where possible and make them consistent.  </p>
+<p id="rfc.section.5.p.5">TODO: Some of the threats listed in the following sections are taken directly from Section 5 of <a href="#RFC6973" class="xref">[RFC6973]</a>, some are just standalone descriptions, we need to go through all of them and see if we can use the <a href="#RFC6973" class="xref">[RFC6973]</a> threats where possible and make them consistent.  </p>
 <h1 id="rfc.section.5.1">
 <a href="#rfc.section.5.1">5.1.</a> <a href="#general-dns-protocol-features" id="general-dns-protocol-features">General DNS protocol features</a>
 </h1>
@@ -737,7 +737,7 @@
 <ul>
 <li>DNS-over-TLS <a href="#RFC7858" class="xref">[RFC7858]</a>
 </li>
-<li>DoH <a href="#I-D.ietf-doh-dns-over-https" class="xref">[I-D.ietf-doh-dns-over-https]</a>
+<li>DoH <a href="#RFC8484" class="xref">[RFC8484]</a>
 </li>
 </ul>
 
@@ -799,7 +799,7 @@
 </ul>
 
 <p> </p>
-<p id="rfc.section.5.2.2.1.p.8">TODO: Could we provide references for certificate management best practice, for example Section 6.5 of RFC7525? </p>
+<p id="rfc.section.5.2.2.1.p.8">TODO: Could we provide references for certificate management best practice, for example Section 6.5 of <a href="#RFC7525" class="xref">[RFC7525]</a>? </p>
 <h1 id="rfc.section.5.2.3">
 <a href="#rfc.section.5.2.3">5.2.3.</a> <a href="#protocol-recommendations" id="protocol-recommendations">Protocol recommendations</a>
 </h1>
@@ -1245,6 +1245,11 @@
 <a href="#rfc.references.1">12.1.</a> Normative References</h1>
 <table><tbody>
 <tr>
+<td class="reference"><b id="I-D.ietf-dnsop-session-signal">[I-D.ietf-dnsop-session-signal]</b></td>
+<td class="top">
+<a>Bellis, R.</a>, <a>Cheshire, S.</a>, <a>Dickinson, J.</a>, <a>Dickinson, S.</a>, <a>Lemon, T.</a> and <a>T. Pusateri</a>, "<a href="https://tools.ietf.org/html/draft-ietf-dnsop-session-signal-18">DNS Stateful Operations</a>", Internet-Draft draft-ietf-dnsop-session-signal-18, October 2018.</td>
+</tr>
+<tr>
 <td class="reference"><b id="I-D.ietf-doh-dns-over-https">[I-D.ietf-doh-dns-over-https]</b></td>
 <td class="top">
 <a>Hoffman, P.</a> and <a>P. McManus</a>, "<a href="https://tools.ietf.org/html/draft-ietf-doh-dns-over-https-14">DNS Queries over HTTPS (DoH)</a>", Internet-Draft draft-ietf-doh-dns-over-https-14, August 2018.</td>
@@ -1280,9 +1285,19 @@
 <a>Sheffer, Y.</a>, <a>Holz, R.</a> and <a>P. Saint-Andre</a>, "<a href="https://tools.ietf.org/html/rfc7525">Recommendations for Secure Use of Transport Layer Security (TLS) and Datagram Transport Layer Security (DTLS)</a>", BCP 195, RFC 7525, DOI 10.17487/RFC7525, May 2015.</td>
 </tr>
 <tr>
+<td class="reference"><b id="RFC7766">[RFC7766]</b></td>
+<td class="top">
+<a>Dickinson, J.</a>, <a>Dickinson, S.</a>, <a>Bellis, R.</a>, <a>Mankin, A.</a> and <a>D. Wessels</a>, "<a href="https://tools.ietf.org/html/rfc7766">DNS Transport over TCP - Implementation Requirements</a>", RFC 7766, DOI 10.17487/RFC7766, March 2016.</td>
+</tr>
+<tr>
 <td class="reference"><b id="RFC7816">[RFC7816]</b></td>
 <td class="top">
 <a>Bortzmeyer, S.</a>, "<a href="https://tools.ietf.org/html/rfc7816">DNS Query Name Minimisation to Improve Privacy</a>", RFC 7816, DOI 10.17487/RFC7816, March 2016.</td>
+</tr>
+<tr>
+<td class="reference"><b id="RFC7828">[RFC7828]</b></td>
+<td class="top">
+<a>Wouters, P.</a>, <a>Abley, J.</a>, <a>Dickinson, S.</a> and <a>R. Bellis</a>, "<a href="https://tools.ietf.org/html/rfc7828">The edns-tcp-keepalive EDNS0 Option</a>", RFC 7828, DOI 10.17487/RFC7828, April 2016.</td>
 </tr>
 <tr>
 <td class="reference"><b id="RFC7830">[RFC7830]</b></td>
@@ -1293,6 +1308,11 @@
 <td class="reference"><b id="RFC7858">[RFC7858]</b></td>
 <td class="top">
 <a>Hu, Z.</a>, <a>Zhu, L.</a>, <a>Heidemann, J.</a>, <a>Mankin, A.</a>, <a>Wessels, D.</a> and <a>P. Hoffman</a>, "<a href="https://tools.ietf.org/html/rfc7858">Specification for DNS over Transport Layer Security (TLS)</a>", RFC 7858, DOI 10.17487/RFC7858, May 2016.</td>
+</tr>
+<tr>
+<td class="reference"><b id="RFC7871">[RFC7871]</b></td>
+<td class="top">
+<a>Contavalli, C.</a>, <a>van der Gaast, W.</a>, <a>Lawrence, D.</a> and <a>W. Kumari</a>, "<a href="https://tools.ietf.org/html/rfc7871">Client Subnet in DNS Queries</a>", RFC 7871, DOI 10.17487/RFC7871, May 2016.</td>
 </tr>
 <tr>
 <td class="reference"><b id="RFC7873">[RFC7873]</b></td>
@@ -1308,6 +1328,11 @@
 <td class="reference"><b id="RFC8310">[RFC8310]</b></td>
 <td class="top">
 <a>Dickinson, S.</a>, <a>Gillmor, D.</a> and <a>T. Reddy</a>, "<a href="https://tools.ietf.org/html/rfc8310">Usage Profiles for DNS over TLS and DNS over DTLS</a>", RFC 8310, DOI 10.17487/RFC8310, March 2018.</td>
+</tr>
+<tr>
+<td class="reference"><b id="RFC8484">[RFC8484]</b></td>
+<td class="top">
+<a>Hoffman, P.</a> and <a>P. McManus</a>, "<a href="https://tools.ietf.org/html/rfc8484">DNS Queries over HTTPS (DoH)</a>", RFC 8484, DOI 10.17487/RFC8484, October 2018.</td>
 </tr>
 </tbody></table>
 <h1 id="rfc.references.2">
@@ -1327,11 +1352,6 @@
 <td class="reference"><b id="I-D.ietf-dnsop-dns-tcp-requirements">[I-D.ietf-dnsop-dns-tcp-requirements]</b></td>
 <td class="top">
 <a>Kristoff, J.</a> and <a>D. Wessels</a>, "<a href="https://tools.ietf.org/html/draft-ietf-dnsop-dns-tcp-requirements-02">DNS Transport over TCP - Operational Requirements</a>", Internet-Draft draft-ietf-dnsop-dns-tcp-requirements-02, May 2018.</td>
-</tr>
-<tr>
-<td class="reference"><b id="I-D.ietf-dnsop-session-signal">[I-D.ietf-dnsop-session-signal]</b></td>
-<td class="top">
-<a>Bellis, R.</a>, <a>Cheshire, S.</a>, <a>Dickinson, J.</a>, <a>Dickinson, S.</a>, <a>Lemon, T.</a> and <a>T. Pusateri</a>, "<a href="https://tools.ietf.org/html/draft-ietf-dnsop-session-signal-18">DNS Stateful Operations</a>", Internet-Draft draft-ietf-dnsop-session-signal-18, October 2018.</td>
 </tr>
 <tr>
 <td class="reference"><b id="I-D.ietf-dnsop-terminology-bis">[I-D.ietf-dnsop-terminology-bis]</b></td>
@@ -1364,11 +1384,6 @@
 <a>Ljunggren, F.</a>, <a>Eklund Lowinder, AM.</a> and <a>T. Okubo</a>, "<a href="https://tools.ietf.org/html/rfc6841">A Framework for DNSSEC Policies and DNSSEC Practice Statements</a>", RFC 6841, DOI 10.17487/RFC6841, January 2013.</td>
 </tr>
 <tr>
-<td class="reference"><b id="RFC6873">[RFC6873]</b></td>
-<td class="top">
-<a>Salgueiro, G.</a>, <a>Gurbani, V.</a> and <a>A. Roach</a>, "<a href="https://tools.ietf.org/html/rfc6873">Format for the Session Initiation Protocol (SIP) Common Log Format (CLF)</a>", RFC 6873, DOI 10.17487/RFC6873, February 2013.</td>
-</tr>
-<tr>
 <td class="reference"><b id="RFC7457">[RFC7457]</b></td>
 <td class="top">
 <a>Sheffer, Y.</a>, <a>Holz, R.</a> and <a>P. Saint-Andre</a>, "<a href="https://tools.ietf.org/html/rfc7457">Summarizing Known Attacks on Transport Layer Security (TLS) and Datagram TLS (DTLS)</a>", RFC 7457, DOI 10.17487/RFC7457, February 2015.</td>
@@ -1382,21 +1397,6 @@
 <td class="reference"><b id="RFC7706">[RFC7706]</b></td>
 <td class="top">
 <a>Kumari, W.</a> and <a>P. Hoffman</a>, "<a href="https://tools.ietf.org/html/rfc7706">Decreasing Access Time to Root Servers by Running One on Loopback</a>", RFC 7706, DOI 10.17487/RFC7706, November 2015.</td>
-</tr>
-<tr>
-<td class="reference"><b id="RFC7766">[RFC7766]</b></td>
-<td class="top">
-<a>Dickinson, J.</a>, <a>Dickinson, S.</a>, <a>Bellis, R.</a>, <a>Mankin, A.</a> and <a>D. Wessels</a>, "<a href="https://tools.ietf.org/html/rfc7766">DNS Transport over TCP - Implementation Requirements</a>", RFC 7766, DOI 10.17487/RFC7766, March 2016.</td>
-</tr>
-<tr>
-<td class="reference"><b id="RFC7828">[RFC7828]</b></td>
-<td class="top">
-<a>Wouters, P.</a>, <a>Abley, J.</a>, <a>Dickinson, S.</a> and <a>R. Bellis</a>, "<a href="https://tools.ietf.org/html/rfc7828">The edns-tcp-keepalive EDNS0 Option</a>", RFC 7828, DOI 10.17487/RFC7828, April 2016.</td>
-</tr>
-<tr>
-<td class="reference"><b id="RFC7871">[RFC7871]</b></td>
-<td class="top">
-<a>Contavalli, C.</a>, <a>van der Gaast, W.</a>, <a>Lawrence, D.</a> and <a>W. Kumari</a>, "<a href="https://tools.ietf.org/html/rfc7871">Client Subnet in DNS Queries</a>", RFC 7871, DOI 10.17487/RFC7871, May 2016.</td>
 </tr>
 <tr>
 <td class="reference"><b id="RFC8094">[RFC8094]</b></td>
