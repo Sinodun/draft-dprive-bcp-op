@@ -437,8 +437,8 @@
   <meta name="dct.creator" content="Dickinson, S., Overeinder, B., van Rijswijk-Deij, R., and A. Mankin" />
   <meta name="dct.identifier" content="urn:ietf:id:draft-ietf-dprive-bcp-op-00" />
   <meta name="dct.issued" scheme="ISO8601" content="2018-08-08" />
-  <meta name="dct.abstract" content="This document presents operational, policy and security considerations for DNS operators who choose to offer DNS Privacy services. With the recommendations, the operator can make deliberate decisions which services to provide, and how the decisions and alternatives impact the privacy of users.  " />
-  <meta name="description" content="This document presents operational, policy and security considerations for DNS operators who choose to offer DNS Privacy services. With the recommendations, the operator can make deliberate decisions which services to provide, and how the decisions and alternatives impact the privacy of users.  " />
+  <meta name="dct.abstract" content="This document presents operational, policy and security considerations for DNS operators who choose to offer DNS Privacy services. With these recommendations, the operator can make deliberate decisions regarding which services to provide, and how the decisions and alternatives impact the privacy of users.  " />
+  <meta name="description" content="This document presents operational, policy and security considerations for DNS operators who choose to offer DNS Privacy services. With these recommendations, the operator can make deliberate decisions regarding which services to provide, and how the decisions and alternatives impact the privacy of users.  " />
 
 </head>
 
@@ -492,7 +492,7 @@
   <span class="filename">draft-ietf-dprive-bcp-op-00</span></p>
   
   <h1 id="rfc.abstract"><a href="#rfc.abstract">Abstract</a></h1>
-<p>This document presents operational, policy and security considerations for DNS operators who choose to offer DNS Privacy services. With the recommendations, the operator can make deliberate decisions which services to provide, and how the decisions and alternatives impact the privacy of users.  </p>
+<p>This document presents operational, policy and security considerations for DNS operators who choose to offer DNS Privacy services. With these recommendations, the operator can make deliberate decisions regarding which services to provide, and how the decisions and alternatives impact the privacy of users.  </p>
 <p>This document also presents a framework to assist writers of DNS Privacy Policy and Practices Statements (analogous to DNS Security Extensions (DNSSEC) Policies and DNSSEC Practice Statements described in <a href="#RFC6841" class="xref">[RFC6841]</a>).  </p>
 <h1 id="rfc.status"><a href="#rfc.status">Status of This Memo</a></h1>
 <p>This Internet-Draft is submitted in full conformance with the provisions of BCP 78 and BCP 79.</p>
@@ -626,7 +626,7 @@
 <a href="#rfc.section.1">1.</a> <a href="#introduction" id="introduction">Introduction</a>
 </h1>
 <p id="rfc.section.1.p.1">[NOTE: This document is submitted to the IETF for initial review and for feedback on the best forum for future versions of this document. Initial considerations for DoH <a href="#I-D.ietf-doh-dns-over-https" class="xref">[I-D.ietf-doh-dns-over-https]</a> are included here in anticipation of that draft progressing to be an RFC but further analysis is required.] </p>
-<p id="rfc.section.1.p.2">The Domain Name System (DNS) is at the core of the Internet; almost every activity on the Internet starts with a DNS query (and often several). However the DNS was not originally designed with strong security or privacy mechanisms.  A number of developments have taken place in recent years which aim to increase the privacy of the DNS system and these are now seeing some deployment. This latest evolution of the DNS presents new challenges to operators and this document attempts to provide an overview of considerations for privacy focussed DNS services.  </p>
+<p id="rfc.section.1.p.2">The Domain Name System (DNS) is at the core of the Internet; almost every activity on the Internet starts with a DNS query (and often several). However the DNS was not originally designed with strong security or privacy mechanisms.  A number of developments have taken place in recent years which aim to increase the privacy of the DNS system and these are now seeing some deployment. This latest evolution of the DNS presents new challenges to operators and this document attempts to provide an overview of considerations for privacy focused DNS services.  </p>
 <p id="rfc.section.1.p.3">In recent years there has also been an increase in the availability of "open resolvers" <a href="#I-D.ietf-dnsop-terminology-bis" class="xref">[I-D.ietf-dnsop-terminology-bis]</a> which users may prefer to use instead of the default network resolver because they offer a specific feature (e.g. good reachability, encrypted transport, strong privacy policy, filtering (or lack of), etc.). These open resolvers have tended to be at the forefront of adoption of privacy related enhancements but it is anticipated that operators of other resolver services will follow.  </p>
 <p id="rfc.section.1.p.4">Whilst protocols that encrypt DNS messages on the wire provide protection against certain attacks, the resolver operator still has (in principle) full visibility of the query data and transport identifiers for each user. Therefore, a trust relationship exists. The ability of the operator to provide a transparent, well documented, and secure privacy service will likely serve as a major differentiating factor for privacy conscious users if they make an active selection of which resolver to use.  </p>
 <p id="rfc.section.1.p.5">It should also be noted that the choice of a user to configure a single resolver (or a fixed set of resolvers) and an encrypted transport to use in all network environments has both advantages and disadvantages. For example the user has a clear expectation of which resolvers have visibility of their query data however this resolver/transport selection may provide an added mechanism to track them as they move across network environments. Commitments from operators to minimize such tracking are also likely to play a role in users selection of resolver.  </p>
@@ -1119,6 +1119,12 @@
 <li>Specify the countries in which the servers handling the DNS requests and the data are located (if the operator applies a geolocation policy so that requests from certain countries are only served by certain servers, this should be specified as well)</li>
 <li>Specify whether the operator has any agreement in place with law enforcement agencies, or other public and private parties dealing with security and intelligence, to give them access to the servers and/or to the data</li>
 </ul>
+</li>
+<li>Describe how consent is obtained from the user of the DNS privacy service differentiating <ul>
+<li>Uninformed users for whom this trust relationship is implicit</li>
+<li>Privacy-conscious users, that make an explicit trust choice</li>
+</ul>
+<p> this may prove relevant in the context of e.g. the GDPR as it relates to consent.</p>
 </li>
 </ol>
 

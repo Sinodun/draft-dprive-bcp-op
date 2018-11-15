@@ -85,8 +85,8 @@
 
 <abstract>
 <t>This document presents operational, policy and security considerations for DNS
-operators who choose to offer DNS Privacy services. With the recommendations,
-the operator can make deliberate decisions which services to provide, and how
+operators who choose to offer DNS Privacy services. With these recommendations,
+the operator can make deliberate decisions regarding which services to provide, and how
 the decisions and alternatives impact the privacy of users.
 </t>
 <t>This document also presents a framework to assist writers of DNS Privacy Policy
@@ -113,7 +113,7 @@ the DNS was not originally designed with strong security or privacy mechanisms.
 A number of developments have taken place in recent years which aim to increase
 the privacy of the DNS system and these are now seeing some deployment. This
 latest evolution of the DNS presents new challenges to operators and this
-document attempts to provide an overview of considerations for privacy focussed
+document attempts to provide an overview of considerations for privacy focused
 DNS services.
 </t>
 <t>In recent years there has also been an increase in the availability of &quot;open
@@ -900,6 +900,12 @@ published (including options used in the TLSA records)</t>
 <t>Specify the countries in which the servers handling the DNS requests and the data are located (if the operator applies a geolocation policy so that requests from certain countries are only served by certain servers, this should be specified as well)</t>
 <t>Specify whether the operator has any agreement in place with law enforcement agencies, or other public and private parties dealing with security and intelligence, to give them access to the servers and/or to the data</t>
 </list></t>
+<t>Describe how consent is obtained from the user of the DNS privacy service differentiating
+<list style="symbols">
+<t>Uninformed users for whom this trust relationship is implicit</t>
+<t>Privacy-conscious users, that make an explicit trust choice</t>
+</list>
+this may prove relevant in the context of e.g. the GDPR as it relates to consent.</t>
 </list>
 </t>
 </section>

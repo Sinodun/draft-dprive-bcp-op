@@ -61,8 +61,8 @@
 
 .# Abstract
 This document presents operational, policy and security considerations for DNS
-operators who choose to offer DNS Privacy services. With the recommendations,
-the operator can make deliberate decisions which services to provide, and how
+operators who choose to offer DNS Privacy services. With these recommendations,
+the operator can make deliberate decisions regarding which services to provide, and how
 the decisions and alternatives impact the privacy of users.
 
 This document also presents a framework to assist writers of DNS Privacy Policy
@@ -85,7 +85,7 @@ the DNS was not originally designed with strong security or privacy mechanisms.
 A number of developments have taken place in recent years which aim to increase
 the privacy of the DNS system and these are now seeing some deployment. This
 latest evolution of the DNS presents new challenges to operators and this
-document attempts to provide an overview of considerations for privacy focussed
+document attempts to provide an overview of considerations for privacy focused
 DNS services.
 
 In recent years there has also been an increase in the availability of "open
@@ -103,14 +103,6 @@ a trust relationship exists. The ability of the operator to provide a
 transparent, well documented, and secure privacy service will likely serve as a
 major differentiating factor for privacy conscious users if they make an
 active selection of which resolver to use.
-
-<!--*RvRD: I'm wondering whether we should differentiate between "indifferent
-users" for whom this trust relationship is implicit, and "privacy-conscious
-users", that make an explicit trust choice; this may prove relevant in the
-context of e.g. the GDPR as it relates to consent.* 
-SARA->RvRD: I think this is a helpful distinction, I'm just not sure where it
-fits in to this draft since we don't tackle the idea of consent very
-directly...maybe we should in a later version? -->
 
 It should also be noted that the choice of a user to configure a single resolver
 (or a fixed set of resolvers) and an encrypted transport to use in all network
@@ -781,6 +773,14 @@ This section should explain the current operational practices of the service.
     - Specify the countries in which the servers handling the DNS requests and the data are located (if the operator applies a geolocation policy so that requests from certain countries are only served by certain servers, this should be specified as well)
 
     - Specify whether the operator has any agreement in place with law enforcement agencies, or other public and private parties dealing with security and intelligence, to give them access to the servers and/or to the data
+
+1.  Describe how consent is obtained from the user of the DNS privacy service differentiating
+
+    - Uninformed users for whom this trust relationship is implicit
+    - Privacy-conscious users, that make an explicit trust choice
+
+    this may prove relevant in the context of e.g. the GDPR as it relates to consent.
+
 
 ## Current policy and privacy statements
 
