@@ -379,7 +379,7 @@
 <link href="#rfc.section.3" rel="Chapter" title="3 Privacy related documents">
 <link href="#rfc.section.4" rel="Chapter" title="4 Terminology">
 <link href="#rfc.section.5" rel="Chapter" title="5 Recommendations for DNS privacy services">
-<link href="#rfc.section.5.1" rel="Chapter" title="5.1 General DNS protocol features">
+<link href="#rfc.section.5.1" rel="Chapter" title="5.1 Privacy and DNSSEC">
 <link href="#rfc.section.5.2" rel="Chapter" title="5.2 On the wire between client and server">
 <link href="#rfc.section.5.2.1" rel="Chapter" title="5.2.1 Transport recommendations">
 <link href="#rfc.section.5.2.2" rel="Chapter" title="5.2.2 Authentication of DNS privacy services">
@@ -518,7 +518,7 @@
 </li>
 <li>5.   <a href="#rfc.section.5">Recommendations for DNS privacy services</a>
 </li>
-<ul><li>5.1.   <a href="#rfc.section.5.1">General DNS protocol features</a>
+<ul><li>5.1.   <a href="#rfc.section.5.1">Privacy and DNSSEC</a>
 </li>
 <li>5.2.   <a href="#rfc.section.5.2">On the wire between client and server</a>
 </li>
@@ -700,12 +700,12 @@
 <p> </p>
 <p id="rfc.section.5.p.5">TODO: Some of the threats listed in the following sections are taken directly from Section 5 of <a href="#RFC6973" class="xref">[RFC6973]</a>, some are just standalone descriptions, we need to go through all of them and see if we can use the <a href="#RFC6973" class="xref">[RFC6973]</a> threats where possible and make them consistent.  </p>
 <h1 id="rfc.section.5.1">
-<a href="#rfc.section.5.1">5.1.</a> <a href="#general-dns-protocol-features" id="general-dns-protocol-features">General DNS protocol features</a>
+<a href="#rfc.section.5.1">5.1.</a> <a href="#privacy-and-dnssec" id="privacy-and-dnssec">Privacy and DNSSEC</a>
 </h1>
 <p id="rfc.section.5.1.p.1">Threats: </p>
 <p></p>
 
-<ul><li>Incorrect or altered DNS data</li></ul>
+<ul><li>The addition of privacy to DNS does not remove the need for DNSSEC <a href="#RFC4033" class="xref">[RFC4033]</a>. Incorrect or altered DNS data is still an issue</li></ul>
 
 <p> </p>
 <p id="rfc.section.5.1.p.3">Mitigations: </p>
@@ -1372,6 +1372,11 @@
 <td class="reference"><b id="Pitfalls-of-DNS-Encryption">[Pitfalls-of-DNS-Encryption]</b></td>
 <td class="top">
 <a title="Fachbereich Informatik, Technische Universit&#228;t Darmstadt">Shulman, H.</a>, "<a href="https://www.ietf.org/mail-archive/web/dns-privacy/current/pdfWqAIUmEl47.pdf">Pretty Bad Privacy: Pitfalls of DNS Encryption</a>", 2014.</td>
+</tr>
+<tr>
+<td class="reference"><b id="RFC4033">[RFC4033]</b></td>
+<td class="top">
+<a>Arends, R.</a>, <a>Austein, R.</a>, <a>Larson, M.</a>, <a>Massey, D.</a> and <a>S. Rose</a>, "<a href="https://tools.ietf.org/html/rfc4033">DNS Security Introduction and Requirements</a>", RFC 4033, DOI 10.17487/RFC4033, March 2005.</td>
 </tr>
 <tr>
 <td class="reference"><b id="RFC6235">[RFC6235]</b></td>

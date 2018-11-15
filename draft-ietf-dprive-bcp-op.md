@@ -226,18 +226,20 @@ from Section 5 of [@!RFC6973], some are just standalone descriptions, we need to
 through all of them and see if we can use the [@!RFC6973] threats where possible
 and make them consistent.
 
-## General DNS protocol features
+## Privacy and DNSSEC
 
 Threats:
 
-* Incorrect or altered DNS data
+* The addition of privacy to DNS does not remove the need for DNSSEC [@RFC4033]. Incorrect 
+  or altered DNS data is still a risk.
 
 Mitigations:
 
 * DNSSEC provides data origin authentication and data integrity to the Domain 
-Name System. This is a separate from DNS privacy. All DNS privacy services
-MUST perform DNSSEC validation. In addition they MUST be able to provide the
-DNSSEC RRs to the client so that it can perform its own validation.
+  Name System. This is a separate from DNS privacy. All DNS privacy services
+  SHOULD offer a DNS privacy service that performs DNSSEC validation. In addition 
+  they SHOULD be able to provide the DNSSEC RRs to the client so that it can perform
+  its own validation.
 
 ## On the wire between client and server
 

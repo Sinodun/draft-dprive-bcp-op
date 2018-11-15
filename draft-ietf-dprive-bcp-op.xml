@@ -269,12 +269,13 @@ through all of them and see if we can use the <xref target="RFC6973"/> threats w
 and make them consistent.
 </t>
 
-<section anchor="general-dns-protocol-features" title="General DNS protocol features">
+<section anchor="privacy-and-dnssec" title="Privacy and DNSSEC">
 <t>Threats:
 </t>
 <t>
 <list style="symbols">
-<t>Incorrect or altered DNS data</t>
+<t>The addition of privacy to DNS does not remove the need for DNSSEC <xref target="RFC4033"/>. Incorrect
+or altered DNS data is still an issue</t>
 </list>
 </t>
 <t>Mitigations:
@@ -1107,6 +1108,7 @@ draft-dickinson-dprive-bcp-op-01</t>
         <date year='2014'/>
     </front>
 </reference>
+<?rfc include="http://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.4033.xml"?>
 <?rfc include="http://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.6235.xml"?>
 <?rfc include="http://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.6841.xml"?>
 <?rfc include="http://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.7457.xml"?>
