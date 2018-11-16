@@ -422,7 +422,7 @@ provide strong mitigations. This includes but is not limited to:
 <t>Adhering to <xref target="RFC7525"/></t>
 <t>Implementing only (D)TLS 1.2 or later as specified in <xref target="RFC8310"/></t>
 <t>Implementing EDNS(0) Padding <xref target="RFC7830"/> using the guidelines in
-<xref target="I-D.ietf-dprive-padding-policy"/></t>
+<xref target="RFC8467"/></t>
 <t>Clients should not be required to use TLS session resumption <xref target="RFC5077"/>,
 Domain Name System (DNS) Cookies <xref target="RFC7873"/>.</t>
 <t>A DNS-over-TLS privacy service on both port 853 and 443. We note that this
@@ -1063,7 +1063,7 @@ draft-dickinson-dprive-bcp-op-01</t>
 <references title="Normative References">
 <?rfc include="http://xml2rfc.ietf.org/public/rfc/bibxml3/reference.I-D.ietf-dnsop-session-signal.xml"?>
 <?rfc include="http://xml2rfc.ietf.org/public/rfc/bibxml3/reference.I-D.ietf-doh-dns-over-https.xml"?>
-<?rfc include="http://xml2rfc.ietf.org/public/rfc/bibxml3/reference.I-D.ietf-dprive-padding-policy.xml"?>
+<?rfc include="http://xml2rfc.ietf.org/public/rfc/bibxml3/reference.RFC.8467.xml"?>
 <?rfc include="http://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.2119.xml"?>
 <?rfc include="http://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.5077.xml"?>
 <?rfc include="http://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.6265.xml"?>
