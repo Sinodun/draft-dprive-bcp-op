@@ -274,8 +274,8 @@ and make them consistent.
 </t>
 <t>
 <list style="symbols">
-<t>The addition of privacy to DNS does not remove the need for DNSSEC <xref target="RFC4033"/>. Incorrect
-or altered DNS data is still a risk.</t>
+<t>The addition of privacy to DNS does not remove the need for DNSSEC <xref target="RFC4033"/>.
+Incorrect or altered DNS data is still a risk.</t>
 </list>
 </t>
 <t>Mitigations:
@@ -316,13 +316,8 @@ or more of the following transports
 <t>DoH <xref target="RFC8484"/></t>
 </list>
 </t>
-<t>Additional options:
-</t>
-<t>
-<list style="symbols">
 <t>A DNS privacy service can also be provided over DNS-over-DTLS <xref target="RFC8094"/>,
-however note that this is an Experimental specification.</t>
-</list>
+however note that this is an Experimental specification.
 </t>
 <t>It is noted that DNS privacy service might be provided over IPSec, DNSCrypt
 or VPNs. However, use of these transports for DNS are not standardized and any

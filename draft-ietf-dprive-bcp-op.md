@@ -230,8 +230,8 @@ and make them consistent.
 
 Threats:
 
-* The addition of privacy to DNS does not remove the need for DNSSEC [@RFC4033]. Incorrect 
-  or altered DNS data is still a risk.
+* The addition of privacy to DNS does not remove the need for DNSSEC [@RFC4033].
+  Incorrect or altered DNS data is still a risk.
 
 Mitigations:
 
@@ -261,10 +261,8 @@ or more of the following transports
 * DNS-over-TLS [@!RFC7858]
 * DoH [@!RFC8484]
 
-Additional options:
-
-* A DNS privacy service can also be provided over DNS-over-DTLS [@RFC8094],
-  however note that this is an Experimental specification.
+A DNS privacy service can also be provided over DNS-over-DTLS [@RFC8094],
+however note that this is an Experimental specification.
 
 It is noted that DNS privacy service might be provided over IPSec, DNSCrypt
 or VPNs. However, use of these transports for DNS are not standardized and any
