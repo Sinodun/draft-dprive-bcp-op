@@ -1135,7 +1135,7 @@ Experimental.</t>
 here as DoH.</t>
 <t>'Usage Profiles for DNS over TLS and DNS over DTLS' <xref target="RFC8310"/></t>
 <t>'The EDNS(0) Padding Option' <xref target="RFC7830"/> and 'Padding Policy for EDNS(0)'
-<xref target="I-D.ietf-dprive-padding-policy"/></t>
+<xref target="RFC8467"/></t>
 </list>
 </t>
 <t>These documents apply to recursive to authoritative DNS but are relevant when
