@@ -275,7 +275,7 @@ and make them consistent.
 <t>
 <list style="symbols">
 <t>The addition of privacy to DNS does not remove the need for DNSSEC <xref target="RFC4033"/>. Incorrect
-or altered DNS data is still an issue</t>
+or altered DNS data is still a risk.</t>
 </list>
 </t>
 <t>Mitigations:
@@ -284,8 +284,9 @@ or altered DNS data is still an issue</t>
 <list style="symbols">
 <t>DNSSEC provides data origin authentication and data integrity to the Domain
 Name System. This is a separate from DNS privacy. All DNS privacy services
-MUST perform DNSSEC validation. In addition they MUST be able to provide the
-DNSSEC RRs to the client so that it can perform its own validation.</t>
+SHOULD offer a DNS privacy service that performs DNSSEC validation. In addition
+they SHOULD be able to provide the DNSSEC RRs to the client so that it can perform
+its own validation.</t>
 </list>
 </t>
 </section>
@@ -365,12 +366,6 @@ of the server as part of the protocol.
 <t>In particular, the service could provide TLSA records such that
 authenticating solely via the PKIX infrastructure can be avoided.</t>
 </list></t>
-<t>Implementing <xref target="I-D.ietf-tls-dnssec-chain-extension"/>
-<list style="symbols">
-<t>This can decrease the latency of connection setup to the server and remove
-the need for the client to perform meta-queries to obtain and validate the
-DANE records.</t>
-</list></t>
 </list>
 </t>
 
@@ -381,7 +376,7 @@ choose to additionally provide a DNS privacy service as management of such
 credentials is new to those DNS operators.
 </t>
 <t>It is noted that SPKI pinset management is described in <xref target="RFC7858"/> but that key
-pinning mechanisms in general have fallen out of favour operationally for
+pinning mechanisms in general have fallen out of favor operationally for
 various reasons.
 </t>
 <t>Threats:
@@ -399,13 +394,11 @@ authentication domain names</t>
 </t>
 <t>
 <list style="symbols">
+<t>Follow the guidance in Section 6.5 of <xref target="RFC7525"/></t>
 <t>Choose a short, memorable authentication name for their service</t>
 <t>Automate the generation and publication of certificates</t>
 <t>Monitor certificates to prevent accidental expiration of certificates</t>
 </list>
-</t>
-<t>TODO: Could we provide references for certificate management best practice, for
-example Section 6.5 of <xref target="RFC7525"/>?
 </t>
 </section>
 </section>
@@ -1097,7 +1090,6 @@ draft-dickinson-dprive-bcp-op-01</t>
 <?rfc include="http://xml2rfc.ietf.org/public/rfc/bibxml3/reference.I-D.ietf-dnsop-dns-capture-format.xml"?>
 <?rfc include="http://xml2rfc.ietf.org/public/rfc/bibxml3/reference.I-D.ietf-dnsop-dns-tcp-requirements.xml"?>
 <?rfc include="http://xml2rfc.ietf.org/public/rfc/bibxml3/reference.I-D.ietf-dnsop-terminology-bis.xml"?>
-<?rfc include="http://xml2rfc.ietf.org/public/rfc/bibxml3/reference.I-D.ietf-tls-dnssec-chain-extension.xml"?>
 <reference anchor='Pitfalls-of-DNS-Encryption'
  target='https://www.ietf.org/mail-archive/web/dns-privacy/current/pdfWqAIUmEl47.pdf'>
     <front>

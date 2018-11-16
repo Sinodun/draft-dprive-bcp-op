@@ -300,10 +300,6 @@ DNS privacy services can also consider the following capabilities/options:
 * As recommended in [@!RFC8310] providing DANE TLSA records for the nameserver
   * In particular, the service could provide TLSA records such that
     authenticating solely via the PKIX infrastructure can be avoided.
-* Implementing [@I-D.ietf-tls-dnssec-chain-extension]
-  * This can decrease the latency of connection setup to the server and remove
-    the need for the client to perform meta-queries to obtain and validate the
-    DANE records.
 
 #### Certificate management 
 
@@ -313,7 +309,7 @@ choose to additionally provide a DNS privacy service as management of such
 credentials is new to those DNS operators.
 
 It is noted that SPKI pinset management is described in [@RFC7858] but that key
-pinning mechanisms in general have fallen out of favour operationally for
+pinning mechanisms in general have fallen out of favor operationally for
 various reasons.
 
 Threats: 
@@ -326,13 +322,10 @@ Mitigations:
 
 It is recommended that operators:
 
+* Follow the guidance in Section 6.5 of [@!RFC7525]
 * Choose a short, memorable authentication name for their service
 * Automate the generation and publication of certificates
 * Monitor certificates to prevent accidental expiration of certificates
-
-TODO: Could we provide references for certificate management best practice, for
-example Section 6.5 of [@!RFC7525]?
-
 
 ### Protocol recommendations
 

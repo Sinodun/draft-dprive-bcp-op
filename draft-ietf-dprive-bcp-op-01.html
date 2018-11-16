@@ -705,13 +705,13 @@
 <p id="rfc.section.5.1.p.1">Threats: </p>
 <p></p>
 
-<ul><li>The addition of privacy to DNS does not remove the need for DNSSEC <a href="#RFC4033" class="xref">[RFC4033]</a>. Incorrect or altered DNS data is still an issue</li></ul>
+<ul><li>The addition of privacy to DNS does not remove the need for DNSSEC <a href="#RFC4033" class="xref">[RFC4033]</a>. Incorrect or altered DNS data is still a risk.</li></ul>
 
 <p> </p>
 <p id="rfc.section.5.1.p.3">Mitigations: </p>
 <p></p>
 
-<ul><li>DNSSEC provides data origin authentication and data integrity to the Domain Name System. This is a separate from DNS privacy. All DNS privacy services MUST perform DNSSEC validation. In addition they MUST be able to provide the DNSSEC RRs to the client so that it can perform its own validation.</li></ul>
+<ul><li>DNSSEC provides data origin authentication and data integrity to the Domain Name System. This is a separate from DNS privacy. All DNS privacy services SHOULD offer a DNS privacy service that performs DNSSEC validation. In addition they SHOULD be able to provide the DNSSEC RRs to the client so that it can perform its own validation.</li></ul>
 
 <p> </p>
 <h1 id="rfc.section.5.2">
@@ -766,19 +766,15 @@
 <p id="rfc.section.5.2.2.p.8">DNS privacy services can also consider the following capabilities/options: </p>
 <p></p>
 
-<ul>
-<li>As recommended in <a href="#RFC8310" class="xref">[RFC8310]</a> providing DANE TLSA records for the nameserver <ul><li>In particular, the service could provide TLSA records such that authenticating solely via the PKIX infrastructure can be avoided.</li></ul>
-</li>
-<li>Implementing <a href="#I-D.ietf-tls-dnssec-chain-extension" class="xref">[I-D.ietf-tls-dnssec-chain-extension]</a> <ul><li>This can decrease the latency of connection setup to the server and remove the need for the client to perform meta-queries to obtain and validate the DANE records.</li></ul>
-</li>
-</ul>
+<ul><li>As recommended in <a href="#RFC8310" class="xref">[RFC8310]</a> providing DANE TLSA records for the nameserver <ul><li>In particular, the service could provide TLSA records such that authenticating solely via the PKIX infrastructure can be avoided.</li></ul>
+</li></ul>
 
 <p> </p>
 <h1 id="rfc.section.5.2.2.1">
 <a href="#rfc.section.5.2.2.1">5.2.2.1.</a> <a href="#certificate-management" id="certificate-management">Certificate management</a>
 </h1>
 <p id="rfc.section.5.2.2.1.p.1">Anecdotal evidence to date highlights the management of certificates as one of the more challenging aspects for operators of traditional DNS resolvers that choose to additionally provide a DNS privacy service as management of such credentials is new to those DNS operators.  </p>
-<p id="rfc.section.5.2.2.1.p.2">It is noted that SPKI pinset management is described in <a href="#RFC7858" class="xref">[RFC7858]</a> but that key pinning mechanisms in general have fallen out of favour operationally for various reasons.  </p>
+<p id="rfc.section.5.2.2.1.p.2">It is noted that SPKI pinset management is described in <a href="#RFC7858" class="xref">[RFC7858]</a> but that key pinning mechanisms in general have fallen out of favor operationally for various reasons.  </p>
 <p id="rfc.section.5.2.2.1.p.3">Threats: </p>
 <p></p>
 
@@ -793,13 +789,14 @@
 <p></p>
 
 <ul>
+<li>Follow the guidance in Section 6.5 of <a href="#RFC7525" class="xref">[RFC7525]</a>
+</li>
 <li>Choose a short, memorable authentication name for their service</li>
 <li>Automate the generation and publication of certificates</li>
 <li>Monitor certificates to prevent accidental expiration of certificates</li>
 </ul>
 
 <p> </p>
-<p id="rfc.section.5.2.2.1.p.8">TODO: Could we provide references for certificate management best practice, for example Section 6.5 of <a href="#RFC7525" class="xref">[RFC7525]</a>? </p>
 <h1 id="rfc.section.5.2.3">
 <a href="#rfc.section.5.2.3">5.2.3.</a> <a href="#protocol-recommendations" id="protocol-recommendations">Protocol recommendations</a>
 </h1>
@@ -1357,11 +1354,6 @@
 <td class="reference"><b id="I-D.ietf-dnsop-terminology-bis">[I-D.ietf-dnsop-terminology-bis]</b></td>
 <td class="top">
 <a>Hoffman, P.</a>, <a>Sullivan, A.</a> and <a>K. Fujiwara</a>, "<a href="https://tools.ietf.org/html/draft-ietf-dnsop-terminology-bis-14">DNS Terminology</a>", Internet-Draft draft-ietf-dnsop-terminology-bis-14, September 2018.</td>
-</tr>
-<tr>
-<td class="reference"><b id="I-D.ietf-tls-dnssec-chain-extension">[I-D.ietf-tls-dnssec-chain-extension]</b></td>
-<td class="top">
-<a>Shore, M.</a>, <a>Barnes, R.</a>, <a>Huque, S.</a> and <a>W. Toorop</a>, "<a href="https://tools.ietf.org/html/draft-ietf-tls-dnssec-chain-extension-07">A DANE Record and DNSSEC Authentication Chain Extension for TLS</a>", Internet-Draft draft-ietf-tls-dnssec-chain-extension-07, March 2018.</td>
 </tr>
 <tr>
 <td class="reference"><b id="pcap">[pcap]</b></td>
