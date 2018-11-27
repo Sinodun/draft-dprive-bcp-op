@@ -177,15 +177,12 @@ in privacy and conversely some features increase privacy with an accompanying
 increase in complexity. A selection of the most relevant documents are listed in
 (#documents) for reference.
 
-
 # Terminology
 
 The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD",
 "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and "OPTIONAL" in this
 document are to be interpreted as described in BCP 14 [@!RFC2119] and [@!RFC8174]
 when, and only when, they appear in all capitals, as shown here.
-
-Privacy terminology is as described in Section 3 of [@!RFC6973].
 
 DNS terminology is as described in [@?I-D.ietf-dnsop-terminology-bis] with one
 modification: we restate the clause in the original definition of Privacy-enabling DNS
@@ -204,6 +201,19 @@ Other Terms:
 
 # Recommendations for DNS privacy services
 
+We describe two classes of threats:
+
+* Privacy [@!RFC6973] Threats
+  * Privacy terminology, threats to privacy and mitigations are as described in Sections
+  3, 5 and 6 of [@!RFC6973]. We note here that in [@!RFC6973] the threat
+  intrusion is defined as "intrusion into one's life rather than direct intrusion into
+  one's communications".
+
+* Other Threats
+  * These are threats to the users and operators of DNS privacy services that are not
+  directly covered by [@!RFC6973]. These may be more operational in nature such as
+  certificate management or service availability issues.
+
 We describe three classes of actions that operators of DNS privacy
 services can take:
 
@@ -221,26 +231,6 @@ they SHOULD implement (where appropriate) all:
 * Optimizations to be moderately compliant
 * Additional options to be maximally compliant
 
-TODO: Some of the threats listed in the following sections are taken directly
-from Section 5 of [@!RFC6973], some are just standalone descriptions, we need to go
-through all of them and see if we can use the [@!RFC6973] threats where possible
-and make them consistent.
-
-## Privacy and DNSSEC
-
-Threats:
-
-* The addition of privacy to DNS does not remove the need for DNSSEC [@RFC4033].
-  Incorrect or altered DNS data is still a risk.
-
-Mitigations:
-
-* DNSSEC provides data origin authentication and data integrity to the Domain 
-  Name System. This is a separate from DNS privacy. All DNS privacy services
-  SHOULD offer a DNS privacy service that performs DNSSEC validation. In addition 
-  they SHOULD be able to provide the DNSSEC RRs to the client so that it can perform
-  its own validation.
-
 ## On the wire between client and server
 
 In this section we consider both data on the wire and the service provided to
@@ -248,17 +238,18 @@ the client.
 
 ### Transport recommendations
 
-Threats: 
+Privacy [@!RFC6973] Threats: 
 
-* Surveillance: Passive surveillance of traffic on the wire
-* Intrusion: Active injection of spurious data or traffic
+* Surveillance:
+  * Passive surveillance of traffic on the wire
+  [@I-D.bortzmeyer-dprive-rfc7626-bis] Section 2.4.2.
 
 Mitigations:
 
 A DNS privacy service can mitigate these threats by providing service over one
 or more of the following transports
 
-* DNS-over-TLS [@!RFC7858]
+* DNS-over-TLS [@!RFC7858] and [@!RFC8310]
 * DoH [@!RFC8484]
 
 A DNS privacy service can also be provided over DNS-over-DTLS [@RFC8094],
@@ -271,10 +262,11 @@ document.
 
 ### Authentication of DNS privacy services
 
-Threats: 
+Privacy [@!RFC6973] Threats: 
 
-* Surveillance and Intrusion: Active attacks that can redirect traffic to
-  rogue servers
+* Surveillance: 
+  * Active attacks that can redirect traffic to rogue servers
+  [@I-D.bortzmeyer-dprive-rfc7626-bis] Section 2.5.3.
 
 Mitigations:
 
@@ -288,8 +280,8 @@ ability to authenticate the DNS server. To enable this, DNS privacy services
 that offer DNS-over-TLS should provide credentials in the form of either X.509
 certificates, SPKI pinsets or TLSA records.
 
-When offering DoH [@I-D.ietf-doh-dns-over-https], HTTPS requires authentication
-of the server as part of the protocol.
+When offering DoH [@!RFC8484], HTTPS requires authentication of the server as part of
+the protocol.
 
 Optimizations:
 
@@ -308,9 +300,9 @@ credentials is new to those DNS operators.
 
 It is noted that SPKI pinset management is described in [@RFC7858] but that key
 pinning mechanisms in general have fallen out of favor operationally for
-various reasons.
+various reasons such as the inability to easily change keys.
 
-Threats: 
+Other Threats: 
 
 * Invalid certificates, resulting in an unavailable service.
 * Mis-identification of a server by a client e.g. typos in URLs or
@@ -320,8 +312,9 @@ Mitigations:
 
 It is recommended that operators:
 
-* Follow the guidance in Section 6.5 of [@!RFC7525]
-* Choose a short, memorable authentication name for their service
+* Follow the guidance in Section 6.5 of [@!RFC7525] with regards to certificate
+revocation 
+* Choose a short, memorable authentication name for the service
 * Automate the generation and publication of certificates
 * Monitor certificates to prevent accidental expiration of certificates
 
@@ -329,7 +322,7 @@ It is recommended that operators:
 
 #### DNS-over-TLS
 
-Threats:
+Other Threats:
 
 * Known attacks on TLS such as those described in [@RFC7457]
 * Traffic analysis (TODO: add a reference)
@@ -345,8 +338,8 @@ provide strong mitigations. This includes but is not limited to:
 * Adhering to [@!RFC7525]
 * Implementing only (D)TLS 1.2 or later as specified in [@!RFC8310]
 * Implementing EDNS(0) Padding [@!RFC7830] using the guidelines in
-  [@!I-D.ietf-dprive-padding-policy]
-* Clients should not be required to use TLS session resumption [@!RFC5077],
+  [@!RFC8467]
+* Clients should not be required to use TLS session resumption [@!RFC5077] or
   Domain Name System (DNS) Cookies [@!RFC7873].
 * A DNS-over-TLS privacy service on both port 853 and 443. We note that this
   practice may require revision when DoH becomes more widely deployed, because
@@ -381,7 +374,7 @@ Mitigations:
 
 ### Availability
 
-Threats:
+Other Threats:
 
 * A failed DNS privacy service could force the user to switch providers,
 fallback to cleartext or accept no DNS service for the outage.
@@ -397,11 +390,10 @@ TODO: Add reference to ongoing research on this topic.
 
 ### Service options
 
-Threats: 
+Other Threats: 
 
 * Unfairly disadvantaging users of the privacy service with respect to the
-  services available. This could force the user to switch providers, fallback to
-  cleartext or accept no DNS service for the outage.
+  services available.
 
 Mitigations:
 
@@ -411,6 +403,8 @@ validation, etc.
 
 
 ### Limitations of using a pure TLS proxy
+
+[TODO: there is no threat here - create one or move this section]
 
 Optimization:
 
@@ -433,7 +427,7 @@ Operators may choose to use a DNS aware proxy such as dnsdist.
 
 ### Data handling
 
-Threats:
+Privacy [@!RFC6973] Threats:
 
 * Surveillance
 * Stored data compromise
@@ -441,6 +435,8 @@ Threats:
 * Identification
 * Secondary use
 * Disclosure
+
+Other Treats
 
 * Contravention of legal requirements not to process user data?
 
@@ -551,7 +547,7 @@ of a cryptographic chosen plaintext attack.
 
 ### Pseudonymization, anonymization or discarding of other correlation data
 
-Threats:
+Other Threats:
 
 * IP TTL/Hoplimit can be used to fingerprint client OS
 * Tracking of TCP sessions
@@ -568,9 +564,10 @@ TODO: More analysis here.
 
 ### Cache snooping
 
-Threats: 
+Privacy [@!RFC6973] Threats: 
 
-* Profiling of client queries by malicious third parties
+* Surveillance:
+  * Profiling of client queries by malicious third parties
 
 Mitigations: 
 
@@ -584,9 +581,10 @@ data shared with third parties.
 
 ### Protocol recommendations
 
-Threats: 
+Privacy [@!RFC6973] Threats: 
 
-* Transmission of identifying data upstream.
+* Surveillance:
+  * Transmission of identifying data upstream.
 
 Mitigations:
 
@@ -865,7 +863,7 @@ TODO: e.g. New issues for DoS defence, server admin policies
 
 Many thanks to Amelia Andersdotter for a very thorough review of the first draft
 of this document. Thanks also to John Todd for discussions on this topic, and to
-Stephane Bortzmeyer for review.
+Stephane Bortzmeyer, Puneet Sood and Vittorio Bertola for review. Thanks to Loganaden Velvindron for useful updates.
 
 Sara Dickinson thanks the Open Technology Fund for a grant to support the work
 on this document.
@@ -951,6 +949,7 @@ draft-ietf-dprive-bcp-op-00
 in the appendix-->
 [-@RFC6235]
 [-@!RFC7871]
+[-@RFC4033]
 [-@?I-D.ietf-dnsop-dns-capture-format]
 [-@?I-D.ietf-dnsop-dns-tcp-requirements]
 
@@ -977,7 +976,7 @@ clients and recursive resolvers:
   here as DoH.
 * 'Usage Profiles for DNS over TLS and DNS over DTLS' [@!RFC8310]
 * 'The EDNS(0) Padding Option' [@!RFC7830] and 'Padding Policy for EDNS(0)'
-  [@!I-D.ietf-dprive-padding-policy]
+  [@!RFC8467]
 
 These documents apply to recursive to authoritative DNS but are relevant when
 considering the operation of a recursive server:
@@ -1166,3 +1165,21 @@ stored, this approach cannot be used to regenerate traffic, and so cannot be
 used with tools used to process live traffic.
 
 Anonymized: Generalization.
+
+# Encryption and DNSSEC
+
+The addition of encryption to DNS does not remove the need for DNSSEC [@RFC4033].
+DNSSEC provides data origin authentication and data integrity to the Domain 
+Name System. This is a separate from DNS privacy. All DNS privacy services
+SHOULD offer a DNS privacy service that performs DNSSEC validation. In addition 
+they SHOULD be able to provide the DNSSEC RRs to the client so that it can perform
+its own validation.
+
+While the use of a authenticated and encrypted transport protects origin
+authentication and data integrity between a client and a DNS privacy service it provides
+no confirmation of where the DNS privacy service obtained the data.
+
+Similarly, from a DNS trust point of view as long as the DNSSEC chain can be validated it
+doesn't matter where the DNS data was obtained from, even if the client could not
+determine trust in the identify of the DNS privacy service supplying that data. Of
+course, being unable to trust in the identify of the DNS privacy service may well have compromised the privacy of the DNS privacy service.

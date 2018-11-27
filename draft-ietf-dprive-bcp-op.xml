@@ -218,8 +218,6 @@ increase in complexity. A selection of the most relevant documents are listed in
 document are to be interpreted as described in BCP 14 <xref target="RFC2119"/> and <xref target="RFC8174"/>
 when, and only when, they appear in all capitals, as shown here.
 </t>
-<t>Privacy terminology is as described in Section 3 of <xref target="RFC6973"/>.
-</t>
 <t>DNS terminology is as described in <xref target="I-D.ietf-dnsop-terminology-bis"/> with one
 modification: we restate the clause in the original definition of Privacy-enabling DNS
 server in <xref target="RFC8310"/> to include the requirement that a DNS over (D)TLS server
@@ -240,6 +238,25 @@ practice with regard to users privacy or a formal DPPPS.</t>
 </section>
 
 <section anchor="recommendations-for-dns-privacy-services" title="Recommendations for DNS privacy services">
+<t>We describe two classes of threats:
+</t>
+<t>
+<list style="symbols">
+<t>Privacy <xref target="RFC6973"/> Threats
+<list style="symbols">
+<t>Privacy terminology, threats to privacy and mitigations are as described in Sections
+3, 5 and 6 of <xref target="RFC6973"/>. We note here that in <xref target="RFC6973"/> the threat
+intrusion is defined as &quot;intrusion into one's life rather than direct intrusion into
+one's communications&quot;.</t>
+</list></t>
+<t>Other Threats
+<list style="symbols">
+<t>These are threats to the users and operators of DNS privacy services that are not
+directly covered by <xref target="RFC6973"/>. These may be more operational in nature such as
+certificate management or service availability issues.</t>
+</list></t>
+</list>
+</t>
 <t>We describe three classes of actions that operators of DNS privacy
 services can take:
 </t>
@@ -263,33 +280,6 @@ they SHOULD implement (where appropriate) all:
 <t>Additional options to be maximally compliant</t>
 </list>
 </t>
-<t>TODO: Some of the threats listed in the following sections are taken directly
-from Section 5 of <xref target="RFC6973"/>, some are just standalone descriptions, we need to go
-through all of them and see if we can use the <xref target="RFC6973"/> threats where possible
-and make them consistent.
-</t>
-
-<section anchor="privacy-and-dnssec" title="Privacy and DNSSEC">
-<t>Threats:
-</t>
-<t>
-<list style="symbols">
-<t>The addition of privacy to DNS does not remove the need for DNSSEC <xref target="RFC4033"/>.
-Incorrect or altered DNS data is still a risk.</t>
-</list>
-</t>
-<t>Mitigations:
-</t>
-<t>
-<list style="symbols">
-<t>DNSSEC provides data origin authentication and data integrity to the Domain
-Name System. This is a separate from DNS privacy. All DNS privacy services
-SHOULD offer a DNS privacy service that performs DNSSEC validation. In addition
-they SHOULD be able to provide the DNSSEC RRs to the client so that it can perform
-its own validation.</t>
-</list>
-</t>
-</section>
 
 <section anchor="on-the-wire-between-client-and-server" title="On the wire between client and server">
 <t>In this section we consider both data on the wire and the service provided to
@@ -297,12 +287,15 @@ the client.
 </t>
 
 <section anchor="transport-recommendations" title="Transport recommendations">
-<t>Threats:
+<t>Privacy <xref target="RFC6973"/> Threats:
 </t>
 <t>
 <list style="symbols">
-<t>Surveillance: Passive surveillance of traffic on the wire</t>
-<t>Intrusion: Active injection of spurious data or traffic</t>
+<t>Surveillance:
+<list style="symbols">
+<t>Passive surveillance of traffic on the wire
+<xref target="I-D.bortzmeyer-dprive-rfc7626-bis"/> Section 2.4.2.</t>
+</list></t>
 </list>
 </t>
 <t>Mitigations:
@@ -312,7 +305,7 @@ or more of the following transports
 </t>
 <t>
 <list style="symbols">
-<t>DNS-over-TLS <xref target="RFC7858"/></t>
+<t>DNS-over-TLS <xref target="RFC7858"/> and <xref target="RFC8310"/></t>
 <t>DoH <xref target="RFC8484"/></t>
 </list>
 </t>
@@ -327,12 +320,15 @@ document.
 </section>
 
 <section anchor="authentication-of-dns-privacy-services" title="Authentication of DNS privacy services">
-<t>Threats:
+<t>Privacy <xref target="RFC6973"/> Threats:
 </t>
 <t>
 <list style="symbols">
-<t>Surveillance and Intrusion: Active attacks that can redirect traffic to
-rogue servers</t>
+<t>Surveillance:
+<list style="symbols">
+<t>Active attacks that can redirect traffic to rogue servers
+<xref target="I-D.bortzmeyer-dprive-rfc7626-bis"/> Section 2.5.3.</t>
+</list></t>
 </list>
 </t>
 <t>Mitigations:
@@ -347,8 +343,8 @@ ability to authenticate the DNS server. To enable this, DNS privacy services
 that offer DNS-over-TLS should provide credentials in the form of either X.509
 certificates, SPKI pinsets or TLSA records.
 </t>
-<t>When offering DoH <xref target="I-D.ietf-doh-dns-over-https"/>, HTTPS requires authentication
-of the server as part of the protocol.
+<t>When offering DoH <xref target="RFC8484"/>, HTTPS requires authentication of the server as part of
+the protocol.
 </t>
 <t>Optimizations:
 </t>
@@ -372,9 +368,9 @@ credentials is new to those DNS operators.
 </t>
 <t>It is noted that SPKI pinset management is described in <xref target="RFC7858"/> but that key
 pinning mechanisms in general have fallen out of favor operationally for
-various reasons.
+various reasons such as the inability to easily change keys.
 </t>
-<t>Threats:
+<t>Other Threats:
 </t>
 <t>
 <list style="symbols">
@@ -389,8 +385,9 @@ authentication domain names</t>
 </t>
 <t>
 <list style="symbols">
-<t>Follow the guidance in Section 6.5 of <xref target="RFC7525"/></t>
-<t>Choose a short, memorable authentication name for their service</t>
+<t>Follow the guidance in Section 6.5 of <xref target="RFC7525"/> with regards to certificate
+revocation</t>
+<t>Choose a short, memorable authentication name for the service</t>
 <t>Automate the generation and publication of certificates</t>
 <t>Monitor certificates to prevent accidental expiration of certificates</t>
 </list>
@@ -401,7 +398,7 @@ authentication domain names</t>
 <section anchor="protocol-recommendations" title="Protocol recommendations">
 
 <section anchor="dnsovertls" title="DNS-over-TLS">
-<t>Threats:
+<t>Other Threats:
 </t>
 <t>
 <list style="symbols">
@@ -422,8 +419,8 @@ provide strong mitigations. This includes but is not limited to:
 <t>Adhering to <xref target="RFC7525"/></t>
 <t>Implementing only (D)TLS 1.2 or later as specified in <xref target="RFC8310"/></t>
 <t>Implementing EDNS(0) Padding <xref target="RFC7830"/> using the guidelines in
-<xref target="I-D.ietf-dprive-padding-policy"/></t>
-<t>Clients should not be required to use TLS session resumption <xref target="RFC5077"/>,
+<xref target="RFC8467"/></t>
+<t>Clients should not be required to use TLS session resumption <xref target="RFC5077"/> or
 Domain Name System (DNS) Cookies <xref target="RFC7873"/>.</t>
 <t>A DNS-over-TLS privacy service on both port 853 and 443. We note that this
 practice may require revision when DoH becomes more widely deployed, because
@@ -473,7 +470,7 @@ minimum to obtain service from a DoH server.</t>
 </section>
 
 <section anchor="availability" title="Availability">
-<t>Threats:
+<t>Other Threats:
 </t>
 <t>
 <list style="symbols">
@@ -493,13 +490,12 @@ attacks is a significant motivation for users to switch services.
 </section>
 
 <section anchor="service-options" title="Service options">
-<t>Threats:
+<t>Other Threats:
 </t>
 <t>
 <list style="symbols">
 <t>Unfairly disadvantaging users of the privacy service with respect to the
-services available. This could force the user to switch providers, fallback to
-cleartext or accept no DNS service for the outage.</t>
+services available.</t>
 </list>
 </t>
 <t>Mitigations:
@@ -511,6 +507,8 @@ validation, etc.
 </section>
 
 <section anchor="limitations-of-using-a-pure-tls-proxy" title="Limitations of using a pure TLS proxy">
+<t>[TODO: there is no threat here - create one or move this section]
+</t>
 <t>Optimization:
 </t>
 <t>Some operators may choose to implement DNS-over-TLS using a TLS proxy (e.g.
@@ -533,7 +531,7 @@ the nameserver.
 <section anchor="data-at-rest-on-the-server" title="Data at rest on the server">
 
 <section anchor="data-handling" title="Data handling">
-<t>Threats:
+<t>Privacy <xref target="RFC6973"/> Threats:
 </t>
 <t>
 <list style="symbols">
@@ -543,6 +541,12 @@ the nameserver.
 <t>Identification</t>
 <t>Secondary use</t>
 <t>Disclosure</t>
+</list>
+</t>
+<t>Other Treats
+</t>
+<t>
+<list style="symbols">
 <t>Contravention of legal requirements not to process user data?</t>
 </list>
 </t>
@@ -656,7 +660,7 @@ of a cryptographic chosen plaintext attack.
 </section>
 
 <section anchor="pseudonymization-anonymization-or-discarding-of-other-correlation-data" title="Pseudonymization, anonymization or discarding of other correlation data">
-<t>Threats:
+<t>Other Threats:
 </t>
 <t>
 <list style="symbols">
@@ -680,11 +684,14 @@ options - some CPE devices are known to add them.</t>
 </section>
 
 <section anchor="cache-snooping" title="Cache snooping">
-<t>Threats:
+<t>Privacy <xref target="RFC6973"/> Threats:
 </t>
 <t>
 <list style="symbols">
+<t>Surveillance:
+<list style="symbols">
 <t>Profiling of client queries by malicious third parties</t>
+</list></t>
 </list>
 </t>
 <t>Mitigations:
@@ -700,11 +707,14 @@ data shared with third parties.
 </t>
 
 <section anchor="protocol-recommendations-1" title="Protocol recommendations">
-<t>Threats:
+<t>Privacy <xref target="RFC6973"/> Threats:
 </t>
 <t>
 <list style="symbols">
+<t>Surveillance:
+<list style="symbols">
 <t>Transmission of identifying data upstream.</t>
+</list></t>
 </list>
 </t>
 <t>Mitigations:
@@ -1006,7 +1016,7 @@ their policies and practices.
 <section anchor="acknowledgements" title="Acknowledgements">
 <t>Many thanks to Amelia Andersdotter for a very thorough review of the first draft
 of this document. Thanks also to John Todd for discussions on this topic, and to
-Stephane Bortzmeyer for review.
+Stephane Bortzmeyer, Puneet Sood and Vittorio Bertola for review. Thanks to Loganaden Velvindron for useful updates.
 </t>
 <t>Sara Dickinson thanks the Open Technology Fund for a grant to support the work
 on this document.
@@ -1055,6 +1065,7 @@ draft-dickinson-dprive-bcp-op-01</t>
 
 
 
+
 </t>
 </section>
 
@@ -1063,7 +1074,6 @@ draft-dickinson-dprive-bcp-op-01</t>
 <references title="Normative References">
 <?rfc include="http://xml2rfc.ietf.org/public/rfc/bibxml3/reference.I-D.ietf-dnsop-session-signal.xml"?>
 <?rfc include="http://xml2rfc.ietf.org/public/rfc/bibxml3/reference.I-D.ietf-doh-dns-over-https.xml"?>
-<?rfc include="http://xml2rfc.ietf.org/public/rfc/bibxml3/reference.I-D.ietf-dprive-padding-policy.xml"?>
 <?rfc include="http://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.2119.xml"?>
 <?rfc include="http://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.5077.xml"?>
 <?rfc include="http://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.6265.xml"?>
@@ -1078,6 +1088,7 @@ draft-dickinson-dprive-bcp-op-01</t>
 <?rfc include="http://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.7873.xml"?>
 <?rfc include="http://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.8174.xml"?>
 <?rfc include="http://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.8310.xml"?>
+<?rfc include="http://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.8467.xml"?>
 <?rfc include="http://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.8484.xml"?>
 </references>
 <references title="Informative References">
@@ -1135,7 +1146,7 @@ Experimental.</t>
 here as DoH.</t>
 <t>'Usage Profiles for DNS over TLS and DNS over DTLS' <xref target="RFC8310"/></t>
 <t>'The EDNS(0) Padding Option' <xref target="RFC7830"/> and 'Padding Policy for EDNS(0)'
-<xref target="I-D.ietf-dprive-padding-policy"/></t>
+<xref target="RFC8467"/></t>
 </list>
 </t>
 <t>These documents apply to recursive to authoritative DNS but are relevant when
@@ -1341,6 +1352,25 @@ used with tools used to process live traffic.
 <t>Anonymized: Generalization.
 </t>
 </section>
+</section>
+
+<section anchor="encryption-and-dnssec" title="Encryption and DNSSEC">
+<t>The addition of encryption to DNS does not remove the need for DNSSEC <xref target="RFC4033"/>.
+DNSSEC provides data origin authentication and data integrity to the Domain
+Name System. This is a separate from DNS privacy. All DNS privacy services
+SHOULD offer a DNS privacy service that performs DNSSEC validation. In addition
+they SHOULD be able to provide the DNSSEC RRs to the client so that it can perform
+its own validation.
+</t>
+<t>While the use of a authenticated and encrypted transport protects origin
+authentication and data integrity between a client and a DNS privacy service it provides
+no confirmation of where the DNS privacy service obtained the data.
+</t>
+<t>Similarly, from a DNS trust point of view as long as the DNSSEC chain can be validated it
+doesn't matter where the DNS data was obtained from, even if the client could not
+determine trust in the identify of the DNS privacy service supplying that data. Of
+course, being unable to trust in the identify of the DNS privacy service may well have compromised the privacy of the DNS privacy service.
+</t>
 </section>
 
 </back>
