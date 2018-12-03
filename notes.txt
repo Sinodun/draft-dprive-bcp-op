@@ -1,0 +1,109 @@
+barry green: 2 docs, informational operational component and how to handle data
+paul hofffman: keep in 1 doc. timelines 
+dan york: felt  that the last part DPPPPP - separate thing, different audiance, fairly static.
+dkg: don't split out data management parts
+lorenzo ??: hard to do document with data retention guidelines, people from different areas, laws move under us.
+john reed: focussed on public clouds what about isp's particulary around ecs?
+Allison: your pear group
+dkg: we are not writing a legal document
+
+
+from minutes and listening to proceedings of IETF102:
+FROM Puneet Sood:
+Still todo
+* Section 6.2.5. Comparison
+For the comparison tables [8, 9] on github, I will discuss with you
+directly about Google Public DNS.
+
+[@RFC6873]????????????????
+
+## Threat Analysis and Terminology
+
+[Note: this section is here to clarify my thinking. It may not be in the final draft]
+
+The following documents form the source for threats and threat terminology used in this document.
+
+* [@RFC6973] Privacy Considerations for Internet Protocols
+
+  * Defines terms (section 3), threats (section 5) and mitigations (section 6).
+
+  * Terms
+
+      * Large number of terms.
+
+  * Threats
+
+      * Surveillance is the observation or monitoring of an individual's
+      communications or activities.
+
+      * Intrusion is described as "intrusion into one's life rather than direct intrusion into one's communications".
+
+      * Intrusion into one's communications is considered part of the treat called Surveillance.
+  
+      * Stored Data Compromise
+
+      * Misattribution
+
+      * Correlation
+
+      * Identification
+
+      * Secondary Use
+
+      * Disclosure
+
+      * Exclusion
+  
+  * Mitigations
+
+      * Data Minimization
+          * Anonymity
+          * Pseudonymity
+          * Identity Confidentiality
+          * Data Minimization within Identity Management
+          * 
+
+* [@!RFC7457] Summarizing Known Attacks on Transport Layer Security (TLS)
+  and Datagram TLS (DTLS)
+
+  * lists the attacks that motivated the current recommendations in [@!RFC7525]
+
+* [@!RFC7525] Recommendations for Secure Use of Transport Layer Security (TLS)
+  and Datagram Transport Layer Security (DTLS)
+
+  * Talks about the BCP for (D)TLS. In particular it discusses mitigation of  the threats in [@!RFC7457].
+
+* [@I-D.bortzmeyer-dprive-rfc7626-bis] DNS Privacy Considerations
+  
+  * Discusses threats to the privacy of DNS but no solutions.
+
+* Specification for DNS over Transport Layer Security (TLS)
+  
+  * This document describes the use of Transport Layer Security (TLS) to
+   provide privacy for DNS.  Encryption provided by TLS eliminates
+   opportunities for eavesdropping and on-path tampering with DNS
+   queries in the network, such as discussed in RFC 7626.  In addition,
+   this document specifies two usage profiles for DNS over TLS and
+   provides advice on performance considerations to minimize overhead
+   from using TCP and TLS with DNS.
+
+* [@!RFC8310] Usage Profiles for DNS over TLS and DNS over DTLS
+  
+  * This document discusses usage profiles, based on one or more
+   authentication mechanisms, which can be used for DNS over Transport
+   Layer Security (TLS) or Datagram TLS (DTLS).  These profiles can
+   increase the privacy of DNS transactions compared to using only
+   cleartext DNS.  This document also specifies new authentication
+   mechanisms -- it describes several ways that a DNS client can use an
+   authentication domain name to authenticate a (D)TLS connection to a
+   DNS server.  Additionally, it defines (D)TLS protocol profiles for
+   DNS clients and servers implementing DNS over (D)TLS.  This document
+   updates RFC 7858.
+
+   tls1.3
+
+
+
+
+
+This document in concerned with DNS Privacy. DNS Security is explicitly out of scope. For example, We consider passive survaillence 

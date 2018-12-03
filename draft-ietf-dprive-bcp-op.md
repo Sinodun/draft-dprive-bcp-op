@@ -204,7 +204,7 @@ Other Terms:
 We describe two classes of threats:
 
 * Privacy [@!RFC6973] Threats
-  * Privacy terminology, threats to privacy and mitigations are as described in Sections
+  * Privacy terminology, threats to privacy and mitigations are described in Sections
   3, 5 and 6 of [@!RFC6973]. We note here that in [@!RFC6973] the threat
   intrusion is defined as "intrusion into one's life rather than direct intrusion into
   one's communications".
@@ -241,8 +241,8 @@ the client.
 Privacy [@!RFC6973] Threats: 
 
 * Surveillance:
-  * Passive surveillance of traffic on the wire
-  [@I-D.bortzmeyer-dprive-rfc7626-bis] Section 2.4.2.
+  * Passive surveillance of traffic on the wire [@I-D.bortzmeyer-dprive-rfc7626-bis]
+  Section 2.4.2.
 
 Mitigations:
 
@@ -325,7 +325,7 @@ revocation
 Other Threats:
 
 * Known attacks on TLS such as those described in [@RFC7457]
-* Traffic analysis (TODO: add a reference)
+* Traffic analysis, for example: [Pitfalls of DNS Encryption](https://www.ietf.org/mail-archive/web/dns-privacy/current/pdfWqAIUmEl47.pdf)
 * Potential for client tracking via transport identifiers
 * Blocking of well known ports (e.g. 853 for DNS-over-TLS)
 
@@ -341,9 +341,8 @@ provide strong mitigations. This includes but is not limited to:
   [@!RFC8467]
 * Clients should not be required to use TLS session resumption [@!RFC5077] or
   Domain Name System (DNS) Cookies [@!RFC7873].
-* A DNS-over-TLS privacy service on both port 853 and 443. We note that this
-  practice may require revision when DoH becomes more widely deployed, because
-  of the potential use of the same ports for two incompatible types of service.
+* A DNS-over-TLS privacy service on both port 853 and 443. This
+  practice may not be possible if the operator deploys DoH on the same address.
 
 Optimizations:
 
@@ -354,6 +353,7 @@ Optimizations:
 * Management of TLS connections to optimize performance for clients using either
   * [@!RFC7766] and EDNS(0) Keepalive [@!RFC7828] and/or 
   * DNS Stateful Operations [@!I-D.ietf-dnsop-session-signal]
+* Use TLS 1.3 [@!RFC8446]
   
 Additional options that providers may consider:
 
@@ -361,9 +361,11 @@ Additional options that providers may consider:
 
 #### DoH
 
-TODO: Fill this in, a lot of overlap with DNS-over-TLS but we need to address
-DoH specific ones if possible.
+Other Threats:
 
+* Known attacks on TLS such as those described in [@RFC7457]
+* Traffic analysis, for example: [Pitfalls of DNS Encryption](https://www.ietf.org/mail-archive/web/dns-privacy/current/pdfWqAIUmEl47.pdf)
+* Potential for client tracking via transport identifiers
 
 Mitigations:
 
@@ -371,6 +373,11 @@ Mitigations:
 * Clients should not be required to include any headers beyond the absolute
   minimum to obtain service from a DoH server.
 
+Optimizations:
+
+* Concurrent processing of pipelined queries, returning responses as soon as
+  available. This is often called 'OOOR' - out-of-order responses.
+* Use TLS 1.3 [@!RFC8446]
 
 ### Availability
 
@@ -397,10 +404,17 @@ Other Threats:
 
 Mitigations:
 
-A DNS privacy service should deliver the same level of service offered on
+A DNS privacy service should deliver the same level of service as offered on
 un-encrypted channels in terms of such options as filtering (or lack of), DNSSEC
 validation, etc. 
 
+### Impact on Operators
+
+Other Threats: 
+
+* Increased use of encryption impacts operator ability to manage their network [@!RFC8404]
+
+[TODO: mitigations]
 
 ### Limitations of using a pure TLS proxy
 
@@ -459,6 +473,10 @@ described in [@!RFC6973] should be applied.
   of the service.
 * Data access should be minimized to only those personnel who require access to
   perform operational duties.
+
+Optimizations:
+
+* Consider use of full disk encryption for logs and data capture storage.
 
 ### Data minimization of network traffic
 
@@ -651,7 +669,7 @@ obfuscated among those of the large resolver.
 
 ### Data sharing
 
-Threats:
+Privacy [@!RFC6973] Threats:
 
 * Surveillance
 * Stored data compromise
@@ -659,6 +677,8 @@ Threats:
 * Identification
 * Secondary use
 * Disclosure
+
+Other Threats:
 
 * Contravention of legal requirements not to process user data?
 
@@ -779,7 +799,7 @@ removed or substantially re-worked in a future version.
 UDP/TCP and TLS (port 853) service provided on two addresses:
 
  *  'Secure': 9.9.9.9, 149.112.112.112, 2620:fe::fe, 2620:fe::9
- *  'Unsecured': 9.9.9.10, 149.112.112.10, 2620:fe::10
+ *  'Unsecured': 9.9.9.10, 149.112.112.10, 2620:fe::10, 2620:fe::fe:10
 
 Policy: 
 
@@ -817,7 +837,7 @@ Policy: https://developers.google.com/speed/public-dns/privacy
 UDP/TCP service provided on 208.67.222.222 and 208.67.220.220 (no IPv6).
 
 We could find no specific privacy policy for the DNS resolution, only a general
-one from Cisco that seems focussed on websites.
+one from Cisco that seems focused on websites.
 
 Policy: https://www.cisco.com/c/en/us/about/legal/privacy-full.html
 
@@ -862,8 +882,10 @@ TODO: e.g. New issues for DoS defence, server admin policies
 # Acknowledgements
 
 Many thanks to Amelia Andersdotter for a very thorough review of the first draft
-of this document. Thanks also to John Todd for discussions on this topic, and to
-Stephane Bortzmeyer, Puneet Sood and Vittorio Bertola for review. Thanks to Loganaden Velvindron for useful updates.
+of this document. Thanks to John Todd for discussions on this topic, and to
+Stephane Bortzmeyer, Puneet Sood and Vittorio Bertola for review. Thanks to Daniel Kahn
+Gillmor, Barry Green, Paul Hoffman, Dan York, John Reed, Lorenzo Colitti for comments at
+the mic. Thanks to Loganaden Velvindron for useful updates to the text.
 
 Sara Dickinson thanks the Open Technology Fund for a grant to support the work
 on this document.
@@ -877,14 +899,14 @@ John Dickinson\\
 Sinodun Internet Technologies\\
 Magdalen Centre\\
 Oxford Science Park\\
-Oxford  OX4 4GA\\
+Oxford OX4 4GA\\
 United Kingdom
 
 Jim Hague\\
 Sinodun Internet Technologies\\
 Magdalen Centre\\
 Oxford Science Park\\
-Oxford  OX4 4GA\\
+Oxford OX4 4GA\\
 United Kingdom
 
 # Changelog

@@ -244,7 +244,7 @@ practice with regard to users privacy or a formal DPPPS.</t>
 <list style="symbols">
 <t>Privacy <xref target="RFC6973"/> Threats
 <list style="symbols">
-<t>Privacy terminology, threats to privacy and mitigations are as described in Sections
+<t>Privacy terminology, threats to privacy and mitigations are described in Sections
 3, 5 and 6 of <xref target="RFC6973"/>. We note here that in <xref target="RFC6973"/> the threat
 intrusion is defined as &quot;intrusion into one's life rather than direct intrusion into
 one's communications&quot;.</t>
@@ -293,8 +293,8 @@ the client.
 <list style="symbols">
 <t>Surveillance:
 <list style="symbols">
-<t>Passive surveillance of traffic on the wire
-<xref target="I-D.bortzmeyer-dprive-rfc7626-bis"/> Section 2.4.2.</t>
+<t>Passive surveillance of traffic on the wire <xref target="I-D.bortzmeyer-dprive-rfc7626-bis"/>
+Section 2.4.2.</t>
 </list></t>
 </list>
 </t>
@@ -403,7 +403,7 @@ revocation</t>
 <t>
 <list style="symbols">
 <t>Known attacks on TLS such as those described in <xref target="RFC7457"/></t>
-<t>Traffic analysis (TODO: add a reference)</t>
+<t>Traffic analysis, for example: <eref target="https://www.ietf.org/mail-archive/web/dns-privacy/current/pdfWqAIUmEl47.pdf">Pitfalls of DNS Encryption</eref></t>
 <t>Potential for client tracking via transport identifiers</t>
 <t>Blocking of well known ports (e.g. 853 for DNS-over-TLS)</t>
 </list>
@@ -422,9 +422,8 @@ provide strong mitigations. This includes but is not limited to:
 <xref target="RFC8467"/></t>
 <t>Clients should not be required to use TLS session resumption <xref target="RFC5077"/> or
 Domain Name System (DNS) Cookies <xref target="RFC7873"/>.</t>
-<t>A DNS-over-TLS privacy service on both port 853 and 443. We note that this
-practice may require revision when DoH becomes more widely deployed, because
-of the potential use of the same ports for two incompatible types of service.</t>
+<t>A DNS-over-TLS privacy service on both port 853 and 443. This
+practice may not be possible if the operator deploys DoH on the same address.</t>
 </list>
 </t>
 <t>Optimizations:
@@ -438,10 +437,11 @@ similar to HTTP multiplexing)</t>
 <t>Management of TLS connections to optimize performance for clients using either
 <list style="symbols">
 <t><xref target="RFC7766"/> and EDNS(0) Keepalive <xref target="RFC7828"/> and/or</t>
-<t>DNS Stateful Operations <xref target="I-D.ietf-dnsop-session-signal"/>
+<t>DNS Stateful Operations <xref target="I-D.ietf-dnsop-session-signal"/></t>
+</list></t>
+<t>Use TLS 1.3 <xref target="RFC8446"/>
 
 <vspace/></t>
-</list></t>
 </list>
 </t>
 <t>Additional options that providers may consider:
@@ -454,8 +454,14 @@ similar to HTTP multiplexing)</t>
 </section>
 
 <section anchor="doh" title="DoH">
-<t>TODO: Fill this in, a lot of overlap with DNS-over-TLS but we need to address
-DoH specific ones if possible.
+<t>Other Threats:
+</t>
+<t>
+<list style="symbols">
+<t>Known attacks on TLS such as those described in <xref target="RFC7457"/></t>
+<t>Traffic analysis, for example: <eref target="https://www.ietf.org/mail-archive/web/dns-privacy/current/pdfWqAIUmEl47.pdf">Pitfalls of DNS Encryption</eref></t>
+<t>Potential for client tracking via transport identifiers</t>
+</list>
 </t>
 <t>Mitigations:
 </t>
@@ -464,6 +470,15 @@ DoH specific ones if possible.
 <t>Clients should not be required to use HTTP Cookies <xref target="RFC6265"/>.</t>
 <t>Clients should not be required to include any headers beyond the absolute
 minimum to obtain service from a DoH server.</t>
+</list>
+</t>
+<t>Optimizations:
+</t>
+<t>
+<list style="symbols">
+<t>Concurrent processing of pipelined queries, returning responses as soon as
+available. This is often called 'OOOR' - out-of-order responses.</t>
+<t>Use TLS 1.3 <xref target="RFC8446"/></t>
 </list>
 </t>
 </section>
@@ -500,9 +515,21 @@ services available.</t>
 </t>
 <t>Mitigations:
 </t>
-<t>A DNS privacy service should deliver the same level of service offered on
+<t>A DNS privacy service should deliver the same level of service as offered on
 un-encrypted channels in terms of such options as filtering (or lack of), DNSSEC
 validation, etc.
+</t>
+</section>
+
+<section anchor="impact-on-operators" title="Impact on Operators">
+<t>Other Threats:
+</t>
+<t>
+<list style="symbols">
+<t>Increased use of encryption impacts operator ability to manage their network <xref target="RFC8404"/></t>
+</list>
+</t>
+<t>[TODO: mitigations]
 </t>
 </section>
 
@@ -571,6 +598,13 @@ of detecting and remedying technically malicious (e.g. DoS) or anomalous use
 of the service.</t>
 <t>Data access should be minimized to only those personnel who require access to
 perform operational duties.</t>
+</list>
+</t>
+<t>Optimizations:
+</t>
+<t>
+<list style="symbols">
+<t>Consider use of full disk encryption for logs and data capture storage.</t>
 </list>
 </t>
 </section>
@@ -788,7 +822,7 @@ obfuscated among those of the large resolver.
 </section>
 
 <section anchor="data-sharing" title="Data sharing">
-<t>Threats:
+<t>Privacy <xref target="RFC6973"/> Threats:
 </t>
 <t>
 <list style="symbols">
@@ -798,6 +832,12 @@ obfuscated among those of the large resolver.
 <t>Identification</t>
 <t>Secondary use</t>
 <t>Disclosure</t>
+</list>
+</t>
+<t>Other Threats:
+</t>
+<t>
+<list style="symbols">
 <t>Contravention of legal requirements not to process user data?</t>
 </list>
 </t>
@@ -962,7 +1002,7 @@ removed or substantially re-worked in a future version.
 <t>UDP/TCP service provided on 208.67.222.222 and 208.67.220.220 (no IPv6).
 </t>
 <t>We could find no specific privacy policy for the DNS resolution, only a general
-one from Cisco that seems focussed on websites.
+one from Cisco that seems focused on websites.
 </t>
 <t>Policy: <eref target="https://www.cisco.com/c/en/us/about/legal/privacy-full.html"/>
 </t>
@@ -1015,8 +1055,10 @@ their policies and practices.
 
 <section anchor="acknowledgements" title="Acknowledgements">
 <t>Many thanks to Amelia Andersdotter for a very thorough review of the first draft
-of this document. Thanks also to John Todd for discussions on this topic, and to
-Stephane Bortzmeyer, Puneet Sood and Vittorio Bertola for review. Thanks to Loganaden Velvindron for useful updates.
+of this document. Thanks to John Todd for discussions on this topic, and to
+Stephane Bortzmeyer, Puneet Sood and Vittorio Bertola for review. Thanks to Daniel Kahn
+Gillmor, Barry Green, Paul Hoffman, Dan York, John Reed, Lorenzo Colitti for comments at
+the mic. Thanks to Loganaden Velvindron for useful updates to the text.
 </t>
 <t>Sara Dickinson thanks the Open Technology Fund for a grant to support the work
 on this document.
@@ -1034,7 +1076,7 @@ Magdalen Centre
 <vspace/>
 Oxford Science Park
 <vspace/>
-Oxford  OX4 4GA
+Oxford OX4 4GA
 <vspace/>
 United Kingdom
 </t>
@@ -1046,7 +1088,7 @@ Magdalen Centre
 <vspace/>
 Oxford Science Park
 <vspace/>
-Oxford  OX4 4GA
+Oxford OX4 4GA
 <vspace/>
 United Kingdom
 </t>
@@ -1088,6 +1130,8 @@ draft-dickinson-dprive-bcp-op-01</t>
 <?rfc include="http://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.7873.xml"?>
 <?rfc include="http://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.8174.xml"?>
 <?rfc include="http://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.8310.xml"?>
+<?rfc include="http://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.8404.xml"?>
+<?rfc include="http://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.8446.xml"?>
 <?rfc include="http://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.8467.xml"?>
 <?rfc include="http://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.8484.xml"?>
 </references>

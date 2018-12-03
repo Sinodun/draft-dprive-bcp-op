@@ -385,7 +385,8 @@
 <link href="#rfc.section.5.1.3" rel="Chapter" title="5.1.3 Protocol recommendations">
 <link href="#rfc.section.5.1.4" rel="Chapter" title="5.1.4 Availability">
 <link href="#rfc.section.5.1.5" rel="Chapter" title="5.1.5 Service options">
-<link href="#rfc.section.5.1.6" rel="Chapter" title="5.1.6 Limitations of using a pure TLS proxy">
+<link href="#rfc.section.5.1.6" rel="Chapter" title="5.1.6 Impact on Operators">
+<link href="#rfc.section.5.1.7" rel="Chapter" title="5.1.7 Limitations of using a pure TLS proxy">
 <link href="#rfc.section.5.2" rel="Chapter" title="5.2 Data at rest on the server">
 <link href="#rfc.section.5.2.1" rel="Chapter" title="5.2.1 Data handling">
 <link href="#rfc.section.5.2.2" rel="Chapter" title="5.2.2 Data minimization of network traffic">
@@ -530,7 +531,9 @@
 </li>
 <li>5.1.5.   <a href="#rfc.section.5.1.5">Service options</a>
 </li>
-<li>5.1.6.   <a href="#rfc.section.5.1.6">Limitations of using a pure TLS proxy</a>
+<li>5.1.6.   <a href="#rfc.section.5.1.6">Impact on Operators</a>
+</li>
+<li>5.1.7.   <a href="#rfc.section.5.1.7">Limitations of using a pure TLS proxy</a>
 </li>
 </ul><li>5.2.   <a href="#rfc.section.5.2">Data at rest on the server</a>
 </li>
@@ -681,7 +684,7 @@
 <p></p>
 
 <ul>
-<li>Privacy <a href="#RFC6973" class="xref">[RFC6973]</a> Threats <ul><li>Privacy terminology, threats to privacy and mitigations are as described in Sections 3, 5 and 6 of <a href="#RFC6973" class="xref">[RFC6973]</a>. We note here that in <a href="#RFC6973" class="xref">[RFC6973]</a> the threat intrusion is defined as "intrusion into one's life rather than direct intrusion into one's communications".</li></ul>
+<li>Privacy <a href="#RFC6973" class="xref">[RFC6973]</a> Threats <ul><li>Privacy terminology, threats to privacy and mitigations are described in Sections 3, 5 and 6 of <a href="#RFC6973" class="xref">[RFC6973]</a>. We note here that in <a href="#RFC6973" class="xref">[RFC6973]</a> the threat intrusion is defined as "intrusion into one's life rather than direct intrusion into one's communications".</li></ul>
 </li>
 <li>Other Threats <ul><li>These are threats to the users and operators of DNS privacy services that are not directly covered by <a href="#RFC6973" class="xref">[RFC6973]</a>. These may be more operational in nature such as certificate management or service availability issues.</li></ul>
 </li>
@@ -796,7 +799,8 @@
 <ul>
 <li>Known attacks on TLS such as those described in <a href="#RFC7457" class="xref">[RFC7457]</a>
 </li>
-<li>Traffic analysis (TODO: add a reference)</li>
+<li>Traffic analysis, for example: <a href="https://www.ietf.org/mail-archive/web/dns-privacy/current/pdfWqAIUmEl47.pdf">Pitfalls of DNS Encryption</a>
+</li>
 <li>Potential for client tracking via transport identifiers</li>
 <li>Blocking of well known ports (e.g. 853 for DNS-over-TLS)</li>
 </ul>
@@ -814,7 +818,7 @@
 <li>Implementing EDNS(0) Padding <a href="#RFC7830" class="xref">[RFC7830]</a> using the guidelines in <a href="#RFC8467" class="xref">[RFC8467]</a>
 </li>
 <li>Clients should not be required to use TLS session resumption <a href="#RFC5077" class="xref">[RFC5077]</a> or Domain Name System (DNS) Cookies <a href="#RFC7873" class="xref">[RFC7873]</a>.</li>
-<li>A DNS-over-TLS privacy service on both port 853 and 443. We note that this practice may require revision when DoH becomes more widely deployed, because of the potential use of the same ports for two incompatible types of service.</li>
+<li>A DNS-over-TLS privacy service on both port 853 and 443. This practice may not be possible if the operator deploys DoH on the same address.</li>
 </ul>
 
 <p> </p>
@@ -826,9 +830,11 @@
 <li>Management of TLS connections to optimize performance for clients using either <ul>
 <li>
 <a href="#RFC7766" class="xref">[RFC7766]</a> and EDNS(0) Keepalive <a href="#RFC7828" class="xref">[RFC7828]</a> and/or</li>
-<li>DNS Stateful Operations <a href="#I-D.ietf-dnsop-session-signal" class="xref">[I-D.ietf-dnsop-session-signal]</a> <br>
+<li>DNS Stateful Operations <a href="#I-D.ietf-dnsop-session-signal" class="xref">[I-D.ietf-dnsop-session-signal]</a>
 </li>
 </ul>
+</li>
+<li>Use TLS 1.3 <a href="#RFC8446" class="xref">[RFC8446]</a> <br>
 </li>
 </ul>
 
@@ -842,13 +848,34 @@
 <h1 id="rfc.section.5.1.3.2">
 <a href="#rfc.section.5.1.3.2">5.1.3.2.</a> <a href="#doh" id="doh">DoH</a>
 </h1>
-<p id="rfc.section.5.1.3.2.p.1">TODO: Fill this in, a lot of overlap with DNS-over-TLS but we need to address DoH specific ones if possible.  </p>
-<p id="rfc.section.5.1.3.2.p.2">Mitigations: </p>
+<p id="rfc.section.5.1.3.2.p.1">Other Threats: </p>
+<p></p>
+
+<ul>
+<li>Known attacks on TLS such as those described in <a href="#RFC7457" class="xref">[RFC7457]</a>
+</li>
+<li>Traffic analysis, for example: <a href="https://www.ietf.org/mail-archive/web/dns-privacy/current/pdfWqAIUmEl47.pdf">Pitfalls of DNS Encryption</a>
+</li>
+<li>Potential for client tracking via transport identifiers</li>
+</ul>
+
+<p> </p>
+<p id="rfc.section.5.1.3.2.p.3">Mitigations: </p>
 <p></p>
 
 <ul>
 <li>Clients should not be required to use HTTP Cookies <a href="#RFC6265" class="xref">[RFC6265]</a>.</li>
 <li>Clients should not be required to include any headers beyond the absolute minimum to obtain service from a DoH server.</li>
+</ul>
+
+<p> </p>
+<p id="rfc.section.5.1.3.2.p.5">Optimizations: </p>
+<p></p>
+
+<ul>
+<li>Concurrent processing of pipelined queries, returning responses as soon as available. This is often called 'OOOR' - out-of-order responses.</li>
+<li>Use TLS 1.3 <a href="#RFC8446" class="xref">[RFC8446]</a>
+</li>
 </ul>
 
 <p> </p>
@@ -874,14 +901,25 @@
 
 <p> </p>
 <p id="rfc.section.5.1.5.p.3">Mitigations: </p>
-<p id="rfc.section.5.1.5.p.4">A DNS privacy service should deliver the same level of service offered on un-encrypted channels in terms of such options as filtering (or lack of), DNSSEC validation, etc.  </p>
+<p id="rfc.section.5.1.5.p.4">A DNS privacy service should deliver the same level of service as offered on un-encrypted channels in terms of such options as filtering (or lack of), DNSSEC validation, etc.  </p>
 <h1 id="rfc.section.5.1.6">
-<a href="#rfc.section.5.1.6">5.1.6.</a> <a href="#limitations-of-using-a-pure-tls-proxy" id="limitations-of-using-a-pure-tls-proxy">Limitations of using a pure TLS proxy</a>
+<a href="#rfc.section.5.1.6">5.1.6.</a> <a href="#impact-on-operators" id="impact-on-operators">Impact on Operators</a>
 </h1>
-<p id="rfc.section.5.1.6.p.1">[TODO: there is no threat here - create one or move this section] </p>
-<p id="rfc.section.5.1.6.p.2">Optimization: </p>
-<p id="rfc.section.5.1.6.p.3">Some operators may choose to implement DNS-over-TLS using a TLS proxy (e.g.  <a href="https://nginx.org/">nginx</a>, <a href="https://www.haproxy.org/">haproxy</a> or <a href="https://kb.isc.org/article/AA-01386/0/DNS-over-TLS.html">stunnel</a>) in front of a DNS nameserver because of proven robustness and capacity when handling large numbers of client connections, load balancing capabilities and good tooling.  Currently, however, because such proxies typically have no specific handling of DNS as a protocol over TLS or DTLS using them can restrict traffic management at the proxy layer and at the DNS server. For example, all traffic received by a nameserver behind such a proxy will appear to originate from the proxy and DNS techniques such as ACLs, RRL or DNS64 will be hard or impossible to implement in the nameserver.  </p>
-<p id="rfc.section.5.1.6.p.4">Operators may choose to use a DNS aware proxy such as dnsdist.  </p>
+<p id="rfc.section.5.1.6.p.1">Other Threats: </p>
+<p></p>
+
+<ul><li>Increased use of encryption impacts operator ability to manage their network <a href="#RFC8404" class="xref">[RFC8404]</a>
+</li></ul>
+
+<p> </p>
+<p id="rfc.section.5.1.6.p.3">[TODO: mitigations] </p>
+<h1 id="rfc.section.5.1.7">
+<a href="#rfc.section.5.1.7">5.1.7.</a> <a href="#limitations-of-using-a-pure-tls-proxy" id="limitations-of-using-a-pure-tls-proxy">Limitations of using a pure TLS proxy</a>
+</h1>
+<p id="rfc.section.5.1.7.p.1">[TODO: there is no threat here - create one or move this section] </p>
+<p id="rfc.section.5.1.7.p.2">Optimization: </p>
+<p id="rfc.section.5.1.7.p.3">Some operators may choose to implement DNS-over-TLS using a TLS proxy (e.g.  <a href="https://nginx.org/">nginx</a>, <a href="https://www.haproxy.org/">haproxy</a> or <a href="https://kb.isc.org/article/AA-01386/0/DNS-over-TLS.html">stunnel</a>) in front of a DNS nameserver because of proven robustness and capacity when handling large numbers of client connections, load balancing capabilities and good tooling.  Currently, however, because such proxies typically have no specific handling of DNS as a protocol over TLS or DTLS using them can restrict traffic management at the proxy layer and at the DNS server. For example, all traffic received by a nameserver behind such a proxy will appear to originate from the proxy and DNS techniques such as ACLs, RRL or DNS64 will be hard or impossible to implement in the nameserver.  </p>
+<p id="rfc.section.5.1.7.p.4">Operators may choose to use a DNS aware proxy such as dnsdist.  </p>
 <h1 id="rfc.section.5.2">
 <a href="#rfc.section.5.2">5.2.</a> <a href="#data-at-rest-on-the-server" id="data-at-rest-on-the-server">Data at rest on the server</a>
 </h1>
@@ -917,6 +955,12 @@
 <li>DNS privacy services should not track users except for the particular purpose of detecting and remedying technically malicious (e.g. DoS) or anomalous use of the service.</li>
 <li>Data access should be minimized to only those personnel who require access to perform operational duties.</li>
 </ul>
+
+<p> </p>
+<p id="rfc.section.5.2.1.p.8">Optimizations: </p>
+<p></p>
+
+<ul><li>Consider use of full disk encryption for logs and data capture storage.</li></ul>
 
 <p> </p>
 <h1 id="rfc.section.5.2.2">
@@ -1032,7 +1076,7 @@
 <h1 id="rfc.section.5.3.3">
 <a href="#rfc.section.5.3.3">5.3.3.</a> <a href="#data-sharing" id="data-sharing">Data sharing</a>
 </h1>
-<p id="rfc.section.5.3.3.p.1">Threats: </p>
+<p id="rfc.section.5.3.3.p.1">Privacy <a href="#RFC6973" class="xref">[RFC6973]</a> Threats: </p>
 <p></p>
 
 <ul>
@@ -1042,17 +1086,22 @@
 <li>Identification</li>
 <li>Secondary use</li>
 <li>Disclosure</li>
-<li>Contravention of legal requirements not to process user data?</li>
 </ul>
 
 <p> </p>
-<p id="rfc.section.5.3.3.p.3">Mitigations: </p>
-<p id="rfc.section.5.3.3.p.4">Operators should not provide identifiable data to third-parties without explicit consent from clients (we take the stance here that simply using the resolution service itself does not constitute consent).  </p>
-<p id="rfc.section.5.3.3.p.5">Even when consent is granted operators should employ data minimization techniques such as those described in <a href="#data-handling" class="xref">Section 5.2.1</a> if data is shared with third-parties.  </p>
-<p id="rfc.section.5.3.3.p.6">Operators should consider including specific guidelines for the collection of aggregated and/or anonymized data for research purposes, within or outside of their own organization.  </p>
-<p id="rfc.section.5.3.3.p.7">TODO: More on data for research vs operations... how to still motivate operators to share anonymized data? </p>
-<p id="rfc.section.5.3.3.p.8">TODO: Guidelines for when consent is granted? </p>
-<p id="rfc.section.5.3.3.p.9">TODO: Applies to server data handling too.. could operators offer alternatives services one that implies consent for data processing, one that doesn't? </p>
+<p id="rfc.section.5.3.3.p.3">Other Threats: </p>
+<p></p>
+
+<ul><li>Contravention of legal requirements not to process user data?</li></ul>
+
+<p> </p>
+<p id="rfc.section.5.3.3.p.5">Mitigations: </p>
+<p id="rfc.section.5.3.3.p.6">Operators should not provide identifiable data to third-parties without explicit consent from clients (we take the stance here that simply using the resolution service itself does not constitute consent).  </p>
+<p id="rfc.section.5.3.3.p.7">Even when consent is granted operators should employ data minimization techniques such as those described in <a href="#data-handling" class="xref">Section 5.2.1</a> if data is shared with third-parties.  </p>
+<p id="rfc.section.5.3.3.p.8">Operators should consider including specific guidelines for the collection of aggregated and/or anonymized data for research purposes, within or outside of their own organization.  </p>
+<p id="rfc.section.5.3.3.p.9">TODO: More on data for research vs operations... how to still motivate operators to share anonymized data? </p>
+<p id="rfc.section.5.3.3.p.10">TODO: Guidelines for when consent is granted? </p>
+<p id="rfc.section.5.3.3.p.11">TODO: Applies to server data handling too.. could operators offer alternatives services one that implies consent for data processing, one that doesn't? </p>
 <h1 id="rfc.section.6">
 <a href="#rfc.section.6">6.</a> <a href="#dns-privacy-policy-and-practice-statement" id="dns-privacy-policy-and-practice-statement">DNS privacy policy and practice statement</a>
 </h1>
@@ -1178,7 +1227,7 @@
 <a href="#rfc.section.6.2.4">6.2.4.</a> <a href="#opendns" id="opendns">OpenDNS</a>
 </h1>
 <p id="rfc.section.6.2.4.p.1">UDP/TCP service provided on 208.67.222.222 and 208.67.220.220 (no IPv6).  </p>
-<p id="rfc.section.6.2.4.p.2">We could find no specific privacy policy for the DNS resolution, only a general one from Cisco that seems focussed on websites.  </p>
+<p id="rfc.section.6.2.4.p.2">We could find no specific privacy policy for the DNS resolution, only a general one from Cisco that seems focused on websites.  </p>
 <p id="rfc.section.6.2.4.p.3">Policy: <span>&lt;</span><a href="https://www.cisco.com/c/en/us/about/legal/privacy-full.html">https://www.cisco.com/c/en/us/about/legal/privacy-full.html</a><span>&gt;</span> </p>
 <h1 id="rfc.section.6.2.5">
 <a href="#rfc.section.6.2.5">6.2.5.</a> <a href="#comparison" id="comparison">Comparison</a>
@@ -1213,14 +1262,14 @@
 <h1 id="rfc.section.9">
 <a href="#rfc.section.9">9.</a> <a href="#acknowledgements" id="acknowledgements">Acknowledgements</a>
 </h1>
-<p id="rfc.section.9.p.1">Many thanks to Amelia Andersdotter for a very thorough review of the first draft of this document. Thanks also to John Todd for discussions on this topic, and to Stephane Bortzmeyer, Puneet Sood and Vittorio Bertola for review. Thanks to Loganaden Velvindron for useful updates.  </p>
+<p id="rfc.section.9.p.1">Many thanks to Amelia Andersdotter for a very thorough review of the first draft of this document. Thanks to John Todd for discussions on this topic, and to Stephane Bortzmeyer, Puneet Sood and Vittorio Bertola for review. Thanks to Daniel Kahn Gillmor, Barry Green, Paul Hoffman, Dan York, John Reed, Lorenzo Colitti for comments at the mic. Thanks to Loganaden Velvindron for useful updates to the text.  </p>
 <p id="rfc.section.9.p.2">Sara Dickinson thanks the Open Technology Fund for a grant to support the work on this document.  </p>
 <h1 id="rfc.section.10">
 <a href="#rfc.section.10">10.</a> <a href="#contributors" id="contributors">Contributors</a>
 </h1>
 <p id="rfc.section.10.p.1">The below individuals contributed significantly to the document: </p>
-<p id="rfc.section.10.p.2">John Dickinson <br> Sinodun Internet Technologies <br> Magdalen Centre <br> Oxford Science Park <br> Oxford  OX4 4GA <br> United Kingdom </p>
-<p id="rfc.section.10.p.3">Jim Hague <br> Sinodun Internet Technologies <br> Magdalen Centre <br> Oxford Science Park <br> Oxford  OX4 4GA <br> United Kingdom </p>
+<p id="rfc.section.10.p.2">John Dickinson <br> Sinodun Internet Technologies <br> Magdalen Centre <br> Oxford Science Park <br> Oxford OX4 4GA <br> United Kingdom </p>
+<p id="rfc.section.10.p.3">Jim Hague <br> Sinodun Internet Technologies <br> Magdalen Centre <br> Oxford Science Park <br> Oxford OX4 4GA <br> United Kingdom </p>
 <h1 id="rfc.section.11">
 <a href="#rfc.section.11">11.</a> <a href="#changelog" id="changelog">Changelog</a>
 </h1>
@@ -1315,6 +1364,16 @@
 <td class="reference"><b id="RFC8310">[RFC8310]</b></td>
 <td class="top">
 <a>Dickinson, S.</a>, <a>Gillmor, D.</a> and <a>T. Reddy</a>, "<a href="https://tools.ietf.org/html/rfc8310">Usage Profiles for DNS over TLS and DNS over DTLS</a>", RFC 8310, DOI 10.17487/RFC8310, March 2018.</td>
+</tr>
+<tr>
+<td class="reference"><b id="RFC8404">[RFC8404]</b></td>
+<td class="top">
+<a>Moriarty, K.</a> and <a>A. Morton</a>, "<a href="https://tools.ietf.org/html/rfc8404">Effects of Pervasive Encryption on Operators</a>", RFC 8404, DOI 10.17487/RFC8404, July 2018.</td>
+</tr>
+<tr>
+<td class="reference"><b id="RFC8446">[RFC8446]</b></td>
+<td class="top">
+<a>Rescorla, E.</a>, "<a href="https://tools.ietf.org/html/rfc8446">The Transport Layer Security (TLS) Protocol Version 1.3</a>", RFC 8446, DOI 10.17487/RFC8446, August 2018.</td>
 </tr>
 <tr>
 <td class="reference"><b id="RFC8467">[RFC8467]</b></td>
