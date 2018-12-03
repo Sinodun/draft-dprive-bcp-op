@@ -1136,7 +1136,7 @@ Internet-Draft     DNS Privacy Service Recommendations       August 2018
 
    o  'Secure': 9.9.9.9, 149.112.112.112, 2620:fe::fe, 2620:fe::9
 
-   o  'Unsecured': 9.9.9.10, 149.112.112.10, 2620:fe::10
+   o  'Unsecured': 9.9.9.10, 149.112.112.10, 2620:fe::10, 2620:fe::fe:10
 
    Policy:
 
