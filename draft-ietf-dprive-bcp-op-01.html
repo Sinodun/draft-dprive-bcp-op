@@ -402,11 +402,6 @@
 <link href="#rfc.section.6.1.1" rel="Chapter" title="6.1.1 Policy">
 <link href="#rfc.section.6.1.2" rel="Chapter" title="6.1.2 Practice.">
 <link href="#rfc.section.6.2" rel="Chapter" title="6.2 Current policy and privacy statements">
-<link href="#rfc.section.6.2.1" rel="Chapter" title="6.2.1 Quad9">
-<link href="#rfc.section.6.2.2" rel="Chapter" title="6.2.2 Cloudflare">
-<link href="#rfc.section.6.2.3" rel="Chapter" title="6.2.3 Google">
-<link href="#rfc.section.6.2.4" rel="Chapter" title="6.2.4 OpenDNS">
-<link href="#rfc.section.6.2.5" rel="Chapter" title="6.2.5 Comparison">
 <link href="#rfc.section.6.3" rel="Chapter" title="6.3 Enforcement/accountability">
 <link href="#rfc.section.7" rel="Chapter" title="7 IANA considerations">
 <link href="#rfc.section.8" rel="Chapter" title="8 Security considerations">
@@ -565,17 +560,7 @@
 </li>
 </ul><li>6.2.   <a href="#rfc.section.6.2">Current policy and privacy statements</a>
 </li>
-<ul><li>6.2.1.   <a href="#rfc.section.6.2.1">Quad9</a>
-</li>
-<li>6.2.2.   <a href="#rfc.section.6.2.2">Cloudflare</a>
-</li>
-<li>6.2.3.   <a href="#rfc.section.6.2.3">Google</a>
-</li>
-<li>6.2.4.   <a href="#rfc.section.6.2.4">OpenDNS</a>
-</li>
-<li>6.2.5.   <a href="#rfc.section.6.2.5">Comparison</a>
-</li>
-</ul><li>6.3.   <a href="#rfc.section.6.3">Enforcement/accountability</a>
+<li>6.3.   <a href="#rfc.section.6.3">Enforcement/accountability</a>
 </li>
 </ul><li>7.   <a href="#rfc.section.7">IANA considerations</a>
 </li>
@@ -1114,8 +1099,8 @@
 <p></p>
 
 <ol>
-<li>Recommendations. This section should explain, with reference to section <a href="#recommendations-for-dns-privacy-services" class="xref">Section 5</a> of this document which recommendations the DNS privacy service employs.</li>
-<li>Data handling. This section should explain, with reference to section <a href="#data-at-rest-on-the-server" class="xref">Section 5.2</a> of this document the policy for gathering and disseminating information collected by the DNS privacy service.</li>
+<li>Make an explicit statement that IP addressses are treated as PII</li>
+<li>State if IP addresses are being logged</li>
 <li>Specify clearly what data (including whether it is aggregated, pseudonymized or anonymized) is: <ul>
 <li>Collected and retained by the operator (and for how long)</li>
 <li>Shared with partners</li>
@@ -1143,8 +1128,7 @@
 
 <ol>
 <li>Specify any temporary or permanent deviations from the policy for operational reasons</li>
-<li>With reference to section <a href="#on-the-wire-between-client-and-server" class="xref">Section 5.1</a> provide specific details of which capabilities are provided on which address and ports</li>
-<li>With reference to section <a href="#data-sent-onwards-from-the-server" class="xref">Section 5.3</a> provide specific details of which capabilities are employed for upstream traffic from the server</li>
+<li>With reference to section <a href="#recommendations-for-dns-privacy-services" class="xref">Section 5</a> provide specific details of which capabilities are provided on which client facing address and ports</li>
 <li>Specify the authentication name to be used (if any) and if TLSA records are published (including options used in the TLSA records)</li>
 <li>Specify the SPKI pinsets to be used (if any) and policy for rolling keys</li>
 <li>Provide contact/support information for the service</li>
@@ -1159,89 +1143,20 @@
 <li>Uninformed users for whom this trust relationship is implicit</li>
 <li>Privacy-conscious users, that make an explicit trust choice</li>
 </ul>
-<p> this may prove relevant in the context of e.g. the GDPR as it relates to consent.</p>
 </li>
 </ol>
 
 <p> </p>
+<p id="rfc.section.6.1.2.p.3">this may prove relevant in the context of e.g. the GDPR as it relates to consent.  </p>
 <h1 id="rfc.section.6.2">
 <a href="#rfc.section.6.2">6.2.</a> <a href="#current-policy-and-privacy-statements" id="current-policy-and-privacy-statements">Current policy and privacy statements</a>
 </h1>
-<p id="rfc.section.6.2.p.1">NOTE: An analysis of these statements will clearly only provide a snapshot at the time of writing. It is included in this version of the draft to provide a basis for the assessment of the contents of the DPPPS and is expected to be removed or substantially re-worked in a future version.  </p>
-<h1 id="rfc.section.6.2.1">
-<a href="#rfc.section.6.2.1">6.2.1.</a> <a href="#quad9" id="quad9">Quad9</a>
-</h1>
-<p id="rfc.section.6.2.1.p.1">UDP/TCP and TLS (port 853) service provided on two addresses: </p>
-<p></p>
-
-<ul>
-<li>'Secure': 9.9.9.9, 149.112.112.112, 2620:fe::fe, 2620:fe::9</li>
-<li>'Unsecured': 9.9.9.10, 149.112.112.10, 2620:fe::10, 2620:fe::fe:10</li>
-</ul>
-
-<p> </p>
-<p id="rfc.section.6.2.1.p.3">Policy: </p>
-<p></p>
-
-<ul>
-<li>
-<span>&lt;</span><a href="https://www.quad9.net/policy/">https://www.quad9.net/policy/</a><span>&gt;</span>
-</li>
-<li>
-<span>&lt;</span><a href="https://www.quad9.net/privacy/">https://www.quad9.net/privacy/</a><span>&gt;</span>
-</li>
-<li>
-<span>&lt;</span><a href="https://www.quad9.net/faq/">https://www.quad9.net/faq/</a><span>&gt;</span>
-</li>
-</ul>
-
-<p> </p>
-<h1 id="rfc.section.6.2.2">
-<a href="#rfc.section.6.2.2">6.2.2.</a> <a href="#cloudflare" id="cloudflare">Cloudflare</a>
-</h1>
-<p id="rfc.section.6.2.2.p.1">UDP/TCP and TLS (port 853) service provided on 1.1.1.1, 1.0.0.1, 2606:4700:4700::1111 and 2606:4700:4700::1001.  </p>
-<p id="rfc.section.6.2.2.p.2">Policy: </p>
-<p></p>
-
-<ul><li>
-<span>&lt;</span><a href="https://developers.cloudflare.com/1.1.1.1/commitment-to-privacy/privacy-policy/privacy-policy/">https://developers.cloudflare.com/1.1.1.1/commitment-to-privacy/privacy-policy/privacy-policy/</a><span>&gt;</span>
-</li></ul>
-
-<p> </p>
-<p id="rfc.section.6.2.2.p.4">DoH provided on: <span>&lt;</span><a href="https://cloudflare-dns.com/dns-query">https://cloudflare-dns.com/dns-query</a><span>&gt;</span> </p>
-<p id="rfc.section.6.2.2.p.5">Policy: </p>
-<p></p>
-
-<ul><li>
-<span>&lt;</span><a href="https://developers.cloudflare.com/1.1.1.1/commitment-to-privacy/privacy-policy/firefox/">https://developers.cloudflare.com/1.1.1.1/commitment-to-privacy/privacy-policy/firefox/</a><span>&gt;</span>
-</li></ul>
-
-<p> </p>
-<p id="rfc.section.6.2.2.p.7">Tor endpoint: <span>&lt;</span><a href="https://dns4torpnlfs2ifuz2s2yf3fc7rdmsbhm6rw75euj35pac6ap25zgqad.onion">https://dns4torpnlfs2ifuz2s2yf3fc7rdmsbhm6rw75euj35pac6ap25zgqad.onion</a><span>&gt;</span>.  </p>
-<h1 id="rfc.section.6.2.3">
-<a href="#rfc.section.6.2.3">6.2.3.</a> <a href="#google" id="google">Google</a>
-</h1>
-<p id="rfc.section.6.2.3.p.1">UDP/TCP service provided on 8.8.8.8, 8.8.4.4, 2001:4860:4860::8888 and 2001:4860:4860::8844.  </p>
-<p id="rfc.section.6.2.3.p.2">Policy: <span>&lt;</span><a href="https://developers.google.com/speed/public-dns/privacy">https://developers.google.com/speed/public-dns/privacy</a><span>&gt;</span> </p>
-<h1 id="rfc.section.6.2.4">
-<a href="#rfc.section.6.2.4">6.2.4.</a> <a href="#opendns" id="opendns">OpenDNS</a>
-</h1>
-<p id="rfc.section.6.2.4.p.1">UDP/TCP service provided on 208.67.222.222 and 208.67.220.220 (no IPv6).  </p>
-<p id="rfc.section.6.2.4.p.2">We could find no specific privacy policy for the DNS resolution, only a general one from Cisco that seems focused on websites.  </p>
-<p id="rfc.section.6.2.4.p.3">Policy: <span>&lt;</span><a href="https://www.cisco.com/c/en/us/about/legal/privacy-full.html">https://www.cisco.com/c/en/us/about/legal/privacy-full.html</a><span>&gt;</span> </p>
-<h1 id="rfc.section.6.2.5">
-<a href="#rfc.section.6.2.5">6.2.5.</a> <a href="#comparison" id="comparison">Comparison</a>
-</h1>
-<p id="rfc.section.6.2.5.p.1">The following tables provides a high-level comparison of the policy and practice statements above and also some observations of practice measured at <a href="https://dnsprivacy.org/jenkins/job/dnsprivacy-monitoring/">dnsprivacy.org</a>. The data is not exhaustive and has not been reviewed or confirmed by the operators.  </p>
-<p id="rfc.section.6.2.5.p.2">A question mark indicates no clear statement or data could be located on the issue. A dash indicates the category is not applicable to the service.  </p>
-<p><a href="https://github.com/Sinodun/draft-dprive-bcp-op/blob/master/draft-00/policy_table.svg">Table showing comparison of operators policies</a> </p>
-<p><a href="https://github.com/Sinodun/draft-dprive-bcp-op/blob/master/draft-00/practice_table.svg">Table showing comparison of operators practices</a> </p>
-<p id="rfc.section.6.2.5.p.5">NOTE: Review and correction of any inaccuracies in the table would be much appreciated.  </p>
+<p id="rfc.section.6.2.p.1">A comparison of existing policy and privacy statements from various DNS Privacy service operators can be found on <a href="https://dnsprivacy.org/wiki/display/DP/Comparison+of+policy+and+privacy+statements">dnsprivacy.org</a>.  </p>
 <h1 id="rfc.section.6.3">
 <a href="#rfc.section.6.3">6.3.</a> <a href="#enforcementaccountability" id="enforcementaccountability">Enforcement/accountability</a>
 </h1>
 <p id="rfc.section.6.3.p.1">Transparency reports may help with building user trust that operators adhere to their policies and practices.  </p>
-<p id="rfc.section.6.3.p.2">Independent monitoring should be performed where possible of: </p>
+<p id="rfc.section.6.3.p.2">Independent monitoring could be performed where possible of: </p>
 <p></p>
 
 <ul>
@@ -1258,7 +1173,7 @@
 <h1 id="rfc.section.8">
 <a href="#rfc.section.8">8.</a> <a href="#security-considerations" id="security-considerations">Security considerations</a>
 </h1>
-<p id="rfc.section.8.p.1">TODO: e.g. New issues for DoS defence, server admin policies </p>
+<p id="rfc.section.8.p.1">TODO: e.g. New issues for DoS defense, server admin policies </p>
 <h1 id="rfc.section.9">
 <a href="#rfc.section.9">9.</a> <a href="#acknowledgements" id="acknowledgements">Acknowledgements</a>
 </h1>

@@ -711,41 +711,34 @@ services one that implies consent for data processing, one that doesn't?
 
 ### Policy
 
-1. Recommendations. This section should explain, with reference to section 
-      (#recommendations-for-dns-privacy-services) of this document which 
-      recommendations the DNS privacy service employs.
-
-1. Data handling. This section should explain, with reference to section 
-       (#data-at-rest-on-the-server) 
-       of this document the policy for gathering and disseminating information 
-       collected by the DNS privacy service. 
-
+1. Make an explicit statement that IP addressses are treated as PII
+1. State if IP addresses are being logged
 1. Specify clearly what data (including whether it is aggregated, 
         pseudonymized or anonymized) is:
-
     - Collected and retained by the operator (and for how long)
-
     - Shared with partners
-
     - Shared, sold or rented to third-parties
-
 1. Specify any exceptions to the above, for example technically malicious or
 anomalous behavior
-
 1. Declare any partners, third-party affiliations or sources of funding
-
 1. Whether user DNS data is correlated or combined with any other personal
       information held by the operator
-
-1. Result filtering. This section should explain whether the operator filters, edits or alters in any way the replies that it receives from the authoritative servers for each DNS zone, before forwarding them to the clients. For each category listed below, the operator should also specify how the filtering lists are created and managed, whether it employs any third-party sources for such lists, and which ones.
-
-    - Specify if any replies are being filtered out or altered for network and computer security reasons (e.g. preventing connections to malware-spreading websites or botnet control servers)
-
-    - Specify if any replies are being filtered out or altered for mandatory legal reasons, due to applicable legislation or binding orders by courts and other public authorities
-
-    - Specify if any replies are being filtered out or altered for voluntary legal reasons, due to an internal policy by the operator aiming at reducing potential legal risks
-
-    - Specify if any replies are being filtered out or altered for any other reason, including commercial ones
+1. Result filtering. This section should explain whether the operator filters, edits or
+alters in any way the replies that it receives from the authoritative servers for each
+DNS zone, before forwarding them to the clients. For each category listed below, the
+operator should also specify how the filtering lists are created and managed, whether it
+employs any third-party sources for such lists, and which ones.
+    - Specify if any replies are being filtered out or altered for network and computer
+    security reasons (e.g. preventing connections to malware-spreading websites or botnet
+    control servers)
+    - Specify if any replies are being filtered out or altered for mandatory legal
+    reasons, due to applicable legislation or binding orders by courts and other public
+    authorities
+    - Specify if any replies are being filtered out or altered for voluntary legal
+    reasons, due to an internal policy by the operator aiming at reducing potential legal
+    risks
+    - Specify if any replies are being filtered out or altered for any other reason,
+    including commercial ones
 
 ### Practice.
 
@@ -753,119 +746,46 @@ This section should explain the current operational practices of the service.
 
 1. Specify any temporary or permanent deviations from the policy for
     operational reasons
-
-1. With reference to section (#on-the-wire-between-client-and-server) provide 
-    specific details of which capabilities are provided on which address and 
-    ports
-
-1. With reference to section (#data-sent-onwards-from-the-server) 
-    provide specific details of which capabilities are employed for upstream 
-    traffic from the server
-
+1. With reference to section (#recommendations-for-dns-privacy-services) provide 
+    specific details of which capabilities are provided on which client facing address
+    and ports
 1. Specify the authentication name to be used (if any) and if TLSA records are 
     published (including options used in the TLSA records)
-
 1. Specify the SPKI pinsets to be used (if any) and policy for rolling keys
-
 1. Provide contact/support information for the service
-
-1. Jurisdiction. This section should communicate the applicable jurisdictions and law enforcement regimes under which the service is being provided.
-
-    - Specify the entity or entities that will control the data and be responsible for their treatment, and their legal place of business
-
-    - Specify, either directly or by pointing to the applicable privacy policy, the relevant privacy laws that apply to the treatment of the data, the rights that users enjoy in regard to their own personal information that is treated by the service, and how they can contact the operator to enforce them
-
-    - Specify the countries in which the servers handling the DNS requests and the data are located (if the operator applies a geolocation policy so that requests from certain countries are only served by certain servers, this should be specified as well)
-
-    - Specify whether the operator has any agreement in place with law enforcement agencies, or other public and private parties dealing with security and intelligence, to give them access to the servers and/or to the data
-
-1.  Describe how consent is obtained from the user of the DNS privacy service differentiating
-
+1. Jurisdiction. This section should communicate the applicable jurisdictions and law
+enforcement regimes under which the service is being provided.
+    - Specify the entity or entities that will control the data and be responsible for
+    their treatment, and their legal place of business
+    - Specify, either directly or by pointing to the applicable privacy policy, the
+    relevant privacy laws that apply to the treatment of the data, the rights that users
+    enjoy in regard to their own personal information that is treated by the service, and
+    how they can contact the operator to enforce them
+    - Specify the countries in which the servers handling the DNS requests and the data
+    are located (if the operator applies a geolocation policy so that requests from
+    certain countries are only served by certain servers, this should be specified as
+    well)
+    - Specify whether the operator has any agreement in place with law enforcement
+    agencies, or other public and private parties dealing with security and intelligence,
+    to give them access to the servers and/or to the data
+1.  Describe how consent is obtained from the user of the DNS privacy service 
+differentiating
     - Uninformed users for whom this trust relationship is implicit
     - Privacy-conscious users, that make an explicit trust choice
 
-    this may prove relevant in the context of e.g. the GDPR as it relates to consent.
+this may prove relevant in the context of e.g. the GDPR as it relates to consent.
 
 
 ## Current policy and privacy statements
 
-NOTE: An analysis of these statements will clearly only provide a snapshot at
-the time of writing. It is included in this version of the draft to provide a
-basis for the assessment of the contents of the DPPPS and is expected to be
-removed or substantially re-worked in a future version.
-
-### Quad9
-
-UDP/TCP and TLS (port 853) service provided on two addresses:
-
- *  'Secure': 9.9.9.9, 149.112.112.112, 2620:fe::fe, 2620:fe::9
- *  'Unsecured': 9.9.9.10, 149.112.112.10, 2620:fe::10, 2620:fe::fe:10
-
-Policy: 
-
-* https://www.quad9.net/policy/
-* https://www.quad9.net/privacy/
-* https://www.quad9.net/faq/
-
-### Cloudflare
-
-UDP/TCP and TLS (port 853) service provided on 1.1.1.1, 1.0.0.1,
-2606:4700:4700::1111 and 2606:4700:4700::1001.
-
-Policy:
-
- * https://developers.cloudflare.com/1.1.1.1/commitment-to-privacy/privacy-policy/privacy-policy/
-
-DoH provided on: https://cloudflare-dns.com/dns-query
-
-Policy:
-
-* https://developers.cloudflare.com/1.1.1.1/commitment-to-privacy/privacy-policy/firefox/
-
-Tor endpoint: https://dns4torpnlfs2ifuz2s2yf3fc7rdmsbhm6rw75euj35pac6ap25zgqad.onion.
-
-
-### Google
-
-UDP/TCP service provided on 8.8.8.8, 8.8.4.4, 2001:4860:4860::8888 and
-2001:4860:4860::8844.
-
-Policy: https://developers.google.com/speed/public-dns/privacy
-
-### OpenDNS
-
-UDP/TCP service provided on 208.67.222.222 and 208.67.220.220 (no IPv6).
-
-We could find no specific privacy policy for the DNS resolution, only a general
-one from Cisco that seems focused on websites.
-
-Policy: https://www.cisco.com/c/en/us/about/legal/privacy-full.html
-
-
-### Comparison
-
-The following tables provides a high-level comparison of the policy and practice
-statements above and also some observations of practice measured at
-[dnsprivacy.org](https://dnsprivacy.org/jenkins/job/dnsprivacy-monitoring/). The
-data is not exhaustive and has not been reviewed or confirmed by the operators.
-
-A question mark indicates no clear statement or data could be located on the
-issue. A dash indicates the category is not applicable to the service.
-
-![Table showing comparison of operators policies](https://github.com/Sinodun/draft-dprive-bcp-op/blob/master/draft-00/policy_table.svg)
-
-![Table showing comparison of operators practices](https://github.com/Sinodun/draft-dprive-bcp-op/blob/master/draft-00/practice_table.svg)
-
-NOTE: Review and correction of any inaccuracies in the table would be much
-appreciated.
-
+A comparison of existing policy and privacy statements from various DNS Privacy service operators can be found on [dnsprivacy.org](https://dnsprivacy.org/wiki/display/DP/Comparison+of+policy+and+privacy+statements).
 
 ## Enforcement/accountability
 
 Transparency reports may help with building user trust that operators adhere to
 their policies and practices.
 
-Independent monitoring should be performed where possible of:
+Independent monitoring could be performed where possible of:
 
 * ECS, QNAME minimization, EDNS(0) padding, etc.
 * Filtering
@@ -877,7 +797,7 @@ None
 
 # Security considerations
 
-TODO: e.g. New issues for DoS defence, server admin policies
+TODO: e.g. New issues for DoS defense, server admin policies
 
 # Acknowledgements
 

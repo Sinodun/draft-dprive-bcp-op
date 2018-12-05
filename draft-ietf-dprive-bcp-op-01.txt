@@ -103,9 +103,9 @@ Table of Contents
      6.1.  Recommended contents of a DPPPS . . . . . . . . . . . . .  18
        6.1.1.  Policy  . . . . . . . . . . . . . . . . . . . . . . .  18
        6.1.2.  Practice. . . . . . . . . . . . . . . . . . . . . . .  19
-     6.2.  Current policy and privacy statements . . . . . . . . . .  21
-       6.2.1.  Quad9 . . . . . . . . . . . . . . . . . . . . . . . .  21
-       6.2.2.  Cloudflare  . . . . . . . . . . . . . . . . . . . . .  21
+     6.2.  Current policy and privacy statements . . . . . . . . . .  20
+     6.3.  Enforcement/accountability  . . . . . . . . . . . . . . .  20
+   7.  IANA considerations . . . . . . . . . . . . . . . . . . . . .  21
 
 
 
@@ -114,33 +114,28 @@ Dickinson, et al.       Expires February 9, 2019                [Page 2]
 Internet-Draft     DNS Privacy Service Recommendations       August 2018
 
 
-       6.2.3.  Google  . . . . . . . . . . . . . . . . . . . . . . .  22
-       6.2.4.  OpenDNS . . . . . . . . . . . . . . . . . . . . . . .  22
-       6.2.5.  Comparison  . . . . . . . . . . . . . . . . . . . . .  22
-     6.3.  Enforcement/accountability  . . . . . . . . . . . . . . .  22
-   7.  IANA considerations . . . . . . . . . . . . . . . . . . . . .  23
-   8.  Security considerations . . . . . . . . . . . . . . . . . . .  23
-   9.  Acknowledgements  . . . . . . . . . . . . . . . . . . . . . .  23
-   10. Contributors  . . . . . . . . . . . . . . . . . . . . . . . .  23
-   11. Changelog . . . . . . . . . . . . . . . . . . . . . . . . . .  23
-   12. References  . . . . . . . . . . . . . . . . . . . . . . . . .  24
-     12.1.  Normative References . . . . . . . . . . . . . . . . . .  24
-     12.2.  Informative References . . . . . . . . . . . . . . . . .  26
-     12.3.  URIs . . . . . . . . . . . . . . . . . . . . . . . . . .  27
-   Appendix A.  Documents  . . . . . . . . . . . . . . . . . . . . .  28
-     A.1.  Potential increases in DNS privacy  . . . . . . . . . . .  28
-     A.2.  Potential decreases in DNS privacy  . . . . . . . . . . .  29
-     A.3.  Related operational documents . . . . . . . . . . . . . .  29
-   Appendix B.  IP address techniques  . . . . . . . . . . . . . . .  30
-     B.1.  Google Analytics non-prefix filtering . . . . . . . . . .  31
-     B.2.  dnswasher . . . . . . . . . . . . . . . . . . . . . . . .  31
-     B.3.  Prefix-preserving map . . . . . . . . . . . . . . . . . .  31
-     B.4.  Cryptographic Prefix-Preserving Pseudonymisation  . . . .  32
-     B.5.  Top-hash Subtree-replicated Anonymisation . . . . . . . .  32
-     B.6.  ipcipher  . . . . . . . . . . . . . . . . . . . . . . . .  32
-     B.7.  Bloom filters . . . . . . . . . . . . . . . . . . . . . .  33
-   Appendix C.  Encryption and DNSSEC  . . . . . . . . . . . . . . .  33
-   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  33
+   8.  Security considerations . . . . . . . . . . . . . . . . . . .  21
+   9.  Acknowledgements  . . . . . . . . . . . . . . . . . . . . . .  21
+   10. Contributors  . . . . . . . . . . . . . . . . . . . . . . . .  21
+   11. Changelog . . . . . . . . . . . . . . . . . . . . . . . . . .  21
+   12. References  . . . . . . . . . . . . . . . . . . . . . . . . .  22
+     12.1.  Normative References . . . . . . . . . . . . . . . . . .  22
+     12.2.  Informative References . . . . . . . . . . . . . . . . .  24
+     12.3.  URIs . . . . . . . . . . . . . . . . . . . . . . . . . .  25
+   Appendix A.  Documents  . . . . . . . . . . . . . . . . . . . . .  26
+     A.1.  Potential increases in DNS privacy  . . . . . . . . . . .  26
+     A.2.  Potential decreases in DNS privacy  . . . . . . . . . . .  27
+     A.3.  Related operational documents . . . . . . . . . . . . . .  27
+   Appendix B.  IP address techniques  . . . . . . . . . . . . . . .  27
+     B.1.  Google Analytics non-prefix filtering . . . . . . . . . .  29
+     B.2.  dnswasher . . . . . . . . . . . . . . . . . . . . . . . .  29
+     B.3.  Prefix-preserving map . . . . . . . . . . . . . . . . . .  29
+     B.4.  Cryptographic Prefix-Preserving Pseudonymisation  . . . .  30
+     B.5.  Top-hash Subtree-replicated Anonymisation . . . . . . . .  30
+     B.6.  ipcipher  . . . . . . . . . . . . . . . . . . . . . . . .  30
+     B.7.  Bloom filters . . . . . . . . . . . . . . . . . . . . . .  31
+   Appendix C.  Encryption and DNSSEC  . . . . . . . . . . . . . . .  31
+   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  31
 
 1.  Introduction
 
@@ -162,6 +157,11 @@ Internet-Draft     DNS Privacy Service Recommendations       August 2018
 
    In recent years there has also been an increase in the availability
    of "open resolvers" [I-D.ietf-dnsop-terminology-bis] which users may
+   prefer to use instead of the default network resolver because they
+   offer a specific feature (e.g. good reachability, encrypted
+   transport, strong privacy policy, filtering (or lack of), etc.).
+   These open resolvers have tended to be at the forefront of adoption
+
 
 
 
@@ -170,10 +170,6 @@ Dickinson, et al.       Expires February 9, 2019                [Page 3]
 Internet-Draft     DNS Privacy Service Recommendations       August 2018
 
 
-   prefer to use instead of the default network resolver because they
-   offer a specific feature (e.g. good reachability, encrypted
-   transport, strong privacy policy, filtering (or lack of), etc.).
-   These open resolvers have tended to be at the forefront of adoption
    of privacy related enhancements but it is anticipated that operators
    of other resolver services will follow.
 
@@ -218,6 +214,10 @@ Internet-Draft     DNS Privacy Service Recommendations       August 2018
       thereby providing a means for clients to evaluate the privacy
       properties of a given DNS privacy service.  In particular, the
       framework identifies the elements that should be considered in
+      formulating a DPPPS.  This document does not, however, define a
+      particular Policy or Practice Statement, nor does it seek to
+      provide legal advice or recommendations as to the contents.
+
 
 
 
@@ -225,10 +225,6 @@ Dickinson, et al.       Expires February 9, 2019                [Page 4]
 
 Internet-Draft     DNS Privacy Service Recommendations       August 2018
 
-
-      formulating a DPPPS.  This document does not, however, define a
-      particular Policy or Practice Statement, nor does it seek to
-      provide legal advice or recommendations as to the contents.
 
    Community insight [or judgment?] about operational practices can
    change quickly, and experience shows that a Best Current Practice
@@ -274,6 +270,10 @@ Internet-Draft     DNS Privacy Service Recommendations       August 2018
    features increase privacy with an accompanying increase in
    complexity.  A selection of the most relevant documents are listed in
    Appendix A for reference.
+
+
+
+
 
 
 
@@ -984,13 +984,9 @@ Internet-Draft     DNS Privacy Service Recommendations       August 2018
 
 6.1.1.  Policy
 
-   1.  Recommendations.  This section should explain, with reference to
-       section Section 5 of this document which recommendations the DNS
-       privacy service employs.
+   1.  Make an explicit statement that IP addressses are treated as PII
 
-   2.  Data handling.  This section should explain, with reference to
-       section Section 5.2 of this document the policy for gathering and
-       disseminating information collected by the DNS privacy service.
+   2.  State if IP addresses are being logged
 
    3.  Specify clearly what data (including whether it is aggregated,
        pseudonymized or anonymized) is:
@@ -1001,7 +997,11 @@ Internet-Draft     DNS Privacy Service Recommendations       August 2018
 
        *  Shared, sold or rented to third-parties
 
+   4.  Specify any exceptions to the above, for example technically
+       malicious or anomalous behavior
 
+   5.  Declare any partners, third-party affiliations or sources of
+       funding
 
 
 
@@ -1009,12 +1009,6 @@ Dickinson, et al.       Expires February 9, 2019               [Page 18]
 
 Internet-Draft     DNS Privacy Service Recommendations       August 2018
 
-
-   4.  Specify any exceptions to the above, for example technically
-       malicious or anomalous behavior
-
-   5.  Declare any partners, third-party affiliations or sources of
-       funding
 
    6.  Whether user DNS data is correlated or combined with any other
        personal information held by the operator
@@ -1051,12 +1045,18 @@ Internet-Draft     DNS Privacy Service Recommendations       August 2018
    1.  Specify any temporary or permanent deviations from the policy for
        operational reasons
 
-   2.  With reference to section Section 5.1 provide specific details of
-       which capabilities are provided on which address and ports
+   2.  With reference to section Section 5 provide specific details of
+       which capabilities are provided on which client facing address
+       and ports
 
-   3.  With reference to section Section 5.3 provide specific details of
-       which capabilities are employed for upstream traffic from the
-       server
+   3.  Specify the authentication name to be used (if any) and if TLSA
+       records are published (including options used in the TLSA
+       records)
+
+   4.  Specify the SPKI pinsets to be used (if any) and policy for
+       rolling keys
+
+   5.  Provide contact/support information for the service
 
 
 
@@ -1066,16 +1066,7 @@ Dickinson, et al.       Expires February 9, 2019               [Page 19]
 Internet-Draft     DNS Privacy Service Recommendations       August 2018
 
 
-   4.  Specify the authentication name to be used (if any) and if TLSA
-       records are published (including options used in the TLSA
-       records)
-
-   5.  Specify the SPKI pinsets to be used (if any) and policy for
-       rolling keys
-
-   6.  Provide contact/support information for the service
-
-   7.  Jurisdiction.  This section should communicate the applicable
+   6.  Jurisdiction.  This section should communicate the applicable
        jurisdictions and law enforcement regimes under which the service
        is being provided.
 
@@ -1100,20 +1091,29 @@ Internet-Draft     DNS Privacy Service Recommendations       August 2018
           dealing with security and intelligence, to give them access to
           the servers and/or to the data
 
-   8.  Describe how consent is obtained from the user of the DNS privacy
+   7.  Describe how consent is obtained from the user of the DNS privacy
        service differentiating
 
        *  Uninformed users for whom this trust relationship is implicit
 
        *  Privacy-conscious users, that make an explicit trust choice
 
-       this may prove relevant in the context of e.g. the GDPR as it
-       relates to consent.
+   this may prove relevant in the context of e.g. the GDPR as it relates
+   to consent.
 
+6.2.  Current policy and privacy statements
 
+   A comparison of existing policy and privacy statements from various
+   DNS Privacy service operators can be found on dnsprivacy.org [9].
 
+6.3.  Enforcement/accountability
 
+   Transparency reports may help with building user trust that operators
+   adhere to their policies and practices.
 
+   Independent monitoring could be performed where possible of:
+
+   o  ECS, QNAME minimization, EDNS(0) padding, etc.
 
 
 
@@ -1122,117 +1122,9 @@ Dickinson, et al.       Expires February 9, 2019               [Page 20]
 Internet-Draft     DNS Privacy Service Recommendations       August 2018
 
 
-6.2.  Current policy and privacy statements
-
-   NOTE: An analysis of these statements will clearly only provide a
-   snapshot at the time of writing.  It is included in this version of
-   the draft to provide a basis for the assessment of the contents of
-   the DPPPS and is expected to be removed or substantially re-worked in
-   a future version.
-
-6.2.1.  Quad9
-
-   UDP/TCP and TLS (port 853) service provided on two addresses:
-
-   o  'Secure': 9.9.9.9, 149.112.112.112, 2620:fe::fe, 2620:fe::9
-
-   o  'Unsecured': 9.9.9.10, 149.112.112.10, 2620:fe::10, 2620:fe::fe:10
-
-   Policy:
-
-   o  <https://www.quad9.net/policy/>
-
-   o  <https://www.quad9.net/privacy/>
-
-   o  <https://www.quad9.net/faq/>
-
-6.2.2.  Cloudflare
-
-   UDP/TCP and TLS (port 853) service provided on 1.1.1.1, 1.0.0.1,
-   2606:4700:4700::1111 and 2606:4700:4700::1001.
-
-   Policy:
-
-   o  <https://developers.cloudflare.com/1.1.1.1/commitment-to-privacy/
-      privacy-policy/privacy-policy/>
-
-   DoH provided on: <https://cloudflare-dns.com/dns-query>
-
-   Policy:
-
-   o  <https://developers.cloudflare.com/1.1.1.1/commitment-to-privacy/
-      privacy-policy/firefox/>
-
-   Tor endpoint: <https://dns4torpnlfs2ifuz2s2yf3fc7rdmsbhm6rw75euj35pac
-   6ap25zgqad.onion>.
-
-
-
-
-
-
-
-
-Dickinson, et al.       Expires February 9, 2019               [Page 21]
-
-Internet-Draft     DNS Privacy Service Recommendations       August 2018
-
-
-6.2.3.  Google
-
-   UDP/TCP service provided on 8.8.8.8, 8.8.4.4, 2001:4860:4860::8888
-   and 2001:4860:4860::8844.
-
-   Policy: <https://developers.google.com/speed/public-dns/privacy>
-
-6.2.4.  OpenDNS
-
-   UDP/TCP service provided on 208.67.222.222 and 208.67.220.220 (no
-   IPv6).
-
-   We could find no specific privacy policy for the DNS resolution, only
-   a general one from Cisco that seems focused on websites.
-
-   Policy: <https://www.cisco.com/c/en/us/about/legal/privacy-full.html>
-
-6.2.5.  Comparison
-
-   The following tables provides a high-level comparison of the policy
-   and practice statements above and also some observations of practice
-   measured at dnsprivacy.org [9].  The data is not exhaustive and has
-   not been reviewed or confirmed by the operators.
-
-   A question mark indicates no clear statement or data could be located
-   on the issue.  A dash indicates the category is not applicable to the
-   service.
-
-   Table showing comparison of operators policies [10]
-
-   Table showing comparison of operators practices [11]
-
-   NOTE: Review and correction of any inaccuracies in the table would be
-   much appreciated.
-
-6.3.  Enforcement/accountability
-
-   Transparency reports may help with building user trust that operators
-   adhere to their policies and practices.
-
-   Independent monitoring should be performed where possible of:
-
-   o  ECS, QNAME minimization, EDNS(0) padding, etc.
-
    o  Filtering
 
    o  Uptime
-
-
-
-
-Dickinson, et al.       Expires February 9, 2019               [Page 22]
-
-Internet-Draft     DNS Privacy Service Recommendations       August 2018
-
 
 7.  IANA considerations
 
@@ -1240,7 +1132,7 @@ Internet-Draft     DNS Privacy Service Recommendations       August 2018
 
 8.  Security considerations
 
-   TODO: e.g.  New issues for DoS defence, server admin policies
+   TODO: e.g.  New issues for DoS defense, server admin policies
 
 9.  Acknowledgements
 
@@ -1281,11 +1173,7 @@ Internet-Draft     DNS Privacy Service Recommendations       August 2018
 
 
 
-
-
-
-
-Dickinson, et al.       Expires February 9, 2019               [Page 23]
+Dickinson, et al.       Expires February 9, 2019               [Page 21]
 
 Internet-Draft     DNS Privacy Service Recommendations       August 2018
 
@@ -1341,7 +1229,7 @@ Internet-Draft     DNS Privacy Service Recommendations       August 2018
 
 
 
-Dickinson, et al.       Expires February 9, 2019               [Page 24]
+Dickinson, et al.       Expires February 9, 2019               [Page 22]
 
 Internet-Draft     DNS Privacy Service Recommendations       August 2018
 
@@ -1397,7 +1285,7 @@ Internet-Draft     DNS Privacy Service Recommendations       August 2018
 
 
 
-Dickinson, et al.       Expires February 9, 2019               [Page 25]
+Dickinson, et al.       Expires February 9, 2019               [Page 23]
 
 Internet-Draft     DNS Privacy Service Recommendations       August 2018
 
@@ -1453,7 +1341,7 @@ Internet-Draft     DNS Privacy Service Recommendations       August 2018
 
 
 
-Dickinson, et al.       Expires February 9, 2019               [Page 26]
+Dickinson, et al.       Expires February 9, 2019               [Page 24]
 
 Internet-Draft     DNS Privacy Service Recommendations       August 2018
 
@@ -1503,49 +1391,43 @@ Internet-Draft     DNS Privacy Service Recommendations       August 2018
    [8] https://pdfs.semanticscholar.org/7b34/12c951cebe71cd2cddac5fda164
        fb2138a44.pdf
 
-   [9] https://dnsprivacy.org/jenkins/job/dnsprivacy-monitoring/
+   [9] https://dnsprivacy.org/wiki/display/DP/
+       Comparison+of+policy+and+privacy+statements
 
 
 
 
-
-Dickinson, et al.       Expires February 9, 2019               [Page 27]
+Dickinson, et al.       Expires February 9, 2019               [Page 25]
 
 Internet-Draft     DNS Privacy Service Recommendations       August 2018
 
 
-   [10] https://github.com/Sinodun/draft-dprive-bcp-op/blob/master/
-        draft-00/policy_table.svg
+   [10] https://support.google.com/analytics/answer/2763052?hl=en
 
-   [11] https://github.com/Sinodun/draft-dprive-bcp-op/blob/master/
-        draft-00/practice_table.svg
-
-   [12] https://support.google.com/analytics/answer/2763052?hl=en
-
-   [13] https://www.conversionworks.co.uk/blog/2017/05/19/anonymize-ip-
+   [11] https://www.conversionworks.co.uk/blog/2017/05/19/anonymize-ip-
         geo-impact-test/
 
-   [14] https://github.com/edmonds/pdns/blob/master/pdns/dnswasher.cc
+   [12] https://github.com/edmonds/pdns/blob/master/pdns/dnswasher.cc
 
-   [15] http://ita.ee.lbl.gov/html/contrib/tcpdpriv.html
+   [13] http://ita.ee.lbl.gov/html/contrib/tcpdpriv.html
 
-   [16] http://an.kaist.ac.kr/~sbmoon/paper/intl-journal/2004-cn-
+   [14] http://an.kaist.ac.kr/~sbmoon/paper/intl-journal/2004-cn-
         anon.pdf
 
-   [17] https://www.cc.gatech.edu/computing/Telecomm/projects/cryptopan/
+   [15] https://www.cc.gatech.edu/computing/Telecomm/projects/cryptopan/
 
-   [18] http://mharvan.net/talks/noms-ip_anon.pdf
+   [16] http://mharvan.net/talks/noms-ip_anon.pdf
 
-   [19] https://medium.com/@bert.hubert/on-ip-address-encryption-
+   [17] https://medium.com/@bert.hubert/on-ip-address-encryption-
         security-analysis-with-respect-for-privacy-dabe1201b476
 
-   [20] https://github.com/PowerDNS/ipcipher
+   [18] https://github.com/PowerDNS/ipcipher
 
-   [21] https://github.com/veorq/ipcrypt
+   [19] https://github.com/veorq/ipcrypt
 
-   [22] https://www.ietf.org/mail-archive/web/cfrg/current/msg09494.html
+   [20] https://www.ietf.org/mail-archive/web/cfrg/current/msg09494.html
 
-   [23] https://tnc18.geant.org/core/presentation/127
+   [21] https://tnc18.geant.org/core/presentation/127
 
 Appendix A.  Documents
 
@@ -1561,21 +1443,20 @@ A.1.  Potential increases in DNS privacy
    o  'Specification for DNS over Transport Layer Security (TLS)'
       [RFC7858], referred to here as 'DNS-over-TLS'.
 
-
-
-
-
-Dickinson, et al.       Expires February 9, 2019               [Page 28]
-
-Internet-Draft     DNS Privacy Service Recommendations       August 2018
-
-
    o  'DNS over Datagram Transport Layer Security (DTLS)' [RFC8094],
       referred to here as 'DNS-over-DTLS'.  Note that this document has
       the Category of Experimental.
 
    o  'DNS Queries over HTTPS (DoH)' [I-D.ietf-doh-dns-over-https]
       referred to here as DoH.
+
+
+
+
+Dickinson, et al.       Expires February 9, 2019               [Page 26]
+
+Internet-Draft     DNS Privacy Service Recommendations       August 2018
+
 
    o  'Usage Profiles for DNS over TLS and DNS over DTLS' [RFC8310]
 
@@ -1619,18 +1500,19 @@ A.3.  Related operational documents
 
    o  'DNS Stateful Operations' [I-D.ietf-dnsop-session-signal]
 
-
-
-Dickinson, et al.       Expires February 9, 2019               [Page 29]
-
-Internet-Draft     DNS Privacy Service Recommendations       August 2018
-
-
 Appendix B.  IP address techniques
 
    Data minimization methods may be categorized by the processing used
    and the properties of their outputs.  The following builds on the
    categorization employed in [RFC6235]:
+
+
+
+
+Dickinson, et al.       Expires February 9, 2019               [Page 27]
+
+Internet-Draft     DNS Privacy Service Recommendations       August 2018
+
 
    o  Format-preserving.  Normally when encrypting, the original data
       length and patterns in the data should be hidden from an attacker.
@@ -1675,26 +1557,28 @@ Appendix B.  IP address techniques
    o  Random substitution.  As replacement, but using randomly generated
       replacement values.
 
-
-
-Dickinson, et al.       Expires February 9, 2019               [Page 30]
-
-Internet-Draft     DNS Privacy Service Recommendations       August 2018
-
-
    o  Cryptographic permutation.  Using a permutation function, such as
       a hash function or cryptographic block cipher, to generate a
       replacement de-identified value.
 
+
+
+
+
+Dickinson, et al.       Expires February 9, 2019               [Page 28]
+
+Internet-Draft     DNS Privacy Service Recommendations       August 2018
+
+
 B.1.  Google Analytics non-prefix filtering
 
-   Since May 2010, Google Analytics has provided a facility [12] that
+   Since May 2010, Google Analytics has provided a facility [10] that
    allows website owners to request that all their users IP addresses
    are anonymized within Google Analytics processing.  This very basic
    anonymization simply sets to zero the least significant 8 bits of
    IPv4 addresses, and the least significant 80 bits of IPv6 addresses.
    The level of anonymization this produces is perhaps questionable.
-   There are some analysis results [13] which suggest that the impact of
+   There are some analysis results [11] which suggest that the impact of
    this on reducing the accuracy of determining the user's location from
    their IP address is less than might be hoped; the average discrepancy
    in identification of the user city for UK users is no more than 17%.
@@ -1704,7 +1588,7 @@ B.1.  Google Analytics non-prefix filtering
 B.2.  dnswasher
 
    Since 2006, PowerDNS have included a de-identification tool dnswasher
-   [14] with their PowerDNS product.  This is a PCAP filter that
+   [12] with their PowerDNS product.  This is a PCAP filter that
    performs a one-to-one mapping of end user IP addresses with an
    anonymized address.  A table of user IP addresses and their de-
    identified counterparts is kept; the first IPv4 user addresses is
@@ -1717,7 +1601,7 @@ B.2.  dnswasher
 
 B.3.  Prefix-preserving map
 
-   Used in TCPdpriv [15], this algorithm stores a set of original and
+   Used in TCPdpriv [13], this algorithm stores a set of original and
    anonymised IP address pairs.  When a new IP address arrives, it is
    compared with previous addresses to determine the longest prefix
    match.  The new address is anonymized by using the same prefix, with
@@ -1733,7 +1617,11 @@ B.3.  Prefix-preserving map
 
 
 
-Dickinson, et al.       Expires February 9, 2019               [Page 31]
+
+
+
+
+Dickinson, et al.       Expires February 9, 2019               [Page 29]
 
 Internet-Draft     DNS Privacy Service Recommendations       August 2018
 
@@ -1742,11 +1630,11 @@ B.4.  Cryptographic Prefix-Preserving Pseudonymisation
 
    Cryptographic prefix-preserving pseudonymisation was originally
    proposed as an improvement to the prefix-preserving map implemented
-   in TCPdpriv, described in Xu et al. [16] and implemented in the
-   Crypto-PAn tool [17].  Crypto-PAn is now frequently used as an
+   in TCPdpriv, described in Xu et al. [14] and implemented in the
+   Crypto-PAn tool [15].  Crypto-PAn is now frequently used as an
    acronym for the algorithm.  Initially it was described for IPv4
    addresses only; extension for IPv6 addresses was proposed in Harvan &
-   Schoenwaelder [18] and implemented in snmpdump.  This uses a
+   Schoenwaelder [16] and implemented in snmpdump.  This uses a
    cryptographic algorithm rather than a random value, and thus
    pseudonymity is determined uniquely by the encryption key, and is
    deterministic.  It requires a separate AES encryption for each output
@@ -1773,13 +1661,13 @@ B.5.  Top-hash Subtree-replicated Anonymisation
 
 B.6.  ipcipher
 
-   A recently-released proposal from PowerDNS [19], ipcipher [20] is a
+   A recently-released proposal from PowerDNS [17], ipcipher [18] is a
    simple pseudonymization technique for IPv4 and IPv6 addresses.  IPv6
    addresses are encrypted directly with AES-128 using a key (which may
    be derived from a passphrase).  IPv4 addresses are similarly
-   encrypted, but using a recently proposed encryption ipcrypt [21]
+   encrypted, but using a recently proposed encryption ipcrypt [19]
    suitable for 32bit block lengths.  However, the author of ipcrypt has
-   since indicated [22] that it has low security, and further analysis
+   since indicated [20] that it has low security, and further analysis
    has revealed it is vulnerable to attack.
 
    Pseudonymization: Format-preserving, cryptographic permutation.
@@ -1789,14 +1677,14 @@ B.6.  ipcipher
 
 
 
-Dickinson, et al.       Expires February 9, 2019               [Page 32]
+Dickinson, et al.       Expires February 9, 2019               [Page 30]
 
 Internet-Draft     DNS Privacy Service Recommendations       August 2018
 
 
 B.7.  Bloom filters
 
-   van Rijswijk-Deij et al. [23] have recently described work using
+   van Rijswijk-Deij et al. [21] have recently described work using
    Bloom filters to categorize query traffic and record the traffic as
    the state of multiple filters.  The goal of this work is to allow
    operators to identify so-called Indicators of Compromise (IOCs)
@@ -1845,7 +1733,7 @@ Authors' Addresses
 
 
 
-Dickinson, et al.       Expires February 9, 2019               [Page 33]
+Dickinson, et al.       Expires February 9, 2019               [Page 31]
 
 Internet-Draft     DNS Privacy Service Recommendations       August 2018
 
@@ -1901,4 +1789,4 @@ Internet-Draft     DNS Privacy Service Recommendations       August 2018
 
 
 
-Dickinson, et al.       Expires February 9, 2019               [Page 34]
+Dickinson, et al.       Expires February 9, 2019               [Page 32]
