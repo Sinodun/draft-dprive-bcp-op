@@ -1058,7 +1058,8 @@ Pseudonymization: Format-preserving, prefix preservation (general).
 
 ## Top-hash Subtree-replicated Anonymisation
 
-Proposed in Ramaswamy & Wolf, Top-hash Subtree-replicated Anonymisation (TSA)
+Proposed in [Ramaswamy & Wolf](http://www.ecs.umass.edu/ece/wolf/pubs/ton2007.pdf),
+Top-hash Subtree-replicated Anonymisation (TSA)
 originated in response to the requirement for faster processing than Crypto-PAn.
 It used hashing for the most significant byte of an IPv4 address, and a
 pre-calculated binary tree structure for the remainder of the address. To save
@@ -1067,10 +1068,6 @@ of the pre-calculated structures to a few Mb for IPv4 addresses. Address
 pseudonymization is done via hash and table lookup, and so requires minimal
 computation. However, due to the much increased address space for IPv6, TSA is
 not memory efficient for IPv6.
-
-<!-- Reference causes an error in the XML - need to fix
-(http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.84.7417&rep=rep1&type=
-pdf)-->
 
 Pseudonymization: Format-preserving, prefix preservation (general).
 

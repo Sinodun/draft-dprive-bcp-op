@@ -1281,7 +1281,8 @@ some number of prefix bits.
 </section>
 
 <section anchor="tophash-subtreereplicated-anonymisation" title="Top-hash Subtree-replicated Anonymisation">
-<t>Proposed in Ramaswamy &amp; Wolf, Top-hash Subtree-replicated Anonymisation (TSA)
+<t>Proposed in <eref target="http://www.ecs.umass.edu/ece/wolf/pubs/ton2007.pdf">Ramaswamy &amp; Wolf</eref>,
+Top-hash Subtree-replicated Anonymisation (TSA)
 originated in response to the requirement for faster processing than Crypto-PAn.
 It used hashing for the most significant byte of an IPv4 address, and a
 pre-calculated binary tree structure for the remainder of the address. To save

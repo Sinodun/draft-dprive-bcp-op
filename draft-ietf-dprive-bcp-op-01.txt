@@ -126,7 +126,7 @@ Internet-Draft     DNS Privacy Service Recommendations       August 2018
      A.1.  Potential increases in DNS privacy  . . . . . . . . . . .  26
      A.2.  Potential decreases in DNS privacy  . . . . . . . . . . .  27
      A.3.  Related operational documents . . . . . . . . . . . . . .  27
-   Appendix B.  IP address techniques  . . . . . . . . . . . . . . .  27
+   Appendix B.  IP address techniques  . . . . . . . . . . . . . . .  28
      B.1.  Google Analytics non-prefix filtering . . . . . . . . . .  29
      B.2.  dnswasher . . . . . . . . . . . . . . . . . . . . . . . .  29
      B.3.  Prefix-preserving map . . . . . . . . . . . . . . . . . .  29
@@ -1418,16 +1418,18 @@ Internet-Draft     DNS Privacy Service Recommendations       August 2018
 
    [16] http://mharvan.net/talks/noms-ip_anon.pdf
 
-   [17] https://medium.com/@bert.hubert/on-ip-address-encryption-
+   [17] http://www.ecs.umass.edu/ece/wolf/pubs/ton2007.pdf
+
+   [18] https://medium.com/@bert.hubert/on-ip-address-encryption-
         security-analysis-with-respect-for-privacy-dabe1201b476
 
-   [18] https://github.com/PowerDNS/ipcipher
+   [19] https://github.com/PowerDNS/ipcipher
 
-   [19] https://github.com/veorq/ipcrypt
+   [20] https://github.com/veorq/ipcrypt
 
-   [20] https://www.ietf.org/mail-archive/web/cfrg/current/msg09494.html
+   [21] https://www.ietf.org/mail-archive/web/cfrg/current/msg09494.html
 
-   [21] https://tnc18.geant.org/core/presentation/127
+   [22] https://tnc18.geant.org/core/presentation/127
 
 Appendix A.  Documents
 
@@ -1447,8 +1449,6 @@ A.1.  Potential increases in DNS privacy
       referred to here as 'DNS-over-DTLS'.  Note that this document has
       the Category of Experimental.
 
-   o  'DNS Queries over HTTPS (DoH)' [I-D.ietf-doh-dns-over-https]
-      referred to here as DoH.
 
 
 
@@ -1457,6 +1457,9 @@ Dickinson, et al.       Expires February 9, 2019               [Page 26]
 
 Internet-Draft     DNS Privacy Service Recommendations       August 2018
 
+
+   o  'DNS Queries over HTTPS (DoH)' [I-D.ietf-doh-dns-over-https]
+      referred to here as DoH.
 
    o  'Usage Profiles for DNS over TLS and DNS over DTLS' [RFC8310]
 
@@ -1500,11 +1503,8 @@ A.3.  Related operational documents
 
    o  'DNS Stateful Operations' [I-D.ietf-dnsop-session-signal]
 
-Appendix B.  IP address techniques
 
-   Data minimization methods may be categorized by the processing used
-   and the properties of their outputs.  The following builds on the
-   categorization employed in [RFC6235]:
+
 
 
 
@@ -1513,6 +1513,12 @@ Dickinson, et al.       Expires February 9, 2019               [Page 27]
 
 Internet-Draft     DNS Privacy Service Recommendations       August 2018
 
+
+Appendix B.  IP address techniques
+
+   Data minimization methods may be categorized by the processing used
+   and the properties of their outputs.  The following builds on the
+   categorization employed in [RFC6235]:
 
    o  Format-preserving.  Normally when encrypting, the original data
       length and patterns in the data should be hidden from an attacker.
@@ -1557,18 +1563,16 @@ Internet-Draft     DNS Privacy Service Recommendations       August 2018
    o  Random substitution.  As replacement, but using randomly generated
       replacement values.
 
-   o  Cryptographic permutation.  Using a permutation function, such as
-      a hash function or cryptographic block cipher, to generate a
-      replacement de-identified value.
-
-
-
 
 
 Dickinson, et al.       Expires February 9, 2019               [Page 28]
 
 Internet-Draft     DNS Privacy Service Recommendations       August 2018
 
+
+   o  Cryptographic permutation.  Using a permutation function, such as
+      a hash function or cryptographic block cipher, to generate a
+      replacement de-identified value.
 
 B.1.  Google Analytics non-prefix filtering
 
@@ -1617,10 +1621,6 @@ B.3.  Prefix-preserving map
 
 
 
-
-
-
-
 Dickinson, et al.       Expires February 9, 2019               [Page 29]
 
 Internet-Draft     DNS Privacy Service Recommendations       August 2018
@@ -1646,7 +1646,7 @@ B.4.  Cryptographic Prefix-Preserving Pseudonymisation
 
 B.5.  Top-hash Subtree-replicated Anonymisation
 
-   Proposed in Ramaswamy & Wolf, Top-hash Subtree-replicated
+   Proposed in Ramaswamy & Wolf [17], Top-hash Subtree-replicated
    Anonymisation (TSA) originated in response to the requirement for
    faster processing than Crypto-PAn.  It used hashing for the most
    significant byte of an IPv4 address, and a pre-calculated binary tree
@@ -1661,13 +1661,13 @@ B.5.  Top-hash Subtree-replicated Anonymisation
 
 B.6.  ipcipher
 
-   A recently-released proposal from PowerDNS [17], ipcipher [18] is a
+   A recently-released proposal from PowerDNS [18], ipcipher [19] is a
    simple pseudonymization technique for IPv4 and IPv6 addresses.  IPv6
    addresses are encrypted directly with AES-128 using a key (which may
    be derived from a passphrase).  IPv4 addresses are similarly
-   encrypted, but using a recently proposed encryption ipcrypt [19]
+   encrypted, but using a recently proposed encryption ipcrypt [20]
    suitable for 32bit block lengths.  However, the author of ipcrypt has
-   since indicated [20] that it has low security, and further analysis
+   since indicated [21] that it has low security, and further analysis
    has revealed it is vulnerable to attack.
 
    Pseudonymization: Format-preserving, cryptographic permutation.
@@ -1684,7 +1684,7 @@ Internet-Draft     DNS Privacy Service Recommendations       August 2018
 
 B.7.  Bloom filters
 
-   van Rijswijk-Deij et al. [21] have recently described work using
+   van Rijswijk-Deij et al. [22] have recently described work using
    Bloom filters to categorize query traffic and record the traffic as
    the state of multiple filters.  The goal of this work is to allow
    operators to identify so-called Indicators of Compromise (IOCs)
