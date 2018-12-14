@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE rfc SYSTEM 'rfc2629.dtd' []>
-<rfc ipr="trust200902" category="bcp" docName="draft-ietf-dprive-bcp-op-00">
+<rfc ipr="trust200902" category="bcp" docName="draft-ietf-dprive-bcp-op-01">
 <?rfc toc="yes"?>
 <?rfc symrefs="yes"?>
 <?rfc sortrefs="yes"?>
@@ -46,18 +46,18 @@
 </address>
 </author>
 <author initials="R." surname="van Rijswijk-Deij" fullname="Roland M. van Rijswijk-Deij">
-<organization>SURFnet bv</organization>
+<organization>NLnet Labs</organization>
 <address>
 <postal>
 <street></street>
-<street>PO Box 19035 </street>
-<city>Utrecht</city>
-<code>3501 DA Utrecht</code>
+<street>Science Park 400</street>
+<city>Amsterdam</city>
+<code>1098 XH</code>
 <country>The Netherlands</country>
 <region></region>
 </postal>
 <phone></phone>
-<email>roland.vanrijswijk@surfnet.nl</email>
+<email>roland@nlnetLabs.nl</email>
 <uri></uri>
 </address>
 </author>
@@ -76,7 +76,7 @@
 <uri></uri>
 </address>
 </author>
-<date year="2018" month="August" day="8"/>
+<date year="2018" month="December" day="14"/>
 
 <area>Internet</area>
 <workgroup>dprive</workgroup>
@@ -85,8 +85,8 @@
 
 <abstract>
 <t>This document presents operational, policy and security considerations for DNS
-operators who choose to offer DNS Privacy services. With the recommendations,
-the operator can make deliberate decisions which services to provide, and how
+operators who choose to offer DNS Privacy services. With these recommendations,
+the operator can make deliberate decisions regarding which services to provide, and how
 the decisions and alternatives impact the privacy of users.
 </t>
 <t>This document also presents a framework to assist writers of DNS Privacy Policy
@@ -101,19 +101,13 @@ and DNSSEC Practice Statements described in <xref target="RFC6841"/>).
 <middle>
 
 <section anchor="introduction" title="Introduction">
-<t>[NOTE: This document is submitted to the IETF for initial review and for
-feedback on the best forum for future versions of this document. Initial
-considerations for DoH <xref target="I-D.ietf-doh-dns-over-https"/> are included here in
-anticipation of that draft progressing to be an RFC but further analysis is
-required.]
-</t>
 <t>The Domain Name System (DNS) is at the core of the Internet; almost every
 activity on the Internet starts with a DNS query (and often several). However
 the DNS was not originally designed with strong security or privacy mechanisms.
 A number of developments have taken place in recent years which aim to increase
 the privacy of the DNS system and these are now seeing some deployment. This
 latest evolution of the DNS presents new challenges to operators and this
-document attempts to provide an overview of considerations for privacy focussed
+document attempts to provide an overview of considerations for privacy focused
 DNS services.
 </t>
 <t>In recent years there has also been an increase in the availability of &quot;open
@@ -141,10 +135,8 @@ as they move across network environments. Commitments from operators to minimize
 such tracking are also likely to play a role in users selection of resolver.
 </t>
 <t>More recently the global legislative landscape with regard to personal data
-collection, retention, and pseudonymization has seen significant activity with
-differing requirements active in different jurisdictions. For example the user
-of a service and the service itself may be in jurisdictions with conflicting
-legislation. It is an untested area that simply using a DNS resolution service
+collection, retention, and pseudonymization has seen significant activity.
+It is an untested area that simply using a DNS resolution service
 constitutes consent from the user for the operator to process their query data.
 The impact of recent legislative changes on data pertaining to the users of both
 Internet Service Providers and DNS open resolvers is not fully understood at the
@@ -179,7 +171,7 @@ out any errata or updates that apply to this document.
 <t>&quot;DNS Privacy Considerations&quot; <xref target="I-D.bortzmeyer-dprive-rfc7626-bis"/> describes the
 general privacy issues and threats associated with the use of the DNS by
 Internet users and much of the threat analysis here is lifted from that
-document and from <xref target="RFC6873"/>. However this document is limited in scope to best
+document and from <xref target="RFC6973"/>. However this document is limited in scope to best
 practice considerations for the provision of DNS privacy services by servers
 (recursive resolvers) to clients (stub resolvers or forwarders). Privacy
 considerations specifically from the perspective of an end user, or those for
@@ -217,29 +209,17 @@ increase in complexity. A selection of the most relevant documents are listed in
 <section anchor="terminology" title="Terminology">
 <t>The key words &quot;MUST&quot;, &quot;MUST NOT&quot;, &quot;REQUIRED&quot;, &quot;SHALL&quot;, &quot;SHALL NOT&quot;, &quot;SHOULD&quot;,
 &quot;SHOULD NOT&quot;, &quot;RECOMMENDED&quot;, &quot;NOT RECOMMENDED&quot;, &quot;MAY&quot;, and &quot;OPTIONAL&quot; in this
-document are to be interpreted as described in BCP 14 <xref target="RFC2119"/> <xref target="RFC8174"/>
+document are to be interpreted as described in BCP 14 <xref target="RFC2119"/> and <xref target="RFC8174"/>
 when, and only when, they appear in all capitals, as shown here.
 </t>
-<t>Privacy terminology is as described in Section 3 of <xref target="RFC6973"/>.
-</t>
 <t>DNS terminology is as described in <xref target="I-D.ietf-dnsop-terminology-bis"/> with one
-modification: we use the definition of Privacy-enabling DNS
-server taken from <xref target="RFC8310"/>:
+modification: we restate the clause in the original definition of
+Privacy-enabling DNS server in <xref target="RFC8310"/> to include the requirement that a DNS
+over (D)TLS server should also offer at least one of the credentials described
+in Section 8 and implement the (D)TLS profile described in Section 9 of
+<xref target="RFC8310"/>.
 </t>
-<t>
-<list style="symbols">
-<t>Privacy-enabling DNS server: A DNS server (most likely a full-service
-resolver) that implements DNS-over-TLS <xref target="RFC7858"/>, and may optionally
-implement DNS-over-DTLS <xref target="RFC8094"/>. The server should also offer at least one
-of the credentials described in Section 8 and implement the (D)TLS profile
-described in Section 9.
-
-<vspace/></t>
-</list>
-</t>
-<t>TODO: Update the definition of Privacy-enabling DNS server in
-  <xref target="I-D.ietf-dnsop-terminology-bis"/> to be complete and also include DoH, then
-  reference that here.
+<t>Other Terms:
 </t>
 <t>
 <list style="symbols">
@@ -253,6 +233,23 @@ practice with regard to users privacy or a formal DPPPS.</t>
 </section>
 
 <section anchor="recommendations-for-dns-privacy-services" title="Recommendations for DNS privacy services">
+<t>We describe two classes of threats:
+</t>
+<t>
+<list style="symbols">
+<t>'Privacy Considerations for Internet Protocols' <xref target="RFC6973"/> Threats
+<list style="symbols">
+<t>Privacy terminology, threats to privacy and mitigations are described in
+Sections 3, 5 and 6 of <xref target="RFC6973"/>.</t>
+</list></t>
+<t>DNS Privacy Threats
+<list style="symbols">
+<t>These are threats to the users and operators of DNS privacy services that
+are not directly covered by <xref target="RFC6973"/>. These may be more operational in
+nature such as certificate management or service availability issues.</t>
+</list></t>
+</list>
+</t>
 <t>We describe three classes of actions that operators of DNS privacy
 services can take:
 </t>
@@ -276,11 +273,6 @@ they SHOULD implement (where appropriate) all:
 <t>Additional options to be maximally compliant</t>
 </list>
 </t>
-<t>TODO: Some of the threats listed in the following sections are taken directly
-from Section 5 of RFC6973, some are just standalone descriptions, we need to go
-through all of them and see if we can use the RFC6973 threats where possible
-and make them consistent.
-</t>
 
 <section anchor="on-the-wire-between-client-and-server" title="On the wire between client and server">
 <t>In this section we consider both data on the wire and the service provided to
@@ -288,12 +280,22 @@ the client.
 </t>
 
 <section anchor="transport-recommendations" title="Transport recommendations">
-<t>Threats:
+<t><xref target="RFC6973"/> Threats:
 </t>
 <t>
 <list style="symbols">
-<t>Surveillance: Passive surveillance of traffic on the wire</t>
-<t>Intrusion: Active injection of spurious data or traffic</t>
+<t>Surveillance:
+<list style="symbols">
+<t>Passive surveillance of traffic on the wire
+<xref target="I-D.bortzmeyer-dprive-rfc7626-bis"/> Section 2.4.2.</t>
+</list></t>
+</list>
+</t>
+<t>DNS Privacy Threats:
+</t>
+<t>
+<list style="symbols">
+<t>Active injection of spurious data or traffic</t>
 </list>
 </t>
 <t>Mitigations:
@@ -303,32 +305,34 @@ or more of the following transports
 </t>
 <t>
 <list style="symbols">
-<t>DNS-over-TLS <xref target="RFC7858"/></t>
-<t>DoH <xref target="I-D.ietf-doh-dns-over-https"/></t>
+<t>DNS-over-TLS <xref target="RFC7858"/> and <xref target="RFC8310"/></t>
+<t>DoH <xref target="RFC8484"/></t>
 </list>
 </t>
-<t>Additional options:
+<t>It is noted that a DNS privacy service can also be provided over DNS-over-DTLS
+<xref target="RFC8094"/>, however this is an Experimental specification and there are no known
+implementations at the time of writing.
 </t>
-<t>
-<list style="symbols">
-<t>A DNS privacy service can also be provided over DNS-over-DTLS <xref target="RFC8094"/>,
-however note that this is an Experimental specification.</t>
-</list>
-</t>
-<t>It is noted that DNS privacy service might be provided over IPSec, DNSCrypt
+<t>It is also noted that DNS privacy service might be provided over IPSec, DNSCrypt
 or VPNs. However, use of these transports for DNS are not standardized and any
 discussion of best practice for providing such service is out of scope for this
 document.
 </t>
+<t>Whilst encryption of DNS traffic can protect against active injection this does
+not diminish the need for DNSSEC, see <xref target="encryption-and-dnssec"/>.
+</t>
 </section>
 
 <section anchor="authentication-of-dns-privacy-services" title="Authentication of DNS privacy services">
-<t>Threats:
+<t><xref target="RFC6973"/> Threats:
 </t>
 <t>
 <list style="symbols">
-<t>Surveillance and Intrusion: Active attacks that can redirect traffic to
-rogue servers</t>
+<t>Surveillance:
+<list style="symbols">
+<t>Active attacks that can redirect traffic to rogue servers
+<xref target="I-D.bortzmeyer-dprive-rfc7626-bis"/> Section 2.5.3.</t>
+</list></t>
 </list>
 </t>
 <t>Mitigations:
@@ -343,8 +347,10 @@ ability to authenticate the DNS server. To enable this, DNS privacy services
 that offer DNS-over-TLS should provide credentials in the form of either X.509
 certificates, SPKI pinsets or TLSA records.
 </t>
-<t>When offering DoH <xref target="I-D.ietf-doh-dns-over-https"/>, HTTPS requires authentication
-of the server as part of the protocol.
+<t>When offering DoH <xref target="RFC8484"/>, HTTPS requires authentication of the server as
+part of the protocol.
+</t>
+<t>NOTE: At this time the reference to the TLS DNSSEC chain extension draft has been removed as it is no longer considered an active TLS WG document.
 </t>
 <t>Optimizations:
 </t>
@@ -357,12 +363,6 @@ of the server as part of the protocol.
 <t>In particular, the service could provide TLSA records such that
 authenticating solely via the PKIX infrastructure can be avoided.</t>
 </list></t>
-<t>Implementing <xref target="I-D.ietf-tls-dnssec-chain-extension"/>
-<list style="symbols">
-<t>This can decrease the latency of connection setup to the server and remove
-the need for the client to perform meta-queries to obtain and validate the
-DANE records.</t>
-</list></t>
 </list>
 </t>
 
@@ -373,10 +373,10 @@ choose to additionally provide a DNS privacy service as management of such
 credentials is new to those DNS operators.
 </t>
 <t>It is noted that SPKI pinset management is described in <xref target="RFC7858"/> but that key
-pinning mechanisms in general have fallen out of favour operationally for
-various reasons.
+pinning mechanisms in general have fallen out of favor operationally for
+various reasons such as the logistical overhead of rolling keys.
 </t>
-<t>Threats:
+<t>DNS Privacy Threats:
 </t>
 <t>
 <list style="symbols">
@@ -391,13 +391,12 @@ authentication domain names</t>
 </t>
 <t>
 <list style="symbols">
-<t>Choose a short, memorable authentication name for their service</t>
+<t>Follow the guidance in Section 6.5 of <xref target="RFC7525"/> with regards to certificate
+revocation</t>
+<t>Choose a short, memorable authentication name for the service</t>
 <t>Automate the generation and publication of certificates</t>
 <t>Monitor certificates to prevent accidental expiration of certificates</t>
 </list>
-</t>
-<t>TODO: Could we provide references for certificate management best practice, for
-example Section 6.5 of RFC7525?
 </t>
 </section>
 </section>
@@ -405,12 +404,12 @@ example Section 6.5 of RFC7525?
 <section anchor="protocol-recommendations" title="Protocol recommendations">
 
 <section anchor="dnsovertls" title="DNS-over-TLS">
-<t>Threats:
+<t>DNS Privacy Threats:
 </t>
 <t>
 <list style="symbols">
-<t>Known attacks on TLS (TODO: add a reference)</t>
-<t>Traffic analysis (TODO: add a reference)</t>
+<t>Known attacks on TLS such as those described in <xref target="RFC7457"/></t>
+<t>Traffic analysis, for example: <eref target="https://www.ietf.org/mail-archive/web/dns-privacy/current/pdfWqAIUmEl47.pdf">Pitfalls of DNS Encryption</eref></t>
 <t>Potential for client tracking via transport identifiers</t>
 <t>Blocking of well known ports (e.g. 853 for DNS-over-TLS)</t>
 </list>
@@ -426,12 +425,11 @@ provide strong mitigations. This includes but is not limited to:
 <t>Adhering to <xref target="RFC7525"/></t>
 <t>Implementing only (D)TLS 1.2 or later as specified in <xref target="RFC8310"/></t>
 <t>Implementing EDNS(0) Padding <xref target="RFC7830"/> using the guidelines in
-<xref target="I-D.ietf-dprive-padding-policy"/></t>
-<t>Clients should not be required to use TLS session resumption <xref target="RFC5077"/>,
+<xref target="RFC8467"/></t>
+<t>Clients should not be required to use TLS session resumption <xref target="RFC5077"/> or
 Domain Name System (DNS) Cookies <xref target="RFC7873"/>.</t>
-<t>A DNS-over-TLS privacy service on both port 853 and 443. We note that this
-practice may require revision when DoH becomes more widely deployed, because
-of the potential use of the same ports for two incompatible types of service.</t>
+<t>A DNS-over-TLS privacy service on both port 853 and 443. This practice may not
+be possible if e.g. the operator deploys DoH on the same IP address.</t>
 </list>
 </t>
 <t>Optimizations:
@@ -445,10 +443,11 @@ similar to HTTP multiplexing)</t>
 <t>Management of TLS connections to optimize performance for clients using either
 <list style="symbols">
 <t><xref target="RFC7766"/> and EDNS(0) Keepalive <xref target="RFC7828"/> and/or</t>
-<t>DNS Stateful Operations <xref target="I-D.ietf-dnsop-session-signal"/>
+<t>DNS Stateful Operations <xref target="I-D.ietf-dnsop-session-signal"/></t>
+</list></t>
+<t>Offer a separate service that uses only TLS 1.3 <xref target="RFC8446"/>
 
 <vspace/></t>
-</list></t>
 </list>
 </t>
 <t>Additional options that providers may consider:
@@ -461,8 +460,14 @@ similar to HTTP multiplexing)</t>
 </section>
 
 <section anchor="doh" title="DoH">
-<t>TODO: Fill this in, a lot of overlap with DNS-over-TLS but we need to address
-DoH specific ones if possible.
+<t>DNS Privacy Threats:
+</t>
+<t>
+<list style="symbols">
+<t>Known attacks on TLS such as those described in <xref target="RFC7457"/></t>
+<t>Traffic analysis, for example: <eref target="https://petsymposium.org/2018/files/hotpets/4-siby.pdf">DNS Privacy not so private: the traffic analysis perspective</eref></t>
+<t>Potential for client tracking via transport identifiers</t>
+</list>
 </t>
 <t>Mitigations:
 </t>
@@ -470,14 +475,21 @@ DoH specific ones if possible.
 <list style="symbols">
 <t>Clients should not be required to use HTTP Cookies <xref target="RFC6265"/>.</t>
 <t>Clients should not be required to include any headers beyond the absolute
-minimum to obtain service from a DoH server.</t>
+minimum to obtain service from a DoH server. (Some initial work in this area has been proposed <xref target="I-D.dickinson-doh-dohpe"/> but there are no clear guidelines for HTTP header privacy, more work on this topic is required.)</t>
+</list>
+</t>
+<t>Optimizations:
+</t>
+<t>
+<list style="symbols">
+<t>Offer a separate service that uses only TLS 1.3 <xref target="RFC8446"/></t>
 </list>
 </t>
 </section>
 </section>
 
 <section anchor="availability" title="Availability">
-<t>Threats:
+<t>DNS Privacy Threats:
 </t>
 <t>
 <list style="symbols">
@@ -497,24 +509,43 @@ attacks is a significant motivation for users to switch services.
 </section>
 
 <section anchor="service-options" title="Service options">
-<t>Threats:
+<t>DNS Privacy Threats:
 </t>
 <t>
 <list style="symbols">
 <t>Unfairly disadvantaging users of the privacy service with respect to the
-services available. This could force the user to switch providers, fallback to
-cleartext or accept no DNS service for the outage.</t>
+services available. This could force the user to switch to the services
+available. providers, fallback to cleartext or accept no DNS service for the
+outage.</t>
 </list>
 </t>
 <t>Mitigations:
 </t>
-<t>A DNS privacy service should deliver the same level of service offered on
+<t>A DNS privacy service should deliver the same level of service as offered on
 un-encrypted channels in terms of such options as filtering (or lack of), DNSSEC
 validation, etc.
 </t>
 </section>
 
+<section anchor="impact-on-operators" title="Impact on Operators">
+<t>DNS Privacy Threats:
+</t>
+<t>
+<list style="symbols">
+<t>Increased use of encryption impacts operator ability to manage their network <xref target="RFC8404"/></t>
+</list>
+</t>
+</section>
+
 <section anchor="limitations-of-using-a-pure-tls-proxy" title="Limitations of using a pure TLS proxy">
+<t>DNS Privacy Threats:
+</t>
+<t>
+<list style="symbols">
+<t>Limited ability to manage or monitor incoming connections using DNS specific
+techniques</t>
+</list>
+</t>
 <t>Optimization:
 </t>
 <t>Some operators may choose to implement DNS-over-TLS using a TLS proxy (e.g.
@@ -537,7 +568,7 @@ the nameserver.
 <section anchor="data-at-rest-on-the-server" title="Data at rest on the server">
 
 <section anchor="data-handling" title="Data handling">
-<t>Threats:
+<t><xref target="RFC6973"/> Threats:
 </t>
 <t>
 <list style="symbols">
@@ -547,6 +578,12 @@ the nameserver.
 <t>Identification</t>
 <t>Secondary use</t>
 <t>Disclosure</t>
+</list>
+</t>
+<t>Other Treats
+</t>
+<t>
+<list style="symbols">
 <t>Contravention of legal requirements not to process user data?</t>
 </list>
 </t>
@@ -569,8 +606,15 @@ regulatory requirements.</t>
 <t>DNS privacy services should not track users except for the particular purpose
 of detecting and remedying technically malicious (e.g. DoS) or anomalous use
 of the service.</t>
-<t>Data access should be minimized to only those personal who require access to
+<t>Data access should be minimized to only those personnel who require access to
 perform operational duties.</t>
+</list>
+</t>
+<t>Optimizations:
+</t>
+<t>
+<list style="symbols">
+<t>Consider use of full disk encryption for logs and data capture storage.</t>
 </list>
 </t>
 </section>
@@ -660,7 +704,7 @@ of a cryptographic chosen plaintext attack.
 </section>
 
 <section anchor="pseudonymization-anonymization-or-discarding-of-other-correlation-data" title="Pseudonymization, anonymization or discarding of other correlation data">
-<t>Threats:
+<t>DNS Privacy Threats:
 </t>
 <t>
 <list style="symbols">
@@ -684,16 +728,24 @@ options - some CPE devices are known to add them.</t>
 </section>
 
 <section anchor="cache-snooping" title="Cache snooping">
-<t>Threats:
+<t><xref target="RFC6973"/> Threats:
 </t>
 <t>
 <list style="symbols">
+<t>Surveillance:
+<list style="symbols">
 <t>Profiling of client queries by malicious third parties</t>
+</list></t>
 </list>
 </t>
 <t>Mitigations:
 </t>
-<t>TODO: Describe techniques to defend against cache snooping
+<t>
+<list style="symbols">
+<t>See <eref target="https://kb.isc.org/docs/aa-00482">ISC Knowledge database on cache snooping</eref> for an example discussion on defending against cache snooping</t>
+</list>
+</t>
+<t>TODO: Describe other techniques to defend against cache snooping
 </t>
 </section>
 </section>
@@ -704,11 +756,14 @@ data shared with third parties.
 </t>
 
 <section anchor="protocol-recommendations-1" title="Protocol recommendations">
-<t>Threats:
+<t><xref target="RFC6973"/> Threats:
 </t>
 <t>
 <list style="symbols">
+<t>Surveillance:
+<list style="symbols">
 <t>Transmission of identifying data upstream.</t>
+</list></t>
 </list>
 </t>
 <t>Mitigations:
@@ -719,7 +774,7 @@ services the server should:
 <t>
 <list style="symbols">
 <t>Implement QNAME minimization <xref target="RFC7816"/></t>
-<t>Honour a SOURCE PREFIX-LENGTH set to 0 in a query containing the EDNS(0)
+<t>Honor a SOURCE PREFIX-LENGTH set to 0 in a query containing the EDNS(0)
 Client Subnet (ECS) option and not send an ECS option in upstream queries.</t>
 </list>
 </t>
@@ -740,6 +795,12 @@ believe they will be able to add a reference for advice here soon) and ideally
 use a policy of whitelisting upstream servers to send ECS to in order to
 minimize data leakage. Operators should make clear in any policy statement what
 prefix length they actually send and the specific policy used.
+</t>
+<t>Whitelisting has the benefit that not only does the operator know which upstream
+servers can use ECS but also allows the operator to decide which upstream
+servers apply privacy policies that the operator is happy with. However some
+operators consider whitelisting to incur significant operational overhead
+compared to dynamic detection of ECS on authoritative servers.
 </t>
 <t>Additional options:
 </t>
@@ -769,7 +830,7 @@ harder. The resolver could also employ aggressive pre-fetch techniques as a
 further measure to counter traffic analysis.
 </t>
 <t>At the time of writing there are no standardized or widely recognized techniques
-to preform such obfuscation or bulk pre-fetches.
+to perform such obfuscation or bulk pre-fetches.
 </t>
 <t>Another technique that particularly small operators may consider is forwarding
 local traffic to a larger resolver (with a privacy policy that aligns with their
@@ -779,7 +840,7 @@ obfuscated among those of the large resolver.
 </section>
 
 <section anchor="data-sharing" title="Data sharing">
-<t>Threats:
+<t><xref target="RFC6973"/> Threats:
 </t>
 <t>
 <list style="symbols">
@@ -789,6 +850,12 @@ obfuscated among those of the large resolver.
 <t>Identification</t>
 <t>Secondary use</t>
 <t>Disclosure</t>
+</list>
+</t>
+<t>DNS Privacy Threats:
+</t>
+<t>
+<list style="symbols">
 <t>Contravention of legal requirements not to process user data?</t>
 </list>
 </t>
@@ -821,149 +888,108 @@ services one that implies consent for data processing, one that doesn't?
 <section anchor="dns-privacy-policy-and-practice-statement" title="DNS privacy policy and practice statement">
 
 <section anchor="recommended-contents-of-a-dppps" title="Recommended contents of a DPPPS">
-<t>1 Policy
+
+<section anchor="policy" title="Policy">
+<t>
+<list style="numbers">
+<t>Make an explicit statement that IP addressses are treated as PII</t>
+<t>State if IP addresses are being logged</t>
+<t>Specify clearly what data (including whether it is aggregated,
+    pseudonymized or anonymized) is:
+<list style="symbols">
+<t>Collected and retained by the operator (and for how long)</t>
+<t>Shared with partners</t>
+<t>Shared, sold or rented to third-parties</t>
+</list></t>
+<t>Specify any exceptions to the above, for example technically malicious or
+anomalous behavior</t>
+<t>Declare any partners, third-party affiliations or sources of funding</t>
+<t>Whether user DNS data is correlated or combined with any other personal
+  information held by the operator</t>
+<t>Result filtering. This section should explain whether the operator filters, edits or
+alters in any way the replies that it receives from the authoritative servers for each
+DNS zone, before forwarding them to the clients. For each category listed below, the
+operator should also specify how the filtering lists are created and managed, whether it
+employs any third-party sources for such lists, and which ones.
+<list style="symbols">
+<t>Specify if any replies are being filtered out or altered for network and computer
+security reasons (e.g. preventing connections to malware-spreading websites or botnet
+control servers)</t>
+<t>Specify if any replies are being filtered out or altered for mandatory legal
+reasons, due to applicable legislation or binding orders by courts and other public
+authorities</t>
+<t>Specify if any replies are being filtered out or altered for voluntary legal
+reasons, due to an internal policy by the operator aiming at reducing potential legal
+risks</t>
+<t>Specify if any replies are being filtered out or altered for any other reason,
+including commercial ones</t>
+</list></t>
+</list>
 </t>
-<t>1.1 Recommendations. This section should explain, with reference to section
-      <xref target="recommendations-for-dns-privacy-services"/> of this document which
-      recommendations the DNS privacy service employs.
+</section>
+
+<section anchor="practice" title="Practice.">
+<t>This section should explain the current operational practices of the service.
 </t>
-<t>1.2 Data handling. This section should explain, with reference to section
-       <xref target="data-at-rest-on-the-server"/>
-       of this document the policy for gathering and disseminating information
-       collected by the DNS privacy service.
+<t>
+<list style="numbers">
+<t>Specify any temporary or permanent deviations from the policy for
+operational reasons</t>
+<t>With reference to section <xref target="recommendations-for-dns-privacy-services"/> provide
+specific details of which capabilities are provided on which client facing address
+and ports</t>
+<t>Specify the authentication name to be used (if any) and if TLSA records are
+published (including options used in the TLSA records)</t>
+<t>Specify the SPKI pinsets to be used (if any) and policy for rolling keys</t>
+<t>Provide contact/support information for the service</t>
+<t>Jurisdiction. This section should communicate the applicable jurisdictions and law
+enforcement regimes under which the service is being provided.
+<list style="symbols">
+<t>Specify the entity or entities that will control the data and be responsible for
+their treatment, and their legal place of business</t>
+<t>Specify, either directly or by pointing to the applicable privacy policy, the
+relevant privacy laws that apply to the treatment of the data, the rights that users
+enjoy in regard to their own personal information that is treated by the service, and
+how they can contact the operator to enforce them</t>
+<t>Specify the countries in which the servers handling the DNS requests and the data
+are located (if the operator applies a geolocation policy so that requests from
+certain countries are only served by certain servers, this should be specified as
+well)</t>
+<t>Specify whether the operator has any agreement in place with law enforcement
+agencies, or other public and private parties dealing with security and intelligence,
+to give them access to the servers and/or to the data</t>
+</list></t>
+<t>Describe how consent is obtained from the user of the DNS privacy service
+differentiating
+<list style="symbols">
+<t>Uninformed users for whom this trust relationship is implicit</t>
+<t>Privacy-conscious users, that make an explicit trust choice</t>
+</list></t>
+</list>
 </t>
-<t>1.2.1 Specify clearly what data (including whether it is aggregated,
-        pseudonymized or anonymized) is:
+<t>this may prove relevant in the context of e.g. the GDPR as it relates to consent.
 </t>
-<t>1.2.1.1 Collected and retained by the operator (and for how long)
-</t>
-<t>1.2.1.2 Shared with partners
-</t>
-<t>1.2.1.3  Shared, sold or rented to third-parties
-</t>
-<t>1.2.2  Specify any exceptions to the above, for example technically malicious or
-anomalous behaviour
-</t>
-<t>1.2.3  Declare any partners, third-party affiliations or sources of funding
-</t>
-<t>1.2.4 Whether user DNS data is correlated or combined with any other personal
-      information held by the operator
-</t>
-<t>2 Practice. This section should explain the current operational practices of the service.
-</t>
-<t>2.1 Specify any temporary or permanent deviations from the policy for
-    operational reasons
-</t>
-<t>2.2 With reference to section <xref target="on-the-wire-between-client-and-server"/> provide
-    specific details of which capabilities are provided on which address and
-    ports
-</t>
-<t>2.3 With reference to section <xref target="data-sent-onwards-from-the-server"/>
-    provide specific details of which capabilities are employed for upstream
-    traffic from the server
-</t>
-<t>2.4 Specify the authentication name to be used (if any) and if TLSA records are
-    published (including options used in the TLSA records)
-</t>
-<t>2.5 Specify the SPKI pinsets to be used (if any) and policy for rolling keys
-</t>
-<t>2.6 Provide a contact email address for the service
-</t>
+</section>
 </section>
 
 <section anchor="current-policy-and-privacy-statements" title="Current policy and privacy statements">
-<t>NOTE: An analysis of these statements will clearly only provide a snapshot at
-the time of writing. It is included in this version of the draft to provide a
-basis for the assessment of the contents of the DPPPS and is expected to be
-removed or substantially re-worked in a future version.
+<t>A tabular comparison of existing policy and privacy statements from various DNS
+Privacy service operators based on the proposed DPPPS structure can be found on
+<eref target="https://dnsprivacy.org/wiki/display/DP/Comparison+of+policy+and+privacy+statements">dnsprivacy.org</eref>.
 </t>
-
-<section anchor="quad9" title="Quad9">
-<t>UDP/TCP and TLS (port 853) service provided on two addresses:
+<t>We note that the existing set of policies vary widely in style, content and
+detail and it is not uncommon for the full text for a given operator to equate
+to more than 10 pages of moderate font sized A4 text. It is a non-trivial task
+today for a user to extract a meaningful overview of the different services on
+offer.
 </t>
-<t>
-<list style="symbols">
-<t>'Secure': 9.9.9.9, 149.112.112.112, 2620:fe::fe, 2620:fe::9</t>
-<t>'Unsecured': 9.9.9.10, 149.112.112.10, 2620:fe::10</t>
-</list>
-</t>
-<t>Policy:
-</t>
-<t>
-<list style="symbols">
-<t><eref target="https://www.quad9.net/policy/"/></t>
-<t><eref target="https://www.quad9.net/privacy/"/></t>
-<t><eref target="https://www.quad9.net/faq/"/></t>
-</list>
-</t>
-</section>
-
-<section anchor="cloudflare" title="Cloudflare">
-<t>UDP/TCP and TLS (port 853) service provided on 1.1.1.1, 1.0.0.1,
-2606:4700:4700::1111 and 2606:4700:4700::1001.
-</t>
-<t>Policy:
-</t>
-<t>
-<list style="symbols">
-<t><eref target="https://developers.cloudflare.com/1.1.1.1/commitment-to-privacy/privacy-policy/privacy-policy/"/></t>
-</list>
-</t>
-<t>DoH provided on: <eref target="https://cloudflare-dns.com/dns-query"/>
-</t>
-<t>Policy:
-</t>
-<t>
-<list style="symbols">
-<t><eref target="https://developers.cloudflare.com/1.1.1.1/commitment-to-privacy/privacy-policy/firefox/"/></t>
-</list>
-</t>
-<t>Tor endpoint: <eref target="https://dns4torpnlfs2ifuz2s2yf3fc7rdmsbhm6rw75euj35pac6ap25zgqad.onion"/>.
-</t>
-</section>
-
-<section anchor="google" title="Google">
-<t>UDP/TCP service provided on 8.8.8.8, 8.8.4.4, 2001:4860:4860::8888 and
-2001:4860:4860::8844.
-</t>
-<t>Policy: <eref target="https://developers.google.com/speed/public-dns/privacy"/>
-</t>
-</section>
-
-<section anchor="opendns" title="OpenDNS">
-<t>UDP/TCP service provided on 208.67.222.222 and 208.67.220.220 (no IPv6).
-</t>
-<t>We could find no specific privacy policy for the DNS resolution, only a general
-one from Cisco that seems focussed on websites.
-</t>
-<t>Policy: <eref target="https://www.cisco.com/c/en/us/about/legal/privacy-full.html"/>
-</t>
-</section>
-
-<section anchor="comparison" title="Comparison">
-<t>The following tables provides a high-level comparison of the policy and practice
-statements above and also some observations of practice measured at
-<eref target="https://dnsprivacy.org/jenkins/job/dnsprivacy-monitoring/">dnsprivacy.org</eref>. The
-data is not exhaustive and has not been reviewed or confirmed by the operators.
-</t>
-<t>A question mark indicates no clear statement or data could be located on the
-issue. A dash indicates the category is not applicable to the service.
-</t>
-<t><eref target="https://github.com/Sinodun/draft-dprive-bcp-op/blob/master/draft-00/policy_table.svg">Table showing comparison of operators policies</eref>
-</t>
-<t><eref target="https://github.com/Sinodun/draft-dprive-bcp-op/blob/master/draft-00/practice_table.svg">Table showing comparison of operators practices</eref>
-</t>
-<t>NOTE: Review and correction of any inaccuracies in the table would be much
-appreciated.
-</t>
-</section>
 </section>
 
 <section anchor="enforcementaccountability" title="Enforcement/accountability">
 <t>Transparency reports may help with building user trust that operators adhere to
 their policies and practices.
 </t>
-<t>Independent monitoring should be performed where possible of:
+<t>Independent monitoring or analysis could be performed where possible of:
 </t>
 <t>
 <list style="symbols">
@@ -971,6 +997,12 @@ their policies and practices.
 <t>Filtering</t>
 <t>Uptime</t>
 </list>
+</t>
+<t>This is by analogy with e.g. several TLS or website analysis tools that are
+currently available e.g. <eref target="https://www.ssllabs.com/ssltest/">SSL Labs</eref> or
+<eref target="https://internet.nl">Internet.nl</eref>.
+</t>
+<t>Additionally operators could choose to engage the services of a third party auditor to verify their compliance with their published DPPPS.
 </t>
 </section>
 </section>
@@ -981,14 +1013,20 @@ their policies and practices.
 </section>
 
 <section anchor="security-considerations" title="Security considerations">
+<t>Security considerations for DNS-over-TCP are given in <xref target="RFC7766"/>, many of which
+are generally applicable to session based DNS.
+</t>
 <t>TODO: e.g. New issues for DoS defence, server admin policies
 </t>
 </section>
 
 <section anchor="acknowledgements" title="Acknowledgements">
 <t>Many thanks to Amelia Andersdotter for a very thorough review of the first draft
-of this document. Thanks also to John Todd for discussions on this topic, and to
-Stephane Bortzmeyer for review.
+of this document. Thanks to John Todd for discussions on this topic, and to
+Stephane Bortzmeyer, Puneet Sood and Vittorio Bertola for review. Thanks to
+Daniel Kahn Gillmor, Barry Green, Paul Hoffman, Dan York, John Reed, Lorenzo
+Colitti for comments at the mic. Thanks to Loganaden Velvindron for useful
+updates to the text.
 </t>
 <t>Sara Dickinson thanks the Open Technology Fund for a grant to support the work
 on this document.
@@ -1006,7 +1044,7 @@ Magdalen Centre
 <vspace/>
 Oxford Science Park
 <vspace/>
-Oxford  OX4 4GA
+Oxford OX4 4GA
 <vspace/>
 United Kingdom
 </t>
@@ -1018,7 +1056,7 @@ Magdalen Centre
 <vspace/>
 Oxford Science Park
 <vspace/>
-Oxford  OX4 4GA
+Oxford OX4 4GA
 <vspace/>
 United Kingdom
 </t>
@@ -1037,33 +1075,39 @@ draft-dickinson-dprive-bcp-op-01</t>
 
 
 
+
 </t>
 </section>
 
 </middle>
 <back>
 <references title="Normative References">
-<?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml3/reference.I-D.ietf-dnsop-terminology-bis.xml"?>
-<?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml3/reference.I-D.ietf-doh-dns-over-https.xml"?>
-<?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml3/reference.I-D.ietf-dprive-padding-policy.xml"?>
+<?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml3/reference.I-D.ietf-dnsop-session-signal.xml"?>
 <?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.2119.xml"?>
 <?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.5077.xml"?>
 <?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.6265.xml"?>
 <?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.6973.xml"?>
 <?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.7525.xml"?>
+<?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.7766.xml"?>
 <?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.7816.xml"?>
+<?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.7828.xml"?>
 <?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.7830.xml"?>
 <?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.7858.xml"?>
+<?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.7871.xml"?>
 <?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.7873.xml"?>
 <?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.8174.xml"?>
 <?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.8310.xml"?>
+<?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.8404.xml"?>
+<?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.8446.xml"?>
+<?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.8467.xml"?>
+<?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.8484.xml"?>
 </references>
 <references title="Informative References">
 <?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml3/reference.I-D.bortzmeyer-dprive-rfc7626-bis.xml"?>
+<?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml3/reference.I-D.dickinson-doh-dohpe.xml"?>
 <?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml3/reference.I-D.ietf-dnsop-dns-capture-format.xml"?>
 <?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml3/reference.I-D.ietf-dnsop-dns-tcp-requirements.xml"?>
-<?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml3/reference.I-D.ietf-dnsop-session-signal.xml"?>
-<?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml3/reference.I-D.ietf-tls-dnssec-chain-extension.xml"?>
+<?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml3/reference.I-D.ietf-dnsop-terminology-bis.xml"?>
 <reference anchor='Pitfalls-of-DNS-Encryption'
  target='https://www.ietf.org/mail-archive/web/dns-privacy/current/pdfWqAIUmEl47.pdf'>
     <front>
@@ -1074,14 +1118,12 @@ draft-dickinson-dprive-bcp-op-01</t>
         <date year='2014'/>
     </front>
 </reference>
+<?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.4033.xml"?>
 <?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.6235.xml"?>
 <?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.6841.xml"?>
-<?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.6873.xml"?>
+<?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.7457.xml"?>
 <?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.7686.xml"?>
 <?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.7706.xml"?>
-<?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.7766.xml"?>
-<?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.7828.xml"?>
-<?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.7871.xml"?>
 <?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.8094.xml"?>
 <?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.8198.xml"?>
 <reference anchor='pcap' target='http://www.tcpdump.org/'>
@@ -1112,11 +1154,11 @@ referred to here as 'DNS-over-TLS'.</t>
 <t>'DNS over Datagram Transport Layer Security (DTLS)' <xref target="RFC8094"/>, referred to
 here as 'DNS-over-DTLS'. Note that this document has the Category of
 Experimental.</t>
-<t>'DNS Queries over HTTPS (DoH)' <xref target="I-D.ietf-doh-dns-over-https"/> referred to
+<t>'DNS Queries over HTTPS (DoH)' <xref target="RFC8484"/> referred to
 here as DoH.</t>
 <t>'Usage Profiles for DNS over TLS and DNS over DTLS' <xref target="RFC8310"/></t>
 <t>'The EDNS(0) Padding Option' <xref target="RFC7830"/> and 'Padding Policy for EDNS(0)'
-<xref target="I-D.ietf-dprive-padding-policy"/></t>
+<xref target="RFC8467"/></t>
 </list>
 </t>
 <t>These documents apply to recursive to authoritative DNS but are relevant when
@@ -1145,7 +1187,7 @@ user activity as a side effect:
 </list>
 </t>
 <t>Note that depending on the specifics of the implementation
-<xref target="I-D.ietf-doh-dns-over-https"/> may also provide increased tracking.
+<xref target="RFC8484"/> may also provide increased tracking.
 </t>
 </section>
 
@@ -1160,6 +1202,23 @@ user activity as a side effect:
 </list>
 </t>
 </section>
+</section>
+
+<section anchor="encryption-and-dnssec" title="Encryption and DNSSEC">
+<t>The addition of encryption to DNS does not remove the need for DNSSEC
+<xref target="RFC4033"/> - they are independent and fully compatible protocols,
+each solving different problems. The use of one does not diminish the need nor
+the usefulness of the other.
+</t>
+<t>All DNS privacy services SHOULD offer a DNS privacy service that performs DNSSEC
+validation. In addition they SHOULD be able to provide the DNSSEC RRs to the
+client so that it can perform its own validation.
+</t>
+<t>While the use of an authenticated and encrypted transport protects origin
+authentication and data integrity between a client and a DNS privacy service it
+provides no proof (for a non-validating client) that the data provided by the
+DNS privacy service was actually DNSSEC authenticated.
+</t>
 </section>
 
 <section anchor="ip-address-techniques" title="IP address techniques">
@@ -1275,7 +1334,8 @@ some number of prefix bits.
 </section>
 
 <section anchor="tophash-subtreereplicated-anonymisation" title="Top-hash Subtree-replicated Anonymisation">
-<t>Proposed in Ramaswamy &amp; Wolf, Top-hash Subtree-replicated Anonymisation (TSA)
+<t>Proposed in <eref target="http://www.ecs.umass.edu/ece/wolf/pubs/ton2007.pdf">Ramaswamy &amp; Wolf</eref>,
+Top-hash Subtree-replicated Anonymisation (TSA)
 originated in response to the requirement for faster processing than Crypto-PAn.
 It used hashing for the most significant byte of an IPv4 address, and a
 pre-calculated binary tree structure for the remainder of the address. To save
