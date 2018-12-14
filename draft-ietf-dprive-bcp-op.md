@@ -238,6 +238,7 @@ the client.
     [@I-D.bortzmeyer-dprive-rfc7626-bis] Section 2.4.2.
 
 DNS Privacy Threats:
+
 * Active injection of spurious data or traffic
 
 Mitigations:
@@ -786,25 +787,15 @@ this may prove relevant in the context of e.g. the GDPR as it relates to consent
 
 ## Current policy and privacy statements
 
-The following tables provides a high-level comparison of the policy and practice
-statements above and also some observations of practice measured at
-[dnsprivacy.org](https://dnsprivacy.org/). The data is not exhaustive and has not been reviewed or
-confirmed by the operators.
+A tabular comparison of existing policy and privacy statements from various DNS
+Privacy service operators based on the proposed DPPPS structure can be found on
+[dnsprivacy.org](https://dnsprivacy.org/wiki/display/DP/Comparison+of+policy+and+privacy+statements).
 
- A question mark indicates no clear statement or data could be located on the
- issue. A dash indicates the category is not applicable to the service.
-
- Table showing comparison of operators policies XX
-
- Table showing comparison of operators practices XX
-
-We note that the total word count of the set of policies reviewed here is
-approximately XXX words and one purpose of this comparison is to highlight the
-difficulty a typical technical user would have to go to to extract a meaningful
-overview of the different services on offer.
-
- NOTE: Review and correction of any inaccuracies in the table would be
- much appreciated.
+We note that the existing set of policies vary widely in style, content and
+detail and it is not uncommon for the full text for a given operator to equate
+to more than 10 pages of moderate font sized A4 text. It is a non-trivial task
+today for a user to extract a meaningful overview of the different services on
+offer.
 
 ## Enforcement/accountability
 
