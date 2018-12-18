@@ -76,7 +76,7 @@
 <uri></uri>
 </address>
 </author>
-<date year="2018" month="December" day="14"/>
+<date year="2018" month="December" day="18"/>
 
 <area>Internet</area>
 <workgroup>dprive</workgroup>
@@ -1063,6 +1063,22 @@ United Kingdom
 </section>
 
 <section anchor="changelog" title="Changelog">
+<t>draft-ietf-dprive-bcp-op-01
+</t>
+<t>
+<list style="symbols">
+<t>Many minor editorial fixes</t>
+<t>Update DoH reference to RFC8484 and add more text on DoH</t>
+<t>Split threat descriptions into ones directly referencing RFC6973 and other DNS Privacy threats</t>
+<t>Improve threat descriptions throughout</t>
+<t>Remove reference to the DNSSEC TLS Chain Extension draft until new version submitted.</t>
+<t>Clarify use of whitelisting for ECS</t>
+<t>Re-structure the DPPPS, add Result filtering section.</t>
+<t>Remove the direct inclusion of privacy policy comparison, now just reference dnsprivacy.org and an example of such work.</t>
+<t>Add an appendix briefly discussing DNSSEC</t>
+<t>Update affiliation of 1 author</t>
+</list>
+</t>
 <t>draft-ietf-dprive-bcp-op-00
 </t>
 <t>

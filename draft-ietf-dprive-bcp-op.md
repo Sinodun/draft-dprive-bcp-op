@@ -7,7 +7,7 @@
     area = "Internet"
     workgroup = "dprive"
     keyword = ["DNS"]
-    date = 2018-12-14T00:00:00Z
+    date = 2018-12-18T00:00:00Z
     [pi]
     toc = "yes"
     compact = "yes"
@@ -857,6 +857,19 @@ Oxford OX4 4GA\\
 United Kingdom
 
 # Changelog
+
+draft-ietf-dprive-bcp-op-01
+
+* Many minor editorial fixes
+* Update DoH reference to RFC8484 and add more text on DoH
+* Split threat descriptions into ones directly referencing RFC6973 and other DNS Privacy threats
+* Improve threat descriptions throughout
+* Remove reference to the DNSSEC TLS Chain Extension draft until new version submitted.
+* Clarify use of whitelisting for ECS
+* Re-structure the DPPPS, add Result filtering section.
+* Remove the direct inclusion of privacy policy comparison, now just reference dnsprivacy.org and an example of such work.
+* Add an appendix briefly discussing DNSSEC
+* Update affiliation of 1 author
 
 draft-ietf-dprive-bcp-op-00
 
