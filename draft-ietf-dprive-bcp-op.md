@@ -82,7 +82,7 @@ latest evolution of the DNS presents new challenges to operators and this
 document attempts to provide an overview of considerations for privacy focused
 DNS services.
 
-In recent years there has also been an increase in the availability of "open
+In recent years there has also been an increase in the availability of "public
 resolvers" [@?I-D.ietf-dnsop-terminology-bis] which users may prefer to use
 instead of the default network resolver because they offer a specific feature
 (e.g. good reachability, encrypted transport, strong privacy policy, filtering
@@ -104,14 +104,14 @@ environments has both advantages and disadvantages. For example the user has a
 clear expectation of which resolvers have visibility of their query data however
 this resolver/transport selection may provide an added mechanism to track them
 as they move across network environments. Commitments from operators to minimize
-such tracking are also likely to play a role in users selection of resolver.
+such tracking are also likely to play a role in user selection of resolvers.
 
 More recently the global legislative landscape with regard to personal data
 collection, retention, and pseudonymization has seen significant activity.
 It is an untested area that simply using a DNS resolution service
 constitutes consent from the user for the operator to process their query data.
 The impact of recent legislative changes on data pertaining to the users of both
-Internet Service Providers and DNS open resolvers is not fully understood at the
+Internet Service Providers and public DNS resolvers is not fully understood at the
 time of writing.
 
 This document has two main goals:
@@ -199,7 +199,7 @@ Other Terms:
 We describe two classes of threats:
 
 * 'Privacy Considerations for Internet Protocols' [@!RFC6973] Threats
-  * Privacy terminology, threats to privacy and mitigations are described in
+  * Privacy terminology, threats to privacy and mitigations as described in
     Sections 3, 5 and 6 of [@!RFC6973].
 
 * DNS Privacy Threats
@@ -255,7 +255,7 @@ implementations at the time of writing.
 
 It is also noted that DNS privacy service might be provided over IPSec, DNSCrypt
 or VPNs. However, use of these transports for DNS are not standardized and any
-discussion of best practice for providing such service is out of scope for this
+discussion of best practice for providing such a service is out of scope for this
 document.
 
 Whilst encryption of DNS traffic can protect against active injection this does
@@ -396,6 +396,8 @@ attacks is a significant motivation for users to switch services.
 
 TODO: Add reference to ongoing research on this topic.
 
+**SUGGESTION: You could refer to http://tma.ifip.org/2018/wp-content/uploads/sites/3/2018/06/tma2018_paper30.pdf -- Section IV-C in particular**
+
 ### Service options
 
 DNS Privacy Threats: 
@@ -408,7 +410,7 @@ DNS Privacy Threats:
 Mitigations:
 
 A DNS privacy service should deliver the same level of service as offered on
-un-encrypted channels in terms of such options as filtering (or lack of), DNSSEC
+un-encrypted channels in terms of such options as filtering (or lack thereof), DNSSEC
 validation, etc. 
 
 ### Impact on Operators
@@ -416,6 +418,24 @@ validation, etc.
 DNS Privacy Threats: 
 
 * Increased use of encryption impacts operator ability to manage their network [@!RFC8404]
+
+Many monitoring solutions for DNS traffic rely on the plain text nature of 
+this traffic and work by intercepting traffic on the wire, either using a 
+separate view on the connection between clients and the resolver, or as a 
+separate process on the resolver system that inspects network traffic. Such 
+solutions will no longer function when traffic between clients and resolvers is 
+encrypted. There are, however, legitimate reasons for operators to inspect DNS 
+traffic, e.g. to monitor for network security threats. Operators may therefore 
+need to invest in alternative means of monitoring that relies on either the
+resolver software directly, or exporting DNS traffic from the resolver using
+e.g. [dnstap](http://dnstap.info).
+
+Optimization:
+
+When implementing alternative means for traffic monitoring, operators of a
+DNS privacy service should consider using privacy conscious means to do so (see,
+for example, the discussion on the use of Bloom Filters in the #documents
+appendix in this document).
 
 ### Limitations of using a pure TLS proxy
 
@@ -537,7 +557,7 @@ DNS traffic is the client IP address.
 There is active discussion in the space of effective pseudonymization of IP
 addresses in DNS traffic logs, however there seems to be no single solution that
 is widely recognized as suitable for all or most use cases. There are also as
-yet no standards for this that are unencumbered by patents. This following table
+yet no standards for this that are unencumbered by patents. The following table
 presents a high level comparison of various techniques employed or under
 development today and classifies them according to categorization of technique
 and other properties. The list of techniques includes the main techniques in
@@ -554,11 +574,11 @@ the particular situation.
 For example, a common goal is that distributed packet captures must be in an
 existing data format such as PCAP [@pcap] or C-DNS
 [@I-D.ietf-dnsop-dns-capture-format] that can be used as input to existing
-analysis tools. In that case, use of a Format-preserving technique is
+analysis tools. In that case, use of a format-preserving technique is
 essential. This, though, is not cost-free - several authors (e.g. [Brenker &
 Arnes]
 (https://pdfs.semanticscholar.org/7b34/12c951cebe71cd2cddac5fda164fb2138a44.pdf))
-have observed that, as the entropy in a IPv4 address is limited, given
+have observed that, as the entropy in an IPv4 address is limited, given
 a de-identified log from a target, if an attacker is capable of ensuring
 packets are captured by the target and the attacker can send forged traffic
 with arbitrary source and destination addresses to that target, any
@@ -724,7 +744,7 @@ services one that implies consent for data processing, one that doesn't?
 1. State if IP addresses are being logged
 1. Specify clearly what data (including whether it is aggregated, 
         pseudonymized or anonymized) is:
-    - Collected and retained by the operator (and for how long)
+    - Collected and retained by the operator, and for what period it is retained
     - Shared with partners
     - Shared, sold or rented to third-parties
 1. Specify any exceptions to the above, for example technically malicious or
@@ -749,14 +769,14 @@ employs any third-party sources for such lists, and which ones.
     - Specify if any replies are being filtered out or altered for any other reason,
     including commercial ones
 
-### Practice.
+### Practice
 
 This section should explain the current operational practices of the service.
 
 1. Specify any temporary or permanent deviations from the policy for
     operational reasons
 1. With reference to section (#recommendations-for-dns-privacy-services) provide 
-    specific details of which capabilities are provided on which client facing address
+    specific details of which capabilities are provided on which client facing addresses
     and ports
 1. Specify the authentication name to be used (if any) and if TLSA records are 
     published (including options used in the TLSA records)
@@ -781,8 +801,8 @@ enforcement regimes under which the service is being provided.
 differentiating
     - Uninformed users for whom this trust relationship is implicit
     - Privacy-conscious users, that make an explicit trust choice
-
-this may prove relevant in the context of e.g. the GDPR as it relates to consent.
+    
+    (this may prove relevant in the context of e.g. the GDPR as it relates to consent)
 
 
 ## Current policy and privacy statements
