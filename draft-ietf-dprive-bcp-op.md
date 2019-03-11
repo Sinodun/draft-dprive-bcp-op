@@ -7,7 +7,7 @@
     area = "Internet"
     workgroup = "dprive"
     keyword = ["DNS"]
-    date = 2018-12-18T00:00:00Z
+    date = 2019-03-11T00:00:00Z
     [pi]
     toc = "yes"
     compact = "yes"
@@ -279,7 +279,7 @@ When using DNS-over-TLS clients that select a 'Strict Privacy' usage profile
 [@!RFC8310] (to mitigate the threat of active attack on the client) require the
 ability to authenticate the DNS server. To enable this, DNS privacy services
 that offer DNS-over-TLS should provide credentials in the form of either X.509
-certificates, SPKI pinsets or TLSA records.
+certificates or SPKI pinsets.
 
 When offering DoH [@!RFC8484], HTTPS requires authentication of the server as
 part of the protocol.
@@ -356,8 +356,7 @@ Optimizations:
 * Management of TLS connections to optimize performance for clients using either
   * [@!RFC7766] and EDNS(0) Keepalive [@!RFC7828] and/or 
   * DNS Stateful Operations [@!I-D.ietf-dnsop-session-signal]
-* Offer a separate service that uses only TLS 1.3 [@!RFC8446]
-  
+
 Additional options that providers may consider:
 
 * Offer a .onion [@RFC7686] service endpoint
@@ -372,13 +371,11 @@ DNS Privacy Threats:
 
 Mitigations:
 
-* Clients should not be required to use HTTP Cookies [@!RFC6265].
+* Clients must be able to forego the use of HTTP Cookies [@!RFC6265] and still
+  use the service
 * Clients should not be required to include any headers beyond the absolute
-  minimum to obtain service from a DoH server. (Some initial work in this area has been proposed [@I-D.dickinson-doh-dohpe] but there are no clear guidelines for HTTP header privacy, more work on this topic is required.)
-
-Optimizations:
-
-* Offer a separate service that uses only TLS 1.3 [@!RFC8446]
+  minimum to obtain service from a DoH server. (See Section 6.1 of
+  [@I-D.ietf-httpbis-bcp56bis].)
 
 ### Availability
 
@@ -392,20 +389,18 @@ Mitigations:
 A DNS privacy service must be engineered for high availability. Particular care
 should to be taken to protect DNS privacy services against denial-of-service
 attacks, as experience has shown that unavailability of DNS resolving because of
-attacks is a significant motivation for users to switch services.
-
-TODO: Add reference to ongoing research on this topic.
-
-**SUGGESTION: You could refer to http://tma.ifip.org/2018/wp-content/uploads/sites/3/2018/06/tma2018_paper30.pdf -- Section IV-C in particular**
+attacks is a significant motivation for users to switch services. See, for
+example Section IV-C of [Passive Observations of a Large DNS Service: 2.5 Years
+in the Life of
+Google](http://tma.ifip.org/2018/wp-content/uploads/sites/3/2018/06/tma2018_paper30.pdf).
 
 ### Service options
 
 DNS Privacy Threats: 
 
 * Unfairly disadvantaging users of the privacy service with respect to the
-  services available. This could force the user to switch to the services
-  available. providers, fallback to cleartext or accept no DNS service for the
-  outage.
+  services available. This could force the user to switch providers, fallback to
+  cleartext or accept no DNS service for the outage.
 
 Mitigations:
 
@@ -443,6 +438,8 @@ DNS Privacy Threats:
 
 * Limited ability to manage or monitor incoming connections using DNS specific
   techniques
+* Misconfiguration of the target server could lead to data leakage if the proxy
+  to target server path is not encrypted.
 
 Optimization:
 
@@ -458,7 +455,12 @@ nameserver behind such a proxy will appear to originate from the proxy and DNS
 techniques such as ACLs, RRL or DNS64 will be hard or impossible to implement in
 the nameserver.
 
-Operators may choose to use a DNS aware proxy such as dnsdist. 
+Operators may choose to use a DNS aware proxy such as
+[dnsdist](https://dnsdist.org) which offer custom options (similar to that
+proposed in [@I-D.bellis-dnsop-xpf]) to add source information to packets
+to address this shortcoming. It should be noted that such options potentially
+significantly increase the leaked information in the event of a
+misconfiguration.
 
 
 ## Data at rest on the server
@@ -474,7 +476,7 @@ Operators may choose to use a DNS aware proxy such as dnsdist.
 * Secondary use
 * Disclosure
 
-Other Treats
+Other Threats
 
 * Contravention of legal requirements not to process user data?
 
@@ -719,11 +721,12 @@ service itself does not constitute consent).
 
 Even when consent is granted operators should employ data minimization
 techniques such as those described in (#data-handling) if data is shared with
-third-parties.
+third-parties. 
 
 Operators should consider including specific guidelines for the collection of
 aggregated and/or anonymized data for research purposes, within or outside of
-their own organization.
+their own organization. See [SURFnet's policy](https://surf.nl/datasharing) on
+data sharing for research as an example.
 
 TODO: More on data for research vs operations... how to still motivate operators
 to share anonymized data?
@@ -743,7 +746,7 @@ services one that implies consent for data processing, one that doesn't?
 1. Make an explicit statement that IP addressses are treated as PII
 1. State if IP addresses are being logged
 1. Specify clearly what data (including whether it is aggregated, 
-        pseudonymized or anonymized) is:
+        pseudonymized or anonymized and the conditions of data transfer) is:
     - Collected and retained by the operator, and for what period it is retained
     - Shared with partners
     - Shared, sold or rented to third-parties
@@ -877,6 +880,18 @@ Oxford OX4 4GA\\
 United Kingdom
 
 # Changelog
+
+draft-ietf-dprive-bcp-op-02
+
+* Change 'open resolver' for 'public resolver'
+* Minor editorial changes
+* Remove recommendation to run a separate TLS 1.3 service
+* Move TLSA to purely a optimisation in Section 5.2.1
+* Update reference on minimal DoH headers.
+* Add reference on user switching provider after service issues in Section 5.1.4
+* Add text in Section 5.1.6 on impact on operators.
+* Add text on additional threat to TLS proxy use (Section 5.1.7)
+* Add reference in Section 5.3.1 on example policies.
 
 draft-ietf-dprive-bcp-op-01
 

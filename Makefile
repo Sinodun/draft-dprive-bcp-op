@@ -3,7 +3,7 @@
 # - xml2rfc (https://xml2rfc.tools.ietf.org/)
 
 DRAFT=draft-ietf-dprive-bcp-op
-VERSION=01
+VERSION=02
 
 XML=$(DRAFT).xml
 HTML=$(DRAFT)-$(VERSION).html

@@ -76,7 +76,7 @@
 <uri></uri>
 </address>
 </author>
-<date year="2018" month="December" day="18"/>
+<date year="2019" month="March" day="11"/>
 
 <area>Internet</area>
 <workgroup>dprive</workgroup>
@@ -110,7 +110,7 @@ latest evolution of the DNS presents new challenges to operators and this
 document attempts to provide an overview of considerations for privacy focused
 DNS services.
 </t>
-<t>In recent years there has also been an increase in the availability of &quot;open
+<t>In recent years there has also been an increase in the availability of &quot;public
 resolvers&quot; <xref target="I-D.ietf-dnsop-terminology-bis"/> which users may prefer to use
 instead of the default network resolver because they offer a specific feature
 (e.g. good reachability, encrypted transport, strong privacy policy, filtering
@@ -132,14 +132,14 @@ environments has both advantages and disadvantages. For example the user has a
 clear expectation of which resolvers have visibility of their query data however
 this resolver/transport selection may provide an added mechanism to track them
 as they move across network environments. Commitments from operators to minimize
-such tracking are also likely to play a role in users selection of resolver.
+such tracking are also likely to play a role in user selection of resolvers.
 </t>
 <t>More recently the global legislative landscape with regard to personal data
 collection, retention, and pseudonymization has seen significant activity.
 It is an untested area that simply using a DNS resolution service
 constitutes consent from the user for the operator to process their query data.
 The impact of recent legislative changes on data pertaining to the users of both
-Internet Service Providers and DNS open resolvers is not fully understood at the
+Internet Service Providers and public DNS resolvers is not fully understood at the
 time of writing.
 </t>
 <t>This document has two main goals:
@@ -239,7 +239,7 @@ practice with regard to users privacy or a formal DPPPS.</t>
 <list style="symbols">
 <t>'Privacy Considerations for Internet Protocols' <xref target="RFC6973"/> Threats
 <list style="symbols">
-<t>Privacy terminology, threats to privacy and mitigations are described in
+<t>Privacy terminology, threats to privacy and mitigations as described in
 Sections 3, 5 and 6 of <xref target="RFC6973"/>.</t>
 </list></t>
 <t>DNS Privacy Threats
@@ -315,7 +315,7 @@ implementations at the time of writing.
 </t>
 <t>It is also noted that DNS privacy service might be provided over IPSec, DNSCrypt
 or VPNs. However, use of these transports for DNS are not standardized and any
-discussion of best practice for providing such service is out of scope for this
+discussion of best practice for providing such a service is out of scope for this
 document.
 </t>
 <t>Whilst encryption of DNS traffic can protect against active injection this does
@@ -345,7 +345,7 @@ will trust.
 <xref target="RFC8310"/> (to mitigate the threat of active attack on the client) require the
 ability to authenticate the DNS server. To enable this, DNS privacy services
 that offer DNS-over-TLS should provide credentials in the form of either X.509
-certificates, SPKI pinsets or TLSA records.
+certificates or SPKI pinsets.
 </t>
 <t>When offering DoH <xref target="RFC8484"/>, HTTPS requires authentication of the server as
 part of the protocol.
@@ -445,9 +445,6 @@ similar to HTTP multiplexing)</t>
 <t><xref target="RFC7766"/> and EDNS(0) Keepalive <xref target="RFC7828"/> and/or</t>
 <t>DNS Stateful Operations <xref target="I-D.ietf-dnsop-session-signal"/></t>
 </list></t>
-<t>Offer a separate service that uses only TLS 1.3 <xref target="RFC8446"/>
-
-<vspace/></t>
 </list>
 </t>
 <t>Additional options that providers may consider:
@@ -473,16 +470,11 @@ similar to HTTP multiplexing)</t>
 </t>
 <t>
 <list style="symbols">
-<t>Clients should not be required to use HTTP Cookies <xref target="RFC6265"/>.</t>
+<t>Clients must be able to forego the use of HTTP Cookies <xref target="RFC6265"/> and still
+use the service</t>
 <t>Clients should not be required to include any headers beyond the absolute
-minimum to obtain service from a DoH server. (Some initial work in this area has been proposed <xref target="I-D.dickinson-doh-dohpe"/> but there are no clear guidelines for HTTP header privacy, more work on this topic is required.)</t>
-</list>
-</t>
-<t>Optimizations:
-</t>
-<t>
-<list style="symbols">
-<t>Offer a separate service that uses only TLS 1.3 <xref target="RFC8446"/></t>
+minimum to obtain service from a DoH server. (See Section 6.1 of
+<xref target="I-D.ietf-httpbis-bcp56bis"/>.)</t>
 </list>
 </t>
 </section>
@@ -502,9 +494,10 @@ fallback to cleartext or accept no DNS service for the outage.</t>
 <t>A DNS privacy service must be engineered for high availability. Particular care
 should to be taken to protect DNS privacy services against denial-of-service
 attacks, as experience has shown that unavailability of DNS resolving because of
-attacks is a significant motivation for users to switch services.
-</t>
-<t>TODO: Add reference to ongoing research on this topic.
+attacks is a significant motivation for users to switch services. See, for
+example Section IV-C of <eref target="http://tma.ifip.org/2018/wp-content/uploads/sites/3/2018/06/tma2018_paper30.pdf">Passive Observations of a Large DNS Service: 2.5 Years
+in the Life of
+Google</eref>.
 </t>
 </section>
 
@@ -514,15 +507,14 @@ attacks is a significant motivation for users to switch services.
 <t>
 <list style="symbols">
 <t>Unfairly disadvantaging users of the privacy service with respect to the
-services available. This could force the user to switch to the services
-available. providers, fallback to cleartext or accept no DNS service for the
-outage.</t>
+services available. This could force the user to switch providers, fallback to
+cleartext or accept no DNS service for the outage.</t>
 </list>
 </t>
 <t>Mitigations:
 </t>
 <t>A DNS privacy service should deliver the same level of service as offered on
-un-encrypted channels in terms of such options as filtering (or lack of), DNSSEC
+un-encrypted channels in terms of such options as filtering (or lack thereof), DNSSEC
 validation, etc.
 </t>
 </section>
@@ -535,6 +527,24 @@ validation, etc.
 <t>Increased use of encryption impacts operator ability to manage their network <xref target="RFC8404"/></t>
 </list>
 </t>
+<t>Many monitoring solutions for DNS traffic rely on the plain text nature of
+this traffic and work by intercepting traffic on the wire, either using a
+separate view on the connection between clients and the resolver, or as a
+separate process on the resolver system that inspects network traffic. Such
+solutions will no longer function when traffic between clients and resolvers is
+encrypted. There are, however, legitimate reasons for operators to inspect DNS
+traffic, e.g. to monitor for network security threats. Operators may therefore
+need to invest in alternative means of monitoring that relies on either the
+resolver software directly, or exporting DNS traffic from the resolver using
+e.g. <eref target="http://dnstap.info">dnstap</eref>.
+</t>
+<t>Optimization:
+</t>
+<t>When implementing alternative means for traffic monitoring, operators of a
+DNS privacy service should consider using privacy conscious means to do so (see,
+for example, the discussion on the use of Bloom Filters in the #documents
+appendix in this document).
+</t>
 </section>
 
 <section anchor="limitations-of-using-a-pure-tls-proxy" title="Limitations of using a pure TLS proxy">
@@ -544,6 +554,8 @@ validation, etc.
 <list style="symbols">
 <t>Limited ability to manage or monitor incoming connections using DNS specific
 techniques</t>
+<t>Misconfiguration of the target server could lead to data leakage if the proxy
+to target server path is not encrypted.</t>
 </list>
 </t>
 <t>Optimization:
@@ -560,7 +572,12 @@ nameserver behind such a proxy will appear to originate from the proxy and DNS
 techniques such as ACLs, RRL or DNS64 will be hard or impossible to implement in
 the nameserver.
 </t>
-<t>Operators may choose to use a DNS aware proxy such as dnsdist.
+<t>Operators may choose to use a DNS aware proxy such as
+<eref target="https://dnsdist.org">dnsdist</eref> which offer custom options (similar to that
+proposed in <xref target="I-D.bellis-dnsop-xpf"/>) to add source information to packets
+to address this shortcoming. It should be noted that such options potentially
+significantly increase the leaked information in the event of a
+misconfiguration.
 </t>
 </section>
 </section>
@@ -580,7 +597,7 @@ the nameserver.
 <t>Disclosure</t>
 </list>
 </t>
-<t>Other Treats
+<t>Other Threats
 </t>
 <t>
 <list style="symbols">
@@ -674,7 +691,7 @@ DNS traffic is the client IP address.
 <t>There is active discussion in the space of effective pseudonymization of IP
 addresses in DNS traffic logs, however there seems to be no single solution that
 is widely recognized as suitable for all or most use cases. There are also as
-yet no standards for this that are unencumbered by patents. This following table
+yet no standards for this that are unencumbered by patents. The following table
 presents a high level comparison of various techniques employed or under
 development today and classifies them according to categorization of technique
 and other properties. The list of techniques includes the main techniques in
@@ -691,10 +708,10 @@ the particular situation.
 <t>For example, a common goal is that distributed packet captures must be in an
 existing data format such as PCAP <xref target="pcap"/> or C-DNS
 <xref target="I-D.ietf-dnsop-dns-capture-format"/> that can be used as input to existing
-analysis tools. In that case, use of a Format-preserving technique is
+analysis tools. In that case, use of a format-preserving technique is
 essential. This, though, is not cost-free - several authors (e.g. <eref target="https://pdfs.semanticscholar.org/7b34/12c951cebe71cd2cddac5fda164fb2138a44.pdf">Brenker &amp;
 Arnes</eref>)
-have observed that, as the entropy in a IPv4 address is limited, given
+have observed that, as the entropy in an IPv4 address is limited, given
 a de-identified log from a target, if an attacker is capable of ensuring
 packets are captured by the target and the attacker can send forged traffic
 with arbitrary source and destination addresses to that target, any
@@ -871,7 +888,8 @@ third-parties.
 </t>
 <t>Operators should consider including specific guidelines for the collection of
 aggregated and/or anonymized data for research purposes, within or outside of
-their own organization.
+their own organization. See <eref target="https://surf.nl/datasharing">SURFnet's policy</eref> on
+data sharing for research as an example.
 </t>
 <t>TODO: More on data for research vs operations... how to still motivate operators
 to share anonymized data?
@@ -895,9 +913,9 @@ services one that implies consent for data processing, one that doesn't?
 <t>Make an explicit statement that IP addressses are treated as PII</t>
 <t>State if IP addresses are being logged</t>
 <t>Specify clearly what data (including whether it is aggregated,
-    pseudonymized or anonymized) is:
+    pseudonymized or anonymized and the conditions of data transfer) is:
 <list style="symbols">
-<t>Collected and retained by the operator (and for how long)</t>
+<t>Collected and retained by the operator, and for what period it is retained</t>
 <t>Shared with partners</t>
 <t>Shared, sold or rented to third-parties</t>
 </list></t>
@@ -928,7 +946,7 @@ including commercial ones</t>
 </t>
 </section>
 
-<section anchor="practice" title="Practice.">
+<section anchor="practice" title="Practice">
 <t>This section should explain the current operational practices of the service.
 </t>
 <t>
@@ -936,7 +954,7 @@ including commercial ones</t>
 <t>Specify any temporary or permanent deviations from the policy for
 operational reasons</t>
 <t>With reference to section <xref target="recommendations-for-dns-privacy-services"/> provide
-specific details of which capabilities are provided on which client facing address
+specific details of which capabilities are provided on which client facing addresses
 and ports</t>
 <t>Specify the authentication name to be used (if any) and if TLSA records are
 published (including options used in the TLSA records)</t>
@@ -963,11 +981,12 @@ to give them access to the servers and/or to the data</t>
 differentiating
 <list style="symbols">
 <t>Uninformed users for whom this trust relationship is implicit</t>
-<t>Privacy-conscious users, that make an explicit trust choice</t>
-</list></t>
+<t>Privacy-conscious users, that make an explicit trust choice
+
+<vspace/></t>
 </list>
-</t>
-<t>this may prove relevant in the context of e.g. the GDPR as it relates to consent.
+(this may prove relevant in the context of e.g. the GDPR as it relates to consent)</t>
+</list>
 </t>
 </section>
 </section>
@@ -1063,6 +1082,21 @@ United Kingdom
 </section>
 
 <section anchor="changelog" title="Changelog">
+<t>draft-ietf-dprive-bcp-op-02
+</t>
+<t>
+<list style="symbols">
+<t>Change 'open resolver' for 'public resolver'</t>
+<t>Minor editorial changes</t>
+<t>Remove recommendation to run a separate TLS 1.3 service</t>
+<t>Move TLSA to purely a optimisation in Section 5.2.1</t>
+<t>Update reference on minimal DoH headers.</t>
+<t>Add reference on user switching provider after service issues in Section 5.1.4</t>
+<t>Add text in Section 5.1.6 on impact on operators.</t>
+<t>Add text on additional threat to TLS proxy use (Section 5.1.7)</t>
+<t>Add reference in Section 5.3.1 on example policies.</t>
+</list>
+</t>
 <t>draft-ietf-dprive-bcp-op-01
 </t>
 <t>
@@ -1114,16 +1148,16 @@ draft-dickinson-dprive-bcp-op-01</t>
 <?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.8174.xml"?>
 <?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.8310.xml"?>
 <?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.8404.xml"?>
-<?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.8446.xml"?>
 <?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.8467.xml"?>
 <?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.8484.xml"?>
 </references>
 <references title="Informative References">
+<?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml3/reference.I-D.bellis-dnsop-xpf.xml"?>
 <?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml3/reference.I-D.bortzmeyer-dprive-rfc7626-bis.xml"?>
-<?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml3/reference.I-D.dickinson-doh-dohpe.xml"?>
 <?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml3/reference.I-D.ietf-dnsop-dns-capture-format.xml"?>
 <?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml3/reference.I-D.ietf-dnsop-dns-tcp-requirements.xml"?>
 <?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml3/reference.I-D.ietf-dnsop-terminology-bis.xml"?>
+<?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml3/reference.I-D.ietf-httpbis-bcp56bis.xml"?>
 <reference anchor='Pitfalls-of-DNS-Encryption'
  target='https://www.ietf.org/mail-archive/web/dns-privacy/current/pdfWqAIUmEl47.pdf'>
     <front>
