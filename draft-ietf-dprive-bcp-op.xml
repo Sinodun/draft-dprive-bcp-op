@@ -76,7 +76,7 @@
 <uri></uri>
 </address>
 </author>
-<date year="2018" month="December" day="18"/>
+<date year="2019" month="March" day="8"/>
 
 <area>Internet</area>
 <workgroup>dprive</workgroup>
@@ -345,7 +345,7 @@ will trust.
 <xref target="RFC8310"/> (to mitigate the threat of active attack on the client) require the
 ability to authenticate the DNS server. To enable this, DNS privacy services
 that offer DNS-over-TLS should provide credentials in the form of either X.509
-certificates, SPKI pinsets or TLSA records.
+certificates or SPKI pinsets.
 </t>
 <t>When offering DoH <xref target="RFC8484"/>, HTTPS requires authentication of the server as
 part of the protocol.
@@ -445,9 +445,6 @@ similar to HTTP multiplexing)</t>
 <t><xref target="RFC7766"/> and EDNS(0) Keepalive <xref target="RFC7828"/> and/or</t>
 <t>DNS Stateful Operations <xref target="I-D.ietf-dnsop-session-signal"/></t>
 </list></t>
-<t>Offer a separate service that uses only TLS 1.3 <xref target="RFC8446"/>
-
-<vspace/></t>
 </list>
 </t>
 <t>Additional options that providers may consider:
@@ -473,9 +470,11 @@ similar to HTTP multiplexing)</t>
 </t>
 <t>
 <list style="symbols">
-<t>Clients should not be required to use HTTP Cookies <xref target="RFC6265"/>.</t>
+<t>Clients must be able to forego the use of HTTP Cookies <xref target="RFC6265"/> and still
+use the service</t>
 <t>Clients should not be required to include any headers beyond the absolute
-minimum to obtain service from a DoH server. (Some initial work in this area has been proposed <xref target="I-D.dickinson-doh-dohpe"/> but there are no clear guidelines for HTTP header privacy, more work on this topic is required.)</t>
+minimum to obtain service from a DoH server. (See Section 6.1 of
+<xref target="I-D.ietf-httpbis-bcp56bis"/>.)</t>
 </list>
 </t>
 <t>Optimizations:
@@ -514,9 +513,8 @@ attacks is a significant motivation for users to switch services.
 <t>
 <list style="symbols">
 <t>Unfairly disadvantaging users of the privacy service with respect to the
-services available. This could force the user to switch to the services
-available. providers, fallback to cleartext or accept no DNS service for the
-outage.</t>
+services available. This could force the user to switch providers, fallback to
+cleartext or accept no DNS service for the outage.</t>
 </list>
 </t>
 <t>Mitigations:
@@ -544,6 +542,8 @@ validation, etc.
 <list style="symbols">
 <t>Limited ability to manage or monitor incoming connections using DNS specific
 techniques</t>
+<t>Misconfiguration of the target server could lead to data leakage if the proxy
+to target server path is not encrypted.</t>
 </list>
 </t>
 <t>Optimization:
@@ -560,7 +560,12 @@ nameserver behind such a proxy will appear to originate from the proxy and DNS
 techniques such as ACLs, RRL or DNS64 will be hard or impossible to implement in
 the nameserver.
 </t>
-<t>Operators may choose to use a DNS aware proxy such as dnsdist.
+<t>Operators may choose to use a DNS aware proxy such as
+<eref target="https://dnsdist.org">dnsdist</eref> which offer custom options (similar to that
+proposed in <xref target="I-D.bellis-dnsop-xpf"/>) to add source information to packets
+to address this shortcoming. It should be noted that such options potentially
+significantly increase the leaked information in the event of a
+misconfiguration.
 </t>
 </section>
 </section>
@@ -580,7 +585,7 @@ the nameserver.
 <t>Disclosure</t>
 </list>
 </t>
-<t>Other Treats
+<t>Other Threats
 </t>
 <t>
 <list style="symbols">
@@ -871,7 +876,8 @@ third-parties.
 </t>
 <t>Operators should consider including specific guidelines for the collection of
 aggregated and/or anonymized data for research purposes, within or outside of
-their own organization.
+their own organization. See <eref target="https://surf.nl/datasharing">SURFnet's policy</eref> on
+data sharing for research as an example.
 </t>
 <t>TODO: More on data for research vs operations... how to still motivate operators
 to share anonymized data?
@@ -895,7 +901,7 @@ services one that implies consent for data processing, one that doesn't?
 <t>Make an explicit statement that IP addressses are treated as PII</t>
 <t>State if IP addresses are being logged</t>
 <t>Specify clearly what data (including whether it is aggregated,
-    pseudonymized or anonymized) is:
+    pseudonymized or anonymized and the conditions of data transfer) is:
 <list style="symbols">
 <t>Collected and retained by the operator (and for how long)</t>
 <t>Shared with partners</t>
@@ -1119,11 +1125,12 @@ draft-dickinson-dprive-bcp-op-01</t>
 <?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.8484.xml"?>
 </references>
 <references title="Informative References">
+<?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml3/reference.I-D.bellis-dnsop-xpf.xml"?>
 <?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml3/reference.I-D.bortzmeyer-dprive-rfc7626-bis.xml"?>
-<?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml3/reference.I-D.dickinson-doh-dohpe.xml"?>
 <?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml3/reference.I-D.ietf-dnsop-dns-capture-format.xml"?>
 <?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml3/reference.I-D.ietf-dnsop-dns-tcp-requirements.xml"?>
 <?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml3/reference.I-D.ietf-dnsop-terminology-bis.xml"?>
+<?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml3/reference.I-D.ietf-httpbis-bcp56bis.xml"?>
 <reference anchor='Pitfalls-of-DNS-Encryption'
  target='https://www.ietf.org/mail-archive/web/dns-privacy/current/pdfWqAIUmEl47.pdf'>
     <front>
