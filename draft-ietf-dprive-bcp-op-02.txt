@@ -13,7 +13,7 @@ Expires: September 12, 2019                         R. van Rijswijk-Deij
 
 
            Recommendations for DNS Privacy Service Operators
-                      draft-ietf-dprive-bcp-op-01
+                      draft-ietf-dprive-bcp-op-02
 
 Abstract
 
