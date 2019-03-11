@@ -7,7 +7,7 @@
     area = "Internet"
     workgroup = "dprive"
     keyword = ["DNS"]
-    date = 2019-03-08T00:00:00Z
+    date = 2019-03-11T00:00:00Z
     [pi]
     toc = "yes"
     compact = "yes"
@@ -377,10 +377,6 @@ Mitigations:
   minimum to obtain service from a DoH server. (See Section 6.1 of
   [@I-D.ietf-httpbis-bcp56bis].)
 
-Optimizations:
-
-* Offer a separate service that uses only TLS 1.3 [@!RFC8446]
-
 ### Availability
 
 DNS Privacy Threats:
@@ -393,11 +389,10 @@ Mitigations:
 A DNS privacy service must be engineered for high availability. Particular care
 should to be taken to protect DNS privacy services against denial-of-service
 attacks, as experience has shown that unavailability of DNS resolving because of
-attacks is a significant motivation for users to switch services.
-
-TODO: Add reference to ongoing research on this topic.
-
-**SUGGESTION: You could refer to http://tma.ifip.org/2018/wp-content/uploads/sites/3/2018/06/tma2018_paper30.pdf -- Section IV-C in particular**
+attacks is a significant motivation for users to switch services. See, for
+example Section IV-C of [Passive Observations of a Large DNS Service: 2.5 Years
+in the Life of
+Google](http://tma.ifip.org/2018/wp-content/uploads/sites/3/2018/06/tma2018_paper30.pdf).
 
 ### Service options
 
@@ -885,6 +880,18 @@ Oxford OX4 4GA\\
 United Kingdom
 
 # Changelog
+
+draft-ietf-dprive-bcp-op-02
+
+* Change 'open resolver' for 'public resolver'
+* Minor editorial changes
+* Remove recommendation to run a separate TLS 1.3 service
+* Move TLSA to purely a optimisation in Section 5.2.1
+* Update reference on minimal DoH headers.
+* Add reference on user switching provider after service issues in Section 5.1.4
+* Add text in Section 5.1.6 on impact on operators.
+* Add text on additional threat to TLS proxy use (Section 5.1.7)
+* Add reference in Section 5.3.1 on example policies.
 
 draft-ietf-dprive-bcp-op-01
 
