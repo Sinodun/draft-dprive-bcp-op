@@ -2,12 +2,12 @@
     Title = "Recommendations for DNS Privacy Service Operators"
     abbrev = "DNS Privacy Service Recommendations"
     category = "bcp"
-    docName= "draft-ietf-dprive-bcp-op-02"
+    docName= "draft-ietf-dprive-bcp-op-03"
     ipr = "trust200902"
     area = "Internet"
     workgroup = "dprive"
     keyword = ["DNS"]
-    date = 2019-03-11T00:00:00Z
+    date = 2019-04-18T00:00:00Z
     [pi]
     toc = "yes"
     compact = "yes"
@@ -255,11 +255,8 @@ implementations at the time of writing.
 
 It is also noted that DNS privacy service might be provided over IPSec, DNSCrypt
 or VPNs. However, use of these transports for DNS are not standardized and any
-discussion of best practice for providing such a service is out of scope for this
-document.
-
-Whilst encryption of DNS traffic can protect against active injection this does
-not diminish the need for DNSSEC, see (#encryption-and-dnssec).
+discussion of best practice for providing such a service is out of scope for 
+this document.
 
 ### Authentication of DNS privacy services
 
@@ -377,6 +374,37 @@ Mitigations:
   minimum to obtain service from a DoH server. (See Section 6.1 of
   [@I-D.ietf-httpbis-bcp56bis].)
 
+### DNSSEC
+
+DNS Privacy Threats:
+
+* Users may be directed to bogus IP addresses for e.g. websites where they might
+  reveal personal information to attackers.
+  
+Mitigations:
+
+* All DNS privacy services must offer a DNS privacy service that performs DNSSEC
+  validation. In addition they must be able to provide the DNSSEC RRs to the
+  client so that it can perform its own validation.
+
+The addition of encryption to DNS does not remove the need for DNSSEC
+[@RFC4033] - they are independent and fully compatible protocols,
+each solving different problems. The use of one does not diminish the need nor
+the usefulness of the other.
+
+While the use of an authenticated and encrypted transport protects origin
+authentication and data integrity between a client and a DNS privacy service it
+provides no proof (for a non-validating client) that the data provided by the
+DNS privacy service was actually DNSSEC authenticated. As with cleartext DNS the
+user is still solely trusting the AD bit (if present) set by the resolver.
+
+It should also be noted that the use of an encrypted transport for DNS actually
+solves many of the practical issues encountered by DNS validating clients e.g.
+interference by middleboxes with cleartext DNS payloads is completely avoided.
+In this sense a validating client that uses a DNS privacy service which supports
+DNSSEC has a far simpler task in terms of DNS Roadblock avoidance.
+
+
 ### Availability
 
 DNS Privacy Threats:
@@ -405,8 +433,8 @@ DNS Privacy Threats:
 Mitigations:
 
 A DNS privacy service should deliver the same level of service as offered on
-un-encrypted channels in terms of such options as filtering (or lack thereof), DNSSEC
-validation, etc. 
+un-encrypted channels in terms of such options as filtering (or lack thereof), 
+DNSSEC validation, etc. 
 
 ### Impact on Operators
 
@@ -1023,22 +1051,6 @@ Note that depending on the specifics of the implementation
   [@?I-D.ietf-dnsop-dns-tcp-requirements]
 * 'The edns-tcp-keepalive EDNS0 Option' [@!RFC7828]
 * 'DNS Stateful Operations' [@!I-D.ietf-dnsop-session-signal]
-
-# Encryption and DNSSEC
-
-The addition of encryption to DNS does not remove the need for DNSSEC
-[@RFC4033] - they are independent and fully compatible protocols,
-each solving different problems. The use of one does not diminish the need nor
-the usefulness of the other.
-
-All DNS privacy services SHOULD offer a DNS privacy service that performs DNSSEC
-validation. In addition they SHOULD be able to provide the DNSSEC RRs to the
-client so that it can perform its own validation.
-
-While the use of an authenticated and encrypted transport protects origin
-authentication and data integrity between a client and a DNS privacy service it
-provides no proof (for a non-validating client) that the data provided by the
-DNS privacy service was actually DNSSEC authenticated.
 
 # IP address techniques
 

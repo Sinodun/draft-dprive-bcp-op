@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE rfc SYSTEM 'rfc2629.dtd' []>
-<rfc ipr="trust200902" category="bcp" docName="draft-ietf-dprive-bcp-op-02">
+<rfc ipr="trust200902" category="bcp" docName="draft-ietf-dprive-bcp-op-03">
 <?rfc toc="yes"?>
 <?rfc symrefs="yes"?>
 <?rfc sortrefs="yes"?>
@@ -76,7 +76,7 @@
 <uri></uri>
 </address>
 </author>
-<date year="2019" month="March" day="11"/>
+<date year="2019" month="April" day="18"/>
 
 <area>Internet</area>
 <workgroup>dprive</workgroup>
@@ -315,11 +315,8 @@ implementations at the time of writing.
 </t>
 <t>It is also noted that DNS privacy service might be provided over IPSec, DNSCrypt
 or VPNs. However, use of these transports for DNS are not standardized and any
-discussion of best practice for providing such a service is out of scope for this
-document.
-</t>
-<t>Whilst encryption of DNS traffic can protect against active injection this does
-not diminish the need for DNSSEC, see <xref target="encryption-and-dnssec"/>.
+discussion of best practice for providing such a service is out of scope for
+this document.
 </t>
 </section>
 
@@ -480,6 +477,45 @@ minimum to obtain service from a DoH server. (See Section 6.1 of
 </section>
 </section>
 
+<section anchor="dnssec" title="DNSSEC">
+<t>DNS Privacy Threats:
+</t>
+<t>
+<list style="symbols">
+<t>Users may be directed to bogus IP addresses for e.g. websites where they might
+reveal personal information to attackers.
+
+<vspace/></t>
+</list>
+</t>
+<t>Mitigations:
+</t>
+<t>
+<list style="symbols">
+<t>All DNS privacy services must offer a DNS privacy service that performs DNSSEC
+validation. In addition they must be able to provide the DNSSEC RRs to the
+client so that it can perform its own validation.</t>
+</list>
+</t>
+<t>The addition of encryption to DNS does not remove the need for DNSSEC
+<xref target="RFC4033"/> - they are independent and fully compatible protocols,
+each solving different problems. The use of one does not diminish the need nor
+the usefulness of the other.
+</t>
+<t>While the use of an authenticated and encrypted transport protects origin
+authentication and data integrity between a client and a DNS privacy service it
+provides no proof (for a non-validating client) that the data provided by the
+DNS privacy service was actually DNSSEC authenticated. As with cleartext DNS the
+user is still solely trusting the AD bit (if present) set by the resolver.
+</t>
+<t>It should also be noted that the use of an encrypted transport for DNS actually
+solves many of the practical issues encountered by DNS validating clients e.g.
+interference by middleboxes with cleartext DNS payloads is completely avoided.
+In this sense a validating client that uses a DNS privacy service which supports
+DNSSEC has a far simpler task in terms of DNS Roadblock avoidance.
+</t>
+</section>
+
 <section anchor="availability" title="Availability">
 <t>DNS Privacy Threats:
 </t>
@@ -514,8 +550,8 @@ cleartext or accept no DNS service for the outage.</t>
 <t>Mitigations:
 </t>
 <t>A DNS privacy service should deliver the same level of service as offered on
-un-encrypted channels in terms of such options as filtering (or lack thereof), DNSSEC
-validation, etc.
+un-encrypted channels in terms of such options as filtering (or lack thereof),
+DNSSEC validation, etc.
 </t>
 </section>
 
@@ -1252,23 +1288,6 @@ user activity as a side effect:
 </list>
 </t>
 </section>
-</section>
-
-<section anchor="encryption-and-dnssec" title="Encryption and DNSSEC">
-<t>The addition of encryption to DNS does not remove the need for DNSSEC
-<xref target="RFC4033"/> - they are independent and fully compatible protocols,
-each solving different problems. The use of one does not diminish the need nor
-the usefulness of the other.
-</t>
-<t>All DNS privacy services SHOULD offer a DNS privacy service that performs DNSSEC
-validation. In addition they SHOULD be able to provide the DNSSEC RRs to the
-client so that it can perform its own validation.
-</t>
-<t>While the use of an authenticated and encrypted transport protects origin
-authentication and data integrity between a client and a DNS privacy service it
-provides no proof (for a non-validating client) that the data provided by the
-DNS privacy service was actually DNSSEC authenticated.
-</t>
 </section>
 
 <section anchor="ip-address-techniques" title="IP address techniques">
