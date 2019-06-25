@@ -2,12 +2,12 @@
     Title = "Recommendations for DNS Privacy Service Operators"
     abbrev = "DNS Privacy Service Recommendations"
     category = "bcp"
-    docName= "draft-ietf-dprive-bcp-op-02"
+    docName= "draft-ietf-dprive-bcp-op-03"
     ipr = "trust200902"
     area = "Internet"
     workgroup = "dprive"
     keyword = ["DNS"]
-    date = 2019-03-11T00:00:00Z
+    date = 2019-07-25T00:00:00Z
     [pi]
     toc = "yes"
     compact = "yes"
@@ -129,6 +129,13 @@ This document has two main goals:
   DPPPS. This document does not, however, define a particular Policy or Practice
   Statement, nor does it seek to provide legal advice or recommendations as to
   the contents.
+
+A desired operational impact is that all operators (both those providing
+resolvers within networks and those operating large anycast services) can
+demonstrate their commitment to user privacy thereby driving all DNS resolution
+services to a more equitable footing. Choices for users would (in this ideal
+world) be driven other factors e.g. differing security policies or minor
+difference in operator policy rather than gross disparities in privacy concerns.
 
 Community insight [or judgment?] about operational practices can change
 quickly, and experience shows that a Best Current Practice (BCP) document about
@@ -393,6 +400,8 @@ attacks is a significant motivation for users to switch services. See, for
 example Section IV-C of [Passive Observations of a Large DNS Service: 2.5 Years
 in the Life of
 Google](http://tma.ifip.org/2018/wp-content/uploads/sites/3/2018/06/tma2018_paper30.pdf).
+
+Techniques such as those described in Section 10 of [RFC7766] can be of use to operators to defend against such attacks. 
 
 ### Service options
 
