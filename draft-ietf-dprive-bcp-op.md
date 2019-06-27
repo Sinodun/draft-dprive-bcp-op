@@ -134,7 +134,7 @@ A desired operational impact is that all operators (both those providing
 resolvers within networks and those operating large anycast services) can
 demonstrate their commitment to user privacy thereby driving all DNS resolution
 services to a more equitable footing. Choices for users would (in this ideal
-world) be driven other factors e.g. differing security policies or minor
+world) be driven by other factors e.g. differing security policies or minor
 difference in operator policy rather than gross disparities in privacy concerns.
 
 Community insight [or judgment?] about operational practices can change
@@ -636,7 +636,7 @@ DNS Privacy Threats:
 
 * IP TTL/Hoplimit can be used to fingerprint client OS
 * TLS version/Cipher suite combinations can be used to fingerprint the client
-  applciation or TLS library
+  application or TLS library
 * Tracking of TCP sessions
 * Tracking of TLS sessions and session resumption mechanisms
 * Resolvers _might_ receive client identifiers e.g. MAC addresses in EDNS(0)
@@ -761,7 +761,11 @@ consent from clients (we take the stance here that simply using the resolution
 service itself does not constitute consent).
 
 QUESTION: If the operator has a published policy that clearly states data will be shared does using the service imply consent?
+RESPONSE: No, that does not imply consent, at least not under the GDPR, I think the stance is correct.
 QUESTION: How else is consent granted....?
+RESPONSE: Only if users explicitly sign a meaningful document, e.g. acceptable use policy, that makes it abundantly clear that they consent.
+
+REMARK: there is one exception to the above; under GDPR (not sure about other legal frameworks) operators may have a "legitimate interest" in processing personal data. This can be interpreted quite broadly. What e.g. SURFnet does is allow researchers access to more sensitive data as if they are acting on SURFnet's behalf and exercising their "legitimate interest", which they have defined as "improving performance, security and stability of the network service". In this construction, SURFnet retains control and responsibility for the data, and in practice, this data access takes place on SURFnet's systems and under direct physical supervision. Am not sure though whether we should go in to this level of detail, also because this may be specific to the EU legal framework under GDPR, but may not necessarily apply in other locales.
 
 Even when consent is granted operators should employ data minimization
 techniques such as those described in (#data-handling) if data is shared with
@@ -858,7 +862,7 @@ today for a user to extract a meaningful overview of the different services on
 offer.
 
 It is also noted that Mozilla have published a [Security/DoH-resolver
-policy](https://wiki.mozilla.org/Security/DOH-resolver-policy) describes the
+policy](https://wiki.mozilla.org/Security/DOH-resolver-policy), which describes the
 minimum set of policy requirements that a party must satisfy to be considered as
 a potential partner for Mozilla’s Trusted Recursive Resolver (TRR) program.
 
@@ -1205,7 +1209,7 @@ Pseudonymization: Format-preserving, cryptographic permutation.
 
 ## Bloom filters
 
-[van Rijswijk-Deij et al.](https://tnc18.geant.org/core/presentation/127) 
+[van Rijswijk-Deij et al.](http://dl.ifip.org/db/conf/im/im2019/189282.pdf) 
 have recently described work using Bloom filters to
 categorize query traffic and record the traffic as the state of multiple
 filters. The goal of this work is to allow operators to identify so-called
