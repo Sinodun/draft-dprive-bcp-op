@@ -2,12 +2,12 @@
     Title = "Recommendations for DNS Privacy Service Operators"
     abbrev = "DNS Privacy Service Recommendations"
     category = "bcp"
-    docName= "draft-ietf-dprive-bcp-op-02"
+    docName= "draft-ietf-dprive-bcp-op-03"
     ipr = "trust200902"
     area = "Internet"
     workgroup = "dprive"
     keyword = ["DNS"]
-    date = 2019-03-11T00:00:00Z
+    date = 2019-07-04T00:00:00Z
     [pi]
     toc = "yes"
     compact = "yes"
@@ -129,6 +129,13 @@ This document has two main goals:
   DPPPS. This document does not, however, define a particular Policy or Practice
   Statement, nor does it seek to provide legal advice or recommendations as to
   the contents.
+
+A desired operational impact is that all operators (both those providing
+resolvers within networks and those operating large anycast services) can
+demonstrate their commitment to user privacy thereby driving all DNS resolution
+services to a more equitable footing. Choices for users would (in this ideal
+world) be driven by other factors e.g. differing security policies or minor
+difference in operator policy rather than gross disparities in privacy concerns.
 
 Community insight [or judgment?] about operational practices can change
 quickly, and experience shows that a Best Current Practice (BCP) document about
@@ -259,7 +266,7 @@ discussion of best practice for providing such a service is out of scope for thi
 document.
 
 Whilst encryption of DNS traffic can protect against active injection this does
-not diminish the need for DNSSEC, see (#encryption-and-dnssec).
+not diminish the need for DNSSEC, see (#dnssec).
 
 ### Authentication of DNS privacy services
 
@@ -377,6 +384,38 @@ Mitigations:
   minimum to obtain service from a DoH server. (See Section 6.1 of
   [@I-D.ietf-httpbis-bcp56bis].)
 
+
+### DNSSEC
+
+DNS Privacy Threats:
+
+* Users may be directed to bogus IP addresses for e.g. websites where they might
+  reveal personal information to attackers.
+
+Mitigations:
+
+* All DNS privacy services must offer a DNS privacy service that performs DNSSEC
+  validation. In addition they must be able to provide the DNSSEC RRs to the
+  client so that it can perform its own validation.
+
+The addition of encryption to DNS does not remove the need for DNSSEC
+[@RFC4033] - they are independent and fully compatible protocols,
+each solving different problems. The use of one does not diminish the need nor
+the usefulness of the other.
+
+While the use of an authenticated and encrypted transport protects origin
+authentication and data integrity between a client and a DNS privacy service it
+provides no proof (for a non-validating client) that the data provided by the
+DNS privacy service was actually DNSSEC authenticated. As with cleartext DNS the
+user is still solely trusting the AD bit (if present) set by the resolver.
+
+It should also be noted that the use of an encrypted transport for DNS actually
+solves many of the practical issues encountered by DNS validating clients e.g.
+interference by middleboxes with cleartext DNS payloads is completely avoided.
+In this sense a validating client that uses a DNS privacy service which supports
+DNSSEC has a far simpler task in terms of DNS Roadblock avoidance.
+
+
 ### Availability
 
 DNS Privacy Threats:
@@ -394,6 +433,8 @@ example Section IV-C of [Passive Observations of a Large DNS Service: 2.5 Years
 in the Life of
 Google](http://tma.ifip.org/2018/wp-content/uploads/sites/3/2018/06/tma2018_paper30.pdf).
 
+Techniques such as those described in Section 10 of [RFC7766] can be of use to operators to defend against such attacks. 
+
 ### Service options
 
 DNS Privacy Threats: 
@@ -405,8 +446,8 @@ DNS Privacy Threats:
 Mitigations:
 
 A DNS privacy service should deliver the same level of service as offered on
-un-encrypted channels in terms of such options as filtering (or lack thereof), DNSSEC
-validation, etc. 
+un-encrypted channels in terms of such options as filtering (or lack thereof),
+DNSSEC validation, etc.
 
 ### Impact on Operators
 
@@ -594,6 +635,8 @@ of a cryptographic chosen plaintext attack.
 DNS Privacy Threats:
 
 * IP TTL/Hoplimit can be used to fingerprint client OS
+* TLS version/Cipher suite combinations can be used to fingerprint the client
+  application or TLS library
 * Tracking of TCP sessions
 * Tracking of TLS sessions and session resumption mechanisms
 * Resolvers _might_ receive client identifiers e.g. MAC addresses in EDNS(0)
@@ -602,9 +645,7 @@ DNS Privacy Threats:
 
 Mitigations:
 
-* Data minimization or discarding of such correlation data
-
-TODO: More analysis here. 
+* Data minimization or discarding of such correlation data.
 
 ### Cache snooping
 
@@ -615,9 +656,9 @@ TODO: More analysis here.
 
 Mitigations:
 
-* See [ISC Knowledge database on cache snooping](https://kb.isc.org/docs/aa-00482) for an example discussion on defending against cache snooping
-
-TODO: Describe other techniques to defend against cache snooping
+* See [ISC Knowledge database on cache
+  snooping](https://kb.isc.org/docs/aa-00482) for an example discussion on
+  defending against cache snooping
 
 
 ## Data sent onwards from the server
@@ -711,7 +752,7 @@ obfuscated among those of the large resolver.
 
 DNS Privacy Threats:
 
-* Contravention of legal requirements not to process user data?
+* Contravention of legal requirements not to process user data
 
 Mitigations:
 
@@ -721,21 +762,14 @@ service itself does not constitute consent).
 
 Even when consent is granted operators should employ data minimization
 techniques such as those described in (#data-handling) if data is shared with
-third-parties. 
+third-parties.
 
 Operators should consider including specific guidelines for the collection of
 aggregated and/or anonymized data for research purposes, within or outside of
-their own organization. See [SURFnet's policy](https://surf.nl/datasharing) on
-data sharing for research as an example.
-
-TODO: More on data for research vs operations... how to still motivate operators
-to share anonymized data?
-
-TODO: Guidelines for when consent is granted?
-
-TODO: Applies to server data handling too.. could operators offer alternatives
-services one that implies consent for data processing, one that doesn't?
-
+their own organization. This can benefit not only the operator (through
+inclusion in novel research) but also the wider Internet community. See
+[SURFnet's policy](https://surf.nl/datasharing) on data sharing for research as
+an example.
 
 # DNS privacy policy and practice statement
 
@@ -820,6 +854,11 @@ to more than 10 pages of moderate font sized A4 text. It is a non-trivial task
 today for a user to extract a meaningful overview of the different services on
 offer.
 
+It is also noted that Mozilla have published a [Security/DoH-resolver
+policy](https://wiki.mozilla.org/Security/DOH-resolver-policy), which describes the
+minimum set of policy requirements that a party must satisfy to be considered as
+a potential partner for Mozilla’s Trusted Recursive Resolver (TRR) program.
+
 ## Enforcement/accountability
 
 Transparency reports may help with building user trust that operators adhere to
@@ -880,6 +919,15 @@ Oxford OX4 4GA\\
 United Kingdom
 
 # Changelog
+
+draft-ietf-dprive-bcp-op-03
+
+* Add paragraph about operational impact
+* Move DNSSEC requirement out of the Appendix into main text as a privacy threat
+  that should be mitigated
+* Add TLS version/Cipher suite as tracking threat
+* Add reference to Mozilla TRR policy
+* Remove several TODOs and QUESTIONS.
 
 draft-ietf-dprive-bcp-op-02
 
@@ -1024,22 +1072,6 @@ Note that depending on the specifics of the implementation
 * 'The edns-tcp-keepalive EDNS0 Option' [@!RFC7828]
 * 'DNS Stateful Operations' [@!I-D.ietf-dnsop-session-signal]
 
-# Encryption and DNSSEC
-
-The addition of encryption to DNS does not remove the need for DNSSEC
-[@RFC4033] - they are independent and fully compatible protocols,
-each solving different problems. The use of one does not diminish the need nor
-the usefulness of the other.
-
-All DNS privacy services SHOULD offer a DNS privacy service that performs DNSSEC
-validation. In addition they SHOULD be able to provide the DNSSEC RRs to the
-client so that it can perform its own validation.
-
-While the use of an authenticated and encrypted transport protects origin
-authentication and data integrity between a client and a DNS privacy service it
-provides no proof (for a non-validating client) that the data provided by the
-DNS privacy service was actually DNSSEC authenticated.
-
 # IP address techniques
 
 Data minimization methods may be categorized by the processing used and the
@@ -1179,7 +1211,7 @@ Pseudonymization: Format-preserving, cryptographic permutation.
 
 ## Bloom filters
 
-[van Rijswijk-Deij et al.](https://tnc18.geant.org/core/presentation/127) 
+[van Rijswijk-Deij et al.](http://dl.ifip.org/db/conf/im/im2019/189282.pdf) 
 have recently described work using Bloom filters to
 categorize query traffic and record the traffic as the state of multiple
 filters. The goal of this work is to allow operators to identify so-called
