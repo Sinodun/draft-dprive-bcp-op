@@ -576,7 +576,7 @@
 </ul>
 
 <p> </p>
-<p id="rfc.section.1.p.8">A desired operational impact is that all operators (both those providing resolvers within networks and those operating large anycast services) can demonstrate their commitment to user privacy thereby driving all DNS resolution services to a more equitable footing. Choices for users would (in this ideal world) be driven other factors e.g. differing security policies or minor difference in operator policy rather than gross disparities in privacy concerns.  </p>
+<p id="rfc.section.1.p.8">A desired operational impact is that all operators (both those providing resolvers within networks and those operating large anycast services) can demonstrate their commitment to user privacy thereby driving all DNS resolution services to a more equitable footing. Choices for users would (in this ideal world) be driven by other factors e.g. differing security policies or minor difference in operator policy rather than gross disparities in privacy concerns.  </p>
 <p id="rfc.section.1.p.9">Community insight [or judgment?] about operational practices can change quickly, and experience shows that a Best Current Practice (BCP) document about privacy and security is a point-in-time statement. Readers are advised to seek out any errata or updates that apply to this document.  </p>
 <h1 id="rfc.section.2"><a href="#rfc.section.2">2.</a> <a href="#scope" id="scope">Scope</a></h1>
 <p id="rfc.section.2.p.1">"DNS Privacy Considerations" <a href="#I-D.bortzmeyer-dprive-rfc7626-bis">[I-D.bortzmeyer-dprive-rfc7626-bis]</a> describes the general privacy issues and threats associated with the use of the DNS by Internet users and much of the threat analysis here is lifted from that document and from <a href="#RFC6973">[RFC6973]</a>. However this document is limited in scope to best practice considerations for the provision of DNS privacy services by servers (recursive resolvers) to clients (stub resolvers or forwarders). Privacy considerations specifically from the perspective of an end user, or those for operators of authoritative nameservers are out of scope.  </p>
@@ -914,7 +914,7 @@
 
 <ul>
   <li>IP TTL/Hoplimit can be used to fingerprint client OS</li>
-  <li>TLS version/Cipher suite combinations can be used to fingerprint the client applciation or TLS library</li>
+  <li>TLS version/Cipher suite combinations can be used to fingerprint the client application or TLS library</li>
   <li>Tracking of TCP sessions</li>
   <li>Tracking of TLS sessions and session resumption mechanisms</li>
   <li>Resolvers <em>might</em> receive client identifiers e.g. MAC addresses in EDNS(0) options - some CPE devices are known to add them.</li>
@@ -1016,9 +1016,8 @@
 <p> </p>
 <p id="rfc.section.5.3.3.p.5">Mitigations: </p>
 <p id="rfc.section.5.3.3.p.6">Operators should not provide identifiable data to third-parties without explicit consent from clients (we take the stance here that simply using the resolution service itself does not constitute consent).  </p>
-<p id="rfc.section.5.3.3.p.7">QUESTION: If the operator has a published policy that clearly states data will be shared does using the service imply consent? QUESTION: How else is consent granted....? </p>
-<p id="rfc.section.5.3.3.p.8">Even when consent is granted operators should employ data minimization techniques such as those described in <a href="#data-handling">Section 5.2.1</a> if data is shared with third-parties.  </p>
-<p id="rfc.section.5.3.3.p.9">Operators should consider including specific guidelines for the collection of aggregated and/or anonymized data for research purposes, within or outside of their own organization. This can benefit not only the operator (through inclusion in novel research) but also the wider Internet community. See <a href="https://surf.nl/datasharing">SURFnet's policy</a> on data sharing for research as an example.  </p>
+<p id="rfc.section.5.3.3.p.7">Even when consent is granted operators should employ data minimization techniques such as those described in <a href="#data-handling">Section 5.2.1</a> if data is shared with third-parties.  </p>
+<p id="rfc.section.5.3.3.p.8">Operators should consider including specific guidelines for the collection of aggregated and/or anonymized data for research purposes, within or outside of their own organization. This can benefit not only the operator (through inclusion in novel research) but also the wider Internet community. See <a href="https://surf.nl/datasharing">SURFnet's policy</a> on data sharing for research as an example.  </p>
 <h1 id="rfc.section.6"><a href="#rfc.section.6">6.</a> <a href="#dns-privacy-policy-and-practice-statement" id="dns-privacy-policy-and-practice-statement">DNS privacy policy and practice statement</a></h1>
 <h1 id="rfc.section.6.1"><a href="#rfc.section.6.1">6.1.</a> <a href="#recommended-contents-of-a-dppps" id="recommended-contents-of-a-dppps">Recommended contents of a DPPPS</a></h1>
 <h1 id="rfc.section.6.1.1"><a href="#rfc.section.6.1.1">6.1.1.</a> <a href="#policy" id="policy">Policy</a></h1>
@@ -1053,7 +1052,7 @@
 <h1 id="rfc.section.6.2"><a href="#rfc.section.6.2">6.2.</a> <a href="#current-policy-and-privacy-statements" id="current-policy-and-privacy-statements">Current policy and privacy statements</a></h1>
 <p id="rfc.section.6.2.p.1">A tabular comparison of existing policy and privacy statements from various DNS Privacy service operators based on the proposed DPPPS structure can be found on <a href="https://dnsprivacy.org/wiki/display/DP/Comparison+of+policy+and+privacy+statements">dnsprivacy.org</a>.  </p>
 <p id="rfc.section.6.2.p.2">We note that the existing set of policies vary widely in style, content and detail and it is not uncommon for the full text for a given operator to equate to more than 10 pages of moderate font sized A4 text. It is a non-trivial task today for a user to extract a meaningful overview of the different services on offer.  </p>
-<p id="rfc.section.6.2.p.3">It is also noted that Mozilla have published a <a href="https://wiki.mozilla.org/Security/DOH-resolver-policy">Security/DoH-resolver policy</a> describes the minimum set of policy requirements that a party must satisfy to be considered as a potential partner for Mozilla&#8217;s Trusted Recursive Resolver (TRR) program.  </p>
+<p id="rfc.section.6.2.p.3">It is also noted that Mozilla have published a <a href="https://wiki.mozilla.org/Security/DOH-resolver-policy">Security/DoH-resolver policy</a>, which describes the minimum set of policy requirements that a party must satisfy to be considered as a potential partner for Mozilla&#8217;s Trusted Recursive Resolver (TRR) program.  </p>
 <h1 id="rfc.section.6.3"><a href="#rfc.section.6.3">6.3.</a> <a href="#enforcementaccountability" id="enforcementaccountability">Enforcement/accountability</a></h1>
 <p id="rfc.section.6.3.p.1">Transparency reports may help with building user trust that operators adhere to their policies and practices.  </p>
 <p id="rfc.section.6.3.p.2">Independent monitoring or analysis could be performed where possible of: </p>
@@ -1081,7 +1080,19 @@
 <p id="rfc.section.10.p.2">John Dickinson <br/> Sinodun Internet Technologies <br/> Magdalen Centre <br/> Oxford Science Park <br/> Oxford OX4 4GA <br/> United Kingdom </p>
 <p id="rfc.section.10.p.3">Jim Hague <br/> Sinodun Internet Technologies <br/> Magdalen Centre <br/> Oxford Science Park <br/> Oxford OX4 4GA <br/> United Kingdom </p>
 <h1 id="rfc.section.11"><a href="#rfc.section.11">11.</a> <a href="#changelog" id="changelog">Changelog</a></h1>
-<p id="rfc.section.11.p.1">draft-ietf-dprive-bcp-op-02 </p>
+<p id="rfc.section.11.p.1">draft-ietf-dprive-bcp-op-03 </p>
+<p/>
+
+<ul>
+  <li>Add paragraph about operational impact</li>
+  <li>Move DNSSEC requirement out of the Appendix into main text as a privacy threat that should be mitigated</li>
+  <li>Add TLS version/Cipher suite as tracking threat</li>
+  <li>Add reference to Mozilla TRR policy</li>
+  <li>Remove several TODOs and QUESTIONS.</li>
+</ul>
+
+<p> </p>
+<p id="rfc.section.11.p.3">draft-ietf-dprive-bcp-op-02 </p>
 <p/>
 
 <ul>
@@ -1097,7 +1108,7 @@
 </ul>
 
 <p> </p>
-<p id="rfc.section.11.p.3">draft-ietf-dprive-bcp-op-01 </p>
+<p id="rfc.section.11.p.5">draft-ietf-dprive-bcp-op-01 </p>
 <p/>
 
 <ul>
@@ -1114,7 +1125,7 @@
 </ul>
 
 <p> </p>
-<p id="rfc.section.11.p.5">draft-ietf-dprive-bcp-op-00 </p>
+<p id="rfc.section.11.p.7">draft-ietf-dprive-bcp-op-00 </p>
 <p/>
 
 <ul>
@@ -1422,7 +1433,7 @@
 <p id="rfc.section.B.6.p.1">A <a href="https://medium.com/@bert.hubert/on-ip-address-encryption-security-analysis-with-respect-for-privacy-dabe1201b476">recently-released proposal from PowerDNS</a>, <a href="https://github.com/PowerDNS/ipcipher">ipcipher</a> is a simple pseudonymization technique for IPv4 and IPv6 addresses. IPv6 addresses are encrypted directly with AES-128 using a key (which may be derived from a passphrase). IPv4 addresses are similarly encrypted, but using a recently proposed encryption <a href="https://github.com/veorq/ipcrypt">ipcrypt</a> suitable for 32bit block lengths. However, the author of ipcrypt has <a href="https://www.ietf.org/mail-archive/web/cfrg/current/msg09494.html">since indicated</a> that it has low security, and further analysis has revealed it is vulnerable to attack.  </p>
 <p id="rfc.section.B.6.p.2">Pseudonymization: Format-preserving, cryptographic permutation.  </p>
 <h1 id="rfc.appendix.B.7"><a href="#rfc.appendix.B.7">B.7.</a> <a href="#bloom-filters" id="bloom-filters">Bloom filters</a></h1>
-<p><a href="https://tnc18.geant.org/core/presentation/127">van Rijswijk-Deij et al.</a> have recently described work using Bloom filters to categorize query traffic and record the traffic as the state of multiple filters. The goal of this work is to allow operators to identify so-called Indicators of Compromise (IOCs) originating from specific subnets without storing information about, or be able to monitor the DNS queries of an individual user. By using a Bloom filter, it is possible to determine with a high probability if, for example, a particular query was made, but the set of queries made cannot be recovered from the filter. Similarly, by mixing queries from a sufficient number of users in a single filter, it becomes practically impossible to determine if a particular user performed a particular query. Large numbers of queries can be tracked in a memory-efficient way. As filter status is stored, this approach cannot be used to regenerate traffic, and so cannot be used with tools used to process live traffic.  </p>
+<p><a href="http://dl.ifip.org/db/conf/im/im2019/189282.pdf">van Rijswijk-Deij et al.</a> have recently described work using Bloom filters to categorize query traffic and record the traffic as the state of multiple filters. The goal of this work is to allow operators to identify so-called Indicators of Compromise (IOCs) originating from specific subnets without storing information about, or be able to monitor the DNS queries of an individual user. By using a Bloom filter, it is possible to determine with a high probability if, for example, a particular query was made, but the set of queries made cannot be recovered from the filter. Similarly, by mixing queries from a sufficient number of users in a single filter, it becomes practically impossible to determine if a particular user performed a particular query. Large numbers of queries can be tracked in a memory-efficient way. As filter status is stored, this approach cannot be used to regenerate traffic, and so cannot be used with tools used to process live traffic.  </p>
 <p id="rfc.section.B.7.p.2">Anonymized: Generalization.  </p>
 <h1 id="rfc.authors">
   <a href="#rfc.authors">Authors' Addresses</a>

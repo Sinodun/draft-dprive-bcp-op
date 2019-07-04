@@ -760,13 +760,6 @@ Operators should not provide identifiable data to third-parties without explicit
 consent from clients (we take the stance here that simply using the resolution
 service itself does not constitute consent).
 
-QUESTION: If the operator has a published policy that clearly states data will be shared does using the service imply consent?
-RESPONSE: No, that does not imply consent, at least not under the GDPR, I think the stance is correct.
-QUESTION: How else is consent granted....?
-RESPONSE: Only if users explicitly sign a meaningful document, e.g. acceptable use policy, that makes it abundantly clear that they consent.
-
-REMARK: there is one exception to the above; under GDPR (not sure about other legal frameworks) operators may have a "legitimate interest" in processing personal data. This can be interpreted quite broadly. What e.g. SURFnet does is allow researchers access to more sensitive data as if they are acting on SURFnet's behalf and exercising their "legitimate interest", which they have defined as "improving performance, security and stability of the network service". In this construction, SURFnet retains control and responsibility for the data, and in practice, this data access takes place on SURFnet's systems and under direct physical supervision. Am not sure though whether we should go in to this level of detail, also because this may be specific to the EU legal framework under GDPR, but may not necessarily apply in other locales.
-
 Even when consent is granted operators should employ data minimization
 techniques such as those described in (#data-handling) if data is shared with
 third-parties.
@@ -926,6 +919,15 @@ Oxford OX4 4GA\\
 United Kingdom
 
 # Changelog
+
+draft-ietf-dprive-bcp-op-03
+
+* Add paragraph about operational impact
+* Move DNSSEC requirement out of the Appendix into main text as a privacy threat
+  that should be mitigated
+* Add TLS version/Cipher suite as tracking threat
+* Add reference to Mozilla TRR policy
+* Remove several TODOs and QUESTIONS.
 
 draft-ietf-dprive-bcp-op-02
 

@@ -164,7 +164,7 @@ the contents.</t>
 resolvers within networks and those operating large anycast services) can
 demonstrate their commitment to user privacy thereby driving all DNS resolution
 services to a more equitable footing. Choices for users would (in this ideal
-world) be driven other factors e.g. differing security policies or minor
+world) be driven by other factors e.g. differing security policies or minor
 difference in operator policy rather than gross disparities in privacy concerns.
 </t>
 <t>Community insight [or judgment?] about operational practices can change
@@ -773,7 +773,7 @@ of a cryptographic chosen plaintext attack.
 <list style="symbols">
 <t>IP TTL/Hoplimit can be used to fingerprint client OS</t>
 <t>TLS version/Cipher suite combinations can be used to fingerprint the client
-applciation or TLS library</t>
+application or TLS library</t>
 <t>Tracking of TCP sessions</t>
 <t>Tracking of TLS sessions and session resumption mechanisms</t>
 <t>Resolvers <spanx style="emph">might</spanx> receive client identifiers e.g. MAC addresses in EDNS(0)
@@ -928,9 +928,6 @@ obfuscated among those of the large resolver.
 consent from clients (we take the stance here that simply using the resolution
 service itself does not constitute consent).
 </t>
-<t>QUESTION: If the operator has a published policy that clearly states data will be shared does using the service imply consent?
-QUESTION: How else is consent granted....?
-</t>
 <t>Even when consent is granted operators should employ data minimization
 techniques such as those described in <xref target="data-handling"/> if data is shared with
 third-parties.
@@ -1046,7 +1043,7 @@ today for a user to extract a meaningful overview of the different services on
 offer.
 </t>
 <t>It is also noted that Mozilla have published a <eref target="https://wiki.mozilla.org/Security/DOH-resolver-policy">Security/DoH-resolver
-policy</eref> describes the
+policy</eref>, which describes the
 minimum set of policy requirements that a party must satisfy to be considered as
 a potential partner for Mozilla’s Trusted Recursive Resolver (TRR) program.
 </t>
@@ -1130,6 +1127,18 @@ United Kingdom
 </section>
 
 <section anchor="changelog" title="Changelog">
+<t>draft-ietf-dprive-bcp-op-03
+</t>
+<t>
+<list style="symbols">
+<t>Add paragraph about operational impact</t>
+<t>Move DNSSEC requirement out of the Appendix into main text as a privacy threat
+that should be mitigated</t>
+<t>Add TLS version/Cipher suite as tracking threat</t>
+<t>Add reference to Mozilla TRR policy</t>
+<t>Remove several TODOs and QUESTIONS.</t>
+</list>
+</t>
 <t>draft-ietf-dprive-bcp-op-02
 </t>
 <t>
@@ -1445,7 +1454,7 @@ low security, and further analysis has revealed it is vulnerable to attack.
 </section>
 
 <section anchor="bloom-filters" title="Bloom filters">
-<t><eref target="https://tnc18.geant.org/core/presentation/127">van Rijswijk-Deij et al.</eref>
+<t><eref target="http://dl.ifip.org/db/conf/im/im2019/189282.pdf">van Rijswijk-Deij et al.</eref>
 have recently described work using Bloom filters to
 categorize query traffic and record the traffic as the state of multiple
 filters. The goal of this work is to allow operators to identify so-called
