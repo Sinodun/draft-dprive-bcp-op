@@ -2,12 +2,12 @@
     Title = "Recommendations for DNS Privacy Service Operators"
     abbrev = "DNS Privacy Service Recommendations"
     category = "bcp"
-    docName= "draft-ietf-dprive-bcp-op-03"
+    docName= "draft-ietf-dprive-bcp-op-04"
     ipr = "trust200902"
     area = "Internet"
     workgroup = "dprive"
     keyword = ["DNS"]
-    date = 2019-07-08T00:00:00Z
+    date = 2019-09-20T00:00:00Z
     [pi]
     toc = "yes"
     compact = "yes"
@@ -61,9 +61,11 @@
 
 .# Abstract
 This document presents operational, policy and security considerations for DNS
-operators who choose to offer DNS Privacy services. With these recommendations,
-the operator can make deliberate decisions regarding which services to provide, and how
-the decisions and alternatives impact the privacy of users.
+recursive resolver operators who choose to offer DNS Privacy services. With
+these recommendations, the operator can make deliberate decisions regarding
+which services to provide, and how the decisions and alternatives impact the
+privacy of users.DONE
+
 
 This document also presents a framework to assist writers of DNS Privacy Policy
 and Practices Statements (analogous to DNS Security Extensions (DNSSEC) Policies
@@ -286,12 +288,10 @@ When using DNS-over-TLS clients that select a 'Strict Privacy' usage profile
 [@!RFC8310] (to mitigate the threat of active attack on the client) require the
 ability to authenticate the DNS server. To enable this, DNS privacy services
 that offer DNS-over-TLS should provide credentials in the form of either X.509
-certificates or SPKI pinsets.
+certificates [@RFC5280] or SPKI pin sets [@!RFC8310].
 
 When offering DoH [@!RFC8484], HTTPS requires authentication of the server as
 part of the protocol.
-
-NOTE: At this time the reference to the TLS DNSSEC chain extension draft has been removed as it is no longer considered an active TLS WG document.
 
 Optimizations:
 
@@ -308,7 +308,7 @@ the more challenging aspects for operators of traditional DNS resolvers that
 choose to additionally provide a DNS privacy service as management of such
 credentials is new to those DNS operators.
 
-It is noted that SPKI pinset management is described in [@RFC7858] but that key
+It is noted that SPKI pin set management is described in [@RFC7858] but that key
 pinning mechanisms in general have fallen out of favor operationally for
 various reasons such as the logistical overhead of rolling keys.
 
@@ -335,7 +335,7 @@ revocation
 DNS Privacy Threats:
 
 * Known attacks on TLS such as those described in [@RFC7457]
-* Traffic analysis, for example: [Pitfalls of DNS Encryption](https://www.ietf.org/mail-archive/web/dns-privacy/current/pdfWqAIUmEl47.pdf)
+* Traffic analysis, for example: [@Pitfalls-of-DNS-Encryption]
 * Potential for client tracking via transport identifiers
 * Blocking of well known ports (e.g. 853 for DNS-over-TLS)
 
@@ -348,7 +348,7 @@ provide strong mitigations. This includes but is not limited to:
 * Adhering to [@!RFC7525]
 * Implementing only (D)TLS 1.2 or later as specified in [@!RFC8310]
 * Implementing EDNS(0) Padding [@!RFC7830] using the guidelines in
-  [@!RFC8467]
+  [@!RFC8467] or a successor specification.
 * Clients should not be required to use TLS session resumption [@!RFC5077] or
   Domain Name System (DNS) Cookies [@!RFC7873].
 * A DNS-over-TLS privacy service on both port 853 and 443. This practice may not
@@ -449,7 +449,7 @@ A DNS privacy service should deliver the same level of service as offered on
 un-encrypted channels in terms of such options as filtering (or lack thereof),
 DNSSEC validation, etc.
 
-### Impact on Operators
+### Impact on DNS Privacy Service Operators
 
 DNS Privacy Threats: 
 
@@ -610,13 +610,31 @@ categories and properties listed below.
 
 ![Figure showing comparison of IP address techniques (SVG)](https://github.com/Sinodun/draft-dprive-bcp-op/blob/master/draft-00/ip_techniques_table.svg)
 
+Category | Google | dnsw | TCPd | CrytoP | TSA | ipcipher | Bloom
+:--------|--------|------|------|--------|-----|----------|---
+Anon     |   X    |   X  |  X   |        |     |          | X
+Pseudo   |        |      |      |    X   |  X  |    X     |
+Format   |   X    |   X  |  X   |    X   |  X  |    X     |
+Prefix   |        |      |  X   |    X   |  X  |          |
+Replace  |        |      |  X   |        |     |          |
+Filter   |   X    |      |      |        |     |          |
+General  |        |      |      |        |     |          | X
+Enum     |        |   X  |      |        |     |          |
+Reorder  |        |   X  |      |        |     |          |
+Random   |        |      |  X   |        |     |          |
+Crytpo   |        |      |      |   X    |  X  |    X     |
+IPv6 prob|        |      |      |        |  X  |          |
+CPU int  |        |      |      |   X    |     |          |
+Memory   |        |      |  X   |        |     |          |
+Security |        |      |      |        |     |     X    |
+
 The choice of which method to use for a particular application will depend on
 the requirements of that application and consideration of the threat analysis of
 the particular situation.
 
 For example, a common goal is that distributed packet captures must be in an
 existing data format such as PCAP [@pcap] or C-DNS
-[@I-D.ietf-dnsop-dns-capture-format] that can be used as input to existing
+[@RFC8618] that can be used as input to existing
 analysis tools. In that case, use of a format-preserving technique is
 essential. This, though, is not cost-free - several authors (e.g. [Brenker &
 Arnes]
@@ -689,8 +707,7 @@ Optimizations:
   * offer alternative services, one that sends ECS and one that does not.
 
 If operators do offer a service that sends the ECS options upstream they should
-use the shortest prefix that is operationally feasible (NOTE: the authors
-believe they will be able to add a reference for advice here soon) and ideally
+use the shortest prefix that is operationally feasible and ideally
 use a policy of whitelisting upstream servers to send ECS to in order to
 minimize data leakage. Operators should make clear in any policy statement what
 prefix length they actually send and the specific policy used.
@@ -777,13 +794,13 @@ an example.
 
 ### Policy
 
-1. Make an explicit statement that IP addressses are treated as PII
-1. State if IP addresses are being logged
-1. Specify clearly what data (including whether it is aggregated, 
-        pseudonymized or anonymized and the conditions of data transfer) is:
+1. Make an explicit statement that IP addresses are treated as PII
+1. Specify clearly what data (including IP addresses) is:
     - Collected and retained by the operator, and for what period it is retained
     - Shared with partners
     - Shared, sold or rented to third-parties
+    
+    and in each case whether it is aggregated, pseudonymized or anonymized and the conditions of data transfer
 1. Specify any exceptions to the above, for example technically malicious or
 anomalous behavior
 1. Declare any partners, third-party affiliations or sources of funding
@@ -817,17 +834,17 @@ This section should explain the current operational practices of the service.
     and ports
 1. Specify the authentication name to be used (if any) and if TLSA records are 
     published (including options used in the TLSA records)
-1. Specify the SPKI pinsets to be used (if any) and policy for rolling keys
+1. Specify the SPKI pin sets to be used (if any) and policy for rolling keys
 1. Provide contact/support information for the service
 1. Jurisdiction. This section should communicate the applicable jurisdictions and law
 enforcement regimes under which the service is being provided.
-    - Specify the entity or entities that will control the data and be responsible for
+    - Specify the operator entity or entities that will control the data and be responsible for
     their treatment, and their legal place of business
     - Specify, either directly or by pointing to the applicable privacy policy, the
     relevant privacy laws that apply to the treatment of the data, the rights that users
     enjoy in regard to their own personal information that is treated by the service, and
     how they can contact the operator to enforce them
-    - Specify the countries in which the servers handling the DNS requests and the data
+    - Additionally specify the countries in which the servers handling the DNS requests and the data
     are located (if the operator applies a geolocation policy so that requests from
     certain countries are only served by certain servers, this should be specified as
     well)
@@ -884,8 +901,6 @@ None
 
 Security considerations for DNS-over-TCP are given in [@RFC7766], many of which
 are generally applicable to session based DNS.
-
-TODO: e.g. New issues for DoS defence, server admin policies
 
 # Acknowledgements
 
@@ -972,7 +987,7 @@ draft-ietf-dprive-bcp-op-00
 </reference>
 
 <reference anchor='Pitfalls-of-DNS-Encryption'
- target='https://www.ietf.org/mail-archive/web/dns-privacy/current/pdfWqAIUmEl47.pdf'>
+ target='https://dl.acm.org/citation.cfm?id=2665959'>
     <front>
         <title>Pretty Bad Privacy: Pitfalls of DNS Encryption</title>
         <author initials='H.' surname='Shulman' fullname='Haya Shulman'>
