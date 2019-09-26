@@ -740,38 +740,41 @@ yet no standards for this that are unencumbered by patents. The following table
 presents a high level comparison of various techniques employed or under
 development today and classifies them according to categorization of technique
 and other properties. The list of techniques includes the main techniques in
-current use, but does not claim to be comprehensive. <xref target="ip-address-techniques"/>
+current use, but does not claim to be comprehensive.
+</t>
+<texttable title="Table 1: Classification of techniques
+">
+<ttcol align="left">Categorisation/Property</ttcol>
+<ttcol align="center">GA</ttcol>
+<ttcol align="center">d</ttcol>
+<ttcol align="center">TC</ttcol>
+<ttcol align="center">C</ttcol>
+<ttcol align="center">TS</ttcol>
+<ttcol align="center">i</ttcol>
+<ttcol align="center">B</ttcol>
+
+<c>Anonymisation</c><c>X</c><c>X</c><c>X</c><c></c><c></c><c></c><c>X</c>
+<c>Pseudoanonymisation</c><c></c><c></c><c></c><c>X</c><c>X</c><c>X</c><c></c>
+<c>Format preserving</c><c>X</c><c>X</c><c>X</c><c>X</c><c>X</c><c>X</c><c></c>
+<c>Prefix preserving</c><c></c><c></c><c>X</c><c>X</c><c>X</c><c></c><c></c>
+<c>Replacement</c><c></c><c></c><c>X</c><c></c><c></c><c></c><c></c>
+<c>Filtering</c><c>X</c><c></c><c></c><c></c><c></c><c></c><c></c>
+<c>Generalisation</c><c></c><c></c><c></c><c></c><c></c><c></c><c>X</c>
+<c>Enumeration</c><c></c><c>X</c><c></c><c></c><c></c><c></c><c></c>
+<c>Reordering/Shuffling</c><c></c><c></c><c>X</c><c></c><c></c><c></c><c></c>
+<c>Random substitution</c><c></c><c></c><c>X</c><c></c><c></c><c></c><c></c>
+<c>Crytpographic permutation</c><c></c><c></c><c></c><c>X</c><c>X</c><c>X</c><c></c>
+<c>IPv6 issues</c><c></c><c></c><c></c><c></c><c>X</c><c></c><c></c>
+<c>CPU intensive</c><c></c><c></c><c></c><c>X</c><c></c><c></c><c></c>
+<c>Memory intensive</c><c></c><c></c><c>X</c><c></c><c></c><c></c><c></c>
+<c>Security concerns</c><c></c><c></c><c></c><c></c><c></c><c>X</c><c></c>
+</texttable>
+<t>GA = Google Analytics, d = dnswasher, TC = TCPdpriv, C = CryptoPAn, TS = TSA, i = ipcipher, B = Bloom filter
+</t>
+<t><xref target="ip-address-techniques"/>
 provides a more detailed survey of these techniques and definitions for the
 categories and properties listed below.
 </t>
-<t><eref target="https://github.com/Sinodun/draft-dprive-bcp-op/blob/master/draft-00/ip_techniques_table.svg">Figure showing comparison of IP address techniques (SVG)</eref>
-</t>
-<texttable>
-<ttcol align="left">Category</ttcol>
-<ttcol align="center">Google</ttcol>
-<ttcol align="center">dnsw</ttcol>
-<ttcol align="center">TCPd</ttcol>
-<ttcol align="center">CrytoP</ttcol>
-<ttcol align="center">TSA</ttcol>
-<ttcol align="center">ipcipher</ttcol>
-<ttcol align="center">Bloom</ttcol>
-
-<c>Anon</c><c>X</c><c>X</c><c>X</c><c></c><c></c><c></c><c>X</c>
-<c>Pseudo</c><c></c><c></c><c></c><c>X</c><c>X</c><c>X</c><c></c>
-<c>Format</c><c>X</c><c>X</c><c>X</c><c>X</c><c>X</c><c>X</c><c></c>
-<c>Prefix</c><c></c><c></c><c>X</c><c>X</c><c>X</c><c></c><c></c>
-<c>Replace</c><c></c><c></c><c>X</c><c></c><c></c><c></c><c></c>
-<c>Filter</c><c>X</c><c></c><c></c><c></c><c></c><c></c><c></c>
-<c>General</c><c></c><c></c><c></c><c></c><c></c><c></c><c>X</c>
-<c>Enum</c><c></c><c>X</c><c></c><c></c><c></c><c></c><c></c>
-<c>Reorder</c><c></c><c>X</c><c></c><c></c><c></c><c></c><c></c>
-<c>Random</c><c></c><c></c><c>X</c><c></c><c></c><c></c><c></c>
-<c>Crytpo</c><c></c><c></c><c></c><c>X</c><c>X</c><c>X</c><c></c>
-<c>IPv6 prob</c><c></c><c></c><c></c><c></c><c>X</c><c></c><c></c>
-<c>CPU int</c><c></c><c></c><c></c><c>X</c><c></c><c></c><c></c>
-<c>Memory</c><c></c><c></c><c>X</c><c></c><c></c><c></c><c></c>
-<c>Security</c><c></c><c></c><c></c><c></c><c></c><c>X</c><c></c>
-</texttable>
 <t>The choice of which method to use for a particular application will depend on
 the requirements of that application and consideration of the threat analysis of
 the particular situation.

@@ -604,29 +604,32 @@ yet no standards for this that are unencumbered by patents. The following table
 presents a high level comparison of various techniques employed or under
 development today and classifies them according to categorization of technique
 and other properties. The list of techniques includes the main techniques in
-current use, but does not claim to be comprehensive. (#ip-address-techniques)
+current use, but does not claim to be comprehensive. 
+
+Categorisation/Property    | GA | d | TC | C | TS | i | B
+:--------------------------|--------|------|------|--------|-----|----------|---
+Anonymisation              |   X    |   X  |  X   |        |     |          | X
+Pseudoanonymisation        |        |      |      |    X   |  X  |    X     |
+Format preserving          |   X    |   X  |  X   |    X   |  X  |    X     |
+Prefix preserving          |        |      |  X   |    X   |  X  |          |
+Replacement                |        |      |  X   |        |     |          |
+Filtering                  |   X    |      |      |        |     |          |
+Generalisation             |        |      |      |        |     |          | X
+Enumeration                |        |   X  |      |        |     |          |
+Reordering/Shuffling       |        |      |  X   |        |     |          |
+Random substitution        |        |      |  X   |        |     |          |
+Crytpographic permutation  |        |      |      |   X    |  X  |    X     |
+IPv6 issues                |        |      |      |        |  X  |          |
+CPU intensive              |        |      |      |   X    |     |          |
+Memory intensive           |        |      |  X   |        |     |          |
+Security concerns          |        |      |      |        |     |     X    |
+Table: Table 1: Classification of techniques
+
+GA = Google Analytics, d = dnswasher, TC = TCPdpriv, C = CryptoPAn, TS = TSA, i = ipcipher, B = Bloom filter
+
+(#ip-address-techniques)
 provides a more detailed survey of these techniques and definitions for the
 categories and properties listed below.
-
-![Figure showing comparison of IP address techniques (SVG)](https://github.com/Sinodun/draft-dprive-bcp-op/blob/master/draft-00/ip_techniques_table.svg)
-
-Category | Google | dnsw | TCPd | CrytoP | TSA | ipcipher | Bloom
-:--------|--------|------|------|--------|-----|----------|---
-Anon     |   X    |   X  |  X   |        |     |          | X
-Pseudo   |        |      |      |    X   |  X  |    X     |
-Format   |   X    |   X  |  X   |    X   |  X  |    X     |
-Prefix   |        |      |  X   |    X   |  X  |          |
-Replace  |        |      |  X   |        |     |          |
-Filter   |   X    |      |      |        |     |          |
-General  |        |      |      |        |     |          | X
-Enum     |        |   X  |      |        |     |          |
-Reorder  |        |   X  |      |        |     |          |
-Random   |        |      |  X   |        |     |          |
-Crytpo   |        |      |      |   X    |  X  |    X     |
-IPv6 prob|        |      |      |        |  X  |          |
-CPU int  |        |      |      |   X    |     |          |
-Memory   |        |      |  X   |        |     |          |
-Security |        |      |      |        |     |     X    |
 
 The choice of which method to use for a particular application will depend on
 the requirements of that application and consideration of the threat analysis of

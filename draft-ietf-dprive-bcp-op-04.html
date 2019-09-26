@@ -903,24 +903,24 @@
 <p id="rfc.section.5.2.2.p.6">In practice there is a fine line between the two; for example, how to categorize a deterministic algorithm for data minimization of IP addresses that produces a group of pseudonyms for a single given address.  </p>
 <h1 id="rfc.section.5.2.3"><a href="#rfc.section.5.2.3">5.2.3.</a> <a href="#ip-address-pseudonymization-and-anonymization-methods" id="ip-address-pseudonymization-and-anonymization-methods">IP address pseudonymization and anonymization methods</a></h1>
 <p id="rfc.section.5.2.3.p.1">As <a href="#I-D.bortzmeyer-dprive-rfc7626-bis">[I-D.bortzmeyer-dprive-rfc7626-bis]</a> makes clear, the big privacy risk in DNS is connecting DNS queries to an individual and the major vector for this in DNS traffic is the client IP address.  </p>
-<p id="rfc.section.5.2.3.p.2">There is active discussion in the space of effective pseudonymization of IP addresses in DNS traffic logs, however there seems to be no single solution that is widely recognized as suitable for all or most use cases. There are also as yet no standards for this that are unencumbered by patents. The following table presents a high level comparison of various techniques employed or under development today and classifies them according to categorization of technique and other properties. The list of techniques includes the main techniques in current use, but does not claim to be comprehensive. <a href="#ip-address-techniques">Appendix B</a> provides a more detailed survey of these techniques and definitions for the categories and properties listed below.  </p>
-<p><a href="https://github.com/Sinodun/draft-dprive-bcp-op/blob/master/draft-00/ip_techniques_table.svg">Figure showing comparison of IP address techniques (SVG)</a> </p>
+<p id="rfc.section.5.2.3.p.2">There is active discussion in the space of effective pseudonymization of IP addresses in DNS traffic logs, however there seems to be no single solution that is widely recognized as suitable for all or most use cases. There are also as yet no standards for this that are unencumbered by patents. The following table presents a high level comparison of various techniques employed or under development today and classifies them according to categorization of technique and other properties. The list of techniques includes the main techniques in current use, but does not claim to be comprehensive.  </p>
 <table cellpadding="3" cellspacing="0" class="tt full center">
+  <caption>Table 1: Classification of techniques </caption>
   <thead>
     <tr>
-      <th class="left">Category</th>
-      <th class="center">Google</th>
-      <th class="center">dnsw</th>
-      <th class="center">TCPd</th>
-      <th class="center">CrytoP</th>
-      <th class="center">TSA</th>
-      <th class="center">ipcipher</th>
-      <th class="center">Bloom</th>
+      <th class="left">Categorisation/Property</th>
+      <th class="center">GA</th>
+      <th class="center">d</th>
+      <th class="center">TC</th>
+      <th class="center">C</th>
+      <th class="center">TS</th>
+      <th class="center">i</th>
+      <th class="center">B</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td class="left">Anon</td>
+      <td class="left">Anonymisation</td>
       <td class="center">X</td>
       <td class="center">X</td>
       <td class="center">X</td>
@@ -930,7 +930,7 @@
       <td class="center">X</td>
     </tr>
     <tr>
-      <td class="left">Pseudo</td>
+      <td class="left">Pseudoanonymisation</td>
       <td class="center"/>
       <td class="center"/>
       <td class="center"/>
@@ -940,7 +940,7 @@
       <td class="center"/>
     </tr>
     <tr>
-      <td class="left">Format</td>
+      <td class="left">Format preserving</td>
       <td class="center">X</td>
       <td class="center">X</td>
       <td class="center">X</td>
@@ -950,7 +950,7 @@
       <td class="center"/>
     </tr>
     <tr>
-      <td class="left">Prefix</td>
+      <td class="left">Prefix preserving</td>
       <td class="center"/>
       <td class="center"/>
       <td class="center">X</td>
@@ -960,7 +960,7 @@
       <td class="center"/>
     </tr>
     <tr>
-      <td class="left">Replace</td>
+      <td class="left">Replacement</td>
       <td class="center"/>
       <td class="center"/>
       <td class="center">X</td>
@@ -970,7 +970,7 @@
       <td class="center"/>
     </tr>
     <tr>
-      <td class="left">Filter</td>
+      <td class="left">Filtering</td>
       <td class="center">X</td>
       <td class="center"/>
       <td class="center"/>
@@ -980,7 +980,7 @@
       <td class="center"/>
     </tr>
     <tr>
-      <td class="left">General</td>
+      <td class="left">Generalisation</td>
       <td class="center"/>
       <td class="center"/>
       <td class="center"/>
@@ -990,7 +990,7 @@
       <td class="center">X</td>
     </tr>
     <tr>
-      <td class="left">Enum</td>
+      <td class="left">Enumeration</td>
       <td class="center"/>
       <td class="center">X</td>
       <td class="center"/>
@@ -1000,17 +1000,7 @@
       <td class="center"/>
     </tr>
     <tr>
-      <td class="left">Reorder</td>
-      <td class="center"/>
-      <td class="center">X</td>
-      <td class="center"/>
-      <td class="center"/>
-      <td class="center"/>
-      <td class="center"/>
-      <td class="center"/>
-    </tr>
-    <tr>
-      <td class="left">Random</td>
+      <td class="left">Reordering/Shuffling</td>
       <td class="center"/>
       <td class="center"/>
       <td class="center">X</td>
@@ -1020,37 +1010,7 @@
       <td class="center"/>
     </tr>
     <tr>
-      <td class="left">Crytpo</td>
-      <td class="center"/>
-      <td class="center"/>
-      <td class="center"/>
-      <td class="center">X</td>
-      <td class="center">X</td>
-      <td class="center">X</td>
-      <td class="center"/>
-    </tr>
-    <tr>
-      <td class="left">IPv6 prob</td>
-      <td class="center"/>
-      <td class="center"/>
-      <td class="center"/>
-      <td class="center"/>
-      <td class="center">X</td>
-      <td class="center"/>
-      <td class="center"/>
-    </tr>
-    <tr>
-      <td class="left">CPU int</td>
-      <td class="center"/>
-      <td class="center"/>
-      <td class="center"/>
-      <td class="center">X</td>
-      <td class="center"/>
-      <td class="center"/>
-      <td class="center"/>
-    </tr>
-    <tr>
-      <td class="left">Memory</td>
+      <td class="left">Random substitution</td>
       <td class="center"/>
       <td class="center"/>
       <td class="center">X</td>
@@ -1060,7 +1020,47 @@
       <td class="center"/>
     </tr>
     <tr>
-      <td class="left">Security</td>
+      <td class="left">Crytpographic permutation</td>
+      <td class="center"/>
+      <td class="center"/>
+      <td class="center"/>
+      <td class="center">X</td>
+      <td class="center">X</td>
+      <td class="center">X</td>
+      <td class="center"/>
+    </tr>
+    <tr>
+      <td class="left">IPv6 issues</td>
+      <td class="center"/>
+      <td class="center"/>
+      <td class="center"/>
+      <td class="center"/>
+      <td class="center">X</td>
+      <td class="center"/>
+      <td class="center"/>
+    </tr>
+    <tr>
+      <td class="left">CPU intensive</td>
+      <td class="center"/>
+      <td class="center"/>
+      <td class="center"/>
+      <td class="center">X</td>
+      <td class="center"/>
+      <td class="center"/>
+      <td class="center"/>
+    </tr>
+    <tr>
+      <td class="left">Memory intensive</td>
+      <td class="center"/>
+      <td class="center"/>
+      <td class="center">X</td>
+      <td class="center"/>
+      <td class="center"/>
+      <td class="center"/>
+      <td class="center"/>
+    </tr>
+    <tr>
+      <td class="left">Security concerns</td>
       <td class="center"/>
       <td class="center"/>
       <td class="center"/>
@@ -1071,8 +1071,10 @@
     </tr>
   </tbody>
 </table>
-<p id="rfc.section.5.2.3.p.4">The choice of which method to use for a particular application will depend on the requirements of that application and consideration of the threat analysis of the particular situation.  </p>
-<p id="rfc.section.5.2.3.p.5">For example, a common goal is that distributed packet captures must be in an existing data format such as PCAP <a href="#pcap">[pcap]</a> or C-DNS <a href="#RFC8618">[RFC8618]</a> that can be used as input to existing analysis tools. In that case, use of a format-preserving technique is essential. This, though, is not cost-free - several authors (e.g. <a href="https://pdfs.semanticscholar.org/7b34/12c951cebe71cd2cddac5fda164fb2138a44.pdf">Brenker &amp; Arnes</a>) have observed that, as the entropy in an IPv4 address is limited, given a de-identified log from a target, if an attacker is capable of ensuring packets are captured by the target and the attacker can send forged traffic with arbitrary source and destination addresses to that target, any format-preserving pseudonymization is vulnerable to an attack along the lines of a cryptographic chosen plaintext attack.  </p>
+<p id="rfc.section.5.2.3.p.3">GA = Google Analytics, d = dnswasher, TC = TCPdpriv, C = CryptoPAn, TS = TSA, i = ipcipher, B = Bloom filter </p>
+<p><a href="#ip-address-techniques">Appendix B</a> provides a more detailed survey of these techniques and definitions for the categories and properties listed below.  </p>
+<p id="rfc.section.5.2.3.p.5">The choice of which method to use for a particular application will depend on the requirements of that application and consideration of the threat analysis of the particular situation.  </p>
+<p id="rfc.section.5.2.3.p.6">For example, a common goal is that distributed packet captures must be in an existing data format such as PCAP <a href="#pcap">[pcap]</a> or C-DNS <a href="#RFC8618">[RFC8618]</a> that can be used as input to existing analysis tools. In that case, use of a format-preserving technique is essential. This, though, is not cost-free - several authors (e.g. <a href="https://pdfs.semanticscholar.org/7b34/12c951cebe71cd2cddac5fda164fb2138a44.pdf">Brenker &amp; Arnes</a>) have observed that, as the entropy in an IPv4 address is limited, given a de-identified log from a target, if an attacker is capable of ensuring packets are captured by the target and the attacker can send forged traffic with arbitrary source and destination addresses to that target, any format-preserving pseudonymization is vulnerable to an attack along the lines of a cryptographic chosen plaintext attack.  </p>
 <h1 id="rfc.section.5.2.4"><a href="#rfc.section.5.2.4">5.2.4.</a> <a href="#pseudonymization-anonymization-or-discarding-of-other-correlation-data" id="pseudonymization-anonymization-or-discarding-of-other-correlation-data">Pseudonymization, anonymization or discarding of other correlation data</a></h1>
 <p id="rfc.section.5.2.4.p.1">DNS Privacy Threats: </p>
 <p/>

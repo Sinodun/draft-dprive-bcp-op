@@ -862,34 +862,34 @@ Internet-Draft     DNS Privacy Service Recommendations    September 2019
    and classifies them according to categorization of technique and
    other properties.  The list of techniques includes the main
    techniques in current use, but does not claim to be comprehensive.
+
+       +---------------------------+----+---+----+---+----+---+---+
+       | Categorisation/Property   | GA | d | TC | C | TS | i | B |
+       +---------------------------+----+---+----+---+----+---+---+
+       | Anonymisation             | X  | X | X  |   |    |   | X |
+       | Pseudoanonymisation       |    |   |    | X | X  | X |   |
+       | Format preserving         | X  | X | X  | X | X  | X |   |
+       | Prefix preserving         |    |   | X  | X | X  |   |   |
+       | Replacement               |    |   | X  |   |    |   |   |
+       | Filtering                 | X  |   |    |   |    |   |   |
+       | Generalisation            |    |   |    |   |    |   | X |
+       | Enumeration               |    | X |    |   |    |   |   |
+       | Reordering/Shuffling      |    |   | X  |   |    |   |   |
+       | Random substitution       |    |   | X  |   |    |   |   |
+       | Crytpographic permutation |    |   |    | X | X  | X |   |
+       | IPv6 issues               |    |   |    |   | X  |   |   |
+       | CPU intensive             |    |   |    | X |    |   |   |
+       | Memory intensive          |    |   | X  |   |    |   |   |
+       | Security concerns         |    |   |    |   |    | X |   |
+       +---------------------------+----+---+----+---+----+---+---+
+
+                   Table 1: Classification of techniques
+
+   GA = Google Analytics, d = dnswasher, TC = TCPdpriv, C = CryptoPAn,
+   TS = TSA, i = ipcipher, B = Bloom filter
+
    Appendix B provides a more detailed survey of these techniques and
    definitions for the categories and properties listed below.
-
-   Figure showing comparison of IP address techniques (SVG) [9]
-
-   +----------+--------+------+------+--------+-----+----------+-------+
-   | Category | Google | dnsw | TCPd | CrytoP | TSA | ipcipher | Bloom |
-   +----------+--------+------+------+--------+-----+----------+-------+
-   | Anon     |   X    |  X   |  X   |        |     |          |   X   |
-   | Pseudo   |        |      |      |   X    |  X  |    X     |       |
-   | Format   |   X    |  X   |  X   |   X    |  X  |    X     |       |
-   | Prefix   |        |      |  X   |   X    |  X  |          |       |
-   | Replace  |        |      |  X   |        |     |          |       |
-   | Filter   |   X    |      |      |        |     |          |       |
-   | General  |        |      |      |        |     |          |   X   |
-   | Enum     |        |  X   |      |        |     |          |       |
-   | Reorder  |        |  X   |      |        |     |          |       |
-   | Random   |        |      |  X   |        |     |          |       |
-   | Crytpo   |        |      |      |   X    |  X  |    X     |       |
-   | IPv6     |        |      |      |        |  X  |          |       |
-   | prob     |        |      |      |        |     |          |       |
-   | CPU int  |        |      |      |   X    |     |          |       |
-   | Memory   |        |      |  X   |        |     |          |       |
-   | Security |        |      |      |        |     |    X     |       |
-   +----------+--------+------+------+--------+-----+----------+-------+
-
-
-
 
 
 
@@ -906,7 +906,7 @@ Internet-Draft     DNS Privacy Service Recommendations    September 2019
    be in an existing data format such as PCAP [pcap] or C-DNS [RFC8618]
    that can be used as input to existing analysis tools.  In that case,
    use of a format-preserving technique is essential.  This, though, is
-   not cost-free - several authors (e.g.  Brenker & Arnes [10]) have
+   not cost-free - several authors (e.g.  Brenker & Arnes [9]) have
    observed that, as the entropy in an IPv4 address is limited, given a
    de-identified log from a target, if an attacker is capable of
    ensuring packets are captured by the target and the attacker can send
@@ -954,7 +954,7 @@ Dickinson, et al.        Expires March 23, 2020                [Page 17]
 Internet-Draft     DNS Privacy Service Recommendations    September 2019
 
 
-   o  See ISC Knowledge database on cache snooping [11] for an example
+   o  See ISC Knowledge database on cache snooping [10] for an example
       discussion on defending against cache snooping
 
 5.3.  Data sent onwards from the server
@@ -1089,7 +1089,7 @@ Internet-Draft     DNS Privacy Service Recommendations    September 2019
    collection of aggregated and/or anonymized data for research
    purposes, within or outside of their own organization.  This can
    benefit not only the operator (through inclusion in novel research)
-   but also the wider Internet community.  See SURFnet's policy [12] on
+   but also the wider Internet community.  See SURFnet's policy [11] on
    data sharing for research as an example.
 
 6.  DNS privacy policy and practice statement
@@ -1219,7 +1219,7 @@ Internet-Draft     DNS Privacy Service Recommendations    September 2019
 
    A tabular comparison of existing policy and privacy statements from
    various DNS Privacy service operators based on the proposed DPPPS
-   structure can be found on dnsprivacy.org [13].
+   structure can be found on dnsprivacy.org [12].
 
    We note that the existing set of policies vary widely in style,
    content and detail and it is not uncommon for the full text for a
@@ -1235,7 +1235,7 @@ Internet-Draft     DNS Privacy Service Recommendations    September 2019
 
 
    It is also noted that Mozilla have published a Security/DoH-resolver
-   policy [14], which describes the minimum set of policy requirements
+   policy [13], which describes the minimum set of policy requirements
    that a party must satisfy to be considered as a potential partner for
    Mozilla's Trusted Recursive Resolver (TRR) program.
 
@@ -1254,7 +1254,7 @@ Internet-Draft     DNS Privacy Service Recommendations    September 2019
    o  Uptime
 
    This is by analogy with e.g. several TLS or website analysis tools
-   that are currently available e.g.  SSL Labs [15] or Internet.nl [16].
+   that are currently available e.g.  SSL Labs [14] or Internet.nl [15].
 
    Additionally operators could choose to engage the services of a third
    party auditor to verify their compliance with their published DPPPS.
@@ -1612,12 +1612,12 @@ Internet-Draft     DNS Privacy Service Recommendations    September 2019
 
    [8] https://doi.org/10.1145/3182660
 
-   [9] https://github.com/Sinodun/draft-dprive-bcp-op/blob/master/draft-
-       00/ip_techniques_table.svg
+   [9] https://pdfs.semanticscholar.org/7b34/12c951cebe71cd2cddac5fda164
+       fb2138a44.pdf
 
-   [10] https://pdfs.semanticscholar.org/7b34/12c951cebe71cd2cddac5fda16
-        4fb2138a44.pdf
+   [10] https://kb.isc.org/docs/aa-00482
 
+   [11] https://surf.nl/datasharing
 
 
 
@@ -1626,53 +1626,53 @@ Dickinson, et al.        Expires March 23, 2020                [Page 29]
 Internet-Draft     DNS Privacy Service Recommendations    September 2019
 
 
-   [11] https://kb.isc.org/docs/aa-00482
-
-   [12] https://surf.nl/datasharing
-
-   [13] https://dnsprivacy.org/wiki/display/DP/
+   [12] https://dnsprivacy.org/wiki/display/DP/
         Comparison+of+policy+and+privacy+statements
 
-   [14] https://wiki.mozilla.org/Security/DOH-resolver-policy
+   [13] https://wiki.mozilla.org/Security/DOH-resolver-policy
 
-   [15] https://www.ssllabs.com/ssltest/
+   [14] https://www.ssllabs.com/ssltest/
 
-   [16] https://internet.nl
+   [15] https://internet.nl
 
-   [17] https://support.google.com/analytics/answer/2763052?hl=en
+   [16] https://support.google.com/analytics/answer/2763052?hl=en
 
-   [18] https://www.conversionworks.co.uk/blog/2017/05/19/anonymize-ip-
+   [17] https://www.conversionworks.co.uk/blog/2017/05/19/anonymize-ip-
         geo-impact-test/
 
-   [19] https://github.com/edmonds/pdns/blob/master/pdns/dnswasher.cc
+   [18] https://github.com/edmonds/pdns/blob/master/pdns/dnswasher.cc
 
-   [20] http://ita.ee.lbl.gov/html/contrib/tcpdpriv.html
+   [19] http://ita.ee.lbl.gov/html/contrib/tcpdpriv.html
 
-   [21] http://an.kaist.ac.kr/~sbmoon/paper/intl-journal/2004-cn-
+   [20] http://an.kaist.ac.kr/~sbmoon/paper/intl-journal/2004-cn-
         anon.pdf
 
-   [22] https://www.cc.gatech.edu/computing/Telecomm/projects/cryptopan/
+   [21] https://www.cc.gatech.edu/computing/Telecomm/projects/cryptopan/
 
-   [23] http://mharvan.net/talks/noms-ip_anon.pdf
+   [22] http://mharvan.net/talks/noms-ip_anon.pdf
 
-   [24] http://www.ecs.umass.edu/ece/wolf/pubs/ton2007.pdf
+   [23] http://www.ecs.umass.edu/ece/wolf/pubs/ton2007.pdf
 
-   [25] https://medium.com/@bert.hubert/on-ip-address-encryption-
+   [24] https://medium.com/@bert.hubert/on-ip-address-encryption-
         security-analysis-with-respect-for-privacy-dabe1201b476
 
-   [26] https://github.com/PowerDNS/ipcipher
+   [25] https://github.com/PowerDNS/ipcipher
 
-   [27] https://github.com/veorq/ipcrypt
+   [26] https://github.com/veorq/ipcrypt
 
-   [28] https://www.ietf.org/mail-archive/web/cfrg/current/msg09494.html
+   [27] https://www.ietf.org/mail-archive/web/cfrg/current/msg09494.html
 
-   [29] http://dl.ifip.org/db/conf/im/im2019/189282.pdf
+   [28] http://dl.ifip.org/db/conf/im/im2019/189282.pdf
 
 Appendix A.  Documents
 
    This section provides an overview of some DNS privacy related
    documents, however, this is neither an exhaustive list nor a
    definitive statement on the characteristic of the document.
+
+
+
+
 
 
 
@@ -1812,13 +1812,13 @@ Internet-Draft     DNS Privacy Service Recommendations    September 2019
 
 B.1.  Google Analytics non-prefix filtering
 
-   Since May 2010, Google Analytics has provided a facility [17] that
+   Since May 2010, Google Analytics has provided a facility [16] that
    allows website owners to request that all their users IP addresses
    are anonymized within Google Analytics processing.  This very basic
    anonymization simply sets to zero the least significant 8 bits of
    IPv4 addresses, and the least significant 80 bits of IPv6 addresses.
    The level of anonymization this produces is perhaps questionable.
-   There are some analysis results [18] which suggest that the impact of
+   There are some analysis results [17] which suggest that the impact of
    this on reducing the accuracy of determining the user's location from
    their IP address is less than might be hoped; the average discrepancy
    in identification of the user city for UK users is no more than 17%.
@@ -1828,7 +1828,7 @@ B.1.  Google Analytics non-prefix filtering
 B.2.  dnswasher
 
    Since 2006, PowerDNS have included a de-identification tool dnswasher
-   [19] with their PowerDNS product.  This is a PCAP filter that
+   [18] with their PowerDNS product.  This is a PCAP filter that
    performs a one-to-one mapping of end user IP addresses with an
    anonymized address.  A table of user IP addresses and their de-
    identified counterparts is kept; the first IPv4 user addresses is
@@ -1852,7 +1852,7 @@ Internet-Draft     DNS Privacy Service Recommendations    September 2019
 
 B.3.  Prefix-preserving map
 
-   Used in TCPdpriv [20], this algorithm stores a set of original and
+   Used in TCPdpriv [19], this algorithm stores a set of original and
    anonymised IP address pairs.  When a new IP address arrives, it is
    compared with previous addresses to determine the longest prefix
    match.  The new address is anonymized by using the same prefix, with
@@ -1869,11 +1869,11 @@ B.4.  Cryptographic Prefix-Preserving Pseudonymisation
 
    Cryptographic prefix-preserving pseudonymisation was originally
    proposed as an improvement to the prefix-preserving map implemented
-   in TCPdpriv, described in Xu et al. [21] and implemented in the
-   Crypto-PAn tool [22].  Crypto-PAn is now frequently used as an
+   in TCPdpriv, described in Xu et al. [20] and implemented in the
+   Crypto-PAn tool [21].  Crypto-PAn is now frequently used as an
    acronym for the algorithm.  Initially it was described for IPv4
    addresses only; extension for IPv6 addresses was proposed in Harvan &
-   Schoenwaelder [23] and implemented in snmpdump.  This uses a
+   Schoenwaelder [22] and implemented in snmpdump.  This uses a
    cryptographic algorithm rather than a random value, and thus
    pseudonymity is determined uniquely by the encryption key, and is
    deterministic.  It requires a separate AES encryption for each output
@@ -1885,7 +1885,7 @@ B.4.  Cryptographic Prefix-Preserving Pseudonymisation
 
 B.5.  Top-hash Subtree-replicated Anonymisation
 
-   Proposed in Ramaswamy & Wolf [24], Top-hash Subtree-replicated
+   Proposed in Ramaswamy & Wolf [23], Top-hash Subtree-replicated
    Anonymisation (TSA) originated in response to the requirement for
    faster processing than Crypto-PAn.  It used hashing for the most
    significant byte of an IPv4 address, and a pre-calculated binary tree
@@ -1908,20 +1908,20 @@ Internet-Draft     DNS Privacy Service Recommendations    September 2019
 
 B.6.  ipcipher
 
-   A recently-released proposal from PowerDNS [25], ipcipher [26] is a
+   A recently-released proposal from PowerDNS [24], ipcipher [25] is a
    simple pseudonymization technique for IPv4 and IPv6 addresses.  IPv6
    addresses are encrypted directly with AES-128 using a key (which may
    be derived from a passphrase).  IPv4 addresses are similarly
-   encrypted, but using a recently proposed encryption ipcrypt [27]
+   encrypted, but using a recently proposed encryption ipcrypt [26]
    suitable for 32bit block lengths.  However, the author of ipcrypt has
-   since indicated [28] that it has low security, and further analysis
+   since indicated [27] that it has low security, and further analysis
    has revealed it is vulnerable to attack.
 
    Pseudonymization: Format-preserving, cryptographic permutation.
 
 B.7.  Bloom filters
 
-   van Rijswijk-Deij et al. [29] have recently described work using
+   van Rijswijk-Deij et al. [28] have recently described work using
    Bloom filters to categorize query traffic and record the traffic as
    the state of multiple filters.  The goal of this work is to allow
    operators to identify so-called Indicators of Compromise (IOCs)
