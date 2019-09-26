@@ -539,7 +539,9 @@ described in [@!RFC6973] should be applied.
   of detecting and remedying technically malicious (e.g. DoS) or anomalous use
   of the service.
 * Data access should be minimized to only those personnel who require access to
-  perform operational duties.
+  perform operational duties. It should also be limited to anonymized or
+  pseudonymized data were operationally feasible, with access to unencrypted
+  only permitted when necessary.
 
 Optimizations:
 
