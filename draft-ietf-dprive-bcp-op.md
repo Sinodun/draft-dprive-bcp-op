@@ -67,9 +67,10 @@ which services to provide, and how the decisions and alternatives impact the
 privacy of users.DONE
 
 
-This document also presents a framework to assist writers of DNS Privacy Policy
-and Practices Statements (analogous to DNS Security Extensions (DNSSEC) Policies
-and DNSSEC Practice Statements described in [@RFC6841]).
+This document also presents a framework to assist writers of DNS Recursive
+Operator Privacy Statement (analogous to DNS Security Extensions (DNSSEC)
+Policies and DNSSEC Practice Statements described in [@RFC6841]).
+
 
 {mainmatter}
 
@@ -122,13 +123,13 @@ This document has two main goals:
   transports and to outline recommendations for data handling for operators of
   DNS privacy services.
 
-* To introduce the DNS Privacy Policy and Practice Statement (DPPPS) and present
-  a framework to assist writers of this document. A DPPPS is a document that an
+* To introduce the DNS Recursive Operator Privacy statement (DROP) and present
+  a framework to assist writers of this document. A DROP statement is a document that an
   operator can publish outlining their operational practices and commitments
   with regard to privacy thereby providing a means for clients to evaluate the
   privacy properties of a given DNS privacy service. In particular, the
   framework identifies the elements that should be considered in formulating a
-  DPPPS. This document does not, however, define a particular Policy or Practice
+  DROP statement. This document does not, however, define a particular Privacy
   Statement, nor does it seek to provide legal advice or recommendations as to
   the contents.
 
@@ -196,12 +197,12 @@ in Section 8 and implement the (D)TLS profile described in Section 9 of
 
 Other Terms:
 
-* DPPPS: DNS Privacy Policy and Practice Statement, see
-  (#dns-privacy-policy-and-practice-statement).
+* DROP: DNS Recursive Operator Privacy statement, see
+  (#dns-recursive-operator-privacy-statement).
 
 * DNS privacy service: The service that is offered via a privacy-enabling DNS
   server and is documented either in an informal statement of policy and
-  practice with regard to users privacy or a formal DPPPS.
+  practice with regard to users privacy or a formal DROP statement.
 
 # Recommendations for DNS privacy services
 
@@ -793,24 +794,24 @@ inclusion in novel research) but also the wider Internet community. See
 [SURFnet's policy](https://surf.nl/datasharing) on data sharing for research as
 an example.
 
-# DNS privacy policy and practice statement
+# DNS recursive operator privacy statement
 
-## Recommended contents of a DPPPS
+## Recommended contents of a DROP statement
 
 ### Policy
 
-1. Make an explicit statement that IP addresses are treated as PII
-1. Specify clearly what data (including IP addresses) is:
+1. Treatment of IP addresses. Make an explicit statement that IP addresses are treated as PII.
+1. Data collection and sharing. Specify clearly what data (including IP addresses) is:
     - Collected and retained by the operator, and for what period it is retained
     - Shared with partners
     - Shared, sold or rented to third-parties
     
-    and in each case whether it is aggregated, pseudonymized or anonymized and the conditions of data transfer
-1. Specify any exceptions to the above, for example technically malicious or
-anomalous behavior
-1. Declare any partners, third-party affiliations or sources of funding
-1. Whether user DNS data is correlated or combined with any other personal
-      information held by the operator
+    and in each case whether it is aggregated, pseudonymized or anonymized and the conditions of data transfer.
+1. Exceptions. Specify any exceptions to the above, for example technically malicious or
+anomalous behavior.
+1. Partners, third-party affiliations or sources of funding. Declare any partners, third-party affiliations or sources of funding.
+1. Correlation. Whether user DNS data is correlated or combined with any other personal
+      information held by the operator.
 1. Result filtering. This section should explain whether the operator filters, edits or
 alters in any way the replies that it receives from the authoritative servers for each
 DNS zone, before forwarding them to the clients. For each category listed below, the
@@ -832,31 +833,33 @@ employs any third-party sources for such lists, and which ones.
 
 This section should explain the current operational practices of the service.
 
-1. Specify any temporary or permanent deviations from the policy for
-    operational reasons
-1. With reference to section (#recommendations-for-dns-privacy-services) provide 
+1. Deviations. Specify any temporary or permanent deviations from the policy for
+    operational reasons.
+1. Client facing capabilities. With reference to section (#recommendations-for-dns-privacy-services) provide 
     specific details of which capabilities are provided on which client facing addresses
-    and ports
-1. Specify the authentication name to be used (if any) and if TLSA records are 
-    published (including options used in the TLSA records)
-1. Specify the SPKI pin sets to be used (if any) and policy for rolling keys
-1. Provide contact/support information for the service
+    and ports:
+    1. For DoT, specify the authentication name to be used (if any) and if TLSA records are 
+        published (including options used in the TLSA records)
+    1. For DoT, specify the SPKI pin sets to be used (if any) and policy for rolling keys
+1. Upstream capabilities. With reference to section (#data-sent-onwards-from-the-server) provide 
+        specific details of which capabilities are provided upstream for data sent to authoritative servers.
+1. Support. Provide contact/support information for the service.
 1. Jurisdiction. This section should communicate the applicable jurisdictions and law
 enforcement regimes under which the service is being provided.
     - Specify the operator entity or entities that will control the data and be responsible for
-    their treatment, and their legal place of business
+    their treatment, and their legal place of business.
     - Specify, either directly or by pointing to the applicable privacy policy, the
     relevant privacy laws that apply to the treatment of the data, the rights that users
     enjoy in regard to their own personal information that is treated by the service, and
-    how they can contact the operator to enforce them
+    how they can contact the operator to enforce them.
     - Additionally specify the countries in which the servers handling the DNS requests and the data
     are located (if the operator applies a geolocation policy so that requests from
     certain countries are only served by certain servers, this should be specified as
-    well)
+    well).
     - Specify whether the operator has any agreement in place with law enforcement
     agencies, or other public and private parties dealing with security and intelligence,
-    to give them access to the servers and/or to the data
-1.  Describe how consent is obtained from the user of the DNS privacy service 
+    to give them access to the servers and/or to the data.
+1.  Consent. Describe how consent is obtained from the user of the DNS privacy service 
 differentiating
     - Uninformed users for whom this trust relationship is implicit
     - Privacy-conscious users, that make an explicit trust choice
@@ -867,7 +870,7 @@ differentiating
 ## Current policy and privacy statements
 
 A tabular comparison of existing policy and privacy statements from various DNS
-Privacy service operators based on the proposed DPPPS structure can be found on
+Privacy service operators based on the proposed DROP structure can be found on
 [dnsprivacy.org](https://dnsprivacy.org/wiki/display/DP/Comparison+of+policy+and+privacy+statements).
 
 We note that the existing set of policies vary widely in style, content and
@@ -896,7 +899,7 @@ This is by analogy with e.g. several TLS or website analysis tools that are
 currently available e.g. [SSL Labs](https://www.ssllabs.com/ssltest/) or
 [Internet.nl](https://internet.nl).
 
-Additionally operators could choose to engage the services of a third party auditor to verify their compliance with their published DPPPS.
+Additionally operators could choose to engage the services of a third party auditor to verify their compliance with their published DROP statement.
 
 # IANA considerations
 
@@ -1248,4 +1251,163 @@ used with tools used to process live traffic.
 
 Anonymized: Generalization.
 
+
+# Example DROP statement
+
+The following example DROP statement is very loosely based on some elements of published
+privacy statements for public resolvers with additional fields populated to
+illustrate the full contents of a DROP statement. This should not be interpreted as
+
+* having been reviewed or approved by any operator in any way
+* having any legal standing or validity at all
+* being complete or exhaustive
+
+This is a purely hypothetical example of a DROP statement to outline example
+contents for a public resolver operator providing a simple DNS Privacy service via one IP
+address and one DoH URI with filtering. It does aim to meet minimal compliance
+as specified in (#recommendations-for-dns-privacy-services).
+
+## Policy
+
+1. Treatment of IP addresses. Many nations classify IP addresses as Personally-Identifiable Information (PII), 
+and we take a conservative approach in treating IP addresses as PII in all 
+jurisdictions in which our systems reside.
+
+1. Data collection and sharing.
+
+    1. IP addresses. Our normal course of data management does
+    not have any IP address information or other PII logged to disk or
+    transmitted out of the location in which the query was received. We may
+    aggregate certain counters to larger network block levels for statistical
+    collection purposes, but those counters do not maintain specific IP address
+    data nor is the format or model of data stored capable of being
+    reverse-engineered to ascertain what specific IP addresses made what
+    queries.
+
+    1. Data collected in logs. We do keep some generalized location information (at the
+    city/metropolitan area level) so that we can conduct debugging and analyze
+    abuse phenomena. We also use the collected information for the creation and
+    sharing of telemetry (timestamp, geolocation, number of hits, first seen,
+    last seen) for contributors, public publishing of general statistics of use
+    of system (protections, threat types, counts, etc.)
+
+        When you use our DNS Services, here is the full list of items that are included in our logs:
+
+        * Request domain name, e.g. example.net
+        * Record type of requested domain, e.g. A, AAAA, NS, MX, TXT, etc.
+        * Transport protocol on which the request arrived, i.e. TCP, UDP, and encryption status of the protocol
+        * Origin IP general geolocation information: i.e. geocode, region ID, city ID, and metro code
+        * Protocol version IP address – IPv4, or IPv6
+        * Response code sent, e.g. SUCCESS, SERVFAIL, NXDOMAIN, etc.
+        * Absolute arrival time
+        * Name of the specific machine that processed this request
+        * Our target IP to which this request was addressed (no relation to the user’s IP address)
+
+        We may keep the following data as summary information, including all the above
+        EXCEPT for data about the DNS record requested:
+
+        * Currently-advertised BGP-summarized IP prefix/netmask of apparent client origin
+        * Autonomous system number (BGP ASN) of apparent client origin
+
+        All the above data may be kept in full or partial form in permanent archives.
+
+    1. Sharing of data.
+
+        Except as described in this document, we do not intentionally share,
+        sell, or rent individual personal information associated with the requestor
+        (i.e. source IP address or any other information that can positively identify
+        the system using our infrastructure) with anyone without your permission.
+
+        We generate and share high level anonymized aggregate statistics
+        including threat metrics on threat type, geolocation, and if available, sector,
+        as well as other vertical metrics including performance metrics on our DNS
+        Services (i.e. number of threats blocked, infrastructure uptime) when available
+        with the our threat intelligence (TI) partners, academic researchers, or the
+        public.
+
+        Our DNS Services share anonymized data on specific domains queried (records
+        such as domain, timestamp, geolocation, number of hits, first seen, last seen)
+        with its threat intelligence partners. Our DNS Services also builds, stores,
+        and may share certain DNS data streams which store high level information about
+        domain resolved, query types, result codes, and timestamp. These streams do not
+        contain IP address information of requestor and cannot be correlated to IP
+        address or other PII.
+
+        We do not and never will share any of its data with marketers, nor will it use
+        this data for demographic analysis.
+
+1. Exceptions. There are exceptions to this storage model: In the event of events or
+observed behaviors which we deem malicious or anomalous, we may utilize more
+detailed logging to collect more specific IP address data in the process of
+normal network defense and mitigation. This collection and transmission off-site
+will be limited to IP addresses that we determine are involved in the event.
+
+1. Partners, third-party affiliations or sources of funding. Details of our
+Threat Intelligence partners can be found at our website page (insert link).
+
+1. Correlation of Data. We do not correlate or combine information from our logs
+with any personal information that you have provided us for other services, or
+with your specific IP address.
+
+1. Result filtering. 
+
+    1. Filtering. We utilise cyber threat intelligence about malicious domains
+    from a variety of public and private sources and blocks access to those
+    malicious domains when your system attempts to contact them. An NXDOMAIN is
+    returned for blocked sites.
+    
+     2. Censorship. We will not provide a censoring component and will limit our
+    actions solely to the blocking of malicious domains around phishing,
+    malware, and exploit kit domains.
+    
+     1. Accidental blocking. We implement whitelisting algorithms to make sure
+    legitimate domains are not blocked by accident. However, in the rare case of
+    blocking a legitimate domain, we work with the users to quickly whitelist
+    that domain. Please use our support form (insert link) if you believe we are
+    blocking a domain in error.
+
+
+## Practice
+
+1. Deviations from Policy. None. 
+
+1. Client facing capabilities. 
+
+    1. We offer DNS-over-TLS on (insert IP address) as specified in RFC7858. It
+    is available on port 853 and port 443. We also implement RFC7766.
+        1. The DoT authentication name used is (insert domain name). No TLSA records are
+        available for this domain name.
+        1. We do not publish SPKI pin sets.
+    1. We offer DNS-over-HTTPS as specified in RFC8484 on (insert URI template). Both POST and GET are supported.
+    1. Both services offer TLS 1.2 and TLS 1.3.
+    1. Both services pad DNS responses according to RFC8467.
+    1. Both services provide DNSSEC validation.
+    
+1. Upstream capabilities.
+
+    1. Our servers implement QNAME minimisation.
+    1. Our servers do not send ECS upstream.
+
+1. Support. Support information for this service is available at (insert link).
+
+1. Jurisdiction. 
+
+    1. We operate as the legal entity (insert entity) registered in (insert
+    country) as (insert company identifier e.g Company Number). Our Headquarters
+    are located at (insert address). 
+    2. As such we operate under (insert country) law. For details of our company
+    privacy policy see (insert link). For questions on this policy and
+    enforcement contact our Data Protection Officer on (insert email address).
+    3. We operate servers in the following countries (insert list).
+    4. We have no agreements in place with law enforcement agencies to give them
+    access to the data. Apart from as stated in the Policy section of this
+    document with regard to threat intelligence we have no agreements in place
+    with other public and private parties dealing with security and
+    intelligence, to give them access to the servers and/or to the data.
+   
+1. Consent. As described, we do not intentionally share, sell, or rent
+individual personal information associated with the requestor (i.e. source IP
+address or any other information that can positively identify the system using
+our infrastructure) with anyone without your permission. To grant permission
+please contact us via our support page (insert link).
 
