@@ -265,8 +265,8 @@ implementations at the time of writing.
 
 It is also noted that DNS privacy service might be provided over IPSec, DNSCrypt
 or VPNs. However, use of these transports for DNS are not standardized and any
-discussion of best practice for providing such a service is out of scope for this
-document.
+discussion of best practice for providing such a service is out of scope for
+this document.
 
 Whilst encryption of DNS traffic can protect against active injection this does
 not diminish the need for DNSSEC, see (#dnssec).
@@ -800,33 +800,42 @@ an example.
 ### Policy
 
 1. Treatment of IP addresses. Make an explicit statement that IP addresses are treated as PII.
-1. Data collection and sharing. Specify clearly what data (including IP addresses) is:
+
+1. Data collection and sharing. Specify clearly what data (including IP addresses)
+is:
     - Collected and retained by the operator, and for what period it is retained
     - Shared with partners
     - Shared, sold or rented to third-parties
     
-    and in each case whether it is aggregated, pseudonymized or anonymized and the conditions of data transfer.
-1. Exceptions. Specify any exceptions to the above, for example technically malicious or
-anomalous behavior.
-1. Associated entities. Declare any partners, third-party affiliations or sources of funding.
-1. Correlation. Whether user DNS data is correlated or combined with any other personal
-      information held by the operator.
-1. Result filtering. This section should explain whether the operator filters, edits or
-alters in any way the replies that it receives from the authoritative servers for each
-DNS zone, before forwarding them to the clients. For each category listed below, the
-operator should also specify how the filtering lists are created and managed, whether it
-employs any third-party sources for such lists, and which ones.
-    - Specify if any replies are being filtered out or altered for network and computer
-    security reasons (e.g. preventing connections to malware-spreading websites or botnet
-    control servers)
-    - Specify if any replies are being filtered out or altered for mandatory legal
-    reasons, due to applicable legislation or binding orders by courts and other public
-    authorities
-    - Specify if any replies are being filtered out or altered for voluntary legal
-    reasons, due to an internal policy by the operator aiming at reducing potential legal
-    risks
-    - Specify if any replies are being filtered out or altered for any other reason,
-    including commercial ones
+    and in each case whether it is aggregated, pseudonymized or anonymized and
+    the conditions of data transfer.
+    
+1. Exceptions. Specify any exceptions to the above, for example technically
+malicious or anomalous behavior.
+
+1. Associated entities. Declare any partners, third-party affiliations or
+sources of funding.
+
+1. Correlation. Whether user DNS data is correlated or combined with any other
+personal information held by the operator.
+
+1. Result filtering. This section should explain whether the operator filters,
+edits or alters in any way the replies that it receives from the authoritative
+servers for each DNS zone, before forwarding them to the clients. For each
+category listed below, the operator should also specify how the filtering lists
+are created and managed, whether it employs any third-party sources for such
+lists, and which ones.
+    -  Specify if any replies are being filtered out or altered for network and
+       computer security reasons (e.g. preventing connections to
+       malware-spreading websites or botnet control servers)
+    -  Specify if any replies are being filtered out or altered for mandatory
+       legal reasons, due to applicable legislation or binding orders by courts
+       and other public authorities
+    -  Specify if any replies are being filtered out or altered for voluntary
+       legal reasons, due to an internal policy by the operator aiming at
+       reducing potential legal risks
+    -  Specify if any replies are being filtered out or altered for any other
+       reason, including commercial ones
 
 ### Practice
 
@@ -834,30 +843,39 @@ This section should explain the current operational practices of the service.
 
 1. Deviations. Specify any temporary or permanent deviations from the policy for
     operational reasons.
-1. Client facing capabilities. With reference to section (#recommendations-for-dns-privacy-services) provide 
-    specific details of which capabilities are provided on which client facing addresses
-    and ports:
-    1. For DoT, specify the authentication name to be used (if any) and if TLSA records are 
-        published (including options used in the TLSA records)
-    1. For DoT, specify the SPKI pin sets to be used (if any) and policy for rolling keys
-1. Upstream capabilities. With reference to section (#data-sent-onwards-from-the-server) provide 
-        specific details of which capabilities are provided upstream for data sent to authoritative servers.
+    
+1. Client facing capabilities. With reference to section
+(#recommendations-for-dns-privacy-services) provide specific details of which
+capabilities are provided on which client facing addresses and ports:
+    1. For DoT, specify the authentication name to be used (if any) and if TLSA
+records are published (including options used in the TLSA records)
+    1. For DoT, specify the SPKI pin sets to be used (if any) and policy for
+    rolling keys
+    
+1. Upstream capabilities. With reference to section
+(#data-sent-onwards-from-the-server) provide specific details of which
+capabilities are provided upstream for data sent to authoritative servers.
+
 1. Support. Provide contact/support information for the service.
-1. Jurisdiction. This section should communicate the applicable jurisdictions and law
-enforcement regimes under which the service is being provided.
-    - Specify the operator entity or entities that will control the data and be responsible for
-    their treatment, and their legal place of business.
-    - Specify, either directly or by pointing to the applicable privacy policy, the
-    relevant privacy laws that apply to the treatment of the data, the rights that users
-    enjoy in regard to their own personal information that is treated by the service, and
-    how they can contact the operator to enforce them.
-    - Additionally specify the countries in which the servers handling the DNS requests and the data
-    are located (if the operator applies a geolocation policy so that requests from
-    certain countries are only served by certain servers, this should be specified as
-    well).
-    - Specify whether the operator has any agreement in place with law enforcement
-    agencies, or other public and private parties dealing with security and intelligence,
-    to give them access to the servers and/or to the data.
+
+1. Jurisdiction. This section should communicate the applicable jurisdictions
+and law enforcement regimes under which the service is being provided.
+    1. Specify the operator entity or entities that will control the data and be
+    responsible for their treatment, and their legal place of business.
+    1. Specify, either directly or by pointing to the applicable privacy policy,
+    the relevant privacy laws that apply to the treatment of the data, the
+    rights that users enjoy in regard to their own personal information that is
+    treated by the service, and how they can contact the operator to enforce
+    them.
+    1. Additionally specify the countries in which the servers handling the DNS
+    requests and the data are located (if the operator applies a geolocation
+    policy so that requests from certain countries are only served by certain
+    servers, this should be specified as well).
+    1. Specify whether the operator has any agreement in place with law
+    enforcement agencies, or other public and private parties dealing with
+    security and intelligence, to give them access to the servers and/or to the
+    data.
+      
 1. Consent. For any activity which is documented in this statement as 'requiring
 consent' before being performed, describe the full process of what you as an
 operator consider 'obtaining consent'. Additionally, state if this process is
@@ -1291,66 +1309,74 @@ jurisdictions in which our systems reside.
     reverse-engineered to ascertain what specific IP addresses made what
     queries.
 
-    1. Data collected in logs. We do keep some generalized location information (at the
-    city/metropolitan area level) so that we can conduct debugging and analyze
-    abuse phenomena. We also use the collected information for the creation and
-    sharing of telemetry (timestamp, geolocation, number of hits, first seen,
-    last seen) for contributors, public publishing of general statistics of use
-    of system (protections, threat types, counts, etc.)
+    1. Data collected in logs. We do keep some generalized location information
+    (at the city/metropolitan area level) so that we can conduct debugging and
+    analyze abuse phenomena. We also use the collected information for the
+    creation and sharing of telemetry (timestamp, geolocation, number of hits,
+    first seen, last seen) for contributors, public publishing of general
+    statistics of use of system (protections, threat types, counts, etc.)
 
-        When you use our DNS Services, here is the full list of items that are included in our logs:
+        When you use our DNS Services, here is the full list of items that are    
+        included in our logs:
 
         * Request domain name, e.g. example.net
         * Record type of requested domain, e.g. A, AAAA, NS, MX, TXT, etc.
-        * Transport protocol on which the request arrived, i.e. UDP, TCP, DoT, DoH
-        * Origin IP general geolocation information: i.e. geocode, region ID, city ID, and metro code
+        * Transport protocol on which the request arrived, i.e. UDP, TCP, DoT,  
+          DoH
+        * Origin IP general geolocation information: i.e. geocode, region ID, 
+          city ID, and metro code
         * IP protocol version – IPv4 or IPv6
         * Response code sent, e.g. SUCCESS, SERVFAIL, NXDOMAIN, etc.
         * Absolute arrival time
         * Name of the specific instance that processed this request
-        * IP address of the specific instance to which this request was addressed (no relation to the requestor’s IP address)
+        * IP address of the specific instance to which this request was 
+          addressed (no relation to the requestor’s IP address)
 
-        We may keep the following data as summary information, including all the above
-        EXCEPT for data about the DNS record requested:
+        We may keep the following data as summary information, including all the
+        above EXCEPT for data about the DNS record requested:
 
-        * Currently-advertised BGP-summarized IP prefix/netmask of apparent client origin
+        * Currently-advertised BGP-summarized IP prefix/netmask of apparent
+          client origin
         * Autonomous system number (BGP ASN) of apparent client origin
 
-        All the above data may be kept in full or partial form in permanent archives.
+        All the above data may be kept in full or partial form in permanent
+        archives.
 
     1. Sharing of data.
 
         Except as described in this document, we do not intentionally share,
-        sell, or rent individual personal information associated with the requestor
-        (i.e. source IP address or any other information that can positively identify
-        the client using our infrastructure) with anyone without your consent.
+        sell, or rent individual personal information associated with the
+        requestor (i.e. source IP address or any other information that can
+        positively identify the client using our infrastructure) with anyone
+        without your consent.
 
         We generate and share high level anonymized aggregate statistics
-        including threat metrics on threat type, geolocation, and if available, sector,
-        as well as other vertical metrics including performance metrics on our DNS
-        Services (i.e. number of threats blocked, infrastructure uptime) when available
-        with the our threat intelligence (TI) partners, academic researchers, or the
-        public.
+        including threat metrics on threat type, geolocation, and if available,
+        sector, as well as other vertical metrics including performance metrics
+        on our DNS Services (i.e. number of threats blocked, infrastructure
+        uptime) when available with the our threat intelligence (TI) partners,
+        academic researchers, or the public.
 
-        Our DNS Services share anonymized data on specific domains queried (records
-        such as domain, timestamp, geolocation, number of hits, first seen, last seen)
-        with its threat intelligence partners. Our DNS Services also builds, stores,
-        and may share certain DNS data streams which store high level information about
-        domain resolved, query types, result codes, and timestamp. These streams do not
-        contain IP address information of requestor and cannot be correlated to IP
-        address or other PII.
+        Our DNS Services share anonymized data on specific domains queried
+        (records such as domain, timestamp, geolocation, number of hits, first
+        seen, last seen) with its threat intelligence partners. Our DNS Services
+        also builds, stores, and may share certain DNS data streams which store
+        high level information about domain resolved, query types, result codes,
+        and timestamp. These streams do not contain IP address information of
+        requestor and cannot be correlated to IP address or other PII.
 
-        We do not and never will share any of its data with marketers, nor will it use
-        this data for demographic analysis.
+        We do not and never will share any of its data with marketers, nor will
+        it use this data for demographic analysis.
 
-1. Exceptions. There are exceptions to this storage model: In the event of events or
-observed behaviors which we deem malicious or anomalous, we may utilize more
-detailed logging to collect more specific IP address data in the process of
-normal network defence and mitigation. This collection and transmission off-site
-will be limited to IP addresses that we determine are involved in the event.
+1. Exceptions. There are exceptions to this storage model: In the event of
+events or observed behaviors which we deem malicious or anomalous, we may
+utilize more detailed logging to collect more specific IP address data in the
+process of normal network defence and mitigation. This collection and
+transmission off-site will be limited to IP addresses that we determine are
+involved in the event.
 
-1. Associated entities. Details of our
-Threat Intelligence partners can be found at our website page (insert link).
+1. Associated entities. Details of our Threat Intelligence partners can be found
+at our website page (insert link).
 
 1. Correlation of Data. We do not correlate or combine information from our logs
 with any personal information that you have provided us for other services, or
@@ -1383,10 +1409,11 @@ with your specific IP address.
     1. We offer UDP and TCP DNS on port 53 on (insert IP address)
     1. We offer DNS-over-TLS as specified in RFC7858 on (insert IP address). It
     is available on port 853 and port 443. We also implement RFC7766.
-        1. The DoT authentication name used is (insert domain name). No TLSA records are
-        available for this domain name.
+        1. The DoT authentication name used is (insert domain name). No TLSA 
+            records are available for this domain name.
         1. We do not publish SPKI pin sets.
-    1. We offer DNS-over-HTTPS as specified in RFC8484 on (insert URI template). Both POST and GET are supported.
+    1. We offer DNS-over-HTTPS as specified in RFC8484 on (insert URI template). 
+       Both POST and GET are supported.
     1. Both services offer TLS 1.2 and TLS 1.3.
     1. Both services pad DNS responses according to RFC8467.
     1. Both services provide DNSSEC validation.
@@ -1402,15 +1429,15 @@ with your specific IP address.
 
     1. We operate as the legal entity (insert entity) registered in (insert
     country) as (insert company identifier e.g Company Number). Our Headquarters
-    are located at (insert address). 
+    are located at (insert address).
     2. As such we operate under (insert country) law. For details of our company
     privacy policy see (insert link). For questions on this policy and
     enforcement contact our Data Protection Officer on (insert email address).
     3. We operate servers in the following countries (insert list).
     4. We have no agreements in place with law enforcement agencies to give them
     access to the data. Apart from as stated in the Policy section of this
-    document with regard to cyber threat intelligence, we have no agreements in place
-    with other public and private parties dealing with security and
+    document with regard to cyber threat intelligence, we have no agreements in
+    place with other public and private parties dealing with security and
     intelligence, to give them access to the servers and/or to the data.
    
 1. Consent. As described, we do not intentionally share, sell, or rent
