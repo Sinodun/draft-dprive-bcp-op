@@ -64,10 +64,10 @@ This document presents operational, policy and security considerations for DNS
 recursive resolver operators who choose to offer DNS Privacy services. With
 these recommendations, the operator can make deliberate decisions regarding
 which services to provide, and how the decisions and alternatives impact the
-privacy of users.DONE
+privacy of users.
 
 
-This document also presents a framework to assist writers of DNS Recursive
+This document also presents a framework to assist writers of a DNS Recursive
 Operator Privacy Statement (analogous to DNS Security Extensions (DNSSEC)
 Policies and DNSSEC Practice Statements described in [@RFC6841]).
 
@@ -123,14 +123,14 @@ This document has two main goals:
   transports and to outline recommendations for data handling for operators of
   DNS privacy services.
 
-* To introduce the DNS Recursive Operator Privacy statement (DROP) and present
-  a framework to assist writers of this document. A DROP statement is a document that an
-  operator can publish outlining their operational practices and commitments
-  with regard to privacy thereby providing a means for clients to evaluate the
-  privacy properties of a given DNS privacy service. In particular, the
-  framework identifies the elements that should be considered in formulating a
-  DROP statement. This document does not, however, define a particular Privacy
-  Statement, nor does it seek to provide legal advice or recommendations as to
+* To introduce the DNS Recursive Operator Privacy (DROP) statement and present a
+  framework to assist writers of this document. A DROP statement is a document
+  that an operator can publish outlining their operational practices and
+  commitments with regard to privacy thereby providing a means for clients to
+  evaluate the privacy properties of a given DNS privacy service. In particular,
+  the framework identifies the elements that should be considered in formulating
+  a DROP statement. This document does not, however, define a particular Privacy
+  statement, nor does it seek to provide legal advice or recommendations as to
   the contents.
 
 A desired operational impact is that all operators (both those providing
@@ -198,7 +198,7 @@ in Section 8 and implement the (D)TLS profile described in Section 9 of
 Other Terms:
 
 * DROP: DNS Recursive Operator Privacy statement, see
-  (#dns-recursive-operator-privacy-statement).
+  (#dns-recursive-operator-privacy-drop-statement).
 
 * DNS privacy service: The service that is offered via a privacy-enabling DNS
   server and is documented either in an informal statement of policy and
@@ -603,11 +603,14 @@ DNS traffic is the client IP address.
 There is active discussion in the space of effective pseudonymization of IP
 addresses in DNS traffic logs, however there seems to be no single solution that
 is widely recognized as suitable for all or most use cases. There are also as
-yet no standards for this that are unencumbered by patents. The following table
-presents a high level comparison of various techniques employed or under
-development today and classifies them according to categorization of technique
-and other properties. The list of techniques includes the main techniques in
-current use, but does not claim to be comprehensive. 
+yet no standards for this that are unencumbered by patents. 
+
+The following table presents a high level comparison of various techniques
+employed or under development today and classifies them according to
+categorization of technique and other properties. (#ip-address-techniques)
+provides a more detailed survey of these techniques and definitions for the
+categories and properties listed below. The list of techniques includes the main
+techniques in current use, but does not claim to be comprehensive.
 
 Categorisation/Property    | GA | d | TC | C | TS | i | B
 :--------------------------|--------|------|------|--------|-----|----------|---
@@ -629,10 +632,6 @@ Security concerns          |        |      |      |        |     |     X    |
 Table: Table 1: Classification of techniques
 
 GA = Google Analytics, d = dnswasher, TC = TCPdpriv, C = CryptoPAn, TS = TSA, i = ipcipher, B = Bloom filter
-
-(#ip-address-techniques)
-provides a more detailed survey of these techniques and definitions for the
-categories and properties listed below.
 
 The choice of which method to use for a particular application will depend on
 the requirements of that application and consideration of the threat analysis of
@@ -794,7 +793,7 @@ inclusion in novel research) but also the wider Internet community. See
 [SURFnet's policy](https://surf.nl/datasharing) on data sharing for research as
 an example.
 
-# DNS recursive operator privacy statement
+# DNS Recursive Operator Privacy (DROP) statement
 
 ## Recommended contents of a DROP statement
 
@@ -809,7 +808,7 @@ an example.
     and in each case whether it is aggregated, pseudonymized or anonymized and the conditions of data transfer.
 1. Exceptions. Specify any exceptions to the above, for example technically malicious or
 anomalous behavior.
-1. Partners, third-party affiliations or sources of funding. Declare any partners, third-party affiliations or sources of funding.
+1. Associated entities. Declare any partners, third-party affiliations or sources of funding.
 1. Correlation. Whether user DNS data is correlated or combined with any other personal
       information held by the operator.
 1. Result filtering. This section should explain whether the operator filters, edits or
@@ -859,18 +858,18 @@ enforcement regimes under which the service is being provided.
     - Specify whether the operator has any agreement in place with law enforcement
     agencies, or other public and private parties dealing with security and intelligence,
     to give them access to the servers and/or to the data.
-1.  Consent. Describe how consent is obtained from the user of the DNS privacy service 
-differentiating
-    - Uninformed users for whom this trust relationship is implicit
-    - Privacy-conscious users, that make an explicit trust choice
-    
-    (this may prove relevant in the context of e.g. the GDPR as it relates to consent)
+1. Consent. For any activity which is documented in this statement as 'requiring
+consent' before being performed, describe the full process of what you as an
+operator consider 'obtaining consent'. Additionally, state if this process is
+considered by you the operator to conform to any relevant legislation (this may
+prove relevant in the context of e.g. the GDPR as it relates to consent).
 
 
 ## Current policy and privacy statements
 
 A tabular comparison of existing policy and privacy statements from various DNS
-Privacy service operators based on the proposed DROP structure can be found on
+Privacy service operators based loosely on the proposed DROP structure can be
+found on
 [dnsprivacy.org](https://dnsprivacy.org/wiki/display/DP/Comparison+of+policy+and+privacy+statements).
 
 We note that the existing set of policies vary widely in style, content and
@@ -913,11 +912,12 @@ are generally applicable to session based DNS.
 # Acknowledgements
 
 Many thanks to Amelia Andersdotter for a very thorough review of the first draft
-of this document. Thanks to John Todd for discussions on this topic, and to
-Stephane Bortzmeyer, Puneet Sood and Vittorio Bertola for review. Thanks to
-Daniel Kahn Gillmor, Barry Green, Paul Hoffman, Dan York, John Reed, Lorenzo
-Colitti for comments at the mic. Thanks to Loganaden Velvindron for useful
-updates to the text.
+of this document and Stephen Farrell for a thorough review at WGLC and for
+suggesting the inclusion of an example DROP statement. Thanks to John Todd for
+discussions on this topic, and to Stephane Bortzmeyer, Puneet Sood and Vittorio
+Bertola for review. Thanks to Daniel Kahn Gillmor, Barry Green, Paul Hoffman,
+Dan York, John Reed, Lorenzo Colitti for comments at the mic. Thanks to
+Loganaden Velvindron for useful updates to the text.
 
 Sara Dickinson thanks the Open Technology Fund for a grant to support the work
 on this document.
@@ -942,6 +942,11 @@ Oxford OX4 4GA\\
 United Kingdom
 
 # Changelog
+
+draft-ietf-dprive-bcp-op-04
+
+* Change DPPPS to DROP (DNS Recursive Operator Privacy) statement
+* Add example DROP statement
 
 draft-ietf-dprive-bcp-op-03
 
@@ -1254,18 +1259,20 @@ Anonymized: Generalization.
 
 # Example DROP statement
 
-The following example DROP statement is very loosely based on some elements of published
-privacy statements for public resolvers with additional fields populated to
-illustrate the full contents of a DROP statement. This should not be interpreted as
+The following example DROP statement is very loosely based on some elements of
+published privacy statements for some public resolvers, with additional fields
+populated to illustrate the what the full contents of a DROP statement might
+look like. This should not be interpreted as
 
 * having been reviewed or approved by any operator in any way
 * having any legal standing or validity at all
 * being complete or exhaustive
 
 This is a purely hypothetical example of a DROP statement to outline example
-contents for a public resolver operator providing a simple DNS Privacy service via one IP
-address and one DoH URI with filtering. It does aim to meet minimal compliance
-as specified in (#recommendations-for-dns-privacy-services).
+contents - in this case for a public resolver operator providing a basic DNS
+Privacy service via one IP address and one DoH URI with security based
+filtering. It does aim to meet minimal compliance as specified in
+(#recommendations-for-dns-privacy-services).
 
 ## Policy
 
@@ -1295,13 +1302,13 @@ jurisdictions in which our systems reside.
 
         * Request domain name, e.g. example.net
         * Record type of requested domain, e.g. A, AAAA, NS, MX, TXT, etc.
-        * Transport protocol on which the request arrived, i.e. TCP, UDP, and encryption status of the protocol
+        * Transport protocol on which the request arrived, i.e. UDP, TCP, DoT, DoH
         * Origin IP general geolocation information: i.e. geocode, region ID, city ID, and metro code
-        * Protocol version IP address – IPv4, or IPv6
+        * IP protocol version – IPv4 or IPv6
         * Response code sent, e.g. SUCCESS, SERVFAIL, NXDOMAIN, etc.
         * Absolute arrival time
-        * Name of the specific machine that processed this request
-        * Our target IP to which this request was addressed (no relation to the user’s IP address)
+        * Name of the specific instance that processed this request
+        * IP address of the specific instance to which this request was addressed (no relation to the requestor’s IP address)
 
         We may keep the following data as summary information, including all the above
         EXCEPT for data about the DNS record requested:
@@ -1316,7 +1323,7 @@ jurisdictions in which our systems reside.
         Except as described in this document, we do not intentionally share,
         sell, or rent individual personal information associated with the requestor
         (i.e. source IP address or any other information that can positively identify
-        the system using our infrastructure) with anyone without your permission.
+        the client using our infrastructure) with anyone without your consent.
 
         We generate and share high level anonymized aggregate statistics
         including threat metrics on threat type, geolocation, and if available, sector,
@@ -1339,10 +1346,10 @@ jurisdictions in which our systems reside.
 1. Exceptions. There are exceptions to this storage model: In the event of events or
 observed behaviors which we deem malicious or anomalous, we may utilize more
 detailed logging to collect more specific IP address data in the process of
-normal network defense and mitigation. This collection and transmission off-site
+normal network defence and mitigation. This collection and transmission off-site
 will be limited to IP addresses that we determine are involved in the event.
 
-1. Partners, third-party affiliations or sources of funding. Details of our
+1. Associated entities. Details of our
 Threat Intelligence partners can be found at our website page (insert link).
 
 1. Correlation of Data. We do not correlate or combine information from our logs
@@ -1369,11 +1376,12 @@ with your specific IP address.
 
 ## Practice
 
-1. Deviations from Policy. None. 
+1. Deviations from Policy. None currently in place. 
 
 1. Client facing capabilities. 
 
-    1. We offer DNS-over-TLS on (insert IP address) as specified in RFC7858. It
+    1. We offer UDP and TCP DNS on port 53 on (insert IP address)
+    1. We offer DNS-over-TLS as specified in RFC7858 on (insert IP address). It
     is available on port 853 and port 443. We also implement RFC7766.
         1. The DoT authentication name used is (insert domain name). No TLSA records are
         available for this domain name.
@@ -1401,13 +1409,13 @@ with your specific IP address.
     3. We operate servers in the following countries (insert list).
     4. We have no agreements in place with law enforcement agencies to give them
     access to the data. Apart from as stated in the Policy section of this
-    document with regard to threat intelligence we have no agreements in place
+    document with regard to cyber threat intelligence, we have no agreements in place
     with other public and private parties dealing with security and
     intelligence, to give them access to the servers and/or to the data.
    
 1. Consent. As described, we do not intentionally share, sell, or rent
-individual personal information associated with the requestor (i.e. source IP
-address or any other information that can positively identify the system using
-our infrastructure) with anyone without your permission. To grant permission
-please contact us via our support page (insert link).
+individual personal information associated with the requestor with anyone
+without your consent. To grant consent please contact us via our support page
+(insert link) to set up a user account for our service. You can then provide
+consent via account options.
 

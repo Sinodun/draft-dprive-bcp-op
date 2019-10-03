@@ -21,10 +21,9 @@ Abstract
    considerations for DNS recursive resolver operators who choose to
    offer DNS Privacy services.  With these recommendations, the operator
    can make deliberate decisions regarding which services to provide,
-   and how the decisions and alternatives impact the privacy of
-   users.DONE
+   and how the decisions and alternatives impact the privacy of users.
 
-   This document also presents a framework to assist writers of DNS
+   This document also presents a framework to assist writers of a DNS
    Recursive Operator Privacy Statement (analogous to DNS Security
    Extensions (DNSSEC) Policies and DNSSEC Practice Statements described
    in [RFC6841]).
@@ -46,9 +45,10 @@ Status of This Memo
 
    This Internet-Draft will expire on March 23, 2020.
 
+Copyright Notice
 
-
-
+   Copyright (c) 2019 IETF Trust and the persons identified as the
+   document authors.  All rights reserved.
 
 
 
@@ -57,11 +57,6 @@ Dickinson, et al.        Expires March 23, 2020                 [Page 1]
 
 Internet-Draft     DNS Privacy Service Recommendations    September 2019
 
-
-Copyright Notice
-
-   Copyright (c) 2019 IETF Trust and the persons identified as the
-   document authors.  All rights reserved.
 
    This document is subject to BCP 78 and the IETF Trust's Legal
    Provisions Relating to IETF Documents
@@ -100,12 +95,17 @@ Table of Contents
        5.3.1.  Protocol recommendations  . . . . . . . . . . . . . .  18
        5.3.2.  Client query obfuscation  . . . . . . . . . . . . . .  19
        5.3.3.  Data sharing  . . . . . . . . . . . . . . . . . . . .  20
-   6.  DNS recursive operator privacy statement  . . . . . . . . . .  20
-     6.1.  Recommended contents of a DROP statement  . . . . . . . .  20
-       6.1.1.  Policy  . . . . . . . . . . . . . . . . . . . . . . .  20
+   6.  DNS Recursive Operator Privacy (DROP) statement . . . . . . .  21
+     6.1.  Recommended contents of a DROP statement  . . . . . . . .  21
+       6.1.1.  Policy  . . . . . . . . . . . . . . . . . . . . . . .  21
        6.1.2.  Practice  . . . . . . . . . . . . . . . . . . . . . .  22
      6.2.  Current policy and privacy statements . . . . . . . . . .  23
      6.3.  Enforcement/accountability  . . . . . . . . . . . . . . .  23
+   7.  IANA considerations . . . . . . . . . . . . . . . . . . . . .  24
+   8.  Security considerations . . . . . . . . . . . . . . . . . . .  24
+   9.  Acknowledgements  . . . . . . . . . . . . . . . . . . . . . .  24
+   10. Contributors  . . . . . . . . . . . . . . . . . . . . . . . .  24
+   11. Changelog . . . . . . . . . . . . . . . . . . . . . . . . . .  25
 
 
 
@@ -114,11 +114,6 @@ Dickinson, et al.        Expires March 23, 2020                 [Page 2]
 Internet-Draft     DNS Privacy Service Recommendations    September 2019
 
 
-   7.  IANA considerations . . . . . . . . . . . . . . . . . . . . .  24
-   8.  Security considerations . . . . . . . . . . . . . . . . . . .  24
-   9.  Acknowledgements  . . . . . . . . . . . . . . . . . . . . . .  24
-   10. Contributors  . . . . . . . . . . . . . . . . . . . . . . . .  24
-   11. Changelog . . . . . . . . . . . . . . . . . . . . . . . . . .  24
    12. References  . . . . . . . . . . . . . . . . . . . . . . . . .  26
      12.1.  Normative References . . . . . . . . . . . . . . . . . .  26
      12.2.  Informative References . . . . . . . . . . . . . . . . .  28
@@ -128,13 +123,13 @@ Internet-Draft     DNS Privacy Service Recommendations    September 2019
      A.2.  Potential decreases in DNS privacy  . . . . . . . . . . .  32
      A.3.  Related operational documents . . . . . . . . . . . . . .  32
    Appendix B.  IP address techniques  . . . . . . . . . . . . . . .  32
-     B.1.  Google Analytics non-prefix filtering . . . . . . . . . .  33
+     B.1.  Google Analytics non-prefix filtering . . . . . . . . . .  34
      B.2.  dnswasher . . . . . . . . . . . . . . . . . . . . . . . .  34
      B.3.  Prefix-preserving map . . . . . . . . . . . . . . . . . .  34
-     B.4.  Cryptographic Prefix-Preserving Pseudonymisation  . . . .  34
+     B.4.  Cryptographic Prefix-Preserving Pseudonymisation  . . . .  35
      B.5.  Top-hash Subtree-replicated Anonymisation . . . . . . . .  35
      B.6.  ipcipher  . . . . . . . . . . . . . . . . . . . . . . . .  35
-     B.7.  Bloom filters . . . . . . . . . . . . . . . . . . . . . .  35
+     B.7.  Bloom filters . . . . . . . . . . . . . . . . . . . . . .  36
    Appendix C.  Example DROP statement . . . . . . . . . . . . . . .  36
      C.1.  Policy  . . . . . . . . . . . . . . . . . . . . . . . . .  36
      C.2.  Practice  . . . . . . . . . . . . . . . . . . . . . . . .  39
@@ -161,7 +156,12 @@ Internet-Draft     DNS Privacy Service Recommendations    September 2019
    of privacy related enhancements but it is anticipated that operators
    of other resolver services will follow.
 
-
+   Whilst protocols that encrypt DNS messages on the wire provide
+   protection against certain attacks, the resolver operator still has
+   (in principle) full visibility of the query data and transport
+   identifiers for each user.  Therefore, a trust relationship exists.
+   The ability of the operator to provide a transparent, well
+   documented, and secure privacy service will likely serve as a major
 
 
 
@@ -170,12 +170,6 @@ Dickinson, et al.        Expires March 23, 2020                 [Page 3]
 Internet-Draft     DNS Privacy Service Recommendations    September 2019
 
 
-   Whilst protocols that encrypt DNS messages on the wire provide
-   protection against certain attacks, the resolver operator still has
-   (in principle) full visibility of the query data and transport
-   identifiers for each user.  Therefore, a trust relationship exists.
-   The ability of the operator to provide a transparent, well
-   documented, and secure privacy service will likely serve as a major
    differentiating factor for privacy conscious users if they make an
    active selection of which resolver to use.
 
@@ -204,7 +198,7 @@ Internet-Draft     DNS Privacy Service Recommendations    September 2019
       encrypted transports and to outline recommendations for data
       handling for operators of DNS privacy services.
 
-   o  To introduce the DNS Recursive Operator Privacy statement (DROP)
+   o  To introduce the DNS Recursive Operator Privacy (DROP) statement
       and present a framework to assist writers of this document.  A
       DROP statement is a document that an operator can publish
       outlining their operational practices and commitments with regard
@@ -212,12 +206,18 @@ Internet-Draft     DNS Privacy Service Recommendations    September 2019
       privacy properties of a given DNS privacy service.  In particular,
       the framework identifies the elements that should be considered in
       formulating a DROP statement.  This document does not, however,
-      define a particular Privacy Statement, nor does it seek to provide
+      define a particular Privacy statement, nor does it seek to provide
       legal advice or recommendations as to the contents.
 
    A desired operational impact is that all operators (both those
    providing resolvers within networks and those operating large anycast
    services) can demonstrate their commitment to user privacy thereby
+   driving all DNS resolution services to a more equitable footing.
+   Choices for users would (in this ideal world) be driven by other
+   factors e.g. differing security policies or minor difference in
+   operator policy rather than gross disparities in privacy concerns.
+
+
 
 
 
@@ -225,11 +225,6 @@ Dickinson, et al.        Expires March 23, 2020                 [Page 4]
 
 Internet-Draft     DNS Privacy Service Recommendations    September 2019
 
-
-   driving all DNS resolution services to a more equitable footing.
-   Choices for users would (in this ideal world) be driven by other
-   factors e.g. differing security policies or minor difference in
-   operator policy rather than gross disparities in privacy concerns.
 
    Community insight [or judgment?] about operational practices can
    change quickly, and experience shows that a Best Current Practice
@@ -273,6 +268,11 @@ Internet-Draft     DNS Privacy Service Recommendations    September 2019
    or worse, just that (for example) some features may bring functional
    benefits at the price of a reduction in privacy and conversely some
    features increase privacy with an accompanying increase in
+   complexity.  A selection of the most relevant documents are listed in
+   Appendix A for reference.
+
+
+
 
 
 
@@ -281,9 +281,6 @@ Dickinson, et al.        Expires March 23, 2020                 [Page 5]
 
 Internet-Draft     DNS Privacy Service Recommendations    September 2019
 
-
-   complexity.  A selection of the most relevant documents are listed in
-   Appendix A for reference.
 
 4.  Terminology
 
@@ -328,6 +325,9 @@ Internet-Draft     DNS Privacy Service Recommendations    September 2019
    We describe three classes of actions that operators of DNS privacy
    services can take:
 
+   o  Threat mitigation for well understood and documented privacy
+      threats to the users of the service and in some cases to the
+      operators of the service.
 
 
 
@@ -337,10 +337,6 @@ Dickinson, et al.        Expires March 23, 2020                 [Page 6]
 
 Internet-Draft     DNS Privacy Service Recommendations    September 2019
 
-
-   o  Threat mitigation for well understood and documented privacy
-      threats to the users of the service and in some cases to the
-      operators of the service.
 
    o  Optimization of privacy services from an operational or management
       perspective
@@ -385,6 +381,10 @@ Internet-Draft     DNS Privacy Service Recommendations    September 2019
 
    o  DoH [RFC8484]
 
+   It is noted that a DNS privacy service can also be provided over DNS-
+   over-DTLS [RFC8094], however this is an Experimental specification
+   and there are no known implementations at the time of writing.
+
 
 
 
@@ -393,10 +393,6 @@ Dickinson, et al.        Expires March 23, 2020                 [Page 7]
 
 Internet-Draft     DNS Privacy Service Recommendations    September 2019
 
-
-   It is noted that a DNS privacy service can also be provided over DNS-
-   over-DTLS [RFC8094], however this is an Experimental specification
-   and there are no known implementations at the time of writing.
 
    It is also noted that DNS privacy service might be provided over
    IPSec, DNSCrypt or VPNs.  However, use of these transports for DNS
@@ -442,6 +438,10 @@ Internet-Draft     DNS Privacy Service Recommendations    September 2019
       *  In particular, the service could provide TLSA records such that
          authenticating solely via the PKIX infrastructure can be
          avoided.
+
+
+
+
 
 
 
@@ -862,11 +862,41 @@ Internet-Draft     DNS Privacy Service Recommendations    September 2019
    of IP addresses in DNS traffic logs, however there seems to be no
    single solution that is widely recognized as suitable for all or most
    use cases.  There are also as yet no standards for this that are
-   unencumbered by patents.  The following table presents a high level
-   comparison of various techniques employed or under development today
-   and classifies them according to categorization of technique and
-   other properties.  The list of techniques includes the main
-   techniques in current use, but does not claim to be comprehensive.
+   unencumbered by patents.
+
+   The following table presents a high level comparison of various
+   techniques employed or under development today and classifies them
+   according to categorization of technique and other properties.
+   Appendix B provides a more detailed survey of these techniques and
+   definitions for the categories and properties listed below.  The list
+   of techniques includes the main techniques in current use, but does
+   not claim to be comprehensive.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Dickinson, et al.        Expires March 23, 2020                [Page 16]
+
+Internet-Draft     DNS Privacy Service Recommendations    September 2019
+
 
        +---------------------------+----+---+----+---+----+---+---+
        | Categorisation/Property   | GA | d | TC | C | TS | i | B |
@@ -890,19 +920,8 @@ Internet-Draft     DNS Privacy Service Recommendations    September 2019
 
                    Table 1: Classification of techniques
 
-
-
-
-Dickinson, et al.        Expires March 23, 2020                [Page 16]
-
-Internet-Draft     DNS Privacy Service Recommendations    September 2019
-
-
    GA = Google Analytics, d = dnswasher, TC = TCPdpriv, C = CryptoPAn,
    TS = TSA, i = ipcipher, B = Bloom filter
-
-   Appendix B provides a more detailed survey of these techniques and
-   definitions for the categories and properties listed below.
 
    The choice of which method to use for a particular application will
    depend on the requirements of that application and consideration of
@@ -927,6 +946,14 @@ Internet-Draft     DNS Privacy Service Recommendations    September 2019
 
    o  IP TTL/Hoplimit can be used to fingerprint client OS
 
+
+
+
+Dickinson, et al.        Expires March 23, 2020                [Page 17]
+
+Internet-Draft     DNS Privacy Service Recommendations    September 2019
+
+
    o  TLS version/Cipher suite combinations can be used to fingerprint
       the client application or TLS library
 
@@ -942,17 +969,6 @@ Internet-Draft     DNS Privacy Service Recommendations    September 2019
    Mitigations:
 
    o  Data minimization or discarding of such correlation data.
-
-
-
-
-
-
-
-Dickinson, et al.        Expires March 23, 2020                [Page 17]
-
-Internet-Draft     DNS Privacy Service Recommendations    September 2019
-
 
 5.2.5.  Cache snooping
 
@@ -987,6 +1003,13 @@ Internet-Draft     DNS Privacy Service Recommendations    September 2019
 
    o  Implement QNAME minimization [RFC7816]
 
+
+
+Dickinson, et al.        Expires March 23, 2020                [Page 18]
+
+Internet-Draft     DNS Privacy Service Recommendations    September 2019
+
+
    o  Honor a SOURCE PREFIX-LENGTH set to 0 in a query containing the
       EDNS(0) Client Subnet (ECS) option and not send an ECS option in
       upstream queries.
@@ -1002,14 +1025,6 @@ Internet-Draft     DNS Privacy Service Recommendations    September 2019
 
    If operators do offer a service that sends the ECS options upstream
    they should use the shortest prefix that is operationally feasible
-
-
-
-Dickinson, et al.        Expires March 23, 2020                [Page 18]
-
-Internet-Draft     DNS Privacy Service Recommendations    September 2019
-
-
    and ideally use a policy of whitelisting upstream servers to send ECS
    to in order to minimize data leakage.  Operators should make clear in
    any policy statement what prefix length they actually send and the
@@ -1043,6 +1058,14 @@ Internet-Draft     DNS Privacy Service Recommendations    September 2019
    still be attacks possible, e.g.  [Pitfalls-of-DNS-Encryption].  For
    example, a resolver with a very small community of users risks
    exposing data in this way and OUGHT obfuscate this traffic by mixing
+
+
+
+Dickinson, et al.        Expires March 23, 2020                [Page 19]
+
+Internet-Draft     DNS Privacy Service Recommendations    September 2019
+
+
    it with 'generated' traffic to make client characterization harder.
    The resolver could also employ aggressive pre-fetch techniques as a
    further measure to counter traffic analysis.
@@ -1055,16 +1078,6 @@ Internet-Draft     DNS Privacy Service Recommendations    September 2019
    that aligns with their own practices) over an encrypted protocol so
    that the upstream queries are obfuscated among those of the large
    resolver.
-
-
-
-
-
-
-Dickinson, et al.        Expires March 23, 2020                [Page 19]
-
-Internet-Draft     DNS Privacy Service Recommendations    September 2019
-
 
 5.3.3.  Data sharing
 
@@ -1101,19 +1114,6 @@ Internet-Draft     DNS Privacy Service Recommendations    September 2019
    collection of aggregated and/or anonymized data for research
    purposes, within or outside of their own organization.  This can
    benefit not only the operator (through inclusion in novel research)
-   but also the wider Internet community.  See SURFnet's policy [11] on
-   data sharing for research as an example.
-
-6.  DNS recursive operator privacy statement
-
-6.1.  Recommended contents of a DROP statement
-
-6.1.1.  Policy
-
-   1.  Treatment of IP addresses.  Make an explicit statement that IP
-       addresses are treated as PII.
-
-
 
 
 
@@ -1121,6 +1121,18 @@ Dickinson, et al.        Expires March 23, 2020                [Page 20]
 
 Internet-Draft     DNS Privacy Service Recommendations    September 2019
 
+
+   but also the wider Internet community.  See SURFnet's policy [11] on
+   data sharing for research as an example.
+
+6.  DNS Recursive Operator Privacy (DROP) statement
+
+6.1.  Recommended contents of a DROP statement
+
+6.1.1.  Policy
+
+   1.  Treatment of IP addresses.  Make an explicit statement that IP
+       addresses are treated as PII.
 
    2.  Data collection and sharing.  Specify clearly what data
        (including IP addresses) is:
@@ -1138,9 +1150,8 @@ Internet-Draft     DNS Privacy Service Recommendations    September 2019
    3.  Exceptions.  Specify any exceptions to the above, for example
        technically malicious or anomalous behavior.
 
-   4.  Partners, third-party affiliations or sources of funding.
-       Declare any partners, third-party affiliations or sources of
-       funding.
+   4.  Associated entities.  Declare any partners, third-party
+       affiliations or sources of funding.
 
    5.  Correlation.  Whether user DNS data is correlated or combined
        with any other personal information held by the operator.
@@ -1158,6 +1169,15 @@ Internet-Draft     DNS Privacy Service Recommendations    September 2019
           connections to malware-spreading websites or botnet control
           servers)
 
+
+
+
+
+Dickinson, et al.        Expires March 23, 2020                [Page 21]
+
+Internet-Draft     DNS Privacy Service Recommendations    September 2019
+
+
        *  Specify if any replies are being filtered out or altered for
           mandatory legal reasons, due to applicable legislation or
           binding orders by courts and other public authorities
@@ -1168,15 +1188,6 @@ Internet-Draft     DNS Privacy Service Recommendations    September 2019
 
        *  Specify if any replies are being filtered out or altered for
           any other reason, including commercial ones
-
-
-
-
-
-Dickinson, et al.        Expires March 23, 2020                [Page 21]
-
-Internet-Draft     DNS Privacy Service Recommendations    September 2019
-
 
 6.1.2.  Practice
 
@@ -1215,6 +1226,14 @@ Internet-Draft     DNS Privacy Service Recommendations    September 2019
           privacy policy, the relevant privacy laws that apply to the
           treatment of the data, the rights that users enjoy in regard
           to their own personal information that is treated by the
+
+
+
+Dickinson, et al.        Expires March 23, 2020                [Page 22]
+
+Internet-Draft     DNS Privacy Service Recommendations    September 2019
+
+
           service, and how they can contact the operator to enforce
           them.
 
@@ -1226,32 +1245,22 @@ Internet-Draft     DNS Privacy Service Recommendations    September 2019
 
        *  Specify whether the operator has any agreement in place with
           law enforcement agencies, or other public and private parties
-
-
-
-Dickinson, et al.        Expires March 23, 2020                [Page 22]
-
-Internet-Draft     DNS Privacy Service Recommendations    September 2019
-
-
           dealing with security and intelligence, to give them access to
           the servers and/or to the data.
 
-   6.  Consent.  Describe how consent is obtained from the user of the
-       DNS privacy service differentiating
-
-       *  Uninformed users for whom this trust relationship is implicit
-
-       *  Privacy-conscious users, that make an explicit trust choice
-
-       (this may prove relevant in the context of e.g. the GDPR as it
-       relates to consent)
+   6.  Consent.  For any activity which is documented in this statement
+       as 'requiring consent' before being performed, describe the full
+       process of what you as an operator consider 'obtaining consent'.
+       Additionally, state if this process is considered by you the
+       operator to conform to any relevant legislation (this may prove
+       relevant in the context of e.g. the GDPR as it relates to
+       consent).
 
 6.2.  Current policy and privacy statements
 
    A tabular comparison of existing policy and privacy statements from
-   various DNS Privacy service operators based on the proposed DROP
-   structure can be found on dnsprivacy.org [12].
+   various DNS Privacy service operators based loosely on the proposed
+   DROP structure can be found on dnsprivacy.org [12].
 
    We note that the existing set of policies vary widely in style,
    content and detail and it is not uncommon for the full text for a
@@ -1274,21 +1283,19 @@ Internet-Draft     DNS Privacy Service Recommendations    September 2019
 
    o  ECS, QNAME minimization, EDNS(0) padding, etc.
 
-   o  Filtering
-
-   o  Uptime
-
-   This is by analogy with e.g. several TLS or website analysis tools
-   that are currently available e.g.  SSL Labs [14] or Internet.nl [15].
-
-
-
 
 
 Dickinson, et al.        Expires March 23, 2020                [Page 23]
 
 Internet-Draft     DNS Privacy Service Recommendations    September 2019
 
+
+   o  Filtering
+
+   o  Uptime
+
+   This is by analogy with e.g. several TLS or website analysis tools
+   that are currently available e.g.  SSL Labs [14] or Internet.nl [15].
 
    Additionally operators could choose to engage the services of a third
    party auditor to verify their compliance with their published DROP
@@ -1306,11 +1313,13 @@ Internet-Draft     DNS Privacy Service Recommendations    September 2019
 9.  Acknowledgements
 
    Many thanks to Amelia Andersdotter for a very thorough review of the
-   first draft of this document.  Thanks to John Todd for discussions on
-   this topic, and to Stephane Bortzmeyer, Puneet Sood and Vittorio
-   Bertola for review.  Thanks to Daniel Kahn Gillmor, Barry Green, Paul
-   Hoffman, Dan York, John Reed, Lorenzo Colitti for comments at the
-   mic.  Thanks to Loganaden Velvindron for useful updates to the text.
+   first draft of this document and Stephen Farrell for a thorough
+   review at WGLC and for suggesting the inclusion of an example DROP
+   statement.  Thanks to John Todd for discussions on this topic, and to
+   Stephane Bortzmeyer, Puneet Sood and Vittorio Bertola for review.
+   Thanks to Daniel Kahn Gillmor, Barry Green, Paul Hoffman, Dan York,
+   John Reed, Lorenzo Colitti for comments at the mic.  Thanks to
+   Loganaden Velvindron for useful updates to the text.
 
    Sara Dickinson thanks the Open Technology Fund for a grant to support
    the work on this document.
@@ -1329,15 +1338,6 @@ Internet-Draft     DNS Privacy Service Recommendations    September 2019
    Jim Hague
    Sinodun Internet Technologies
    Magdalen Centre
-   Oxford Science Park
-   Oxford OX4 4GA
-   United Kingdom
-
-11.  Changelog
-
-   draft-ietf-dprive-bcp-op-03
-
-   o  Add paragraph about operational impact
 
 
 
@@ -1345,6 +1345,22 @@ Dickinson, et al.        Expires March 23, 2020                [Page 24]
 
 Internet-Draft     DNS Privacy Service Recommendations    September 2019
 
+
+   Oxford Science Park
+   Oxford OX4 4GA
+   United Kingdom
+
+11.  Changelog
+
+   draft-ietf-dprive-bcp-op-04
+
+   o  Change DPPPS to DROP (DNS Recursive Operator Privacy) statement
+
+   o  Add example DROP statement
+
+   draft-ietf-dprive-bcp-op-03
+
+   o  Add paragraph about operational impact
 
    o  Move DNSSEC requirement out of the Appendix into main text as a
       privacy threat that should be mitigated
@@ -1378,6 +1394,14 @@ Internet-Draft     DNS Privacy Service Recommendations    September 2019
 
    draft-ietf-dprive-bcp-op-01
 
+
+
+
+Dickinson, et al.        Expires March 23, 2020                [Page 25]
+
+Internet-Draft     DNS Privacy Service Recommendations    September 2019
+
+
    o  Many minor editorial fixes
 
    o  Update DoH reference to RFC8484 and add more text on DoH
@@ -1393,14 +1417,6 @@ Internet-Draft     DNS Privacy Service Recommendations    September 2019
    o  Clarify use of whitelisting for ECS
 
    o  Re-structure the DPPPS, add Result filtering section.
-
-
-
-
-Dickinson, et al.        Expires March 23, 2020                [Page 25]
-
-Internet-Draft     DNS Privacy Service Recommendations    September 2019
-
 
    o  Remove the direct inclusion of privacy policy comparison, now just
       reference dnsprivacy.org and an example of such work.
@@ -1434,6 +1450,14 @@ Internet-Draft     DNS Privacy Service Recommendations    September 2019
               Server-Side State", RFC 5077, DOI 10.17487/RFC5077,
               January 2008, <https://www.rfc-editor.org/info/rfc5077>.
 
+
+
+
+Dickinson, et al.        Expires March 23, 2020                [Page 26]
+
+Internet-Draft     DNS Privacy Service Recommendations    September 2019
+
+
    [RFC6265]  Barth, A., "HTTP State Management Mechanism", RFC 6265,
               DOI 10.17487/RFC6265, April 2011, <https://www.rfc-
               editor.org/info/rfc6265>.
@@ -1449,14 +1473,6 @@ Internet-Draft     DNS Privacy Service Recommendations    September 2019
               Security (TLS) and Datagram Transport Layer Security
               (DTLS)", BCP 195, RFC 7525, DOI 10.17487/RFC7525, May
               2015, <https://www.rfc-editor.org/info/rfc7525>.
-
-
-
-
-Dickinson, et al.        Expires March 23, 2020                [Page 26]
-
-Internet-Draft     DNS Privacy Service Recommendations    September 2019
-
 
    [RFC7766]  Dickinson, J., Dickinson, S., Bellis, R., Mankin, A., and
               D. Wessels, "DNS Transport over TCP - Implementation
@@ -1490,6 +1506,14 @@ Internet-Draft     DNS Privacy Service Recommendations    September 2019
               Cookies", RFC 7873, DOI 10.17487/RFC7873, May 2016,
               <https://www.rfc-editor.org/info/rfc7873>.
 
+
+
+
+Dickinson, et al.        Expires March 23, 2020                [Page 27]
+
+Internet-Draft     DNS Privacy Service Recommendations    September 2019
+
+
    [RFC8174]  Leiba, B., "Ambiguity of Uppercase vs Lowercase in RFC
               2119 Key Words", BCP 14, RFC 8174, DOI 10.17487/RFC8174,
               May 2017, <https://www.rfc-editor.org/info/rfc8174>.
@@ -1503,16 +1527,6 @@ Internet-Draft     DNS Privacy Service Recommendations    September 2019
               Pervasive Encryption on Operators", RFC 8404,
               DOI 10.17487/RFC8404, July 2018, <https://www.rfc-
               editor.org/info/rfc8404>.
-
-
-
-
-
-
-Dickinson, et al.        Expires March 23, 2020                [Page 27]
-
-Internet-Draft     DNS Privacy Service Recommendations    September 2019
-
 
    [RFC8467]  Mayrhofer, A., "Padding Policies for Extension Mechanisms
               for DNS (EDNS(0))", RFC 8467, DOI 10.17487/RFC8467,
@@ -1549,6 +1563,13 @@ Internet-Draft     DNS Privacy Service Recommendations    September 2019
               Terminology", draft-ietf-dnsop-terminology-bis-14 (work in
               progress), September 2018.
 
+
+
+Dickinson, et al.        Expires March 23, 2020                [Page 28]
+
+Internet-Draft     DNS Privacy Service Recommendations    September 2019
+
+
    [I-D.ietf-httpbis-bcp56bis]
               Nottingham, M., "Building Protocols with HTTP", draft-
               ietf-httpbis-bcp56bis-08 (work in progress), November
@@ -1560,15 +1581,6 @@ Internet-Draft     DNS Privacy Service Recommendations    September 2019
               Shulman, H., "Pretty Bad Privacy: Pitfalls of DNS
               Encryption", 2014, <https://dl.acm.org/
               citation.cfm?id=2665959>.
-
-
-
-
-
-Dickinson, et al.        Expires March 23, 2020                [Page 28]
-
-Internet-Draft     DNS Privacy Service Recommendations    September 2019
-
 
    [RFC4033]  Arends, R., Austein, R., Larson, M., Massey, D., and S.
               Rose, "DNS Security Introduction and Requirements",
@@ -1604,6 +1616,16 @@ Internet-Draft     DNS Privacy Service Recommendations    September 2019
               DOI 10.17487/RFC7706, November 2015, <https://www.rfc-
               editor.org/info/rfc7706>.
 
+
+
+
+
+
+Dickinson, et al.        Expires March 23, 2020                [Page 29]
+
+Internet-Draft     DNS Privacy Service Recommendations    September 2019
+
+
    [RFC8094]  Reddy, T., Wing, D., and P. Patil, "DNS over Datagram
               Transport Layer Security (DTLS)", RFC 8094,
               DOI 10.17487/RFC8094, February 2017, <https://www.rfc-
@@ -1617,14 +1639,6 @@ Internet-Draft     DNS Privacy Service Recommendations    September 2019
               and J. Bond, "Compacted-DNS (C-DNS): A Format for DNS
               Packet Capture", RFC 8618, DOI 10.17487/RFC8618, September
               2019, <https://www.rfc-editor.org/info/rfc8618>.
-
-
-
-
-Dickinson, et al.        Expires March 23, 2020                [Page 29]
-
-Internet-Draft     DNS Privacy Service Recommendations    September 2019
-
 
 12.3.  URIs
 
@@ -1661,6 +1675,13 @@ Internet-Draft     DNS Privacy Service Recommendations    September 2019
 
    [15] https://internet.nl
 
+
+
+Dickinson, et al.        Expires March 23, 2020                [Page 30]
+
+Internet-Draft     DNS Privacy Service Recommendations    September 2019
+
+
    [16] https://support.google.com/analytics/answer/2763052?hl=en
 
    [17] https://www.conversionworks.co.uk/blog/2017/05/19/anonymize-ip-
@@ -1674,13 +1695,6 @@ Internet-Draft     DNS Privacy Service Recommendations    September 2019
         anon.pdf
 
    [21] https://www.cc.gatech.edu/computing/Telecomm/projects/cryptopan/
-
-
-
-Dickinson, et al.        Expires March 23, 2020                [Page 30]
-
-Internet-Draft     DNS Privacy Service Recommendations    September 2019
-
 
    [22] http://mharvan.net/talks/noms-ip_anon.pdf
 
@@ -1717,6 +1731,13 @@ A.1.  Potential increases in DNS privacy
 
    o  'DNS Queries over HTTPS (DoH)' [RFC8484] referred to here as DoH.
 
+
+
+Dickinson, et al.        Expires March 23, 2020                [Page 31]
+
+Internet-Draft     DNS Privacy Service Recommendations    September 2019
+
+
    o  'Usage Profiles for DNS over TLS and DNS over DTLS' [RFC8310]
 
    o  'The EDNS(0) Padding Option' [RFC7830] and 'Padding Policy for
@@ -1727,16 +1748,6 @@ A.1.  Potential increases in DNS privacy
 
    o  'DNS Query Name minimization to Improve Privacy' [RFC7816]
       referred to here as 'QNAME minimization'
-
-
-
-
-
-
-Dickinson, et al.        Expires March 23, 2020                [Page 31]
-
-Internet-Draft     DNS Privacy Service Recommendations    September 2019
-
 
 A.2.  Potential decreases in DNS privacy
 
@@ -1775,6 +1786,14 @@ Appendix B.  IP address techniques
    and the properties of their outputs.  The following builds on the
    categorization employed in [RFC6235]:
 
+
+
+
+Dickinson, et al.        Expires March 23, 2020                [Page 32]
+
+Internet-Draft     DNS Privacy Service Recommendations    September 2019
+
+
    o  Format-preserving.  Normally when encrypting, the original data
       length and patterns in the data should be hidden from an attacker.
       Some applications of de-identification, such as network capture
@@ -1786,14 +1805,6 @@ Appendix B.  IP address techniques
       addresses contain prefix information that can be valuable in
       analysis, e.g. manufacturer ID in MAC addresses, subnet in IP
       addresses.  Prefix preservation ensures that prefixes are de-
-
-
-
-Dickinson, et al.        Expires March 23, 2020                [Page 32]
-
-Internet-Draft     DNS Privacy Service Recommendations    September 2019
-
-
       identified consistently; e.g. if two IP addresses are from the
       same subnet, a prefix preserving de-identification will ensure
       that their de-identified counterparts will also share a subnet.
@@ -1830,6 +1841,15 @@ Internet-Draft     DNS Privacy Service Recommendations    September 2019
       a hash function or cryptographic block cipher, to generate a
       replacement de-identified value.
 
+
+
+
+
+Dickinson, et al.        Expires March 23, 2020                [Page 33]
+
+Internet-Draft     DNS Privacy Service Recommendations    September 2019
+
+
 B.1.  Google Analytics non-prefix filtering
 
    Since May 2010, Google Analytics has provided a facility [16] that
@@ -1842,13 +1862,6 @@ B.1.  Google Analytics non-prefix filtering
    this on reducing the accuracy of determining the user's location from
    their IP address is less than might be hoped; the average discrepancy
    in identification of the user city for UK users is no more than 17%.
-
-
-
-Dickinson, et al.        Expires March 23, 2020                [Page 33]
-
-Internet-Draft     DNS Privacy Service Recommendations    September 2019
-
 
    Anonymization: Format-preserving, Filtering (grey marking).
 
@@ -1881,6 +1894,18 @@ B.3.  Prefix-preserving map
 
    Anonymization: Format-preserving, prefix preservation (general).
 
+
+
+
+
+
+
+
+Dickinson, et al.        Expires March 23, 2020                [Page 34]
+
+Internet-Draft     DNS Privacy Service Recommendations    September 2019
+
+
 B.4.  Cryptographic Prefix-Preserving Pseudonymisation
 
    Cryptographic prefix-preserving pseudonymisation was originally
@@ -1898,13 +1923,6 @@ B.4.  Cryptographic Prefix-Preserving Pseudonymisation
    results for some number of prefix bits.
 
    Pseudonymization: Format-preserving, prefix preservation (general).
-
-
-
-Dickinson, et al.        Expires March 23, 2020                [Page 34]
-
-Internet-Draft     DNS Privacy Service Recommendations    September 2019
-
 
 B.5.  Top-hash Subtree-replicated Anonymisation
 
@@ -1934,6 +1952,16 @@ B.6.  ipcipher
 
    Pseudonymization: Format-preserving, cryptographic permutation.
 
+
+
+
+
+
+Dickinson, et al.        Expires March 23, 2020                [Page 35]
+
+Internet-Draft     DNS Privacy Service Recommendations    September 2019
+
+
 B.7.  Bloom filters
 
    van Rijswijk-Deij et al. [28] have recently described work using
@@ -1954,20 +1982,13 @@ B.7.  Bloom filters
 
    Anonymized: Generalization.
 
-
-
-
-Dickinson, et al.        Expires March 23, 2020                [Page 35]
-
-Internet-Draft     DNS Privacy Service Recommendations    September 2019
-
-
 Appendix C.  Example DROP statement
 
    The following example DROP statement is very loosely based on some
-   elements of published privacy statements for public resolvers with
-   additional fields populated to illustrate the full contents of a DROP
-   statement.  This should not be interpreted as
+   elements of published privacy statements for some public resolvers,
+   with additional fields populated to illustrate the what the full
+   contents of a DROP statement might look like.  This should not be
+   interpreted as
 
    o  having been reviewed or approved by any operator in any way
 
@@ -1976,10 +1997,10 @@ Appendix C.  Example DROP statement
    o  being complete or exhaustive
 
    This is a purely hypothetical example of a DROP statement to outline
-   example contents for a public resolver operator providing a simple
-   DNS Privacy service via one IP address and one DoH URI with
-   filtering.  It does aim to meet minimal compliance as specified in
-   Section 5.
+   example contents - in this case for a public resolver operator
+   providing a basic DNS Privacy service via one IP address and one DoH
+   URI with security based filtering.  It does aim to meet minimal
+   compliance as specified in Section 5.
 
 C.1.  Policy
 
@@ -1989,6 +2010,13 @@ C.1.  Policy
        jurisdictions in which our systems reside.
 
    2.  Data collection and sharing.
+
+
+
+Dickinson, et al.        Expires March 23, 2020                [Page 36]
+
+Internet-Draft     DNS Privacy Service Recommendations    September 2019
+
 
        1.  IP addresses.  Our normal course of data management does not
            have any IP address information or other PII logged to disk
@@ -2010,40 +2038,41 @@ C.1.  Policy
            types, counts, etc.)  When you use our DNS Services, here is
            the full list of items that are included in our logs:
 
-
-
-
-Dickinson, et al.        Expires March 23, 2020                [Page 36]
-
-Internet-Draft     DNS Privacy Service Recommendations    September 2019
-
-
            +  Request domain name, e.g. example.net
 
            +  Record type of requested domain, e.g.  A, AAAA, NS, MX,
               TXT, etc.
 
-           +  Transport protocol on which the request arrived, i.e. TCP,
-              UDP, and encryption status of the protocol
+           +  Transport protocol on which the request arrived, i.e. UDP,
+              TCP, DoT, DoH
 
            +  Origin IP general geolocation information: i.e. geocode,
               region ID, city ID, and metro code
 
-           +  Protocol version IP address - IPv4, or IPv6
+           +  IP protocol version - IPv4 or IPv6
 
            +  Response code sent, e.g.  SUCCESS, SERVFAIL, NXDOMAIN,
               etc.
 
            +  Absolute arrival time
 
-           +  Name of the specific machine that processed this request
+           +  Name of the specific instance that processed this request
 
-           +  Our target IP to which this request was addressed (no
-              relation to the user's IP address)
+           +  IP address of the specific instance to which this request
+              was addressed (no relation to the requestor's IP address)
 
            We may keep the following data as summary information,
            including all the above EXCEPT for data about the DNS record
            requested:
+
+
+
+
+
+Dickinson, et al.        Expires March 23, 2020                [Page 37]
+
+Internet-Draft     DNS Privacy Service Recommendations    September 2019
+
 
            +  Currently-advertised BGP-summarized IP prefix/netmask of
               apparent client origin
@@ -2058,22 +2087,14 @@ Internet-Draft     DNS Privacy Service Recommendations    September 2019
            not intentionally share, sell, or rent individual personal
            information associated with the requestor (i.e. source IP
            address or any other information that can positively identify
-           the system using our infrastructure) with anyone without your
-           permission.  We generate and share high level anonymized
+           the client using our infrastructure) with anyone without your
+           consent.  We generate and share high level anonymized
            aggregate statistics including threat metrics on threat type,
            geolocation, and if available, sector, as well as other
            vertical metrics including performance metrics on our DNS
            Services (i.e. number of threats blocked, infrastructure
            uptime) when available with the our threat intelligence (TI)
            partners, academic researchers, or the public.  Our DNS
-
-
-
-Dickinson, et al.        Expires March 23, 2020                [Page 37]
-
-Internet-Draft     DNS Privacy Service Recommendations    September 2019
-
-
            Services share anonymized data on specific domains queried
            (records such as domain, timestamp, geolocation, number of
            hits, first seen, last seen) with its threat intelligence
@@ -2089,18 +2110,25 @@ Internet-Draft     DNS Privacy Service Recommendations    September 2019
    3.  Exceptions.  There are exceptions to this storage model: In the
        event of events or observed behaviors which we deem malicious or
        anomalous, we may utilize more detailed logging to collect more
-       specific IP address data in the process of normal network defense
+       specific IP address data in the process of normal network defence
        and mitigation.  This collection and transmission off-site will
        be limited to IP addresses that we determine are involved in the
        event.
 
-   4.  Partners, third-party affiliations or sources of funding.
-       Details of our Threat Intelligence partners can be found at our
-       website page (insert link).
+   4.  Associated entities.  Details of our Threat Intelligence partners
+       can be found at our website page (insert link).
 
    5.  Correlation of Data.  We do not correlate or combine information
        from our logs with any personal information that you have
        provided us for other services, or with your specific IP address.
+
+
+
+
+Dickinson, et al.        Expires March 23, 2020                [Page 38]
+
+Internet-Draft     DNS Privacy Service Recommendations    September 2019
+
 
    6.  Result filtering.
 
@@ -2123,21 +2151,16 @@ Internet-Draft     DNS Privacy Service Recommendations    September 2019
                form (insert link) if you believe we are blocking a
                domain in error.
 
-
-
-Dickinson, et al.        Expires March 23, 2020                [Page 38]
-
-Internet-Draft     DNS Privacy Service Recommendations    September 2019
-
-
 C.2.  Practice
 
-   1.  Deviations from Policy.  None.
+   1.  Deviations from Policy.  None currently in place.
 
    2.  Client facing capabilities.
 
-       1.  We offer DNS-over-TLS on (insert IP address) as specified in
-           RFC7858.  It is available on port 853 and port 443.  We also
+       1.  We offer UDP and TCP DNS on port 53 on (insert IP address)
+
+       2.  We offer DNS-over-TLS as specified in RFC7858 on (insert IP
+           address).  It is available on port 853 and port 443.  We also
            implement RFC7766.
 
            1.  The DoT authentication name used is (insert domain name).
@@ -2145,16 +2168,23 @@ C.2.  Practice
 
            2.  We do not publish SPKI pin sets.
 
-       2.  We offer DNS-over-HTTPS as specified in RFC8484 on (insert
+       3.  We offer DNS-over-HTTPS as specified in RFC8484 on (insert
            URI template).  Both POST and GET are supported.
 
-       3.  Both services offer TLS 1.2 and TLS 1.3.
+       4.  Both services offer TLS 1.2 and TLS 1.3.
 
-       4.  Both services pad DNS responses according to RFC8467.
+       5.  Both services pad DNS responses according to RFC8467.
 
-       5.  Both services provide DNSSEC validation.
+       6.  Both services provide DNSSEC validation.
 
    3.  Upstream capabilities.
+
+
+
+Dickinson, et al.        Expires March 23, 2020                [Page 39]
+
+Internet-Draft     DNS Privacy Service Recommendations    September 2019
+
 
        1.  Our servers implement QNAME minimisation.
 
@@ -2178,25 +2208,18 @@ C.2.  Practice
 
        4.  We have no agreements in place with law enforcement agencies
            to give them access to the data.  Apart from as stated in the
-
-
-
-Dickinson, et al.        Expires March 23, 2020                [Page 39]
-
-Internet-Draft     DNS Privacy Service Recommendations    September 2019
-
-
-           Policy section of this document with regard to threat
-           intelligence we have no agreements in place with other public
-           and private parties dealing with security and intelligence,
-           to give them access to the servers and/or to the data.
+           Policy section of this document with regard to cyber threat
+           intelligence, we have no agreements in place with other
+           public and private parties dealing with security and
+           intelligence, to give them access to the servers and/or to
+           the data.
 
    6.  Consent.  As described, we do not intentionally share, sell, or
        rent individual personal information associated with the
-       requestor (i.e. source IP address or any other information that
-       can positively identify the system using our infrastructure) with
-       anyone without your permission.  To grant permission please
-       contact us via our support page (insert link).
+       requestor with anyone without your consent.  To grant consent
+       please contact us via our support page (insert link) to set up a
+       user account for our service.  You can then provide consent via
+       account options.
 
 Authors' Addresses
 
@@ -2208,6 +2231,15 @@ Authors' Addresses
    United Kingdom
 
    Email: sara@sinodun.com
+
+
+
+
+
+
+Dickinson, et al.        Expires March 23, 2020                [Page 40]
+
+Internet-Draft     DNS Privacy Service Recommendations    September 2019
 
 
    Benno J. Overeinder
@@ -2237,4 +2269,28 @@ Authors' Addresses
 
 
 
-Dickinson, et al.        Expires March 23, 2020                [Page 40]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Dickinson, et al.        Expires March 23, 2020                [Page 41]
