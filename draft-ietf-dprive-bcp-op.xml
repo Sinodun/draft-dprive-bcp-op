@@ -76,7 +76,7 @@
 <uri></uri>
 </address>
 </author>
-<date year="2019" month="September" day="20"/>
+<date year="2019" month="October" day="4"/>
 
 <area>Internet</area>
 <workgroup>dprive</workgroup>
@@ -92,7 +92,7 @@ privacy of users.
 </t>
 <t>This document also presents a framework to assist writers of a DNS Recursive
 Operator Privacy Statement (analogous to DNS Security Extensions (DNSSEC)
-Policies and DNSSEC Practice Statements described in <xref target="RFC6841"/>).
+Policies and DNSSEC Practice Statements described in RFC6841).
 </t>
 </abstract>
 
@@ -112,7 +112,7 @@ document attempts to provide an overview of considerations for privacy focused
 DNS services.
 </t>
 <t>In recent years there has also been an increase in the availability of &quot;public
-resolvers&quot; <xref target="I-D.ietf-dnsop-terminology-bis"/> which users may prefer to use
+resolvers&quot; <xref target="RFC8499"/> which users may prefer to use
 instead of the default network resolver because they offer a specific feature
 (e.g. good reachability, encrypted transport, strong privacy policy, filtering
 (or lack of), etc.). These open resolvers have tended to be at the forefront of
@@ -217,10 +217,10 @@ increase in complexity. A selection of the most relevant documents are listed in
 <section anchor="terminology" title="Terminology">
 <t>The key words &quot;MUST&quot;, &quot;MUST NOT&quot;, &quot;REQUIRED&quot;, &quot;SHALL&quot;, &quot;SHALL NOT&quot;, &quot;SHOULD&quot;,
 &quot;SHOULD NOT&quot;, &quot;RECOMMENDED&quot;, &quot;NOT RECOMMENDED&quot;, &quot;MAY&quot;, and &quot;OPTIONAL&quot; in this
-document are to be interpreted as described in BCP 14 <xref target="RFC2119"/> and <xref target="RFC8174"/>
-when, and only when, they appear in all capitals, as shown here.
+document are to be interpreted as described in BCP 14 <xref target="RFC2119"/> and
+<xref target="RFC8174"/> when, and only when, they appear in all capitals, as shown here.
 </t>
-<t>DNS terminology is as described in <xref target="I-D.ietf-dnsop-terminology-bis"/> with one
+<t>DNS terminology is as described in <xref target="RFC8499"/> with one
 modification: we restate the clause in the original definition of
 Privacy-enabling DNS server in <xref target="RFC8310"/> to include the requirement that a DNS
 over (D)TLS server should also offer at least one of the credentials described
@@ -432,8 +432,8 @@ provide strong mitigations. This includes but is not limited to:
 <t>Implementing only (D)TLS 1.2 or later as specified in <xref target="RFC8310"/></t>
 <t>Implementing EDNS(0) Padding <xref target="RFC7830"/> using the guidelines in
 <xref target="RFC8467"/> or a successor specification.</t>
-<t>Clients should not be required to use TLS session resumption <xref target="RFC5077"/> or
-Domain Name System (DNS) Cookies <xref target="RFC7873"/>.</t>
+<t>Clients should not be required to use TLS session resumption <xref target="RFC5077"/> with
+TLS 1.2 or Domain Name System (DNS) Cookies <xref target="RFC7873"/>.</t>
 <t>A DNS-over-TLS privacy service on both port 853 and 443. This practice may not
 be possible if e.g. the operator deploys DoH on the same IP address.</t>
 </list>
@@ -449,7 +449,7 @@ similar to HTTP multiplexing)</t>
 <t>Management of TLS connections to optimize performance for clients using either
 <list style="symbols">
 <t><xref target="RFC7766"/> and EDNS(0) Keepalive <xref target="RFC7828"/> and/or</t>
-<t>DNS Stateful Operations <xref target="I-D.ietf-dnsop-session-signal"/></t>
+<t>DNS Stateful Operations <xref target="RFC8490"/></t>
 </list></t>
 </list>
 </t>
@@ -670,8 +670,8 @@ of detecting and remedying technically malicious (e.g. DoS) or anomalous use
 of the service.</t>
 <t>Data access should be minimized to only those personnel who require access to
 perform operational duties. It should also be limited to anonymized or
-pseudonymized data were operationally feasible, with access to unencrypted
-only permitted when necessary.</t>
+pseudonymized data were operationally feasible, with access to full logs (if
+any are held) only permitted when necessary.</t>
 </list>
 </t>
 <t>Optimizations:
@@ -972,6 +972,8 @@ an example.
 </section>
 
 <section anchor="dns-recursive-operator-privacy-drop-statement" title="DNS Recursive Operator Privacy (DROP) statement">
+<t>The following section outlines the recommended contents of a DROP statement an operator might choose to publish. An example statement for a specific scenario is provided for guidance only in <xref target="example-drop-statement"/>.
+</t>
 
 <section anchor="recommended-contents-of-a-drop-statement" title="Recommended contents of a DROP statement">
 
@@ -1064,7 +1066,8 @@ data.
 </list></t>
 <t>Consent. For any activity which is documented in this statement as 'requiring
 consent' before being performed, describe the full process of what you as an
-operator consider 'obtaining consent'. Additionally, state if this process is
+operator consider 'obtaining consent', distinguishing clearly between any
+implicit and explicit consent models. Additionally, state if these processes are
 considered by you the operator to conform to any relevant legislation (this may
 prove relevant in the context of e.g. the GDPR as it relates to consent).</t>
 </list>
@@ -1173,7 +1176,11 @@ United Kingdom
 <t>
 <list style="symbols">
 <t>Change DPPPS to DROP (DNS Recursive Operator Privacy) statement</t>
+<t>Update structure of DROP slightly</t>
 <t>Add example DROP statement</t>
+<t>Add text about restricting access to full logs</t>
+<t>Move table in section 5.2.3 from SVG to inline table</t>
+<t>Fix many editorial and reference nits</t>
 </list>
 </t>
 <t>draft-ietf-dprive-bcp-op-03
@@ -1238,9 +1245,7 @@ draft-dickinson-dprive-bcp-op-01</t>
 </middle>
 <back>
 <references title="Normative References">
-<?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml3/reference.I-D.ietf-dnsop-session-signal.xml"?>
 <?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.2119.xml"?>
-<?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.5077.xml"?>
 <?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.6265.xml"?>
 <?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.6973.xml"?>
 <?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.7525.xml"?>
@@ -1260,9 +1265,7 @@ draft-dickinson-dprive-bcp-op-01</t>
 <references title="Informative References">
 <?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml3/reference.I-D.bellis-dnsop-xpf.xml"?>
 <?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml3/reference.I-D.bortzmeyer-dprive-rfc7626-bis.xml"?>
-<?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml3/reference.I-D.ietf-dnsop-dns-capture-format.xml"?>
 <?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml3/reference.I-D.ietf-dnsop-dns-tcp-requirements.xml"?>
-<?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml3/reference.I-D.ietf-dnsop-terminology-bis.xml"?>
 <?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml3/reference.I-D.ietf-httpbis-bcp56bis.xml"?>
 <reference anchor='Pitfalls-of-DNS-Encryption'
  target='https://dl.acm.org/citation.cfm?id=2665959'>
@@ -1275,14 +1278,16 @@ draft-dickinson-dprive-bcp-op-01</t>
     </front>
 </reference>
 <?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.4033.xml"?>
+<?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.5077.xml"?>
 <?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.5280.xml"?>
 <?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.6235.xml"?>
-<?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.6841.xml"?>
 <?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.7457.xml"?>
 <?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.7686.xml"?>
 <?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.7706.xml"?>
 <?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.8094.xml"?>
 <?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.8198.xml"?>
+<?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.8490.xml"?>
+<?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.8499.xml"?>
 <?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.8618.xml"?>
 <reference anchor='pcap' target='http://www.tcpdump.org/'>
     <front>
@@ -1340,8 +1345,8 @@ user activity as a side effect:
 <t>'Domain Name System (DNS) Cookies' <xref target="RFC7873"/>)</t>
 <t>'Transport Layer Security (TLS) Session Resumption without Server-Side State'
 <xref target="RFC5077"/> referred to here as simply TLS session resumption.</t>
-<t>'A DNS Packet Capture Format' <xref target="I-D.ietf-dnsop-dns-capture-format"/></t>
-<t>Passive DNS <xref target="I-D.ietf-dnsop-terminology-bis"/></t>
+<t>'A DNS Packet Capture Format' <xref target="RFC8618"/></t>
+<t>Passive DNS <xref target="RFC8499"/></t>
 </list>
 </t>
 <t>Note that depending on the specifics of the implementation
@@ -1356,7 +1361,7 @@ user activity as a side effect:
 <t>'Operational requirements for DNS-over-TCP'
 <xref target="I-D.ietf-dnsop-dns-tcp-requirements"/></t>
 <t>'The edns-tcp-keepalive EDNS0 Option' <xref target="RFC7828"/></t>
-<t>'DNS Stateful Operations' <xref target="I-D.ietf-dnsop-session-signal"/></t>
+<t>'DNS Stateful Operations' <xref target="RFC8490"/></t>
 </list>
 </t>
 </section>
@@ -1695,9 +1700,11 @@ intelligence, to give them access to the servers and/or to the data.
 </list></t>
 <t>Consent. As described, we do not intentionally share, sell, or rent
 individual personal information associated with the requestor with anyone
-without your consent. To grant consent please contact us via our support page
-(insert link) to set up a user account for our service. You can then provide
-consent via account options.</t>
+without your consent. In order to provide consent you must have a user account
+for our service - this can be set up via our support page (insert link). We may
+contact existing users with accounts to enquire if you would be willing to
+provide consent for specific situations. Users can then provide explicit consent
+by choosing to enable certain account options which are disabled by default.</t>
 </list>
 </t>
 </section>

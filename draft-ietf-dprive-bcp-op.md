@@ -7,7 +7,7 @@
     area = "Internet"
     workgroup = "dprive"
     keyword = ["DNS"]
-    date = 2019-09-20T00:00:00Z
+    date = 2019-10-04T00:00:00Z
     [pi]
     toc = "yes"
     compact = "yes"
@@ -69,7 +69,7 @@ privacy of users.
 
 This document also presents a framework to assist writers of a DNS Recursive
 Operator Privacy Statement (analogous to DNS Security Extensions (DNSSEC)
-Policies and DNSSEC Practice Statements described in [@RFC6841]).
+Policies and DNSSEC Practice Statements described in RFC6841).
 
 
 {mainmatter}
@@ -86,7 +86,7 @@ document attempts to provide an overview of considerations for privacy focused
 DNS services.
 
 In recent years there has also been an increase in the availability of "public
-resolvers" [@?I-D.ietf-dnsop-terminology-bis] which users may prefer to use
+resolvers" [@?RFC8499] which users may prefer to use
 instead of the default network resolver because they offer a specific feature
 (e.g. good reachability, encrypted transport, strong privacy policy, filtering
 (or lack of), etc.). These open resolvers have tended to be at the forefront of
@@ -185,10 +185,10 @@ increase in complexity. A selection of the most relevant documents are listed in
 
 The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD",
 "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and "OPTIONAL" in this
-document are to be interpreted as described in BCP 14 [@!RFC2119] and [@!RFC8174]
-when, and only when, they appear in all capitals, as shown here.
+document are to be interpreted as described in BCP 14 [@!RFC2119] and
+[@!RFC8174] when, and only when, they appear in all capitals, as shown here.
 
-DNS terminology is as described in [@?I-D.ietf-dnsop-terminology-bis] with one
+DNS terminology is as described in [@?RFC8499] with one
 modification: we restate the clause in the original definition of
 Privacy-enabling DNS server in [@!RFC8310] to include the requirement that a DNS
 over (D)TLS server should also offer at least one of the credentials described
@@ -350,8 +350,8 @@ provide strong mitigations. This includes but is not limited to:
 * Implementing only (D)TLS 1.2 or later as specified in [@!RFC8310]
 * Implementing EDNS(0) Padding [@!RFC7830] using the guidelines in
   [@!RFC8467] or a successor specification.
-* Clients should not be required to use TLS session resumption [@!RFC5077] or
-  Domain Name System (DNS) Cookies [@!RFC7873].
+* Clients should not be required to use TLS session resumption [@RFC5077] with
+  TLS 1.2 or Domain Name System (DNS) Cookies [@!RFC7873].
 * A DNS-over-TLS privacy service on both port 853 and 443. This practice may not
   be possible if e.g. the operator deploys DoH on the same IP address.
 
@@ -363,7 +363,7 @@ Optimizations:
   similar to HTTP multiplexing)
 * Management of TLS connections to optimize performance for clients using either
   * [@!RFC7766] and EDNS(0) Keepalive [@!RFC7828] and/or 
-  * DNS Stateful Operations [@!I-D.ietf-dnsop-session-signal]
+  * DNS Stateful Operations [@RFC8490]
 
 Additional options that providers may consider:
 
@@ -541,8 +541,8 @@ described in [@!RFC6973] should be applied.
   of the service.
 * Data access should be minimized to only those personnel who require access to
   perform operational duties. It should also be limited to anonymized or
-  pseudonymized data were operationally feasible, with access to unencrypted
-  only permitted when necessary.
+  pseudonymized data were operationally feasible, with access to full logs (if
+  any are held) only permitted when necessary.
 
 Optimizations:
 
@@ -795,6 +795,8 @@ an example.
 
 # DNS Recursive Operator Privacy (DROP) statement
 
+The following section outlines the recommended contents of a DROP statement an operator might choose to publish. An example statement for a specific scenario is provided for guidance only in (#example-drop-statement).
+
 ## Recommended contents of a DROP statement
 
 ### Policy
@@ -878,7 +880,8 @@ and law enforcement regimes under which the service is being provided.
       
 1. Consent. For any activity which is documented in this statement as 'requiring
 consent' before being performed, describe the full process of what you as an
-operator consider 'obtaining consent'. Additionally, state if this process is
+operator consider 'obtaining consent', distinguishing clearly between any
+implicit and explicit consent models. Additionally, state if these processes are
 considered by you the operator to conform to any relevant legislation (this may
 prove relevant in the context of e.g. the GDPR as it relates to consent).
 
@@ -964,7 +967,11 @@ United Kingdom
 draft-ietf-dprive-bcp-op-04
 
 * Change DPPPS to DROP (DNS Recursive Operator Privacy) statement
+* Update structure of DROP slightly
 * Add example DROP statement
+* Add text about restricting access to full logs
+* Move table in section 5.2.3 from SVG to inline table
+* Fix many editorial and reference nits
 
 draft-ietf-dprive-bcp-op-03
 
@@ -1061,7 +1068,7 @@ in the appendix-->
 [-@RFC6235]
 [-@!RFC7871]
 [-@RFC4033]
-[-@?I-D.ietf-dnsop-dns-capture-format]
+[-@?RFC8618]
 [-@?I-D.ietf-dnsop-dns-tcp-requirements]
 
 {backmatter}
@@ -1104,8 +1111,8 @@ user activity as a side effect:
 * 'Domain Name System (DNS) Cookies' [@!RFC7873])
 * 'Transport Layer Security (TLS) Session Resumption without Server-Side State'
   [@!RFC5077] referred to here as simply TLS session resumption.
-* 'A DNS Packet Capture Format' [@?I-D.ietf-dnsop-dns-capture-format]
-* Passive DNS [@?I-D.ietf-dnsop-terminology-bis]
+* 'A DNS Packet Capture Format' [@RFC8618]
+* Passive DNS [@RFC8499]
 
 Note that depending on the specifics of the implementation
 [@!RFC8484] may also provide increased tracking.
@@ -1116,7 +1123,7 @@ Note that depending on the specifics of the implementation
 * 'Operational requirements for DNS-over-TCP'
   [@?I-D.ietf-dnsop-dns-tcp-requirements]
 * 'The edns-tcp-keepalive EDNS0 Option' [@!RFC7828]
-* 'DNS Stateful Operations' [@!I-D.ietf-dnsop-session-signal]
+* 'DNS Stateful Operations' [@RFC8490]
 
 # IP address techniques
 
@@ -1442,7 +1449,9 @@ with your specific IP address.
    
 1. Consent. As described, we do not intentionally share, sell, or rent
 individual personal information associated with the requestor with anyone
-without your consent. To grant consent please contact us via our support page
-(insert link) to set up a user account for our service. You can then provide
-consent via account options.
+without your consent. In order to provide consent you must have a user account
+for our service - this can be set up via our support page (insert link). We may
+contact existing users with accounts to enquire if you would be willing to
+provide consent for specific situations. Users can then provide explicit consent
+by choosing to enable certain account options which are disabled by default.
 
