@@ -2,12 +2,12 @@
     Title = "Recommendations for DNS Privacy Service Operators"
     abbrev = "DNS Privacy Service Recommendations"
     category = "bcp"
-    docName= "draft-ietf-dprive-bcp-op-04"
+    docName= "draft-ietf-dprive-bcp-op-05"
     ipr = "trust200902"
     area = "Internet"
     workgroup = "dprive"
     keyword = ["DNS"]
-    date = 2019-10-04T00:00:00Z
+    date = 2019-10-31T00:00:00Z
     [pi]
     toc = "yes"
     compact = "yes"
@@ -294,13 +294,6 @@ certificates [@RFC5280] or SPKI pin sets [@!RFC8310].
 When offering DoH [@!RFC8484], HTTPS requires authentication of the server as
 part of the protocol.
 
-Optimizations:
-
-DNS privacy services can also consider the following capabilities/options:
-
-* As recommended in [@!RFC8310] providing DANE TLSA records for the nameserver
-  * In particular, the service could provide TLSA records such that
-    authenticating solely via the PKIX infrastructure can be avoided.
 
 #### Certificate management 
 
@@ -326,7 +319,9 @@ It is recommended that operators:
 * Follow the guidance in Section 6.5 of [@!RFC7525] with regards to certificate
 revocation 
 * Choose a short, memorable authentication name for the service
-* Automate the generation and publication of certificates
+* Automate the generation, publication and renewal of certificates. For example,
+  ACME [@RFC8555] provides a mechanism to actively manage certificates through
+  automation and has been implemented by a number of certificate authorities.
 * Monitor certificates to prevent accidental expiration of certificates
 
 ### Protocol recommendations
@@ -350,8 +345,10 @@ provide strong mitigations. This includes but is not limited to:
 * Implementing only (D)TLS 1.2 or later as specified in [@!RFC8310]
 * Implementing EDNS(0) Padding [@!RFC7830] using the guidelines in
   [@!RFC8467] or a successor specification.
-* Clients should not be required to use TLS session resumption [@RFC5077] with
-  TLS 1.2 or Domain Name System (DNS) Cookies [@!RFC7873].
+* Servers should not degrade in any way the query service level provided to
+  clients that do not use any form of session resumption mechanism, such as TLS
+  session resumption [@RFC5077] with TLS 1.2, section 2.2 of RFC8446, or Domain
+  Name System (DNS) Cookies [@!RFC7873].
 * A DNS-over-TLS privacy service on both port 853 and 443. This practice may not
   be possible if e.g. the operator deploys DoH on the same IP address.
 
@@ -364,10 +361,6 @@ Optimizations:
 * Management of TLS connections to optimize performance for clients using either
   * [@!RFC7766] and EDNS(0) Keepalive [@!RFC7828] and/or 
   * DNS Stateful Operations [@RFC8490]
-
-Additional options that providers may consider:
-
-* Offer a .onion [@RFC7686] service endpoint
 
 #### DoH
 
@@ -657,14 +650,19 @@ of a cryptographic chosen plaintext attack.
 
 DNS Privacy Threats:
 
-* IP TTL/Hoplimit can be used to fingerprint client OS
-* TLS version/Cipher suite combinations can be used to fingerprint the client
-  application or TLS library
-* Tracking of TCP sessions
-* Tracking of TLS sessions and session resumption mechanisms
+* Fingerprinting of the client OS via various means including: IP TTL/Hoplimit,
+  TCP parameters (e.g. window size, ECN support, SACK), OS specific DNS query
+  patterns (e.g. for network connectivity, captive portal detection or OS
+  specific updates).
+* Fingerprinting of the client application or TLS library by e.g. TLS
+  version/Cipher suite combinations or other connection parameters.
+* Correlation of queries on multiple TCP session originating from the same IP
+  address
+* Correlating of queries on multiple TLS sessions originating from the same
+  client, including via session resumption mechanisms
 * Resolvers _might_ receive client identifiers e.g. MAC addresses in EDNS(0)
   options - some CPE devices are known to add them.
-* HTTP headers
+* HTTP headers (e.g., User-Agent, Accept, Accept-Encoding)
 
 Mitigations:
 
@@ -782,10 +780,6 @@ Operators should not provide identifiable data to third-parties without explicit
 consent from clients (we take the stance here that simply using the resolution
 service itself does not constitute consent).
 
-Even when consent is granted operators should employ data minimization
-techniques such as those described in (#data-handling) if data is shared with
-third-parties.
-
 Operators should consider including specific guidelines for the collection of
 aggregated and/or anonymized data for research purposes, within or outside of
 their own organization. This can benefit not only the operator (through
@@ -849,8 +843,7 @@ This section should explain the current operational practices of the service.
 1. Client facing capabilities. With reference to section
 (#recommendations-for-dns-privacy-services) provide specific details of which
 capabilities are provided on which client facing addresses and ports:
-    1. For DoT, specify the authentication name to be used (if any) and if TLSA
-records are published (including options used in the TLSA records)
+    1. For DoT, specify the authentication name to be used (if any)
     1. For DoT, specify the SPKI pin sets to be used (if any) and policy for
     rolling keys
     
@@ -877,13 +870,6 @@ and law enforcement regimes under which the service is being provided.
     enforcement agencies, or other public and private parties dealing with
     security and intelligence, to give them access to the servers and/or to the
     data.
-      
-1. Consent. For any activity which is documented in this statement as 'requiring
-consent' before being performed, describe the full process of what you as an
-operator consider 'obtaining consent', distinguishing clearly between any
-implicit and explicit consent models. Additionally, state if these processes are
-considered by you the operator to conform to any relevant legislation (this may
-prove relevant in the context of e.g. the GDPR as it relates to consent).
 
 
 ## Current policy and privacy statements
@@ -963,6 +949,16 @@ Oxford OX4 4GA\\
 United Kingdom
 
 # Changelog
+
+draft-ietf-dprive-bcp-op-05
+
+* Remove some text on consent:
+    * Paragraph 2 in section 5.3.3
+    * Item 6 in the DROP Practice statement (and example)
+* Remove .onion and TLSA options
+* Include ACME as a reference for certificate management
+* Update text on session resumption usage
+* Update section 5.2.4 on client fingerprinting
 
 draft-ietf-dprive-bcp-op-04
 
@@ -1416,8 +1412,7 @@ with your specific IP address.
     1. We offer UDP and TCP DNS on port 53 on (insert IP address)
     1. We offer DNS-over-TLS as specified in RFC7858 on (insert IP address). It
     is available on port 853 and port 443. We also implement RFC7766.
-        1. The DoT authentication name used is (insert domain name). No TLSA 
-            records are available for this domain name.
+        1. The DoT authentication name used is (insert domain name).
         1. We do not publish SPKI pin sets.
     1. We offer DNS-over-HTTPS as specified in RFC8484 on (insert URI template). 
        Both POST and GET are supported.
@@ -1446,12 +1441,4 @@ with your specific IP address.
     document with regard to cyber threat intelligence, we have no agreements in
     place with other public and private parties dealing with security and
     intelligence, to give them access to the servers and/or to the data.
-   
-1. Consent. As described, we do not intentionally share, sell, or rent
-individual personal information associated with the requestor with anyone
-without your consent. In order to provide consent you must have a user account
-for our service - this can be set up via our support page (insert link). We may
-contact existing users with accounts to enquire if you would be willing to
-provide consent for specific situations. Users can then provide explicit consent
-by choosing to enable certain account options which are disabled by default.
 

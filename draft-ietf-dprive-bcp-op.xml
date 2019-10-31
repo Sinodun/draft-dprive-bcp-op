@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE rfc SYSTEM 'rfc2629.dtd' []>
-<rfc ipr="trust200902" category="bcp" docName="draft-ietf-dprive-bcp-op-04">
+<rfc ipr="trust200902" category="bcp" docName="draft-ietf-dprive-bcp-op-05">
 <?rfc toc="yes"?>
 <?rfc symrefs="yes"?>
 <?rfc sortrefs="yes"?>
@@ -76,7 +76,7 @@
 <uri></uri>
 </address>
 </author>
-<date year="2019" month="October" day="4"/>
+<date year="2019" month="October" day="31"/>
 
 <area>Internet</area>
 <workgroup>dprive</workgroup>
@@ -358,19 +358,6 @@ certificates <xref target="RFC5280"/> or SPKI pin sets <xref target="RFC8310"/>.
 <t>When offering DoH <xref target="RFC8484"/>, HTTPS requires authentication of the server as
 part of the protocol.
 </t>
-<t>Optimizations:
-</t>
-<t>DNS privacy services can also consider the following capabilities/options:
-</t>
-<t>
-<list style="symbols">
-<t>As recommended in <xref target="RFC8310"/> providing DANE TLSA records for the nameserver
-<list style="symbols">
-<t>In particular, the service could provide TLSA records such that
-authenticating solely via the PKIX infrastructure can be avoided.</t>
-</list></t>
-</list>
-</t>
 
 <section anchor="certificate-management" title="Certificate management">
 <t>Anecdotal evidence to date highlights the management of certificates as one of
@@ -400,7 +387,9 @@ authentication domain names</t>
 <t>Follow the guidance in Section 6.5 of <xref target="RFC7525"/> with regards to certificate
 revocation</t>
 <t>Choose a short, memorable authentication name for the service</t>
-<t>Automate the generation and publication of certificates</t>
+<t>Automate the generation, publication and renewal of certificates. For example,
+ACME <xref target="RFC8555"/> provides a mechanism to actively manage certificates through
+automation and has been implemented by a number of certificate authorities.</t>
 <t>Monitor certificates to prevent accidental expiration of certificates</t>
 </list>
 </t>
@@ -432,8 +421,10 @@ provide strong mitigations. This includes but is not limited to:
 <t>Implementing only (D)TLS 1.2 or later as specified in <xref target="RFC8310"/></t>
 <t>Implementing EDNS(0) Padding <xref target="RFC7830"/> using the guidelines in
 <xref target="RFC8467"/> or a successor specification.</t>
-<t>Clients should not be required to use TLS session resumption <xref target="RFC5077"/> with
-TLS 1.2 or Domain Name System (DNS) Cookies <xref target="RFC7873"/>.</t>
+<t>Servers should not degrade in any way the query service level provided to
+clients that do not use any form of session resumption mechanism, such as TLS
+session resumption <xref target="RFC5077"/> with TLS 1.2, section 2.2 of RFC8446, or Domain
+Name System (DNS) Cookies <xref target="RFC7873"/>.</t>
 <t>A DNS-over-TLS privacy service on both port 853 and 443. This practice may not
 be possible if e.g. the operator deploys DoH on the same IP address.</t>
 </list>
@@ -451,13 +442,6 @@ similar to HTTP multiplexing)</t>
 <t><xref target="RFC7766"/> and EDNS(0) Keepalive <xref target="RFC7828"/> and/or</t>
 <t>DNS Stateful Operations <xref target="RFC8490"/></t>
 </list></t>
-</list>
-</t>
-<t>Additional options that providers may consider:
-</t>
-<t>
-<list style="symbols">
-<t>Offer a .onion <xref target="RFC7686"/> service endpoint</t>
 </list>
 </t>
 </section>
@@ -800,14 +784,19 @@ of a cryptographic chosen plaintext attack.
 </t>
 <t>
 <list style="symbols">
-<t>IP TTL/Hoplimit can be used to fingerprint client OS</t>
-<t>TLS version/Cipher suite combinations can be used to fingerprint the client
-application or TLS library</t>
-<t>Tracking of TCP sessions</t>
-<t>Tracking of TLS sessions and session resumption mechanisms</t>
+<t>Fingerprinting of the client OS via various means including: IP TTL/Hoplimit,
+TCP parameters (e.g. window size, ECN support, SACK), OS specific DNS query
+patterns (e.g. for network connectivity, captive portal detection or OS
+specific updates).</t>
+<t>Fingerprinting of the client application or TLS library by e.g. TLS
+version/Cipher suite combinations or other connection parameters.</t>
+<t>Correlation of queries on multiple TCP session originating from the same IP
+address</t>
+<t>Correlating of queries on multiple TLS sessions originating from the same
+client, including via session resumption mechanisms</t>
 <t>Resolvers <spanx style="emph">might</spanx> receive client identifiers e.g. MAC addresses in EDNS(0)
 options - some CPE devices are known to add them.</t>
-<t>HTTP headers</t>
+<t>HTTP headers (e.g., User-Agent, Accept, Accept-Encoding)</t>
 </list>
 </t>
 <t>Mitigations:
@@ -956,10 +945,6 @@ obfuscated among those of the large resolver.
 consent from clients (we take the stance here that simply using the resolution
 service itself does not constitute consent).
 </t>
-<t>Even when consent is granted operators should employ data minimization
-techniques such as those described in <xref target="data-handling"/> if data is shared with
-third-parties.
-</t>
 <t>Operators should consider including specific guidelines for the collection of
 aggregated and/or anonymized data for research purposes, within or outside of
 their own organization. This can benefit not only the operator (through
@@ -1032,8 +1017,7 @@ operational reasons.</t>
 <xref target="recommendations-for-dns-privacy-services"/> provide specific details of which
 capabilities are provided on which client facing addresses and ports:
 <list style="numbers">
-<t>For DoT, specify the authentication name to be used (if any) and if TLSA
-records are published (including options used in the TLSA records)</t>
+<t>For DoT, specify the authentication name to be used (if any)</t>
 <t>For DoT, specify the SPKI pin sets to be used (if any) and policy for
 rolling keys
 
@@ -1060,16 +1044,8 @@ servers, this should be specified as well).</t>
 <t>Specify whether the operator has any agreement in place with law
 enforcement agencies, or other public and private parties dealing with
 security and intelligence, to give them access to the servers and/or to the
-data.
-
-<vspace/></t>
+data.</t>
 </list></t>
-<t>Consent. For any activity which is documented in this statement as 'requiring
-consent' before being performed, describe the full process of what you as an
-operator consider 'obtaining consent', distinguishing clearly between any
-implicit and explicit consent models. Additionally, state if these processes are
-considered by you the operator to conform to any relevant legislation (this may
-prove relevant in the context of e.g. the GDPR as it relates to consent).</t>
 </list>
 </t>
 </section>
@@ -1171,6 +1147,21 @@ United Kingdom
 </section>
 
 <section anchor="changelog" title="Changelog">
+<t>draft-ietf-dprive-bcp-op-05
+</t>
+<t>
+<list style="symbols">
+<t>Remove some text on consent:
+<list style="symbols">
+<t>Paragraph 2 in section 5.3.3</t>
+<t>Item 6 in the DROP Practice statement (and example)</t>
+</list></t>
+<t>Remove .onion and TLSA options</t>
+<t>Include ACME as a reference for certificate management</t>
+<t>Update text on session resumption usage</t>
+<t>Update section 5.2.4 on client fingerprinting</t>
+</list>
+</t>
 <t>draft-ietf-dprive-bcp-op-04
 </t>
 <t>
@@ -1282,12 +1273,12 @@ draft-dickinson-dprive-bcp-op-01</t>
 <?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.5280.xml"?>
 <?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.6235.xml"?>
 <?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.7457.xml"?>
-<?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.7686.xml"?>
 <?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.7706.xml"?>
 <?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.8094.xml"?>
 <?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.8198.xml"?>
 <?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.8490.xml"?>
 <?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.8499.xml"?>
+<?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.8555.xml"?>
 <?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.8618.xml"?>
 <reference anchor='pcap' target='http://www.tcpdump.org/'>
     <front>
@@ -1663,8 +1654,7 @@ blocking a domain in error.</t>
 <t>We offer DNS-over-TLS as specified in RFC7858 on (insert IP address). It
 is available on port 853 and port 443. We also implement RFC7766.
 <list style="numbers">
-<t>The DoT authentication name used is (insert domain name). No TLSA
-records are available for this domain name.</t>
+<t>The DoT authentication name used is (insert domain name).</t>
 <t>We do not publish SPKI pin sets.</t>
 </list></t>
 <t>We offer DNS-over-HTTPS as specified in RFC8484 on (insert URI template).
@@ -1694,17 +1684,8 @@ enforcement contact our Data Protection Officer on (insert email address).</t>
 access to the data. Apart from as stated in the Policy section of this
 document with regard to cyber threat intelligence, we have no agreements in
 place with other public and private parties dealing with security and
-intelligence, to give them access to the servers and/or to the data.
-
-<vspace/></t>
+intelligence, to give them access to the servers and/or to the data.</t>
 </list></t>
-<t>Consent. As described, we do not intentionally share, sell, or rent
-individual personal information associated with the requestor with anyone
-without your consent. In order to provide consent you must have a user account
-for our service - this can be set up via our support page (insert link). We may
-contact existing users with accounts to enquire if you would be willing to
-provide consent for specific situations. Users can then provide explicit consent
-by choosing to enable certain account options which are disabled by default.</t>
 </list>
 </t>
 </section>
