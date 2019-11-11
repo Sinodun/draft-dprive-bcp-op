@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE rfc SYSTEM 'rfc2629.dtd' []>
-<rfc ipr="trust200902" category="bcp" docName="draft-ietf-dprive-bcp-op-05">
+<rfc ipr="trust200902" category="bcp" docName="draft-ietf-dprive-bcp-op-06">
 <?rfc toc="yes"?>
 <?rfc symrefs="yes"?>
 <?rfc sortrefs="yes"?>
@@ -76,7 +76,7 @@
 <uri></uri>
 </address>
 </author>
-<date year="2019" month="October" day="31"/>
+<date year="2019" month="November" day="11"/>
 
 <area>Internet</area>
 <workgroup>dprive</workgroup>
@@ -518,7 +518,8 @@ fallback to cleartext or accept no DNS service for the outage.</t>
 </t>
 <t>Mitigations:
 </t>
-<t>A DNS privacy service must be engineered for high availability. Particular care
+<t>A DNS privacy service should strive to engineer encrypted services to the same
+availability level as any unencrypted services they provide. Particular care
 should to be taken to protect DNS privacy services against denial-of-service
 attacks, as experience has shown that unavailability of DNS resolving because of
 attacks is a significant motivation for users to switch services. See, for
@@ -569,10 +570,10 @@ e.g. <eref target="http://dnstap.info">dnstap</eref>.
 </t>
 <t>Optimization:
 </t>
-<t>When implementing alternative means for traffic monitoring, operators of a
-DNS privacy service should consider using privacy conscious means to do so (see,
-for example, the discussion on the use of Bloom Filters in the #documents
-appendix in this document).
+<t>When implementing alternative means for traffic monitoring, operators of a DNS
+privacy service should consider using privacy conscious means to do so (see
+section <xref target="data-at-rest-on-the-server"/> for more details on data handling and also
+the discussion on the use of Bloom Filters in <xref target="documents"/>.
 </t>
 </section>
 
@@ -644,8 +645,8 @@ described in <xref target="RFC6973"/> should be applied.
 <t>
 <list style="symbols">
 <t>Transient data (e.g. that is used for real time monitoring and threat analysis
-which might be held only memory) should be retained for the shortest possible
-period deemed operationally feasible.</t>
+which might be held only in memory) should be retained for the shortest
+possible period deemed operationally feasible.</t>
 <t>The retention period of DNS traffic logs should be only those required to
 sustain operation of the service and, to the extent that such exists, meet
 regulatory requirements.</t>
@@ -886,8 +887,9 @@ compared to dynamic detection of ECS on authoritative servers.
 </t>
 <t>
 <list style="symbols">
-<t>Aggressive Use of DNSSEC-Validated Cache <xref target="RFC8198"/> to reduce the number of
-queries to authoritative servers to increase privacy.</t>
+<t>Aggressive Use of DNSSEC-Validated Cache <xref target="RFC8198"/> and <xref target="RFC8020"/>
+(NXDOMAIN: There Really Is Nothing Underneath) to reduce the number of queries
+to authoritative servers to increase privacy.</t>
 <t>Run a copy of the root zone on loopback <xref target="RFC7706"/> to avoid making queries to
 the root servers that might leak information.</t>
 </list>
@@ -1151,6 +1153,13 @@ United Kingdom
 </t>
 <t>
 <list style="symbols">
+<t>Final minor changes from second WGLC.</t>
+</list>
+</t>
+<t>draft-ietf-dprive-bcp-op-05
+</t>
+<t>
+<list style="symbols">
 <t>Remove some text on consent:
 <list style="symbols">
 <t>Paragraph 2 in section 5.3.3</t>
@@ -1274,6 +1283,7 @@ draft-dickinson-dprive-bcp-op-01</t>
 <?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.6235.xml"?>
 <?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.7457.xml"?>
 <?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.7706.xml"?>
+<?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.8020.xml"?>
 <?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.8094.xml"?>
 <?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.8198.xml"?>
 <?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.8490.xml"?>

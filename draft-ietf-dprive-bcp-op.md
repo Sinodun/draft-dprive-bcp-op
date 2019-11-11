@@ -2,12 +2,12 @@
     Title = "Recommendations for DNS Privacy Service Operators"
     abbrev = "DNS Privacy Service Recommendations"
     category = "bcp"
-    docName= "draft-ietf-dprive-bcp-op-05"
+    docName= "draft-ietf-dprive-bcp-op-06"
     ipr = "trust200902"
     area = "Internet"
     workgroup = "dprive"
     keyword = ["DNS"]
-    date = 2019-10-31T00:00:00Z
+    date = 2019-11-11T00:00:00Z
     [pi]
     toc = "yes"
     compact = "yes"
@@ -419,7 +419,8 @@ fallback to cleartext or accept no DNS service for the outage.
 
 Mitigations:
 
-A DNS privacy service must be engineered for high availability. Particular care
+A DNS privacy service should strive to engineer encrypted services to the same
+availability level as any unencrypted services they provide. Particular care
 should to be taken to protect DNS privacy services against denial-of-service
 attacks, as experience has shown that unavailability of DNS resolving because of
 attacks is a significant motivation for users to switch services. See, for
@@ -458,14 +459,14 @@ encrypted. There are, however, legitimate reasons for operators to inspect DNS
 traffic, e.g. to monitor for network security threats. Operators may therefore 
 need to invest in alternative means of monitoring that relies on either the
 resolver software directly, or exporting DNS traffic from the resolver using
-e.g. [dnstap](http://dnstap.info).
+e.g. [dnstap](http://dnstap.info). 
 
 Optimization:
 
-When implementing alternative means for traffic monitoring, operators of a
-DNS privacy service should consider using privacy conscious means to do so (see,
-for example, the discussion on the use of Bloom Filters in the #documents
-appendix in this document).
+When implementing alternative means for traffic monitoring, operators of a DNS
+privacy service should consider using privacy conscious means to do so (see
+section (#data-at-rest-on-the-server) for more details on data handling and also
+the discussion on the use of Bloom Filters in (#documents).
 
 ### Limitations of using a pure TLS proxy
 
@@ -524,8 +525,8 @@ or anonymized whenever possible. In general the principle of data minimization
 described in [@!RFC6973] should be applied.
 
 * Transient data (e.g. that is used for real time monitoring and threat analysis
-  which might be held only memory) should be retained for the shortest possible
-  period deemed operationally feasible.
+  which might be held only in memory) should be retained for the shortest
+  possible period deemed operationally feasible.
 * The retention period of DNS traffic logs should be only those required to
   sustain operation of the service and, to the extent that such exists, meet
   regulatory requirements.
@@ -721,16 +722,11 @@ servers apply privacy policies that the operator is happy with. However some
 operators consider whitelisting to incur significant operational overhead
 compared to dynamic detection of ECS on authoritative servers.
 
-<!-- *RvRD: note: I have a bachelor student working on this, who has been
-looking at what are good prefix sizes to e.g. geo-locate a client to a country
-or continent; will share results when available. I'm considering following up
-on his work with a paper at some point to help the discussion about ECS
-along.*-->
-
 Additional options:
 
-* Aggressive Use of DNSSEC-Validated Cache [@RFC8198] to reduce the number of
-  queries to authoritative servers to increase privacy.
+* Aggressive Use of DNSSEC-Validated Cache [@RFC8198] and [@RFC8020]
+  (NXDOMAIN: There Really Is Nothing Underneath) to reduce the number of queries
+  to authoritative servers to increase privacy.
 * Run a copy of the root zone on loopback [@RFC7706] to avoid making queries to
   the root servers that might leak information.
 
@@ -949,6 +945,10 @@ Oxford OX4 4GA\\
 United Kingdom
 
 # Changelog
+
+draft-ietf-dprive-bcp-op-05
+
+* Final minor changes from second WGLC.
 
 draft-ietf-dprive-bcp-op-05
 
