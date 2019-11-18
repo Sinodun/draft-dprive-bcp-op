@@ -7,7 +7,7 @@
     area = "Internet"
     workgroup = "dprive"
     keyword = ["DNS"]
-    date = 2019-11-11T00:00:00Z
+    date = 2019-11-18T00:00:00Z
     [pi]
     toc = "yes"
     compact = "yes"
@@ -148,7 +148,7 @@ out any errata or updates that apply to this document.
 
 # Scope
 
-"DNS Privacy Considerations" [@I-D.bortzmeyer-dprive-rfc7626-bis] describes the
+"DNS Privacy Considerations" [@!I-D.ietf-dprive-rfc7626-bis] describes the
 general privacy issues and threats associated with the use of the DNS by
 Internet users and much of the threat analysis here is lifted from that
 document and from [@!RFC6973]. However this document is limited in scope to best
@@ -159,7 +159,7 @@ operators of authoritative nameservers are out of scope.
 
 
 This document includes (but is not limited to) considerations in the following
-areas (taken from [@I-D.bortzmeyer-dprive-rfc7626-bis]):
+areas (taken from [@!I-D.ietf-dprive-rfc7626-bis]):
 
 1. Data "on the wire" between a client and a server
 2. Data "at rest" on a server (e.g. in logs)
@@ -245,7 +245,7 @@ the client.
 
 * Surveillance:
   * Passive surveillance of traffic on the wire
-    [@I-D.bortzmeyer-dprive-rfc7626-bis] Section 2.4.2.
+    [@!I-D.ietf-dprive-rfc7626-bis] Section 2.4.2.
 
 DNS Privacy Threats:
 
@@ -277,7 +277,7 @@ not diminish the need for DNSSEC, see (#dnssec).
 
 * Surveillance: 
   * Active attacks that can redirect traffic to rogue servers
-  [@I-D.bortzmeyer-dprive-rfc7626-bis] Section 2.5.3.
+  [@!I-D.ietf-dprive-rfc7626-bis] Section 2.5.3.
 
 Mitigations:
 
@@ -589,7 +589,7 @@ group of pseudonyms for a single given address.
 
 ### IP address pseudonymization and anonymization methods
 
-As [@I-D.bortzmeyer-dprive-rfc7626-bis] makes clear, the big privacy risk in
+As [@!I-D.ietf-dprive-rfc7626-bis] makes clear, the big privacy risk in
 DNS is connecting DNS queries to an individual and the major vector for this in
 DNS traffic is the client IP address.
 

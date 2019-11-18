@@ -5,11 +5,11 @@
 dprive                                                      S. Dickinson
 Internet-Draft                                                Sinodun IT
 Intended status: Best Current Practice                     B. Overeinder
-Expires: May 14, 2020                               R. van Rijswijk-Deij
+Expires: May 21, 2020                               R. van Rijswijk-Deij
                                                               NLnet Labs
                                                                A. Mankin
                                                               Salesforce
-                                                       November 11, 2019
+                                                       November 18, 2019
 
 
            Recommendations for DNS Privacy Service Operators
@@ -43,7 +43,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on May 14, 2020.
+   This Internet-Draft will expire on May 21, 2020.
 
 Copyright Notice
 
@@ -53,7 +53,7 @@ Copyright Notice
 
 
 
-Dickinson, et al.         Expires May 14, 2020                  [Page 1]
+Dickinson, et al.         Expires May 21, 2020                  [Page 1]
 
 Internet-Draft     DNS Privacy Service Recommendations     November 2019
 
@@ -109,7 +109,7 @@ Table of Contents
 
 
 
-Dickinson, et al.         Expires May 14, 2020                  [Page 2]
+Dickinson, et al.         Expires May 21, 2020                  [Page 2]
 
 Internet-Draft     DNS Privacy Service Recommendations     November 2019
 
@@ -165,7 +165,7 @@ Internet-Draft     DNS Privacy Service Recommendations     November 2019
 
 
 
-Dickinson, et al.         Expires May 14, 2020                  [Page 3]
+Dickinson, et al.         Expires May 21, 2020                  [Page 3]
 
 Internet-Draft     DNS Privacy Service Recommendations     November 2019
 
@@ -221,7 +221,7 @@ Internet-Draft     DNS Privacy Service Recommendations     November 2019
 
 
 
-Dickinson, et al.         Expires May 14, 2020                  [Page 4]
+Dickinson, et al.         Expires May 21, 2020                  [Page 4]
 
 Internet-Draft     DNS Privacy Service Recommendations     November 2019
 
@@ -234,18 +234,18 @@ Internet-Draft     DNS Privacy Service Recommendations     November 2019
 
 2.  Scope
 
-   "DNS Privacy Considerations" [I-D.bortzmeyer-dprive-rfc7626-bis]
-   describes the general privacy issues and threats associated with the
-   use of the DNS by Internet users and much of the threat analysis here
-   is lifted from that document and from [RFC6973].  However this
-   document is limited in scope to best practice considerations for the
-   provision of DNS privacy services by servers (recursive resolvers) to
-   clients (stub resolvers or forwarders).  Privacy considerations
-   specifically from the perspective of an end user, or those for
-   operators of authoritative nameservers are out of scope.
+   "DNS Privacy Considerations" [I-D.ietf-dprive-rfc7626-bis] describes
+   the general privacy issues and threats associated with the use of the
+   DNS by Internet users and much of the threat analysis here is lifted
+   from that document and from [RFC6973].  However this document is
+   limited in scope to best practice considerations for the provision of
+   DNS privacy services by servers (recursive resolvers) to clients
+   (stub resolvers or forwarders).  Privacy considerations specifically
+   from the perspective of an end user, or those for operators of
+   authoritative nameservers are out of scope.
 
    This document includes (but is not limited to) considerations in the
-   following areas (taken from [I-D.bortzmeyer-dprive-rfc7626-bis]):
+   following areas (taken from [I-D.ietf-dprive-rfc7626-bis]):
 
    1.  Data "on the wire" between a client and a server
 
@@ -277,7 +277,7 @@ Internet-Draft     DNS Privacy Service Recommendations     November 2019
 
 
 
-Dickinson, et al.         Expires May 14, 2020                  [Page 5]
+Dickinson, et al.         Expires May 21, 2020                  [Page 5]
 
 Internet-Draft     DNS Privacy Service Recommendations     November 2019
 
@@ -333,7 +333,7 @@ Internet-Draft     DNS Privacy Service Recommendations     November 2019
 
 
 
-Dickinson, et al.         Expires May 14, 2020                  [Page 6]
+Dickinson, et al.         Expires May 21, 2020                  [Page 6]
 
 Internet-Draft     DNS Privacy Service Recommendations     November 2019
 
@@ -366,7 +366,7 @@ Internet-Draft     DNS Privacy Service Recommendations     November 2019
    o  Surveillance:
 
       *  Passive surveillance of traffic on the wire
-         [I-D.bortzmeyer-dprive-rfc7626-bis] Section 2.4.2.
+         [I-D.ietf-dprive-rfc7626-bis] Section 2.4.2.
 
    DNS Privacy Threats:
 
@@ -389,7 +389,7 @@ Internet-Draft     DNS Privacy Service Recommendations     November 2019
 
 
 
-Dickinson, et al.         Expires May 14, 2020                  [Page 7]
+Dickinson, et al.         Expires May 21, 2020                  [Page 7]
 
 Internet-Draft     DNS Privacy Service Recommendations     November 2019
 
@@ -409,7 +409,7 @@ Internet-Draft     DNS Privacy Service Recommendations     November 2019
    o  Surveillance:
 
       *  Active attacks that can redirect traffic to rogue servers
-         [I-D.bortzmeyer-dprive-rfc7626-bis] Section 2.5.3.
+         [I-D.ietf-dprive-rfc7626-bis] Section 2.5.3.
 
    Mitigations:
 
@@ -445,7 +445,7 @@ Internet-Draft     DNS Privacy Service Recommendations     November 2019
 
 
 
-Dickinson, et al.         Expires May 14, 2020                  [Page 8]
+Dickinson, et al.         Expires May 21, 2020                  [Page 8]
 
 Internet-Draft     DNS Privacy Service Recommendations     November 2019
 
@@ -501,7 +501,7 @@ Internet-Draft     DNS Privacy Service Recommendations     November 2019
 
 
 
-Dickinson, et al.         Expires May 14, 2020                  [Page 9]
+Dickinson, et al.         Expires May 21, 2020                  [Page 9]
 
 Internet-Draft     DNS Privacy Service Recommendations     November 2019
 
@@ -557,7 +557,7 @@ Internet-Draft     DNS Privacy Service Recommendations     November 2019
 
 
 
-Dickinson, et al.         Expires May 14, 2020                 [Page 10]
+Dickinson, et al.         Expires May 21, 2020                 [Page 10]
 
 Internet-Draft     DNS Privacy Service Recommendations     November 2019
 
@@ -613,7 +613,7 @@ Internet-Draft     DNS Privacy Service Recommendations     November 2019
 
 
 
-Dickinson, et al.         Expires May 14, 2020                 [Page 11]
+Dickinson, et al.         Expires May 21, 2020                 [Page 11]
 
 Internet-Draft     DNS Privacy Service Recommendations     November 2019
 
@@ -669,7 +669,7 @@ Internet-Draft     DNS Privacy Service Recommendations     November 2019
 
 
 
-Dickinson, et al.         Expires May 14, 2020                 [Page 12]
+Dickinson, et al.         Expires May 21, 2020                 [Page 12]
 
 Internet-Draft     DNS Privacy Service Recommendations     November 2019
 
@@ -725,7 +725,7 @@ Internet-Draft     DNS Privacy Service Recommendations     November 2019
 
 
 
-Dickinson, et al.         Expires May 14, 2020                 [Page 13]
+Dickinson, et al.         Expires May 21, 2020                 [Page 13]
 
 Internet-Draft     DNS Privacy Service Recommendations     November 2019
 
@@ -781,7 +781,7 @@ Internet-Draft     DNS Privacy Service Recommendations     November 2019
 
 
 
-Dickinson, et al.         Expires May 14, 2020                 [Page 14]
+Dickinson, et al.         Expires May 21, 2020                 [Page 14]
 
 Internet-Draft     DNS Privacy Service Recommendations     November 2019
 
@@ -827,9 +827,9 @@ Internet-Draft     DNS Privacy Service Recommendations     November 2019
 
 5.2.3.  IP address pseudonymization and anonymization methods
 
-   As [I-D.bortzmeyer-dprive-rfc7626-bis] makes clear, the big privacy
-   risk in DNS is connecting DNS queries to an individual and the major
-   vector for this in DNS traffic is the client IP address.
+   As [I-D.ietf-dprive-rfc7626-bis] makes clear, the big privacy risk in
+   DNS is connecting DNS queries to an individual and the major vector
+   for this in DNS traffic is the client IP address.
 
    There is active discussion in the space of effective pseudonymization
    of IP addresses in DNS traffic logs, however there seems to be no
@@ -837,7 +837,7 @@ Internet-Draft     DNS Privacy Service Recommendations     November 2019
 
 
 
-Dickinson, et al.         Expires May 14, 2020                 [Page 15]
+Dickinson, et al.         Expires May 21, 2020                 [Page 15]
 
 Internet-Draft     DNS Privacy Service Recommendations     November 2019
 
@@ -893,7 +893,7 @@ Internet-Draft     DNS Privacy Service Recommendations     November 2019
 
 
 
-Dickinson, et al.         Expires May 14, 2020                 [Page 16]
+Dickinson, et al.         Expires May 21, 2020                 [Page 16]
 
 Internet-Draft     DNS Privacy Service Recommendations     November 2019
 
@@ -949,7 +949,7 @@ Internet-Draft     DNS Privacy Service Recommendations     November 2019
 
 
 
-Dickinson, et al.         Expires May 14, 2020                 [Page 17]
+Dickinson, et al.         Expires May 21, 2020                 [Page 17]
 
 Internet-Draft     DNS Privacy Service Recommendations     November 2019
 
@@ -1005,7 +1005,7 @@ Internet-Draft     DNS Privacy Service Recommendations     November 2019
 
 
 
-Dickinson, et al.         Expires May 14, 2020                 [Page 18]
+Dickinson, et al.         Expires May 21, 2020                 [Page 18]
 
 Internet-Draft     DNS Privacy Service Recommendations     November 2019
 
@@ -1061,7 +1061,7 @@ Internet-Draft     DNS Privacy Service Recommendations     November 2019
 
 
 
-Dickinson, et al.         Expires May 14, 2020                 [Page 19]
+Dickinson, et al.         Expires May 21, 2020                 [Page 19]
 
 Internet-Draft     DNS Privacy Service Recommendations     November 2019
 
@@ -1117,7 +1117,7 @@ Internet-Draft     DNS Privacy Service Recommendations     November 2019
 
 
 
-Dickinson, et al.         Expires May 14, 2020                 [Page 20]
+Dickinson, et al.         Expires May 21, 2020                 [Page 20]
 
 Internet-Draft     DNS Privacy Service Recommendations     November 2019
 
@@ -1173,7 +1173,7 @@ Internet-Draft     DNS Privacy Service Recommendations     November 2019
 
 
 
-Dickinson, et al.         Expires May 14, 2020                 [Page 21]
+Dickinson, et al.         Expires May 21, 2020                 [Page 21]
 
 Internet-Draft     DNS Privacy Service Recommendations     November 2019
 
@@ -1229,7 +1229,7 @@ Internet-Draft     DNS Privacy Service Recommendations     November 2019
 
 
 
-Dickinson, et al.         Expires May 14, 2020                 [Page 22]
+Dickinson, et al.         Expires May 21, 2020                 [Page 22]
 
 Internet-Draft     DNS Privacy Service Recommendations     November 2019
 
@@ -1285,7 +1285,7 @@ Internet-Draft     DNS Privacy Service Recommendations     November 2019
 
 
 
-Dickinson, et al.         Expires May 14, 2020                 [Page 23]
+Dickinson, et al.         Expires May 21, 2020                 [Page 23]
 
 Internet-Draft     DNS Privacy Service Recommendations     November 2019
 
@@ -1341,7 +1341,7 @@ Internet-Draft     DNS Privacy Service Recommendations     November 2019
 
 
 
-Dickinson, et al.         Expires May 14, 2020                 [Page 24]
+Dickinson, et al.         Expires May 21, 2020                 [Page 24]
 
 Internet-Draft     DNS Privacy Service Recommendations     November 2019
 
@@ -1397,7 +1397,7 @@ Internet-Draft     DNS Privacy Service Recommendations     November 2019
 
 
 
-Dickinson, et al.         Expires May 14, 2020                 [Page 25]
+Dickinson, et al.         Expires May 21, 2020                 [Page 25]
 
 Internet-Draft     DNS Privacy Service Recommendations     November 2019
 
@@ -1427,6 +1427,11 @@ Internet-Draft     DNS Privacy Service Recommendations     November 2019
 
 12.1.  Normative References
 
+   [I-D.ietf-dprive-rfc7626-bis]
+              Bortzmeyer, S. and S. Dickinson, "DNS Privacy
+              Considerations", draft-ietf-dprive-rfc7626-bis-02 (work in
+              progress), October 2019.
+
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
               DOI 10.17487/RFC2119, March 1997, <https://www.rfc-
@@ -1442,21 +1447,22 @@ Internet-Draft     DNS Privacy Service Recommendations     November 2019
               DOI 10.17487/RFC6973, July 2013, <https://www.rfc-
               editor.org/info/rfc6973>.
 
+
+
+
+
+
+
+Dickinson, et al.         Expires May 21, 2020                 [Page 26]
+
+Internet-Draft     DNS Privacy Service Recommendations     November 2019
+
+
    [RFC7525]  Sheffer, Y., Holz, R., and P. Saint-Andre,
               "Recommendations for Secure Use of Transport Layer
               Security (TLS) and Datagram Transport Layer Security
               (DTLS)", BCP 195, RFC 7525, DOI 10.17487/RFC7525, May
               2015, <https://www.rfc-editor.org/info/rfc7525>.
-
-
-
-
-
-
-Dickinson, et al.         Expires May 14, 2020                 [Page 26]
-
-Internet-Draft     DNS Privacy Service Recommendations     November 2019
-
 
    [RFC7766]  Dickinson, J., Dickinson, S., Bellis, R., Mankin, A., and
               D. Wessels, "DNS Transport over TCP - Implementation
@@ -1499,20 +1505,19 @@ Internet-Draft     DNS Privacy Service Recommendations     November 2019
               DOI 10.17487/RFC8310, March 2018, <https://www.rfc-
               editor.org/info/rfc8310>.
 
+
+
+
+
+Dickinson, et al.         Expires May 21, 2020                 [Page 27]
+
+Internet-Draft     DNS Privacy Service Recommendations     November 2019
+
+
    [RFC8404]  Moriarty, K., Ed. and A. Morton, Ed., "Effects of
               Pervasive Encryption on Operators", RFC 8404,
               DOI 10.17487/RFC8404, July 2018, <https://www.rfc-
               editor.org/info/rfc8404>.
-
-
-
-
-
-
-Dickinson, et al.         Expires May 14, 2020                 [Page 27]
-
-Internet-Draft     DNS Privacy Service Recommendations     November 2019
-
 
    [RFC8467]  Mayrhofer, A., "Padding Policies for Extension Mechanisms
               for DNS (EDNS(0))", RFC 8467, DOI 10.17487/RFC8467,
@@ -1527,11 +1532,6 @@ Internet-Draft     DNS Privacy Service Recommendations     November 2019
    [I-D.bellis-dnsop-xpf]
               Bellis, R., Dijk, P., and R. Gacogne, "DNS X-Proxied-For",
               draft-bellis-dnsop-xpf-04 (work in progress), March 2018.
-
-   [I-D.bortzmeyer-dprive-rfc7626-bis]
-              Bortzmeyer, S. and S. Dickinson, "DNS Privacy
-              Considerations", draft-bortzmeyer-dprive-rfc7626-bis-02
-              (work in progress), January 2019.
 
    [I-D.ietf-dnsop-dns-tcp-requirements]
               Kristoff, J. and D. Wessels, "DNS Transport over TCP -
@@ -1565,7 +1565,7 @@ Internet-Draft     DNS Privacy Service Recommendations     November 2019
 
 
 
-Dickinson, et al.         Expires May 14, 2020                 [Page 28]
+Dickinson, et al.         Expires May 21, 2020                 [Page 28]
 
 Internet-Draft     DNS Privacy Service Recommendations     November 2019
 
@@ -1621,7 +1621,7 @@ Internet-Draft     DNS Privacy Service Recommendations     November 2019
 
 
 
-Dickinson, et al.         Expires May 14, 2020                 [Page 29]
+Dickinson, et al.         Expires May 21, 2020                 [Page 29]
 
 Internet-Draft     DNS Privacy Service Recommendations     November 2019
 
@@ -1677,7 +1677,7 @@ Internet-Draft     DNS Privacy Service Recommendations     November 2019
 
 
 
-Dickinson, et al.         Expires May 14, 2020                 [Page 30]
+Dickinson, et al.         Expires May 21, 2020                 [Page 30]
 
 Internet-Draft     DNS Privacy Service Recommendations     November 2019
 
@@ -1733,7 +1733,7 @@ A.1.  Potential increases in DNS privacy
 
 
 
-Dickinson, et al.         Expires May 14, 2020                 [Page 31]
+Dickinson, et al.         Expires May 21, 2020                 [Page 31]
 
 Internet-Draft     DNS Privacy Service Recommendations     November 2019
 
@@ -1789,7 +1789,7 @@ Appendix B.  IP address techniques
 
 
 
-Dickinson, et al.         Expires May 14, 2020                 [Page 32]
+Dickinson, et al.         Expires May 21, 2020                 [Page 32]
 
 Internet-Draft     DNS Privacy Service Recommendations     November 2019
 
@@ -1845,7 +1845,7 @@ B.1.  Google Analytics non-prefix filtering
 
 
 
-Dickinson, et al.         Expires May 14, 2020                 [Page 33]
+Dickinson, et al.         Expires May 21, 2020                 [Page 33]
 
 Internet-Draft     DNS Privacy Service Recommendations     November 2019
 
@@ -1901,7 +1901,7 @@ B.4.  Cryptographic Prefix-Preserving Pseudonymisation
 
 
 
-Dickinson, et al.         Expires May 14, 2020                 [Page 34]
+Dickinson, et al.         Expires May 21, 2020                 [Page 34]
 
 Internet-Draft     DNS Privacy Service Recommendations     November 2019
 
@@ -1957,7 +1957,7 @@ B.7.  Bloom filters
 
 
 
-Dickinson, et al.         Expires May 14, 2020                 [Page 35]
+Dickinson, et al.         Expires May 21, 2020                 [Page 35]
 
 Internet-Draft     DNS Privacy Service Recommendations     November 2019
 
@@ -2013,7 +2013,7 @@ C.1.  Policy
 
 
 
-Dickinson, et al.         Expires May 14, 2020                 [Page 36]
+Dickinson, et al.         Expires May 21, 2020                 [Page 36]
 
 Internet-Draft     DNS Privacy Service Recommendations     November 2019
 
@@ -2069,7 +2069,7 @@ Internet-Draft     DNS Privacy Service Recommendations     November 2019
 
 
 
-Dickinson, et al.         Expires May 14, 2020                 [Page 37]
+Dickinson, et al.         Expires May 21, 2020                 [Page 37]
 
 Internet-Draft     DNS Privacy Service Recommendations     November 2019
 
@@ -2125,7 +2125,7 @@ Internet-Draft     DNS Privacy Service Recommendations     November 2019
 
 
 
-Dickinson, et al.         Expires May 14, 2020                 [Page 38]
+Dickinson, et al.         Expires May 21, 2020                 [Page 38]
 
 Internet-Draft     DNS Privacy Service Recommendations     November 2019
 
@@ -2181,7 +2181,7 @@ C.2.  Practice
 
 
 
-Dickinson, et al.         Expires May 14, 2020                 [Page 39]
+Dickinson, et al.         Expires May 21, 2020                 [Page 39]
 
 Internet-Draft     DNS Privacy Service Recommendations     November 2019
 
@@ -2237,7 +2237,7 @@ Authors' Addresses
 
 
 
-Dickinson, et al.         Expires May 14, 2020                 [Page 40]
+Dickinson, et al.         Expires May 21, 2020                 [Page 40]
 
 Internet-Draft     DNS Privacy Service Recommendations     November 2019
 
@@ -2293,4 +2293,4 @@ Internet-Draft     DNS Privacy Service Recommendations     November 2019
 
 
 
-Dickinson, et al.         Expires May 14, 2020                 [Page 41]
+Dickinson, et al.         Expires May 21, 2020                 [Page 41]
