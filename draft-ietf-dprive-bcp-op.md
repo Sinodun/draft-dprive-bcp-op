@@ -2,12 +2,12 @@
     Title = "Recommendations for DNS Privacy Service Operators"
     abbrev = "DNS Privacy Service Recommendations"
     category = "bcp"
-    docName= "draft-ietf-dprive-bcp-op-06"
+    docName= "draft-ietf-dprive-bcp-op-07"
     ipr = "trust200902"
     area = "Internet"
     workgroup = "dprive"
     keyword = ["DNS"]
-    date = 2019-11-18T00:00:00Z
+    date = 2019-12-18T00:00:00Z
     [pi]
     toc = "yes"
     compact = "yes"
