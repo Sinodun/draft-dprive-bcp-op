@@ -162,7 +162,7 @@ the contents.</t>
 </list>
 </t>
 <t>A desired operational impact is that all operators (both those providing
-resolvers within networks and those operating large anycast services) can
+resolvers within networks and those operating large public services) can
 demonstrate their commitment to user privacy thereby driving all DNS resolution
 services to a more equitable footing. Choices for users would (in this ideal
 world) be driven by other factors e.g. differing security policies or minor
@@ -190,10 +190,10 @@ areas (taken from <xref target="I-D.ietf-dprive-rfc7626-bis"/>):
 </t>
 <t>
 <list style="numbers">
-<t>Data &quot;on the wire&quot; between a client and a server</t>
-<t>Data &quot;at rest&quot; on a server (e.g. in logs)</t>
+<t>Data &quot;on the wire&quot; between a client and a server.</t>
+<t>Data &quot;at rest&quot; on a server (e.g. in logs).</t>
 <t>Data &quot;sent onwards&quot; from the server (either on the wire or shared with a
-third party)</t>
+third party).</t>
 </list>
 </t>
 <t>Whilst the issues raised here are targeted at those operators who choose to
@@ -220,12 +220,11 @@ increase in complexity. A selection of the most relevant documents are listed in
 document are to be interpreted as described in BCP 14 <xref target="RFC2119"/> <xref target="RFC8174"/>
 when, and only when, they appear in all capitals, as shown here.
 </t>
-<t>DNS terminology is as described in <xref target="RFC8499"/> with one
-modification: we restate the clause in the original definition of
-Privacy-enabling DNS server in <xref target="RFC8310"/> to include the requirement that a DNS
-over (D)TLS server should also offer at least one of the credentials described
-in Section 8 and implement the (D)TLS profile described in Section 9 of
-<xref target="RFC8310"/>.
+<t>DNS terminology is as described in <xref target="RFC8499"/> with one modification: we restate
+the clause in the original definition of Privacy-enabling DNS server in
+<xref target="RFC8310"/> to include the requirement that a DNS over (D)TLS server should also
+offer at least one of the credentials described in Section 8 of <xref target="RFC8310"/> and
+implement the (D)TLS profile described in Section 9 of <xref target="RFC8310"/>.
 </t>
 <t>Other Terms:
 </t>
@@ -245,7 +244,7 @@ practice with regard to users privacy or a formal DROP statement.</t>
 </t>
 <t>
 <list style="symbols">
-<t>'Privacy Considerations for Internet Protocols' <xref target="RFC6973"/> Threats
+<t>Threats described in <xref target="RFC6973"/> 'Privacy Considerations for Internet Protocols'
 <list style="symbols">
 <t>Privacy terminology, threats to privacy and mitigations as described in
 Sections 3, 5 and 6 of <xref target="RFC6973"/>.</t>
@@ -265,20 +264,20 @@ services can take:
 <list style="symbols">
 <t>Threat mitigation for well understood and documented privacy threats to the
 users of the service and in some cases to the operators of the service.</t>
-<t>Optimization of privacy services from an operational or management perspective</t>
+<t>Optimization of privacy services from an operational or management perspective.</t>
 <t>Additional options that could further enhance the privacy and usability of the
-service</t>
+service.</t>
 </list>
 </t>
-<t>This document does not specify policy only best practice, however for DNS
+<t>This document does not specify policy - only best practice, however for DNS
 Privacy services to be considered compliant with these best practice guidelines
 they SHOULD implement (where appropriate) all:
 </t>
 <t>
 <list style="symbols">
-<t>Threat mitigations to be minimally compliant</t>
-<t>Optimizations to be moderately compliant</t>
-<t>Additional options to be maximally compliant</t>
+<t>Threat mitigations to be minimally compliant.</t>
+<t>Optimizations to be moderately compliant.</t>
+<t>Additional options to be maximally compliant.</t>
 </list>
 </t>
 
@@ -303,7 +302,7 @@ the client.
 </t>
 <t>
 <list style="symbols">
-<t>Active injection of spurious data or traffic</t>
+<t>Active injection of spurious data or traffic.</t>
 </list>
 </t>
 <t>Mitigations:
@@ -313,8 +312,8 @@ or more of the following transports
 </t>
 <t>
 <list style="symbols">
-<t>DNS-over-TLS <xref target="RFC7858"/> and <xref target="RFC8310"/></t>
-<t>DoH <xref target="RFC8484"/></t>
+<t>DNS-over-TLS <xref target="RFC7858"/> and <xref target="RFC8310"/>.</t>
+<t>DoH <xref target="RFC8484"/>.</t>
 </list>
 </t>
 <t>It is noted that a DNS privacy service can also be provided over DNS-over-DTLS
@@ -353,7 +352,7 @@ will trust.
 <xref target="RFC8310"/> (to mitigate the threat of active attack on the client) require the
 ability to authenticate the DNS server. To enable this, DNS privacy services
 that offer DNS-over-TLS should provide credentials in the form of either X.509
-certificates <xref target="RFC5280"/> or SPKI pin sets <xref target="RFC8310"/>.
+certificates <xref target="RFC5280"/> or Subject Public Key Info (SPKI) pin sets <xref target="RFC8310"/>.
 </t>
 <t>When offering DoH <xref target="RFC8484"/>, HTTPS requires authentication of the server as
 part of the protocol.
@@ -375,7 +374,7 @@ various reasons such as the logistical overhead of rolling keys.
 <list style="symbols">
 <t>Invalid certificates, resulting in an unavailable service.</t>
 <t>Mis-identification of a server by a client e.g. typos in URLs or
-authentication domain names</t>
+authentication domain names.</t>
 </list>
 </t>
 <t>Mitigations:
@@ -385,12 +384,12 @@ authentication domain names</t>
 <t>
 <list style="symbols">
 <t>Follow the guidance in Section 6.5 of <xref target="RFC7525"/> with regards to certificate
-revocation</t>
-<t>Choose a short, memorable authentication name for the service</t>
+revocation .</t>
 <t>Automate the generation, publication and renewal of certificates. For example,
 ACME <xref target="RFC8555"/> provides a mechanism to actively manage certificates through
 automation and has been implemented by a number of certificate authorities.</t>
-<t>Monitor certificates to prevent accidental expiration of certificates</t>
+<t>Monitor certificates to prevent accidental expiration of certificates.</t>
+<t>Choose a short, memorable authentication name for the service.</t>
 </list>
 </t>
 </section>
@@ -403,10 +402,10 @@ automation and has been implemented by a number of certificate authorities.</t>
 </t>
 <t>
 <list style="symbols">
-<t>Known attacks on TLS such as those described in <xref target="RFC7457"/></t>
-<t>Traffic analysis, for example: <xref target="Pitfalls-of-DNS-Encryption"/></t>
-<t>Potential for client tracking via transport identifiers</t>
-<t>Blocking of well known ports (e.g. 853 for DNS-over-TLS)</t>
+<t>Known attacks on TLS such as those described in <xref target="RFC7457"/>.</t>
+<t>Traffic analysis, for example: <xref target="Pitfalls-of-DNS-Encryption"/>.</t>
+<t>Potential for client tracking via transport identifiers.</t>
+<t>Blocking of well known ports (e.g. 853 for DNS-over-TLS).</t>
 </list>
 </t>
 <t>Mitigations:
@@ -417,8 +416,8 @@ provide strong mitigations. This includes but is not limited to:
 </t>
 <t>
 <list style="symbols">
-<t>Adhering to <xref target="RFC7525"/></t>
-<t>Implementing only (D)TLS 1.2 or later as specified in <xref target="RFC8310"/></t>
+<t>Adhering to <xref target="RFC7525"/>.</t>
+<t>Implementing only (D)TLS 1.2 or later as specified in <xref target="RFC8310"/>.</t>
 <t>Implementing EDNS(0) Padding <xref target="RFC7830"/> using the guidelines in
 <xref target="RFC8467"/> or a successor specification.</t>
 <t>Servers should not degrade in any way the query service level provided to
@@ -435,12 +434,12 @@ be possible if e.g. the operator deploys DoH on the same IP address.</t>
 <list style="symbols">
 <t>Concurrent processing of pipelined queries, returning responses as soon as
 available, potentially out of order as specified in <xref target="RFC7766"/>. This is often
-called 'OOOR' - out-of-order responses. (Providing processing performance
-similar to HTTP multiplexing)</t>
-<t>Management of TLS connections to optimize performance for clients using either
+called 'OOOR' - out-of-order responses (providing processing performance
+similar to HTTP multiplexing).</t>
+<t>Management of TLS connections to optimize performance for clients using either:
 <list style="symbols">
 <t><xref target="RFC7766"/> and EDNS(0) Keepalive <xref target="RFC7828"/> and/or</t>
-<t>DNS Stateful Operations <xref target="RFC8490"/></t>
+<t>DNS Stateful Operations <xref target="RFC8490"/>.</t>
 </list></t>
 </list>
 </t>
@@ -451,9 +450,9 @@ similar to HTTP multiplexing)</t>
 </t>
 <t>
 <list style="symbols">
-<t>Known attacks on TLS such as those described in <xref target="RFC7457"/></t>
-<t>Traffic analysis, for example: <eref target="https://petsymposium.org/2018/files/hotpets/4-siby.pdf">DNS Privacy not so private: the traffic analysis perspective</eref></t>
-<t>Potential for client tracking via transport identifiers</t>
+<t>Known attacks on TLS such as those described in <xref target="RFC7457"/>.</t>
+<t>Traffic analysis, for example: <eref target="https://petsymposium.org/2018/files/hotpets/4-siby.pdf">DNS Privacy not so private: the traffic analysis perspective.</eref></t>
+<t>Potential for client tracking via transport identifiers.</t>
 </list>
 </t>
 <t>Mitigations:
@@ -461,7 +460,7 @@ similar to HTTP multiplexing)</t>
 <t>
 <list style="symbols">
 <t>Clients must be able to forego the use of HTTP Cookies <xref target="RFC6265"/> and still
-use the service</t>
+use the service.</t>
 <t>Clients should not be required to include any headers beyond the absolute
 minimum to obtain service from a DoH server. (See Section 6.1 of
 <xref target="I-D.ietf-httpbis-bcp56bis"/>.)</t>
@@ -549,12 +548,12 @@ DNSSEC validation, etc.
 </t>
 </section>
 
-<section anchor="impact-on-dns-privacy-service-operators" title="Impact on DNS Privacy Service Operators">
+<section anchor="impact-of-encryption-on-dns-monitoring" title="Impact of Encryption on DNS Monitoring">
 <t>DNS Privacy Threats:
 </t>
 <t>
 <list style="symbols">
-<t>Increased use of encryption impacts operator ability to manage their network <xref target="RFC8404"/></t>
+<t>Increased use of encryption impacts operator ability to manage their network <xref target="RFC8404"/>.</t>
 </list>
 </t>
 <t>Many monitoring solutions for DNS traffic rely on the plain text nature of
@@ -583,7 +582,7 @@ the discussion on the use of Bloom Filters in <xref target="documents"/>.
 <t>
 <list style="symbols">
 <t>Limited ability to manage or monitor incoming connections using DNS specific
-techniques</t>
+techniques.</t>
 <t>Misconfiguration of the target server could lead to data leakage if the proxy
 to target server path is not encrypted.</t>
 </list>
@@ -619,19 +618,19 @@ misconfiguration.
 </t>
 <t>
 <list style="symbols">
-<t>Surveillance</t>
-<t>Stored data compromise</t>
-<t>Correlation</t>
-<t>Identification</t>
-<t>Secondary use</t>
-<t>Disclosure</t>
+<t>Surveillance.</t>
+<t>Stored data compromise.</t>
+<t>Correlation.</t>
+<t>Identification.</t>
+<t>Secondary use.</t>
+<t>Disclosure.</t>
 </list>
 </t>
 <t>Other Threats
 </t>
 <t>
 <list style="symbols">
-<t>Contravention of legal requirements not to process user data?</t>
+<t>Contravention of legal requirements not to process user data.</t>
 </list>
 </t>
 <t>Mitigations:
@@ -726,7 +725,7 @@ is widely recognized as suitable for all or most use cases. There are also as
 yet no standards for this that are unencumbered by patents.
 </t>
 <t>The following table presents a high level comparison of various techniques
-employed or under development today and classifies them according to
+employed or under development in 2019 and classifies them according to
 categorization of technique and other properties. <xref target="ip-address-techniques"/>
 provides a more detailed survey of these techniques and definitions for the
 categories and properties listed below. The list of techniques includes the main
@@ -792,12 +791,12 @@ specific updates).</t>
 <t>Fingerprinting of the client application or TLS library by e.g. TLS
 version/Cipher suite combinations or other connection parameters.</t>
 <t>Correlation of queries on multiple TCP session originating from the same IP
-address</t>
+address.</t>
 <t>Correlating of queries on multiple TLS sessions originating from the same
-client, including via session resumption mechanisms</t>
+client, including via session resumption mechanisms.</t>
 <t>Resolvers <spanx style="emph">might</spanx> receive client identifiers e.g. MAC addresses in EDNS(0)
 options - some CPE devices are known to add them.</t>
-<t>HTTP headers (e.g., User-Agent, Accept, Accept-Encoding)</t>
+<t>HTTP headers (e.g., User-Agent, Accept, Accept-Encoding).</t>
 </list>
 </t>
 <t>Mitigations:
@@ -816,7 +815,7 @@ options - some CPE devices are known to add them.</t>
 <list style="symbols">
 <t>Surveillance:
 <list style="symbols">
-<t>Profiling of client queries by malicious third parties</t>
+<t>Profiling of client queries by malicious third parties.</t>
 </list></t>
 </list>
 </t>
@@ -826,7 +825,7 @@ options - some CPE devices are known to add them.</t>
 <list style="symbols">
 <t>See <eref target="https://kb.isc.org/docs/aa-00482">ISC Knowledge database on cache
 snooping</eref> for an example discussion on
-defending against cache snooping</t>
+defending against cache snooping.</t>
 </list>
 </t>
 </section>
@@ -855,7 +854,7 @@ services the server should:
 </t>
 <t>
 <list style="symbols">
-<t>Implement QNAME minimization <xref target="RFC7816"/></t>
+<t>Implement QNAME minimization <xref target="RFC7816"/>.</t>
 <t>Honor a SOURCE PREFIX-LENGTH set to 0 in a query containing the EDNS(0)
 Client Subnet (ECS) option and not send an ECS option in upstream queries.</t>
 </list>
@@ -864,7 +863,7 @@ Client Subnet (ECS) option and not send an ECS option in upstream queries.</t>
 </t>
 <t>
 <list style="symbols">
-<t>The server should either
+<t>The server should either:
 <list style="symbols">
 <t>not use the ECS option in upstream queries at all, or</t>
 <t>offer alternative services, one that sends ECS and one that does not.</t>
@@ -926,19 +925,19 @@ obfuscated among those of the large resolver.
 </t>
 <t>
 <list style="symbols">
-<t>Surveillance</t>
-<t>Stored data compromise</t>
-<t>Correlation</t>
-<t>Identification</t>
-<t>Secondary use</t>
-<t>Disclosure</t>
+<t>Surveillance.</t>
+<t>Stored data compromise.</t>
+<t>Correlation.</t>
+<t>Identification.</t>
+<t>Secondary use.</t>
+<t>Disclosure.</t>
 </list>
 </t>
 <t>DNS Privacy Threats:
 </t>
 <t>
 <list style="symbols">
-<t>Contravention of legal requirements not to process user data</t>
+<t>Contravention of legal requirements not to process user data.</t>
 </list>
 </t>
 <t>Mitigations:
@@ -971,9 +970,9 @@ an example.
 <t>Data collection and sharing. Specify clearly what data (including IP addresses)
 is:
 <list style="symbols">
-<t>Collected and retained by the operator, and for what period it is retained</t>
-<t>Shared with partners</t>
-<t>Shared, sold or rented to third-parties
+<t>Collected and retained by the operator, and for what period it is retained.</t>
+<t>Shared with partners.</t>
+<t>Shared, sold or rented to third-parties.
 
 <vspace/></t>
 </list>
@@ -994,15 +993,15 @@ lists, and which ones.
 <list style="symbols">
 <t>Specify if any replies are being filtered out or altered for network and
 computer security reasons (e.g. preventing connections to
-malware-spreading websites or botnet control servers)</t>
+malware-spreading websites or botnet control servers).</t>
 <t>Specify if any replies are being filtered out or altered for mandatory
 legal reasons, due to applicable legislation or binding orders by courts
-and other public authorities</t>
+and other public authorities.</t>
 <t>Specify if any replies are being filtered out or altered for voluntary
 legal reasons, due to an internal policy by the operator aiming at
-reducing potential legal risks</t>
+reducing potential legal risks.</t>
 <t>Specify if any replies are being filtered out or altered for any other
-reason, including commercial ones</t>
+reason, including commercial ones.</t>
 </list></t>
 </list>
 </t>
@@ -1019,9 +1018,9 @@ operational reasons.</t>
 <xref target="recommendations-for-dns-privacy-services"/> provide specific details of which
 capabilities are provided on which client facing addresses and ports:
 <list style="numbers">
-<t>For DoT, specify the authentication name to be used (if any)</t>
+<t>For DoT, specify the authentication name to be used (if any).</t>
 <t>For DoT, specify the SPKI pin sets to be used (if any) and policy for
-rolling keys
+rolling keys.
 
 <vspace/></t>
 </list></t>
@@ -1081,8 +1080,8 @@ their policies and practices.
 <t>
 <list style="symbols">
 <t>ECS, QNAME minimization, EDNS(0) padding, etc.</t>
-<t>Filtering</t>
-<t>Uptime</t>
+<t>Filtering.</t>
+<t>Uptime.</t>
 </list>
 </t>
 <t>This is by analogy with e.g. several TLS or website analysis tools that are
@@ -1101,7 +1100,7 @@ currently available e.g. <eref target="https://www.ssllabs.com/ssltest/">SSL Lab
 
 <section anchor="security-considerations" title="Security considerations">
 <t>Security considerations for DNS-over-TCP are given in <xref target="RFC7766"/>, many of which
-are generally applicable to session based DNS.
+are generally applicable to session based DNS. Guidance on operational requirements for DNS-over-TCP are also available in [I-D.dnsop-dns-tcp-requirements].
 </t>
 </section>
 
@@ -1320,9 +1319,9 @@ here as 'DNS-over-DTLS'. Note that this document has the Category of
 Experimental.</t>
 <t>'DNS Queries over HTTPS (DoH)' <xref target="RFC8484"/> referred to
 here as DoH.</t>
-<t>'Usage Profiles for DNS over TLS and DNS over DTLS' <xref target="RFC8310"/></t>
+<t>'Usage Profiles for DNS over TLS and DNS over DTLS' <xref target="RFC8310"/>.</t>
 <t>'The EDNS(0) Padding Option' <xref target="RFC7830"/> and 'Padding Policy for EDNS(0)'
-<xref target="RFC8467"/></t>
+<xref target="RFC8467"/>.</t>
 </list>
 </t>
 <t>These documents apply to recursive to authoritative DNS but are relevant when
@@ -1331,7 +1330,7 @@ considering the operation of a recursive server:
 <t>
 <list style="symbols">
 <t>'DNS Query Name minimization to Improve Privacy' <xref target="RFC7816"/> referred to here
-as 'QNAME minimization'</t>
+as 'QNAME minimization'.</t>
 </list>
 </t>
 </section>
@@ -1342,12 +1341,12 @@ user activity as a side effect:
 </t>
 <t>
 <list style="symbols">
-<t>'Client Subnet in DNS Queries' <xref target="RFC7871"/></t>
-<t>'Domain Name System (DNS) Cookies' <xref target="RFC7873"/>)</t>
+<t>'Client Subnet in DNS Queries' <xref target="RFC7871"/>.</t>
+<t>'Domain Name System (DNS) Cookies' <xref target="RFC7873"/>).</t>
 <t>'Transport Layer Security (TLS) Session Resumption without Server-Side State'
 <xref target="RFC5077"/> referred to here as simply TLS session resumption.</t>
-<t>'A DNS Packet Capture Format' <xref target="RFC8618"/></t>
-<t>Passive DNS <xref target="RFC8499"/></t>
+<t>'A DNS Packet Capture Format' <xref target="RFC8618"/>.</t>
+<t>Passive DNS <xref target="RFC8499"/>.</t>
 </list>
 </t>
 <t>Note that depending on the specifics of the implementation
@@ -1358,11 +1357,11 @@ user activity as a side effect:
 <section anchor="related-operational-documents" title="Related operational documents">
 <t>
 <list style="symbols">
-<t>'DNS Transport over TCP - Implementation Requirements' <xref target="RFC7766"/></t>
+<t>'DNS Transport over TCP - Implementation Requirements' <xref target="RFC7766"/>.</t>
 <t>'Operational requirements for DNS-over-TCP'
-<xref target="I-D.ietf-dnsop-dns-tcp-requirements"/></t>
-<t>'The edns-tcp-keepalive EDNS0 Option' <xref target="RFC7828"/></t>
-<t>'DNS Stateful Operations' <xref target="RFC8490"/></t>
+<xref target="I-D.ietf-dnsop-dns-tcp-requirements"/>.</t>
+<t>'The edns-tcp-keepalive EDNS0 Option' <xref target="RFC7828"/>.</t>
+<t>'DNS Stateful Operations' <xref target="RFC8490"/>.</t>
 </list>
 </t>
 </section>

@@ -82,7 +82,7 @@ Table of Contents
        5.1.4.  DNSSEC  . . . . . . . . . . . . . . . . . . . . . . .  11
        5.1.5.  Availability  . . . . . . . . . . . . . . . . . . . .  11
        5.1.6.  Service options . . . . . . . . . . . . . . . . . . .  12
-       5.1.7.  Impact on DNS Privacy Service Operators . . . . . . .  12
+       5.1.7.  Impact of Encryption on DNS Monitoring  . . . . . . .  12
        5.1.8.  Limitations of using a pure TLS proxy . . . . . . . .  13
      5.2.  Data at rest on the server  . . . . . . . . . . . . . . .  13
        5.2.1.  Data handling . . . . . . . . . . . . . . . . . . . .  13
@@ -210,7 +210,7 @@ Internet-Draft     DNS Privacy Service Recommendations     December 2019
       legal advice or recommendations as to the contents.
 
    A desired operational impact is that all operators (both those
-   providing resolvers within networks and those operating large anycast
+   providing resolvers within networks and those operating large public
    services) can demonstrate their commitment to user privacy thereby
    driving all DNS resolution services to a more equitable footing.
    Choices for users would (in this ideal world) be driven by other
@@ -247,12 +247,12 @@ Internet-Draft     DNS Privacy Service Recommendations     December 2019
    This document includes (but is not limited to) considerations in the
    following areas (taken from [I-D.ietf-dprive-rfc7626-bis]):
 
-   1.  Data "on the wire" between a client and a server
+   1.  Data "on the wire" between a client and a server.
 
-   2.  Data "at rest" on a server (e.g. in logs)
+   2.  Data "at rest" on a server (e.g. in logs).
 
    3.  Data "sent onwards" from the server (either on the wire or shared
-       with a third party)
+       with a third party).
 
    Whilst the issues raised here are targeted at those operators who
    choose to offer a DNS privacy service, considerations for areas 2 and
@@ -294,8 +294,8 @@ Internet-Draft     DNS Privacy Service Recommendations     December 2019
    we restate the clause in the original definition of Privacy-enabling
    DNS server in [RFC8310] to include the requirement that a DNS over
    (D)TLS server should also offer at least one of the credentials
-   described in Section 8 and implement the (D)TLS profile described in
-   Section 9 of [RFC8310].
+   described in Section 8 of [RFC8310] and implement the (D)TLS profile
+   described in Section 9 of [RFC8310].
 
    Other Terms:
 
@@ -310,7 +310,8 @@ Internet-Draft     DNS Privacy Service Recommendations     December 2019
 
    We describe two classes of threats:
 
-   o  'Privacy Considerations for Internet Protocols' [RFC6973] Threats
+   o  Threats described in [RFC6973] 'Privacy Considerations for
+      Internet Protocols'
 
       *  Privacy terminology, threats to privacy and mitigations as
          described in Sections 3, 5 and 6 of [RFC6973].
@@ -332,27 +333,26 @@ Internet-Draft     DNS Privacy Service Recommendations     December 2019
 
 
 
-
 Dickinson, et al.         Expires June 20, 2020                 [Page 6]
 
 Internet-Draft     DNS Privacy Service Recommendations     December 2019
 
 
    o  Optimization of privacy services from an operational or management
-      perspective
+      perspective.
 
    o  Additional options that could further enhance the privacy and
-      usability of the service
+      usability of the service.
 
-   This document does not specify policy only best practice, however for
-   DNS Privacy services to be considered compliant with these best
+   This document does not specify policy - only best practice, however
+   for DNS Privacy services to be considered compliant with these best
    practice guidelines they SHOULD implement (where appropriate) all:
 
-   o  Threat mitigations to be minimally compliant
+   o  Threat mitigations to be minimally compliant.
 
-   o  Optimizations to be moderately compliant
+   o  Optimizations to be moderately compliant.
 
-   o  Additional options to be maximally compliant
+   o  Additional options to be maximally compliant.
 
 5.1.  On the wire between client and server
 
@@ -370,16 +370,16 @@ Internet-Draft     DNS Privacy Service Recommendations     December 2019
 
    DNS Privacy Threats:
 
-   o  Active injection of spurious data or traffic
+   o  Active injection of spurious data or traffic.
 
    Mitigations:
 
    A DNS privacy service can mitigate these threats by providing service
    over one or more of the following transports
 
-   o  DNS-over-TLS [RFC7858] and [RFC8310]
+   o  DNS-over-TLS [RFC7858] and [RFC8310].
 
-   o  DoH [RFC8484]
+   o  DoH [RFC8484].
 
    It is noted that a DNS privacy service can also be provided over DNS-
    over-DTLS [RFC8094], however this is an Experimental specification
@@ -422,7 +422,7 @@ Internet-Draft     DNS Privacy Service Recommendations     December 2019
    client) require the ability to authenticate the DNS server.  To
    enable this, DNS privacy services that offer DNS-over-TLS should
    provide credentials in the form of either X.509 certificates
-   [RFC5280] or SPKI pin sets [RFC8310].
+   [RFC5280] or Subject Public Key Info (SPKI) pin sets [RFC8310].
 
    When offering DoH [RFC8484], HTTPS requires authentication of the
    server as part of the protocol.
@@ -453,16 +453,14 @@ Internet-Draft     DNS Privacy Service Recommendations     December 2019
    o  Invalid certificates, resulting in an unavailable service.
 
    o  Mis-identification of a server by a client e.g. typos in URLs or
-      authentication domain names
+      authentication domain names.
 
    Mitigations:
 
    It is recommended that operators:
 
    o  Follow the guidance in Section 6.5 of [RFC7525] with regards to
-      certificate revocation
-
-   o  Choose a short, memorable authentication name for the service
+      certificate revocation .
 
    o  Automate the generation, publication and renewal of certificates.
       For example, ACME [RFC8555] provides a mechanism to actively
@@ -470,7 +468,9 @@ Internet-Draft     DNS Privacy Service Recommendations     December 2019
       a number of certificate authorities.
 
    o  Monitor certificates to prevent accidental expiration of
-      certificates
+      certificates.
+
+   o  Choose a short, memorable authentication name for the service.
 
 5.1.3.  Protocol recommendations
 
@@ -478,13 +478,13 @@ Internet-Draft     DNS Privacy Service Recommendations     December 2019
 
    DNS Privacy Threats:
 
-   o  Known attacks on TLS such as those described in [RFC7457]
+   o  Known attacks on TLS such as those described in [RFC7457].
 
-   o  Traffic analysis, for example: [Pitfalls-of-DNS-Encryption]
+   o  Traffic analysis, for example: [Pitfalls-of-DNS-Encryption].
 
-   o  Potential for client tracking via transport identifiers
+   o  Potential for client tracking via transport identifiers.
 
-   o  Blocking of well known ports (e.g. 853 for DNS-over-TLS)
+   o  Blocking of well known ports (e.g. 853 for DNS-over-TLS).
 
    Mitigations:
 
@@ -493,9 +493,9 @@ Internet-Draft     DNS Privacy Service Recommendations     December 2019
    [RFC8310] provide strong mitigations.  This includes but is not
    limited to:
 
-   o  Adhering to [RFC7525]
+   o  Adhering to [RFC7525].
 
-   o  Implementing only (D)TLS 1.2 or later as specified in [RFC8310]
+   o  Implementing only (D)TLS 1.2 or later as specified in [RFC8310].
 
 
 
@@ -523,31 +523,31 @@ Internet-Draft     DNS Privacy Service Recommendations     December 2019
 
    o  Concurrent processing of pipelined queries, returning responses as
       soon as available, potentially out of order as specified in
-      [RFC7766].  This is often called 'OOOR' - out-of-order responses.
-      (Providing processing performance similar to HTTP multiplexing)
+      [RFC7766].  This is often called 'OOOR' - out-of-order responses
+      (providing processing performance similar to HTTP multiplexing).
 
    o  Management of TLS connections to optimize performance for clients
-      using either
+      using either:
 
       *  [RFC7766] and EDNS(0) Keepalive [RFC7828] and/or
 
-      *  DNS Stateful Operations [RFC8490]
+      *  DNS Stateful Operations [RFC8490].
 
 5.1.3.2.  DoH
 
    DNS Privacy Threats:
 
-   o  Known attacks on TLS such as those described in [RFC7457]
+   o  Known attacks on TLS such as those described in [RFC7457].
 
    o  Traffic analysis, for example: DNS Privacy not so private: the
-      traffic analysis perspective [1]
+      traffic analysis perspective. [1]
 
-   o  Potential for client tracking via transport identifiers
+   o  Potential for client tracking via transport identifiers.
 
    Mitigations:
 
    o  Clients must be able to forego the use of HTTP Cookies [RFC6265]
-      and still use the service
+      and still use the service.
 
    o  Clients should not be required to include any headers beyond the
       absolute minimum to obtain service from a DoH server.  (See
@@ -640,12 +640,12 @@ Internet-Draft     DNS Privacy Service Recommendations     December 2019
    offered on un-encrypted channels in terms of such options as
    filtering (or lack thereof), DNSSEC validation, etc.
 
-5.1.7.  Impact on DNS Privacy Service Operators
+5.1.7.  Impact of Encryption on DNS Monitoring
 
    DNS Privacy Threats:
 
    o  Increased use of encryption impacts operator ability to manage
-      their network [RFC8404]
+      their network [RFC8404].
 
    Many monitoring solutions for DNS traffic rely on the plain text
    nature of this traffic and work by intercepting traffic on the wire,
@@ -679,7 +679,7 @@ Internet-Draft     DNS Privacy Service Recommendations     December 2019
    DNS Privacy Threats:
 
    o  Limited ability to manage or monitor incoming connections using
-      DNS specific techniques
+      DNS specific techniques.
 
    o  Misconfiguration of the target server could lead to data leakage
       if the proxy to target server path is not encrypted.
@@ -711,17 +711,17 @@ Internet-Draft     DNS Privacy Service Recommendations     December 2019
 
    [RFC6973] Threats:
 
-   o  Surveillance
+   o  Surveillance.
 
-   o  Stored data compromise
+   o  Stored data compromise.
 
-   o  Correlation
+   o  Correlation.
 
-   o  Identification
+   o  Identification.
 
-   o  Secondary use
+   o  Secondary use.
 
-   o  Disclosure
+   o  Disclosure.
 
 
 
@@ -732,7 +732,7 @@ Internet-Draft     DNS Privacy Service Recommendations     December 2019
 
    Other Threats
 
-   o  Contravention of legal requirements not to process user data?
+   o  Contravention of legal requirements not to process user data.
 
    Mitigations:
 
@@ -846,7 +846,7 @@ Internet-Draft     DNS Privacy Service Recommendations     December 2019
    unencumbered by patents.
 
    The following table presents a high level comparison of various
-   techniques employed or under development today and classifies them
+   techniques employed or under development in 2019 and classifies them
    according to categorization of technique and other properties.
    Appendix B provides a more detailed survey of these techniques and
    definitions for the categories and properties listed below.  The list
@@ -917,15 +917,15 @@ Internet-Draft     DNS Privacy Service Recommendations     December 2019
       parameters.
 
    o  Correlation of queries on multiple TCP session originating from
-      the same IP address
+      the same IP address.
 
    o  Correlating of queries on multiple TLS sessions originating from
-      the same client, including via session resumption mechanisms
+      the same client, including via session resumption mechanisms.
 
    o  Resolvers _might_ receive client identifiers e.g.  MAC addresses
       in EDNS(0) options - some CPE devices are known to add them.
 
-   o  HTTP headers (e.g., User-Agent, Accept, Accept-Encoding)
+   o  HTTP headers (e.g., User-Agent, Accept, Accept-Encoding).
 
    Mitigations:
 
@@ -937,12 +937,12 @@ Internet-Draft     DNS Privacy Service Recommendations     December 2019
 
    o  Surveillance:
 
-      *  Profiling of client queries by malicious third parties
+      *  Profiling of client queries by malicious third parties.
 
    Mitigations:
 
    o  See ISC Knowledge database on cache snooping [10] for an example
-      discussion on defending against cache snooping
+      discussion on defending against cache snooping.
 
 
 
@@ -972,7 +972,7 @@ Internet-Draft     DNS Privacy Service Recommendations     December 2019
    As specified in [RFC8310] for DNS-over-TLS but applicable to any DNS
    Privacy services the server should:
 
-   o  Implement QNAME minimization [RFC7816]
+   o  Implement QNAME minimization [RFC7816].
 
    o  Honor a SOURCE PREFIX-LENGTH set to 0 in a query containing the
       EDNS(0) Client Subnet (ECS) option and not send an ECS option in
@@ -980,7 +980,7 @@ Internet-Draft     DNS Privacy Service Recommendations     December 2019
 
    Optimizations:
 
-   o  The server should either
+   o  The server should either:
 
       *  not use the ECS option in upstream queries at all, or
 
@@ -1047,17 +1047,17 @@ Internet-Draft     DNS Privacy Service Recommendations     December 2019
 
    [RFC6973] Threats:
 
-   o  Surveillance
+   o  Surveillance.
 
-   o  Stored data compromise
+   o  Stored data compromise.
 
-   o  Correlation
+   o  Correlation.
 
-   o  Identification
+   o  Identification.
 
-   o  Secondary use
+   o  Secondary use.
 
-   o  Disclosure
+   o  Disclosure.
 
 
 
@@ -1068,7 +1068,7 @@ Internet-Draft     DNS Privacy Service Recommendations     December 2019
 
    DNS Privacy Threats:
 
-   o  Contravention of legal requirements not to process user data
+   o  Contravention of legal requirements not to process user data.
 
    Mitigations:
 
@@ -1101,11 +1101,11 @@ Internet-Draft     DNS Privacy Service Recommendations     December 2019
        (including IP addresses) is:
 
        *  Collected and retained by the operator, and for what period it
-          is retained
+          is retained.
 
-       *  Shared with partners
+       *  Shared with partners.
 
-       *  Shared, sold or rented to third-parties
+       *  Shared, sold or rented to third-parties.
 
        and in each case whether it is aggregated, pseudonymized or
        anonymized and the conditions of data transfer.
@@ -1139,18 +1139,18 @@ Internet-Draft     DNS Privacy Service Recommendations     December 2019
        *  Specify if any replies are being filtered out or altered for
           network and computer security reasons (e.g. preventing
           connections to malware-spreading websites or botnet control
-          servers)
+          servers).
 
        *  Specify if any replies are being filtered out or altered for
           mandatory legal reasons, due to applicable legislation or
-          binding orders by courts and other public authorities
+          binding orders by courts and other public authorities.
 
        *  Specify if any replies are being filtered out or altered for
           voluntary legal reasons, due to an internal policy by the
-          operator aiming at reducing potential legal risks
+          operator aiming at reducing potential legal risks.
 
        *  Specify if any replies are being filtered out or altered for
-          any other reason, including commercial ones
+          any other reason, including commercial ones.
 
 6.1.2.  Practice
 
@@ -1164,10 +1164,10 @@ Internet-Draft     DNS Privacy Service Recommendations     December 2019
        provide specific details of which capabilities are provided on
        which client facing addresses and ports:
 
-       1.  For DoT, specify the authentication name to be used (if any)
+       1.  For DoT, specify the authentication name to be used (if any).
 
        2.  For DoT, specify the SPKI pin sets to be used (if any) and
-           policy for rolling keys
+           policy for rolling keys.
 
 
 
@@ -1244,9 +1244,9 @@ Internet-Draft     DNS Privacy Service Recommendations     December 2019
 
    o  ECS, QNAME minimization, EDNS(0) padding, etc.
 
-   o  Filtering
+   o  Filtering.
 
-   o  Uptime
+   o  Uptime.
 
    This is by analogy with e.g. several TLS or website analysis tools
    that are currently available e.g.  SSL Labs [14] or Internet.nl [15].
@@ -1262,7 +1262,9 @@ Internet-Draft     DNS Privacy Service Recommendations     December 2019
 8.  Security considerations
 
    Security considerations for DNS-over-TCP are given in [RFC7766], many
-   of which are generally applicable to session based DNS.
+   of which are generally applicable to session based DNS.  Guidance on
+   operational requirements for DNS-over-TCP are also available in [I-
+   D.dnsop-dns-tcp-requirements].
 
 9.  Acknowledgements
 
@@ -1277,8 +1279,6 @@ Internet-Draft     DNS Privacy Service Recommendations     December 2019
 
    Sara Dickinson thanks the Open Technology Fund for a grant to support
    the work on this document.
-
-
 
 
 
@@ -1722,10 +1722,10 @@ A.1.  Potential increases in DNS privacy
 
    o  'DNS Queries over HTTPS (DoH)' [RFC8484] referred to here as DoH.
 
-   o  'Usage Profiles for DNS over TLS and DNS over DTLS' [RFC8310]
+   o  'Usage Profiles for DNS over TLS and DNS over DTLS' [RFC8310].
 
    o  'The EDNS(0) Padding Option' [RFC7830] and 'Padding Policy for
-      EDNS(0)' [RFC8467]
+      EDNS(0)' [RFC8467].
 
    These documents apply to recursive to authoritative DNS but are
    relevant when considering the operation of a recursive server:
@@ -1739,38 +1739,38 @@ Internet-Draft     DNS Privacy Service Recommendations     December 2019
 
 
    o  'DNS Query Name minimization to Improve Privacy' [RFC7816]
-      referred to here as 'QNAME minimization'
+      referred to here as 'QNAME minimization'.
 
 A.2.  Potential decreases in DNS privacy
 
    These documents relate to functionality that could provide increased
    tracking of user activity as a side effect:
 
-   o  'Client Subnet in DNS Queries' [RFC7871]
+   o  'Client Subnet in DNS Queries' [RFC7871].
 
-   o  'Domain Name System (DNS) Cookies' [RFC7873])
+   o  'Domain Name System (DNS) Cookies' [RFC7873]).
 
    o  'Transport Layer Security (TLS) Session Resumption without Server-
       Side State' [RFC5077] referred to here as simply TLS session
       resumption.
 
-   o  'A DNS Packet Capture Format' [RFC8618]
+   o  'A DNS Packet Capture Format' [RFC8618].
 
-   o  Passive DNS [RFC8499]
+   o  Passive DNS [RFC8499].
 
    Note that depending on the specifics of the implementation [RFC8484]
    may also provide increased tracking.
 
 A.3.  Related operational documents
 
-   o  'DNS Transport over TCP - Implementation Requirements' [RFC7766]
+   o  'DNS Transport over TCP - Implementation Requirements' [RFC7766].
 
    o  'Operational requirements for DNS-over-TCP'
-      [I-D.ietf-dnsop-dns-tcp-requirements]
+      [I-D.ietf-dnsop-dns-tcp-requirements].
 
-   o  'The edns-tcp-keepalive EDNS0 Option' [RFC7828]
+   o  'The edns-tcp-keepalive EDNS0 Option' [RFC7828].
 
-   o  'DNS Stateful Operations' [RFC8490]
+   o  'DNS Stateful Operations' [RFC8490].
 
 Appendix B.  IP address techniques
 
