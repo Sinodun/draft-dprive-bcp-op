@@ -366,7 +366,7 @@ Optimizations:
 DNS Privacy Threats:
 
 * Known attacks on TLS such as those described in [@RFC7457].
-* Traffic analysis, for example: [DNS Privacy not so private: the traffic analysis perspective.](https://petsymposium.org/2018/files/hotpets/4-siby.pdf)
+* Traffic analysis, for example: [@DNS-Privacy-not-so-private].
 * Potential for client tracking via transport identifiers.
 
 Mitigations:
@@ -423,9 +423,7 @@ availability level as any unencrypted services they provide. Particular care
 should to be taken to protect DNS privacy services against denial-of-service
 attacks, as experience has shown that unavailability of DNS resolving because of
 attacks is a significant motivation for users to switch services. See, for
-example Section IV-C of [Passive Observations of a Large DNS Service: 2.5 Years
-in the Life of
-Google](http://tma.ifip.org/2018/wp-content/uploads/sites/3/2018/06/tma2018_paper30.pdf).
+example Section IV-C of [@Passive-Observations-of-a-Large-DNS Service].
 
 Techniques such as those described in Section 10 of [RFC7766] can be of use to operators to defend against such attacks. 
 
@@ -458,7 +456,7 @@ encrypted. There are, however, legitimate reasons for operators to inspect DNS
 traffic, e.g. to monitor for network security threats. Operators may therefore 
 need to invest in alternative means of monitoring that relies on either the
 resolver software directly, or exporting DNS traffic from the resolver using
-e.g. [dnstap](http://dnstap.info). 
+e.g. [@dnstap].
 
 Optimization:
 
@@ -479,8 +477,8 @@ DNS Privacy Threats:
 Optimization:
 
 Some operators may choose to implement DNS-over-TLS using a TLS proxy (e.g.
-[nginx](https://nginx.org/), [haproxy](https://www.haproxy.org/) or
-[stunnel](https://kb.isc.org/article/AA-01386/0/DNS-over-TLS.html)) in front of
+[@nginx], [@haproxy] or
+[@stunnel]) in front of
 a DNS nameserver because of proven robustness and capacity when handling large
 numbers of client connections, load balancing capabilities and good tooling.
 Currently, however, because such proxies typically have no specific handling of
@@ -491,7 +489,7 @@ techniques such as ACLs, RRL or DNS64 will be hard or impossible to implement in
 the nameserver.
 
 Operators may choose to use a DNS aware proxy such as
-[dnsdist](https://dnsdist.org) which offer custom options (similar to that
+[@dnsdist] which offer custom options (similar to that
 proposed in [@I-D.bellis-dnsop-xpf]) to add source information to packets
 to address this shortcoming. It should be noted that such options potentially
 significantly increase the leaked information in the event of a
@@ -569,8 +567,7 @@ re-identification attacks that have grown in practicality over the period.
 
 Techniques employed may be broadly categorized as either anonymization or
 pseudonymization. The following discussion uses the definitions from [@!RFC6973]
-Section 3, with additional observations from [van Dijkhuizen et
-al.](https://doi.org/10.1145/3182660)
+Section 3, with additional observations from [@van-Dijkhuizen-et-al.]
 
 * Anonymization. To enable anonymity of an individual, there must exist a set of
   individuals that appear to have the same attribute(s) as the individual. To
@@ -634,9 +631,7 @@ For example, a common goal is that distributed packet captures must be in an
 existing data format such as PCAP [@pcap] or C-DNS
 [@RFC8618] that can be used as input to existing
 analysis tools. In that case, use of a format-preserving technique is
-essential. This, though, is not cost-free - several authors (e.g. [Brenker &
-Arnes]
-(https://pdfs.semanticscholar.org/7b34/12c951cebe71cd2cddac5fda164fb2138a44.pdf))
+essential. This, though, is not cost-free - several authors (e.g. [@Brenker-and-Arnes]
 have observed that, as the entropy in an IPv4 address is limited, given
 a de-identified log from a target, if an attacker is capable of ensuring
 packets are captured by the target and the attacker can send forged traffic
@@ -677,8 +672,7 @@ Mitigations:
 
 Mitigations:
 
-* See [ISC Knowledge database on cache
-  snooping](https://kb.isc.org/docs/aa-00482) for an example discussion on
+* See [@ISC-Knowledge-database-on-cache-snooping] for an example discussion on
   defending against cache snooping.
 
 
@@ -778,8 +772,7 @@ service itself does not constitute consent).
 Operators should consider including specific guidelines for the collection of
 aggregated and/or anonymized data for research purposes, within or outside of
 their own organization. This can benefit not only the operator (through
-inclusion in novel research) but also the wider Internet community. See
-[SURFnet's policy](https://surf.nl/datasharing) on data sharing for research as
+inclusion in novel research) but also the wider Internet community. See the policy published by SURFnet [@SURFnet-policy] on data sharing for research as
 an example.
 
 # DNS Recursive Operator Privacy (DROP) statement
@@ -871,8 +864,8 @@ and law enforcement regimes under which the service is being provided.
 
 A tabular comparison of policy and privacy statements from various DNS
 Privacy service operators based loosely on the proposed DROP structure can be
-found on
-[dnsprivacy.org](https://dnsprivacy.org/wiki/display/DP/Comparison+of+policy+and+privacy+statements+2019). The analysis is based on the data available in December 2019.
+found at
+[@policy-comparison]. The analysis is based on the data available in December 2019.
 
 We note that the existing set of policies vary widely in style, content and
 detail and it is not uncommon for the full text for a given operator to equate
@@ -880,8 +873,7 @@ to more than 10 pages of moderate font sized A4 text. It is a non-trivial task
 today for a user to extract a meaningful overview of the different services on
 offer.
 
-It is also noted that Mozilla have published a [Security/DoH-resolver
-policy](https://wiki.mozilla.org/Security/DOH-resolver-policy), which describes the
+It is also noted that Mozilla have published a DoH resolver policy [@DoH-resolver-policy], which describes the
 minimum set of policy requirements that a party must satisfy to be considered as
 a potential partner for Mozilla’s Trusted Recursive Resolver (TRR) program.
 
@@ -897,8 +889,8 @@ Independent monitoring or analysis could be performed where possible of:
 * Uptime.
 
 This is by analogy with e.g. several TLS or website analysis tools that are
-currently available e.g. [SSL Labs](https://www.ssllabs.com/ssltest/) or
-[Internet.nl](https://internet.nl).
+currently available e.g. [@SSL-Labs] or
+[@Internet.nl].
 
 Additionally operators could choose to engage the services of a third party auditor to verify their compliance with their published DROP statement.
 
@@ -948,6 +940,7 @@ United Kingdom
 draft-ietf-dprive-bcp-op-07
 
 * Editorial changes following AD review.
+* Change all URIs to Informational References.
 
 draft-ietf-dprive-bcp-op-06
 
@@ -1034,23 +1027,6 @@ draft-ietf-dprive-bcp-op-00
     </front>
 </reference>
 
-<reference anchor='DNS-bloom-filter'
- target=' https://tnc18.geant.org/getfile/3823'>
-    <front>
-        <title>Let a Thousand Filters Bloom. DNS-Based Threat Monitoring That Respects User Privacy</title>
-        <author initials='R.' surname='van Rijswijk-Deij' fullname='Roland van Rijswijk-Deij'>
-         <organization>SURFnet bv</organization>
-        </author>
-        <author initials='M.' surname='Bomhoff' fullname='Matthijs Bomhoff'>
-         <organization>Quarantainenet B.V.</organization>
-        </author>
-        <author initials='R.' surname='Dolmans' fullname='Ralph Dolmans'>
-         <organization>NLnet Labs Foundation</organization>
-        </author>
-        <date year='2018'/>
-    </front>
-</reference>
-
 <reference anchor='pcap' target='http://www.tcpdump.org/'>
     <front>
         <title>PCAP</title>
@@ -1061,14 +1037,319 @@ draft-ietf-dprive-bcp-op-00
     </front>
 </reference>
 
+<reference anchor='DNS-Privacy-not-so-private'
+ target='https://petsymposium.org/2018/files/hotpets/4-siby.pdf'>
+    <front>
+        <title>DNS Privacy not so private: the traffic analysis perspective.</title>
+        <author initials='S.' surname='Silby'> </author>
+        <author initials='M.' surname='Juarez'> </author>
+        <author initials='N.' surname='Vallina-Rodriguez'> </author>
+        <author initials='C.' surname='Troncosol'> </author>
+        <date year='2019'/>
+    </front>
+</reference>
+
+<reference anchor='Passive-Observations-of-a-Large-DNS'
+           target='http://tma.ifip.org/2018/wp-content/uploads/sites/3/2018/06/tma2018_paper30.pdf'>
+    <front>
+        <title>Passive Observations of a Large DNS Service: 2.5 Years in the Life of Google</title>
+          <author initials='W. B.' surname='de Vries'> </author>
+          <author initials='R.' surname='van Rijswijk-Deij'> </author>
+          <author initials='P.' surname='de Boer'> </author>
+          <author initials='A.' surname='Pras'> </author>
+        <date year='2018'/>
+    </front>
+</reference>
+
+<reference anchor='dnstap' target='http://dnstap.info'>
+    <front>
+        <title>DNSTAP</title>
+        <author>
+            <organization>dnstap.info</organization>
+        </author>
+        <date year='2019'/>
+    </front>
+</reference>
+
+<reference anchor='nginx' target='https://nginx.org/'>
+    <front>
+        <title>NGINX</title>
+        <author>
+            <organization>nginx.org</organization>
+        </author>
+        <date year='2019'/>
+    </front>
+</reference>
+
+<reference anchor='haproxy' target='https://www.haproxy.org/'>
+    <front>
+        <title>HAPROXY</title>
+        <author>
+            <organization>haproxy.org</organization>
+        </author>
+        <date year='2019'/>
+    </front>
+</reference>
+
+<reference anchor='stunnel' target='https://kb.isc.org/article/AA-01386/0/DNS-over-TLS.html'>
+    <front>
+        <title>DNS-over-TLS</title>
+        <author>
+            <organization>ISC Knowledge Database</organization>
+        </author>
+        <date year='2018'/>
+    </front>
+</reference>
+
+<reference anchor='dnsdist' target='https://dnsdist.org'>
+    <front>
+        <title>dnsdist Overview</title>
+        <author>
+            <organization>PowerDNS</organization>
+        </author>
+        <date year='2019'/>
+    </front>
+</reference>
+
+<reference anchor='van-Dijkhuizen-et-al.'
+           target='https://doi.org/10.1145/3182660'>
+    <front>
+        <title>A Survey of Network Traffic Anonymisation Techniques and Implementations</title>
+          <author initials='N.' surname='Van Dijkhuizen	'> </author>
+          <author initials='J.' surname='Van Der Ham'> </author>
+        <date year='2018'/>
+    </front>
+</reference>
+
+<reference anchor='ISC-Knowledge-database-on-cache-snooping' 
+   target='https://kb.isc.org/docs/aa-00482'>
+    <front>
+        <title>DNS Cache snooping - should I be concerned?</title>
+        <author>
+            <organization>ISC Knowledge Database</organization>
+        </author>
+        <date year='2018'/>
+    </front>
+</reference>
+
+<reference anchor='SURFnet-policy' 
+   target='https://surf.nl/datasharing'>
+    <front>
+        <title>SURFnet Data Sharing Policy</title>
+        <author>
+            <organization>SURFnet</organization>
+        </author>
+        <date year='2016'/>
+    </front>
+</reference>
+
+<reference anchor='policy-comparison' 
+   target='https://dnsprivacy.org/wiki/display/DP/Comparison+of+policy+and+privacy+statements+2019'>
+    <front>
+        <title>Comparison of policy and privacy statements 2019</title>
+        <author>
+            <organization>dnsprivacy.org</organization>
+        </author>
+        <date year='2019'/>
+    </front>
+</reference>
+
+<reference anchor='DoH-resolver-policy' 
+   target='https://wiki.mozilla.org/Security/DOH-resolver-policy'>
+    <front>
+        <title>Security/DOH-resolver-policy</title>
+        <author>
+            <organization>Mozilla</organization>
+        </author>
+        <date year='2019'/>
+    </front>
+</reference>
+
+<reference anchor='SSL-Labs' target='https://www.ssllabs.com/ssltest/'>
+    <front>
+        <title>SSL Server Test</title>
+        <author>
+            <organization>SSL Labs</organization>
+        </author>
+        <date year='2019'/>
+    </front>
+</reference>
+
+<reference anchor='Internet.nl' target='https://internet.nl'>
+    <front>
+        <title>Internet.nl Is Your Internet Up To Date?</title>
+        <author>
+            <organization>Internet.nl</organization>
+        </author>
+        <date year='2019'/>
+    </front>
+</reference>
+
+<reference anchor='Brenker-and-Arnes'
+           target='https://pdfs.semanticscholar.org/7b34/12c951cebe71cd2cddac5fda164fb2138a44.pdf'>
+    <front>
+        <title>CIRCUMVENTING IP-ADDRESS PSEUDONYMIZATION</title>
+          <author initials='T.' surname='Brekne'> </author>
+          <author initials='A.' surname='Arnes'> </author>
+        <date year='2005'/>
+    </front>
+</reference>
+
+<reference anchor='IP-Anonymization-in-Analytics' target='https://support.google.com/analytics/answer/2763052?hl=en'>
+    <front>
+        <title>IP Anonymization in Analytics</title>
+        <author>
+            <organization>Google</organization>
+        </author>
+        <date year='2019'/>
+    </front>
+</reference>
+
+<reference anchor='Geolocation-Impact-Assessement' 
+          target='https://support.google.com/analytics/answer/2763052?hl=en'>
+    <front>
+        <title>Anonymize IP Geolocation Accuracy Impact Assessment</title>
+        <author>
+            <organization>Conversion Works</organization>
+        </author>
+        <date year='2017'/>
+    </front>
+</reference>
+
+<reference anchor='dnswasher' target='https://github.com/PowerDNS/pdns/blob/master/pdns/dnswasher.cc'>
+    <front>
+        <title>dnswasher</title>
+        <author>
+            <organization>PowerDNS</organization>
+        </author>
+        <date year='2019'/>
+    </front>
+</reference>
+
+<reference anchor='TCPdpriv' target='http://ita.ee.lbl.gov/html/contrib/tcpdpriv.html'>
+    <front>
+        <title>TCPdpriv</title>
+        <author>
+            <organization>Ipsilon Networks, Inc.</organization>
+        </author>
+        <date year='2005'/>
+    </front>
+</reference>
+
+<reference anchor='Xu-et-al.'
+           target='http://an.kaist.ac.kr/~sbmoon/paper/intl-journal/2004-cn-anon.pdf'>
+    <front>
+        <title>Prefix-preserving IP address anonymization: measurement-based security evaluation and a new cryptography-based scheme</title>
+          <author initials='J.' surname='Fan'> </author>
+          <author initials='J.' surname='Xu'> </author>
+          <author initials='M. H.' surname='Ammar'> </author>
+          <author initials='S. B.' surname='Moon'> </author>
+        <date year='2004'/>
+    </front>
+</reference>
+
+<reference anchor='Crypto-PAn' target='https://github.com/CESNET/ipfixcol/tree/master/base/src/intermediate/anonymization/Crypto-PAn'>
+    <front>
+        <title>Crypto-PAn</title>
+        <author>
+            <organization>CESNET</organization>
+        </author>
+        <date year='2015'/>
+    </front>
+</reference>
+
+<reference anchor='Harvan'
+           target='http://mharvan.net/talks/noms-ip_anon.pdf'>
+    <front>
+        <title>Prefix- and Lexicographical-order-preserving IP Address Anonymization</title>
+          <author initials='M.' surname='Harvan'> </author>
+        <date year='2006'/>
+    </front>
+</reference>
+
+<reference anchor='Ramaswamy-and-Wolf'
+           target='http://www.ecs.umass.edu/ece/wolf/pubs/ton2007.pdf'>
+    <front>
+        <title>High-Speed Prefix-Preserving IP Address Anonymization for Passive Measurement Systems</title>
+          <author initials='R.' surname='Ramaswamy'> </author>
+          <author initials='T.' surname='Wolf'> </author>
+        <date year='2007'/>
+    </front>
+</reference>
+
+<reference anchor='ipcipher1'
+           target='https://medium.com/@bert.hubert/on-ip-address-encryption-security-analysis-with-respect-for-privacy-dabe1201b476'>
+    <front>
+        <title>On IP address encryption: security analysis with respect for privacy</title>
+          <author initials='B.' surname='Hubert'> </author>
+        <date year='2017'/>
+    </front>
+</reference>
+
+<reference anchor='ipcipher2'
+           target='https://github.com/PowerDNS/ipcipher'>
+    <front>
+        <title>ipcipher</title>
+        <author>
+            <organization>PowerDNS</organization>
+        </author>
+        <date year='2017'/>
+    </front>
+</reference>
+
+<reference anchor='ipcrypt-analysis'
+           target='https://www.ietf.org/mail-archive/web/cfrg/current/msg09494.html'>
+    <front>
+        <title>Analysis of ipcrypt?</title>
+          <author initials='J.' surname='Aumasson'> </author>
+        <date year='2018'/>
+    </front>
+</reference>
+
+<reference anchor='ipcrypt'
+           target='https://github.com/veorq/ipcrypt'>
+    <front>
+        <title>ipcrypt: IP-format-preserving encryption</title>
+        <author>
+            <organization>veorq</organization>
+        </author>
+        <date year='2015'/>
+    </front>
+</reference>
+
+<reference anchor='Bloom-filter'
+           target='http://dl.ifip.org/db/conf/im/im2019/189282.pdf'>
+    <front>
+        <title>Privacy-Conscious Threat Intelligence Using DNSBLOOM</title>
+          <author initials='R.' surname='van Rijswijk-Deij'> </author>
+          <author initials='G.' surname='Rijnders'> </author>
+          <author initials='M.' surname='Bomhoff'> </author>
+          <author initials='L.' surname='Allodi'> </author>
+        <date year='2019'/>
+    </front>
+</reference>
+
 
 <!--These lines are needed to generate references for citations that appear only
 in the appendix-->
-[-@RFC6235]
+[-@?RFC6235]
 [-@!RFC7871]
 [-@RFC4033]
 [-@?RFC8618]
 [-@?I-D.ietf-dnsop-dns-tcp-requirements]
+[-@TCPdpriv]
+[-@Geolocation-Impact-Assessement]
+[-@IP-Anonymization-in-Analytics]
+[-@Xu-et-al.]
+[-@Crypto-PAn]
+[-@Harvan]
+[-@Ramaswamy-and-Wolf]
+[-@ipcipher1]
+[-@ipcipher2]
+[-@ipcrypt-analysis]
+[-@ipcrypt]
+[-@Bloom-filter]
+
 
 {backmatter}
 
@@ -1109,7 +1390,7 @@ user activity as a side effect:
 * 'Client Subnet in DNS Queries' [@!RFC7871].
 * 'Domain Name System (DNS) Cookies' [@!RFC7873]).
 * 'Transport Layer Security (TLS) Session Resumption without Server-Side State'
-  [@!RFC5077] referred to here as simply TLS session resumption.
+  [@RFC5077] referred to here as simply TLS session resumption.
 * 'A DNS Packet Capture Format' [@RFC8618].
 * Passive DNS [@RFC8499].
 
@@ -1167,14 +1448,12 @@ employed in [@RFC6235]:
   
 ## Google Analytics non-prefix filtering
 
-Since May 2010, [Google Analytics has provided a facility]
-(https://support.google.com/analytics/answer/2763052?hl=en) that allows website
+Since May 2010, Google Analytics has provided a facility [@IP-Anonymization-in-Analytics] that allows website
 owners to request that all their users IP addresses are anonymized within
 Google Analytics processing. This very basic anonymization simply sets to zero
 the least significant 8 bits of IPv4 addresses, and the least significant 80
 bits of IPv6 addresses. The level of anonymization this produces is perhaps
-questionable. There are [some analysis results]
-(https://www.conversionworks.co.uk/blog/2017/05/19/anonymize-ip-geo-impact-test/) 
+questionable. There are some analysis results [@Geolocation-Impact-Assessement]
 which suggest that the impact of
 this on reducing the accuracy of determining the user's location from their IP
 address is less than might be hoped; the average discrepancy in identification
@@ -1184,8 +1463,7 @@ Anonymization: Format-preserving, Filtering (grey marking).
 
 ## dnswasher
 
-Since 2006, PowerDNS have included a de-identification tool [dnswasher]
-(https://github.com/edmonds/pdns/blob/master/pdns/dnswasher.cc) with
+Since 2006, PowerDNS have included a de-identification tool [@dnswasher] with
 their PowerDNS product. This is a PCAP filter that performs a one-to-one mapping
 of end user IP addresses with an anonymized address. A table of user IP
 addresses and their de-identified counterparts is kept; the first IPv4 user
@@ -1198,7 +1476,7 @@ Anonymization: Format-preserving, Enumeration.
 
 ## Prefix-preserving map
 
-Used in [TCPdpriv]( http://ita.ee.lbl.gov/html/contrib/tcpdpriv.html), 
+Used in [@TCPdpriv], 
 this algorithm stores a set of original and anonymised IP
 address pairs. When a new IP address arrives, it is compared with previous
 addresses to determine the longest prefix match. The new address is anonymized
@@ -1215,14 +1493,10 @@ Anonymization: Format-preserving, prefix preservation (general).
 
 Cryptographic prefix-preserving pseudonymisation was originally proposed as an
 improvement to the prefix-preserving map implemented in TCPdpriv, described in
-[Xu et al.](http://an.kaist.ac.kr/~sbmoon/paper/intl-journal/2004-cn-anon.pdf) 
-and implemented in the [Crypto-PAn tool]
-(https://www.cc.gatech.edu/computing/Telecomm/projects/cryptopan/). 
+[@Xu-et-al.] and implemented in the [@Crypto-PAn] tool. 
 Crypto-PAn is now frequently
 used as an acronym for the algorithm. Initially it was described for IPv4
-addresses only; extension for IPv6 addresses was proposed in [Harvan &
-Schönwälder](http://mharvan.net/talks/noms-ip_anon.pdf) and implemented in 
-snmpdump. This uses a cryptographic algorithm
+addresses only; extension for IPv6 addresses was proposed in [@Harvan]. This uses a cryptographic algorithm
 rather than a random value, and thus pseudonymity is determined uniquely by the
 encryption key, and is deterministic. It requires a separate AES encryption for
 each output bit, so has a non-trivial calculation overhead. This can be
@@ -1233,7 +1507,7 @@ Pseudonymization: Format-preserving, prefix preservation (general).
 
 ## Top-hash Subtree-replicated Anonymisation
 
-Proposed in [Ramaswamy & Wolf](http://www.ecs.umass.edu/ece/wolf/pubs/ton2007.pdf),
+Proposed in [@Ramaswamy-and-Wolf],
 Top-hash Subtree-replicated Anonymisation (TSA)
 originated in response to the requirement for faster processing than Crypto-PAn.
 It used hashing for the most significant byte of an IPv4 address, and a
@@ -1248,23 +1522,21 @@ Pseudonymization: Format-preserving, prefix preservation (general).
 
 ## ipcipher
 
-A [recently-released proposal from PowerDNS](
-https://medium.com/@bert.hubert/on-ip-address-encryption-security-analysis-with-respect-for-privacy-dabe1201b476), 
-[ipcipher](https://github.com/PowerDNS/ipcipher) is a simple
+A recently-released proposal from PowerDNS, ipcipher
+[@ipcipher1] [@ipcipher2]  is a simple
 pseudonymization technique for IPv4 and IPv6 addresses. IPv6 addresses are
 encrypted directly with AES-128 using a key (which may be derived from a
 passphrase). IPv4 addresses are similarly encrypted, but using a recently
-proposed encryption [ipcrypt](https://github.com/veorq/ipcrypt) suitable for 32bit
-block lengths. However, the author of ipcrypt has [since indicated]
-(https://www.ietf.org/mail-archive/web/cfrg/current/msg09494.html) that it has
+proposed encryption [@ipcrypt] suitable for 32bit
+block lengths. However, the author of ipcrypt has since indicated [@ipcrypt-analysis] that it has
 low security, and further analysis has revealed it is vulnerable to attack.
 
 Pseudonymization: Format-preserving, cryptographic permutation.
 
 ## Bloom filters
 
-[van Rijswijk-Deij et al.](http://dl.ifip.org/db/conf/im/im2019/189282.pdf) 
-have recently described work using Bloom filters to
+van Rijswijk-Deij et al. 
+have recently described work using Bloom filters [@Bloom-filter] to
 categorize query traffic and record the traffic as the state of multiple
 filters. The goal of this work is to allow operators to identify so-called
 Indicators of Compromise (IOCs) originating from specific subnets without
