@@ -60,7 +60,7 @@
 %%%
 
 .# Abstract
-This document presents operational, policy and security considerations for DNS
+This document presents operational, policy, and security considerations for DNS
 recursive resolver operators who choose to offer DNS Privacy services. With
 these recommendations, the operator can make deliberate decisions regarding
 which services to provide, and how the decisions and alternatives impact the
@@ -208,8 +208,8 @@ Other Terms:
 We describe two classes of threats:
 
 * Threats described in [@!RFC6973] 'Privacy Considerations for Internet Protocols'
-  * Privacy terminology, threats to privacy and mitigations as described in
-    Sections 3, 5 and 6 of [@!RFC6973].
+  * Privacy terminology, threats to privacy, and mitigations as described in
+    Sections 3, 5, and 6 of [@!RFC6973].
 
 * DNS Privacy Threats
   * These are threats to the users and operators of DNS privacy services that
@@ -262,7 +262,7 @@ It is noted that a DNS privacy service can also be provided over DNS-over-DTLS
 [@RFC8094], however this is an Experimental specification and there are no known
 implementations at the time of writing.
 
-It is also noted that DNS privacy service might be provided over IPSec, DNSCrypt
+It is also noted that DNS privacy service might be provided over IPSec, DNSCrypt,
 or VPNs. However, use of these transports for DNS are not standardized and any
 discussion of best practice for providing such a service is out of scope for
 this document.
@@ -309,15 +309,15 @@ DNS Privacy Threats:
 
 * Invalid certificates, resulting in an unavailable service.
 * Mis-identification of a server by a client e.g. typos in URLs or
-  authentication domain names.
+  authentication domain names [@RFC8310].
 
 Mitigations:
 
 It is recommended that operators:
 
 * Follow the guidance in Section 6.5 of [@!RFC7525] with regards to certificate
-revocation .
-* Automate the generation, publication and renewal of certificates. For example,
+revocation.
+* Automate the generation, publication, and renewal of certificates. For example,
   ACME [@RFC8555] provides a mechanism to actively manage certificates through
   automation and has been implemented by a number of certificate authorities.
 * Monitor certificates to prevent accidental expiration of certificates.
@@ -346,7 +346,7 @@ provide strong mitigations. This includes but is not limited to:
   [@!RFC8467] or a successor specification.
 * Servers should not degrade in any way the query service level provided to
   clients that do not use any form of session resumption mechanism, such as TLS
-  session resumption [@RFC5077] with TLS 1.2, section 2.2 of RFC8446, or Domain
+  session resumption [@RFC5077] with TLS 1.2, section 2.2 of [@RFC8446], or Domain
   Name System (DNS) Cookies [@!RFC7873].
 * A DNS-over-TLS privacy service on both port 853 and 443. This practice may not
   be possible if e.g. the operator deploys DoH on the same IP address.
@@ -387,9 +387,10 @@ DNS Privacy Threats:
 
 Mitigations:
 
-* All DNS privacy services must offer a DNS privacy service that performs DNSSEC
-  validation. In addition they must be able to provide the DNSSEC RRs to the
-  client so that it can perform its own validation.
+* All DNS privacy services must offer a DNS privacy service that performs Domain
+  Name System Security Extensions (DNSSEC) validation. In addition they must be
+  able to provide the DNSSEC RRs to the client so that it can perform its own
+  validation.
 
 The addition of encryption to DNS does not remove the need for DNSSEC
 [@RFC4033] - they are independent and fully compatible protocols,
@@ -406,7 +407,7 @@ It should also be noted that the use of an encrypted transport for DNS actually
 solves many of the practical issues encountered by DNS validating clients e.g.
 interference by middleboxes with cleartext DNS payloads is completely avoided.
 In this sense a validating client that uses a DNS privacy service which supports
-DNSSEC has a far simpler task in terms of DNS Roadblock avoidance.
+DNSSEC has a far simpler task in terms of DNSSEC Roadblock avoidance [@RFC8027].
 
 
 ### Availability
@@ -438,7 +439,7 @@ DNS Privacy Threats:
 Mitigations:
 
 A DNS privacy service should deliver the same level of service as offered on
-un-encrypted channels in terms of such options as filtering (or lack thereof),
+un-encrypted channels in terms of options such as filtering (or lack thereof),
 DNSSEC validation, etc.
 
 ### Impact of Encryption on DNS Monitoring
@@ -463,7 +464,7 @@ Optimization:
 When implementing alternative means for traffic monitoring, operators of a DNS
 privacy service should consider using privacy conscious means to do so (see
 section (#data-at-rest-on-the-server) for more details on data handling and also
-the discussion on the use of Bloom Filters in (#documents).
+the discussion on the use of Bloom Filters in (#ip-address-techniques).
 
 ### Limitations of using a pure TLS proxy
 
@@ -477,7 +478,7 @@ DNS Privacy Threats:
 Optimization:
 
 Some operators may choose to implement DNS-over-TLS using a TLS proxy (e.g.
-[@nginx], [@haproxy] or
+[@nginx], [@haproxy], or
 [@stunnel]) in front of
 a DNS nameserver because of proven robustness and capacity when handling large
 numbers of client connections, load balancing capabilities and good tooling.
@@ -485,11 +486,11 @@ Currently, however, because such proxies typically have no specific handling of
 DNS as a protocol over TLS or DTLS using them can restrict traffic management at
 the proxy layer and at the DNS server. For example, all traffic received by a
 nameserver behind such a proxy will appear to originate from the proxy and DNS
-techniques such as ACLs, RRL or DNS64 will be hard or impossible to implement in
+techniques such as ACLs, RRL, or DNS64 will be hard or impossible to implement in
 the nameserver.
 
 Operators may choose to use a DNS aware proxy such as
-[@dnsdist] which offer custom options (similar to that
+[@dnsdist] which offers custom options (similar to that
 proposed in [@I-D.bellis-dnsop-xpf]) to add source information to packets
 to address this shortcoming. It should be noted that such options potentially
 significantly increase the leaked information in the event of a
@@ -517,7 +518,7 @@ Mitigations:
 
 The following are common activities for DNS service operators and in all cases
 should be minimized or completely avoided if possible for DNS privacy services.
-If data is retained it should be encrypted and either aggregated, pseudonymized
+If data is retained it should be encrypted and either aggregated, pseudonymized,
 or anonymized whenever possible. In general the principle of data minimization
 described in [@!RFC6973] should be applied.
 
@@ -550,7 +551,7 @@ example on the structure of an internal corporate network.
 
 The problem of effectively ensuring that DNS traffic logs contain no or minimal
 privacy-sensitive information is not one that currently has a generally agreed
-solution or any Standards to inform this discussion. This section presents and
+solution or any standards to inform this discussion. This section presents an
 overview of current techniques to simply provide reference on the current
 status of this work.
 
@@ -602,19 +603,19 @@ provides a more detailed survey of these techniques and definitions for the
 categories and properties listed below. The list of techniques includes the main
 techniques in current use, but does not claim to be comprehensive.
 
-Categorisation/Property    | GA | d | TC | C | TS | i | B
+Categorization/Property    | GA | d | TC | C | TS | i | B
 :--------------------------|--------|------|------|--------|-----|----------|---
-Anonymisation              |   X    |   X  |  X   |        |     |          | X
-Pseudoanonymisation        |        |      |      |    X   |  X  |    X     |
+Anonymization              |   X    |   X  |  X   |        |     |          | X
+Pseudoanonymization        |        |      |      |    X   |  X  |    X     |
 Format preserving          |   X    |   X  |  X   |    X   |  X  |    X     |
 Prefix preserving          |        |      |  X   |    X   |  X  |          |
 Replacement                |        |      |  X   |        |     |          |
 Filtering                  |   X    |      |      |        |     |          |
-Generalisation             |        |      |      |        |     |          | X
+Generalization             |        |      |      |        |     |          | X
 Enumeration                |        |   X  |      |        |     |          |
 Reordering/Shuffling       |        |      |  X   |        |     |          |
 Random substitution        |        |      |  X   |        |     |          |
-Crytpographic permutation  |        |      |      |   X    |  X  |    X     |
+Cryptographic permutation  |        |      |      |   X    |  X  |    X     |
 IPv6 issues                |        |      |      |        |  X  |          |
 CPU intensive              |        |      |      |   X    |     |          |
 Memory intensive           |        |      |  X   |        |     |          |
@@ -641,22 +642,22 @@ of a cryptographic chosen plaintext attack.
 
 
 
-### Pseudonymization, anonymization or discarding of other correlation data
+### Pseudonymization, anonymization, or discarding of other correlation data
 
 DNS Privacy Threats:
 
 * Fingerprinting of the client OS via various means including: IP TTL/Hoplimit,
   TCP parameters (e.g. window size, ECN support, SACK), OS specific DNS query
-  patterns (e.g. for network connectivity, captive portal detection or OS
+  patterns (e.g. for network connectivity, captive portal detection, or OS
   specific updates).
 * Fingerprinting of the client application or TLS library by e.g. TLS
   version/Cipher suite combinations or other connection parameters.
-* Correlation of queries on multiple TCP session originating from the same IP
+* Correlation of queries on multiple TCP sessions originating from the same IP
   address.
 * Correlating of queries on multiple TLS sessions originating from the same
   client, including via session resumption mechanisms.
 * Resolvers _might_ receive client identifiers e.g. MAC addresses in EDNS(0)
-  options - some CPE devices are known to add them.
+  options - some Customer-premises equipment (CPE) devices are known to add them.
 * HTTP headers (e.g., User-Agent, Accept, Accept-Encoding).
 
 Mitigations:
@@ -734,7 +735,7 @@ community via these upstream queries and what they can do to mitigate this
 further. Note, that even when all the relevant techniques described above are
 employed there may still be attacks possible, e.g.
 [@Pitfalls-of-DNS-Encryption]. For example, a resolver with a very small
-community of users risks exposing data in this way and OUGHT obfuscate this
+community of users risks exposing data in this way and ought to obfuscate this
 traffic by mixing it with 'generated' traffic to make client characterization
 harder. The resolver could also employ aggressive pre-fetch techniques as a
 further measure to counter traffic analysis.
@@ -789,15 +790,15 @@ The following section outlines the recommended contents of a DROP statement an o
 is:
     - Collected and retained by the operator, and for what period it is retained.
     - Shared with partners.
-    - Shared, sold or rented to third-parties.
+    - Shared, sold, or rented to third-parties.
     
-    and in each case whether it is aggregated, pseudonymized or anonymized and
+    and in each case whether it is aggregated, pseudonymized, or anonymized and
     the conditions of data transfer.
     
 1. Exceptions. Specify any exceptions to the above, for example technically
 malicious or anomalous behavior.
 
-1. Associated entities. Declare any partners, third-party affiliations or
+1. Associated entities. Declare any partners, third-party affiliations, or
 sources of funding.
 
 1. Correlation. Whether user DNS data is correlated or combined with any other
@@ -888,7 +889,7 @@ Independent monitoring or analysis could be performed where possible of:
 * Filtering.
 * Uptime.
 
-This is by analogy with e.g. several TLS or website analysis tools that are
+This is by analogy with several TLS or website analysis tools that are
 currently available e.g. [@SSL-Labs] or
 [@Internet.nl].
 
@@ -979,7 +980,7 @@ draft-ietf-dprive-bcp-op-02
 * Change 'open resolver' for 'public resolver'
 * Minor editorial changes
 * Remove recommendation to run a separate TLS 1.3 service
-* Move TLSA to purely a optimisation in Section 5.2.1
+* Move TLSA to purely a optimization in Section 5.2.1
 * Update reference on minimal DoH headers.
 * Add reference on user switching provider after service issues in Section 5.1.4
 * Add text in Section 5.1.6 on impact on operators.
@@ -1376,7 +1377,7 @@ clients and recursive resolvers:
 * 'The EDNS(0) Padding Option' [@!RFC7830] and 'Padding Policy for EDNS(0)'
   [@!RFC8467].
 
-These documents apply to recursive to authoritative DNS but are relevant when
+These documents apply to recursive and authoritative DNS but are relevant when
 considering the operation of a recursive server:
 
 * 'DNS Query Name minimization to Improve Privacy' [@!RFC7816] referred to here
@@ -1391,6 +1392,7 @@ user activity as a side effect:
 * 'Domain Name System (DNS) Cookies' [@!RFC7873]).
 * 'Transport Layer Security (TLS) Session Resumption without Server-Side State'
   [@RFC5077] referred to here as simply TLS session resumption.
+* [@RFC8446] Appendix C.4 describes Client Tracking Prevention in TLS 1.3
 * 'A DNS Packet Capture Format' [@RFC8618].
 * Passive DNS [@RFC8499].
 
@@ -1489,9 +1491,9 @@ addresses sequentially cannot be used in parallel processing.
 
 Anonymization: Format-preserving, prefix preservation (general).
 
-## Cryptographic Prefix-Preserving Pseudonymisation
+## Cryptographic Prefix-Preserving Pseudonymization
 
-Cryptographic prefix-preserving pseudonymisation was originally proposed as an
+Cryptographic prefix-preserving pseudonymization was originally proposed as an
 improvement to the prefix-preserving map implemented in TCPdpriv, described in
 [@Xu-et-al.] and implemented in the [@Crypto-PAn] tool. 
 Crypto-PAn is now frequently
@@ -1505,10 +1507,10 @@ some number of prefix bits.
 
 Pseudonymization: Format-preserving, prefix preservation (general).
 
-## Top-hash Subtree-replicated Anonymisation
+## Top-hash Subtree-replicated Anonymization
 
 Proposed in [@Ramaswamy-and-Wolf],
-Top-hash Subtree-replicated Anonymisation (TSA)
+Top-hash Subtree-replicated Anonymization (TSA)
 originated in response to the requirement for faster processing than Crypto-PAn.
 It used hashing for the most significant byte of an IPv4 address, and a
 pre-calculated binary tree structure for the remainder of the address. To save
@@ -1592,10 +1594,9 @@ jurisdictions in which our systems reside.
     analyze abuse phenomena. We also use the collected information for the
     creation and sharing of telemetry (timestamp, geolocation, number of hits,
     first seen, last seen) for contributors, public publishing of general
-    statistics of use of system (protections, threat types, counts, etc.)
+    statistics of system use (protections, threat types, counts, etc.)
 
-        When you use our DNS Services, here is the full list of items that are    
-        included in our logs:
+        When you use our DNS Services, here is the full list of items that are included in our logs:
 
         * Request domain name, e.g. example.net
         * Record type of requested domain, e.g. A, AAAA, NS, MX, TXT, etc.
@@ -1632,12 +1633,12 @@ jurisdictions in which our systems reside.
         including threat metrics on threat type, geolocation, and if available,
         sector, as well as other vertical metrics including performance metrics
         on our DNS Services (i.e. number of threats blocked, infrastructure
-        uptime) when available with the our threat intelligence (TI) partners,
+        uptime) when available with our threat intelligence (TI) partners,
         academic researchers, or the public.
 
         Our DNS Services share anonymized data on specific domains queried
         (records such as domain, timestamp, geolocation, number of hits, first
-        seen, last seen) with its threat intelligence partners. Our DNS Services
+        seen, last seen) with our threat intelligence partners. Our DNS Services
         also builds, stores, and may share certain DNS data streams which store
         high level information about domain resolved, query types, result codes,
         and timestamp. These streams do not contain IP address information of
@@ -1647,7 +1648,7 @@ jurisdictions in which our systems reside.
         it use this data for demographic analysis.
 
 1. Exceptions. There are exceptions to this storage model: In the event of
-events or observed behaviors which we deem malicious or anomalous, we may
+actions or observed behaviors which we deem malicious or anomalous, we may
 utilize more detailed logging to collect more specific IP address data in the
 process of normal network defence and mitigation. This collection and
 transmission off-site will be limited to IP addresses that we determine are
@@ -1697,7 +1698,7 @@ with your specific IP address.
     
 1. Upstream capabilities.
 
-    1. Our servers implement QNAME minimisation.
+    1. Our servers implement QNAME minimization.
     1. Our servers do not send ECS upstream.
 
 1. Support. Support information for this service is available at (insert link).

@@ -392,7 +392,7 @@
 <link href="#rfc.section.5.2.1" rel="Chapter" title="5.2.1 Data handling"/>
 <link href="#rfc.section.5.2.2" rel="Chapter" title="5.2.2 Data minimization of network traffic"/>
 <link href="#rfc.section.5.2.3" rel="Chapter" title="5.2.3 IP address pseudonymization and anonymization methods"/>
-<link href="#rfc.section.5.2.4" rel="Chapter" title="5.2.4 Pseudonymization, anonymization or discarding of other correlation data"/>
+<link href="#rfc.section.5.2.4" rel="Chapter" title="5.2.4 Pseudonymization, anonymization, or discarding of other correlation data"/>
 <link href="#rfc.section.5.2.5" rel="Chapter" title="5.2.5 Cache snooping"/>
 <link href="#rfc.section.5.3" rel="Chapter" title="5.3 Data sent onwards from the server"/>
 <link href="#rfc.section.5.3.1" rel="Chapter" title="5.3.1 Protocol recommendations"/>
@@ -420,8 +420,8 @@
 <link href="#rfc.appendix.B.1" rel="Chapter" title="B.1 Google Analytics non-prefix filtering"/>
 <link href="#rfc.appendix.B.2" rel="Chapter" title="B.2 dnswasher"/>
 <link href="#rfc.appendix.B.3" rel="Chapter" title="B.3 Prefix-preserving map"/>
-<link href="#rfc.appendix.B.4" rel="Chapter" title="B.4 Cryptographic Prefix-Preserving Pseudonymisation"/>
-<link href="#rfc.appendix.B.5" rel="Chapter" title="B.5 Top-hash Subtree-replicated Anonymisation"/>
+<link href="#rfc.appendix.B.4" rel="Chapter" title="B.4 Cryptographic Prefix-Preserving Pseudonymization"/>
+<link href="#rfc.appendix.B.5" rel="Chapter" title="B.5 Top-hash Subtree-replicated Anonymization"/>
 <link href="#rfc.appendix.B.6" rel="Chapter" title="B.6 ipcipher"/>
 <link href="#rfc.appendix.B.7" rel="Chapter" title="B.7 Bloom filters"/>
 <link href="#rfc.appendix.C" rel="Chapter" title="C Example DROP statement"/>
@@ -436,8 +436,8 @@
   <meta name="dct.creator" content="Dickinson, S., Overeinder, B., van Rijswijk-Deij, R., and A. Mankin" />
   <meta name="dct.identifier" content="urn:ietf:id:draft-ietf-dprive-bcp-op-08" />
   <meta name="dct.issued" scheme="ISO8601" content="2020-1-17" />
-  <meta name="dct.abstract" content="This document presents operational, policy and security considerations for DNS recursive resolver operators who choose to offer DNS Privacy services. With these recommendations, the operator can make deliberate decisions regarding which services to provide, and how the decisions and alternatives impact the privacy of users.  " />
-  <meta name="description" content="This document presents operational, policy and security considerations for DNS recursive resolver operators who choose to offer DNS Privacy services. With these recommendations, the operator can make deliberate decisions regarding which services to provide, and how the decisions and alternatives impact the privacy of users.  " />
+  <meta name="dct.abstract" content="This document presents operational, policy, and security considerations for DNS recursive resolver operators who choose to offer DNS Privacy services. With these recommendations, the operator can make deliberate decisions regarding which services to provide, and how the decisions and alternatives impact the privacy of users.  " />
+  <meta name="description" content="This document presents operational, policy, and security considerations for DNS recursive resolver operators who choose to offer DNS Privacy services. With these recommendations, the operator can make deliberate decisions regarding which services to provide, and how the decisions and alternatives impact the privacy of users.  " />
 
 </head>
 
@@ -489,7 +489,7 @@
   <h1 id="rfc.abstract">
   <a href="#rfc.abstract">Abstract</a>
 </h1>
-<p>This document presents operational, policy and security considerations for DNS recursive resolver operators who choose to offer DNS Privacy services. With these recommendations, the operator can make deliberate decisions regarding which services to provide, and how the decisions and alternatives impact the privacy of users.  </p>
+<p>This document presents operational, policy, and security considerations for DNS recursive resolver operators who choose to offer DNS Privacy services. With these recommendations, the operator can make deliberate decisions regarding which services to provide, and how the decisions and alternatives impact the privacy of users.  </p>
 <p>This document also presents a framework to assist writers of a DNS Recursive Operator Privacy Statement (analogous to DNS Security Extensions (DNSSEC) Policies and DNSSEC Practice Statements described in RFC6841).  </p>
 <h1 id="rfc.status">
   <a href="#rfc.status">Status of This Memo</a>
@@ -527,7 +527,7 @@
 <ul><li>5.2.1.   <a href="#rfc.section.5.2.1">Data handling</a></li>
 <li>5.2.2.   <a href="#rfc.section.5.2.2">Data minimization of network traffic</a></li>
 <li>5.2.3.   <a href="#rfc.section.5.2.3">IP address pseudonymization and anonymization methods</a></li>
-<li>5.2.4.   <a href="#rfc.section.5.2.4">Pseudonymization, anonymization or discarding of other correlation data</a></li>
+<li>5.2.4.   <a href="#rfc.section.5.2.4">Pseudonymization, anonymization, or discarding of other correlation data</a></li>
 <li>5.2.5.   <a href="#rfc.section.5.2.5">Cache snooping</a></li>
 </ul><li>5.3.   <a href="#rfc.section.5.3">Data sent onwards from the server</a></li>
 <ul><li>5.3.1.   <a href="#rfc.section.5.3.1">Protocol recommendations</a></li>
@@ -555,8 +555,8 @@
 <ul><li>B.1.   <a href="#rfc.appendix.B.1">Google Analytics non-prefix filtering</a></li>
 <li>B.2.   <a href="#rfc.appendix.B.2">dnswasher</a></li>
 <li>B.3.   <a href="#rfc.appendix.B.3">Prefix-preserving map</a></li>
-<li>B.4.   <a href="#rfc.appendix.B.4">Cryptographic Prefix-Preserving Pseudonymisation</a></li>
-<li>B.5.   <a href="#rfc.appendix.B.5">Top-hash Subtree-replicated Anonymisation</a></li>
+<li>B.4.   <a href="#rfc.appendix.B.4">Cryptographic Prefix-Preserving Pseudonymization</a></li>
+<li>B.5.   <a href="#rfc.appendix.B.5">Top-hash Subtree-replicated Anonymization</a></li>
 <li>B.6.   <a href="#rfc.appendix.B.6">ipcipher</a></li>
 <li>B.7.   <a href="#rfc.appendix.B.7">Bloom filters</a></li>
 </ul><li>Appendix C.   <a href="#rfc.appendix.C">Example DROP statement</a></li>
@@ -616,7 +616,7 @@
 <p/>
 
 <ul>
-  <li>Threats described in <a href="#RFC6973">[RFC6973]</a> 'Privacy Considerations for Internet Protocols' <ul><li>Privacy terminology, threats to privacy and mitigations as described in Sections 3, 5 and 6 of <a href="#RFC6973">[RFC6973]</a>.</li></ul></li>
+  <li>Threats described in <a href="#RFC6973">[RFC6973]</a> 'Privacy Considerations for Internet Protocols' <ul><li>Privacy terminology, threats to privacy, and mitigations as described in Sections 3, 5, and 6 of <a href="#RFC6973">[RFC6973]</a>.</li></ul></li>
   <li>DNS Privacy Threats <ul><li>These are threats to the users and operators of DNS privacy services that are not directly covered by <a href="#RFC6973">[RFC6973]</a>. These may be more operational in nature such as certificate management or service availability issues.</li></ul></li>
 </ul>
 
@@ -671,7 +671,7 @@
 
 <p> </p>
 <p id="rfc.section.5.1.1.p.8">It is noted that a DNS privacy service can also be provided over DNS-over-DTLS <a href="#RFC8094">[RFC8094]</a>, however this is an Experimental specification and there are no known implementations at the time of writing.  </p>
-<p id="rfc.section.5.1.1.p.9">It is also noted that DNS privacy service might be provided over IPSec, DNSCrypt or VPNs. However, use of these transports for DNS are not standardized and any discussion of best practice for providing such a service is out of scope for this document.  </p>
+<p id="rfc.section.5.1.1.p.9">It is also noted that DNS privacy service might be provided over IPSec, DNSCrypt, or VPNs. However, use of these transports for DNS are not standardized and any discussion of best practice for providing such a service is out of scope for this document.  </p>
 <p id="rfc.section.5.1.1.p.10">Whilst encryption of DNS traffic can protect against active injection this does not diminish the need for DNSSEC, see <a href="#dnssec">Section 5.1.4</a>.  </p>
 <h1 id="rfc.section.5.1.2"><a href="#rfc.section.5.1.2">5.1.2.</a> <a href="#authentication-of-dns-privacy-services" id="authentication-of-dns-privacy-services">Authentication of DNS privacy services</a></h1>
 <p><a href="#RFC6973">[RFC6973]</a> Threats: </p>
@@ -694,7 +694,7 @@
 
 <ul>
   <li>Invalid certificates, resulting in an unavailable service.</li>
-  <li>Mis-identification of a server by a client e.g. typos in URLs or authentication domain names.</li>
+  <li>Mis-identification of a server by a client e.g. typos in URLs or authentication domain names <a href="#RFC8310">[RFC8310]</a>.</li>
 </ul>
 
 <p> </p>
@@ -703,8 +703,8 @@
 <p/>
 
 <ul>
-  <li>Follow the guidance in Section 6.5 of <a href="#RFC7525">[RFC7525]</a> with regards to certificate revocation .</li>
-  <li>Automate the generation, publication and renewal of certificates. For example, ACME <a href="#RFC8555">[RFC8555]</a> provides a mechanism to actively manage certificates through automation and has been implemented by a number of certificate authorities.</li>
+  <li>Follow the guidance in Section 6.5 of <a href="#RFC7525">[RFC7525]</a> with regards to certificate revocation.</li>
+  <li>Automate the generation, publication, and renewal of certificates. For example, ACME <a href="#RFC8555">[RFC8555]</a> provides a mechanism to actively manage certificates through automation and has been implemented by a number of certificate authorities.</li>
   <li>Monitor certificates to prevent accidental expiration of certificates.</li>
   <li>Choose a short, memorable authentication name for the service.</li>
 </ul>
@@ -731,7 +731,7 @@
   <li>Adhering to <a href="#RFC7525">[RFC7525]</a>.</li>
   <li>Implementing only (D)TLS 1.2 or later as specified in <a href="#RFC8310">[RFC8310]</a>.</li>
   <li>Implementing EDNS(0) Padding <a href="#RFC7830">[RFC7830]</a> using the guidelines in <a href="#RFC8467">[RFC8467]</a> or a successor specification.</li>
-  <li>Servers should not degrade in any way the query service level provided to clients that do not use any form of session resumption mechanism, such as TLS session resumption <a href="#RFC5077">[RFC5077]</a> with TLS 1.2, section 2.2 of RFC8446, or Domain Name System (DNS) Cookies <a href="#RFC7873">[RFC7873]</a>.</li>
+  <li>Servers should not degrade in any way the query service level provided to clients that do not use any form of session resumption mechanism, such as TLS session resumption <a href="#RFC5077">[RFC5077]</a> with TLS 1.2, section 2.2 of <a href="#RFC8446">[RFC8446]</a>, or Domain Name System (DNS) Cookies <a href="#RFC7873">[RFC7873]</a>.</li>
   <li>A DNS-over-TLS privacy service on both port 853 and 443. This practice may not be possible if e.g. the operator deploys DoH on the same IP address.</li>
 </ul>
 
@@ -778,13 +778,13 @@
 <p/>
 
 <ul>
-  <li>All DNS privacy services must offer a DNS privacy service that performs DNSSEC validation. In addition they must be able to provide the DNSSEC RRs to the client so that it can perform its own validation.</li>
+  <li>All DNS privacy services must offer a DNS privacy service that performs Domain Name System Security Extensions (DNSSEC) validation. In addition they must be able to provide the DNSSEC RRs to the client so that it can perform its own validation.</li>
 </ul>
 
 <p> </p>
 <p id="rfc.section.5.1.4.p.5">The addition of encryption to DNS does not remove the need for DNSSEC <a href="#RFC4033">[RFC4033]</a> - they are independent and fully compatible protocols, each solving different problems. The use of one does not diminish the need nor the usefulness of the other.  </p>
 <p id="rfc.section.5.1.4.p.6">While the use of an authenticated and encrypted transport protects origin authentication and data integrity between a client and a DNS privacy service it provides no proof (for a non-validating client) that the data provided by the DNS privacy service was actually DNSSEC authenticated. As with cleartext DNS the user is still solely trusting the AD bit (if present) set by the resolver.  </p>
-<p id="rfc.section.5.1.4.p.7">It should also be noted that the use of an encrypted transport for DNS actually solves many of the practical issues encountered by DNS validating clients e.g.  interference by middleboxes with cleartext DNS payloads is completely avoided.  In this sense a validating client that uses a DNS privacy service which supports DNSSEC has a far simpler task in terms of DNS Roadblock avoidance.  </p>
+<p id="rfc.section.5.1.4.p.7">It should also be noted that the use of an encrypted transport for DNS actually solves many of the practical issues encountered by DNS validating clients e.g.  interference by middleboxes with cleartext DNS payloads is completely avoided.  In this sense a validating client that uses a DNS privacy service which supports DNSSEC has a far simpler task in terms of DNSSEC Roadblock avoidance <a href="#RFC8027">[RFC8027]</a>.  </p>
 <h1 id="rfc.section.5.1.5"><a href="#rfc.section.5.1.5">5.1.5.</a> <a href="#availability" id="availability">Availability</a></h1>
 <p id="rfc.section.5.1.5.p.1">DNS Privacy Threats: </p>
 <p/>
@@ -807,7 +807,7 @@
 
 <p> </p>
 <p id="rfc.section.5.1.6.p.3">Mitigations: </p>
-<p id="rfc.section.5.1.6.p.4">A DNS privacy service should deliver the same level of service as offered on un-encrypted channels in terms of such options as filtering (or lack thereof), DNSSEC validation, etc.  </p>
+<p id="rfc.section.5.1.6.p.4">A DNS privacy service should deliver the same level of service as offered on un-encrypted channels in terms of options such as filtering (or lack thereof), DNSSEC validation, etc.  </p>
 <h1 id="rfc.section.5.1.7"><a href="#rfc.section.5.1.7">5.1.7.</a> <a href="#impact-of-encryption-on-dns-monitoring" id="impact-of-encryption-on-dns-monitoring">Impact of Encryption on DNS Monitoring</a></h1>
 <p id="rfc.section.5.1.7.p.1">DNS Privacy Threats: </p>
 <p/>
@@ -819,7 +819,7 @@
 <p> </p>
 <p id="rfc.section.5.1.7.p.3">Many monitoring solutions for DNS traffic rely on the plain text nature of this traffic and work by intercepting traffic on the wire, either using a separate view on the connection between clients and the resolver, or as a separate process on the resolver system that inspects network traffic. Such solutions will no longer function when traffic between clients and resolvers is encrypted. There are, however, legitimate reasons for operators to inspect DNS traffic, e.g. to monitor for network security threats. Operators may therefore need to invest in alternative means of monitoring that relies on either the resolver software directly, or exporting DNS traffic from the resolver using e.g. <a href="#dnstap">[dnstap]</a>.  </p>
 <p id="rfc.section.5.1.7.p.4">Optimization: </p>
-<p id="rfc.section.5.1.7.p.5">When implementing alternative means for traffic monitoring, operators of a DNS privacy service should consider using privacy conscious means to do so (see section <a href="#data-at-rest-on-the-server">Section 5.2</a> for more details on data handling and also the discussion on the use of Bloom Filters in <a href="#documents">Appendix A</a>.  </p>
+<p id="rfc.section.5.1.7.p.5">When implementing alternative means for traffic monitoring, operators of a DNS privacy service should consider using privacy conscious means to do so (see section <a href="#data-at-rest-on-the-server">Section 5.2</a> for more details on data handling and also the discussion on the use of Bloom Filters in <a href="#ip-address-techniques">Appendix B</a>.  </p>
 <h1 id="rfc.section.5.1.8"><a href="#rfc.section.5.1.8">5.1.8.</a> <a href="#limitations-of-using-a-pure-tls-proxy" id="limitations-of-using-a-pure-tls-proxy">Limitations of using a pure TLS proxy</a></h1>
 <p id="rfc.section.5.1.8.p.1">DNS Privacy Threats: </p>
 <p/>
@@ -831,8 +831,8 @@
 
 <p> </p>
 <p id="rfc.section.5.1.8.p.3">Optimization: </p>
-<p id="rfc.section.5.1.8.p.4">Some operators may choose to implement DNS-over-TLS using a TLS proxy (e.g.  <a href="#nginx">[nginx]</a>, <a href="#haproxy">[haproxy]</a> or <a href="#stunnel">[stunnel]</a>) in front of a DNS nameserver because of proven robustness and capacity when handling large numbers of client connections, load balancing capabilities and good tooling.  Currently, however, because such proxies typically have no specific handling of DNS as a protocol over TLS or DTLS using them can restrict traffic management at the proxy layer and at the DNS server. For example, all traffic received by a nameserver behind such a proxy will appear to originate from the proxy and DNS techniques such as ACLs, RRL or DNS64 will be hard or impossible to implement in the nameserver.  </p>
-<p id="rfc.section.5.1.8.p.5">Operators may choose to use a DNS aware proxy such as <a href="#dnsdist">[dnsdist]</a> which offer custom options (similar to that proposed in <a href="#I-D.bellis-dnsop-xpf">[I-D.bellis-dnsop-xpf]</a>) to add source information to packets to address this shortcoming. It should be noted that such options potentially significantly increase the leaked information in the event of a misconfiguration.  </p>
+<p id="rfc.section.5.1.8.p.4">Some operators may choose to implement DNS-over-TLS using a TLS proxy (e.g.  <a href="#nginx">[nginx]</a>, <a href="#haproxy">[haproxy]</a>, or <a href="#stunnel">[stunnel]</a>) in front of a DNS nameserver because of proven robustness and capacity when handling large numbers of client connections, load balancing capabilities and good tooling.  Currently, however, because such proxies typically have no specific handling of DNS as a protocol over TLS or DTLS using them can restrict traffic management at the proxy layer and at the DNS server. For example, all traffic received by a nameserver behind such a proxy will appear to originate from the proxy and DNS techniques such as ACLs, RRL, or DNS64 will be hard or impossible to implement in the nameserver.  </p>
+<p id="rfc.section.5.1.8.p.5">Operators may choose to use a DNS aware proxy such as <a href="#dnsdist">[dnsdist]</a> which offers custom options (similar to that proposed in <a href="#I-D.bellis-dnsop-xpf">[I-D.bellis-dnsop-xpf]</a>) to add source information to packets to address this shortcoming. It should be noted that such options potentially significantly increase the leaked information in the event of a misconfiguration.  </p>
 <h1 id="rfc.section.5.2"><a href="#rfc.section.5.2">5.2.</a> <a href="#data-at-rest-on-the-server" id="data-at-rest-on-the-server">Data at rest on the server</a></h1>
 <h1 id="rfc.section.5.2.1"><a href="#rfc.section.5.2.1">5.2.1.</a> <a href="#data-handling" id="data-handling">Data handling</a></h1>
 <p><a href="#RFC6973">[RFC6973]</a> Threats: </p>
@@ -857,7 +857,7 @@
 
 <p> </p>
 <p id="rfc.section.5.2.1.p.5">Mitigations: </p>
-<p id="rfc.section.5.2.1.p.6">The following are common activities for DNS service operators and in all cases should be minimized or completely avoided if possible for DNS privacy services.  If data is retained it should be encrypted and either aggregated, pseudonymized or anonymized whenever possible. In general the principle of data minimization described in <a href="#RFC6973">[RFC6973]</a> should be applied.  </p>
+<p id="rfc.section.5.2.1.p.6">The following are common activities for DNS service operators and in all cases should be minimized or completely avoided if possible for DNS privacy services.  If data is retained it should be encrypted and either aggregated, pseudonymized, or anonymized whenever possible. In general the principle of data minimization described in <a href="#RFC6973">[RFC6973]</a> should be applied.  </p>
 <p/>
 
 <ul>
@@ -878,7 +878,7 @@
 <p> </p>
 <h1 id="rfc.section.5.2.2"><a href="#rfc.section.5.2.2">5.2.2.</a> <a href="#data-minimization-of-network-traffic" id="data-minimization-of-network-traffic">Data minimization of network traffic</a></h1>
 <p id="rfc.section.5.2.2.p.1">Data minimization refers to collecting, using, disclosing, and storing the minimal data necessary to perform a task, and this can be achieved by removing or obfuscating privacy-sensitive information in network traffic logs.  This is typically personal data, or data that can be used to link a record to an individual, but may also include revealing other confidential information, for example on the structure of an internal corporate network.  </p>
-<p id="rfc.section.5.2.2.p.2">The problem of effectively ensuring that DNS traffic logs contain no or minimal privacy-sensitive information is not one that currently has a generally agreed solution or any Standards to inform this discussion. This section presents and overview of current techniques to simply provide reference on the current status of this work.  </p>
+<p id="rfc.section.5.2.2.p.2">The problem of effectively ensuring that DNS traffic logs contain no or minimal privacy-sensitive information is not one that currently has a generally agreed solution or any standards to inform this discussion. This section presents an overview of current techniques to simply provide reference on the current status of this work.  </p>
 <p id="rfc.section.5.2.2.p.3">Research into data minimization techniques (and particularly IP address pseudonymization/anonymization) was sparked in the late 1990s/early 2000s, partly driven by the desire to share significant corpuses of traffic captures for research purposes. Several techniques reflecting different requirements in this area and different performance/resource tradeoffs emerged over the course of the decade. Developments over the last decade have been both a blessing and a curse; the large increase in size between an IPv4 and an IPv6 address, for example, renders some techniques impractical, but also makes available a much larger amount of input entropy, the better to resist brute force re-identification attacks that have grown in practicality over the period.  </p>
 <p id="rfc.section.5.2.2.p.4">Techniques employed may be broadly categorized as either anonymization or pseudonymization. The following discussion uses the definitions from <a href="#RFC6973">[RFC6973]</a> Section 3, with additional observations from <a href="#van-Dijkhuizen-et-al.">[van-Dijkhuizen-et-al.]</a> </p>
 <p/>
@@ -898,7 +898,7 @@
   <caption>Table 1: Classification of techniques </caption>
   <thead>
     <tr>
-      <th class="left">Categorisation/Property</th>
+      <th class="left">Categorization/Property</th>
       <th class="center">GA</th>
       <th class="center">d</th>
       <th class="center">TC</th>
@@ -910,7 +910,7 @@
   </thead>
   <tbody>
     <tr>
-      <td class="left">Anonymisation</td>
+      <td class="left">Anonymization</td>
       <td class="center">X</td>
       <td class="center">X</td>
       <td class="center">X</td>
@@ -920,7 +920,7 @@
       <td class="center">X</td>
     </tr>
     <tr>
-      <td class="left">Pseudoanonymisation</td>
+      <td class="left">Pseudoanonymization</td>
       <td class="center"/>
       <td class="center"/>
       <td class="center"/>
@@ -970,7 +970,7 @@
       <td class="center"/>
     </tr>
     <tr>
-      <td class="left">Generalisation</td>
+      <td class="left">Generalization</td>
       <td class="center"/>
       <td class="center"/>
       <td class="center"/>
@@ -1010,7 +1010,7 @@
       <td class="center"/>
     </tr>
     <tr>
-      <td class="left">Crytpographic permutation</td>
+      <td class="left">Cryptographic permutation</td>
       <td class="center"/>
       <td class="center"/>
       <td class="center"/>
@@ -1064,16 +1064,16 @@
 <p id="rfc.section.5.2.3.p.4">GA = Google Analytics, d = dnswasher, TC = TCPdpriv, C = CryptoPAn, TS = TSA, i = ipcipher, B = Bloom filter </p>
 <p id="rfc.section.5.2.3.p.5">The choice of which method to use for a particular application will depend on the requirements of that application and consideration of the threat analysis of the particular situation.  </p>
 <p id="rfc.section.5.2.3.p.6">For example, a common goal is that distributed packet captures must be in an existing data format such as PCAP <a href="#pcap">[pcap]</a> or C-DNS <a href="#RFC8618">[RFC8618]</a> that can be used as input to existing analysis tools. In that case, use of a format-preserving technique is essential. This, though, is not cost-free - several authors (e.g. <a href="#Brenker-and-Arnes">[Brenker-and-Arnes]</a> have observed that, as the entropy in an IPv4 address is limited, given a de-identified log from a target, if an attacker is capable of ensuring packets are captured by the target and the attacker can send forged traffic with arbitrary source and destination addresses to that target, any format-preserving pseudonymization is vulnerable to an attack along the lines of a cryptographic chosen plaintext attack.  </p>
-<h1 id="rfc.section.5.2.4"><a href="#rfc.section.5.2.4">5.2.4.</a> <a href="#pseudonymization-anonymization-or-discarding-of-other-correlation-data" id="pseudonymization-anonymization-or-discarding-of-other-correlation-data">Pseudonymization, anonymization or discarding of other correlation data</a></h1>
+<h1 id="rfc.section.5.2.4"><a href="#rfc.section.5.2.4">5.2.4.</a> <a href="#pseudonymization-anonymization-or-discarding-of-other-correlation-data" id="pseudonymization-anonymization-or-discarding-of-other-correlation-data">Pseudonymization, anonymization, or discarding of other correlation data</a></h1>
 <p id="rfc.section.5.2.4.p.1">DNS Privacy Threats: </p>
 <p/>
 
 <ul>
-  <li>Fingerprinting of the client OS via various means including: IP TTL/Hoplimit, TCP parameters (e.g. window size, ECN support, SACK), OS specific DNS query patterns (e.g. for network connectivity, captive portal detection or OS specific updates).</li>
+  <li>Fingerprinting of the client OS via various means including: IP TTL/Hoplimit, TCP parameters (e.g. window size, ECN support, SACK), OS specific DNS query patterns (e.g. for network connectivity, captive portal detection, or OS specific updates).</li>
   <li>Fingerprinting of the client application or TLS library by e.g. TLS version/Cipher suite combinations or other connection parameters.</li>
-  <li>Correlation of queries on multiple TCP session originating from the same IP address.</li>
+  <li>Correlation of queries on multiple TCP sessions originating from the same IP address.</li>
   <li>Correlating of queries on multiple TLS sessions originating from the same client, including via session resumption mechanisms.</li>
-  <li>Resolvers <em>might</em> receive client identifiers e.g. MAC addresses in EDNS(0) options - some CPE devices are known to add them.</li>
+  <li>Resolvers <em>might</em> receive client identifiers e.g. MAC addresses in EDNS(0) options - some Customer-premises equipment (CPE) devices are known to add them.</li>
   <li>HTTP headers (e.g., User-Agent, Accept, Accept-Encoding).</li>
 </ul>
 
@@ -1181,9 +1181,9 @@
 
 <ol>
   <li>Treatment of IP addresses. Make an explicit statement that IP addresses are treated as PII.</li>
-  <li>Data collection and sharing. Specify clearly what data (including IP addresses) is: <ul><li>Collected and retained by the operator, and for what period it is retained.</li><li>Shared with partners.</li><li>Shared, sold or rented to third-parties.  <br/></li></ul><p> and in each case whether it is aggregated, pseudonymized or anonymized and the conditions of data transfer.</p></li>
+  <li>Data collection and sharing. Specify clearly what data (including IP addresses) is: <ul><li>Collected and retained by the operator, and for what period it is retained.</li><li>Shared with partners.</li><li>Shared, sold, or rented to third-parties.  <br/></li></ul><p> and in each case whether it is aggregated, pseudonymized, or anonymized and the conditions of data transfer.</p></li>
   <li>Exceptions. Specify any exceptions to the above, for example technically malicious or anomalous behavior.</li>
-  <li>Associated entities. Declare any partners, third-party affiliations or sources of funding.</li>
+  <li>Associated entities. Declare any partners, third-party affiliations, or sources of funding.</li>
   <li>Correlation. Whether user DNS data is correlated or combined with any other personal information held by the operator.</li>
   <li>Result filtering. This section should explain whether the operator filters, edits or alters in any way the replies that it receives from the authoritative servers for each DNS zone, before forwarding them to the clients. For each category listed below, the operator should also specify how the filtering lists are created and managed, whether it employs any third-party sources for such lists, and which ones.  <ul><li>Specify if any replies are being filtered out or altered for network and computer security reasons (e.g. preventing connections to malware-spreading websites or botnet control servers).</li><li>Specify if any replies are being filtered out or altered for mandatory legal reasons, due to applicable legislation or binding orders by courts and other public authorities.</li><li>Specify if any replies are being filtered out or altered for voluntary legal reasons, due to an internal policy by the operator aiming at reducing potential legal risks.</li><li>Specify if any replies are being filtered out or altered for any other reason, including commercial ones.</li></ul></li>
 </ol>
@@ -1218,7 +1218,7 @@
 </ul>
 
 <p> </p>
-<p id="rfc.section.6.3.p.4">This is by analogy with e.g. several TLS or website analysis tools that are currently available e.g. <a href="#SSL-Labs">[SSL-Labs]</a> or <a href="#Internet.nl">[Internet.nl]</a>.  </p>
+<p id="rfc.section.6.3.p.4">This is by analogy with several TLS or website analysis tools that are currently available e.g. <a href="#SSL-Labs">[SSL-Labs]</a> or <a href="#Internet.nl">[Internet.nl]</a>.  </p>
 <p id="rfc.section.6.3.p.5">Additionally operators could choose to engage the services of a third party auditor to verify their compliance with their published DROP statement.  </p>
 <h1 id="rfc.section.7"><a href="#rfc.section.7">7.</a> <a href="#iana-considerations" id="iana-considerations">IANA considerations</a></h1>
 <p id="rfc.section.7.p.1">None </p>
@@ -1293,7 +1293,7 @@
   <li>Change 'open resolver' for 'public resolver'</li>
   <li>Minor editorial changes</li>
   <li>Remove recommendation to run a separate TLS 1.3 service</li>
-  <li>Move TLSA to purely a optimisation in Section 5.2.1</li>
+  <li>Move TLSA to purely a optimization in Section 5.2.1</li>
   <li>Update reference on minimal DoH headers.</li>
   <li>Add reference on user switching provider after service issues in Section 5.1.4</li>
   <li>Add text in Section 5.1.6 on impact on operators.</li>
@@ -1639,6 +1639,12 @@
     </tr>
     <tr>
       <td class="reference">
+        <b id="RFC8027">[RFC8027]</b>
+      </td>
+      <td class="top"><a>Hardaker, W.</a>, <a>Gudmundsson, O.</a> and <a>S. Krishnaswamy</a>, "<a href="http://tools.ietf.org/html/rfc8027">DNSSEC Roadblock Avoidance</a>", BCP 207, RFC 8027, DOI 10.17487/RFC8027, November 2016.</td>
+    </tr>
+    <tr>
+      <td class="reference">
         <b id="RFC8094">[RFC8094]</b>
       </td>
       <td class="top"><a>Reddy, T.</a>, <a>Wing, D.</a> and <a>P. Patil</a>, "<a href="http://tools.ietf.org/html/rfc8094">DNS over Datagram Transport Layer Security (DTLS)</a>", RFC 8094, DOI 10.17487/RFC8094, February 2017.</td>
@@ -1648,6 +1654,12 @@
         <b id="RFC8198">[RFC8198]</b>
       </td>
       <td class="top"><a>Fujiwara, K.</a>, <a>Kato, A.</a> and <a>W. Kumari</a>, "<a href="http://tools.ietf.org/html/rfc8198">Aggressive Use of DNSSEC-Validated Cache</a>", RFC 8198, DOI 10.17487/RFC8198, July 2017.</td>
+    </tr>
+    <tr>
+      <td class="reference">
+        <b id="RFC8446">[RFC8446]</b>
+      </td>
+      <td class="top"><a>Rescorla, E.</a>, "<a href="http://tools.ietf.org/html/rfc8446">The Transport Layer Security (TLS) Protocol Version 1.3</a>", RFC 8446, DOI 10.17487/RFC8446, August 2018.</td>
     </tr>
     <tr>
       <td class="reference">
@@ -1726,7 +1738,7 @@
 </ul>
 
 <p> </p>
-<p id="rfc.section.A.1.p.3">These documents apply to recursive to authoritative DNS but are relevant when considering the operation of a recursive server: </p>
+<p id="rfc.section.A.1.p.3">These documents apply to recursive and authoritative DNS but are relevant when considering the operation of a recursive server: </p>
 <p/>
 
 <ul>
@@ -1742,6 +1754,7 @@
   <li>'Client Subnet in DNS Queries' <a href="#RFC7871">[RFC7871]</a>.</li>
   <li>'Domain Name System (DNS) Cookies' <a href="#RFC7873">[RFC7873]</a>).</li>
   <li>'Transport Layer Security (TLS) Session Resumption without Server-Side State' <a href="#RFC5077">[RFC5077]</a> referred to here as simply TLS session resumption.</li>
+  <li><a href="#RFC8446">[RFC8446]</a> Appendix C.4 describes Client Tracking Prevention in TLS 1.3</li>
   <li>'A DNS Packet Capture Format' <a href="#RFC8618">[RFC8618]</a>.</li>
   <li>Passive DNS <a href="#RFC8499">[RFC8499]</a>.</li>
 </ul>
@@ -1785,11 +1798,11 @@
 <h1 id="rfc.appendix.B.3"><a href="#rfc.appendix.B.3">B.3.</a> <a href="#prefixpreserving-map" id="prefixpreserving-map">Prefix-preserving map</a></h1>
 <p id="rfc.section.B.3.p.1">Used in <a href="#TCPdpriv">[TCPdpriv]</a>, this algorithm stores a set of original and anonymised IP address pairs. When a new IP address arrives, it is compared with previous addresses to determine the longest prefix match. The new address is anonymized by using the same prefix, with the remainder of the address anonymized with a random value. The use of a random value means that TCPdrpiv is not deterministic; different anonymized values will be generated on each run. The need to store previous addresses means that TCPdpriv has significant and unbounded memory requirements, and because of the need to allocated anonymized addresses sequentially cannot be used in parallel processing.  </p>
 <p id="rfc.section.B.3.p.2">Anonymization: Format-preserving, prefix preservation (general).  </p>
-<h1 id="rfc.appendix.B.4"><a href="#rfc.appendix.B.4">B.4.</a> <a href="#cryptographic-prefixpreserving-pseudonymisation" id="cryptographic-prefixpreserving-pseudonymisation">Cryptographic Prefix-Preserving Pseudonymisation</a></h1>
-<p id="rfc.section.B.4.p.1">Cryptographic prefix-preserving pseudonymisation was originally proposed as an improvement to the prefix-preserving map implemented in TCPdpriv, described in <a href="#Xu-et-al.">[Xu-et-al.]</a> and implemented in the <a href="#Crypto-PAn">[Crypto-PAn]</a> tool.  Crypto-PAn is now frequently used as an acronym for the algorithm. Initially it was described for IPv4 addresses only; extension for IPv6 addresses was proposed in <a href="#Harvan">[Harvan]</a>. This uses a cryptographic algorithm rather than a random value, and thus pseudonymity is determined uniquely by the encryption key, and is deterministic. It requires a separate AES encryption for each output bit, so has a non-trivial calculation overhead. This can be mitigated to some extent (for IPv4, at least) by pre-calculating results for some number of prefix bits.  </p>
+<h1 id="rfc.appendix.B.4"><a href="#rfc.appendix.B.4">B.4.</a> <a href="#cryptographic-prefixpreserving-pseudonymization" id="cryptographic-prefixpreserving-pseudonymization">Cryptographic Prefix-Preserving Pseudonymization</a></h1>
+<p id="rfc.section.B.4.p.1">Cryptographic prefix-preserving pseudonymization was originally proposed as an improvement to the prefix-preserving map implemented in TCPdpriv, described in <a href="#Xu-et-al.">[Xu-et-al.]</a> and implemented in the <a href="#Crypto-PAn">[Crypto-PAn]</a> tool.  Crypto-PAn is now frequently used as an acronym for the algorithm. Initially it was described for IPv4 addresses only; extension for IPv6 addresses was proposed in <a href="#Harvan">[Harvan]</a>. This uses a cryptographic algorithm rather than a random value, and thus pseudonymity is determined uniquely by the encryption key, and is deterministic. It requires a separate AES encryption for each output bit, so has a non-trivial calculation overhead. This can be mitigated to some extent (for IPv4, at least) by pre-calculating results for some number of prefix bits.  </p>
 <p id="rfc.section.B.4.p.2">Pseudonymization: Format-preserving, prefix preservation (general).  </p>
-<h1 id="rfc.appendix.B.5"><a href="#rfc.appendix.B.5">B.5.</a> <a href="#tophash-subtreereplicated-anonymisation" id="tophash-subtreereplicated-anonymisation">Top-hash Subtree-replicated Anonymisation</a></h1>
-<p id="rfc.section.B.5.p.1">Proposed in <a href="#Ramaswamy-and-Wolf">[Ramaswamy-and-Wolf]</a>, Top-hash Subtree-replicated Anonymisation (TSA) originated in response to the requirement for faster processing than Crypto-PAn.  It used hashing for the most significant byte of an IPv4 address, and a pre-calculated binary tree structure for the remainder of the address. To save memory space, replication is used within the tree structure, reducing the size of the pre-calculated structures to a few Mb for IPv4 addresses. Address pseudonymization is done via hash and table lookup, and so requires minimal computation. However, due to the much increased address space for IPv6, TSA is not memory efficient for IPv6.  </p>
+<h1 id="rfc.appendix.B.5"><a href="#rfc.appendix.B.5">B.5.</a> <a href="#tophash-subtreereplicated-anonymization" id="tophash-subtreereplicated-anonymization">Top-hash Subtree-replicated Anonymization</a></h1>
+<p id="rfc.section.B.5.p.1">Proposed in <a href="#Ramaswamy-and-Wolf">[Ramaswamy-and-Wolf]</a>, Top-hash Subtree-replicated Anonymization (TSA) originated in response to the requirement for faster processing than Crypto-PAn.  It used hashing for the most significant byte of an IPv4 address, and a pre-calculated binary tree structure for the remainder of the address. To save memory space, replication is used within the tree structure, reducing the size of the pre-calculated structures to a few Mb for IPv4 addresses. Address pseudonymization is done via hash and table lookup, and so requires minimal computation. However, due to the much increased address space for IPv6, TSA is not memory efficient for IPv6.  </p>
 <p id="rfc.section.B.5.p.2">Pseudonymization: Format-preserving, prefix preservation (general).  </p>
 <h1 id="rfc.appendix.B.6"><a href="#rfc.appendix.B.6">B.6.</a> <a href="#ipcipher" id="ipcipher">ipcipher</a></h1>
 <p id="rfc.section.B.6.p.1">A recently-released proposal from PowerDNS, ipcipher <a href="#ipcipher1">[ipcipher1]</a> <a href="#ipcipher2">[ipcipher2]</a>  is a simple pseudonymization technique for IPv4 and IPv6 addresses. IPv6 addresses are encrypted directly with AES-128 using a key (which may be derived from a passphrase). IPv4 addresses are similarly encrypted, but using a recently proposed encryption <a href="#ipcrypt">[ipcrypt]</a> suitable for 32bit block lengths. However, the author of ipcrypt has since indicated <a href="#ipcrypt-analysis">[ipcrypt-analysis]</a> that it has low security, and further analysis has revealed it is vulnerable to attack.  </p>
@@ -1814,8 +1827,8 @@
 
 <ol>
   <li>Treatment of IP addresses. Many nations classify IP addresses as Personally-Identifiable Information (PII), and we take a conservative approach in treating IP addresses as PII in all jurisdictions in which our systems reside.</li>
-  <li>Data collection and sharing.  <ol><li>IP addresses. Our normal course of data management does not have any IP address information or other PII logged to disk or transmitted out of the location in which the query was received. We may aggregate certain counters to larger network block levels for statistical collection purposes, but those counters do not maintain specific IP address data nor is the format or model of data stored capable of being reverse-engineered to ascertain what specific IP addresses made what queries.</li><li>Data collected in logs. We do keep some generalized location information (at the city/metropolitan area level) so that we can conduct debugging and analyze abuse phenomena. We also use the collected information for the creation and sharing of telemetry (timestamp, geolocation, number of hits, first seen, last seen) for contributors, public publishing of general statistics of use of system (protections, threat types, counts, etc.) When you use our DNS Services, here is the full list of items that are <br/> included in our logs: <ul><li>Request domain name, e.g. example.net</li><li>Record type of requested domain, e.g. A, AAAA, NS, MX, TXT, etc.</li><li>Transport protocol on which the request arrived, i.e. UDP, TCP, DoT, <br/> DoH</li><li>Origin IP general geolocation information: i.e. geocode, region ID, city ID, and metro code</li><li>IP protocol version &#8211; IPv4 or IPv6</li><li>Response code sent, e.g. SUCCESS, SERVFAIL, NXDOMAIN, etc.</li><li>Absolute arrival time</li><li>Name of the specific instance that processed this request</li><li>IP address of the specific instance to which this request was addressed (no relation to the requestor&#8217;s IP address)</li></ul><p> We may keep the following data as summary information, including all the above EXCEPT for data about the DNS record requested: </p><ul><li>Currently-advertised BGP-summarized IP prefix/netmask of apparent client origin</li><li>Autonomous system number (BGP ASN) of apparent client origin</li></ul><p> All the above data may be kept in full or partial form in permanent archives.</p></li><li>Sharing of data.  Except as described in this document, we do not intentionally share, sell, or rent individual personal information associated with the requestor (i.e. source IP address or any other information that can positively identify the client using our infrastructure) with anyone without your consent.  We generate and share high level anonymized aggregate statistics including threat metrics on threat type, geolocation, and if available, sector, as well as other vertical metrics including performance metrics on our DNS Services (i.e. number of threats blocked, infrastructure uptime) when available with the our threat intelligence (TI) partners, academic researchers, or the public.  Our DNS Services share anonymized data on specific domains queried (records such as domain, timestamp, geolocation, number of hits, first seen, last seen) with its threat intelligence partners. Our DNS Services also builds, stores, and may share certain DNS data streams which store high level information about domain resolved, query types, result codes, and timestamp. These streams do not contain IP address information of requestor and cannot be correlated to IP address or other PII.  We do not and never will share any of its data with marketers, nor will it use this data for demographic analysis.</li></ol></li>
-  <li>Exceptions. There are exceptions to this storage model: In the event of events or observed behaviors which we deem malicious or anomalous, we may utilize more detailed logging to collect more specific IP address data in the process of normal network defence and mitigation. This collection and transmission off-site will be limited to IP addresses that we determine are involved in the event.</li>
+  <li>Data collection and sharing.  <ol><li>IP addresses. Our normal course of data management does not have any IP address information or other PII logged to disk or transmitted out of the location in which the query was received. We may aggregate certain counters to larger network block levels for statistical collection purposes, but those counters do not maintain specific IP address data nor is the format or model of data stored capable of being reverse-engineered to ascertain what specific IP addresses made what queries.</li><li>Data collected in logs. We do keep some generalized location information (at the city/metropolitan area level) so that we can conduct debugging and analyze abuse phenomena. We also use the collected information for the creation and sharing of telemetry (timestamp, geolocation, number of hits, first seen, last seen) for contributors, public publishing of general statistics of system use (protections, threat types, counts, etc.) When you use our DNS Services, here is the full list of items that are included in our logs: <ul><li>Request domain name, e.g. example.net</li><li>Record type of requested domain, e.g. A, AAAA, NS, MX, TXT, etc.</li><li>Transport protocol on which the request arrived, i.e. UDP, TCP, DoT, <br/> DoH</li><li>Origin IP general geolocation information: i.e. geocode, region ID, city ID, and metro code</li><li>IP protocol version &#8211; IPv4 or IPv6</li><li>Response code sent, e.g. SUCCESS, SERVFAIL, NXDOMAIN, etc.</li><li>Absolute arrival time</li><li>Name of the specific instance that processed this request</li><li>IP address of the specific instance to which this request was addressed (no relation to the requestor&#8217;s IP address)</li></ul><p> We may keep the following data as summary information, including all the above EXCEPT for data about the DNS record requested: </p><ul><li>Currently-advertised BGP-summarized IP prefix/netmask of apparent client origin</li><li>Autonomous system number (BGP ASN) of apparent client origin</li></ul><p> All the above data may be kept in full or partial form in permanent archives.</p></li><li>Sharing of data.  Except as described in this document, we do not intentionally share, sell, or rent individual personal information associated with the requestor (i.e. source IP address or any other information that can positively identify the client using our infrastructure) with anyone without your consent.  We generate and share high level anonymized aggregate statistics including threat metrics on threat type, geolocation, and if available, sector, as well as other vertical metrics including performance metrics on our DNS Services (i.e. number of threats blocked, infrastructure uptime) when available with our threat intelligence (TI) partners, academic researchers, or the public.  Our DNS Services share anonymized data on specific domains queried (records such as domain, timestamp, geolocation, number of hits, first seen, last seen) with our threat intelligence partners. Our DNS Services also builds, stores, and may share certain DNS data streams which store high level information about domain resolved, query types, result codes, and timestamp. These streams do not contain IP address information of requestor and cannot be correlated to IP address or other PII.  We do not and never will share any of its data with marketers, nor will it use this data for demographic analysis.</li></ol></li>
+  <li>Exceptions. There are exceptions to this storage model: In the event of actions or observed behaviors which we deem malicious or anomalous, we may utilize more detailed logging to collect more specific IP address data in the process of normal network defence and mitigation. This collection and transmission off-site will be limited to IP addresses that we determine are involved in the event.</li>
   <li>Associated entities. Details of our Threat Intelligence partners can be found at our website page (insert link).</li>
   <li>Correlation of Data. We do not correlate or combine information from our logs with any personal information that you have provided us for other services, or with your specific IP address.</li>
   <li>Result filtering.  <ol><li>Filtering. We utilise cyber threat intelligence about malicious domains from a variety of public and private sources and blocks access to those malicious domains when your system attempts to contact them. An NXDOMAIN is returned for blocked sites.  <ol><li>Censorship. We will not provide a censoring component and will limit our actions solely to the blocking of malicious domains around phishing, malware, and exploit kit domains.</li><li>Accidental blocking. We implement whitelisting algorithms to make sure legitimate domains are not blocked by accident. However, in the rare case of blocking a legitimate domain, we work with the users to quickly whitelist that domain. Please use our support form (insert link) if you believe we are blocking a domain in error.</li></ol></li></ol></li>
@@ -1828,7 +1841,7 @@
 <ol>
   <li>Deviations from Policy. None currently in place.</li>
   <li>Client facing capabilities.  <ol><li>We offer UDP and TCP DNS on port 53 on (insert IP address)</li><li>We offer DNS-over-TLS as specified in RFC7858 on (insert IP address). It is available on port 853 and port 443. We also implement RFC7766.  <ol><li>The DoT authentication name used is (insert domain name).</li><li>We do not publish SPKI pin sets.</li></ol></li><li>We offer DNS-over-HTTPS as specified in RFC8484 on (insert URI template).  Both POST and GET are supported.</li><li>Both services offer TLS 1.2 and TLS 1.3.</li><li>Both services pad DNS responses according to RFC8467.</li><li>Both services provide DNSSEC validation.  <br/></li></ol></li>
-  <li>Upstream capabilities.  <ol><li>Our servers implement QNAME minimisation.</li><li>Our servers do not send ECS upstream.</li></ol></li>
+  <li>Upstream capabilities.  <ol><li>Our servers implement QNAME minimization.</li><li>Our servers do not send ECS upstream.</li></ol></li>
   <li>Support. Support information for this service is available at (insert link).</li>
   <li>Jurisdiction.  <ol><li>We operate as the legal entity (insert entity) registered in (insert country) as (insert company identifier e.g Company Number). Our Headquarters are located at (insert address).</li><li>As such we operate under (insert country) law. For details of our company privacy policy see (insert link). For questions on this policy and enforcement contact our Data Protection Officer on (insert email address).</li><li>We operate servers in the following countries (insert list).</li><li>We have no agreements in place with law enforcement agencies to give them access to the data. Apart from as stated in the Policy section of this document with regard to cyber threat intelligence, we have no agreements in place with other public and private parties dealing with security and intelligence, to give them access to the servers and/or to the data.</li></ol></li>
 </ol>
