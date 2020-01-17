@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE rfc SYSTEM 'rfc2629.dtd' []>
-<rfc ipr="trust200902" category="bcp" docName="draft-ietf-dprive-bcp-op-07">
+<rfc ipr="trust200902" category="bcp" docName="draft-ietf-dprive-bcp-op-08">
 <?rfc toc="yes"?>
 <?rfc symrefs="yes"?>
 <?rfc sortrefs="yes"?>
@@ -76,7 +76,7 @@
 <uri></uri>
 </address>
 </author>
-<date year="2019" month="December" day="18"/>
+<date year="2020" month="January" day="17"/>
 
 <area>Internet</area>
 <workgroup>dprive</workgroup>
