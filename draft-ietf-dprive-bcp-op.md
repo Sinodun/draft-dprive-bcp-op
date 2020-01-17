@@ -321,7 +321,7 @@ revocation.
   ACME [@RFC8555] provides a mechanism to actively manage certificates through
   automation and has been implemented by a number of certificate authorities.
 * Monitor certificates to prevent accidental expiration of certificates.
-* Choose a short, memorable authentication name for the service.
+* Choose a short, memorable authentication domain name for the service.
 
 ### Protocol recommendations
 
@@ -832,7 +832,7 @@ This section should explain the current operational practices of the service.
 1. Client facing capabilities. With reference to section
 (#recommendations-for-dns-privacy-services) provide specific details of which
 capabilities are provided on which client facing addresses and ports:
-    1. For DoT, specify the authentication name to be used (if any).
+    1. For DoT, specify the authentication domain name to be used (if any).
     1. For DoT, specify the SPKI pin sets to be used (if any) and policy for
     rolling keys.
     
@@ -1688,7 +1688,7 @@ with your specific IP address.
     1. We offer UDP and TCP DNS on port 53 on (insert IP address)
     1. We offer DNS-over-TLS as specified in RFC7858 on (insert IP address). It
     is available on port 853 and port 443. We also implement RFC7766.
-        1. The DoT authentication name used is (insert domain name).
+        1. The DoT authentication domain name used is (insert domain name).
         1. We do not publish SPKI pin sets.
     1. We offer DNS-over-HTTPS as specified in RFC8484 on (insert URI template). 
        Both POST and GET are supported.

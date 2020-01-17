@@ -470,7 +470,8 @@ Internet-Draft     DNS Privacy Service Recommendations      January 2020
    o  Monitor certificates to prevent accidental expiration of
       certificates.
 
-   o  Choose a short, memorable authentication name for the service.
+   o  Choose a short, memorable authentication domain name for the
+      service.
 
 5.1.3.  Protocol recommendations
 
@@ -496,7 +497,6 @@ Internet-Draft     DNS Privacy Service Recommendations      January 2020
    o  Adhering to [RFC7525].
 
    o  Implementing only (D)TLS 1.2 or later as specified in [RFC8310].
-
 
 
 
@@ -1029,10 +1029,10 @@ Internet-Draft     DNS Privacy Service Recommendations      January 2020
    all the relevant techniques described above are employed there may
    still be attacks possible, e.g.  [Pitfalls-of-DNS-Encryption].  For
    example, a resolver with a very small community of users risks
-   exposing data in this way and OUGHT obfuscate this traffic by mixing
-   it with 'generated' traffic to make client characterization harder.
-   The resolver could also employ aggressive pre-fetch techniques as a
-   further measure to counter traffic analysis.
+   exposing data in this way and ought to obfuscate this traffic by
+   mixing it with 'generated' traffic to make client characterization
+   harder.  The resolver could also employ aggressive pre-fetch
+   techniques as a further measure to counter traffic analysis.
 
    At the time of writing there are no standardized or widely recognized
    techniques to perform such obfuscation or bulk pre-fetches.
@@ -1164,11 +1164,11 @@ Internet-Draft     DNS Privacy Service Recommendations      January 2020
        provide specific details of which capabilities are provided on
        which client facing addresses and ports:
 
-       1.  For DoT, specify the authentication name to be used (if any).
+       1.  For DoT, specify the authentication domain name to be used
+           (if any).
 
        2.  For DoT, specify the SPKI pin sets to be used (if any) and
            policy for rolling keys.
-
 
 
 
@@ -2246,7 +2246,8 @@ Internet-Draft     DNS Privacy Service Recommendations      January 2020
            address).  It is available on port 853 and port 443.  We also
            implement RFC7766.
 
-           1.  The DoT authentication name used is (insert domain name).
+           1.  The DoT authentication domain name used is (insert domain
+               name).
 
            2.  We do not publish SPKI pin sets.
 
@@ -2288,7 +2289,6 @@ Internet-Draft     DNS Privacy Service Recommendations      January 2020
            public and private parties dealing with security and
            intelligence, to give them access to the servers and/or to
            the data.
-
 
 
 

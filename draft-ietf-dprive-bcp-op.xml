@@ -389,7 +389,7 @@ revocation.</t>
 ACME <xref target="RFC8555"/> provides a mechanism to actively manage certificates through
 automation and has been implemented by a number of certificate authorities.</t>
 <t>Monitor certificates to prevent accidental expiration of certificates.</t>
-<t>Choose a short, memorable authentication name for the service.</t>
+<t>Choose a short, memorable authentication domain name for the service.</t>
 </list>
 </t>
 </section>
@@ -901,7 +901,7 @@ community via these upstream queries and what they can do to mitigate this
 further. Note, that even when all the relevant techniques described above are
 employed there may still be attacks possible, e.g.
 <xref target="Pitfalls-of-DNS-Encryption"/>. For example, a resolver with a very small
-community of users risks exposing data in this way and OUGHT obfuscate this
+community of users risks exposing data in this way and ought to obfuscate this
 traffic by mixing it with 'generated' traffic to make client characterization
 harder. The resolver could also employ aggressive pre-fetch techniques as a
 further measure to counter traffic analysis.
@@ -1013,7 +1013,7 @@ operational reasons.</t>
 <xref target="recommendations-for-dns-privacy-services"/> provide specific details of which
 capabilities are provided on which client facing addresses and ports:
 <list style="numbers">
-<t>For DoT, specify the authentication name to be used (if any).</t>
+<t>For DoT, specify the authentication domain name to be used (if any).</t>
 <t>For DoT, specify the SPKI pin sets to be used (if any) and policy for
 rolling keys.
 
@@ -1930,7 +1930,7 @@ blocking a domain in error.</t>
 <t>We offer DNS-over-TLS as specified in RFC7858 on (insert IP address). It
 is available on port 853 and port 443. We also implement RFC7766.
 <list style="numbers">
-<t>The DoT authentication name used is (insert domain name).</t>
+<t>The DoT authentication domain name used is (insert domain name).</t>
 <t>We do not publish SPKI pin sets.</t>
 </list></t>
 <t>We offer DNS-over-HTTPS as specified in RFC8484 on (insert URI template).
