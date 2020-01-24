@@ -76,7 +76,7 @@
 <uri></uri>
 </address>
 </author>
-<date year="2020" month="January" day="17"/>
+<date year="2020" month="January" day="24"/>
 
 <area>Internet</area>
 <workgroup>dprive</workgroup>
@@ -240,6 +240,8 @@ practice with regard to users privacy or a formal DROP statement.</t>
 </section>
 
 <section anchor="recommendations-for-dns-privacy-services" title="Recommendations for DNS privacy services">
+<t>In the following sections we first outline the threats relevant to the specific topic and then discuss the potential actions that can be taken to mitigate them.
+</t>
 <t>We describe two classes of threats:
 </t>
 <t>
@@ -356,6 +358,9 @@ certificates <xref target="RFC5280"/> or Subject Public Key Info (SPKI) pin sets
 </t>
 <t>When offering DoH <xref target="RFC8484"/>, HTTPS requires authentication of the server as
 part of the protocol.
+</t>
+<t>Server operators should also follow the best practices with regard to Online
+Certificate Status Protocol (OCSP) <xref target="RFC2560"/> as described in <xref target="RFC7525"/>.
 </t>
 
 <section anchor="certificate-management" title="Certificate management">
@@ -555,16 +560,16 @@ DNSSEC validation, etc.
 <t>Increased use of encryption impacts operator ability to manage their network <xref target="RFC8404"/>.</t>
 </list>
 </t>
-<t>Many monitoring solutions for DNS traffic rely on the plain text nature of
-this traffic and work by intercepting traffic on the wire, either using a
-separate view on the connection between clients and the resolver, or as a
-separate process on the resolver system that inspects network traffic. Such
-solutions will no longer function when traffic between clients and resolvers is
-encrypted. There are, however, legitimate reasons for operators to inspect DNS
-traffic, e.g. to monitor for network security threats. Operators may therefore
-need to invest in alternative means of monitoring that relies on either the
-resolver software directly, or exporting DNS traffic from the resolver using
-e.g. <xref target="dnstap"/>.
+<t>Many monitoring solutions for DNS traffic rely on the plain text nature of this
+traffic and work by intercepting traffic on the wire, either using a separate
+view on the connection between clients and the resolver, or as a separate
+process on the resolver system that inspects network traffic. Such solutions
+will no longer function when traffic between clients and resolvers is encrypted.
+There are, however, legitimate reasons for DNS privacy service operators to
+inspect DNS traffic, e.g. to monitor for network security threats. Operators may
+therefore need to invest in alternative means of monitoring that relies on
+either the resolver software directly, or exporting DNS traffic from the
+resolver using e.g. <xref target="dnstap"/>.
 </t>
 <t>Optimization:
 </t>
@@ -575,7 +580,7 @@ the discussion on the use of Bloom Filters in <xref target="ip-address-technique
 </t>
 </section>
 
-<section anchor="limitations-of-using-a-pure-tls-proxy" title="Limitations of using a pure TLS proxy">
+<section anchor="limitations-of-fronting-a-dns-privacy-service-with-a-pure-tls-proxy" title="Limitations of fronting a DNS privacy service with a pure TLS proxy">
 <t>DNS Privacy Threats:
 </t>
 <t>
@@ -1142,6 +1147,13 @@ United Kingdom
 </section>
 
 <section anchor="changelog" title="Changelog">
+<t>draft-ietf-dprive-bcp-op-08
+</t>
+<t>
+<list style="symbols">
+<t>Address IETF Last call comments.</t>
+</list>
+</t>
 <t>draft-ietf-dprive-bcp-op-07
 </t>
 <t>
@@ -1397,6 +1409,7 @@ draft-dickinson-dprive-bcp-op-01</t>
         <date year='2014'/>
     </front>
 </reference>
+<?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.2560.xml"?>
 <?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.4033.xml"?>
 <?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.5077.xml"?>
 <?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.5280.xml"?>
@@ -1621,8 +1634,9 @@ user activity as a side effect:
 <t>Passive DNS <xref target="RFC8499"/>.</t>
 </list>
 </t>
-<t>Note that depending on the specifics of the implementation
-<xref target="RFC8484"/> may also provide increased tracking.
+<t>Section 8 of <xref target="RFC8484"/> outlines the privacy considerations of DoH. Note that
+depending on the specifics of a DoH implementation there may be increased
+identification and tracking compared to other DNS transports.
 </t>
 </section>
 

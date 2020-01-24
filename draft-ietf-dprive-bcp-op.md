@@ -7,7 +7,7 @@
     area = "Internet"
     workgroup = "dprive"
     keyword = ["DNS"]
-    date = 2020-01-17T00:00:00Z
+    date = 2020-01-24T00:00:00Z
     [pi]
     toc = "yes"
     compact = "yes"
@@ -205,6 +205,8 @@ Other Terms:
 
 # Recommendations for DNS privacy services
 
+In the following sections we first outline the threats relevant to the specific topic and then discuss the potential actions that can be taken to mitigate them.
+
 We describe two classes of threats:
 
 * Threats described in [@!RFC6973] 'Privacy Considerations for Internet Protocols'
@@ -293,6 +295,8 @@ certificates [@RFC5280] or Subject Public Key Info (SPKI) pin sets [@!RFC8310].
 When offering DoH [@!RFC8484], HTTPS requires authentication of the server as
 part of the protocol.
 
+Server operators should also follow the best practices with regard to Online
+Certificate Status Protocol (OCSP) [@RFC2560] as described in [@RFC7525].
 
 #### Certificate management 
 
@@ -448,16 +452,16 @@ DNS Privacy Threats:
 
 * Increased use of encryption impacts operator ability to manage their network [@!RFC8404].
 
-Many monitoring solutions for DNS traffic rely on the plain text nature of 
-this traffic and work by intercepting traffic on the wire, either using a 
-separate view on the connection between clients and the resolver, or as a 
-separate process on the resolver system that inspects network traffic. Such 
-solutions will no longer function when traffic between clients and resolvers is 
-encrypted. There are, however, legitimate reasons for operators to inspect DNS 
-traffic, e.g. to monitor for network security threats. Operators may therefore 
-need to invest in alternative means of monitoring that relies on either the
-resolver software directly, or exporting DNS traffic from the resolver using
-e.g. [@dnstap].
+Many monitoring solutions for DNS traffic rely on the plain text nature of this
+traffic and work by intercepting traffic on the wire, either using a separate
+view on the connection between clients and the resolver, or as a separate
+process on the resolver system that inspects network traffic. Such solutions
+will no longer function when traffic between clients and resolvers is encrypted.
+There are, however, legitimate reasons for DNS privacy service operators to
+inspect DNS traffic, e.g. to monitor for network security threats. Operators may
+therefore need to invest in alternative means of monitoring that relies on
+either the resolver software directly, or exporting DNS traffic from the
+resolver using e.g. [@dnstap].
 
 Optimization:
 
@@ -466,7 +470,7 @@ privacy service should consider using privacy conscious means to do so (see
 section (#data-at-rest-on-the-server) for more details on data handling and also
 the discussion on the use of Bloom Filters in (#ip-address-techniques).
 
-### Limitations of using a pure TLS proxy
+### Limitations of fronting a DNS privacy service with a pure TLS proxy
 
 DNS Privacy Threats: 
 
@@ -938,6 +942,10 @@ United Kingdom
 
 # Changelog
 
+draft-ietf-dprive-bcp-op-08
+
+* Address IETF Last call comments.
+
 draft-ietf-dprive-bcp-op-07
 
 * Editorial changes following AD review.
@@ -1396,8 +1404,9 @@ user activity as a side effect:
 * 'A DNS Packet Capture Format' [@RFC8618].
 * Passive DNS [@RFC8499].
 
-Note that depending on the specifics of the implementation
-[@!RFC8484] may also provide increased tracking.
+Section 8 of [@!RFC8484] outlines the privacy considerations of DoH. Note that
+depending on the specifics of a DoH implementation there may be increased
+identification and tracking compared to other DNS transports.
 
 ## Related operational documents
 

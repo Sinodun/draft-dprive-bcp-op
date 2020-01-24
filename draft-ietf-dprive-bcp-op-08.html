@@ -387,7 +387,7 @@
 <link href="#rfc.section.5.1.5" rel="Chapter" title="5.1.5 Availability"/>
 <link href="#rfc.section.5.1.6" rel="Chapter" title="5.1.6 Service options"/>
 <link href="#rfc.section.5.1.7" rel="Chapter" title="5.1.7 Impact of Encryption on DNS Monitoring"/>
-<link href="#rfc.section.5.1.8" rel="Chapter" title="5.1.8 Limitations of using a pure TLS proxy"/>
+<link href="#rfc.section.5.1.8" rel="Chapter" title="5.1.8 Limitations of fronting a DNS privacy service with a pure TLS proxy"/>
 <link href="#rfc.section.5.2" rel="Chapter" title="5.2 Data at rest on the server"/>
 <link href="#rfc.section.5.2.1" rel="Chapter" title="5.2.1 Data handling"/>
 <link href="#rfc.section.5.2.2" rel="Chapter" title="5.2.2 Data minimization of network traffic"/>
@@ -435,7 +435,7 @@
 
   <meta name="dct.creator" content="Dickinson, S., Overeinder, B., van Rijswijk-Deij, R., and A. Mankin" />
   <meta name="dct.identifier" content="urn:ietf:id:draft-ietf-dprive-bcp-op-08" />
-  <meta name="dct.issued" scheme="ISO8601" content="2020-1-17" />
+  <meta name="dct.issued" scheme="ISO8601" content="2020-1-24" />
   <meta name="dct.abstract" content="This document presents operational, policy, and security considerations for DNS recursive resolver operators who choose to offer DNS Privacy services. With these recommendations, the operator can make deliberate decisions regarding which services to provide, and how the decisions and alternatives impact the privacy of users.  " />
   <meta name="description" content="This document presents operational, policy, and security considerations for DNS recursive resolver operators who choose to offer DNS Privacy services. With these recommendations, the operator can make deliberate decisions regarding which services to provide, and how the decisions and alternatives impact the privacy of users.  " />
 
@@ -459,7 +459,7 @@
   <td class="right">B. Overeinder</td>
 </tr>
 <tr>
-  <td class="left">Expires: July 20, 2020</td>
+  <td class="left">Expires: July 27, 2020</td>
   <td class="right">R. van Rijswijk-Deij</td>
 </tr>
 <tr>
@@ -476,7 +476,7 @@
 </tr>
 <tr>
   <td class="left"></td>
-  <td class="right">January 17, 2020</td>
+  <td class="right">January 24, 2020</td>
 </tr>
 
     	
@@ -497,7 +497,7 @@
 <p>This Internet-Draft is submitted in full conformance with the provisions of BCP 78 and BCP 79.</p>
 <p>Internet-Drafts are working documents of the Internet Engineering Task Force (IETF).  Note that other groups may also distribute working documents as Internet-Drafts.  The list of current Internet-Drafts is at http://datatracker.ietf.org/drafts/current/.</p>
 <p>Internet-Drafts are draft documents valid for a maximum of six months and may be updated, replaced, or obsoleted by other documents at any time.  It is inappropriate to use Internet-Drafts as reference material or to cite them other than as "work in progress."</p>
-<p>This Internet-Draft will expire on July 20, 2020.</p>
+<p>This Internet-Draft will expire on July 27, 2020.</p>
 <h1 id="rfc.copyrightnotice">
   <a href="#rfc.copyrightnotice">Copyright Notice</a>
 </h1>
@@ -522,7 +522,7 @@
 <li>5.1.5.   <a href="#rfc.section.5.1.5">Availability</a></li>
 <li>5.1.6.   <a href="#rfc.section.5.1.6">Service options</a></li>
 <li>5.1.7.   <a href="#rfc.section.5.1.7">Impact of Encryption on DNS Monitoring</a></li>
-<li>5.1.8.   <a href="#rfc.section.5.1.8">Limitations of using a pure TLS proxy</a></li>
+<li>5.1.8.   <a href="#rfc.section.5.1.8">Limitations of fronting a DNS privacy service with a pure TLS proxy</a></li>
 </ul><li>5.2.   <a href="#rfc.section.5.2">Data at rest on the server</a></li>
 <ul><li>5.2.1.   <a href="#rfc.section.5.2.1">Data handling</a></li>
 <li>5.2.2.   <a href="#rfc.section.5.2.2">Data minimization of network traffic</a></li>
@@ -612,7 +612,8 @@
 
 <p> </p>
 <h1 id="rfc.section.5"><a href="#rfc.section.5">5.</a> <a href="#recommendations-for-dns-privacy-services" id="recommendations-for-dns-privacy-services">Recommendations for DNS privacy services</a></h1>
-<p id="rfc.section.5.p.1">We describe two classes of threats: </p>
+<p id="rfc.section.5.p.1">In the following sections we first outline the threats relevant to the specific topic and then discuss the potential actions that can be taken to mitigate them.  </p>
+<p id="rfc.section.5.p.2">We describe two classes of threats: </p>
 <p/>
 
 <ul>
@@ -621,7 +622,7 @@
 </ul>
 
 <p> </p>
-<p id="rfc.section.5.p.3">We describe three classes of actions that operators of DNS privacy services can take: </p>
+<p id="rfc.section.5.p.4">We describe three classes of actions that operators of DNS privacy services can take: </p>
 <p/>
 
 <ul>
@@ -631,7 +632,7 @@
 </ul>
 
 <p> </p>
-<p id="rfc.section.5.p.5">This document does not specify policy - only best practice, however for DNS Privacy services to be considered compliant with these best practice guidelines they SHOULD implement (where appropriate) all: </p>
+<p id="rfc.section.5.p.6">This document does not specify policy - only best practice, however for DNS Privacy services to be considered compliant with these best practice guidelines they SHOULD implement (where appropriate) all: </p>
 <p/>
 
 <ul>
@@ -686,6 +687,7 @@
 <p id="rfc.section.5.1.2.p.4">DNS privacy services should ensure clients can authenticate the server. Note that this, in effect, commits the DNS privacy service to a public identity users will trust.  </p>
 <p id="rfc.section.5.1.2.p.5">When using DNS-over-TLS clients that select a 'Strict Privacy' usage profile <a href="#RFC8310">[RFC8310]</a> (to mitigate the threat of active attack on the client) require the ability to authenticate the DNS server. To enable this, DNS privacy services that offer DNS-over-TLS should provide credentials in the form of either X.509 certificates <a href="#RFC5280">[RFC5280]</a> or Subject Public Key Info (SPKI) pin sets <a href="#RFC8310">[RFC8310]</a>.  </p>
 <p id="rfc.section.5.1.2.p.6">When offering DoH <a href="#RFC8484">[RFC8484]</a>, HTTPS requires authentication of the server as part of the protocol.  </p>
+<p id="rfc.section.5.1.2.p.7">Server operators should also follow the best practices with regard to Online Certificate Status Protocol (OCSP) <a href="#RFC2560">[RFC2560]</a> as described in <a href="#RFC7525">[RFC7525]</a>.  </p>
 <h1 id="rfc.section.5.1.2.1"><a href="#rfc.section.5.1.2.1">5.1.2.1.</a> <a href="#certificate-management" id="certificate-management">Certificate management</a></h1>
 <p id="rfc.section.5.1.2.1.p.1">Anecdotal evidence to date highlights the management of certificates as one of the more challenging aspects for operators of traditional DNS resolvers that choose to additionally provide a DNS privacy service as management of such credentials is new to those DNS operators.  </p>
 <p id="rfc.section.5.1.2.1.p.2">It is noted that SPKI pin set management is described in <a href="#RFC7858">[RFC7858]</a> but that key pinning mechanisms in general have fallen out of favor operationally for various reasons such as the logistical overhead of rolling keys.  </p>
@@ -817,10 +819,10 @@
 </ul>
 
 <p> </p>
-<p id="rfc.section.5.1.7.p.3">Many monitoring solutions for DNS traffic rely on the plain text nature of this traffic and work by intercepting traffic on the wire, either using a separate view on the connection between clients and the resolver, or as a separate process on the resolver system that inspects network traffic. Such solutions will no longer function when traffic between clients and resolvers is encrypted. There are, however, legitimate reasons for operators to inspect DNS traffic, e.g. to monitor for network security threats. Operators may therefore need to invest in alternative means of monitoring that relies on either the resolver software directly, or exporting DNS traffic from the resolver using e.g. <a href="#dnstap">[dnstap]</a>.  </p>
+<p id="rfc.section.5.1.7.p.3">Many monitoring solutions for DNS traffic rely on the plain text nature of this traffic and work by intercepting traffic on the wire, either using a separate view on the connection between clients and the resolver, or as a separate process on the resolver system that inspects network traffic. Such solutions will no longer function when traffic between clients and resolvers is encrypted.  There are, however, legitimate reasons for DNS privacy service operators to inspect DNS traffic, e.g. to monitor for network security threats. Operators may therefore need to invest in alternative means of monitoring that relies on either the resolver software directly, or exporting DNS traffic from the resolver using e.g. <a href="#dnstap">[dnstap]</a>.  </p>
 <p id="rfc.section.5.1.7.p.4">Optimization: </p>
 <p id="rfc.section.5.1.7.p.5">When implementing alternative means for traffic monitoring, operators of a DNS privacy service should consider using privacy conscious means to do so (see section <a href="#data-at-rest-on-the-server">Section 5.2</a> for more details on data handling and also the discussion on the use of Bloom Filters in <a href="#ip-address-techniques">Appendix B</a>.  </p>
-<h1 id="rfc.section.5.1.8"><a href="#rfc.section.5.1.8">5.1.8.</a> <a href="#limitations-of-using-a-pure-tls-proxy" id="limitations-of-using-a-pure-tls-proxy">Limitations of using a pure TLS proxy</a></h1>
+<h1 id="rfc.section.5.1.8"><a href="#rfc.section.5.1.8">5.1.8.</a> <a href="#limitations-of-fronting-a-dns-privacy-service-with-a-pure-tls-proxy" id="limitations-of-fronting-a-dns-privacy-service-with-a-pure-tls-proxy">Limitations of fronting a DNS privacy service with a pure TLS proxy</a></h1>
 <p id="rfc.section.5.1.8.p.1">DNS Privacy Threats: </p>
 <p/>
 
@@ -1232,7 +1234,15 @@
 <p id="rfc.section.10.p.2">John Dickinson <br/> Sinodun Internet Technologies <br/> Magdalen Centre <br/> Oxford Science Park <br/> Oxford OX4 4GA <br/> United Kingdom </p>
 <p id="rfc.section.10.p.3">Jim Hague <br/> Sinodun Internet Technologies <br/> Magdalen Centre <br/> Oxford Science Park <br/> Oxford OX4 4GA <br/> United Kingdom </p>
 <h1 id="rfc.section.11"><a href="#rfc.section.11">11.</a> <a href="#changelog" id="changelog">Changelog</a></h1>
-<p id="rfc.section.11.p.1">draft-ietf-dprive-bcp-op-07 </p>
+<p id="rfc.section.11.p.1">draft-ietf-dprive-bcp-op-08 </p>
+<p/>
+
+<ul>
+  <li>Address IETF Last call comments.</li>
+</ul>
+
+<p> </p>
+<p id="rfc.section.11.p.3">draft-ietf-dprive-bcp-op-07 </p>
 <p/>
 
 <ul>
@@ -1241,7 +1251,7 @@
 </ul>
 
 <p> </p>
-<p id="rfc.section.11.p.3">draft-ietf-dprive-bcp-op-06 </p>
+<p id="rfc.section.11.p.5">draft-ietf-dprive-bcp-op-06 </p>
 <p/>
 
 <ul>
@@ -1249,7 +1259,7 @@
 </ul>
 
 <p> </p>
-<p id="rfc.section.11.p.5">draft-ietf-dprive-bcp-op-05 </p>
+<p id="rfc.section.11.p.7">draft-ietf-dprive-bcp-op-05 </p>
 <p/>
 
 <ul>
@@ -1261,7 +1271,7 @@
 </ul>
 
 <p> </p>
-<p id="rfc.section.11.p.7">draft-ietf-dprive-bcp-op-04 </p>
+<p id="rfc.section.11.p.9">draft-ietf-dprive-bcp-op-04 </p>
 <p/>
 
 <ul>
@@ -1274,7 +1284,7 @@
 </ul>
 
 <p> </p>
-<p id="rfc.section.11.p.9">draft-ietf-dprive-bcp-op-03 </p>
+<p id="rfc.section.11.p.11">draft-ietf-dprive-bcp-op-03 </p>
 <p/>
 
 <ul>
@@ -1286,7 +1296,7 @@
 </ul>
 
 <p> </p>
-<p id="rfc.section.11.p.11">draft-ietf-dprive-bcp-op-02 </p>
+<p id="rfc.section.11.p.13">draft-ietf-dprive-bcp-op-02 </p>
 <p/>
 
 <ul>
@@ -1302,7 +1312,7 @@
 </ul>
 
 <p> </p>
-<p id="rfc.section.11.p.13">draft-ietf-dprive-bcp-op-01 </p>
+<p id="rfc.section.11.p.15">draft-ietf-dprive-bcp-op-01 </p>
 <p/>
 
 <ul>
@@ -1319,7 +1329,7 @@
 </ul>
 
 <p> </p>
-<p id="rfc.section.11.p.15">draft-ietf-dprive-bcp-op-00 </p>
+<p id="rfc.section.11.p.17">draft-ietf-dprive-bcp-op-00 </p>
 <p/>
 
 <ul>
@@ -1597,6 +1607,12 @@
     </tr>
     <tr>
       <td class="reference">
+        <b id="RFC2560">[RFC2560]</b>
+      </td>
+      <td class="top"><a>Myers, M.</a>, <a>Ankney, R.</a>, <a>Malpani, A.</a>, <a>Galperin, S.</a> and <a>C. Adams</a>, "<a href="http://tools.ietf.org/html/rfc2560">X.509 Internet Public Key Infrastructure Online Certificate Status Protocol - OCSP</a>", RFC 2560, DOI 10.17487/RFC2560, June 1999.</td>
+    </tr>
+    <tr>
+      <td class="reference">
         <b id="RFC4033">[RFC4033]</b>
       </td>
       <td class="top"><a>Arends, R.</a>, <a>Austein, R.</a>, <a>Larson, M.</a>, <a>Massey, D.</a> and <a>S. Rose</a>, "<a href="http://tools.ietf.org/html/rfc4033">DNS Security Introduction and Requirements</a>", RFC 4033, DOI 10.17487/RFC4033, March 2005.</td>
@@ -1760,7 +1776,7 @@
 </ul>
 
 <p> </p>
-<p id="rfc.section.A.2.p.3">Note that depending on the specifics of the implementation <a href="#RFC8484">[RFC8484]</a> may also provide increased tracking.  </p>
+<p id="rfc.section.A.2.p.3">Section 8 of <a href="#RFC8484">[RFC8484]</a> outlines the privacy considerations of DoH. Note that depending on the specifics of a DoH implementation there may be increased identification and tracking compared to other DNS transports.  </p>
 <h1 id="rfc.appendix.A.3"><a href="#rfc.appendix.A.3">A.3.</a> <a href="#related-operational-documents" id="related-operational-documents">Related operational documents</a></h1>
 <p/>
 
