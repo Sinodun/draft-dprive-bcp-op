@@ -2,12 +2,12 @@
     Title = "Recommendations for DNS Privacy Service Operators"
     abbrev = "DNS Privacy Service Recommendations"
     category = "bcp"
-    docName= "draft-ietf-dprive-bcp-op-08"
+    docName= "draft-ietf-dprive-bcp-op-09"
     ipr = "trust200902"
     area = "Internet"
     workgroup = "dprive"
     keyword = ["DNS"]
-    date = 2020-01-24T00:00:00Z
+    date = 2020-05-04T00:00:00Z
     [pi]
     toc = "yes"
     compact = "yes"
@@ -246,7 +246,7 @@ the client.
 
 * Surveillance:
   * Passive surveillance of traffic on the wire
-    [@!I-D.ietf-dprive-rfc7626-bis] Section 2.4.2.
+    [@!I-D.ietf-dprive-rfc7626-bis] Section 5.1
 
 DNS Privacy Threats:
 
@@ -277,8 +277,8 @@ not diminish the need for DNSSEC, see (#dnssec).
 [@!RFC6973] Threats: 
 
 * Surveillance: 
-  * Active attacks that can redirect traffic to rogue servers
-  [@!I-D.ietf-dprive-rfc7626-bis] Section 2.5.3.
+  * Active attacks on resolver configuration
+  [@!I-D.ietf-dprive-rfc7626-bis] Section 6.1.2
 
 Mitigations:
 
@@ -941,6 +941,10 @@ Oxford OX4 4GA\\
 United Kingdom
 
 # Changelog
+
+draft-ietf-dprive-bcp-op-09
+
+* Fix references so they match the correct section numbers in draft-ietf-dprive-rfc7626-bis-05
 
 draft-ietf-dprive-bcp-op-08
 

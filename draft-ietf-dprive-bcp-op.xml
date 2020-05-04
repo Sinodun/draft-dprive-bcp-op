@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE rfc SYSTEM 'rfc2629.dtd' []>
-<rfc ipr="trust200902" category="bcp" docName="draft-ietf-dprive-bcp-op-08">
+<rfc ipr="trust200902" category="bcp" docName="draft-ietf-dprive-bcp-op-09">
 <?rfc toc="yes"?>
 <?rfc symrefs="yes"?>
 <?rfc sortrefs="yes"?>
@@ -76,7 +76,7 @@
 <uri></uri>
 </address>
 </author>
-<date year="2020" month="January" day="24"/>
+<date year="2020" month="May" day="4"/>
 
 <area>Internet</area>
 <workgroup>dprive</workgroup>
@@ -296,7 +296,7 @@ the client.
 <t>Surveillance:
 <list style="symbols">
 <t>Passive surveillance of traffic on the wire
-<xref target="I-D.ietf-dprive-rfc7626-bis"/> Section 2.4.2.</t>
+<xref target="I-D.ietf-dprive-rfc7626-bis"/> Section 5.1</t>
 </list></t>
 </list>
 </t>
@@ -339,8 +339,8 @@ not diminish the need for DNSSEC, see <xref target="dnssec"/>.
 <list style="symbols">
 <t>Surveillance:
 <list style="symbols">
-<t>Active attacks that can redirect traffic to rogue servers
-<xref target="I-D.ietf-dprive-rfc7626-bis"/> Section 2.5.3.</t>
+<t>Active attacks on resolver configuration
+<xref target="I-D.ietf-dprive-rfc7626-bis"/> Section 6.1.2</t>
 </list></t>
 </list>
 </t>
@@ -1147,6 +1147,13 @@ United Kingdom
 </section>
 
 <section anchor="changelog" title="Changelog">
+<t>draft-ietf-dprive-bcp-op-09
+</t>
+<t>
+<list style="symbols">
+<t>Fix references so they match the correct section numbers in draft-ietf-dprive-rfc7626-bis-05</t>
+</list>
+</t>
 <t>draft-ietf-dprive-bcp-op-08
 </t>
 <t>
