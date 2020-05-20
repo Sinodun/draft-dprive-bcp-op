@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE rfc SYSTEM 'rfc2629.dtd' []>
-<rfc ipr="trust200902" category="bcp" docName="draft-ietf-dprive-bcp-op-09">
+<rfc ipr="trust200902" category="bcp" docName="draft-ietf-dprive-bcp-op-10">
 <?rfc toc="yes"?>
 <?rfc symrefs="yes"?>
 <?rfc sortrefs="yes"?>
@@ -76,7 +76,7 @@
 <uri></uri>
 </address>
 </author>
-<date year="2020" month="May" day="4"/>
+<date year="2020" month="May" day="20"/>
 
 <area>Internet</area>
 <workgroup>dprive</workgroup>
@@ -176,7 +176,7 @@ out any errata or updates that apply to this document.
 </section>
 
 <section anchor="scope" title="Scope">
-<t>&quot;DNS Privacy Considerations&quot; <xref target="I-D.ietf-dprive-rfc7626-bis"/> describes the
+<t>&quot;DNS Privacy Considerations&quot; <xref target="RFC7626"/> describes the
 general privacy issues and threats associated with the use of the DNS by
 Internet users and much of the threat analysis here is lifted from that
 document and from <xref target="RFC6973"/>. However this document is limited in scope to best
@@ -186,7 +186,7 @@ considerations specifically from the perspective of an end user, or those for
 operators of authoritative nameservers are out of scope.
 </t>
 <t>This document includes (but is not limited to) considerations in the following
-areas (taken from <xref target="I-D.ietf-dprive-rfc7626-bis"/>):
+areas:
 </t>
 <t>
 <list style="numbers">
@@ -295,8 +295,7 @@ the client.
 <list style="symbols">
 <t>Surveillance:
 <list style="symbols">
-<t>Passive surveillance of traffic on the wire
-<xref target="I-D.ietf-dprive-rfc7626-bis"/> Section 5.1</t>
+<t>Passive surveillance of traffic on the wire</t>
 </list></t>
 </list>
 </t>
@@ -339,8 +338,7 @@ not diminish the need for DNSSEC, see <xref target="dnssec"/>.
 <list style="symbols">
 <t>Surveillance:
 <list style="symbols">
-<t>Active attacks on resolver configuration
-<xref target="I-D.ietf-dprive-rfc7626-bis"/> Section 6.1.2</t>
+<t>Active attacks on client resolver configuration</t>
 </list></t>
 </list>
 </t>
@@ -718,7 +716,7 @@ group of pseudonyms for a single given address.
 </section>
 
 <section anchor="ip-address-pseudonymization-and-anonymization-methods" title="IP address pseudonymization and anonymization methods">
-<t>As <xref target="I-D.ietf-dprive-rfc7626-bis"/> makes clear, the big privacy risk in
+<t>A major privacy risk in
 DNS is connecting DNS queries to an individual and the major vector for this in
 DNS traffic is the client IP address.
 </t>
@@ -1147,6 +1145,13 @@ United Kingdom
 </section>
 
 <section anchor="changelog" title="Changelog">
+<t>draft-ietf-dprive-bcp-op-10
+</t>
+<t>
+<list style="symbols">
+<t>Remove direct references to draft-ietf-dprive-rfc7626-bis-05, instead have one general reference RFC7626</t>
+</list>
+</t>
 <t>draft-ietf-dprive-bcp-op-09
 </t>
 <t>
@@ -1277,7 +1282,6 @@ draft-dickinson-dprive-bcp-op-01</t>
 </middle>
 <back>
 <references title="Normative References">
-<?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml3/reference.I-D.ietf-dprive-rfc7626-bis.xml"?>
 <?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.2119.xml"?>
 <?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.6265.xml"?>
 <?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.6973.xml"?>
@@ -1422,6 +1426,7 @@ draft-dickinson-dprive-bcp-op-01</t>
 <?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.5280.xml"?>
 <?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.6235.xml"?>
 <?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.7457.xml"?>
+<?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.7626.xml"?>
 <?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.7706.xml"?>
 <?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.8020.xml"?>
 <?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.8027.xml"?>

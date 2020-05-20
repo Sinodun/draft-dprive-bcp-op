@@ -2,12 +2,12 @@
     Title = "Recommendations for DNS Privacy Service Operators"
     abbrev = "DNS Privacy Service Recommendations"
     category = "bcp"
-    docName= "draft-ietf-dprive-bcp-op-09"
+    docName= "draft-ietf-dprive-bcp-op-10"
     ipr = "trust200902"
     area = "Internet"
     workgroup = "dprive"
     keyword = ["DNS"]
-    date = 2020-05-04T00:00:00Z
+    date = 2020-05-20T00:00:00Z
     [pi]
     toc = "yes"
     compact = "yes"
@@ -148,7 +148,7 @@ out any errata or updates that apply to this document.
 
 # Scope
 
-"DNS Privacy Considerations" [@!I-D.ietf-dprive-rfc7626-bis] describes the
+"DNS Privacy Considerations" [@?RFC7626] describes the
 general privacy issues and threats associated with the use of the DNS by
 Internet users and much of the threat analysis here is lifted from that
 document and from [@!RFC6973]. However this document is limited in scope to best
@@ -159,7 +159,7 @@ operators of authoritative nameservers are out of scope.
 
 
 This document includes (but is not limited to) considerations in the following
-areas (taken from [@!I-D.ietf-dprive-rfc7626-bis]):
+areas:
 
 1. Data "on the wire" between a client and a server.
 2. Data "at rest" on a server (e.g. in logs).
@@ -246,7 +246,6 @@ the client.
 
 * Surveillance:
   * Passive surveillance of traffic on the wire
-    [@!I-D.ietf-dprive-rfc7626-bis] Section 5.1
 
 DNS Privacy Threats:
 
@@ -277,8 +276,7 @@ not diminish the need for DNSSEC, see (#dnssec).
 [@!RFC6973] Threats: 
 
 * Surveillance: 
-  * Active attacks on resolver configuration
-  [@!I-D.ietf-dprive-rfc7626-bis] Section 6.1.2
+  * Active attacks on client resolver configuration
 
 Mitigations:
 
@@ -590,7 +588,7 @@ group of pseudonyms for a single given address.
 
 ### IP address pseudonymization and anonymization methods
 
-As [@!I-D.ietf-dprive-rfc7626-bis] makes clear, the big privacy risk in
+A major privacy risk in
 DNS is connecting DNS queries to an individual and the major vector for this in
 DNS traffic is the client IP address.
 
@@ -941,6 +939,10 @@ Oxford OX4 4GA\\
 United Kingdom
 
 # Changelog
+
+draft-ietf-dprive-bcp-op-10
+
+* Remove direct references to draft-ietf-dprive-rfc7626-bis-05, instead have one general reference RFC7626
 
 draft-ietf-dprive-bcp-op-09
 
