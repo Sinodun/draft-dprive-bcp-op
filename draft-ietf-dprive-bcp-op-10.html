@@ -399,7 +399,7 @@
 <link href="#rfc.section.5.3.2" rel="Chapter" title="5.3.2 Client query obfuscation"/>
 <link href="#rfc.section.5.3.3" rel="Chapter" title="5.3.3 Data sharing"/>
 <link href="#rfc.section.6" rel="Chapter" title="6 DNS Recursive Operator Privacy (DROP) statement"/>
-<link href="#rfc.section.6.1" rel="Chapter" title="6.1 Recommended contents of a DROP statement"/>
+<link href="#rfc.section.6.1" rel="Chapter" title="6.1 Outline of a DROP statement"/>
 <link href="#rfc.section.6.1.1" rel="Chapter" title="6.1.1 Policy"/>
 <link href="#rfc.section.6.1.2" rel="Chapter" title="6.1.2 Practice"/>
 <link href="#rfc.section.6.2" rel="Chapter" title="6.2 Current policy and privacy statements"/>
@@ -490,7 +490,7 @@
   <a href="#rfc.abstract">Abstract</a>
 </h1>
 <p>This document presents operational, policy, and security considerations for DNS recursive resolver operators who choose to offer DNS Privacy services. With these recommendations, the operator can make deliberate decisions regarding which services to provide, and how the decisions and alternatives impact the privacy of users.  </p>
-<p>This document also presents a framework to assist writers of a DNS Recursive Operator Privacy Statement (analogous to DNS Security Extensions (DNSSEC) Policies and DNSSEC Practice Statements described in RFC6841).  </p>
+<p>This document also presents a non-normative framework to assist writers of a DNS Recursive Operator Privacy Statement (analogous to DNS Security Extensions (DNSSEC) Policies and DNSSEC Practice Statements described in RFC6841).  </p>
 <h1 id="rfc.status">
   <a href="#rfc.status">Status of This Memo</a>
 </h1>
@@ -534,7 +534,7 @@
 <li>5.3.2.   <a href="#rfc.section.5.3.2">Client query obfuscation</a></li>
 <li>5.3.3.   <a href="#rfc.section.5.3.3">Data sharing</a></li>
 </ul></ul><li>6.   <a href="#rfc.section.6">DNS Recursive Operator Privacy (DROP) statement</a></li>
-<ul><li>6.1.   <a href="#rfc.section.6.1">Recommended contents of a DROP statement</a></li>
+<ul><li>6.1.   <a href="#rfc.section.6.1">Outline of a DROP statement</a></li>
 <ul><li>6.1.1.   <a href="#rfc.section.6.1.1">Policy</a></li>
 <li>6.1.2.   <a href="#rfc.section.6.1.2">Practice</a></li>
 </ul><li>6.2.   <a href="#rfc.section.6.2">Current policy and privacy statements</a></li>
@@ -572,13 +572,13 @@
 <p id="rfc.section.1.p.2">In recent years there has also been an increase in the availability of "public resolvers" <a href="#RFC8499">[RFC8499]</a> which users may prefer to use instead of the default network resolver because they offer a specific feature (e.g. good reachability, encrypted transport, strong privacy policy, filtering (or lack of), etc.). These open resolvers have tended to be at the forefront of adoption of privacy related enhancements but it is anticipated that operators of other resolver services will follow.  </p>
 <p id="rfc.section.1.p.3">Whilst protocols that encrypt DNS messages on the wire provide protection against certain attacks, the resolver operator still has (in principle) full visibility of the query data and transport identifiers for each user. Therefore, a trust relationship exists. The ability of the operator to provide a transparent, well documented, and secure privacy service will likely serve as a major differentiating factor for privacy conscious users if they make an active selection of which resolver to use.  </p>
 <p id="rfc.section.1.p.4">It should also be noted that the choice of a user to configure a single resolver (or a fixed set of resolvers) and an encrypted transport to use in all network environments has both advantages and disadvantages. For example the user has a clear expectation of which resolvers have visibility of their query data however this resolver/transport selection may provide an added mechanism to track them as they move across network environments. Commitments from operators to minimize such tracking are also likely to play a role in user selection of resolvers.  </p>
-<p id="rfc.section.1.p.5">More recently the global legislative landscape with regard to personal data collection, retention, and pseudonymization has seen significant activity.  It is an untested area that simply using a DNS resolution service constitutes consent from the user for the operator to process their query data.  The impact of recent legislative changes on data pertaining to the users of both Internet Service Providers and public DNS resolvers is not fully understood at the time of writing.  </p>
+<p id="rfc.section.1.p.5">More recently the global legislative landscape with regard to personal data collection, retention, and pseudonymization has seen significant activity.  Providing detailed practice advice about these areas to the operator is out of scope, but <a href="#data-sharing">Section 5.3.3</a> describes some mitigations of data sharing risk.  </p>
 <p id="rfc.section.1.p.6">This document has two main goals: </p>
 <p/>
 
 <ul>
   <li>To provide operational and policy guidance related to DNS over encrypted transports and to outline recommendations for data handling for operators of DNS privacy services.</li>
-  <li>To introduce the DNS Recursive Operator Privacy (DROP) statement and present a framework to assist writers of this document. A DROP statement is a document that an operator can publish outlining their operational practices and commitments with regard to privacy thereby providing a means for clients to evaluate the privacy properties of a given DNS privacy service. In particular, the framework identifies the elements that should be considered in formulating a DROP statement. This document does not, however, define a particular Privacy statement, nor does it seek to provide legal advice or recommendations as to the contents.</li>
+  <li>To introduce the DNS Recursive Operator Privacy (DROP) statement and present a framework to assist writers of this document. A DROP statement is a document that an operator should publish outlining their operational practices and commitments with regard to privacy thereby providing a means for clients to evaluate the privacy properties of a given DNS privacy service. The framework identifies a set of elements and specifies an outline order for them. This document does not, however, define a particular Privacy statement, nor does it seek to provide legal advice or recommendations as to the contents.</li>
 </ul>
 
 <p> </p>
@@ -1173,11 +1173,13 @@
 
 <p> </p>
 <p id="rfc.section.5.3.3.p.5">Mitigations: </p>
-<p id="rfc.section.5.3.3.p.6">Operators should not provide identifiable data to third-parties without explicit consent from clients (we take the stance here that simply using the resolution service itself does not constitute consent).  </p>
-<p id="rfc.section.5.3.3.p.7">Operators should consider including specific guidelines for the collection of aggregated and/or anonymized data for research purposes, within or outside of their own organization. This can benefit not only the operator (through inclusion in novel research) but also the wider Internet community. See the policy published by SURFnet <a href="#SURFnet-policy">[SURFnet-policy]</a> on data sharing for research as an example.  </p>
+<p id="rfc.section.5.3.3.p.6">Operators should not share identifiable data with third-parties.  </p>
+<p id="rfc.section.5.3.3.p.7">If operators choose to share identifiable data with third-parties in specific circumstance they should publish the terms under which data is shared.  </p>
+<p id="rfc.section.5.3.3.p.8">Operators should consider including specific guidelines for the collection of aggregated and/or anonymized data for research purposes, within or outside of their own organization. This can benefit not only the operator (through inclusion in novel research) but also the wider Internet community. See the policy published by SURFnet <a href="#SURFnet-policy">[SURFnet-policy]</a> on data sharing for research as an example.  </p>
 <h1 id="rfc.section.6"><a href="#rfc.section.6">6.</a> <a href="#dns-recursive-operator-privacy-drop-statement" id="dns-recursive-operator-privacy-drop-statement">DNS Recursive Operator Privacy (DROP) statement</a></h1>
-<p id="rfc.section.6.p.1">The following section outlines the recommended contents of a DROP statement an operator might choose to publish. An example statement for a specific scenario is provided for guidance only in <a href="#example-drop-statement">Appendix C</a>.  </p>
-<h1 id="rfc.section.6.1"><a href="#rfc.section.6.1">6.1.</a> <a href="#recommended-contents-of-a-drop-statement" id="recommended-contents-of-a-drop-statement">Recommended contents of a DROP statement</a></h1>
+<p id="rfc.section.6.p.1">To be compliant with this Best Common Practices document, a DNS Recursive Operator SHOULD publish a DNS Recursive Operator Privacy Statement. Adopting the outline, and including the headings in the order provided, is a benefit to persons comparing multiple operators&#8217; DROP statements.  </p>
+<h1 id="rfc.section.6.1"><a href="#rfc.section.6.1">6.1.</a> <a href="#outline-of-a-drop-statement" id="outline-of-a-drop-statement">Outline of a DROP statement</a></h1>
+<p id="rfc.section.6.1.p.1">The contents of <a href="#policy">Section 6.1.1</a> and <a href="#practice">Section 6.1.2</a> are non-normative, other than the order of the headings. Material under each topic is present to assist the operator developing their own DROP statement. <a href="#example-drop-statement">Appendix C</a> provides an example (also non-normative) of a complete DROP statement for a specific operator scenario.  </p>
 <h1 id="rfc.section.6.1.1"><a href="#rfc.section.6.1.1">6.1.1.</a> <a href="#policy" id="policy">Policy</a></h1>
 <p/>
 
@@ -1192,7 +1194,7 @@
 
 <p> </p>
 <h1 id="rfc.section.6.1.2"><a href="#rfc.section.6.1.2">6.1.2.</a> <a href="#practice" id="practice">Practice</a></h1>
-<p id="rfc.section.6.1.2.p.1">This section should explain the current operational practices of the service.  </p>
+<p id="rfc.section.6.1.2.p.1">Communicate the current operational practices of the service.  </p>
 <p/>
 
 <ol>
@@ -1239,6 +1241,8 @@
 
 <ul>
   <li>Remove direct references to draft-ietf-dprive-rfc7626-bis-05, instead have one general reference RFC7626</li>
+  <li>Clarify that the DROP statement outline is non-normative</li>
+  <li>Update wording on data sharing to remove explicit discussion of consent</li>
 </ul>
 
 <p> </p>
