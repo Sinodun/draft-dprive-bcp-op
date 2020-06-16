@@ -88,10 +88,11 @@ DNS services.
 In recent years there has also been an increase in the availability of "public
 resolvers" [@!RFC8499] which users may prefer to use instead of the default
 network resolver either because they offer a specific feature (e.g., good
-reachability or encrypted transport) or because the network resolver lacks a specific feature (e.g., strong privacy policy or unfiltered responses).
-These open resolvers have tended to be at the forefront of adoption of privacy
-related enhancements but it is anticipated that operators of other resolver
-services will follow.
+reachability or encrypted transport) or because the network resolver lacks a
+specific feature (e.g., strong privacy policy or unfiltered responses). These
+open resolvers have tended to be at the forefront of adoption of privacy-related
+enhancements but it is anticipated that operators of other resolver services
+will follow.
 
 Whilst protocols that encrypt DNS messages on the wire provide protection
 against certain attacks, the resolver operator still has (in principle) full
@@ -104,9 +105,11 @@ active selection of which resolver to use.
 It should also be noted that the choice of a user to configure a single resolver
 (or a fixed set of resolvers) and an encrypted transport to use in all network
 environments has both advantages and disadvantages. For example, the user has a
-clear expectation of which resolvers have visibility of their query data however
-this resolver/transport selection may provide an added mechanism to track them
-as they move across network environments. Commitments from resolver operators to minimize such tracking as users move between networks are also likely to play a role in user selection of resolvers.
+clear expectation of which resolvers have visibility of their query data.
+However, this resolver/transport selection may provide an added mechanism to
+track them as they move across network environments. Commitments from resolver
+operators to minimize such tracking as users move between networks are also
+likely to play a role in user selection of resolvers.
 
 More recently the global legislative landscape with regard to personal data
 collection, retention, and pseudonymization has seen significant activity.
@@ -120,13 +123,14 @@ This document has two main goals:
   DNS privacy services.
 
 * To introduce the DNS Recursive Operator Privacy (DROP) statement and present a
-  framework to assist writers of this document. A DROP statement is a document
-  that an operator should publish outlining their operational practices and
-  commitments with regard to privacy thereby providing a means for clients to
-  evaluate the measurable and claimed privacy properties of a given DNS privacy
-  service. The framework identifies a set of elements and specifies an outline
-  order for them. This document does not, however, define a particular Privacy
-  statement, nor does it seek to provide legal advice as to the contents.
+  framework to assist writers of a DROP statement. A DROP statement is a
+  document that an operator should publish which outlines their operational
+  practices and commitments with regard to privacy, thereby providing a means
+  for clients to evaluate the measurable and claimed privacy properties of a
+  given DNS privacy service. The framework identifies a set of elements and
+  specifies an outline order for them. This document does not, however, define a
+  particular Privacy statement, nor does it seek to provide legal advice as to
+  the contents.
 
 A desired operational impact is that all operators (both those providing
 resolvers within networks and those operating large public services) can
@@ -143,14 +147,14 @@ out any updates that apply to this document.
 
 # Scope
 
-"DNS Privacy Considerations" [@?RFC7626] describes the
-general privacy issues and threats associated with the use of the DNS by
-Internet users and much of the threat analysis here is lifted from that
-document and from [@!RFC6973]. However this document is limited in scope to best
-practice considerations for the provision of DNS privacy services by servers
-(recursive resolvers) to clients (stub resolvers or forwarders). Privacy
-considerations specifically from the perspective of an end user, or those for
-operators of authoritative nameservers are out of scope.
+"DNS Privacy Considerations" [@?RFC7626] describes the general privacy issues
+and threats associated with the use of the DNS by Internet users and much of the
+threat analysis here is lifted from that document and from [@!RFC6973]. However
+this document is limited in scope to best practice considerations for the
+provision of DNS privacy services by servers (recursive resolvers) to clients
+(stub resolvers or forwarders). Choices that are made exclusively by
+the end user, or those for operators of authoritative nameservers are out
+of scope.
 
 
 This document includes (but is not limited to) considerations in the following
@@ -164,9 +168,9 @@ third party).
 Whilst the issues raised here are targeted at those operators who choose to
 offer a DNS privacy service, considerations for areas 2 and 3 could equally
 apply to operators who only offer DNS over unencrypted transports but who would
-like to align with privacy best practice.
+otherwise like to align with privacy best practice.
 
-# Privacy related documents
+# Privacy-related documents
 
 There are various documents that describe protocol changes that have the
 potential to either increase or decrease the privacy properties of the DNS. Note
@@ -230,6 +234,10 @@ they SHOULD implement (where appropriate) all:
 * Optimizations to be moderately compliant.
 * Additional options to be maximally compliant.
 
+In other words, these requirements are specified here as all being normative
+requirements, and are classified only by different levels of compliance in the
+rest of the document.
+
 ## On the wire between client and server
 
 In this section we consider both data on the wire and the service provided to
@@ -251,8 +259,8 @@ Mitigations:
 A DNS privacy service can mitigate these threats by providing service over one
 or more of the following transports
 
-* DNS-over-TLS [@!RFC7858] and [@!RFC8310].
-* DoH [@!RFC8484].
+* DNS over TLS (DoT) [@!RFC7858] and [@!RFC8310].
+* DNS over HTTPS (DoH) [@!RFC8484].
 
 It is noted that a DNS privacy service can also be provided over DNS-over-DTLS
 [@RFC8094], however this is an Experimental specification and there are no known
@@ -279,7 +287,7 @@ DNS privacy services should ensure clients can authenticate the server. Note
 that this, in effect, commits the DNS privacy service to a public identity users
 will trust.
 
-When using DNS-over-TLS clients that select a 'Strict Privacy' usage profile
+When using DoT clients that select a 'Strict Privacy' usage profile
 [@!RFC8310] (to mitigate the threat of active attack on the client) require the
 ability to authenticate the DNS server. To enable this, DNS privacy services
 that offer DNS-over-TLS need to provide credentials in the form of either X.509
@@ -288,8 +296,8 @@ certificates [@!RFC5280] or Subject Public Key Info (SPKI) pin sets [@!RFC8310].
 When offering DoH [@!RFC8484], HTTPS requires authentication of the server as
 part of the protocol.
 
-Server operators should also follow the best practices with regard to Online
-Certificate Status Protocol (OCSP) [@RFC2560] as described in [@RFC7525].
+Server operators should also follow the best practices with regard to
+certificate revocation as described in [@RFC7525].
 
 #### Certificate management 
 
@@ -306,9 +314,9 @@ DNS Privacy Threats:
 
 * Invalid certificates, resulting in an unavailable service which might force a
   user to fallback to cleartext.
-* Mis-identification of a server by a client e.g., typos in URLs or
-  authentication domain names [@RFC8310] which accidentally direct clients to
-  attacker controlled servers.
+* Mis-identification of a server by a client e.g., typos in DoH URL templates
+  [@RFC8484] or authentication domain names [@RFC8310] which accidentally direct
+  clients to attacker controlled servers.
 
 Mitigations:
 
@@ -324,18 +332,18 @@ revocation.
 
 ### Protocol recommendations
 
-#### DNS-over-TLS
+#### DoT
 
 DNS Privacy Threats:
 
 * Known attacks on TLS such as those described in [@RFC7457].
 * Traffic analysis, for example: [@Pitfalls-of-DNS-Encryption].
 * Potential for client tracking via transport identifiers.
-* Blocking of well known ports (e.g., 853 for DNS-over-TLS).
+* Blocking of well known ports (e.g., 853 for DoT).
 
 Mitigations:
 
-In the case of DNS-over-TLS, TLS profiles from Section 9 of [@!RFC8310] and the
+In the case of DoT, TLS profiles from Section 9 of [@!RFC8310] and the
 Countermeasures to DNS Traffic Analysis from section 11.1 of [@!RFC8310]
 provide strong mitigations. This includes but is not limited to:
 
@@ -347,7 +355,7 @@ provide strong mitigations. This includes but is not limited to:
   clients that do not use any form of session resumption mechanism, such as TLS
   session resumption [@RFC5077] with TLS 1.2, section 2.2 of [@RFC8446], or Domain
   Name System (DNS) Cookies [@RFC7873].
-* A DNS-over-TLS privacy service on both port 853 and 443. If the operator deploys DoH on the same IP address this requires the use of the 'dot' ALPN value [@dot-ALPN].
+* A DoT privacy service on both port 853 and 443. If the operator deploys DoH on the same IP address this requires the use of the 'dot' ALPN value [@dot-ALPN].
 
 Optimizations:
 
@@ -355,21 +363,25 @@ Optimizations:
   available, potentially out of order as specified in [@!RFC7766]. This is often
   called 'OOOR' - out-of-order responses (providing processing performance
   similar to HTTP multiplexing).
-* Management of TLS connections to optimize performance for clients using either:
-  * [@!RFC7766] and EDNS(0) Keepalive [@!RFC7828] and/or 
-  * DNS Stateful Operations [@RFC8490].
+* Management of TLS connections to optimize performance for clients using
+  [@!RFC7766] and EDNS(0) Keepalive [@!RFC7828]
+
+Additional Options:
+
+Management of TLS connections to optimize performance for clients using DNS Stateful Operations [@RFC8490].
 
 #### DoH
 
 DNS Privacy Threats:
 
 * Known attacks on TLS such as those described in [@RFC7457].
+* Use of HTTP/2 padding and/or EDNS(0) padding as described in Section 9 of [@RFC8484]
 * Traffic analysis, for example: [@DNS-Privacy-not-so-private].
 * Potential for client tracking via transport identifiers.
 
 Mitigations:
 
-* Clients must be able to forego the use of HTTP Cookies [@RFC6265] and still
+* Clients must be able to forgo the use of HTTP Cookies [@RFC6265] and still
   use the service.
 * Clients should not be required to include any headers beyond the absolute
   minimum to obtain service from a DoH server. (See Section 6.1 of
@@ -380,8 +392,10 @@ Mitigations:
 
 DNS Privacy Threats:
 
-* Users may be directed to bogus IP addresses for e.g., websites where they might
-  reveal personal information to attackers.
+* Users may be directed to bogus IP addresses which, depending on the
+  application, protocol and authentication method, might lead users to reveal
+  personal information to attackers. One example is a website that doesn't use
+  TLS or its TLS authentication can somehow be subverted.
 
 Mitigations:
 
@@ -476,7 +490,7 @@ DNS Privacy Threats:
 
 Optimization:
 
-Some operators may choose to implement DNS-over-TLS using a TLS proxy (e.g.
+Some operators may choose to implement DoT using a TLS proxy (e.g.
 [@nginx], [@haproxy], or
 [@stunnel]) in front of
 a DNS nameserver because of proven robustness and capacity when handling large
@@ -646,12 +660,12 @@ data shared with third parties.
 
 Mitigations:
 
-As specified in [@!RFC8310] for DNS-over-TLS but applicable to any DNS Privacy
+As specified in [@!RFC8310] for DoT but applicable to any DNS Privacy
 services the server should:
 
 * Implement QNAME minimization [@!RFC7816].
 * Honor a SOURCE PREFIX-LENGTH set to 0 in a query containing the EDNS(0)
-  Client Subnet (ECS) option and not send an ECS option in upstream queries.
+  Client Subnet (ECS) option ([@RFC7817] Section 7.1.2).
 
 Optimizations:
 
@@ -766,13 +780,14 @@ is:
     - Shared, sold, or rented to third-parties.
     
     and in each case whether it is aggregated, pseudonymized, or anonymized and
-    the conditions of data transfer.
+    the conditions of data transfer. Where possible provide details of the
+    techniques used for the above data minimizations.
     
 1. Exceptions. Specify any exceptions to the above, for example, technically
 malicious or anomalous behavior.
 
-1. Associated entities. Declare any partners, third-party affiliations, or
-sources of funding.
+1. Associated entities. Declare and explicitly enumerate any partners,
+third-party affiliations, or sources of funding.
 
 1. Correlation. Whether user DNS data is correlated or combined with any other
 personal information held by the operator.
@@ -797,12 +812,16 @@ lists, and which ones.
 
 ### Practice
 
+[NOTE FOR RFC EDITOR: Please update this section to use letters for the
+sub-bullet points instead of numbers. This was not done during review because
+the markdown tool used to write the document did not support it.]
+
 Communicate the current operational practices of the service.
 
 1. Deviations. Specify any temporary or permanent deviations from the policy for
     operational reasons.
     
-1. Client facing capabilities. With reference to section
+1. Client facing capabilities. With reference to 
 (#recommendations-for-dns-privacy-services) provide specific details of which
 capabilities are provided on which client facing addresses and ports:
     1. For DoT, specify the authentication domain name to be used (if any).
@@ -822,16 +841,15 @@ and law enforcement regimes under which the service is being provided.
     1. Specify, either directly or by pointing to the applicable privacy policy,
     the relevant privacy laws that apply to the treatment of the data, the
     rights that users enjoy in regard to their own personal information that is
-    treated by the service, and how they can contact the operator to enforce
+    treated by the service, and how they can contact the operator to exercise
     them.
     1. Additionally specify the countries in which the servers handling the DNS
     requests and the data are located (if the operator applies a geolocation
     policy so that requests from certain countries are only served by certain
     servers, this should be specified as well).
     1. Specify whether the operator has any agreement in place with law
-    enforcement agencies, or other public and private parties dealing with
-    security and intelligence, to give them access to the servers and/or to the
-    data.
+    enforcement agencies, or other public and private parties, to give them
+    access to the servers and/or to the data.
 
 
 ## Enforcement/accountability
@@ -1192,7 +1210,7 @@ draft-ietf-dprive-bcp-op-00
     </front>
 </reference>
 
-<reference anchor='dnswasher' target='https://github.com/PowerDNS/pdns/blob/master/pdns/dnswasher.cc'>
+<reference anchor='PowerDNS-dnswasher' target='https://github.com/PowerDNS/pdns/blob/master/pdns/dnswasher.cc'>
     <front>
         <title>dnswasher</title>
         <author>
@@ -1349,13 +1367,14 @@ in the appendix-->
 [-@DoH-resolver-policy]
 [-@pcap]
 [-@policy-comparison]
+[-@PowerDNS-dnswasher]
 
 
 {backmatter}
 
 # Documents
 
-This section provides an overview of some DNS privacy related documents,
+This section provides an overview of some DNS privacy-related documents,
 however, this is neither an exhaustive list nor a definitive statement on the
 characteristic of the document.
 
@@ -1365,13 +1384,10 @@ characteristic of the document.
 These documents are limited in scope to communications between stub
 clients and recursive resolvers:
 
-* 'Specification for DNS over Transport Layer Security (TLS)' [@!RFC7858],
-  referred to here as 'DNS-over-TLS'.
-* 'DNS over Datagram Transport Layer Security (DTLS)' [@RFC8094], referred to
-  here as 'DNS-over-DTLS'. Note that this document has the Category of
-  Experimental.
-* 'DNS Queries over HTTPS (DoH)' [@!RFC8484] referred to
-  here as DoH.
+* 'Specification for DNS over Transport Layer Security (TLS)' [@!RFC7858].
+* 'DNS over Datagram Transport Layer Security (DTLS)' [@RFC8094]. Note that this
+  document has the Category of Experimental.
+* 'DNS Queries over HTTPS (DoH)' [@!RFC8484].
 * 'Usage Profiles for DNS over TLS and DNS over DTLS' [@!RFC8310].
 * 'The EDNS(0) Padding Option' [@!RFC7830] and 'Padding Policy for EDNS(0)'
   [@!RFC8467].
@@ -1379,8 +1395,7 @@ clients and recursive resolvers:
 These documents apply to recursive and authoritative DNS but are relevant when
 considering the operation of a recursive server:
 
-* 'DNS Query Name minimization to Improve Privacy' [@!RFC7816] referred to here
-  as 'QNAME minimization'.
+* 'DNS Query Name minimization to Improve Privacy' [@!RFC7816].
 
 ## Potential decreases in DNS privacy
 
@@ -1511,14 +1526,14 @@ Anonymization: Format-preserving, Filtering (grey marking).
 
 ### dnswasher
 
-Since 2006, PowerDNS have included a de-identification tool [@dnswasher] with
-their PowerDNS product. This is a PCAP filter that performs a one-to-one mapping
-of end user IP addresses with an anonymized address. A table of user IP
-addresses and their de-identified counterparts is kept; the first IPv4 user
-addresses is translated to 0.0.0.1, the second to 0.0.0.2 and so on. The
-de-identified address therefore depends on the order that addresses arrive in
-the input, and running over a large amount of data the address translation
-tables can grow to a significant size. 
+Since 2006, PowerDNS have included a de-identification tool dnswasher
+[@PowerDNS-dnswasher] with their PowerDNS product. This is a PCAP filter that
+performs a one-to-one mapping of end user IP addresses with an anonymized
+address. A table of user IP addresses and their de-identified counterparts is
+kept; the first IPv4 user addresses is translated to 0.0.0.1, the second to
+0.0.0.2 and so on. The de-identified address therefore depends on the order that
+addresses arrive in the input, and running over a large amount of data the
+address translation tables can grow to a significant size.
 
 Anonymization: Format-preserving, Enumeration.
 
@@ -1750,11 +1765,11 @@ with your specific IP address.
 1. Client facing capabilities. 
 
     1. We offer UDP and TCP DNS on port 53 on (insert IP address)
-    1. We offer DNS-over-TLS as specified in RFC7858 on (insert IP address). It
+    1. We offer DNS over TLS as specified in RFC7858 on (insert IP address). It
     is available on port 853 and port 443. We also implement RFC7766.
         1. The DoT authentication domain name used is (insert domain name).
         1. We do not publish SPKI pin sets.
-    1. We offer DNS-over-HTTPS as specified in RFC8484 on (insert URI template). 
+    1. We offer DNS over HTTPS as specified in RFC8484 on (insert URI template). 
        Both POST and GET are supported.
     1. Both services offer TLS 1.2 and TLS 1.3.
     1. Both services pad DNS responses according to RFC8467.
