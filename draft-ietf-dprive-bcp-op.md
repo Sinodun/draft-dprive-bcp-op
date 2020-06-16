@@ -126,8 +126,7 @@ This document has two main goals:
   evaluate the measurable and claimed privacy properties of a given DNS privacy
   service. The framework identifies a set of elements and specifies an outline
   order for them. This document does not, however, define a particular Privacy
-  statement, nor does it seek to provide legal advice or recommendations as to
-  the contents.
+  statement, nor does it seek to provide legal advice as to the contents.
 
 A desired operational impact is that all operators (both those providing
 resolvers within networks and those operating large public services) can
@@ -170,12 +169,12 @@ like to align with privacy best practice.
 # Privacy related documents
 
 There are various documents that describe protocol changes that have the
-potential to either increase or decrease the privacy of the DNS. Note this does
-not imply that some documents are good or bad, better or worse, just that (for
-example) some features may bring functional benefits at the price of a reduction
-in privacy and conversely some features increase privacy with an accompanying
-increase in complexity. A selection of the most relevant documents are listed in
-(#documents) for reference.
+potential to either increase or decrease the privacy properties of the DNS. Note
+this does not imply that some documents are good or bad, better or worse, just
+that (for example) some features may bring functional benefits at the price of a
+reduction in privacy and conversely some features increase privacy with an
+accompanying increase in complexity. A selection of the most relevant documents
+are listed in (#documents) for reference.
 
 # Terminology
 
@@ -441,11 +440,12 @@ A DNS privacy service should deliver the same level of service as offered on
 un-encrypted channels in terms of options such as filtering (or lack thereof),
 DNSSEC validation, etc.
 
-### Impact of Encryption on DNS Monitoring
+### Impact of Encryption on Monitoring by DNS Privacy Service Operators
 
 DNS Privacy Threats: 
 
-* Increased use of encryption impacts operator ability to manage their network [@!RFC8404].
+* Increased use of encryption can impact DNS privacy service operator ability to
+  monitor traffic and therefore manage their DNS servers [@!RFC8404].
 
 Many monitoring solutions for DNS traffic rely on the plain text nature of this
 traffic and work by intercepting traffic on the wire, either using a separate
@@ -586,61 +586,16 @@ group of pseudonyms for a single given address.
 
 ### IP address pseudonymization and anonymization methods
 
-A major privacy risk in
-DNS is connecting DNS queries to an individual and the major vector for this in
-DNS traffic is the client IP address.
-
+A major privacy risk in DNS is connecting DNS queries to an individual and the
+major vector for this in DNS traffic is the client IP address.
 
 There is active discussion in the space of effective pseudonymization of IP
 addresses in DNS traffic logs, however there seems to be no single solution that
 is widely recognized as suitable for all or most use cases. There are also as
 yet no standards for this that are unencumbered by patents. 
 
-The following table presents a high level comparison of various techniques
-employed or under development in 2019 and classifies them according to
-categorization of technique and other properties. (#ip-address-techniques)
-provides a more detailed survey of these techniques and definitions for the
-categories and properties listed below. The list of techniques includes the main
-techniques in current use, but does not claim to be comprehensive.
-
-Categorization/Property    | GA | d | TC | C | TS | i | B
-:--------------------------|--------|------|------|--------|-----|----------|---
-Anonymization              |   X    |   X  |  X   |        |     |          | X
-Pseudoanonymization        |        |      |      |    X   |  X  |    X     |
-Format preserving          |   X    |   X  |  X   |    X   |  X  |    X     |
-Prefix preserving          |        |      |  X   |    X   |  X  |          |
-Replacement                |        |      |  X   |        |     |          |
-Filtering                  |   X    |      |      |        |     |          |
-Generalization             |        |      |      |        |     |          | X
-Enumeration                |        |   X  |      |        |     |          |
-Reordering/Shuffling       |        |      |  X   |        |     |          |
-Random substitution        |        |      |  X   |        |     |          |
-Cryptographic permutation  |        |      |      |   X    |  X  |    X     |
-IPv6 issues                |        |      |      |        |  X  |          |
-CPU intensive              |        |      |      |   X    |     |          |
-Memory intensive           |        |      |  X   |        |     |          |
-Security concerns          |        |      |      |        |     |     X    |
-Table: Table 1: Classification of techniques
-
-Legend of techniques: GA = Google Analytics, d = dnswasher, TC = TCPdpriv, C = CryptoPAn, TS = TSA, i = ipcipher, B = Bloom filter
-
-The choice of which method to use for a particular application will depend on
-the requirements of that application and consideration of the threat analysis of
-the particular situation.
-
-For example, a common goal is that distributed packet captures must be in an
-existing data format such as PCAP [@pcap] or C-DNS
-[@RFC8618] that can be used as input to existing
-analysis tools. In that case, use of a format-preserving technique is
-essential. This, though, is not cost-free - several authors (e.g., [@Brenker-and-Arnes]
-have observed that, as the entropy in an IPv4 address is limited, given
-a de-identified log from a target, if an attacker is capable of ensuring
-packets are captured by the target and the attacker can send forged traffic
-with arbitrary source and destination addresses to that target, any
-format-preserving pseudonymization is vulnerable to an attack along the lines
-of a cryptographic chosen plaintext attack.
-
-
+(#ip-address-techniques) provides a more detailed survey of various techniques
+employed or under development in 2019.
 
 ### Pseudonymization, anonymization, or discarding of other correlation data
 
@@ -658,7 +613,7 @@ DNS Privacy Threats:
 * Correlating of queries on multiple TLS sessions originating from the same
   client, including via session resumption mechanisms.
 * Resolvers _might_ receive client identifiers e.g., MAC addresses in EDNS(0)
-  options - some Customer-premises equipment (CPE) devices are known to add them.
+  options - some Customer-premises equipment (CPE) devices are known to add them [@?MAC-address-EDNS].
 
 Mitigations:
 
@@ -784,17 +739,25 @@ Operator SHOULD publish a DNS Recursive Operator Privacy Statement. Adopting the
 outline, and including the headings in the order provided, is a benefit to
 persons comparing multiple operators’ DROP statements.
 
+(#current-policy-and-privacy-statements) provides a comparison of some existing
+policy and privacy statements.
+
 ## Outline of a DROP statement
 
 The contents of (#policy) and (#practice) are non-normative, other than the
 order of the headings. Material under each topic is present to assist the
-operator developing their own DROP statement. (#example-drop-statement) provides
-an example (also non-normative) of a complete DROP statement for a specific
-operator scenario.
+operator developing their own DROP statement and:
+
+* Relates *only* to matters around to the technical operation of DNS privacy services, and not on any other matters.
+* Does not attempt to offer an exhaustive list for the contents of a DROP statement.
+* Is not intended to form the basis of any legal/compliance documentation.
+
+(#example-drop-statement) provides an example (also non-normative) of a DROP
+statement for a specific operator scenario.
 
 ### Policy
 
-1. Treatment of IP addresses. Make an explicit statement that IP addresses are treated as PII.
+1. Treatment of IP addresses. Make an explicit statement that IP addresses are treated as personal data.
 
 1. Data collection and sharing. Specify clearly what data (including IP addresses)
 is:
@@ -871,23 +834,6 @@ and law enforcement regimes under which the service is being provided.
     data.
 
 
-## Current policy and privacy statements
-
-A tabular comparison of policy and privacy statements from various DNS
-Privacy service operators based loosely on the proposed DROP structure can be
-found at
-[@policy-comparison]. The analysis is based on the data available in December 2019.
-
-We note that the existing set of policies vary widely in style, content and
-detail and it is not uncommon for the full text for a given operator to equate
-to more than 10 pages of moderate font sized A4 text. It is a non-trivial task
-today for a user to extract a meaningful overview of the different services on
-offer.
-
-It is also noted that Mozilla have published a DoH resolver policy [@DoH-resolver-policy], which describes the
-minimum set of policy requirements that a party must satisfy to be considered as
-a potential partner for Mozilla’s Trusted Recursive Resolver (TRR) program.
-
 ## Enforcement/accountability
 
 Transparency reports may help with building user trust that operators adhere to
@@ -951,8 +897,11 @@ United Kingdom
 draft-ietf-dprive-bcp-op-10
 
 * Remove direct references to draft-ietf-dprive-rfc7626-bis-05, instead have one general reference RFC7626
-* Clarify that the DROP statement outline is non-normative
+* Clarify that the DROP statement outline is non-normative and add some further
+  qualifications about content
 * Update wording on data sharing to remove explicit discussion of consent
+* Move table in section 5.2.3 to an appendix
+* Move section 6.2 to an appendix
 * Corrections to references, typos and editorial updates from initial IESG
   comments.
 
@@ -1356,17 +1305,26 @@ draft-ietf-dprive-bcp-op-00
     </front>
 </reference>
 
-<reference anchor='dot-ALPN'
-           target='https://www.iana.org/assignments/tls-extensiontype-values/tls-extensiontype-values.xhtml#alpn-protocol-ids'>
+<reference anchor='MAC-address-EDNS' target='https://lists.dns-oarc.net/pipermail/dns-operations/2016-January/014143.html'>
     <front>
-        <title>TLS Application-Layer Protocol Negotiation (ALPN) Protocol IDs</title>
+        <title>Embedding MAC address in DNS requests for selective filtering IDs</title>
         <author>
-           <organization>IANA (iana.org)</organization>
+           <organization>DNS-OARC mailing list</organization>
         </author>
-        <date year='2020'/>
+        <date year='2016'/>
     </front>
 </reference>
 
+<reference anchor='dot-ALPN'
+target='https://www.iana.org/assignments/tls-extensiontype-values/tls-extensiontype-values.xhtml#alpn-protocol-ids'>
+<front>
+<title>TLS Application-Layer Protocol Negotiation (ALPN) Protocol IDs</title>
+<author>
+ <organization>IANA (iana.org)</organization>
+</author>
+<date year='2020'/>
+</front>
+</reference>
 
 <!--These lines are needed to generate references for citations that appear only
 in the appendix-->
@@ -1387,6 +1345,10 @@ in the appendix-->
 [-@ipcrypt-analysis]
 [-@ipcrypt]
 [-@Bloom-filter]
+[-@Brenker-and-Arnes]
+[-@DoH-resolver-policy]
+[-@pcap]
+[-@policy-comparison]
 
 
 {backmatter}
@@ -1432,10 +1394,9 @@ user activity as a side effect:
 * [@RFC8446] Appendix C.4 describes Client Tracking Prevention in TLS 1.3
 * 'A DNS Packet Capture Format' [@RFC8618].
 * Passive DNS [@RFC8499].
-
-Section 8 of [@!RFC8484] outlines the privacy considerations of DoH. Note that
-depending on the specifics of a DoH implementation there may be increased
-identification and tracking compared to other DNS transports.
+* Section 8 of [@!RFC8484] outlines the privacy considerations of DoH. Note that
+  depending on the specifics of a DoH implementation there may be increased
+  identification and tracking compared to other DNS transports.
 
 ## Related operational documents
 
@@ -1446,6 +1407,51 @@ identification and tracking compared to other DNS transports.
 * 'DNS Stateful Operations' [@RFC8490].
 
 # IP address techniques
+
+The following table presents a high level comparison of various techniques
+employed or under development in 2019, and classifies them according to
+categorization of technique and other properties. Both the specific techniques
+and the categorisations are described in more detail in the following sections.
+The list of techniques includes the main techniques in current use, but does not
+claim to be comprehensive.
+
+Categorization/Property    | GA | d | TC | C | TS | i | B
+:--------------------------|--------|------|------|--------|-----|----------|---
+Anonymization              |   X    |   X  |  X   |        |     |          | X
+Pseudoanonymization        |        |      |      |    X   |  X  |    X     |
+Format preserving          |   X    |   X  |  X   |    X   |  X  |    X     |
+Prefix preserving          |        |      |  X   |    X   |  X  |          |
+Replacement                |        |      |  X   |        |     |          |
+Filtering                  |   X    |      |      |        |     |          |
+Generalization             |        |      |      |        |     |          | X
+Enumeration                |        |   X  |      |        |     |          |
+Reordering/Shuffling       |        |      |  X   |        |     |          |
+Random substitution        |        |      |  X   |        |     |          |
+Cryptographic permutation  |        |      |      |   X    |  X  |    X     |
+IPv6 issues                |        |      |      |        |  X  |          |
+CPU intensive              |        |      |      |   X    |     |          |
+Memory intensive           |        |      |  X   |        |     |          |
+Security concerns          |        |      |      |        |     |     X    |
+Table: Table 1: Classification of techniques
+
+Legend of techniques: GA = Google Analytics, d = dnswasher, TC = TCPdpriv, C = CryptoPAn, TS = TSA, i = ipcipher, B = Bloom filter
+
+The choice of which method to use for a particular application will depend on
+the requirements of that application and consideration of the threat analysis of
+the particular situation.
+
+For example, a common goal is that distributed packet captures must be in an
+existing data format such as PCAP [@pcap] or C-DNS [@RFC8618] that can be used
+as input to existing analysis tools. In that case, use of a format-preserving
+technique is essential. This, though, is not cost-free - several authors (e.g.,
+[@Brenker-and-Arnes] have observed that, as the entropy in an IPv4 address is
+limited, given a de-identified log from a target, if an attacker is capable of
+ensuring packets are captured by the target and the attacker can send forged
+traffic with arbitrary source and destination addresses to that target, any
+format-preserving pseudonymization is vulnerable to an attack along the lines of
+a cryptographic chosen plaintext attack.
+
+## Categorization of techniques
 
 Data minimization methods may be categorized by the processing used and the
 properties of their outputs. The following builds on the categorization
@@ -1485,8 +1491,10 @@ employed in [@RFC6235]:
 * Cryptographic permutation. Using a permutation function, such as a hash
   function or cryptographic block cipher, to generate a replacement
   de-identified value.
+
+## Specific techniques
   
-## Google Analytics non-prefix filtering
+### Google Analytics non-prefix filtering
 
 Since May 2010, Google Analytics has provided a facility [@IP-Anonymization-in-Analytics] that allows website
 owners to request that all their users IP addresses are anonymized within
@@ -1501,7 +1509,7 @@ of the user city for UK users is no more than 17%.
 
 Anonymization: Format-preserving, Filtering (grey marking).
 
-## dnswasher
+### dnswasher
 
 Since 2006, PowerDNS have included a de-identification tool [@dnswasher] with
 their PowerDNS product. This is a PCAP filter that performs a one-to-one mapping
@@ -1514,7 +1522,7 @@ tables can grow to a significant size.
 
 Anonymization: Format-preserving, Enumeration.
 
-## Prefix-preserving map
+### Prefix-preserving map
 
 Used in [@TCPdpriv], 
 this algorithm stores a set of original and anonymised IP
@@ -1529,7 +1537,7 @@ addresses sequentially cannot be used in parallel processing.
 
 Anonymization: Format-preserving, prefix preservation (general).
 
-## Cryptographic Prefix-Preserving Pseudonymization
+### Cryptographic Prefix-Preserving Pseudonymization
 
 Cryptographic prefix-preserving pseudonymization was originally proposed as an
 improvement to the prefix-preserving map implemented in TCPdpriv, described in
@@ -1545,7 +1553,7 @@ some number of prefix bits.
 
 Pseudonymization: Format-preserving, prefix preservation (general).
 
-## Top-hash Subtree-replicated Anonymization
+### Top-hash Subtree-replicated Anonymization
 
 Proposed in [@Ramaswamy-and-Wolf],
 Top-hash Subtree-replicated Anonymization (TSA)
@@ -1560,7 +1568,7 @@ not memory efficient for IPv6.
 
 Pseudonymization: Format-preserving, prefix preservation (general).
 
-## ipcipher
+### ipcipher
 
 A recently-released proposal from PowerDNS, ipcipher
 [@ipcipher1] [@ipcipher2]  is a simple
@@ -1573,7 +1581,7 @@ low security, and further analysis has revealed it is vulnerable to attack.
 
 Pseudonymization: Format-preserving, cryptographic permutation.
 
-## Bloom filters
+### Bloom filters
 
 van Rijswijk-Deij et al. 
 have recently described work using Bloom filters [@Bloom-filter] to
@@ -1591,6 +1599,24 @@ stored, this approach cannot be used to regenerate traffic, and so cannot be
 used with tools used to process live traffic.
 
 Anonymized: Generalization.
+
+# Current policy and privacy statements
+
+A tabular comparison of policy and privacy statements from various DNS
+Privacy service operators based loosely on the proposed DROP structure can
+be found at [@policy-comparison]. The analysis is based on the data
+available in December 2019.
+
+We note that the existing set of policies vary widely in style, content and
+detail and it is not uncommon for the full text for a given operator to
+equate to more than 10 pages of moderate font sized A4 text. It is a
+non-trivial task today for a user to extract a meaningful overview of the
+different services on offer.
+
+It is also noted that Mozilla have published a DoH resolver policy
+[@DoH-resolver-policy], which describes the minimum set of policy
+requirements that a party must satisfy to be considered as a potential
+partner for Mozilla’s Trusted Recursive Resolver (TRR) program.
 
 
 # Example DROP statement
@@ -1612,14 +1638,14 @@ filtering. It does aim to meet minimal compliance as specified in
 
 ## Policy
 
-1. Treatment of IP addresses. Many nations classify IP addresses as Personally-Identifiable Information (PII), 
-and we take a conservative approach in treating IP addresses as PII in all 
-jurisdictions in which our systems reside.
+1. Treatment of IP addresses. Many nations classify IP addresses as personal
+data, and we take a conservative approach in treating IP addresses as personal
+data in all jurisdictions in which our systems reside.
 
 1. Data collection and sharing.
 
     1. IP addresses. Our normal course of data management does
-    not have any IP address information or other PII logged to disk or
+    not have any IP address information or other personal data logged to disk or
     transmitted out of the location in which the query was received. We may
     aggregate certain counters to larger network block levels for statistical
     collection purposes, but those counters do not maintain specific IP address
@@ -1680,7 +1706,7 @@ jurisdictions in which our systems reside.
         also builds, stores, and may share certain DNS data streams which store
         high level information about domain resolved, query types, result codes,
         and timestamp. These streams do not contain IP address information of
-        requestor and cannot be correlated to IP address or other PII.
+        requestor and cannot be correlated to IP address or other personal data.
 
         We do not and never will share any of its data with marketers, nor will
         it use this data for demographic analysis.
@@ -1755,4 +1781,6 @@ with your specific IP address.
     document with regard to cyber threat intelligence, we have no agreements in
     place with other public and private parties dealing with security and
     intelligence, to give them access to the servers and/or to the data.
+
+
 

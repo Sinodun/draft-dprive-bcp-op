@@ -386,7 +386,7 @@
 <link href="#rfc.section.5.1.4" rel="Chapter" title="5.1.4 DNSSEC"/>
 <link href="#rfc.section.5.1.5" rel="Chapter" title="5.1.5 Availability"/>
 <link href="#rfc.section.5.1.6" rel="Chapter" title="5.1.6 Service options"/>
-<link href="#rfc.section.5.1.7" rel="Chapter" title="5.1.7 Impact of Encryption on DNS Monitoring"/>
+<link href="#rfc.section.5.1.7" rel="Chapter" title="5.1.7 Impact of Encryption on Monitoring by DNS Privacy Service Operators"/>
 <link href="#rfc.section.5.1.8" rel="Chapter" title="5.1.8 Limitations of fronting a DNS privacy service with a pure TLS proxy"/>
 <link href="#rfc.section.5.2" rel="Chapter" title="5.2 Data at rest on the server"/>
 <link href="#rfc.section.5.2.1" rel="Chapter" title="5.2.1 Data handling"/>
@@ -402,8 +402,7 @@
 <link href="#rfc.section.6.1" rel="Chapter" title="6.1 Outline of a DROP statement"/>
 <link href="#rfc.section.6.1.1" rel="Chapter" title="6.1.1 Policy"/>
 <link href="#rfc.section.6.1.2" rel="Chapter" title="6.1.2 Practice"/>
-<link href="#rfc.section.6.2" rel="Chapter" title="6.2 Current policy and privacy statements"/>
-<link href="#rfc.section.6.3" rel="Chapter" title="6.3 Enforcement/accountability"/>
+<link href="#rfc.section.6.2" rel="Chapter" title="6.2 Enforcement/accountability"/>
 <link href="#rfc.section.7" rel="Chapter" title="7 IANA considerations"/>
 <link href="#rfc.section.8" rel="Chapter" title="8 Security considerations"/>
 <link href="#rfc.section.9" rel="Chapter" title="9 Acknowledgements"/>
@@ -417,16 +416,19 @@
 <link href="#rfc.appendix.A.2" rel="Chapter" title="A.2 Potential decreases in DNS privacy"/>
 <link href="#rfc.appendix.A.3" rel="Chapter" title="A.3 Related operational documents"/>
 <link href="#rfc.appendix.B" rel="Chapter" title="B IP address techniques"/>
-<link href="#rfc.appendix.B.1" rel="Chapter" title="B.1 Google Analytics non-prefix filtering"/>
-<link href="#rfc.appendix.B.2" rel="Chapter" title="B.2 dnswasher"/>
-<link href="#rfc.appendix.B.3" rel="Chapter" title="B.3 Prefix-preserving map"/>
-<link href="#rfc.appendix.B.4" rel="Chapter" title="B.4 Cryptographic Prefix-Preserving Pseudonymization"/>
-<link href="#rfc.appendix.B.5" rel="Chapter" title="B.5 Top-hash Subtree-replicated Anonymization"/>
-<link href="#rfc.appendix.B.6" rel="Chapter" title="B.6 ipcipher"/>
-<link href="#rfc.appendix.B.7" rel="Chapter" title="B.7 Bloom filters"/>
-<link href="#rfc.appendix.C" rel="Chapter" title="C Example DROP statement"/>
-<link href="#rfc.appendix.C.1" rel="Chapter" title="C.1 Policy"/>
-<link href="#rfc.appendix.C.2" rel="Chapter" title="C.2 Practice"/>
+<link href="#rfc.appendix.B.1" rel="Chapter" title="B.1 Categorization of techniques"/>
+<link href="#rfc.appendix.B.2" rel="Chapter" title="B.2 Specific techniques"/>
+<link href="#rfc.appendix.B.2.1" rel="Chapter" title="B.2.1 Google Analytics non-prefix filtering"/>
+<link href="#rfc.appendix.B.2.2" rel="Chapter" title="B.2.2 dnswasher"/>
+<link href="#rfc.appendix.B.2.3" rel="Chapter" title="B.2.3 Prefix-preserving map"/>
+<link href="#rfc.appendix.B.2.4" rel="Chapter" title="B.2.4 Cryptographic Prefix-Preserving Pseudonymization"/>
+<link href="#rfc.appendix.B.2.5" rel="Chapter" title="B.2.5 Top-hash Subtree-replicated Anonymization"/>
+<link href="#rfc.appendix.B.2.6" rel="Chapter" title="B.2.6 ipcipher"/>
+<link href="#rfc.appendix.B.2.7" rel="Chapter" title="B.2.7 Bloom filters"/>
+<link href="#rfc.appendix.C" rel="Chapter" title="C Current policy and privacy statements"/>
+<link href="#rfc.appendix.D" rel="Chapter" title="D Example DROP statement"/>
+<link href="#rfc.appendix.D.1" rel="Chapter" title="D.1 Policy"/>
+<link href="#rfc.appendix.D.2" rel="Chapter" title="D.2 Practice"/>
 <link href="#rfc.authors" rel="Chapter"/>
 
 
@@ -521,7 +523,7 @@
 <li>5.1.4.   <a href="#rfc.section.5.1.4">DNSSEC</a></li>
 <li>5.1.5.   <a href="#rfc.section.5.1.5">Availability</a></li>
 <li>5.1.6.   <a href="#rfc.section.5.1.6">Service options</a></li>
-<li>5.1.7.   <a href="#rfc.section.5.1.7">Impact of Encryption on DNS Monitoring</a></li>
+<li>5.1.7.   <a href="#rfc.section.5.1.7">Impact of Encryption on Monitoring by DNS Privacy Service Operators</a></li>
 <li>5.1.8.   <a href="#rfc.section.5.1.8">Limitations of fronting a DNS privacy service with a pure TLS proxy</a></li>
 </ul><li>5.2.   <a href="#rfc.section.5.2">Data at rest on the server</a></li>
 <ul><li>5.2.1.   <a href="#rfc.section.5.2.1">Data handling</a></li>
@@ -537,8 +539,7 @@
 <ul><li>6.1.   <a href="#rfc.section.6.1">Outline of a DROP statement</a></li>
 <ul><li>6.1.1.   <a href="#rfc.section.6.1.1">Policy</a></li>
 <li>6.1.2.   <a href="#rfc.section.6.1.2">Practice</a></li>
-</ul><li>6.2.   <a href="#rfc.section.6.2">Current policy and privacy statements</a></li>
-<li>6.3.   <a href="#rfc.section.6.3">Enforcement/accountability</a></li>
+</ul><li>6.2.   <a href="#rfc.section.6.2">Enforcement/accountability</a></li>
 </ul><li>7.   <a href="#rfc.section.7">IANA considerations</a></li>
 <li>8.   <a href="#rfc.section.8">Security considerations</a></li>
 <li>9.   <a href="#rfc.section.9">Acknowledgements</a></li>
@@ -552,16 +553,19 @@
 <li>A.2.   <a href="#rfc.appendix.A.2">Potential decreases in DNS privacy</a></li>
 <li>A.3.   <a href="#rfc.appendix.A.3">Related operational documents</a></li>
 </ul><li>Appendix B.   <a href="#rfc.appendix.B">IP address techniques</a></li>
-<ul><li>B.1.   <a href="#rfc.appendix.B.1">Google Analytics non-prefix filtering</a></li>
-<li>B.2.   <a href="#rfc.appendix.B.2">dnswasher</a></li>
-<li>B.3.   <a href="#rfc.appendix.B.3">Prefix-preserving map</a></li>
-<li>B.4.   <a href="#rfc.appendix.B.4">Cryptographic Prefix-Preserving Pseudonymization</a></li>
-<li>B.5.   <a href="#rfc.appendix.B.5">Top-hash Subtree-replicated Anonymization</a></li>
-<li>B.6.   <a href="#rfc.appendix.B.6">ipcipher</a></li>
-<li>B.7.   <a href="#rfc.appendix.B.7">Bloom filters</a></li>
-</ul><li>Appendix C.   <a href="#rfc.appendix.C">Example DROP statement</a></li>
-<ul><li>C.1.   <a href="#rfc.appendix.C.1">Policy</a></li>
-<li>C.2.   <a href="#rfc.appendix.C.2">Practice</a></li>
+<ul><li>B.1.   <a href="#rfc.appendix.B.1">Categorization of techniques</a></li>
+<li>B.2.   <a href="#rfc.appendix.B.2">Specific techniques</a></li>
+<ul><li>B.2.1.   <a href="#rfc.appendix.B.2.1">Google Analytics non-prefix filtering</a></li>
+<li>B.2.2.   <a href="#rfc.appendix.B.2.2">dnswasher</a></li>
+<li>B.2.3.   <a href="#rfc.appendix.B.2.3">Prefix-preserving map</a></li>
+<li>B.2.4.   <a href="#rfc.appendix.B.2.4">Cryptographic Prefix-Preserving Pseudonymization</a></li>
+<li>B.2.5.   <a href="#rfc.appendix.B.2.5">Top-hash Subtree-replicated Anonymization</a></li>
+<li>B.2.6.   <a href="#rfc.appendix.B.2.6">ipcipher</a></li>
+<li>B.2.7.   <a href="#rfc.appendix.B.2.7">Bloom filters</a></li>
+</ul></ul><li>Appendix C.   <a href="#rfc.appendix.C">Current policy and privacy statements</a></li>
+<li>Appendix D.   <a href="#rfc.appendix.D">Example DROP statement</a></li>
+<ul><li>D.1.   <a href="#rfc.appendix.D.1">Policy</a></li>
+<li>D.2.   <a href="#rfc.appendix.D.2">Practice</a></li>
 </ul><li><a href="#rfc.authors">Authors' Addresses</a></li>
 
 
@@ -578,7 +582,7 @@
 
 <ul>
   <li>To provide operational and policy guidance related to DNS over encrypted transports and to outline recommendations for data handling for operators of DNS privacy services.</li>
-  <li>To introduce the DNS Recursive Operator Privacy (DROP) statement and present a framework to assist writers of this document. A DROP statement is a document that an operator should publish outlining their operational practices and commitments with regard to privacy thereby providing a means for clients to evaluate the measurable and claimed privacy properties of a given DNS privacy service. The framework identifies a set of elements and specifies an outline order for them. This document does not, however, define a particular Privacy statement, nor does it seek to provide legal advice or recommendations as to the contents.</li>
+  <li>To introduce the DNS Recursive Operator Privacy (DROP) statement and present a framework to assist writers of this document. A DROP statement is a document that an operator should publish outlining their operational practices and commitments with regard to privacy thereby providing a means for clients to evaluate the measurable and claimed privacy properties of a given DNS privacy service. The framework identifies a set of elements and specifies an outline order for them. This document does not, however, define a particular Privacy statement, nor does it seek to provide legal advice as to the contents.</li>
 </ul>
 
 <p> </p>
@@ -598,7 +602,7 @@
 <p> </p>
 <p id="rfc.section.2.p.4">Whilst the issues raised here are targeted at those operators who choose to offer a DNS privacy service, considerations for areas 2 and 3 could equally apply to operators who only offer DNS over unencrypted transports but who would like to align with privacy best practice.  </p>
 <h1 id="rfc.section.3"><a href="#rfc.section.3">3.</a> <a href="#privacy-related-documents" id="privacy-related-documents">Privacy related documents</a></h1>
-<p id="rfc.section.3.p.1">There are various documents that describe protocol changes that have the potential to either increase or decrease the privacy of the DNS. Note this does not imply that some documents are good or bad, better or worse, just that (for example) some features may bring functional benefits at the price of a reduction in privacy and conversely some features increase privacy with an accompanying increase in complexity. A selection of the most relevant documents are listed in <a href="#documents">Appendix A</a> for reference.  </p>
+<p id="rfc.section.3.p.1">There are various documents that describe protocol changes that have the potential to either increase or decrease the privacy properties of the DNS. Note this does not imply that some documents are good or bad, better or worse, just that (for example) some features may bring functional benefits at the price of a reduction in privacy and conversely some features increase privacy with an accompanying increase in complexity. A selection of the most relevant documents are listed in <a href="#documents">Appendix A</a> for reference.  </p>
 <h1 id="rfc.section.4"><a href="#rfc.section.4">4.</a> <a href="#terminology" id="terminology">Terminology</a></h1>
 <p id="rfc.section.4.p.1">The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in BCP 14 <a href="#RFC2119">[RFC2119]</a> <a href="#RFC8174">[RFC8174]</a> when, and only when, they appear in all capitals, as shown here.  </p>
 <p id="rfc.section.4.p.2">DNS terminology is as described in <a href="#RFC8499">[RFC8499]</a> with one modification: we restate the clause in the original definition of Privacy-enabling DNS server in <a href="#RFC8310">[RFC8310]</a> to include the requirement that a DNS over (D)TLS server should also offer at least one of the credentials described in Section 8 of <a href="#RFC8310">[RFC8310]</a> and implement the (D)TLS profile described in Section 9 of <a href="#RFC8310">[RFC8310]</a>.  </p>
@@ -810,12 +814,12 @@
 <p> </p>
 <p id="rfc.section.5.1.6.p.3">Mitigations: </p>
 <p id="rfc.section.5.1.6.p.4">A DNS privacy service should deliver the same level of service as offered on un-encrypted channels in terms of options such as filtering (or lack thereof), DNSSEC validation, etc.  </p>
-<h1 id="rfc.section.5.1.7"><a href="#rfc.section.5.1.7">5.1.7.</a> <a href="#impact-of-encryption-on-dns-monitoring" id="impact-of-encryption-on-dns-monitoring">Impact of Encryption on DNS Monitoring</a></h1>
+<h1 id="rfc.section.5.1.7"><a href="#rfc.section.5.1.7">5.1.7.</a> <a href="#impact-of-encryption-on-monitoring-by-dns-privacy-service-operators" id="impact-of-encryption-on-monitoring-by-dns-privacy-service-operators">Impact of Encryption on Monitoring by DNS Privacy Service Operators</a></h1>
 <p id="rfc.section.5.1.7.p.1">DNS Privacy Threats: </p>
 <p/>
 
 <ul>
-  <li>Increased use of encryption impacts operator ability to manage their network <a href="#RFC8404">[RFC8404]</a>.</li>
+  <li>Increased use of encryption can impact DNS privacy service operator ability to monitor traffic and therefore manage their DNS servers <a href="#RFC8404">[RFC8404]</a>.</li>
 </ul>
 
 <p> </p>
@@ -895,177 +899,7 @@
 <h1 id="rfc.section.5.2.3"><a href="#rfc.section.5.2.3">5.2.3.</a> <a href="#ip-address-pseudonymization-and-anonymization-methods" id="ip-address-pseudonymization-and-anonymization-methods">IP address pseudonymization and anonymization methods</a></h1>
 <p id="rfc.section.5.2.3.p.1">A major privacy risk in DNS is connecting DNS queries to an individual and the major vector for this in DNS traffic is the client IP address.  </p>
 <p id="rfc.section.5.2.3.p.2">There is active discussion in the space of effective pseudonymization of IP addresses in DNS traffic logs, however there seems to be no single solution that is widely recognized as suitable for all or most use cases. There are also as yet no standards for this that are unencumbered by patents.  </p>
-<p id="rfc.section.5.2.3.p.3">The following table presents a high level comparison of various techniques employed or under development in 2019 and classifies them according to categorization of technique and other properties. <a href="#ip-address-techniques">Appendix B</a> provides a more detailed survey of these techniques and definitions for the categories and properties listed below. The list of techniques includes the main techniques in current use, but does not claim to be comprehensive.  </p>
-<table cellpadding="3" cellspacing="0" class="tt full center">
-  <caption>Table 1: Classification of techniques </caption>
-  <thead>
-    <tr>
-      <th class="left">Categorization/Property</th>
-      <th class="center">GA</th>
-      <th class="center">d</th>
-      <th class="center">TC</th>
-      <th class="center">C</th>
-      <th class="center">TS</th>
-      <th class="center">i</th>
-      <th class="center">B</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td class="left">Anonymization</td>
-      <td class="center">X</td>
-      <td class="center">X</td>
-      <td class="center">X</td>
-      <td class="center"/>
-      <td class="center"/>
-      <td class="center"/>
-      <td class="center">X</td>
-    </tr>
-    <tr>
-      <td class="left">Pseudoanonymization</td>
-      <td class="center"/>
-      <td class="center"/>
-      <td class="center"/>
-      <td class="center">X</td>
-      <td class="center">X</td>
-      <td class="center">X</td>
-      <td class="center"/>
-    </tr>
-    <tr>
-      <td class="left">Format preserving</td>
-      <td class="center">X</td>
-      <td class="center">X</td>
-      <td class="center">X</td>
-      <td class="center">X</td>
-      <td class="center">X</td>
-      <td class="center">X</td>
-      <td class="center"/>
-    </tr>
-    <tr>
-      <td class="left">Prefix preserving</td>
-      <td class="center"/>
-      <td class="center"/>
-      <td class="center">X</td>
-      <td class="center">X</td>
-      <td class="center">X</td>
-      <td class="center"/>
-      <td class="center"/>
-    </tr>
-    <tr>
-      <td class="left">Replacement</td>
-      <td class="center"/>
-      <td class="center"/>
-      <td class="center">X</td>
-      <td class="center"/>
-      <td class="center"/>
-      <td class="center"/>
-      <td class="center"/>
-    </tr>
-    <tr>
-      <td class="left">Filtering</td>
-      <td class="center">X</td>
-      <td class="center"/>
-      <td class="center"/>
-      <td class="center"/>
-      <td class="center"/>
-      <td class="center"/>
-      <td class="center"/>
-    </tr>
-    <tr>
-      <td class="left">Generalization</td>
-      <td class="center"/>
-      <td class="center"/>
-      <td class="center"/>
-      <td class="center"/>
-      <td class="center"/>
-      <td class="center"/>
-      <td class="center">X</td>
-    </tr>
-    <tr>
-      <td class="left">Enumeration</td>
-      <td class="center"/>
-      <td class="center">X</td>
-      <td class="center"/>
-      <td class="center"/>
-      <td class="center"/>
-      <td class="center"/>
-      <td class="center"/>
-    </tr>
-    <tr>
-      <td class="left">Reordering/Shuffling</td>
-      <td class="center"/>
-      <td class="center"/>
-      <td class="center">X</td>
-      <td class="center"/>
-      <td class="center"/>
-      <td class="center"/>
-      <td class="center"/>
-    </tr>
-    <tr>
-      <td class="left">Random substitution</td>
-      <td class="center"/>
-      <td class="center"/>
-      <td class="center">X</td>
-      <td class="center"/>
-      <td class="center"/>
-      <td class="center"/>
-      <td class="center"/>
-    </tr>
-    <tr>
-      <td class="left">Cryptographic permutation</td>
-      <td class="center"/>
-      <td class="center"/>
-      <td class="center"/>
-      <td class="center">X</td>
-      <td class="center">X</td>
-      <td class="center">X</td>
-      <td class="center"/>
-    </tr>
-    <tr>
-      <td class="left">IPv6 issues</td>
-      <td class="center"/>
-      <td class="center"/>
-      <td class="center"/>
-      <td class="center"/>
-      <td class="center">X</td>
-      <td class="center"/>
-      <td class="center"/>
-    </tr>
-    <tr>
-      <td class="left">CPU intensive</td>
-      <td class="center"/>
-      <td class="center"/>
-      <td class="center"/>
-      <td class="center">X</td>
-      <td class="center"/>
-      <td class="center"/>
-      <td class="center"/>
-    </tr>
-    <tr>
-      <td class="left">Memory intensive</td>
-      <td class="center"/>
-      <td class="center"/>
-      <td class="center">X</td>
-      <td class="center"/>
-      <td class="center"/>
-      <td class="center"/>
-      <td class="center"/>
-    </tr>
-    <tr>
-      <td class="left">Security concerns</td>
-      <td class="center"/>
-      <td class="center"/>
-      <td class="center"/>
-      <td class="center"/>
-      <td class="center"/>
-      <td class="center">X</td>
-      <td class="center"/>
-    </tr>
-  </tbody>
-</table>
-<p id="rfc.section.5.2.3.p.4">Legend of techniques: GA = Google Analytics, d = dnswasher, TC = TCPdpriv, C = CryptoPAn, TS = TSA, i = ipcipher, B = Bloom filter </p>
-<p id="rfc.section.5.2.3.p.5">The choice of which method to use for a particular application will depend on the requirements of that application and consideration of the threat analysis of the particular situation.  </p>
-<p id="rfc.section.5.2.3.p.6">For example, a common goal is that distributed packet captures must be in an existing data format such as PCAP <a href="#pcap">[pcap]</a> or C-DNS <a href="#RFC8618">[RFC8618]</a> that can be used as input to existing analysis tools. In that case, use of a format-preserving technique is essential. This, though, is not cost-free - several authors (e.g., <a href="#Brenker-and-Arnes">[Brenker-and-Arnes]</a> have observed that, as the entropy in an IPv4 address is limited, given a de-identified log from a target, if an attacker is capable of ensuring packets are captured by the target and the attacker can send forged traffic with arbitrary source and destination addresses to that target, any format-preserving pseudonymization is vulnerable to an attack along the lines of a cryptographic chosen plaintext attack.  </p>
+<p><a href="#ip-address-techniques">Appendix B</a> provides a more detailed survey of various techniques employed or under development in 2019.  </p>
 <h1 id="rfc.section.5.2.4"><a href="#rfc.section.5.2.4">5.2.4.</a> <a href="#pseudonymization-anonymization-or-discarding-of-other-correlation-data" id="pseudonymization-anonymization-or-discarding-of-other-correlation-data">Pseudonymization, anonymization, or discarding of other correlation data</a></h1>
 <p id="rfc.section.5.2.4.p.1">DNS Privacy Threats: </p>
 <p/>
@@ -1075,7 +909,7 @@
   <li>Fingerprinting of the client application or TLS library by e.g., HTTP headers (e.g., User-Agent, Accept, Accept-Encoding), TLS version/Cipher suite combinations, or other connection parameters.</li>
   <li>Correlation of queries on multiple TCP sessions originating from the same IP address.</li>
   <li>Correlating of queries on multiple TLS sessions originating from the same client, including via session resumption mechanisms.</li>
-  <li>Resolvers <em>might</em> receive client identifiers e.g., MAC addresses in EDNS(0) options - some Customer-premises equipment (CPE) devices are known to add them.</li>
+  <li>Resolvers <em>might</em> receive client identifiers e.g., MAC addresses in EDNS(0) options - some Customer-premises equipment (CPE) devices are known to add them <a href="#MAC-address-EDNS">[MAC-address-EDNS]</a>.</li>
 </ul>
 
 <p> </p>
@@ -1177,13 +1011,24 @@
 <p id="rfc.section.5.3.3.p.8">Operators should consider including specific guidelines for the collection of aggregated and/or anonymized data for research purposes, within or outside of their own organization. This can benefit not only the operator (through inclusion in novel research) but also the wider Internet community. See the policy published by SURFnet <a href="#SURFnet-policy">[SURFnet-policy]</a> on data sharing for research as an example.  </p>
 <h1 id="rfc.section.6"><a href="#rfc.section.6">6.</a> <a href="#dns-recursive-operator-privacy-drop-statement" id="dns-recursive-operator-privacy-drop-statement">DNS Recursive Operator Privacy (DROP) statement</a></h1>
 <p id="rfc.section.6.p.1">To be compliant with this Best Common Practices document, a DNS Recursive Operator SHOULD publish a DNS Recursive Operator Privacy Statement. Adopting the outline, and including the headings in the order provided, is a benefit to persons comparing multiple operators&#8217; DROP statements.  </p>
+<p><a href="#current-policy-and-privacy-statements">Appendix C</a> provides a comparison of some existing policy and privacy statements.  </p>
 <h1 id="rfc.section.6.1"><a href="#rfc.section.6.1">6.1.</a> <a href="#outline-of-a-drop-statement" id="outline-of-a-drop-statement">Outline of a DROP statement</a></h1>
-<p id="rfc.section.6.1.p.1">The contents of <a href="#policy">Section 6.1.1</a> and <a href="#practice">Section 6.1.2</a> are non-normative, other than the order of the headings. Material under each topic is present to assist the operator developing their own DROP statement. <a href="#example-drop-statement">Appendix C</a> provides an example (also non-normative) of a complete DROP statement for a specific operator scenario.  </p>
+<p id="rfc.section.6.1.p.1">The contents of <a href="#policy">Section 6.1.1</a> and <a href="#practice">Section 6.1.2</a> are non-normative, other than the order of the headings. Material under each topic is present to assist the operator developing their own DROP statement and: </p>
+<p/>
+
+<ul>
+  <li>Relates <em>only</em> to matters around to the technical operation of DNS privacy services, and not on any other matters.</li>
+  <li>Does not attempt to offer an exhaustive list for the contents of a DROP statement.</li>
+  <li>Is not intended to form the basis of any legal/compliance documentation.</li>
+</ul>
+
+<p> </p>
+<p><a href="#example-drop-statement">Appendix D</a> provides an example (also non-normative) of a DROP statement for a specific operator scenario.  </p>
 <h1 id="rfc.section.6.1.1"><a href="#rfc.section.6.1.1">6.1.1.</a> <a href="#policy" id="policy">Policy</a></h1>
 <p/>
 
 <ol>
-  <li>Treatment of IP addresses. Make an explicit statement that IP addresses are treated as PII.</li>
+  <li>Treatment of IP addresses. Make an explicit statement that IP addresses are treated as personal data.</li>
   <li>Data collection and sharing. Specify clearly what data (including IP addresses) is: <ul><li>Collected and retained by the operator, and for what period it is retained.</li><li>Shared with partners.</li><li>Shared, sold, or rented to third-parties.  <br/></li></ul><p> and in each case whether it is aggregated, pseudonymized, or anonymized and the conditions of data transfer.</p></li>
   <li>Exceptions. Specify any exceptions to the above, for example, technically malicious or anomalous behavior.</li>
   <li>Associated entities. Declare any partners, third-party affiliations, or sources of funding.</li>
@@ -1205,13 +1050,9 @@
 </ol>
 
 <p> </p>
-<h1 id="rfc.section.6.2"><a href="#rfc.section.6.2">6.2.</a> <a href="#current-policy-and-privacy-statements" id="current-policy-and-privacy-statements">Current policy and privacy statements</a></h1>
-<p id="rfc.section.6.2.p.1">A tabular comparison of policy and privacy statements from various DNS Privacy service operators based loosely on the proposed DROP structure can be found at <a href="#policy-comparison">[policy-comparison]</a>. The analysis is based on the data available in December 2019.  </p>
-<p id="rfc.section.6.2.p.2">We note that the existing set of policies vary widely in style, content and detail and it is not uncommon for the full text for a given operator to equate to more than 10 pages of moderate font sized A4 text. It is a non-trivial task today for a user to extract a meaningful overview of the different services on offer.  </p>
-<p id="rfc.section.6.2.p.3">It is also noted that Mozilla have published a DoH resolver policy <a href="#DoH-resolver-policy">[DoH-resolver-policy]</a>, which describes the minimum set of policy requirements that a party must satisfy to be considered as a potential partner for Mozilla&#8217;s Trusted Recursive Resolver (TRR) program.  </p>
-<h1 id="rfc.section.6.3"><a href="#rfc.section.6.3">6.3.</a> <a href="#enforcementaccountability" id="enforcementaccountability">Enforcement/accountability</a></h1>
-<p id="rfc.section.6.3.p.1">Transparency reports may help with building user trust that operators adhere to their policies and practices.  </p>
-<p id="rfc.section.6.3.p.2">Independent monitoring or analysis could be performed where possible of: </p>
+<h1 id="rfc.section.6.2"><a href="#rfc.section.6.2">6.2.</a> <a href="#enforcementaccountability" id="enforcementaccountability">Enforcement/accountability</a></h1>
+<p id="rfc.section.6.2.p.1">Transparency reports may help with building user trust that operators adhere to their policies and practices.  </p>
+<p id="rfc.section.6.2.p.2">Independent monitoring or analysis could be performed where possible of: </p>
 <p/>
 
 <ul>
@@ -1221,8 +1062,8 @@
 </ul>
 
 <p> </p>
-<p id="rfc.section.6.3.p.4">This is by analogy with several TLS or website analysis tools that are currently available e.g., <a href="#SSL-Labs">[SSL-Labs]</a> or <a href="#Internet.nl">[Internet.nl]</a>.  </p>
-<p id="rfc.section.6.3.p.5">Additionally operators could choose to engage the services of a third party auditor to verify their compliance with their published DROP statement.  </p>
+<p id="rfc.section.6.2.p.4">This is by analogy with several TLS or website analysis tools that are currently available e.g., <a href="#SSL-Labs">[SSL-Labs]</a> or <a href="#Internet.nl">[Internet.nl]</a>.  </p>
+<p id="rfc.section.6.2.p.5">Additionally operators could choose to engage the services of a third party auditor to verify their compliance with their published DROP statement.  </p>
 <h1 id="rfc.section.7"><a href="#rfc.section.7">7.</a> <a href="#iana-considerations" id="iana-considerations">IANA considerations</a></h1>
 <p id="rfc.section.7.p.1">None </p>
 <h1 id="rfc.section.8"><a href="#rfc.section.8">8.</a> <a href="#security-considerations" id="security-considerations">Security considerations</a></h1>
@@ -1240,8 +1081,10 @@
 
 <ul>
   <li>Remove direct references to draft-ietf-dprive-rfc7626-bis-05, instead have one general reference RFC7626</li>
-  <li>Clarify that the DROP statement outline is non-normative</li>
+  <li>Clarify that the DROP statement outline is non-normative and add some further qualifications about content</li>
   <li>Update wording on data sharing to remove explicit discussion of consent</li>
+  <li>Move table in section 5.2.3 to an appendix</li>
+  <li>Move section 6.2 to an appendix</li>
   <li>Corrections to references, typos and editorial updates from initial IESG comments.</li>
 </ul>
 
@@ -1591,6 +1434,12 @@
     </tr>
     <tr>
       <td class="reference">
+        <b id="MAC-address-EDNS">[MAC-address-EDNS]</b>
+      </td>
+      <td class="top"><a>DNS-OARC mailing list</a>, "<a href="https://lists.dns-oarc.net/pipermail/dns-operations/2016-January/014143.html">Embedding MAC address in DNS requests for selective filtering IDs</a>", 2016.</td>
+    </tr>
+    <tr>
+      <td class="reference">
         <b id="nginx">[nginx]</b>
       </td>
       <td class="top"><a>nginx.org</a>, "<a href="https://nginx.org/">NGINX</a>", 2019.</td>
@@ -1799,10 +1648,10 @@
   <li><a href="#RFC8446">[RFC8446]</a> Appendix C.4 describes Client Tracking Prevention in TLS 1.3</li>
   <li>'A DNS Packet Capture Format' <a href="#RFC8618">[RFC8618]</a>.</li>
   <li>Passive DNS <a href="#RFC8499">[RFC8499]</a>.</li>
+  <li>Section 8 of <a href="#RFC8484">[RFC8484]</a> outlines the privacy considerations of DoH. Note that depending on the specifics of a DoH implementation there may be increased identification and tracking compared to other DNS transports.</li>
 </ul>
 
 <p> </p>
-<p id="rfc.section.A.2.p.3">Section 8 of <a href="#RFC8484">[RFC8484]</a> outlines the privacy considerations of DoH. Note that depending on the specifics of a DoH implementation there may be increased identification and tracking compared to other DNS transports.  </p>
 <h1 id="rfc.appendix.A.3"><a href="#rfc.appendix.A.3">A.3.</a> <a href="#related-operational-documents" id="related-operational-documents">Related operational documents</a></h1>
 <p/>
 
@@ -1815,7 +1664,179 @@
 
 <p> </p>
 <h1 id="rfc.appendix.B"><a href="#rfc.appendix.B">Appendix B.</a> <a href="#ip-address-techniques" id="ip-address-techniques">IP address techniques</a></h1>
-<p id="rfc.section.B.p.1">Data minimization methods may be categorized by the processing used and the properties of their outputs. The following builds on the categorization employed in <a href="#RFC6235">[RFC6235]</a>: </p>
+<p id="rfc.section.B.p.1">The following table presents a high level comparison of various techniques employed or under development in 2019, and classifies them according to categorization of technique and other properties. Both the specific techniques and the categorisations are described in more detail in the following sections.  The list of techniques includes the main techniques in current use, but does not claim to be comprehensive.  </p>
+<table cellpadding="3" cellspacing="0" class="tt full center">
+  <caption>Table 1: Classification of techniques </caption>
+  <thead>
+    <tr>
+      <th class="left">Categorization/Property</th>
+      <th class="center">GA</th>
+      <th class="center">d</th>
+      <th class="center">TC</th>
+      <th class="center">C</th>
+      <th class="center">TS</th>
+      <th class="center">i</th>
+      <th class="center">B</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="left">Anonymization</td>
+      <td class="center">X</td>
+      <td class="center">X</td>
+      <td class="center">X</td>
+      <td class="center"/>
+      <td class="center"/>
+      <td class="center"/>
+      <td class="center">X</td>
+    </tr>
+    <tr>
+      <td class="left">Pseudoanonymization</td>
+      <td class="center"/>
+      <td class="center"/>
+      <td class="center"/>
+      <td class="center">X</td>
+      <td class="center">X</td>
+      <td class="center">X</td>
+      <td class="center"/>
+    </tr>
+    <tr>
+      <td class="left">Format preserving</td>
+      <td class="center">X</td>
+      <td class="center">X</td>
+      <td class="center">X</td>
+      <td class="center">X</td>
+      <td class="center">X</td>
+      <td class="center">X</td>
+      <td class="center"/>
+    </tr>
+    <tr>
+      <td class="left">Prefix preserving</td>
+      <td class="center"/>
+      <td class="center"/>
+      <td class="center">X</td>
+      <td class="center">X</td>
+      <td class="center">X</td>
+      <td class="center"/>
+      <td class="center"/>
+    </tr>
+    <tr>
+      <td class="left">Replacement</td>
+      <td class="center"/>
+      <td class="center"/>
+      <td class="center">X</td>
+      <td class="center"/>
+      <td class="center"/>
+      <td class="center"/>
+      <td class="center"/>
+    </tr>
+    <tr>
+      <td class="left">Filtering</td>
+      <td class="center">X</td>
+      <td class="center"/>
+      <td class="center"/>
+      <td class="center"/>
+      <td class="center"/>
+      <td class="center"/>
+      <td class="center"/>
+    </tr>
+    <tr>
+      <td class="left">Generalization</td>
+      <td class="center"/>
+      <td class="center"/>
+      <td class="center"/>
+      <td class="center"/>
+      <td class="center"/>
+      <td class="center"/>
+      <td class="center">X</td>
+    </tr>
+    <tr>
+      <td class="left">Enumeration</td>
+      <td class="center"/>
+      <td class="center">X</td>
+      <td class="center"/>
+      <td class="center"/>
+      <td class="center"/>
+      <td class="center"/>
+      <td class="center"/>
+    </tr>
+    <tr>
+      <td class="left">Reordering/Shuffling</td>
+      <td class="center"/>
+      <td class="center"/>
+      <td class="center">X</td>
+      <td class="center"/>
+      <td class="center"/>
+      <td class="center"/>
+      <td class="center"/>
+    </tr>
+    <tr>
+      <td class="left">Random substitution</td>
+      <td class="center"/>
+      <td class="center"/>
+      <td class="center">X</td>
+      <td class="center"/>
+      <td class="center"/>
+      <td class="center"/>
+      <td class="center"/>
+    </tr>
+    <tr>
+      <td class="left">Cryptographic permutation</td>
+      <td class="center"/>
+      <td class="center"/>
+      <td class="center"/>
+      <td class="center">X</td>
+      <td class="center">X</td>
+      <td class="center">X</td>
+      <td class="center"/>
+    </tr>
+    <tr>
+      <td class="left">IPv6 issues</td>
+      <td class="center"/>
+      <td class="center"/>
+      <td class="center"/>
+      <td class="center"/>
+      <td class="center">X</td>
+      <td class="center"/>
+      <td class="center"/>
+    </tr>
+    <tr>
+      <td class="left">CPU intensive</td>
+      <td class="center"/>
+      <td class="center"/>
+      <td class="center"/>
+      <td class="center">X</td>
+      <td class="center"/>
+      <td class="center"/>
+      <td class="center"/>
+    </tr>
+    <tr>
+      <td class="left">Memory intensive</td>
+      <td class="center"/>
+      <td class="center"/>
+      <td class="center">X</td>
+      <td class="center"/>
+      <td class="center"/>
+      <td class="center"/>
+      <td class="center"/>
+    </tr>
+    <tr>
+      <td class="left">Security concerns</td>
+      <td class="center"/>
+      <td class="center"/>
+      <td class="center"/>
+      <td class="center"/>
+      <td class="center"/>
+      <td class="center">X</td>
+      <td class="center"/>
+    </tr>
+  </tbody>
+</table>
+<p id="rfc.section.B.p.2">Legend of techniques: GA = Google Analytics, d = dnswasher, TC = TCPdpriv, C = CryptoPAn, TS = TSA, i = ipcipher, B = Bloom filter </p>
+<p id="rfc.section.B.p.3">The choice of which method to use for a particular application will depend on the requirements of that application and consideration of the threat analysis of the particular situation.  </p>
+<p id="rfc.section.B.p.4">For example, a common goal is that distributed packet captures must be in an existing data format such as PCAP <a href="#pcap">[pcap]</a> or C-DNS <a href="#RFC8618">[RFC8618]</a> that can be used as input to existing analysis tools. In that case, use of a format-preserving technique is essential. This, though, is not cost-free - several authors (e.g., <a href="#Brenker-and-Arnes">[Brenker-and-Arnes]</a> have observed that, as the entropy in an IPv4 address is limited, given a de-identified log from a target, if an attacker is capable of ensuring packets are captured by the target and the attacker can send forged traffic with arbitrary source and destination addresses to that target, any format-preserving pseudonymization is vulnerable to an attack along the lines of a cryptographic chosen plaintext attack.  </p>
+<h1 id="rfc.appendix.B.1"><a href="#rfc.appendix.B.1">B.1.</a> <a href="#categorization-of-techniques" id="categorization-of-techniques">Categorization of techniques</a></h1>
+<p id="rfc.section.B.1.p.1">Data minimization methods may be categorized by the processing used and the properties of their outputs. The following builds on the categorization employed in <a href="#RFC6235">[RFC6235]</a>: </p>
 <p/>
 
 <ul>
@@ -1827,33 +1848,38 @@
   <li>Enumeration. With data from a well-ordered set, replace the first data item data using a random initial value and then allocate ordered values for subsequent data items. When used with timestamp data, this preserves ordering but loses precision and distance.</li>
   <li>Reordering/shuffling. Preserving the original data, but rearranging its order, often in a random manner.</li>
   <li>Random substitution. As replacement, but using randomly generated replacement values.</li>
-  <li>Cryptographic permutation. Using a permutation function, such as a hash function or cryptographic block cipher, to generate a replacement de-identified value.  <br/></li>
+  <li>Cryptographic permutation. Using a permutation function, such as a hash function or cryptographic block cipher, to generate a replacement de-identified value.</li>
 </ul>
 
 <p> </p>
-<h1 id="rfc.appendix.B.1"><a href="#rfc.appendix.B.1">B.1.</a> <a href="#google-analytics-nonprefix-filtering" id="google-analytics-nonprefix-filtering">Google Analytics non-prefix filtering</a></h1>
-<p id="rfc.section.B.1.p.1">Since May 2010, Google Analytics has provided a facility <a href="#IP-Anonymization-in-Analytics">[IP-Anonymization-in-Analytics]</a> that allows website owners to request that all their users IP addresses are anonymized within Google Analytics processing. This very basic anonymization simply sets to zero the least significant 8 bits of IPv4 addresses, and the least significant 80 bits of IPv6 addresses. The level of anonymization this produces is perhaps questionable. There are some analysis results <a href="#Geolocation-Impact-Assessement">[Geolocation-Impact-Assessement]</a> which suggest that the impact of this on reducing the accuracy of determining the user's location from their IP address is less than might be hoped; the average discrepancy in identification of the user city for UK users is no more than 17%.  </p>
-<p id="rfc.section.B.1.p.2">Anonymization: Format-preserving, Filtering (grey marking).  </p>
-<h1 id="rfc.appendix.B.2"><a href="#rfc.appendix.B.2">B.2.</a> <a href="#dnswasher" id="dnswasher">dnswasher</a></h1>
-<p id="rfc.section.B.2.p.1">Since 2006, PowerDNS have included a de-identification tool <a href="#dnswasher">Appendix B.2</a> with their PowerDNS product. This is a PCAP filter that performs a one-to-one mapping of end user IP addresses with an anonymized address. A table of user IP addresses and their de-identified counterparts is kept; the first IPv4 user addresses is translated to 0.0.0.1, the second to 0.0.0.2 and so on. The de-identified address therefore depends on the order that addresses arrive in the input, and running over a large amount of data the address translation tables can grow to a significant size.  </p>
-<p id="rfc.section.B.2.p.2">Anonymization: Format-preserving, Enumeration.  </p>
-<h1 id="rfc.appendix.B.3"><a href="#rfc.appendix.B.3">B.3.</a> <a href="#prefixpreserving-map" id="prefixpreserving-map">Prefix-preserving map</a></h1>
-<p id="rfc.section.B.3.p.1">Used in <a href="#TCPdpriv">[TCPdpriv]</a>, this algorithm stores a set of original and anonymised IP address pairs. When a new IP address arrives, it is compared with previous addresses to determine the longest prefix match. The new address is anonymized by using the same prefix, with the remainder of the address anonymized with a random value. The use of a random value means that TCPdrpiv is not deterministic; different anonymized values will be generated on each run. The need to store previous addresses means that TCPdpriv has significant and unbounded memory requirements, and because of the need to allocated anonymized addresses sequentially cannot be used in parallel processing.  </p>
-<p id="rfc.section.B.3.p.2">Anonymization: Format-preserving, prefix preservation (general).  </p>
-<h1 id="rfc.appendix.B.4"><a href="#rfc.appendix.B.4">B.4.</a> <a href="#cryptographic-prefixpreserving-pseudonymization" id="cryptographic-prefixpreserving-pseudonymization">Cryptographic Prefix-Preserving Pseudonymization</a></h1>
-<p id="rfc.section.B.4.p.1">Cryptographic prefix-preserving pseudonymization was originally proposed as an improvement to the prefix-preserving map implemented in TCPdpriv, described in <a href="#Xu-et-al.">[Xu-et-al.]</a> and implemented in the <a href="#Crypto-PAn">[Crypto-PAn]</a> tool.  Crypto-PAn is now frequently used as an acronym for the algorithm. Initially it was described for IPv4 addresses only; extension for IPv6 addresses was proposed in <a href="#Harvan">[Harvan]</a>. This uses a cryptographic algorithm rather than a random value, and thus pseudonymity is determined uniquely by the encryption key, and is deterministic. It requires a separate AES encryption for each output bit, so has a non-trivial calculation overhead. This can be mitigated to some extent (for IPv4, at least) by pre-calculating results for some number of prefix bits.  </p>
-<p id="rfc.section.B.4.p.2">Pseudonymization: Format-preserving, prefix preservation (general).  </p>
-<h1 id="rfc.appendix.B.5"><a href="#rfc.appendix.B.5">B.5.</a> <a href="#tophash-subtreereplicated-anonymization" id="tophash-subtreereplicated-anonymization">Top-hash Subtree-replicated Anonymization</a></h1>
-<p id="rfc.section.B.5.p.1">Proposed in <a href="#Ramaswamy-and-Wolf">[Ramaswamy-and-Wolf]</a>, Top-hash Subtree-replicated Anonymization (TSA) originated in response to the requirement for faster processing than Crypto-PAn.  It used hashing for the most significant byte of an IPv4 address, and a pre-calculated binary tree structure for the remainder of the address. To save memory space, replication is used within the tree structure, reducing the size of the pre-calculated structures to a few Mb for IPv4 addresses. Address pseudonymization is done via hash and table lookup, and so requires minimal computation. However, due to the much increased address space for IPv6, TSA is not memory efficient for IPv6.  </p>
-<p id="rfc.section.B.5.p.2">Pseudonymization: Format-preserving, prefix preservation (general).  </p>
-<h1 id="rfc.appendix.B.6"><a href="#rfc.appendix.B.6">B.6.</a> <a href="#ipcipher" id="ipcipher">ipcipher</a></h1>
-<p id="rfc.section.B.6.p.1">A recently-released proposal from PowerDNS, ipcipher <a href="#ipcipher1">[ipcipher1]</a> <a href="#ipcipher2">[ipcipher2]</a>  is a simple pseudonymization technique for IPv4 and IPv6 addresses. IPv6 addresses are encrypted directly with AES-128 using a key (which may be derived from a passphrase). IPv4 addresses are similarly encrypted, but using a recently proposed encryption <a href="#ipcrypt">[ipcrypt]</a> suitable for 32bit block lengths. However, the author of ipcrypt has since indicated <a href="#ipcrypt-analysis">[ipcrypt-analysis]</a> that it has low security, and further analysis has revealed it is vulnerable to attack.  </p>
-<p id="rfc.section.B.6.p.2">Pseudonymization: Format-preserving, cryptographic permutation.  </p>
-<h1 id="rfc.appendix.B.7"><a href="#rfc.appendix.B.7">B.7.</a> <a href="#bloom-filters" id="bloom-filters">Bloom filters</a></h1>
-<p id="rfc.section.B.7.p.1">van Rijswijk-Deij et al.  have recently described work using Bloom filters <a href="#Bloom-filter">[Bloom-filter]</a> to categorize query traffic and record the traffic as the state of multiple filters. The goal of this work is to allow operators to identify so-called Indicators of Compromise (IOCs) originating from specific subnets without storing information about, or be able to monitor the DNS queries of an individual user. By using a Bloom filter, it is possible to determine with a high probability if, for example, a particular query was made, but the set of queries made cannot be recovered from the filter. Similarly, by mixing queries from a sufficient number of users in a single filter, it becomes practically impossible to determine if a particular user performed a particular query. Large numbers of queries can be tracked in a memory-efficient way. As filter status is stored, this approach cannot be used to regenerate traffic, and so cannot be used with tools used to process live traffic.  </p>
-<p id="rfc.section.B.7.p.2">Anonymized: Generalization.  </p>
-<h1 id="rfc.appendix.C"><a href="#rfc.appendix.C">Appendix C.</a> <a href="#example-drop-statement" id="example-drop-statement">Example DROP statement</a></h1>
-<p id="rfc.section.C.p.1">The following example DROP statement is very loosely based on some elements of published privacy statements for some public resolvers, with additional fields populated to illustrate the what the full contents of a DROP statement might look like. This should not be interpreted as </p>
+<h1 id="rfc.appendix.B.2"><a href="#rfc.appendix.B.2">B.2.</a> <a href="#specific-techniques" id="specific-techniques">Specific techniques</a></h1>
+<h1 id="rfc.appendix.B.2.1"><a href="#rfc.appendix.B.2.1">B.2.1.</a> <a href="#google-analytics-nonprefix-filtering" id="google-analytics-nonprefix-filtering">Google Analytics non-prefix filtering</a></h1>
+<p id="rfc.section.B.2.1.p.1">Since May 2010, Google Analytics has provided a facility <a href="#IP-Anonymization-in-Analytics">[IP-Anonymization-in-Analytics]</a> that allows website owners to request that all their users IP addresses are anonymized within Google Analytics processing. This very basic anonymization simply sets to zero the least significant 8 bits of IPv4 addresses, and the least significant 80 bits of IPv6 addresses. The level of anonymization this produces is perhaps questionable. There are some analysis results <a href="#Geolocation-Impact-Assessement">[Geolocation-Impact-Assessement]</a> which suggest that the impact of this on reducing the accuracy of determining the user's location from their IP address is less than might be hoped; the average discrepancy in identification of the user city for UK users is no more than 17%.  </p>
+<p id="rfc.section.B.2.1.p.2">Anonymization: Format-preserving, Filtering (grey marking).  </p>
+<h1 id="rfc.appendix.B.2.2"><a href="#rfc.appendix.B.2.2">B.2.2.</a> <a href="#dnswasher" id="dnswasher">dnswasher</a></h1>
+<p id="rfc.section.B.2.2.p.1">Since 2006, PowerDNS have included a de-identification tool <a href="#dnswasher">Appendix B.2.2</a> with their PowerDNS product. This is a PCAP filter that performs a one-to-one mapping of end user IP addresses with an anonymized address. A table of user IP addresses and their de-identified counterparts is kept; the first IPv4 user addresses is translated to 0.0.0.1, the second to 0.0.0.2 and so on. The de-identified address therefore depends on the order that addresses arrive in the input, and running over a large amount of data the address translation tables can grow to a significant size.  </p>
+<p id="rfc.section.B.2.2.p.2">Anonymization: Format-preserving, Enumeration.  </p>
+<h1 id="rfc.appendix.B.2.3"><a href="#rfc.appendix.B.2.3">B.2.3.</a> <a href="#prefixpreserving-map" id="prefixpreserving-map">Prefix-preserving map</a></h1>
+<p id="rfc.section.B.2.3.p.1">Used in <a href="#TCPdpriv">[TCPdpriv]</a>, this algorithm stores a set of original and anonymised IP address pairs. When a new IP address arrives, it is compared with previous addresses to determine the longest prefix match. The new address is anonymized by using the same prefix, with the remainder of the address anonymized with a random value. The use of a random value means that TCPdrpiv is not deterministic; different anonymized values will be generated on each run. The need to store previous addresses means that TCPdpriv has significant and unbounded memory requirements, and because of the need to allocated anonymized addresses sequentially cannot be used in parallel processing.  </p>
+<p id="rfc.section.B.2.3.p.2">Anonymization: Format-preserving, prefix preservation (general).  </p>
+<h1 id="rfc.appendix.B.2.4"><a href="#rfc.appendix.B.2.4">B.2.4.</a> <a href="#cryptographic-prefixpreserving-pseudonymization" id="cryptographic-prefixpreserving-pseudonymization">Cryptographic Prefix-Preserving Pseudonymization</a></h1>
+<p id="rfc.section.B.2.4.p.1">Cryptographic prefix-preserving pseudonymization was originally proposed as an improvement to the prefix-preserving map implemented in TCPdpriv, described in <a href="#Xu-et-al.">[Xu-et-al.]</a> and implemented in the <a href="#Crypto-PAn">[Crypto-PAn]</a> tool.  Crypto-PAn is now frequently used as an acronym for the algorithm. Initially it was described for IPv4 addresses only; extension for IPv6 addresses was proposed in <a href="#Harvan">[Harvan]</a>. This uses a cryptographic algorithm rather than a random value, and thus pseudonymity is determined uniquely by the encryption key, and is deterministic. It requires a separate AES encryption for each output bit, so has a non-trivial calculation overhead. This can be mitigated to some extent (for IPv4, at least) by pre-calculating results for some number of prefix bits.  </p>
+<p id="rfc.section.B.2.4.p.2">Pseudonymization: Format-preserving, prefix preservation (general).  </p>
+<h1 id="rfc.appendix.B.2.5"><a href="#rfc.appendix.B.2.5">B.2.5.</a> <a href="#tophash-subtreereplicated-anonymization" id="tophash-subtreereplicated-anonymization">Top-hash Subtree-replicated Anonymization</a></h1>
+<p id="rfc.section.B.2.5.p.1">Proposed in <a href="#Ramaswamy-and-Wolf">[Ramaswamy-and-Wolf]</a>, Top-hash Subtree-replicated Anonymization (TSA) originated in response to the requirement for faster processing than Crypto-PAn.  It used hashing for the most significant byte of an IPv4 address, and a pre-calculated binary tree structure for the remainder of the address. To save memory space, replication is used within the tree structure, reducing the size of the pre-calculated structures to a few Mb for IPv4 addresses. Address pseudonymization is done via hash and table lookup, and so requires minimal computation. However, due to the much increased address space for IPv6, TSA is not memory efficient for IPv6.  </p>
+<p id="rfc.section.B.2.5.p.2">Pseudonymization: Format-preserving, prefix preservation (general).  </p>
+<h1 id="rfc.appendix.B.2.6"><a href="#rfc.appendix.B.2.6">B.2.6.</a> <a href="#ipcipher" id="ipcipher">ipcipher</a></h1>
+<p id="rfc.section.B.2.6.p.1">A recently-released proposal from PowerDNS, ipcipher <a href="#ipcipher1">[ipcipher1]</a> <a href="#ipcipher2">[ipcipher2]</a>  is a simple pseudonymization technique for IPv4 and IPv6 addresses. IPv6 addresses are encrypted directly with AES-128 using a key (which may be derived from a passphrase). IPv4 addresses are similarly encrypted, but using a recently proposed encryption <a href="#ipcrypt">[ipcrypt]</a> suitable for 32bit block lengths. However, the author of ipcrypt has since indicated <a href="#ipcrypt-analysis">[ipcrypt-analysis]</a> that it has low security, and further analysis has revealed it is vulnerable to attack.  </p>
+<p id="rfc.section.B.2.6.p.2">Pseudonymization: Format-preserving, cryptographic permutation.  </p>
+<h1 id="rfc.appendix.B.2.7"><a href="#rfc.appendix.B.2.7">B.2.7.</a> <a href="#bloom-filters" id="bloom-filters">Bloom filters</a></h1>
+<p id="rfc.section.B.2.7.p.1">van Rijswijk-Deij et al.  have recently described work using Bloom filters <a href="#Bloom-filter">[Bloom-filter]</a> to categorize query traffic and record the traffic as the state of multiple filters. The goal of this work is to allow operators to identify so-called Indicators of Compromise (IOCs) originating from specific subnets without storing information about, or be able to monitor the DNS queries of an individual user. By using a Bloom filter, it is possible to determine with a high probability if, for example, a particular query was made, but the set of queries made cannot be recovered from the filter. Similarly, by mixing queries from a sufficient number of users in a single filter, it becomes practically impossible to determine if a particular user performed a particular query. Large numbers of queries can be tracked in a memory-efficient way. As filter status is stored, this approach cannot be used to regenerate traffic, and so cannot be used with tools used to process live traffic.  </p>
+<p id="rfc.section.B.2.7.p.2">Anonymized: Generalization.  </p>
+<h1 id="rfc.appendix.C"><a href="#rfc.appendix.C">Appendix C.</a> <a href="#current-policy-and-privacy-statements" id="current-policy-and-privacy-statements">Current policy and privacy statements</a></h1>
+<p id="rfc.section.C.p.1">A tabular comparison of policy and privacy statements from various DNS Privacy service operators based loosely on the proposed DROP structure can be found at <a href="#policy-comparison">[policy-comparison]</a>. The analysis is based on the data available in December 2019.  </p>
+<p id="rfc.section.C.p.2">We note that the existing set of policies vary widely in style, content and detail and it is not uncommon for the full text for a given operator to equate to more than 10 pages of moderate font sized A4 text. It is a non-trivial task today for a user to extract a meaningful overview of the different services on offer.  </p>
+<p id="rfc.section.C.p.3">It is also noted that Mozilla have published a DoH resolver policy <a href="#DoH-resolver-policy">[DoH-resolver-policy]</a>, which describes the minimum set of policy requirements that a party must satisfy to be considered as a potential partner for Mozilla&#8217;s Trusted Recursive Resolver (TRR) program.  </p>
+<h1 id="rfc.appendix.D"><a href="#rfc.appendix.D">Appendix D.</a> <a href="#example-drop-statement" id="example-drop-statement">Example DROP statement</a></h1>
+<p id="rfc.section.D.p.1">The following example DROP statement is very loosely based on some elements of published privacy statements for some public resolvers, with additional fields populated to illustrate the what the full contents of a DROP statement might look like. This should not be interpreted as </p>
 <p/>
 
 <ul>
@@ -1863,13 +1889,13 @@
 </ul>
 
 <p> </p>
-<p id="rfc.section.C.p.3">This is a purely hypothetical example of a DROP statement to outline example contents - in this case for a public resolver operator providing a basic DNS Privacy service via one IP address and one DoH URI with security based filtering. It does aim to meet minimal compliance as specified in <a href="#recommendations-for-dns-privacy-services">Section 5</a>.  </p>
-<h1 id="rfc.appendix.C.1"><a href="#rfc.appendix.C.1">C.1.</a> <a href="#policy-1" id="policy-1">Policy</a></h1>
+<p id="rfc.section.D.p.3">This is a purely hypothetical example of a DROP statement to outline example contents - in this case for a public resolver operator providing a basic DNS Privacy service via one IP address and one DoH URI with security based filtering. It does aim to meet minimal compliance as specified in <a href="#recommendations-for-dns-privacy-services">Section 5</a>.  </p>
+<h1 id="rfc.appendix.D.1"><a href="#rfc.appendix.D.1">D.1.</a> <a href="#policy-1" id="policy-1">Policy</a></h1>
 <p/>
 
 <ol>
-  <li>Treatment of IP addresses. Many nations classify IP addresses as Personally-Identifiable Information (PII), and we take a conservative approach in treating IP addresses as PII in all jurisdictions in which our systems reside.</li>
-  <li>Data collection and sharing.  <ol><li>IP addresses. Our normal course of data management does not have any IP address information or other PII logged to disk or transmitted out of the location in which the query was received. We may aggregate certain counters to larger network block levels for statistical collection purposes, but those counters do not maintain specific IP address data nor is the format or model of data stored capable of being reverse-engineered to ascertain what specific IP addresses made what queries.</li><li>Data collected in logs. We do keep some generalized location information (at the city/metropolitan area level) so that we can conduct debugging and analyze abuse phenomena. We also use the collected information for the creation and sharing of telemetry (timestamp, geolocation, number of hits, first seen, last seen) for contributors, public publishing of general statistics of system use (protections, threat types, counts, etc.) When you use our DNS Services, here is the full list of items that are included in our logs: <ul><li>Request domain name, e.g., example.net</li><li>Record type of requested domain, e.g., A, AAAA, NS, MX, TXT, etc.</li><li>Transport protocol on which the request arrived, i.e. UDP, TCP, DoT, <br/> DoH</li><li>Origin IP general geolocation information: i.e. geocode, region ID, city ID, and metro code</li><li>IP protocol version &#8211; IPv4 or IPv6</li><li>Response code sent, e.g., SUCCESS, SERVFAIL, NXDOMAIN, etc.</li><li>Absolute arrival time</li><li>Name of the specific instance that processed this request</li><li>IP address of the specific instance to which this request was addressed (no relation to the requestor&#8217;s IP address)</li></ul><p> We may keep the following data as summary information, including all the above EXCEPT for data about the DNS record requested: </p><ul><li>Currently-advertised BGP-summarized IP prefix/netmask of apparent client origin</li><li>Autonomous system number (BGP ASN) of apparent client origin</li></ul><p> All the above data may be kept in full or partial form in permanent archives.</p></li><li>Sharing of data.  Except as described in this document, we do not intentionally share, sell, or rent individual personal information associated with the requestor (i.e. source IP address or any other information that can positively identify the client using our infrastructure) with anyone without your consent.  We generate and share high level anonymized aggregate statistics including threat metrics on threat type, geolocation, and if available, sector, as well as other vertical metrics including performance metrics on our DNS Services (i.e. number of threats blocked, infrastructure uptime) when available with our threat intelligence (TI) partners, academic researchers, or the public.  Our DNS Services share anonymized data on specific domains queried (records such as domain, timestamp, geolocation, number of hits, first seen, last seen) with our threat intelligence partners. Our DNS Services also builds, stores, and may share certain DNS data streams which store high level information about domain resolved, query types, result codes, and timestamp. These streams do not contain IP address information of requestor and cannot be correlated to IP address or other PII.  We do not and never will share any of its data with marketers, nor will it use this data for demographic analysis.</li></ol></li>
+  <li>Treatment of IP addresses. Many nations classify IP addresses as personal data, and we take a conservative approach in treating IP addresses as personal data in all jurisdictions in which our systems reside.</li>
+  <li>Data collection and sharing.  <ol><li>IP addresses. Our normal course of data management does not have any IP address information or other personal data logged to disk or transmitted out of the location in which the query was received. We may aggregate certain counters to larger network block levels for statistical collection purposes, but those counters do not maintain specific IP address data nor is the format or model of data stored capable of being reverse-engineered to ascertain what specific IP addresses made what queries.</li><li>Data collected in logs. We do keep some generalized location information (at the city/metropolitan area level) so that we can conduct debugging and analyze abuse phenomena. We also use the collected information for the creation and sharing of telemetry (timestamp, geolocation, number of hits, first seen, last seen) for contributors, public publishing of general statistics of system use (protections, threat types, counts, etc.) When you use our DNS Services, here is the full list of items that are included in our logs: <ul><li>Request domain name, e.g., example.net</li><li>Record type of requested domain, e.g., A, AAAA, NS, MX, TXT, etc.</li><li>Transport protocol on which the request arrived, i.e. UDP, TCP, DoT, <br/> DoH</li><li>Origin IP general geolocation information: i.e. geocode, region ID, city ID, and metro code</li><li>IP protocol version &#8211; IPv4 or IPv6</li><li>Response code sent, e.g., SUCCESS, SERVFAIL, NXDOMAIN, etc.</li><li>Absolute arrival time</li><li>Name of the specific instance that processed this request</li><li>IP address of the specific instance to which this request was addressed (no relation to the requestor&#8217;s IP address)</li></ul><p> We may keep the following data as summary information, including all the above EXCEPT for data about the DNS record requested: </p><ul><li>Currently-advertised BGP-summarized IP prefix/netmask of apparent client origin</li><li>Autonomous system number (BGP ASN) of apparent client origin</li></ul><p> All the above data may be kept in full or partial form in permanent archives.</p></li><li>Sharing of data.  Except as described in this document, we do not intentionally share, sell, or rent individual personal information associated with the requestor (i.e. source IP address or any other information that can positively identify the client using our infrastructure) with anyone without your consent.  We generate and share high level anonymized aggregate statistics including threat metrics on threat type, geolocation, and if available, sector, as well as other vertical metrics including performance metrics on our DNS Services (i.e. number of threats blocked, infrastructure uptime) when available with our threat intelligence (TI) partners, academic researchers, or the public.  Our DNS Services share anonymized data on specific domains queried (records such as domain, timestamp, geolocation, number of hits, first seen, last seen) with our threat intelligence partners. Our DNS Services also builds, stores, and may share certain DNS data streams which store high level information about domain resolved, query types, result codes, and timestamp. These streams do not contain IP address information of requestor and cannot be correlated to IP address or other personal data.  We do not and never will share any of its data with marketers, nor will it use this data for demographic analysis.</li></ol></li>
   <li>Exceptions. There are exceptions to this storage model: In the event of actions or observed behaviors which we deem malicious or anomalous, we may utilize more detailed logging to collect more specific IP address data in the process of normal network defence and mitigation. This collection and transmission off-site will be limited to IP addresses that we determine are involved in the event.</li>
   <li>Associated entities. Details of our Threat Intelligence partners can be found at our website page (insert link).</li>
   <li>Correlation of Data. We do not correlate or combine information from our logs with any personal information that you have provided us for other services, or with your specific IP address.</li>
@@ -1877,7 +1903,7 @@
 </ol>
 
 <p> </p>
-<h1 id="rfc.appendix.C.2"><a href="#rfc.appendix.C.2">C.2.</a> <a href="#practice-1" id="practice-1">Practice</a></h1>
+<h1 id="rfc.appendix.D.2"><a href="#rfc.appendix.D.2">D.2.</a> <a href="#practice-1" id="practice-1">Practice</a></h1>
 <p/>
 
 <ol>
