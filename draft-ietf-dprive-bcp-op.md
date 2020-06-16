@@ -2,12 +2,12 @@
     Title = "Recommendations for DNS Privacy Service Operators"
     abbrev = "DNS Privacy Service Recommendations"
     category = "bcp"
-    docName= "draft-ietf-dprive-bcp-op-09"
+    docName= "draft-ietf-dprive-bcp-op-10"
     ipr = "trust200902"
     area = "Internet"
     workgroup = "dprive"
     keyword = ["DNS"]
-    date = 2020-05-04T00:00:00Z
+    date = 2020-05-20T00:00:00Z
     [pi]
     toc = "yes"
     compact = "yes"
@@ -67,7 +67,7 @@ which services to provide, and how the decisions and alternatives impact the
 privacy of users.
 
 
-This document also presents a framework to assist writers of a DNS Recursive
+This document also presents a non-normative framework to assist writers of a DNS Recursive
 Operator Privacy Statement (analogous to DNS Security Extensions (DNSSEC)
 Policies and DNSSEC Practice Statements described in RFC6841).
 
@@ -111,11 +111,8 @@ such tracking are also likely to play a role in user selection of resolvers.
 
 More recently the global legislative landscape with regard to personal data
 collection, retention, and pseudonymization has seen significant activity.
-It is an untested area that simply using a DNS resolution service
-constitutes consent from the user for the operator to process their query data.
-The impact of recent legislative changes on data pertaining to the users of both
-Internet Service Providers and public DNS resolvers is not fully understood at the
-time of writing.
+Providing detailed practice advice about these areas to the operator is out of
+scope, but (#data-sharing) describes some mitigations of data sharing risk.
 
 This document has two main goals:
 
@@ -125,13 +122,12 @@ This document has two main goals:
 
 * To introduce the DNS Recursive Operator Privacy (DROP) statement and present a
   framework to assist writers of this document. A DROP statement is a document
-  that an operator can publish outlining their operational practices and
+  that an operator should publish outlining their operational practices and
   commitments with regard to privacy thereby providing a means for clients to
-  evaluate the privacy properties of a given DNS privacy service. In particular,
-  the framework identifies the elements that should be considered in formulating
-  a DROP statement. This document does not, however, define a particular Privacy
-  statement, nor does it seek to provide legal advice or recommendations as to
-  the contents.
+  evaluate the privacy properties of a given DNS privacy service. The framework
+  identifies a set of elements and specifies an outline order for them. This
+  document does not, however, define a particular Privacy statement, nor does it
+  seek to provide legal advice or recommendations as to the contents.
 
 A desired operational impact is that all operators (both those providing
 resolvers within networks and those operating large public services) can
@@ -148,7 +144,7 @@ out any errata or updates that apply to this document.
 
 # Scope
 
-"DNS Privacy Considerations" [@!I-D.ietf-dprive-rfc7626-bis] describes the
+"DNS Privacy Considerations" [@?RFC7626] describes the
 general privacy issues and threats associated with the use of the DNS by
 Internet users and much of the threat analysis here is lifted from that
 document and from [@!RFC6973]. However this document is limited in scope to best
@@ -159,7 +155,7 @@ operators of authoritative nameservers are out of scope.
 
 
 This document includes (but is not limited to) considerations in the following
-areas (taken from [@!I-D.ietf-dprive-rfc7626-bis]):
+areas:
 
 1. Data "on the wire" between a client and a server.
 2. Data "at rest" on a server (e.g. in logs).
@@ -246,7 +242,6 @@ the client.
 
 * Surveillance:
   * Passive surveillance of traffic on the wire
-    [@!I-D.ietf-dprive-rfc7626-bis] Section 5.1
 
 DNS Privacy Threats:
 
@@ -277,8 +272,7 @@ not diminish the need for DNSSEC, see (#dnssec).
 [@!RFC6973] Threats: 
 
 * Surveillance: 
-  * Active attacks on resolver configuration
-  [@!I-D.ietf-dprive-rfc7626-bis] Section 6.1.2
+  * Active attacks on client resolver configuration
 
 Mitigations:
 
@@ -590,7 +584,7 @@ group of pseudonyms for a single given address.
 
 ### IP address pseudonymization and anonymization methods
 
-As [@!I-D.ietf-dprive-rfc7626-bis] makes clear, the big privacy risk in
+A major privacy risk in
 DNS is connecting DNS queries to an individual and the major vector for this in
 DNS traffic is the client IP address.
 
@@ -770,9 +764,10 @@ DNS Privacy Threats:
 
 Mitigations:
 
-Operators should not provide identifiable data to third-parties without explicit
-consent from clients (we take the stance here that simply using the resolution
-service itself does not constitute consent).
+Operators should not share identifiable data with third-parties.
+
+If operators choose to share identifiable data with third-parties in specific
+circumstance they should publish the terms under which data is shared.
 
 Operators should consider including specific guidelines for the collection of
 aggregated and/or anonymized data for research purposes, within or outside of
@@ -782,9 +777,18 @@ an example.
 
 # DNS Recursive Operator Privacy (DROP) statement
 
-The following section outlines the recommended contents of a DROP statement an operator might choose to publish. An example statement for a specific scenario is provided for guidance only in (#example-drop-statement).
+To be compliant with this Best Common Practices document, a DNS Recursive
+Operator SHOULD publish a DNS Recursive Operator Privacy Statement. Adopting the
+outline, and including the headings in the order provided, is a benefit to
+persons comparing multiple operators’ DROP statements.
 
-## Recommended contents of a DROP statement
+## Outline of a DROP statement
+
+The contents of (#policy) and (#practice) are non-normative, other than the
+order of the headings. Material under each topic is present to assist the
+operator developing their own DROP statement. (#example-drop-statement) provides
+an example (also non-normative) of a complete DROP statement for a specific
+operator scenario.
 
 ### Policy
 
@@ -828,7 +832,7 @@ lists, and which ones.
 
 ### Practice
 
-This section should explain the current operational practices of the service.
+Communicate the current operational practices of the service.
 
 1. Deviations. Specify any temporary or permanent deviations from the policy for
     operational reasons.
@@ -941,6 +945,12 @@ Oxford OX4 4GA\\
 United Kingdom
 
 # Changelog
+
+draft-ietf-dprive-bcp-op-10
+
+* Remove direct references to draft-ietf-dprive-rfc7626-bis-05, instead have one general reference RFC7626
+* Clarify that the DROP statement outline is non-normative
+* Update wording on data sharing to remove explicit discussion of consent
 
 draft-ietf-dprive-bcp-op-09
 

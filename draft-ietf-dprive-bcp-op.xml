@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE rfc SYSTEM 'rfc2629.dtd' []>
-<rfc ipr="trust200902" category="bcp" docName="draft-ietf-dprive-bcp-op-09">
+<rfc ipr="trust200902" category="bcp" docName="draft-ietf-dprive-bcp-op-10">
 <?rfc toc="yes"?>
 <?rfc symrefs="yes"?>
 <?rfc sortrefs="yes"?>
@@ -76,7 +76,7 @@
 <uri></uri>
 </address>
 </author>
-<date year="2020" month="May" day="4"/>
+<date year="2020" month="May" day="20"/>
 
 <area>Internet</area>
 <workgroup>dprive</workgroup>
@@ -90,7 +90,7 @@ these recommendations, the operator can make deliberate decisions regarding
 which services to provide, and how the decisions and alternatives impact the
 privacy of users.
 </t>
-<t>This document also presents a framework to assist writers of a DNS Recursive
+<t>This document also presents a non-normative framework to assist writers of a DNS Recursive
 Operator Privacy Statement (analogous to DNS Security Extensions (DNSSEC)
 Policies and DNSSEC Practice Statements described in RFC6841).
 </t>
@@ -137,11 +137,8 @@ such tracking are also likely to play a role in user selection of resolvers.
 </t>
 <t>More recently the global legislative landscape with regard to personal data
 collection, retention, and pseudonymization has seen significant activity.
-It is an untested area that simply using a DNS resolution service
-constitutes consent from the user for the operator to process their query data.
-The impact of recent legislative changes on data pertaining to the users of both
-Internet Service Providers and public DNS resolvers is not fully understood at the
-time of writing.
+Providing detailed practice advice about these areas to the operator is out of
+scope, but <xref target="data-sharing"/> describes some mitigations of data sharing risk.
 </t>
 <t>This document has two main goals:
 </t>
@@ -152,13 +149,12 @@ transports and to outline recommendations for data handling for operators of
 DNS privacy services.</t>
 <t>To introduce the DNS Recursive Operator Privacy (DROP) statement and present a
 framework to assist writers of this document. A DROP statement is a document
-that an operator can publish outlining their operational practices and
+that an operator should publish outlining their operational practices and
 commitments with regard to privacy thereby providing a means for clients to
-evaluate the privacy properties of a given DNS privacy service. In particular,
-the framework identifies the elements that should be considered in formulating
-a DROP statement. This document does not, however, define a particular Privacy
-statement, nor does it seek to provide legal advice or recommendations as to
-the contents.</t>
+evaluate the privacy properties of a given DNS privacy service. The framework
+identifies a set of elements and specifies an outline order for them. This
+document does not, however, define a particular Privacy statement, nor does it
+seek to provide legal advice or recommendations as to the contents.</t>
 </list>
 </t>
 <t>A desired operational impact is that all operators (both those providing
@@ -176,7 +172,7 @@ out any errata or updates that apply to this document.
 </section>
 
 <section anchor="scope" title="Scope">
-<t>&quot;DNS Privacy Considerations&quot; <xref target="I-D.ietf-dprive-rfc7626-bis"/> describes the
+<t>&quot;DNS Privacy Considerations&quot; <xref target="RFC7626"/> describes the
 general privacy issues and threats associated with the use of the DNS by
 Internet users and much of the threat analysis here is lifted from that
 document and from <xref target="RFC6973"/>. However this document is limited in scope to best
@@ -186,7 +182,7 @@ considerations specifically from the perspective of an end user, or those for
 operators of authoritative nameservers are out of scope.
 </t>
 <t>This document includes (but is not limited to) considerations in the following
-areas (taken from <xref target="I-D.ietf-dprive-rfc7626-bis"/>):
+areas:
 </t>
 <t>
 <list style="numbers">
@@ -295,8 +291,7 @@ the client.
 <list style="symbols">
 <t>Surveillance:
 <list style="symbols">
-<t>Passive surveillance of traffic on the wire
-<xref target="I-D.ietf-dprive-rfc7626-bis"/> Section 5.1</t>
+<t>Passive surveillance of traffic on the wire</t>
 </list></t>
 </list>
 </t>
@@ -339,8 +334,7 @@ not diminish the need for DNSSEC, see <xref target="dnssec"/>.
 <list style="symbols">
 <t>Surveillance:
 <list style="symbols">
-<t>Active attacks on resolver configuration
-<xref target="I-D.ietf-dprive-rfc7626-bis"/> Section 6.1.2</t>
+<t>Active attacks on client resolver configuration</t>
 </list></t>
 </list>
 </t>
@@ -718,7 +712,7 @@ group of pseudonyms for a single given address.
 </section>
 
 <section anchor="ip-address-pseudonymization-and-anonymization-methods" title="IP address pseudonymization and anonymization methods">
-<t>As <xref target="I-D.ietf-dprive-rfc7626-bis"/> makes clear, the big privacy risk in
+<t>A major privacy risk in
 DNS is connecting DNS queries to an individual and the major vector for this in
 DNS traffic is the client IP address.
 </t>
@@ -943,9 +937,10 @@ obfuscated among those of the large resolver.
 </t>
 <t>Mitigations:
 </t>
-<t>Operators should not provide identifiable data to third-parties without explicit
-consent from clients (we take the stance here that simply using the resolution
-service itself does not constitute consent).
+<t>Operators should not share identifiable data with third-parties.
+</t>
+<t>If operators choose to share identifiable data with third-parties in specific
+circumstance they should publish the terms under which data is shared.
 </t>
 <t>Operators should consider including specific guidelines for the collection of
 aggregated and/or anonymized data for research purposes, within or outside of
@@ -958,10 +953,19 @@ an example.
 </section>
 
 <section anchor="dns-recursive-operator-privacy-drop-statement" title="DNS Recursive Operator Privacy (DROP) statement">
-<t>The following section outlines the recommended contents of a DROP statement an operator might choose to publish. An example statement for a specific scenario is provided for guidance only in <xref target="example-drop-statement"/>.
+<t>To be compliant with this Best Common Practices document, a DNS Recursive
+Operator SHOULD publish a DNS Recursive Operator Privacy Statement. Adopting the
+outline, and including the headings in the order provided, is a benefit to
+persons comparing multiple operators’ DROP statements.
 </t>
 
-<section anchor="recommended-contents-of-a-drop-statement" title="Recommended contents of a DROP statement">
+<section anchor="outline-of-a-drop-statement" title="Outline of a DROP statement">
+<t>The contents of <xref target="policy"/> and <xref target="practice"/> are non-normative, other than the
+order of the headings. Material under each topic is present to assist the
+operator developing their own DROP statement. <xref target="example-drop-statement"/> provides
+an example (also non-normative) of a complete DROP statement for a specific
+operator scenario.
+</t>
 
 <section anchor="policy" title="Policy">
 <t>
@@ -1008,7 +1012,7 @@ reason, including commercial ones.</t>
 </section>
 
 <section anchor="practice" title="Practice">
-<t>This section should explain the current operational practices of the service.
+<t>Communicate the current operational practices of the service.
 </t>
 <t>
 <list style="numbers">
@@ -1147,6 +1151,15 @@ United Kingdom
 </section>
 
 <section anchor="changelog" title="Changelog">
+<t>draft-ietf-dprive-bcp-op-10
+</t>
+<t>
+<list style="symbols">
+<t>Remove direct references to draft-ietf-dprive-rfc7626-bis-05, instead have one general reference RFC7626</t>
+<t>Clarify that the DROP statement outline is non-normative</t>
+<t>Update wording on data sharing to remove explicit discussion of consent</t>
+</list>
+</t>
 <t>draft-ietf-dprive-bcp-op-09
 </t>
 <t>
@@ -1277,7 +1290,6 @@ draft-dickinson-dprive-bcp-op-01</t>
 </middle>
 <back>
 <references title="Normative References">
-<?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml3/reference.I-D.ietf-dprive-rfc7626-bis.xml"?>
 <?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.2119.xml"?>
 <?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.6265.xml"?>
 <?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.6973.xml"?>
@@ -1422,6 +1434,7 @@ draft-dickinson-dprive-bcp-op-01</t>
 <?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.5280.xml"?>
 <?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.6235.xml"?>
 <?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.7457.xml"?>
+<?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.7626.xml"?>
 <?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.7706.xml"?>
 <?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.8020.xml"?>
 <?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.8027.xml"?>
