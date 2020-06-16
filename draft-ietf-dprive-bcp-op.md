@@ -7,7 +7,7 @@
     area = "Internet"
     workgroup = "dprive"
     keyword = ["DNS"]
-    date = 2020-05-20T00:00:00Z
+    date = 2020-06-16T00:00:00Z
     [pi]
     toc = "yes"
     compact = "yes"
@@ -405,7 +405,7 @@ Mitigations:
   validation.
 
 The addition of encryption to DNS does not remove the need for DNSSEC
-[@RFC4033] - they are independent and fully compatible protocols,
+[@!RFC4033] - they are independent and fully compatible protocols,
 each solving different problems. The use of one does not diminish the need nor
 the usefulness of the other.
 
@@ -438,7 +438,7 @@ attacks, as experience has shown that unavailability of DNS resolving because of
 attacks is a significant motivation for users to switch services. See, for
 example Section IV-C of [@Passive-Observations-of-a-Large-DNS Service].
 
-Techniques such as those described in Section 10 of [RFC7766] can be of use to operators to defend against such attacks. 
+Techniques such as those described in Section 10 of [@RFC7766] can be of use to operators to defend against such attacks. 
 
 ### Service options
 
@@ -665,7 +665,7 @@ services the server should:
 
 * Implement QNAME minimization [@!RFC7816].
 * Honor a SOURCE PREFIX-LENGTH set to 0 in a query containing the EDNS(0)
-  Client Subnet (ECS) option ([@RFC7817] Section 7.1.2).
+  Client Subnet (ECS) option ([@RFC7871] Section 7.1.2).
 
 Optimizations:
 
@@ -914,7 +914,8 @@ United Kingdom
 
 draft-ietf-dprive-bcp-op-10
 
-* Remove direct references to draft-ietf-dprive-rfc7626-bis-05, instead have one general reference RFC7626
+* Remove direct references to draft-ietf-dprive-rfc7626-bis, instead have one
+  general reference RFC7626
 * Clarify that the DROP statement outline is non-normative and add some further
   qualifications about content
 * Update wording on data sharing to remove explicit discussion of consent
