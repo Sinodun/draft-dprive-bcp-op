@@ -112,12 +112,12 @@ document attempts to provide an overview of considerations for privacy focused
 DNS services.
 </t>
 <t>In recent years there has also been an increase in the availability of &quot;public
-resolvers&quot; <xref target="RFC8499"/> which users may prefer to use
-instead of the default network resolver because they offer a specific feature
-(e.g. good reachability, encrypted transport, strong privacy policy, filtering
-(or lack of), etc.). These open resolvers have tended to be at the forefront of
-adoption of privacy related enhancements but it is anticipated that operators of
-other resolver services will follow.
+resolvers&quot; <xref target="RFC8499"/> which users may prefer to use instead of the default
+network resolver either because they offer a specific feature (e.g., good
+reachability or encrypted transport) or because the network resolver lacks a specific feature (e.g., strong privacy policy or unfiltered responses).
+These open resolvers have tended to be at the forefront of adoption of privacy
+related enhancements but it is anticipated that operators of other resolver
+services will follow.
 </t>
 <t>Whilst protocols that encrypt DNS messages on the wire provide protection
 against certain attacks, the resolver operator still has (in principle) full
@@ -129,11 +129,10 @@ active selection of which resolver to use.
 </t>
 <t>It should also be noted that the choice of a user to configure a single resolver
 (or a fixed set of resolvers) and an encrypted transport to use in all network
-environments has both advantages and disadvantages. For example the user has a
+environments has both advantages and disadvantages. For example, the user has a
 clear expectation of which resolvers have visibility of their query data however
 this resolver/transport selection may provide an added mechanism to track them
-as they move across network environments. Commitments from operators to minimize
-such tracking are also likely to play a role in user selection of resolvers.
+as they move across network environments. Commitments from resolver operators to minimize such tracking as users move between networks are also likely to play a role in user selection of resolvers.
 </t>
 <t>More recently the global legislative landscape with regard to personal data
 collection, retention, and pseudonymization has seen significant activity.
@@ -151,23 +150,24 @@ DNS privacy services.</t>
 framework to assist writers of this document. A DROP statement is a document
 that an operator should publish outlining their operational practices and
 commitments with regard to privacy thereby providing a means for clients to
-evaluate the privacy properties of a given DNS privacy service. The framework
-identifies a set of elements and specifies an outline order for them. This
-document does not, however, define a particular Privacy statement, nor does it
-seek to provide legal advice or recommendations as to the contents.</t>
+evaluate the measurable and claimed privacy properties of a given DNS privacy
+service. The framework identifies a set of elements and specifies an outline
+order for them. This document does not, however, define a particular Privacy
+statement, nor does it seek to provide legal advice or recommendations as to
+the contents.</t>
 </list>
 </t>
 <t>A desired operational impact is that all operators (both those providing
 resolvers within networks and those operating large public services) can
 demonstrate their commitment to user privacy thereby driving all DNS resolution
 services to a more equitable footing. Choices for users would (in this ideal
-world) be driven by other factors e.g. differing security policies or minor
-difference in operator policy rather than gross disparities in privacy concerns.
+world) be driven by other factors, e.g., differing security policies or minor
+difference in operator policy, rather than gross disparities in privacy concerns.
 </t>
 <t>Community insight [or judgment?] about operational practices can change
 quickly, and experience shows that a Best Current Practice (BCP) document about
 privacy and security is a point-in-time statement. Readers are advised to seek
-out any errata or updates that apply to this document.
+out any updates that apply to this document.
 </t>
 </section>
 
@@ -187,7 +187,7 @@ areas:
 <t>
 <list style="numbers">
 <t>Data &quot;on the wire&quot; between a client and a server.</t>
-<t>Data &quot;at rest&quot; on a server (e.g. in logs).</t>
+<t>Data &quot;at rest&quot; on a server (e.g., in logs).</t>
 <t>Data &quot;sent onwards&quot; from the server (either on the wire or shared with a
 third party).</t>
 </list>
@@ -317,10 +317,10 @@ or more of the following transports
 <xref target="RFC8094"/>, however this is an Experimental specification and there are no known
 implementations at the time of writing.
 </t>
-<t>It is also noted that DNS privacy service might be provided over IPSec, DNSCrypt,
-or VPNs. However, use of these transports for DNS are not standardized and any
-discussion of best practice for providing such a service is out of scope for
-this document.
+<t>It is also noted that DNS privacy service might be provided over IPSec,
+DNSCrypt, or VPNs. However, use of these transports for DNS are not standardized
+in DNS specific RFCs and any discussion of best practice for providing such a
+service is out of scope for this document.
 </t>
 <t>Whilst encryption of DNS traffic can protect against active injection this does
 not diminish the need for DNSSEC, see <xref target="dnssec"/>.
@@ -347,7 +347,7 @@ will trust.
 <t>When using DNS-over-TLS clients that select a 'Strict Privacy' usage profile
 <xref target="RFC8310"/> (to mitigate the threat of active attack on the client) require the
 ability to authenticate the DNS server. To enable this, DNS privacy services
-that offer DNS-over-TLS should provide credentials in the form of either X.509
+that offer DNS-over-TLS need to provide credentials in the form of either X.509
 certificates <xref target="RFC5280"/> or Subject Public Key Info (SPKI) pin sets <xref target="RFC8310"/>.
 </t>
 <t>When offering DoH <xref target="RFC8484"/>, HTTPS requires authentication of the server as
@@ -371,9 +371,11 @@ various reasons such as the logistical overhead of rolling keys.
 </t>
 <t>
 <list style="symbols">
-<t>Invalid certificates, resulting in an unavailable service.</t>
-<t>Mis-identification of a server by a client e.g. typos in URLs or
-authentication domain names <xref target="RFC8310"/>.</t>
+<t>Invalid certificates, resulting in an unavailable service which might force a
+user to fallback to cleartext.</t>
+<t>Mis-identification of a server by a client e.g., typos in URLs or
+authentication domain names <xref target="RFC8310"/> which accidentally direct clients to
+attacker controlled servers.</t>
 </list>
 </t>
 <t>Mitigations:
@@ -404,12 +406,12 @@ automation and has been implemented by a number of certificate authorities.</t>
 <t>Known attacks on TLS such as those described in <xref target="RFC7457"/>.</t>
 <t>Traffic analysis, for example: <xref target="Pitfalls-of-DNS-Encryption"/>.</t>
 <t>Potential for client tracking via transport identifiers.</t>
-<t>Blocking of well known ports (e.g. 853 for DNS-over-TLS).</t>
+<t>Blocking of well known ports (e.g., 853 for DNS-over-TLS).</t>
 </list>
 </t>
 <t>Mitigations:
 </t>
-<t>In the case of DNS-over-TLS, TLS profiles from Section 9 and the
+<t>In the case of DNS-over-TLS, TLS profiles from Section 9 of <xref target="RFC8310"/> and the
 Countermeasures to DNS Traffic Analysis from section 11.1 of <xref target="RFC8310"/>
 provide strong mitigations. This includes but is not limited to:
 </t>
@@ -423,8 +425,7 @@ provide strong mitigations. This includes but is not limited to:
 clients that do not use any form of session resumption mechanism, such as TLS
 session resumption <xref target="RFC5077"/> with TLS 1.2, section 2.2 of <xref target="RFC8446"/>, or Domain
 Name System (DNS) Cookies <xref target="RFC7873"/>.</t>
-<t>A DNS-over-TLS privacy service on both port 853 and 443. This practice may not
-be possible if e.g. the operator deploys DoH on the same IP address.</t>
+<t>A DNS-over-TLS privacy service on both port 853 and 443. If the operator deploys DoH on the same IP address this requires the use of the 'dot' ALPN value <xref target="dot-ALPN"/>.</t>
 </list>
 </t>
 <t>Optimizations:
@@ -473,7 +474,7 @@ minimum to obtain service from a DoH server. (See Section 6.1 of
 </t>
 <t>
 <list style="symbols">
-<t>Users may be directed to bogus IP addresses for e.g. websites where they might
+<t>Users may be directed to bogus IP addresses for e.g., websites where they might
 reveal personal information to attackers.</t>
 </list>
 </t>
@@ -559,11 +560,10 @@ traffic and work by intercepting traffic on the wire, either using a separate
 view on the connection between clients and the resolver, or as a separate
 process on the resolver system that inspects network traffic. Such solutions
 will no longer function when traffic between clients and resolvers is encrypted.
-There are, however, legitimate reasons for DNS privacy service operators to
-inspect DNS traffic, e.g. to monitor for network security threats. Operators may
-therefore need to invest in alternative means of monitoring that relies on
-either the resolver software directly, or exporting DNS traffic from the
-resolver using e.g. <xref target="dnstap"/>.
+Many DNS privacy service operators still have need to inspect DNS traffic, e.g.,
+to monitor for network security threats. Operators may therefore need to invest
+in alternative means of monitoring that relies on either the resolver software
+directly, or exporting DNS traffic from the resolver using e.g., <xref target="dnstap"/>.
 </t>
 <t>Optimization:
 </t>
@@ -581,8 +581,9 @@ the discussion on the use of Bloom Filters in <xref target="ip-address-technique
 <list style="symbols">
 <t>Limited ability to manage or monitor incoming connections using DNS specific
 techniques.</t>
-<t>Misconfiguration of the target server could lead to data leakage if the proxy
-to target server path is not encrypted.</t>
+<t>Misconfiguration (e.g., of the target server address in the proxy
+configuration) could lead to data leakage if the proxy to target server path
+is not encrypted.</t>
 </list>
 </t>
 <t>Optimization:
@@ -633,26 +634,27 @@ misconfiguration.
 </t>
 <t>Mitigations:
 </t>
-<t>The following are common activities for DNS service operators and in all cases
-should be minimized or completely avoided if possible for DNS privacy services.
-If data is retained it should be encrypted and either aggregated, pseudonymized,
-or anonymized whenever possible. In general the principle of data minimization
-described in <xref target="RFC6973"/> should be applied.
+<t>The following are recommendations relating to common activities for DNS service
+operators and in all cases such activities should be minimized or completely
+avoided if possible for DNS privacy services. If data is retained it should be
+encrypted and either aggregated, pseudonymized, or anonymized whenever possible.
+In general the principle of data minimization described in <xref target="RFC6973"/> should be
+applied.
 </t>
 <t>
 <list style="symbols">
-<t>Transient data (e.g. that is used for real time monitoring and threat analysis
+<t>Transient data (e.g., that is used for real time monitoring and threat analysis
 which might be held only in memory) should be retained for the shortest
 possible period deemed operationally feasible.</t>
 <t>The retention period of DNS traffic logs should be only those required to
 sustain operation of the service and, to the extent that such exists, meet
 regulatory requirements.</t>
 <t>DNS privacy services should not track users except for the particular purpose
-of detecting and remedying technically malicious (e.g. DoS) or anomalous use
+of detecting and remedying technically malicious (e.g., DoS) or anomalous use
 of the service.</t>
 <t>Data access should be minimized to only those personnel who require access to
 perform operational duties. It should also be limited to anonymized or
-pseudonymized data were operationally feasible, with access to full logs (if
+pseudonymized data where operationally feasible, with access to full logs (if
 any are held) only permitted when necessary.</t>
 </list>
 </t>
@@ -755,7 +757,7 @@ techniques in current use, but does not claim to be comprehensive.
 <c>Memory intensive</c><c></c><c></c><c>X</c><c></c><c></c><c></c><c></c>
 <c>Security concerns</c><c></c><c></c><c></c><c></c><c></c><c>X</c><c></c>
 </texttable>
-<t>GA = Google Analytics, d = dnswasher, TC = TCPdpriv, C = CryptoPAn, TS = TSA, i = ipcipher, B = Bloom filter
+<t>Legend of techniques: GA = Google Analytics, d = dnswasher, TC = TCPdpriv, C = CryptoPAn, TS = TSA, i = ipcipher, B = Bloom filter
 </t>
 <t>The choice of which method to use for a particular application will depend on
 the requirements of that application and consideration of the threat analysis of
@@ -765,7 +767,7 @@ the particular situation.
 existing data format such as PCAP <xref target="pcap"/> or C-DNS
 <xref target="RFC8618"/> that can be used as input to existing
 analysis tools. In that case, use of a format-preserving technique is
-essential. This, though, is not cost-free - several authors (e.g. <xref target="Brenker-and-Arnes"/>
+essential. This, though, is not cost-free - several authors (e.g., <xref target="Brenker-and-Arnes"/>
 have observed that, as the entropy in an IPv4 address is limited, given
 a de-identified log from a target, if an attacker is capable of ensuring
 packets are captured by the target and the attacker can send forged traffic
@@ -781,18 +783,18 @@ of a cryptographic chosen plaintext attack.
 <t>
 <list style="symbols">
 <t>Fingerprinting of the client OS via various means including: IP TTL/Hoplimit,
-TCP parameters (e.g. window size, ECN support, SACK), OS specific DNS query
-patterns (e.g. for network connectivity, captive portal detection, or OS
+TCP parameters (e.g., window size, ECN support, SACK), OS specific DNS query
+patterns (e.g., for network connectivity, captive portal detection, or OS
 specific updates).</t>
-<t>Fingerprinting of the client application or TLS library by e.g. TLS
-version/Cipher suite combinations or other connection parameters.</t>
+<t>Fingerprinting of the client application or TLS library by e.g., HTTP headers
+(e.g., User-Agent, Accept, Accept-Encoding), TLS version/Cipher suite
+combinations, or other connection parameters.</t>
 <t>Correlation of queries on multiple TCP sessions originating from the same IP
 address.</t>
 <t>Correlating of queries on multiple TLS sessions originating from the same
 client, including via session resumption mechanisms.</t>
-<t>Resolvers <spanx style="emph">might</spanx> receive client identifiers e.g. MAC addresses in EDNS(0)
+<t>Resolvers <spanx style="emph">might</spanx> receive client identifiers e.g., MAC addresses in EDNS(0)
 options - some Customer-premises equipment (CPE) devices are known to add them.</t>
-<t>HTTP headers (e.g., User-Agent, Accept, Accept-Encoding).</t>
 </list>
 </t>
 <t>Mitigations:
@@ -858,7 +860,7 @@ Client Subnet (ECS) option and not send an ECS option in upstream queries.</t>
 </t>
 <t>
 <list style="symbols">
-<t>The server should either:
+<t>As per Section 2 of <xref target="RFC7871"/> the server should either:
 <list style="symbols">
 <t>not use the ECS option in upstream queries at all, or</t>
 <t>offer alternative services, one that sends ECS and one that does not.</t>
@@ -867,14 +869,14 @@ Client Subnet (ECS) option and not send an ECS option in upstream queries.</t>
 </t>
 <t>If operators do offer a service that sends the ECS options upstream they should
 use the shortest prefix that is operationally feasible and ideally
-use a policy of whitelisting upstream servers to send ECS to in order to
+use a policy of allowlisting upstream servers to send ECS to in order to
 minimize data leakage. Operators should make clear in any policy statement what
 prefix length they actually send and the specific policy used.
 </t>
-<t>Whitelisting has the benefit that not only does the operator know which upstream
+<t>Allowlisting has the benefit that not only does the operator know which upstream
 servers can use ECS but also allows the operator to decide which upstream
 servers apply privacy policies that the operator is happy with. However some
-operators consider whitelisting to incur significant operational overhead
+operators consider allowlisting to incur significant operational overhead
 compared to dynamic detection of ECS on authoritative servers.
 </t>
 <t>Additional options:
@@ -982,7 +984,7 @@ is:
 </list>
 and in each case whether it is aggregated, pseudonymized, or anonymized and
 the conditions of data transfer.</t>
-<t>Exceptions. Specify any exceptions to the above, for example technically
+<t>Exceptions. Specify any exceptions to the above, for example, technically
 malicious or anomalous behavior.</t>
 <t>Associated entities. Declare any partners, third-party affiliations, or
 sources of funding.</t>
@@ -996,7 +998,7 @@ are created and managed, whether it employs any third-party sources for such
 lists, and which ones.
 <list style="symbols">
 <t>Specify if any replies are being filtered out or altered for network and
-computer security reasons (e.g. preventing connections to
+computer security reasons (e.g., preventing connections to
 malware-spreading websites or botnet control servers).</t>
 <t>Specify if any replies are being filtered out or altered for mandatory
 legal reasons, due to applicable legislation or binding orders by courts
@@ -1088,7 +1090,7 @@ their policies and practices.
 </list>
 </t>
 <t>This is by analogy with several TLS or website analysis tools that are
-currently available e.g. <xref target="SSL-Labs"/> or
+currently available e.g., <xref target="SSL-Labs"/> or
 <xref target="Internet.nl"/>.
 </t>
 <t>Additionally operators could choose to engage the services of a third party auditor to verify their compliance with their published DROP statement.
@@ -1113,7 +1115,7 @@ of this document and Stephen Farrell for a thorough review at WGLC and for
 suggesting the inclusion of an example DROP statement. Thanks to John Todd for
 discussions on this topic, and to Stephane Bortzmeyer, Puneet Sood and Vittorio
 Bertola for review. Thanks to Daniel Kahn Gillmor, Barry Green, Paul Hoffman,
-Dan York, John Reed, Lorenzo Colitti for comments at the mic. Thanks to
+Dan York, Jon Reed, Lorenzo Colitti for comments at the mic. Thanks to
 Loganaden Velvindron for useful updates to the text.
 </t>
 <t>Sara Dickinson thanks the Open Technology Fund for a grant to support the work
@@ -1158,6 +1160,8 @@ United Kingdom
 <t>Remove direct references to draft-ietf-dprive-rfc7626-bis-05, instead have one general reference RFC7626</t>
 <t>Clarify that the DROP statement outline is non-normative</t>
 <t>Update wording on data sharing to remove explicit discussion of consent</t>
+<t>Corrections to references, typos and editorial updates from initial IESG
+comments.</t>
 </list>
 </t>
 <t>draft-ietf-dprive-bcp-op-09
@@ -1252,7 +1256,7 @@ that should be mitigated</t>
 <t>Split threat descriptions into ones directly referencing RFC6973 and other DNS Privacy threats</t>
 <t>Improve threat descriptions throughout</t>
 <t>Remove reference to the DNSSEC TLS Chain Extension draft until new version submitted.</t>
-<t>Clarify use of whitelisting for ECS</t>
+<t>Clarify use of allowlisting for ECS</t>
 <t>Re-structure the DPPPS, add Result filtering section.</t>
 <t>Remove the direct inclusion of privacy policy comparison, now just reference dnsprivacy.org and an example of such work.</t>
 <t>Add an appendix briefly discussing DNSSEC</t>
@@ -1291,7 +1295,7 @@ draft-dickinson-dprive-bcp-op-01</t>
 <back>
 <references title="Normative References">
 <?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.2119.xml"?>
-<?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.6265.xml"?>
+<?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.5280.xml"?>
 <?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.6973.xml"?>
 <?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.7525.xml"?>
 <?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.7766.xml"?>
@@ -1300,12 +1304,12 @@ draft-dickinson-dprive-bcp-op-01</t>
 <?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.7830.xml"?>
 <?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.7858.xml"?>
 <?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.7871.xml"?>
-<?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.7873.xml"?>
 <?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.8174.xml"?>
 <?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.8310.xml"?>
 <?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.8404.xml"?>
 <?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.8467.xml"?>
 <?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.8484.xml"?>
+<?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.8499.xml"?>
 </references>
 <references title="Informative References">
 <reference anchor='Bloom-filter'
@@ -1431,18 +1435,18 @@ draft-dickinson-dprive-bcp-op-01</t>
 <?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.2560.xml"?>
 <?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.4033.xml"?>
 <?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.5077.xml"?>
-<?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.5280.xml"?>
 <?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.6235.xml"?>
+<?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.6265.xml"?>
 <?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.7457.xml"?>
 <?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.7626.xml"?>
 <?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.7706.xml"?>
+<?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.7873.xml"?>
 <?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.8020.xml"?>
 <?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.8027.xml"?>
 <?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.8094.xml"?>
 <?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.8198.xml"?>
 <?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.8446.xml"?>
 <?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.8490.xml"?>
-<?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.8499.xml"?>
 <?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.8555.xml"?>
 <?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.8618.xml"?>
 <reference anchor='Ramaswamy-and-Wolf'
@@ -1509,6 +1513,16 @@ draft-dickinson-dprive-bcp-op-01</t>
             <organization>dnstap.info</organization>
         </author>
         <date year='2019'/>
+    </front>
+</reference>
+<reference anchor='dot-ALPN'
+           target='https://www.iana.org/assignments/tls-extensiontype-values/tls-extensiontype-values.xhtml#alpn-protocol-ids'>
+    <front>
+        <title>TLS Application-Layer Protocol Negotiation (ALPN) Protocol IDs</title>
+        <author>
+           <organization>IANA (iana.org)</organization>
+        </author>
+        <date year='2020'/>
     </front>
 </reference>
 <reference anchor='haproxy' target='https://www.haproxy.org/'>
@@ -1686,15 +1700,15 @@ de-identification, such as network capture de-identification, require that the
 de-identified data is of the same form as the original data, to allow the data
 to be parsed in the same way as the original.</t>
 <t>Prefix preservation. Values such as IP addresses and MAC addresses contain
-prefix information that can be valuable in analysis, e.g. manufacturer ID in
+prefix information that can be valuable in analysis, e.g., manufacturer ID in
 MAC addresses, subnet in IP addresses. Prefix preservation ensures that
-prefixes are de-identified consistently; e.g. if two IP addresses are from the
+prefixes are de-identified consistently; e.g., if two IP addresses are from the
 same subnet, a prefix preserving de-identification will ensure that their
 de-identified counterparts will also share a subnet. Prefix preservation may
 be fixed (i.e. based on a user selected prefix length identified in advance to
 be preserved ) or general.</t>
 <t>Replacement. A one-to-one replacement of a field to a new value of the same
-type, for example using a regular expression.</t>
+type, for example, using a regular expression.</t>
 <t>Filtering. Removing (and thus truncating) or replacing data in a field. Field
 data can be overwritten, often with zeros, either partially (grey marking) or
 completely (black marking).</t>
@@ -1702,7 +1716,7 @@ completely (black marking).</t>
 specificity. One example would be to replace all TCP/UDP port numbers with one
 of two fixed values indicating whether the original port was ephemeral
 (&gt;=1024) or non-ephemeral (&gt;1024). Another example, precision degradation,
-reduces the accuracy of e.g. a numeric value or a timestamp.</t>
+reduces the accuracy of e.g., a numeric value or a timestamp.</t>
 <t>Enumeration. With data from a well-ordered set, replace the first data item
 data using a random initial value and then allocate ordered values for
 subsequent data items. When used with timestamp data, this preserves ordering
@@ -1877,15 +1891,15 @@ first seen, last seen) for contributors, public publishing of general
 statistics of system use (protections, threat types, counts, etc.)
 When you use our DNS Services, here is the full list of items that are included in our logs:
 <list style="symbols">
-<t>Request domain name, e.g. example.net</t>
-<t>Record type of requested domain, e.g. A, AAAA, NS, MX, TXT, etc.</t>
+<t>Request domain name, e.g., example.net</t>
+<t>Record type of requested domain, e.g., A, AAAA, NS, MX, TXT, etc.</t>
 <t>Transport protocol on which the request arrived, i.e. UDP, TCP, DoT,
 <vspace/>
 DoH</t>
 <t>Origin IP general geolocation information: i.e. geocode, region ID,
 city ID, and metro code</t>
 <t>IP protocol version – IPv4 or IPv6</t>
-<t>Response code sent, e.g. SUCCESS, SERVFAIL, NXDOMAIN, etc.</t>
+<t>Response code sent, e.g., SUCCESS, SERVFAIL, NXDOMAIN, etc.</t>
 <t>Absolute arrival time</t>
 <t>Name of the specific instance that processed this request</t>
 <t>IP address of the specific instance to which this request was
@@ -1943,9 +1957,9 @@ returned for blocked sites.
 <t>Censorship. We will not provide a censoring component and will limit our
 actions solely to the blocking of malicious domains around phishing,
 malware, and exploit kit domains.</t>
-<t>Accidental blocking. We implement whitelisting algorithms to make sure
+<t>Accidental blocking. We implement allowlisting algorithms to make sure
 legitimate domains are not blocked by accident. However, in the rare case of
-blocking a legitimate domain, we work with the users to quickly whitelist
+blocking a legitimate domain, we work with the users to quickly allowlist
 that domain. Please use our support form (insert link) if you believe we are
 blocking a domain in error.</t>
 </list></t>
@@ -1957,7 +1971,7 @@ blocking a domain in error.</t>
 <section anchor="practice-1" title="Practice">
 <t>
 <list style="numbers">
-<t>Deviations from Policy. None currently in place.</t>
+<t>Deviations from Policy. None in place since (insert date).</t>
 <t>Client facing capabilities.
 <list style="numbers">
 <t>We offer UDP and TCP DNS on port 53 on (insert IP address)</t>
