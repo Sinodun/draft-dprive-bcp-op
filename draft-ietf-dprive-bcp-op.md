@@ -7,7 +7,7 @@
     area = "Internet"
     workgroup = "dprive"
     keyword = ["DNS"]
-    date = 2020-06-16T00:00:00Z
+    date = 2020-06-18T00:00:00Z
     [pi]
     toc = "yes"
     compact = "yes"
@@ -665,11 +665,11 @@ services the server should:
 
 * Implement QNAME minimization [@!RFC7816].
 * Honor a SOURCE PREFIX-LENGTH set to 0 in a query containing the EDNS(0)
-  Client Subnet (ECS) option ([@RFC7871] Section 7.1.2).
+  Client Subnet (ECS) option ([@?RFC7871] Section 7.1.2).
 
 Optimizations:
 
-* As per Section 2 of [@RFC7871] the server should either:
+* As per Section 2 of [@?RFC7871] the server should either:
   * not use the ECS option in upstream queries at all, or
   * offer alternative services, one that sends ECS and one that does not.
 
@@ -1348,7 +1348,7 @@ target='https://www.iana.org/assignments/tls-extensiontype-values/tls-extensiont
 <!--These lines are needed to generate references for citations that appear only
 in the appendix-->
 [-@?RFC6235]
-[-@!RFC7871]
+[-@?RFC7871]
 [-@RFC4033]
 [-@?RFC8618]
 [-@?I-D.ietf-dnsop-dns-tcp-requirements]
@@ -1403,7 +1403,7 @@ considering the operation of a recursive server:
 These documents relate to functionality that could provide increased tracking of
 user activity as a side effect:
 
-* 'Client Subnet in DNS Queries' [@!RFC7871].
+* 'Client Subnet in DNS Queries' [@?RFC7871].
 * 'Domain Name System (DNS) Cookies' [@RFC7873]).
 * 'Transport Layer Security (TLS) Session Resumption without Server-Side State'
   [@RFC5077] referred to here as simply TLS session resumption.
