@@ -7,7 +7,7 @@
     area = "Internet"
     workgroup = "dprive"
     keyword = ["DNS"]
-    date = 2020-06-29T00:00:00Z
+    date = 2020-07-02T00:00:00Z
     [pi]
     toc = "yes"
     compact = "yes"
@@ -828,9 +828,9 @@ Communicate the current operational practices of the service.
 1. Client facing capabilities. With reference to each subsection of
 (#on-the-wire-between-client-and-server) provide specific details of which
 capabilities (transport, DNSSEC, padding, etc.) are provided on which client
-facing addresses and ports. For (#authentication-of-dns-privacy-services),
-clearly specify for each endpoint that offers DoT which specific authentication
-mechanisms are supported:
+facing addresses/port combination or DoH URI template. For
+(#authentication-of-dns-privacy-services), clearly specify which specific
+authentication mechanisms are supported for each endpoint that offers DoT:
 
     1. The authentication domain name to be used (if any).
     1. The SPKI pin sets to be used (if any) and policy for rolling keys.
@@ -842,22 +842,10 @@ capabilities are provided upstream for data sent to authoritative servers.
 
 1. Support. Provide contact/support information for the service.
 
-1. Jurisdiction. This section should communicate the applicable jurisdictions
-and law enforcement regimes under which the service is being provided.
-    1. Specify the operator entity or entities that will control the data and be
-    responsible for their treatment, and their legal place of business.
-    1. Specify, either directly or by pointing to the applicable privacy policy,
-    the relevant privacy laws that apply to the treatment of the data, the
-    rights that users enjoy in regard to their own personal information that is
-    treated by the service, and how they can contact the operator to exercise
-    them.
-    1. Additionally specify the countries in which the servers handling the DNS
-    requests and the data are located (if the operator applies a geolocation
-    policy so that requests from certain countries are only served by certain
-    servers, this should be specified as well).
-    1. Specify whether the operator has any agreement in place with law
-    enforcement agencies, or other public and private parties, to give them
-    access to the servers and/or to the data.
+1. Data Processing. This section can optionally communicate links to and the
+high level contents of any separate statements the operator has published which
+cover applicable data processing legislation or agreements with regard to the
+location(s) of service provision.
 
 
 ## Enforcement/accountability
@@ -921,6 +909,15 @@ Oxford OX4 4GA\\
 United Kingdom
 
 # Changelog
+
+draft-ietf-dprive-bcp-op-11
+
+* Improve text around use of normative language
+* Fix section 5.1.3.2 bullets
+* Improve text in 6.1.2. item 2.
+* Rework text of 6.1.2. item 5 and update example DROP
+* Various editorial improvements
+
 
 draft-ietf-dprive-bcp-op-10
 
@@ -1798,20 +1795,10 @@ with your specific IP address.
 
 1. Support. Support information for this service is available at (insert link).
 
-1. Jurisdiction. 
-
-    1. We operate as the legal entity (insert entity) registered in (insert
-    country) as (insert company identifier e.g Company Number). Our Headquarters
-    are located at (insert address).
-    2. As such we operate under (insert country) law. For details of our company
-    privacy policy see (insert link). For questions on this policy and
-    enforcement contact our Data Protection Officer on (insert email address).
-    3. We operate servers in the following countries (insert list).
-    4. We have no agreements in place with law enforcement agencies to give them
-    access to the data. Apart from as stated in the Policy section of this
-    document with regard to cyber threat intelligence, we have no agreements in
-    place with other public and private parties dealing with security and
-    intelligence, to give them access to the servers and/or to the data.
+1. Data Processing. We operate as the legal entity (insert entity) registered in
+(insert country); as such we operate under (insert country/region) law. Our
+separate statement regarding the specifics of our data processing policy,
+practice, and agreements can be found here (insert link).
 
 
 
