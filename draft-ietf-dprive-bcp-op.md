@@ -2,12 +2,12 @@
     Title = "Recommendations for DNS Privacy Service Operators"
     abbrev = "DNS Privacy Service Recommendations"
     category = "bcp"
-    docName= "draft-ietf-dprive-bcp-op-11"
+    docName= "draft-ietf-dprive-bcp-op-12"
     ipr = "trust200902"
     area = "Internet"
     workgroup = "dprive"
     keyword = ["DNS"]
-    date = 2020-07-02T00:00:00Z
+    date = 2020-07-06T00:00:00Z
     [pi]
     toc = "yes"
     compact = "yes"
@@ -67,8 +67,8 @@ which services to provide, and how the decisions and alternatives impact the
 privacy of users.
 
 
-This document also presents a non-normative framework to assist writers of a DNS Recursive
-Operator Privacy Statement (analogous to DNS Security Extensions (DNSSEC)
+This document also presents a non-normative framework to assist writers of a Recursive
+operator Privacy statement (analogous to DNS Security Extensions (DNSSEC)
 Policies and DNSSEC Practice Statements described in RFC6841).
 
 
@@ -123,14 +123,14 @@ This document has two main goals:
   transports and to outline recommendations for data handling for operators of
   DNS privacy services.
 
-* To introduce the DNS Recursive Operator Privacy (DROP) statement and present a
-  framework to assist writers of a DROP statement. A DROP statement is a
+* To introduce the Recursive operator Privacy Statement (RPS) and present a
+  framework to assist writers of an RPS. An RPS is a
   document that an operator should publish which outlines their operational
   practices and commitments with regard to privacy, thereby providing a means
   for clients to evaluate both the measurable and claimed privacy properties of
   a given DNS privacy service. The framework identifies a set of elements and
   specifies an outline order for them. This document does not, however, define a
-  particular Privacy statement, nor does it seek to provide legal advice as to
+  particular privacy statement, nor does it seek to provide legal advice as to
   the contents.
 
 A desired operational impact is that all operators (both those providing
@@ -196,12 +196,12 @@ implement the (D)TLS profile described in Section 9 of [@!RFC8310].
 
 Other Terms:
 
-* DROP: DNS Recursive Operator Privacy statement, see
-  (#dns-recursive-operator-privacy-drop-statement).
+* RPS: Recursive operator Privacy Statement, see
+  (#recursive-operator-privacy-statement-rps).
 
 * DNS privacy service: The service that is offered via a privacy-enabling DNS
   server and is documented either in an informal statement of policy and
-  practice with regard to users privacy or a formal DROP statement.
+  practice with regard to users privacy or a formal RPS.
 
 # Recommendations for DNS privacy services
 
@@ -750,27 +750,27 @@ their own organization. This can benefit not only the operator (through
 inclusion in novel research) but also the wider Internet community. See the policy published by SURFnet [@SURFnet-policy] on data sharing for research as
 an example.
 
-# DNS Recursive Operator Privacy (DROP) statement
+# Recursive operator Privacy Statement (RPS) 
 
-To be compliant with this Best Common Practices document, a DNS Recursive
-Operator SHOULD publish a DNS Recursive Operator Privacy Statement. Adopting the
+To be compliant with this Best Common Practices document, a DNS recursive
+operator SHOULD publish a Recursive operator Privacy Statement (RPS). Adopting the
 outline, and including the headings in the order provided, is a benefit to
-persons comparing multiple operators’ DROP statements.
+persons comparing RPSs from multiple operators.
 
 (#current-policy-and-privacy-statements) provides a comparison of some existing
 policy and privacy statements.
 
-## Outline of a DROP statement
+## Outline of an RPS
 
 The contents of (#policy) and (#practice) are non-normative, other than the
 order of the headings. Material under each topic is present to assist the
-operator developing their own DROP statement and:
+operator developing their own RPS and:
 
 * Relates *only* to matters around to the technical operation of DNS privacy services, and not on any other matters.
-* Does not attempt to offer an exhaustive list for the contents of a DROP statement.
+* Does not attempt to offer an exhaustive list for the contents of an RPS.
 * Is not intended to form the basis of any legal/compliance documentation.
 
-(#example-drop-statement) provides an example (also non-normative) of a DROP
+(#example-rps) provides an example (also non-normative) of an RPS
 statement for a specific operator scenario.
 
 ### Policy
@@ -863,7 +863,7 @@ This is by analogy with several TLS or website analysis tools that are
 currently available e.g., [@SSL-Labs] or
 [@Internet.nl].
 
-Additionally operators could choose to engage the services of a third party auditor to verify their compliance with their published DROP statement.
+Additionally operators could choose to engage the services of a third party auditor to verify their compliance with their published RPS.
 
 # IANA considerations
 
@@ -880,7 +880,7 @@ Security considerations for DNSSEC are given in [@?RFC4033], [@?RFC4034] and [@?
 
 Many thanks to Amelia Andersdotter for a very thorough review of the first draft
 of this document and Stephen Farrell for a thorough review at WGLC and for
-suggesting the inclusion of an example DROP statement. Thanks to John Todd for
+suggesting the inclusion of an example RPS. Thanks to John Todd for
 discussions on this topic, and to Stephane Bortzmeyer, Puneet Sood and Vittorio
 Bertola for review. Thanks to Daniel Kahn Gillmor, Barry Green, Paul Hoffman,
 Dan York, Jon Reed, Lorenzo Colitti for comments at the mic. Thanks to
@@ -909,6 +909,10 @@ Oxford OX4 4GA\\
 United Kingdom
 
 # Changelog
+
+draft-ietf-dprive-bcp-op-12
+
+* Change DROP to RPS throughout
 
 draft-ietf-dprive-bcp-op-11
 
@@ -1631,7 +1635,7 @@ Anonymized: Generalization.
 # Current policy and privacy statements
 
 A tabular comparison of policy and privacy statements from various DNS
-Privacy service operators based loosely on the proposed DROP structure can
+Privacy service operators based loosely on the proposed RPS structure can
 be found at [@policy-comparison]. The analysis is based on the data
 available in December 2019.
 
@@ -1647,18 +1651,18 @@ requirements that a party must satisfy to be considered as a potential
 partner for Mozilla’s Trusted Recursive Resolver (TRR) program.
 
 
-# Example DROP statement
+# Example RPS
 
-The following example DROP statement is very loosely based on some elements of
+The following example RPS is very loosely based on some elements of
 published privacy statements for some public resolvers, with additional fields
-populated to illustrate the what the full contents of a DROP statement might
+populated to illustrate the what the full contents of an RPS might
 look like. This should not be interpreted as
 
 * having been reviewed or approved by any operator in any way
 * having any legal standing or validity at all
 * being complete or exhaustive
 
-This is a purely hypothetical example of a DROP statement to outline example
+This is a purely hypothetical example of an RPS to outline example
 contents - in this case for a public resolver operator providing a basic DNS
 Privacy service via one IP address and one DoH URI with security based
 filtering. It does aim to meet minimal compliance as specified in
