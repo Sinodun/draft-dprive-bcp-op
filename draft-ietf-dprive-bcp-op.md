@@ -2,12 +2,12 @@
     Title = "Recommendations for DNS Privacy Service Operators"
     abbrev = "DNS Privacy Service Recommendations"
     category = "bcp"
-    docName= "draft-ietf-dprive-bcp-op-12"
+    docName= "draft-ietf-dprive-bcp-op-13"
     ipr = "trust200902"
     area = "Internet"
     workgroup = "dprive"
     keyword = ["DNS"]
-    date = 2020-07-06T00:00:00Z
+    date = 2020-07-10T00:00:00Z
     [pi]
     toc = "yes"
     compact = "yes"
@@ -264,7 +264,7 @@ or more of the following transports
 * DNS over TLS (DoT) [@!RFC7858] and [@!RFC8310].
 * DNS over HTTPS (DoH) [@!RFC8484].
 
-It is noted that a DNS privacy service can also be provided over DNS-over-DTLS
+It is noted that a DNS privacy service can also be provided over DNS over DTLS
 [@RFC8094], however this is an Experimental specification and there are no known
 implementations at the time of writing.
 
@@ -273,8 +273,9 @@ DNSCrypt, or VPNs. However, there are no specific RFCs that cover the use of
 these transports for DNS and any discussion of best practice for providing such
 a service is out of scope for this document.
 
-Whilst encryption of DNS traffic can protect against active injection this does
-not diminish the need for DNSSEC, see (#dnssec).
+Whilst encryption of DNS traffic can protect against active injection on the
+paths traversed by the encrypted connection this does not diminish the need for
+DNSSEC, see (#dnssec).
 
 ### Authentication of DNS privacy services
 
@@ -292,7 +293,7 @@ will trust.
 When using DoT, clients that select a 'Strict Privacy' usage profile [@!RFC8310]
 (to mitigate the threat of active attack on the client) require the ability to
 authenticate the DNS server. To enable this, DNS privacy services that offer
-DNS-over-TLS need to provide credentials that will be accepted by the client's
+DNS over TLS need to provide credentials that will be accepted by the client's
 trust model, in the form of either X.509 certificates [@!RFC5280] or Subject
 Public Key Info (SPKI) pin sets [@!RFC8310].
 
@@ -647,8 +648,8 @@ Mitigations:
 Mitigations:
 
 * See [@ISC-Knowledge-database-on-cache-snooping] for an example discussion on
-  defending against cache snooping.
-
+  defending against cache snooping. Options proposed include limiting access to
+  a server and limiting non-recursive queries.
 
 ## Data sent onwards from the server
 
@@ -871,8 +872,8 @@ None
 
 # Security considerations
 
-Security considerations for DNS-over-TCP are given in [@RFC7766], many of which
-are generally applicable to session based DNS. Guidance on operational requirements for DNS-over-TCP are also available in [I-D.dnsop-dns-tcp-requirements]. Security considerations for DoT are given in [RFC7858] and [@RFC8310], those for DoH in [RFC8484].
+Security considerations for DNS over TCP are given in [@RFC7766], many of which
+are generally applicable to session based DNS. Guidance on operational requirements for DNS over TCP are also available in [I-D.dnsop-dns-tcp-requirements]. Security considerations for DoT are given in [RFC7858] and [@RFC8310], those for DoH in [RFC8484].
 
 Security considerations for DNSSEC are given in [@?RFC4033], [@?RFC4034] and [@?RFC4035].
 
@@ -909,6 +910,10 @@ Oxford OX4 4GA\\
 United Kingdom
 
 # Changelog
+
+draft-ietf-dprive-bcp-op-13
+
+* Minor edits
 
 draft-ietf-dprive-bcp-op-12
 
@@ -1430,7 +1435,7 @@ user activity as a side effect:
 ## Related operational documents
 
 * 'DNS Transport over TCP - Implementation Requirements' [@!RFC7766].
-* 'Operational requirements for DNS-over-TCP'
+* 'Operational requirements for DNS over TCP'
   [@?I-D.ietf-dnsop-dns-tcp-requirements].
 * 'The edns-tcp-keepalive EDNS0 Option' [@!RFC7828].
 * 'DNS Stateful Operations' [@RFC8490].
@@ -1561,7 +1566,7 @@ this algorithm stores a set of original and anonymised IP
 address pairs. When a new IP address arrives, it is compared with previous
 addresses to determine the longest prefix match. The new address is anonymized
 by using the same prefix, with the remainder of the address anonymized with a
-random value. The use of a random value means that TCPdrpiv is not
+random value. The use of a random value means that TCPdpriv is not
 deterministic; different anonymized values will be generated on each run. The
 need to store previous addresses means that TCPdpriv has significant and
 unbounded memory requirements, and because of the need to allocated anonymized
