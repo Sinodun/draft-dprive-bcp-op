@@ -2,12 +2,12 @@
     Title = "Recommendations for DNS Privacy Service Operators"
     abbrev = "DNS Privacy Service Recommendations"
     category = "bcp"
-    docName= "draft-ietf-dprive-bcp-op-13"
+    docName= "draft-ietf-dprive-bcp-op-14"
     ipr = "trust200902"
     area = "Internet"
     workgroup = "dprive"
     keyword = ["DNS"]
-    date = 2020-07-10T00:00:00Z
+    date = 2020-07-13T00:00:00Z
     [pi]
     toc = "yes"
     compact = "yes"
@@ -68,7 +68,7 @@ privacy of users.
 
 
 This document also presents a non-normative framework to assist writers of a Recursive
-operator Privacy statement (analogous to DNS Security Extensions (DNSSEC)
+operator Privacy Statement (analogous to DNS Security Extensions (DNSSEC)
 Policies and DNSSEC Practice Statements described in RFC6841).
 
 
@@ -90,7 +90,7 @@ resolvers" [@!RFC8499] which users may prefer to use instead of the default
 network resolver either because they offer a specific feature (e.g., good
 reachability or encrypted transport) or because the network resolver lacks a
 specific feature (e.g., strong privacy policy or unfiltered responses). These
-open resolvers have tended to be at the forefront of adoption of privacy-related
+public resolvers have tended to be at the forefront of adoption of privacy-related
 enhancements but it is anticipated that operators of other resolver services
 will follow.
 
@@ -695,7 +695,7 @@ Additional options:
 * Aggressive Use of DNSSEC-Validated Cache [@!RFC8198] and [@!RFC8020]
   (NXDOMAIN: There Really Is Nothing Underneath) to reduce the number of queries
   to authoritative servers to increase privacy.
-* Run a copy of the root zone on loopback [@!RFC7706] to avoid making queries to
+* Run a copy of the root zone on loopback [@!RFC8806] to avoid making queries to
   the root servers that might leak information.
 
 ### Client query obfuscation
@@ -1792,7 +1792,6 @@ with your specific IP address.
         1. The DoT authentication domain name used is (insert domain name).
         1. We do not publish SPKI pin sets.
     1. We offer DNS over HTTPS as specified in RFC8484 on (insert URI template). 
-       Both POST and GET are supported.
     1. Both services offer TLS 1.2 and TLS 1.3.
     1. Both services pad DNS responses according to RFC8467.
     1. Both services provide DNSSEC validation.

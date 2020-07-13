@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE rfc SYSTEM 'rfc2629.dtd' []>
-<rfc ipr="trust200902" category="bcp" docName="draft-ietf-dprive-bcp-op-13">
+<rfc ipr="trust200902" category="bcp" docName="draft-ietf-dprive-bcp-op-14">
 <?rfc toc="yes"?>
 <?rfc symrefs="yes"?>
 <?rfc sortrefs="yes"?>
@@ -76,7 +76,7 @@
 <uri></uri>
 </address>
 </author>
-<date year="2020" month="July" day="10"/>
+<date year="2020" month="July" day="13"/>
 
 <area>Internet</area>
 <workgroup>dprive</workgroup>
@@ -91,7 +91,7 @@ which services to provide, and how the decisions and alternatives impact the
 privacy of users.
 </t>
 <t>This document also presents a non-normative framework to assist writers of a Recursive
-operator Privacy statement (analogous to DNS Security Extensions (DNSSEC)
+operator Privacy Statement (analogous to DNS Security Extensions (DNSSEC)
 Policies and DNSSEC Practice Statements described in RFC6841).
 </t>
 </abstract>
@@ -116,7 +116,7 @@ resolvers&quot; <xref target="RFC8499"/> which users may prefer to use instead o
 network resolver either because they offer a specific feature (e.g., good
 reachability or encrypted transport) or because the network resolver lacks a
 specific feature (e.g., strong privacy policy or unfiltered responses). These
-open resolvers have tended to be at the forefront of adoption of privacy-related
+public resolvers have tended to be at the forefront of adoption of privacy-related
 enhancements but it is anticipated that operators of other resolver services
 will follow.
 </t>
@@ -854,7 +854,7 @@ compared to dynamic detection of ECS support on authoritative servers.
 <t>Aggressive Use of DNSSEC-Validated Cache <xref target="RFC8198"/> and <xref target="RFC8020"/>
 (NXDOMAIN: There Really Is Nothing Underneath) to reduce the number of queries
 to authoritative servers to increase privacy.</t>
-<t>Run a copy of the root zone on loopback <xref target="RFC7706"/> to avoid making queries to
+<t>Run a copy of the root zone on loopback <xref target="RFC8806"/> to avoid making queries to
 the root servers that might leak information.</t>
 </list>
 </t>
@@ -1290,7 +1290,6 @@ draft-dickinson-dprive-bcp-op-01</t>
 <?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.6973.xml"?>
 <?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.7457.xml"?>
 <?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.7525.xml"?>
-<?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.7706.xml"?>
 <?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.7766.xml"?>
 <?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.7816.xml"?>
 <?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.7828.xml"?>
@@ -1305,6 +1304,7 @@ draft-dickinson-dprive-bcp-op-01</t>
 <?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.8484.xml"?>
 <?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.8490.xml"?>
 <?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.8499.xml"?>
+<?rfc include="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.8806.xml"?>
 </references>
 <references title="Informative References">
 <reference anchor='Bloom-filter'
@@ -2067,8 +2067,7 @@ is available on port 853 and port 443. We also implement RFC7766.
 <t>The DoT authentication domain name used is (insert domain name).</t>
 <t>We do not publish SPKI pin sets.</t>
 </list></t>
-<t>We offer DNS over HTTPS as specified in RFC8484 on (insert URI template).
-Both POST and GET are supported.</t>
+<t>We offer DNS over HTTPS as specified in RFC8484 on (insert URI template).</t>
 <t>Both services offer TLS 1.2 and TLS 1.3.</t>
 <t>Both services pad DNS responses according to RFC8467.</t>
 <t>Both services provide DNSSEC validation.
